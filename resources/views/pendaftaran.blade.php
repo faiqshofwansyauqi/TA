@@ -33,33 +33,116 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                            href="#about">Home</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                            a href="/pendaftaran">PENDAFTARAN</a></li>
+                            href="/">Home</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" a
+                            href="/pendaftaran">PENDAFTARAN</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
                             href="/login">Login</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    <!-- Masthead-->
-    <header class="masthead bg-primary text-white text-center">
-        <div class="container d-flex align-items-center flex-column">
-            <!-- Masthead Avatar Image-->
-            <img class="masthead-avatar mb-5" src="assets/img/avataaars.svg" alt="..." />
-            <!-- Masthead Heading-->
-            <h1 class="masthead-heading text-uppercase mb-0">Selamat Datang di Praktik Mandiri Bidan Ani Triani</h1>
+    <br>
+    <br>
+    <br>
+    <section class="page-section" id="contact">
+        <div class="container">
+            <!-- Contact Section Heading-->
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Pendaftaran</h2>
             <!-- Icon Divider-->
-            <div class="divider-custom divider-light">
+            <div class="divider-custom">
                 <div class="divider-custom-line"></div>
                 <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                 <div class="divider-custom-line"></div>
             </div>
-            <!-- Masthead Subheading-->
-            <p class="masthead-subheading font-weight-light mb-0">Aplikasi Rekam Medis Ibu dan Anak Berbasis Web</p>
+            <!-- Contact Section Form-->
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-xl-7">
+                    <!-- * * * * * * * * * * * * * * *-->
+                    <!-- * * SB Forms Contact Form * *-->
+                    <!-- * * * * * * * * * * * * * * *-->
+                    <!-- This form is pre-integrated with SB Forms.-->
+                    <!-- To make this form functional, sign up at-->
+                    <!-- https://startbootstrap.com/solution/contact-forms-->
+                    <!-- to get an API token!-->
+                    <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+                        <!-- Name input-->
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="name" type="text"
+                                placeholder="Masukan nama pasien..." data-sb-validations="required" />
+                            <label for="name">Nama Pasien</label>
+                            <div class="invalid-feedback" data-sb-feedback="name:required">Nama tidak boleh kosong.
+                            </div>
+                            <!-- Adress address input-->
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="address" type="text" placeholder="Masukan alamat..."
+                                data-sb-validations="required" />
+                            <label for="address">Alamat</label>
+                            <div class="invalid-feedback" data-sb-feedback="address:required">Alamat tidak boleh
+                                kosong.</div>
+                        </div>
+                        <!-- Phone number input-->
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="phone" type="tel"
+                                placeholder="Masukan nomer telepon" data-sb-validations="required" />
+                            <label for="phone">Nomer Telepon</label>
+                            <div class="invalid-feedback" data-sb-feedback="phone:required">Nomer telepon tidak boleh
+                                kosong</div>
+                        </div>
+                        <!-- Email input-->
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="email" type="email"
+                                placeholder="Masukan alamat email..." data-sb-validations="required,email" />
+                            <label for="email">Alamat Email</label>
+                            <div class="invalid-feedback" data-sb-feedback="email:required">Alamat email tidak boleh
+                                kosong.</div>
+                            <div class="invalid-feedback" data-sb-feedback="email:email">Mohon masukkan alamat email
+                                yang valid.</div>
+                        </div>
+                        <!-- Username input-->
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="username" type="text" placeholder="Masukan username..."
+                                data-sb-validations="required" />
+                            <label for="username">Username</label>
+                            <div class="invalid-feedback" data-sb-feedback="username:required">Username tidak boleh
+                                kosong.</div>
+                        </div>
+                        <!-- Password input-->
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="password" type="text"
+                                placeholder="Masukan password..." data-sb-validations="required" />
+                            <label for="password">Password</label>
+                            <div class="invalid-feedback" data-sb-feedback="password:required">Password tidak boleh
+                                kosong.</div>
+                        </div>
+                        <!-- Submit success message-->
+                        <!---->
+                        <!-- This is what your users will see when the form-->
+                        <!-- has successfully submitted-->
+                        {{-- <div class="d-none" id="submitSuccessMessage">
+                            <div class="text-center mb-3">
+                                <div class="fw-bolder">Form submission successful!</div>
+                                To activate this form, sign up at
+                                <br />
+                                <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                            </div>
+                        </div> --}}
+                        <!-- Submit error message-->
+                        <!---->
+                        <!-- This is what your users will see when there is-->
+                        <!-- an error submitting the form-->
+                        <div class="d-none" id="submitErrorMessage">
+                            <div class="text-center text-danger mb-3">Error sending message!</div>
+                        </div>
+                        <!-- Submit Button-->
+                        <button class="btn btn-primary btn-xl disabled" id="submitButton"
+                            type="submit">Daftar</button>
+                    </form>
+                </div>
+            </div>
         </div>
-    </header>        
-    <!-- Footer-->
+    </section>
     <footer class="footer text-center">
         <div class="container">
             <div class="row">
@@ -86,13 +169,13 @@
                 </div>
                 <!-- Footer About Text-->
                 {{-- <div class="col-lg-4">
-                        <h4 class="text-uppercase mb-4">About Freelancer</h4>
-                        <p class="lead mb-0">
-                            Freelance is a free to use, MIT licensed Bootstrap theme created by
-                            <a href="http://startbootstrap.com">Start Bootstrap</a>
-                            .
-                        </p>
-                    </div> --}}
+                    <h4 class="text-uppercase mb-4">About Freelancer</h4>
+                    <p class="lead mb-0">
+                        Freelance is a free to use, MIT licensed Bootstrap theme created by
+                        <a href="http://startbootstrap.com">Start Bootstrap</a>
+                        .
+                    </p>
+                </div> --}}
             </div>
         </div>
     </footer>
@@ -340,5 +423,3 @@
     <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     {{-- <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> --}}
 </body>
-
-</html>

@@ -82,34 +82,25 @@
                                                 <div class="invalid-feedback">Please enter your email.</div>
                                             </div>
                                         </div>
-
                                         <div class="col-12">
                                             <label for="yourPassword" class="form-label">Password</label>
                                             <input type="password" name="password" class="form-control"
                                                 id="yourPassword" required>
                                             <div class="invalid-feedback">Please enter your password!</div>
                                         </div>
-
-                                        {{-- <div class="col-12">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
-                        <label class="form-check-label" for="rememberMe">Remember me</label>
-                      </div>
-                    </div> --}}
                                         <div class="col-12">
                                             <button class="btn btn-primary w-100" type="submit">Login</button>
                                         </div>
+                                        <div class="text-center small">
+                                            <a href="{{ route('home') }}">Kembali Halaman Utama</p>
+                                        </div>
                                     </form>
-
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
-
             </section>
-
         </div>
     </main><!-- End #main -->
 

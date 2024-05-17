@@ -55,7 +55,7 @@
     <header id="header" class="header fixed-top d-flex align-items-center">
 
         <div class="d-flex align-items-center justify-content-between">
-            <a href="index.html" class="logo d-flex align-items-center">
+            <a href="{{ route('dashboard') }}" class="logo d-flex align-items-center">
                 {{-- <img src="{{ asset('assets/img/logo.png') }}" alt=""> --}}
                 <span class="d-none d-lg-block" style="font-size: 20px;">BIDAN PRAKTEK MANDIRI</span>
             </a>
@@ -109,7 +109,7 @@
     <x-sidebar />
 
     <main id="main" class="main vh-100">
-
+    {{-- <main id="main"> --}}
         @yield('content')
 
     </main><!-- End #main -->
@@ -117,7 +117,7 @@
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
         <div class="copyright">
-            &copy; Copyright <strong><span>Natashaaa</span></strong>. All Rights Reserved
+            &copy; Copyright <strong><span>Ritsuka</span></strong>. All Rights Reserved
         </div>
     </footer><!-- End Footer -->
 
