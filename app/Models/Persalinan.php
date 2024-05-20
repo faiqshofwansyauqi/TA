@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use App\Models\Ibu;
 use Illuminate\Database\Eloquent\Model;
 
 class Persalinan extends Model
@@ -30,6 +30,11 @@ class Persalinan extends Model
         'keadaan_tiba',
         'rujuk',
         'alamat_bersalin',
+        'id_ibu'
     ];
+    public function ibu()
+    {
+        return $this->belongsTo(Ibu::class, 'id_ibu', 'nama_ibu');
+    }
     public $timestamps = false;
 }

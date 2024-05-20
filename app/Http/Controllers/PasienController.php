@@ -64,10 +64,7 @@ class PasienController extends Controller
             'nomer_telepon' => 'required',
             'gol_darah' => 'required',
         ]);
-
-
         $tempat_tanggal_lahir = $request->tempat_lahir . ', ' . $request->tanggal_lahir;
-
         $ibu = Ibu::findOrFail($id);
         $ibu->update([
             'tanggal_terdaftar' => $request->tanggal_terdaftar,

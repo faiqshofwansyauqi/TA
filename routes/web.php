@@ -62,6 +62,7 @@ Route::prefix('rekam_medis')->group(function () {
     Route::get('/rekam_medis/{id}/edit', [RekamMedisController::class, 'edit_persalinan'])->name('rekam_medis.edit_persalinan');
     Route::put('rekam_medis/update_persalinan/{id}', [RekamMedisController::class, 'update_persalinan'])->name('rekam_medis.update_persalinan');
     Route::delete('/rekam_medis/{id}', [RekamMedisController::class, 'destroy_persalinan'])->name('rekam_medis.destroy_persalinan');
+    Route::get('persalinan', [RekamMedisController::class, 'showIbuPage'])->name('rekam_medis.persalinan');
 });
 
 

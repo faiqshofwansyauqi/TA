@@ -27,7 +27,7 @@
                             <table class="table small" id="persalinan-table">
                                 <thead>
                                     <tr>
-                                        <th>ID Persalinan</th>
+                                        <th>Nama Ibu</th>
                                         <th>Kala I Aktif</th>
                                         <th>Kala II</th>
                                         <th>Bayi Lahir</th>
@@ -57,11 +57,20 @@
                     <form action="{{ route('rekam_medis.store_persalinan') }}" method="post" autocomplete="off">
                         @csrf
                         <div class="row">
-                            <div class="col-md-6 mb-2">
+                            <div class="col-md-4 mb-2">
+                                <label for="id_ibu" class="form-label">Ibu</label>
+                                <select class="form-control" id="id_ibu" name="id_ibu" required>
+                                    <option value="">Pilih Ibu</option>
+                                    @foreach ($ibus as $ibu)
+                                        <option value="{{ $ibu->nama_ibu }}">{{ $ibu->nama_ibu }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-4 mb-2">
                                 <label for="kala1" class="form-label">Kala I Aktif</label>
                                 <input type="datetime-local" class="form-control" id="kala1" name="kala1">
                             </div>
-                            <div class="col-md-6 mb-2">
+                            <div class="col-md-4 mb-2">
                                 <label for="kala2" class="form-label">Kala II</label>
                                 <input type="datetime-local" class="form-control" id="kala2" name="kala2">
                             </div>
@@ -150,7 +159,6 @@
                                         <option value="Dahi">Dahi</option>
                                         <option value="Muka">Muka</option>
                                         <option value="Kaki">Kaki</option>
-                                        <option value="Campuaran">Campuaran</option>
                                     </select>
                                 </div>
                             </div>
@@ -235,9 +243,9 @@
                                     <label for="integrasi" class="form-label">Integrasi Program</label>
                                     <select class="form-select" id="integrasi" name="integrasi" required>
                                         <option value="">Pilih Jenis Integrasi Program</option>
-                                        <option value="ARV Profilaksis ***">ARV Profilaksis ***</option>
-                                        <option value="Obat Anti Malaria ***">Obat Anti Malaria ***</option>
-                                        <option value="Obat Anti TB***">Obat Anti TB***</option>
+                                        <option value="ARV Profilaksis">ARV Profilaksis</option>
+                                        <option value="Obat Anti Malaria">Obat Anti Malaria</option>
+                                        <option value="Obat Anti TB">Obat Anti TB</option>
                                         <option value="Masase Fundus Uteri">Masase Fundus Uteri</option>
                                     </select>
                                 </div>
@@ -294,27 +302,6 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modalView" tabindex="-1" aria-labelledby="modalViewLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-4 fw-bold" id="modalViewLabel">Detail Persalinan</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <table class="table" id="detailTable">
-                        <thead>
-                            <tr>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="ModalEdit" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-lg">
             <div class="modal-content">
@@ -328,11 +315,20 @@
                         @method('PUT')
                         <input type="hidden" id="id_persalinan" name="id_persalinan">
                         <div class="row">
-                            <div class="col-md-6 mb-2">
+                            <div class="col-md-4 mb-2">
+                                <label for="edit_id_ibu" class="form-label">Ibu</label>
+                                <select class="form-control" id="edit_id_ibu" name="id_ibu" required>
+                                    <option value="">Pilih Ibu</option>
+                                    @foreach ($ibus as $ibu)
+                                        <option value="{{ $ibu->nama_ibu }}">{{ $ibu->nama_ibu }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-4 mb-2">
                                 <label for="edit_kala1" class="form-label">Kala I Aktif</label>
                                 <input type="datetime-local" class="form-control" id="edit_kala1" name="kala1">
                             </div>
-                            <div class="col-md-6 mb-2">
+                            <div class="col-md-4 mb-2">
                                 <label for="edit_kala2" class="form-label">Kala II</label>
                                 <input type="datetime-local" class="form-control" id="edit_kala2" name="kala2">
                             </div>
@@ -413,7 +409,6 @@
                                     <option value="Dahi">Dahi</option>
                                     <option value="Muka">Muka</option>
                                     <option value="Kaki">Kaki</option>
-                                    <option value="Campuran">Campuran</option>
                                 </select>
                             </div>
                             <div class="col-md-6 mb-3">
@@ -484,9 +479,9 @@
                                 <label for="edit_integrasi" class="form-label">Integrasi Program</label>
                                 <select class="form-select" id="edit_integrasi" name="integrasi" required>
                                     <option value="">Pilih Jenis Integrasi Program</option>
-                                    <option value="ARV Profilaksis ***">ARV Profilaksis ***</option>
-                                    <option value="Obat Anti Malaria ***">Obat Anti Malaria ***</option>
-                                    <option value="Obat Anti TB***">Obat Anti TB***</option>
+                                    <option value="ARV Profilaksis">ARV Profilaksis</option>
+                                    <option value="Obat Anti Malaria">Obat Anti Malaria</option>
+                                    <option value="Obat Anti TB">Obat Anti TB</option>
                                     <option value="Masase Fundus Uteri">Masase Fundus Uteri</option>
                                 </select>
                             </div>
@@ -533,6 +528,27 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="modalView" tabindex="-1" aria-labelledby="modalViewLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-4 fw-bold" id="modalViewLabel">Detail Persalinan</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table" id="detailTable">
+                        <thead>
+                            <tr>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('script')
     <script>
@@ -549,8 +565,8 @@
                 serverSide: true,
                 ajax: '{{ route('rekam_medis.data_persalinan') }}',
                 columns: [{
-                        data: 'id_persalinan',
-                        name: 'id_persalinan'
+                        data: 'id_ibu',
+                        name: 'id_ibu'
                     },
                     {
                         data: 'kala1',
@@ -602,8 +618,12 @@
                     },
                     {
                         data: 'pendarahan',
-                        name: 'pendarahan'
+                        name: 'pendarahan',
+                        render: function(data, type, row) {
+                            return data + ' cc';
+                        }
                     },
+
                     {
                         data: 'pesentasi',
                         name: 'pesentasi'
@@ -650,6 +670,8 @@
                 url: '{{ route('rekam_medis.show_persalinan', ':id') }}'.replace(':id', id),
                 method: 'GET',
                 success: function(data) {
+                    let namaIbu = data.ibu.nama_ibu;
+
                     function formatDate(dateString) {
                         if (!dateString) return '';
                         const date = new Date(dateString);
@@ -663,7 +685,7 @@
                     <thead>
                         <tr>
                             <th>Fase Persalinan</th>
-                            <th class="text-center">Tanggal dan Jam</th>
+                            <th class="text-center">Tanggal - Jam</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -685,7 +707,7 @@
                         </tr>
                         <tr>
                             <td>Pendarahan</td>
-                            <td class="text-center">${data.pendarahan}</td>
+                            <td class="text-center">${(data.pendarahan)} cc</td>
                         </tr>
                     </tbody>
                 </table>
@@ -697,11 +719,11 @@
                     <tbody>
                         <tr>
                             <td>Usia Kehamilan</td>
-                            <td>${data.usia_kehamilan}</td>
+                            <td>${data.usia_kehamilan} Minggu</td>
                         </tr>
                         <tr>
                             <td>Usia HPHT</td>
-                            <td>${data.usia_hpht}</td>
+                            <td>${data.usia_hpht} Minggu</td>
                         </tr>
                         <tr>
                             <td>Keadaan Ibu</td>
@@ -713,7 +735,7 @@
                         </tr>
                         <tr>
                             <td>Berat Bayi</td>
-                            <td>${data.berat_bayi}</td>
+                            <td>${data.berat_bayi} Gram</td>
                         </tr>
                     </tbody>
                 </table>
@@ -723,7 +745,6 @@
                     <thead>
                         <tr>
                             <th>Fase Persalinan</th>
-                            <th>Value</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -789,15 +810,11 @@
                     </div>
                 </div>
             `;
+                    $('#modalViewLabel').html(`Detail Persalinan Ibu ${namaIbu}`);
                     $('#modalView .modal-body').html(tableHtml);
                     $('#modalView').modal('show');
                 }
             });
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            var pendarahanInput = document.getElementById('pendarahan');
-            pendarahanInput.value = "cc";
         });
 
         $('#persalinan-table').on('click', '.edit-btn', function() {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Persalinan;
+use App\Models\Ibu;
 use Yajra\DataTables\Facades\DataTables;
 
 class RekamMedisController extends Controller
@@ -11,13 +12,14 @@ class RekamMedisController extends Controller
     public function Persalinan()
     {
         $persalinan = Persalinan::all();
-        return view("rekam_medis.persalinan");
+        return view('rekam_medis.persalinan', compact('persalinan'));
     }
 
     public function store_persalinan(Request $request)
     {
         // dd($request->all());
         $request->validate([
+            'id_ibu' => 'required',
             'kala1' => 'required',
             'kala2' => 'required',
             'bayi_lahir' => 'required',
@@ -40,8 +42,9 @@ class RekamMedisController extends Controller
             'rujuk' => 'required',
             'alamat_bersalin' => 'required',
         ]);
-    
+
         Persalinan::create([
+            'id_ibu' => $request->id_ibu,
             'kala1' => $request->kala1,
             'kala2' => $request->kala2,
             'bayi_lahir' => $request->bayi_lahir,
@@ -71,6 +74,7 @@ class RekamMedisController extends Controller
     {
         // dd($request->all());
         $request->validate([
+            'id_ibu' => 'required',
             'kala1' => 'required',
             'kala2' => 'required',
             'bayi_lahir' => 'required',
@@ -95,6 +99,7 @@ class RekamMedisController extends Controller
         ]);
         $persalinan = Persalinan::findOrFail($id);
         $persalinan->update([
+            'id_ibu' => $request->id_ibu,
             'kala1' => $request->kala1,
             'kala2' => $request->kala2,
             'bayi_lahir' => $request->bayi_lahir,
@@ -139,7 +144,15 @@ class RekamMedisController extends Controller
     }
     public function show_persalinan($id)
     {
-        $persalinan = Persalinan::find($id);
+        $persalinan = Persalinan::with(['ibu' => function ($query) {
+            $query->select('id_ibu', 'nama_ibu');
+        }])->find($id);
+
         return response()->json($persalinan);
+    }
+    public function showIbuPage()
+    {
+        $ibus = Ibu::all();
+        return view('rekam_medis.persalinan')->with('ibus', $ibus);
     }
 }
