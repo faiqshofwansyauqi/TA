@@ -22,7 +22,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title"></h5>
+                        <h5 class="card-title">Data Pasien Ibu</h5>
                         <div class="table-responsive">
                             <table class="table small" id="ibu-table">
                                 <thead>
@@ -74,11 +74,9 @@
                             <label for="usia_ibu" class="form-label">Usia Ibu</label>
                             <select class="form-select" id="usia_ibu" name="usia_ibu" required>
                                 <option value="">Pilih Usia Ibu</option>
-                                <?php
-                                for ($i = 17; $i <= 100; $i++) {
-                                    echo "<option value='$i'>$i</option>";
-                                }
-                                ?>
+                                @for ($i = 17; $i <= 100; $i++)
+                                    <option value="{{ $i }}">{{ $i }} tahun</option>
+                                @endfor
                             </select>
                         </div>
                         <div class="mb-3 d-flex">
@@ -95,9 +93,10 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="nomer_telepon" class="form-label">Nomer Telepon</label>
-                                    <input type="number" class="form-control" id="nomer_telepon" name="nomer_telepon"
+                                    <input type="tel" class="form-control" id="nomer_telepon" name="nomer_telepon"
                                         pattern="[0-9]{10,13}" title="Nomer telepon harus terdiri dari 10 hingga 13 angka"
                                         maxlength="13" required>
+                                    <small>Contoh: 081234567890</small>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -148,11 +147,9 @@
                             <label for="edit_usia_ibu" class="form-label">Usia Ibu</label>
                             <select class="form-select" id="edit_usia_ibu" name="usia_ibu" required>
                                 <option value="">Pilih Usia Ibu</option>
-                                <?php
-                                for ($i = 17; $i <= 100; $i++) {
-                                    echo "<option value='$i'>$i</option>";
-                                }
-                                ?>
+                                @for ($i = 17; $i <= 100; $i++)
+                                    <option value="{{ $i }}">{{ $i }} tahun</option>
+                                @endfor
                             </select>
                         </div>
                         <div class="mb-3 d-flex">
@@ -171,10 +168,10 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="edit_nomer_telepon" class="form-label">Nomer Telepon</label>
-                                    <input type="number" class="form-control" id="edit_nomer_telepon"
-                                        name="nomer_telepon" pattern="[0-9]{10,13}"
-                                        title="Nomer telepon harus terdiri dari 10 hingga 13 angka" maxlength="13"
-                                        required>
+                                    <input type="tel" class="form-control" id="edit_nomer_telepon" name="edit_nomer_telepon"
+                                        pattern="[0-9]{10,13}" title="Nomer telepon harus terdiri dari 10 hingga 13 angka"
+                                        maxlength="13" required>
+                                    <small>Contoh: 081234567890</small>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -299,6 +296,13 @@
                     $('#modalEdit').modal('show');
                 }
             });
+        });
+
+        var nomerTeleponInput = document.getElementById('nomer_telepon');
+        nomerTeleponInput.addEventListener('input', function() {
+            if (nomerTeleponInput.value.length > 13) {
+                nomerTeleponInput.value = nomerTeleponInput.value.slice(0, 13);
+            }
         });
     </script>
 @endsection

@@ -21,10 +21,9 @@
     <section class="section dashboard">
         <div class="row">
             <div class="col-lg-12">
-
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title"></h5>
+                        <h5 class="card-title">Data Pasien Anak</h5>
                         <div class="table-responsive">
                             <table class="table small" id="anak-table">
                                 <thead>

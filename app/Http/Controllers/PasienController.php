@@ -146,10 +146,7 @@ class PasienController extends Controller
             'anak_ke' => 'required',
             'gol_darah' => 'required',
         ]);
-
-
         $tempat_tanggal_lahir = $request->tempat_lahir . ', ' . $request->tanggal_lahir;
-
         $anak = Anak::findOrFail($id);
         $anak->update([
             'tanggal_terdaftar' => $request->tanggal_terdaftar,
@@ -161,7 +158,6 @@ class PasienController extends Controller
             'anak_ke' => $request->anak_ke,
             'gol_darah' => $request->gol_darah,
         ]);        
-
         return redirect()->back()->with('success', 'Data anak berhasil diupdate');
     }
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\MasterController;
 use App\Http\Controllers\PasienController;
+use App\Http\Controllers\RekamMedisController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,7 +52,16 @@ Route::prefix('pasien')->group(function () {
     Route::put('pasien/update_ibu/{id}', [PasienController::class, 'update_ibu'])->name('pasien.update_ibu');
     Route::delete('pasien/destroy_ibu/{id}', [PasienController::class, 'destroy_ibu'])->name('pasien.destroy_ibu');
     Route::get('anak', [PasienController::class, 'showAnakPage'])->name('pasien.anak');
+});
 
+Route::prefix('rekam_medis')->group(function () {
+    Route::get('persalinan', [RekamMedisController::class, 'Persalinan'])->name('rekam_medis.persalinan');
+    Route::post('store-persalinan', [RekamMedisController::class, 'store_persalinan'])->name('rekam_medis.store_persalinan');
+    Route::get('data-persalinan', [RekamMedisController::class, 'getData_persalinan'])->name('rekam_medis.data_persalinan');
+    Route::get('/rekam_medis/{id}/show', [RekamMedisController::class, 'show_persalinan'])->name('rekam_medis.show_persalinan');
+    Route::get('/rekam_medis/{id}/edit', [RekamMedisController::class, 'edit_persalinan'])->name('rekam_medis.edit_persalinan');
+    Route::put('rekam_medis/update_persalinan/{id}', [RekamMedisController::class, 'update_persalinan'])->name('rekam_medis.update_persalinan');
+    Route::delete('/rekam_medis/{id}', [RekamMedisController::class, 'destroy_persalinan'])->name('rekam_medis.destroy_persalinan');
 });
 
 
