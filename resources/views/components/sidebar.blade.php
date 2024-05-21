@@ -55,8 +55,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('pasien.anak') }}"
-                        class="{{ request()->is(['pasien.anak', 'pasien/anak']) ? 'active' : '' }}">
+                    <a href="{{ route('rekam_medis.pnc') }}"
+                        class="{{ request()->is(['rekam_medis.pnc', 'rekam_medis/pnc']) ? 'active' : '' }}">
                         <i class="bi bi-circle"></i>
                         <span>PNC</span>
                     </a>

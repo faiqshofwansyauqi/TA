@@ -15,6 +15,7 @@ class CreatePersalinanTable extends Migration
     {
         Schema::create('persalinan', function (Blueprint $table) {
             $table->id();
+            $table->string('id_ibu');
             $table->string('kala1');
             $table->string('kala2');
             $table->string('bayi_lahir');

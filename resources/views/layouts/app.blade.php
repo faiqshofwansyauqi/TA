@@ -92,7 +92,8 @@
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" id="logout" href="{{ route('logout') }}">
+                            <a class="dropdown-item d-flex align-items-center" id="logout"
+                                href="{{ route('logout') }}">
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>Sign Out</span>
                             </a>
@@ -109,7 +110,7 @@
     <x-sidebar />
 
     <main id="main" class="main vh-100">
-    {{-- <main id="main"> --}}
+        {{-- <main id="main"> --}}
         @yield('content')
 
     </main><!-- End #main -->
@@ -149,6 +150,9 @@
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.colVis.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/scroller/2.2.0/js/dataTables.scroller.min.js"></script>
     <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>

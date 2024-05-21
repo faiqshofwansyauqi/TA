@@ -24,17 +24,31 @@
                     <div class="card-body">
                         <h5 class="card-title">Data Pasien Ibu</h5>
                         <div class="table-responsive">
-                            <table class="table small" id="ibu-table">
+                            <table class="table small" id="ibu-table" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>ID Ibu</th>
-                                        <th>Tanggal Terdaftar</th>
+                                        <th>Puskesmas</th>
+                                        <th>NIK</th>
                                         <th>Nama Ibu</th>
-                                        <th>Alamat</th>
-                                        <th>Usia</th>
-                                        <th>Tempat Tanggal Lahir</th>
-                                        <th>Nomer Telepon</th>
-                                        <th>Golongan Darah</th>
+                                        <th>Nama Suami</th>
+                                        <th>Tanggal Lahir</th>
+                                        <th>Alamat Domisili</th>
+                                        <th>Desa</th>
+                                        <th>Kabupaten</th>
+                                        <th>Pendidikan Ibu/Suami</th>
+                                        <th>Pekerjaan_Ibu/Suami</th>
+                                        <th>Umur</th>
+                                        <th>RT/RW</th>
+                                        <th>Kecamatan</th>
+                                        <th>Provinsi</th>
+                                        <th>Agama</th>
+                                        <th>Tgl. Register</th>
+                                        <th>Posyandu</th>
+                                        <th>Nama Kader</th>
+                                        <th>Nama Dukun</th>
+                                        <th>Jamkesmas</th>
+                                        <th>Gol Darah</th>
+                                        <th>Telp/HP</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -57,59 +71,122 @@
                 <div class="modal-body">
                     <form action="{{ route('pasien.store_ibu') }}" method="post" autocomplete="off">
                         @csrf
-                        <div class="mb-3">
-                            <label for="tanggal_terdaftar" class="form-label">Tanggal Pendaftaran</label>
-                            <input type="date" class="form-control" id="tanggal_terdaftar" name="tanggal_terdaftar"
-                                required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="nama_ibu" class="form-label">Nama Ibu</label>
-                            <input type="text" class="form-control" id="nama_ibu" name="nama_ibu" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="alamat" class="form-label">Alamat</label>
-                            <textarea class="form-control" id="alamat" rows="3" name="alamat"></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label for="usia_ibu" class="form-label">Usia Ibu</label>
-                            <select class="form-select" id="usia_ibu" name="usia_ibu" required>
-                                <option value="">Pilih Usia Ibu</option>
-                                @for ($i = 17; $i <= 100; $i++)
-                                    <option value="{{ $i }}">{{ $i }} tahun</option>
-                                @endfor
-                            </select>
-                        </div>
-                        <div class="mb-3 d-flex">
-                            <div style="flex: 1; margin-right: 10px;">
-                                <label for="tempat_lahir" class="form-label">Tempat Lahir</label>
-                                <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" required>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="puskesmas" class="form-label">Puskesmas</label>
+                                <input type="text" class="form-control" id="puskesmas" name="puskesmas" required>
                             </div>
-                            <div style="flex: 1;">
+                            <div class="col-md-6">
+                                <label for="noregis" class="form-label">Nomer Registrasi Ibu</label>
+                                <input type="text" class="form-control" id="noregis" name="noregis" maxlength="13"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="nama_ibu" class="form-label">Nama Ibu</label>
+                                <input type="text" class="form-control" id="nama_ibu" name="nama_ibu" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="nama_suami" class="form-label">Nama Suami</label>
+                                <input type="text" class="form-control" id="nama_suami" name="nama_suami" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
                                 <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
                                 <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" required>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="nomer_telepon" class="form-label">Nomer Telepon</label>
-                                    <input type="tel" class="form-control" id="nomer_telepon" name="nomer_telepon"
-                                        pattern="[0-9]{10,13}" title="Nomer telepon harus terdiri dari 10 hingga 13 angka"
-                                        maxlength="13" required>
-                                    <small>Contoh: 081234567890</small>
-                                </div>
+                                <label for="alamat_domisili" class="form-label">Alamat Domisili</label>
+                                <input type="text" class="form-control" id="alamat_domisili" name="alamat_domisili"
+                                    required>
                             </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="gol_darah" class="form-label">Golongan Darah</label>
-                                    <select class="form-select" id="gol_darah" name="gol_darah" required>
-                                        <option value="">Pilih Golongan Darah</option>
-                                        <option value="A">A</option>
-                                        <option value="B">B</option>
-                                        <option value="AB">AB</option>
-                                        <option value="O">O</option>
-                                    </select>
-                                </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label for="desa" class="form-label">Desa</label>
+                                <input type="text" class="form-control" id="desa" name="desa" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="kab" class="form-label">Kabupaten</label>
+                                <input type="text" class="form-control" id="kab" name="kab" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="pendidikan_ibu_suami" class="form-label">Pendidikan Ibu/Suami</label>
+                                <input type="text" class="form-control" id="pendidikan_ibu_suami"
+                                    name="pendidikan_ibu_suami" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label for="pekerjaaan_ibu_suami" class="form-label">Pekerjaan Ibu/Suami</label>
+                                <input type="text" class="form-control" id="pekerjaaan_ibu_suami"
+                                    name="pekerjaaan_ibu_suami" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="umur" class="form-label">Umur</label>
+                                <input type="number" class="form-control" id="umur" name="umur" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="rtrw" class="form-label">RT/RW</label>
+                                <input type="text" class="form-control" id="rtrw" name="rtrw" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label for="kec" class="form-label">Kecamatan</label>
+                                <input type="text" class="form-control" id="kec" name="kec" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="prov" class="form-label">Provinsi</label>
+                                <input type="text" class="form-control" id="prov" name="prov" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="agama" class="form-label">Agama</label>
+                                <input type="text" class="form-control" id="agama" name="agama" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label for="tanggal_reg" class="form-label">Tanggal Register</label>
+                                <input type="date" class="form-control" id="tanggal_reg" name="tanggal_reg" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="posyandu" class="form-label">Posyandu</label>
+                                <input type="text" class="form-control" id="posyandu" name="posyandu" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="nama_kader" class="form-label">Nama Kader</label>
+                                <input type="text" class="form-control" id="nama_kader" name="nama_kader" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label for="nama_dukum" class="form-label">Nama Dukun</label>
+                                <input type="text" class="form-control" id="nama_dukum" name="nama_dukum" required>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="jamkesmas" class="form-label">Jamkesmas</label>
+                                <select class="form-select" id="jamkesmas" name="jamkesmas" required>
+                                    <option value="">Pilih Jamkesmas</option>
+                                    <option value="Ya">Ya</option>
+                                    <option value="Tidak">Tidak</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="gol_darah" class="form-label">Gol Darah</label>
+                                <select class="form-select" id="gol_darah" name="gol_darah" required>
+                                    <option value="">Pilih Golongan Darah</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="AB">AB</option>
+                                    <option value="O">O</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="telp" class="form-label">Nomer Telp</label>
+                                <input type="number" class="form-control" id="telp" name="telp" required>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -130,64 +207,125 @@
                     <form id="editForm" method="post" autocomplete="off">
                         @csrf
                         @method('PUT')
-                        <div class="mb-3">
-                            <label for="edit_tanggal_terdaftar" class="form-label">Tanggal Terdaftar</label>
-                            <input type="date" class="form-control" id="edit_tanggal_terdaftar"
-                                name="tanggal_terdaftar" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="edit_nama_ibu" class="form-label">Nama Ibu</label>
-                            <input type="text" class="form-control" id="edit_nama_ibu" name="nama_ibu" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="edit_alamat" class="form-label">Alamat</label>
-                            <textarea class="form-control" id="edit_alamat" rows="3" name="alamat"></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label for="edit_usia_ibu" class="form-label">Usia Ibu</label>
-                            <select class="form-select" id="edit_usia_ibu" name="usia_ibu" required>
-                                <option value="">Pilih Usia Ibu</option>
-                                @for ($i = 17; $i <= 100; $i++)
-                                    <option value="{{ $i }}">{{ $i }} tahun</option>
-                                @endfor
-                            </select>
-                        </div>
-                        <div class="mb-3 d-flex">
-                            <div style="flex: 1; margin-right: 10px;">
-                                <label for="edit_tempat_lahir" class="form-label">Tempat Lahir</label>
-                                <input type="text" class="form-control" id="edit_tempat_lahir" name="tempat_lahir"
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="edit_puskesmas" class="form-label">Puskesmas</label>
+                                <input type="text" class="form-control" id="edit_puskesmas" name="puskesmas" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="edit_noregis" class="form-label">Nomer Registrasi Ibu</label>
+                                <input type="text" class="form-control" id="edit_noregis" name="noregis" maxlength="13"
                                     required>
                             </div>
-                            <div style="flex: 1;">
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="edit_nama_ibu" class="form-label">Nama Ibu</label>
+                                <input type="text" class="form-control" id="edit_nama_ibu" name="nama_ibu" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="edit_nama_suami" class="form-label">Nama Suami</label>
+                                <input type="text" class="form-control" id="edit_nama_suami" name="nama_suami" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
                                 <label for="edit_tanggal_lahir" class="form-label">Tanggal Lahir</label>
-                                <input type="date" class="form-control" id="edit_tanggal_lahir" name="tanggal_lahir"
+                                <input type="date" class="form-control" id="edit_tanggal_lahir" name="tanggal_lahir" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="edit_alamat_domisili" class="form-label">Alamat Domisili</label>
+                                <input type="text" class="form-control" id="edit_alamat_domisili" name="alamat_domisili"
                                     required>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="edit_nomer_telepon" class="form-label">Nomer Telepon</label>
-                                    <input type="tel" class="form-control" id="edit_nomer_telepon" name="edit_nomer_telepon"
-                                        pattern="[0-9]{10,13}" title="Nomer telepon harus terdiri dari 10 hingga 13 angka"
-                                        maxlength="13" required>
-                                    <small>Contoh: 081234567890</small>
-                                </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label for="edit_desa" class="form-label">Desa</label>
+                                <input type="text" class="form-control" id="edit_desa" name="desa" required>
                             </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="edit_gol_darah" class="form-label">Golongan Darah</label>
-                                    <select class="form-select" id="edit_gol_darah" name="gol_darah" required>
-                                        <option value="">Pilih Golongan Darah</option>
-                                        <option value="A">A</option>
-                                        <option value="B">B</option>
-                                        <option value="AB">AB</option>
-                                        <option value="O">O</option>
-                                    </select>
-                                </div>
+                            <div class="col-md-4">
+                                <label for="edit_kab" class="form-label">Kabupaten</label>
+                                <input type="text" class="form-control" id="edit_kab" name="kab" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="edit_pendidikan_ibu_suami" class="form-label">Pendidikan Ibu/Suami</label>
+                                <input type="text" class="form-control" id="edit_pendidikan_ibu_suami"
+                                    name="pendidikan_ibu_suami" required>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Update</button>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label for="edit_pekerjaaan_ibu_suami" class="form-label">Pekerjaan Ibu/Suami</label>
+                                <input type="text" class="form-control" id="edit_pekerjaaan_ibu_suami"
+                                    name="pekerjaaan_ibu_suami" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="edit_umur" class="form-label">Umur</label>
+                                <input type="number" class="form-control" id="edit_umur" name="umur" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="edit_rtrw" class="form-label">RT/RW</label>
+                                <input type="text" class="form-control" id="edit_rtrw" name="rtrw" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label for="edit_kec" class="form-label">Kecamatan</label>
+                                <input type="text" class="form-control" id="edit_kec" name="kec" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="edit_prov" class="form-label">Provinsi</label>
+                                <input type="text" class="form-control" id="edit_prov" name="prov" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="edit_agama" class="form-label">Agama</label>
+                                <input type="text" class="form-control" id="edit_agama" name="agama" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label for="edit_tanggal_reg" class="form-label">Tanggal Register</label>
+                                <input type="date" class="form-control" id="edit_tanggal_reg" name="tanggal_reg" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="edit_posyandu" class="form-label">Posyandu</label>
+                                <input type="text" class="form-control" id="edit_posyandu" name="posyandu" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="edit_nama_kader" class="form-label">Nama Kader</label>
+                                <input type="text" class="form-control" id="edit_nama_kader" name="nama_kader" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label for="edit_nama_dukum" class="form-label">Nama Dukun</label>
+                                <input type="text" class="form-control" id="edit_nama_dukum" name="nama_dukum" required>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="edit_jamkesmas" class="form-label">Jamkesmas</label>
+                                <select class="form-select" id="edit_jamkesmas" name="jamkesmas" required>
+                                    <option value="">Pilih Jamkesmas</option>
+                                    <option value="Ya">Ya</option>
+                                    <option value="Tidak">Tidak</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="edit_gol_darah" class="form-label">Gol Darah</label>
+                                <select class="form-select" id="edit_gol_darah" name="gol_darah" required>
+                                    <option value="">Pilih Golongan Darah</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="AB">AB</option>
+                                    <option value="O">O</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="edit_telp" class="form-label">Nomer Telp</label>
+                                <input type="number" class="form-control" id="edit_telp" name="telp" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
             </div>
@@ -203,50 +341,103 @@
             });
         });
 
-        document.addEventListener('DOMContentLoaded', (event) => {
-            const today = new Date().toISOString().split('T')[0];
-            document.getElementById('tanggal_terdaftar').value = today;
-        });
-
         $(document).ready(function() {
             $('#ibu-table').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: '{{ route('pasien.data_ibu') }}',
+                scrollX: true,
+                fixedHeader: true,
                 columns: [{
-                        data: 'id_ibu',
-                        name: 'id_ibu'
+                        data: 'puskesmas',
+                        name: 'puskesmas'
                     },
                     {
-                        data: 'tanggal_terdaftar',
-                        name: 'tanggal_terdaftar'
+                        data: 'noregis',
+                        name: 'noregis'
                     },
                     {
                         data: 'nama_ibu',
                         name: 'nama_ibu'
                     },
                     {
-                        data: 'alamat',
-                        name: 'alamat'
+                        data: 'nama_suami',
+                        name: 'nama_suami'
                     },
                     {
-                        data: 'usia_ibu',
-                        name: 'usia_ibu',
+                        data: 'tanggal_lahir',
+                        name: 'tanggal_lahir'
+                    },
+                    {
+                        data: 'alamat_domisili',
+                        name: 'alamat_domisili'
+                    },
+                    {
+                        data: 'desa',
+                        name: 'desa'
+                    },
+                    {
+                        data: 'kab',
+                        name: 'kab'
+                    },
+                    {
+                        data: 'pendidikan_ibu_suami',
+                        name: 'pendidikan_ibu_suami'
+                    },
+                    {
+                        data: 'pekerjaaan_ibu_suami',
+                        name: 'pekerjaaan_ibu_suami',
+                    },
+                    {
+                        data: 'umur',
+                        name: 'umur',
                         render: function(data, type, row) {
                             return data + ' tahun';
                         }
                     },
                     {
-                        data: 'tempat_tanggal_lahir',
-                        name: 'tempat_tanggal_lahir'
+                        data: 'rtrw',
+                        name: 'rtrw'
                     },
                     {
-                        data: 'nomer_telepon',
-                        name: 'nomer_telepon'
+                        data: 'kec',
+                        name: 'kec'
+                    },
+                    {
+                        data: 'prov',
+                        name: 'prov'
+                    },
+                    {
+                        data: 'agama',
+                        name: 'agama'
+                    },
+                    {
+                        data: 'tanggal_reg',
+                        name: 'tanggal_reg'
+                    },
+                    {
+                        data: 'posyandu',
+                        name: 'posyandu'
+                    },
+                    {
+                        data: 'nama_kader',
+                        name: 'nama_kader'
+                    },
+                    {
+                        data: 'nama_dukum',
+                        name: 'nama_dukum'
+                    },
+                    {
+                        data: 'jamkesmas',
+                        name: 'jamkesmas'
                     },
                     {
                         data: 'gol_darah',
                         name: 'gol_darah'
+                    },
+                    {
+                        data: 'telp',
+                        name: 'telp'
                     }, {
                         data: 'action',
                         name: 'action',
@@ -273,6 +464,18 @@
                     `;
                         }
                     }
+                ],
+                dom: 'Bfrtp',
+                buttons: [{
+                        extend: 'print',
+                        className: 'btn btn-sm btn-primary btn-margin',
+                        text: 'Print'
+                    },
+                    {
+                        extend: 'colvis',
+                        className: 'btn btn-sm btn-primary btn-margin',
+                        text: 'Column Visibility'
+                    }
                 ]
             });
         });
@@ -283,14 +486,29 @@
                 url: '{{ route('pasien.edit_ibu', ':id') }}'.replace(':id', id),
                 method: 'GET',
                 success: function(data) {
-                    $('#edit_tanggal_terdaftar').val(data.tanggal_terdaftar);
+                    $('#edit_puskesmas').val(data.puskesmas);
+                    $('#edit_noregis').val(data.noregis);
                     $('#edit_nama_ibu').val(data.nama_ibu);
-                    $('#edit_usia_ibu').val(data.usia_ibu);
-                    $('#edit_alamat').val(data.alamat);
-                    $('#edit_tempat_lahir').val(data.tempat_lahir);
+                    $('#edit_nama_suami').val(data.nama_suami);
                     $('#edit_tanggal_lahir').val(data.tanggal_lahir);
-                    $('#edit_nomer_telepon').val(data.nomer_telepon);
+                    $('#edit_alamat_domisili').val(data.alamat_domisili);
+                    $('#edit_desa').val(data.desa);
+                    $('#edit_kab').val(data.kab);
+                    $('#edit_pendidikan_ibu_suami').val(data.pendidikan_ibu_suami);
+                    $('#edit_pekerjaaan_ibu_suami').val(data.pekerjaaan_ibu_suami);
+                    $('#edit_umur').val(data.umur);
+                    $('#edit_rtrw').val(data.rtrw);
+                    $('#edit_kec').val(data.kec);
+                    $('#edit_prov').val(data.prov);
+                    $('#edit_agama').val(data.agama);
+                    $('#edit_tanggal_reg').val(data.tanggal_reg);
+                    $('#edit_posyandu').val(data.posyandu);
+                    $('#edit_nama_kader').val(data.nama_kader);
+                    $('#edit_nama_dukum').val(data.nama_dukum);
+                    $('#edit_jamkesmas').val(data.jamkesmas);
                     $('#edit_gol_darah').val(data.gol_darah);
+                    $('#edit_telp').val(data.telp);
+                    $('#edit_kab').val(data.kab);
                     $('#editForm').attr('action', '{{ route('pasien.update_ibu', ':id') }}'.replace(
                         ':id', id));
                     $('#modalEdit').modal('show');
@@ -298,11 +516,6 @@
             });
         });
 
-        var nomerTeleponInput = document.getElementById('nomer_telepon');
-        nomerTeleponInput.addEventListener('input', function() {
-            if (nomerTeleponInput.value.length > 13) {
-                nomerTeleponInput.value = nomerTeleponInput.value.slice(0, 13);
-            }
-        });
+
     </script>
 @endsection

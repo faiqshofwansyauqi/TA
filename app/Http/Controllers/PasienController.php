@@ -17,30 +17,55 @@ class PasienController extends Controller
 
     public function store_ibu(Request $request)
     {
-
+        // dd($request);
         $request->validate([
-            'tanggal_terdaftar' => 'required',
+            'puskesmas' => 'required',
+            'noregis' => 'required',
             'nama_ibu' => 'required',
-            'alamat' => 'required',
-            'usia_ibu' => 'required',
-            'tempat_lahir' => 'required',
+            'nama_suami' => 'required',
             'tanggal_lahir' => 'required',
-            'nomer_telepon' => 'required',
-            'gol_darah' => 'required',
+            'alamat_domisili' => 'required',
+            'desa' => 'required',
+            'kab' => 'required',
+            'pendidikan_ibu_suami' => 'required',
+            'pekerjaaan_ibu_suami' => 'required',
+            'umur' => 'required|integer',
+            'kec' => 'required',
+            'prov' => 'required',
+            'agama' => 'required',
+            'tanggal_reg' => 'required',
+            'posyandu' => 'required',
+            'nama_kader' => 'required',
+            'nama_dukum' => 'required',
+            'jamkesmas' => 'required',
+            'gol_darah' => 'required',            
+            'telp' => 'required',
         ]);
-
-        $tempat_tanggal_lahir = $request->tempat_lahir . ', ' . $request->tanggal_lahir;
-
+        
         Ibu::create([
-            'tanggal_terdaftar' => $request->tanggal_terdaftar,
+            'puskesmas' => $request->puskesmas,
+            'noregis' => $request->noregis,
             'nama_ibu' => $request->nama_ibu,
-            'alamat' => $request->alamat,
-            'usia_ibu' => $request->usia_ibu,
-            'tempat_tanggal_lahir' => $tempat_tanggal_lahir,
-            'jenis_kelamin' => $request->jenis_kelamin,
-            'nomer_telepon' => $request->nomer_telepon,
-            'gol_darah' => $request->gol_darah,
+            'nama_suami' => $request->nama_suami,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'alamat_domisili' => $request->alamat_domisili,
+            'desa' => $request->desa,
+            'kab' => $request->kab,
+            'pendidikan_ibu_suami' => $request->pendidikan_ibu_suami,
+            'pekerjaaan_ibu_suami' => $request->pekerjaaan_ibu_suami,
+            'umur' => $request->umur,
+            'kec' => $request->kec,
+            'prov' => $request->prov,
+            'agama' => $request->agama,
+            'tanggal_reg' => $request->tanggal_reg,
+            'posyandu' => $request->posyandu,
+            'nama_kader' => $request->nama_kader,
+            'nama_dukum' => $request->nama_dukum,
+            'jamkesmas' => $request->jamkesmas,
+            'gol_darah' => $request->gol_darah,            
+            'telp' => $request->telp,
         ]);
+        
 
         return redirect()->back()->with('success', 'Data anak berhasil ditambahkan');
     }
@@ -55,25 +80,52 @@ class PasienController extends Controller
     public function update_ibu(Request $request, $id)
     {
         $request->validate([
-            'tanggal_terdaftar' => 'required',
+            'puskesmas' => 'required',
+            'noregis' => 'required',
             'nama_ibu' => 'required',
-            'alamat' => 'required',
-            'usia_ibu' => 'required',
-            'tempat_lahir' => 'required',
+            'nama_suami' => 'required',
             'tanggal_lahir' => 'required',
-            'nomer_telepon' => 'required',
-            'gol_darah' => 'required',
+            'alamat_domisili' => 'required',
+            'desa' => 'required',
+            'kab' => 'required',
+            'pendidikan_ibu_suami' => 'required',
+            'pekerjaaan_ibu_suami' => 'required',
+            'umur' => 'required|integer',
+            'kec' => 'required',
+            'prov' => 'required',
+            'agama' => 'required',
+            'tanggal_reg' => 'required',
+            'posyandu' => 'required',
+            'nama_kader' => 'required',
+            'nama_dukum' => 'required',
+            'jamkesmas' => 'required',
+            'gol_darah' => 'required',            
+            'telp' => 'required',
         ]);
-        $tempat_tanggal_lahir = $request->tempat_lahir . ', ' . $request->tanggal_lahir;
+    
         $ibu = Ibu::findOrFail($id);
         $ibu->update([
-            'tanggal_terdaftar' => $request->tanggal_terdaftar,
+            'puskesmas' => $request->puskesmas,
+            'noregis' => $request->noregis,
             'nama_ibu' => $request->nama_ibu,
-            'alamat' => $request->alamat,
-            'usia_ibu' => $request->usia_ibu,
-            'tempat_tanggal_lahir' => $tempat_tanggal_lahir,
-            'nomer_telepon' => $request->nomer_telepon,
-            'gol_darah' => $request->gol_darah,
+            'nama_suami' => $request->nama_suami,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'alamat_domisili' => $request->alamat_domisili,
+            'desa' => $request->desa,
+            'kab' => $request->kab,
+            'pendidikan_ibu_suami' => $request->pendidikan_ibu_suami,
+            'pekerjaaan_ibu_suami' => $request->pekerjaaan_ibu_suami,
+            'umur' => $request->umur,
+            'kec' => $request->kec,
+            'prov' => $request->prov,
+            'agama' => $request->agama,
+            'tanggal_reg' => $request->tanggal_reg,
+            'posyandu' => $request->posyandu,
+            'nama_kader' => $request->nama_kader,
+            'nama_dukum' => $request->nama_dukum,
+            'jamkesmas' => $request->jamkesmas,
+            'gol_darah' => $request->gol_darah,            
+            'telp' => $request->telp,
         ]);
 
         return redirect()->back()->with('success', 'Data anak berhasil diupdate');
@@ -154,7 +206,7 @@ class PasienController extends Controller
             'jenis_kelamin' => $request->jenis_kelamin,
             'anak_ke' => $request->anak_ke,
             'gol_darah' => $request->gol_darah,
-        ]);        
+        ]);
         return redirect()->back()->with('success', 'Data anak berhasil diupdate');
     }
 

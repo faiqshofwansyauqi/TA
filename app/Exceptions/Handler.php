@@ -3,6 +3,8 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -50,7 +52,13 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-        if ($this->isHttpException($exception) && $exception->getStatusCode() == 404) {
+        if ($exception instanceof \ErrorException) {
+            if (strpos($exception->getMessage(), "Trying to get property 'name' of non-object") !== false) {
+                Auth::logout();                
+                return redirect()->route('login');
+            }
+        }
+        if ($exception instanceof HttpException && $exception->getStatusCode() == 404) {
             return response()->view('errors.404', [], 404);
         }
         return parent::render($request, $exception);

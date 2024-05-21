@@ -63,6 +63,11 @@ Route::prefix('rekam_medis')->group(function () {
     Route::put('rekam_medis/update_persalinan/{id}', [RekamMedisController::class, 'update_persalinan'])->name('rekam_medis.update_persalinan');
     Route::delete('/rekam_medis/{id}', [RekamMedisController::class, 'destroy_persalinan'])->name('rekam_medis.destroy_persalinan');
     Route::get('persalinan', [RekamMedisController::class, 'showIbuPage'])->name('rekam_medis.persalinan');
+    Route::get('pnc', [RekamMedisController::class, 'pnc'])->name('rekam_medis.pnc');
+    Route::post('store-pnc', [RekamMedisController::class, 'store_pnc'])->name('rekam_medis.store_pnc');
+    Route::get('pnc', [RekamMedisController::class, 'showIbuPage_pnc'])->name('rekam_medis.pnc');
+    Route::get('data-pnc', [RekamMedisController::class, 'getData_pnc'])->name('rekam_medis.data_pnc');
+    Route::get('detail_pnc', [RekamMedisController::class, 'detail_pnc'])->name('rekam_medis.detail_pnc');
 });
 
 
