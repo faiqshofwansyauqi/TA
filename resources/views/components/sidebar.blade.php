@@ -53,6 +53,11 @@
                         <i class="bi bi-circle"></i>
                         <span>Persalinan</span>
                     </a>
+                    <a href="{{ route('rekam_medis.ropb') }}"
+                        class="{{ request()->is(['rekam_medis.ropb', 'rekam_medis/ropb']) ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i>
+                        <span>Riwayat Obstetrik dan Pemeriksaan Bidan</span>
+                    </a>
                 </li>
             </ul>
         </li>

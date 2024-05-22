@@ -62,7 +62,14 @@ Route::prefix('rekam_medis')->group(function () {
     Route::get('/rekam_medis/{id}/edit', [RekamMedisController::class, 'edit_persalinan'])->name('rekam_medis.edit_persalinan');
     Route::put('rekam_medis/update_persalinan/{id}', [RekamMedisController::class, 'update_persalinan'])->name('rekam_medis.update_persalinan');
     Route::delete('/rekam_medis/{id}', [RekamMedisController::class, 'destroy_persalinan'])->name('rekam_medis.destroy_persalinan');
-    Route::get('persalinan', [RekamMedisController::class, 'showIbuPage'])->name('rekam_medis.persalinan');
+    Route::get('persalinan', [RekamMedisController::class, 'showIbuPage_persalinan'])->name('rekam_medis.persalinan');
+    ///////////// RO PB /////////////
+    Route::get('ropb', [RekamMedisController::class, 'ropb'])->name('rekam_medis.ropb');
+    Route::post('store-ropb', [RekamMedisController::class, 'store_ropb'])->name('rekam_medis.store_ropb');
+    Route::get('data-ropb', [RekamMedisController::class, 'getData_ropb'])->name('rekam_medis.data_ropb');
+    Route::get('ropb', [RekamMedisController::class, 'showIbuPage_ropb'])->name('rekam_medis.ropb');
+    Route::delete('/rekam_medis/{id}', [RekamMedisController::class, 'destroy_ropb'])->name('rekam_medis.destroy_ropb');
+    Route::get('/rekam_medis/{id}/edit', [RekamMedisController::class, 'edit_ropb'])->name('rekam_medis.edit_ropb');
 });
 
 

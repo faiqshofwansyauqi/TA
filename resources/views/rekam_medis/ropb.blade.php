@@ -1,0 +1,492 @@
+@extends('layouts.app')
+
+@section('content')
+    <div class="d-flex justify-content-between align-items-center">
+        <div class="pagetitle">
+            <h1>Riwayat Obstetrik dan Pemeriksaan Bidan</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item active">Rekam Medis</li>
+                    <li class="breadcrumb-item active">Riwayat Obstetrik dan Pemeriksaan Bidan</li>
+                </ol>
+            </nav>
+        </div>
+        <button type="button" class="btn btn-success" id="btn-plus">
+            <i class="bi bi-plus-circle"></i> Tambah
+        </button>
+    </div>
+    <section class="section dashboard">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"></h5>
+                        <div class="table-responsive">
+                            <table class="table small" id="ropb-table" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Nama Ibu</th>
+                                        <th>Gravida</th>
+                                        <th>Pertus</th>
+                                        <th>Abortus</th>
+                                        <th>Hidup</th>
+                                        <th>Riwayat Komplikasi</th>
+                                        <th>Penyakit</th>
+                                        <th>Tanggal Periksa</th>
+                                        <th>Tanggal HPHT</th>
+                                        <th>Taksiran Persalinan</th>
+                                        <th>Persalinan Sebelumnya</th>
+                                        <th>Berat Badan</th>
+                                        <th>Tinggi Badan</th>
+                                        <th>Buku KIA</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="modalInput" tabindex="-1" aria-labelledby="ModalInput" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-4 fw-bold" id="ModalInput">Input Data</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="RiwayatObstetrik-tab" data-bs-toggle="tab"
+                                data-bs-target="#RiwayatObstetrik" type="button" role="tab"
+                                aria-controls="RiwayatObstetrik" aria-selected="true">Riwayat Obstetrik</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="PemeriksaanBidan-tab" data-bs-toggle="tab"
+                                data-bs-target="#PemeriksaanBidan" type="button" role="tab"
+                                aria-controls="PemeriksaanBidan" aria-selected="false">Data
+                                Pemeriksaan Bidan</button>
+                        </li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content mt-3">
+                        <!-- Data Ibu Form -->
+                        <div class="tab-pane fade show active" id="RiwayatObstetrik" role="tabpanel"
+                            aria-labelledby="RiwayatObstetrik-tab">
+                            <form id="dataForm" action="{{ route('rekam_medis.store_ropb') }}" method="post"
+                                autocomplete="off">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-md-3 mb-3">
+                                        <label for="NIK" class="form-label">Ibu</label>
+                                        <select class="form-control" id="NIK" name="NIK" required>
+                                            <option value="">Pilih Ibu</option>
+                                            @foreach ($ibus as $ibu)
+                                                <option value="{{ $ibu->nama_ibu }}">{{ $ibu->nama_ibu }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="gravida" class="form-label">Gravida</label>
+                                        <input type="number" class="form-control" id="gravida" name="gravida"
+                                            placeholder="Input gravida" required>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="partus" class="form-label">Partus</label>
+                                        <input type="number" class="form-control" id="partus" name="partus"
+                                            placeholder="Input partus" required>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="abortus" class="form-label">Abortus</label>
+                                        <input type="number" class="form-control" id="abortus" name="abortus"
+                                            placeholder="Input abortus" required>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="hidup" class="form-label">Hidup</label>
+                                        <input type="number" class="form-control" id="hidup" name="hidup"
+                                            placeholder="Input hidup" required>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="rwyt_komplikasi" class="form-label">Riwayat Komplikasi
+                                            Kebidanan</label>
+                                        <input type="text" class="form-control" id="rwyt_komplikasi"
+                                            name="rwyt_komplikasi" placeholder="Input riwayat komplikasi kebidanan"
+                                            required>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="pnykt_kronis_alergi" class="form-label">Penyakit Kronis dan
+                                            Alergi</label>
+                                        <input type="text" class="form-control" id="pnykt_kronis_alergi"
+                                            name="pnykt_kronis_alergi" placeholder="Input penyakit kronis dan alergi"
+                                            required>
+                                    </div>
+                                </div>
+                        </div>
+                        <!-- Data Anak Form -->
+                        <div class="tab-pane fade" id="PemeriksaanBidan" role="tabpanel"
+                            aria-labelledby="PemeriksaanBidan-tab">
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="tgl_periksa" class="form-label">Tanggal Periksa</label>
+                                    <input type="date" class="form-control" id="tgl_periksa" name="tgl_periksa"
+                                        required>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="tgl_hpht" class="form-label">Tanggal HPHT</label>
+                                    <input type="date" class="form-control" id="tgl_hpht" name="tgl_hpht" required>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="tksrn_persalinan" class="form-label">Taksiran Persalinan</label>
+                                    <input type="date" class="form-control" id="tksrn_persalinan"
+                                        name="tksrn_persalinan" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="prlnan_sebelum" class="form-label">Persalinan Sebelumnya</label>
+                                    <input type="date" class="form-control" id="prlnan_sebelum" name="prlnan_sebelum"
+                                        required>
+                                </div>
+                                <div class="col-md-2 mb-3">
+                                    <label for="berat_badan" class="form-label">Berat Badan</label>
+                                    <div class="input-group mb-2">
+                                        <input type="number" class="form-control" id="berat_badan" name="berat_badan"
+                                            placeholder="Input Berat Badan">
+                                        <span class="input-group-text">Kg</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 mb-3">
+                                    <label for="tinggi_badan" class="form-label">Tinggi Badan</label>
+                                    <div class="input-group mb-2">
+                                        <input type="number" class="form-control" id="tinggi_badan" name="tinggi_badan"
+                                            placeholder="Input Tinggi Badan">
+                                        <span class="input-group-text">Cm</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="buku_kia" class="form-label">Buku Kia</label>
+                                    <select class="form-select" id="buku_kia" name="buku_kia" required>
+                                        <option value="">Pilih Input Buku Kia</option>
+                                        <option value="Memiliki">Memiliki</option>
+                                        <option value="Tidak Memiliki">Tidak Memiliki</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="ModalEdit" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-4 fw-bold" id="ModalEdit">Edit Data</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="EditRiwayatObstetrik-tab" data-bs-toggle="tab"
+                                data-bs-target="#EditRiwayatObstetrik" type="button" role="tab"
+                                aria-controls="EditRiwayatObstetrik" aria-selected="true">Riwayat Obstetrik</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="EditPemeriksaanBidan-tab" data-bs-toggle="tab"
+                                data-bs-target="#EditPemeriksaanBidan" type="button" role="tab"
+                                aria-controls="EditPemeriksaanBidan" aria-selected="false">Data Pemeriksaan Bidan</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content mt-3">
+                        <!-- Edit Data Ibu Form -->
+                        <div class="tab-pane fade show active" id="EditRiwayatObstetrik" role="tabpanel"
+                            aria-labelledby="EditRiwayatObstetrik-tab">
+                            <form id="editDataForm" action="" method="post"
+                                autocomplete="off">
+                                @csrf
+                                @method('PUT')
+                                <div class="row">
+                                    <div class="col-md-3 mb-3">
+                                        <label for="editNIK" class="form-label">Ibu</label>
+                                        <select class="form-control" id="editNIK" name="NIK" required>
+                                            <option value="">Pilih Ibu</option>
+                                            @foreach ($ibus as $ibu)
+                                                <option value="{{ $ibu->NIK }}">{{ $ibu->nama_ibu }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="edit_gravida" class="form-label">Gravida</label>
+                                        <input type="number" class="form-control" id="edit_gravida" name="gravida"
+                                            placeholder="Input gravida" required>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="edit_partus" class="form-label">Partus</label>
+                                        <input type="number" class="form-control" id="edit_partus" name="partus"
+                                            placeholder="Input partus" required>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="edit_abortus" class="form-label">Abortus</label>
+                                        <input type="number" class="form-control" id="edit_abortus" name="abortus"
+                                            placeholder="Input abortus" required>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="edit_hidup" class="form-label">Hidup</label>
+                                        <input type="number" class="form-control" id="edit_hidup" name="hidup"
+                                            placeholder="Input hidup" required>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="edit_rwyt_komplikasi" class="form-label">Riwayat Komplikasi
+                                            Kebidanan</label>
+                                        <input type="text" class="form-control" id="edit_rwyt_komplikasi"
+                                            name="rwyt_komplikasi" placeholder="Input riwayat komplikasi kebidanan"
+                                            required>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="edit_pnykt_Kronis_alergi" class="form-label">Penyakit Kronis dan
+                                            Alergi</label>
+                                        <input type="text" class="form-control" id="edit_pnykt_Kronis_alergi"
+                                            name="pnykt_kronis_alergi" placeholder="Input penyakit kronis dan alergi"
+                                            required>
+                                    </div>
+                                </div>
+                        </div>
+
+                        <!-- Edit Data Anak Form -->
+                        <div class="tab-pane fade" id="EditPemeriksaanBidan" role="tabpanel"
+                            aria-labelledby="EditPemeriksaanBidan-tab">
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="edit_tgl_periksa" class="form-label">Tanggal Periksa</label>
+                                    <input type="date" class="form-control" id="edit_tgl_periksa" name="tgl_periksa"
+                                        required>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="edit_tgl_hpht" class="form-label">Tanggal HPHT</label>
+                                    <input type="date" class="form-control" id="edit_tgl_hpht" name="tgl_hpht"
+                                        required>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="edit_tksrn_persalinan" class="form-label">Taksiran Persalinan</label>
+                                    <input type="date" class="form-control" id="edit_tksrn_persalinan"
+                                        name="tksrn_persalinan" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label for="edit_prlnan_sebelum" class="form-label">Persalinan Sebelumnya</label>
+                                    <input type="date" class="form-control" id="edit_prlnan_sebelum"
+                                        name="prlnan_sebelum" required>
+                                </div>
+                                <div class="col-md-2 mb-3">
+                                    <label for="edit_berat_badan" class="form-label">Berat Badan</label>
+                                    <div class="input-group mb-2">
+                                        <input type="number" class="form-control" id="edit_berat_badan"
+                                            name="berat_badan" placeholder="Input Berat Badan">
+                                        <span class="input-group-text">Kg</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 mb-3">
+                                    <label for="edit_buku_kia" class="form-label">Buku Kia</label>
+                                    <select class="form-select" id="edit_buku_kia" name="buku_kia" required>
+                                        <option value="">Pilih Input Buku Kia</option>
+                                        <option value="Memiliki">Memiliki</option>
+                                        <option value="Tidak Memiliki">Tidak Memiliki</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+@section('script')
+    <script>
+        $(document).ready(function() {
+            let modalInput = $('#modalInput');
+            $('#btn-plus').click(function() {
+                modalInput.modal('show');
+            });
+        });
+
+        $(document).ready(function() {
+            $('#ropb-table').DataTable({
+                processing: false,
+                serverSide: true,
+                ajax: '{{ route('rekam_medis.data_ropb') }}',
+                scrollX: true,
+                fixedHeader: true,
+                columns: [{
+                        data: 'NIK',
+                        name: 'NIK'
+                    },
+                    {
+                        data: 'gravida',
+                        name: 'gravida'
+                    },
+                    {
+                        data: 'partus',
+                        name: 'partus'
+                    },
+                    {
+                        data: 'abortus',
+                        name: 'abortus'
+                    },
+                    {
+                        data: 'hidup',
+                        name: 'hidup'
+                    },
+                    {
+                        data: 'rwyt_komplikasi',
+                        name: 'rwyt_komplikasi'
+                    },
+                    {
+                        data: 'pnykt_kronis_alergi',
+                        name: 'pnykt_kronis_alergi'
+                    },
+                    {
+                        data: 'tgl_periksa',
+                        name: 'tgl_periksa',
+                        render: function(data) {
+                            var date = new Date(data);
+                            var day = date.getDate();
+                            var month = date.getMonth() + 1;
+                            var year = date.getFullYear();
+                            if (day < 10) {
+                                day = '0' + day;
+                            }
+                            if (month < 10) {
+                                month = '0' + month;
+                            }
+                            return day + ' - ' + month + ' - ' + year;
+                        }
+                    },
+                    {
+                        data: 'tgl_hpht',
+                        name: 'tgl_hpht',
+                        render: function(data) {
+                            var date = new Date(data);
+                            var day = date.getDate();
+                            var month = date.getMonth() + 1;
+                            var year = date.getFullYear();
+                            if (day < 10) {
+                                day = '0' + day;
+                            }
+                            if (month < 10) {
+                                month = '0' + month;
+                            }
+                            return day + ' - ' + month + ' - ' + year;
+                        }
+                    },
+                    {
+                        data: 'tksrn_persalinan',
+                        name: 'tksrn_persalinan',
+                        render: function(data) {
+                            var date = new Date(data);
+                            var day = date.getDate();
+                            var month = date.getMonth() + 1;
+                            var year = date.getFullYear();
+                            if (day < 10) {
+                                day = '0' + day;
+                            }
+                            if (month < 10) {
+                                month = '0' + month;
+                            }
+                            return day + ' - ' + month + ' - ' + year;
+                        }
+                    },
+                    {
+                        data: 'prlnan_sebelum',
+                        name: 'prlnan_sebelum',
+                        render: function(data) {
+                            var date = new Date(data);
+                            var day = date.getDate();
+                            var month = date.getMonth() + 1;
+                            var year = date.getFullYear();
+                            if (day < 10) {
+                                day = '0' + day;
+                            }
+                            if (month < 10) {
+                                month = '0' + month;
+                            }
+                            return day + ' - ' + month + ' - ' + year;
+                        }
+                    },
+                    {
+                        data: 'berat_badan',
+                        name: 'berat_badan',
+                        render: function(data, type, row) {
+                            return data + ' Kg';
+                        }
+                    },
+                    {
+                        data: 'tinggi_badan',
+                        name: 'tinggi_badan',
+                        render: function(data, type, row) {
+                            return data + ' Cm';
+                        }
+                    },
+                    {
+                        data: 'buku_kia',
+                        name: 'buku_kia'
+                    }, {
+                        data: 'action',
+                        name: 'action',
+                        orderable: false,
+                        searchable: false,
+                        render: function(data, type, row) {
+                            let editUrl = '{{ route('rekam_medis.edit_ropb', ':id') }}'.replace(':id',
+                                row.id);
+                            let deleteUrl = '{{ route('rekam_medis.destroy_ropb', ':id') }}'
+                                .replace(
+                                    ':id', row.id);
+                            return `
+                    <div style="display: flex; align-items: center;">
+                        <button class="btn btn-sm btn-success edit-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalEdit">
+                            <i class="bi bi-pencil-fill"></i>
+                        </button>
+                        <form action="${deleteUrl}" method="POST" style="display:inline; margin-left: 5px;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">
+                                <i class="bi bi-trash3-fill"></i>
+                            </button>
+                        </form>
+                    </div>
+                    `;
+                        }
+                    }
+                ],
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print',
+                    {
+                        extend: 'colvis',
+                        text: 'Column visibility'
+                    }
+                ],
+                columnDefs: [{
+                    targets: [8, 9, 10, 11, 12, 13],
+                    visible: false
+                }]
+            });
+        });
+    </script>
+@endsection
