@@ -54,13 +54,6 @@
                         <span>Persalinan</span>
                     </a>
                 </li>
-                <li>
-                    <a href="{{ route('rekam_medis.pnc') }}"
-                        class="{{ request()->is(['rekam_medis.pnc', 'rekam_medis/pnc']) ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i>
-                        <span>PNC</span>
-                    </a>
-                </li>
             </ul>
         </li>
         <li class="nav-item">

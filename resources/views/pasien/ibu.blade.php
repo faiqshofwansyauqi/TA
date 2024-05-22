@@ -360,7 +360,7 @@
 
         $(document).ready(function() {
             $('#ibu-table').DataTable({
-                processing: true,
+                processing: false,
                 serverSide: true,
                 ajax: '{{ route('pasien.data_ibu') }}',
                 scrollX: true,

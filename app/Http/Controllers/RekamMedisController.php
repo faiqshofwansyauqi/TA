@@ -5,54 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Persalinan;
 use App\Models\Ibu;
-use App\Models\Pnc;
 use Yajra\DataTables\Facades\DataTables;
 
 class RekamMedisController extends Controller
 {
-
-    public function Pnc()
-    {
-        return view('rekam_medis.pnc');
-    }
-    public function Detail_Pnc()
-    {
-        return view('rekam_medis.detail_pnc');
-    }
-    public function store_pnc(Request $request)
-    {
-        // dd($request->all());
-        $request->validate([
-            'id_ibu' => 'required',
-        ]);
-
-        Pnc::create([
-            'id_ibu' => $request->id_ibu,
-        ]);
-
-        return redirect()->back()->with('success', 'Data anak berhasil ditambahkan');
-    }
-    public function showIbuPage_pnc()
-    {
-        $ibus = Ibu::all();
-        return view('rekam_medis.pnc')->with('ibus', $ibus);
-    }
-    public function getData_pnc()
-    {
-        $pnc = Pnc::select('*');
-
-        return DataTables::of($pnc)->make(true);
-    }
-
-
-
     //////// PERSALINAN ////////
     public function Persalinan()
     {
         $persalinan = Persalinan::all();
         return view('rekam_medis.persalinan', compact('persalinan'));
     }
-
     public function store_persalinan(Request $request)
     {
         // dd($request->all());
