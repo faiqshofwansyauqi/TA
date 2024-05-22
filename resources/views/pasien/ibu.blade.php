@@ -29,6 +29,7 @@
                                     <tr>
                                         <th>Puskesmas</th>
                                         <th>NIK</th>
+                                        <th>No Registrasi Ibu</th>
                                         <th>Nama Ibu</th>
                                         <th>Nama Suami</th>
                                         <th>Tanggal Lahir</th>
@@ -72,11 +73,16 @@
                     <form action="{{ route('pasien.store_ibu') }}" method="post" autocomplete="off">
                         @csrf
                         <div class="row mb-3">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
+                                <label for="NIK" class="form-label">NIK</label>
+                                <input type="text" class="form-control" id="NIK" name="NIK" maxlength="16"
+                                    required>
+                            </div>
+                            <div class="col-md-4">
                                 <label for="puskesmas" class="form-label">Puskesmas</label>
                                 <input type="text" class="form-control" id="puskesmas" name="puskesmas" required>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label for="noregis" class="form-label">Nomer Registrasi Ibu</label>
                                 <input type="text" class="form-control" id="noregis" name="noregis" maxlength="13"
                                     required>
@@ -208,14 +214,20 @@
                         @csrf
                         @method('PUT')
                         <div class="row mb-3">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label for="edit_puskesmas" class="form-label">Puskesmas</label>
-                                <input type="text" class="form-control" id="edit_puskesmas" name="puskesmas" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="edit_noregis" class="form-label">Nomer Registrasi Ibu</label>
-                                <input type="text" class="form-control" id="edit_noregis" name="noregis" maxlength="13"
+                                <input type="text" class="form-control" id="edit_puskesmas" name="puskesmas"
                                     required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="edit_NIK" class="form-label">NIK</label>
+                                <input type="text" class="form-control" id="edit_NIK" name="NIK" maxlength="16"
+                                    required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="edit_noregis" class="form-label">Nomer Registrasi Ibu</label>
+                                <input type="text" class="form-control" id="edit_noregis" name="noregis"
+                                    maxlength="13" required>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -225,18 +237,20 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="edit_nama_suami" class="form-label">Nama Suami</label>
-                                <input type="text" class="form-control" id="edit_nama_suami" name="nama_suami" required>
+                                <input type="text" class="form-control" id="edit_nama_suami" name="nama_suami"
+                                    required>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label for="edit_tanggal_lahir" class="form-label">Tanggal Lahir</label>
-                                <input type="date" class="form-control" id="edit_tanggal_lahir" name="tanggal_lahir" required>
+                                <input type="date" class="form-control" id="edit_tanggal_lahir" name="tanggal_lahir"
+                                    required>
                             </div>
                             <div class="col-md-6">
                                 <label for="edit_alamat_domisili" class="form-label">Alamat Domisili</label>
-                                <input type="text" class="form-control" id="edit_alamat_domisili" name="alamat_domisili"
-                                    required>
+                                <input type="text" class="form-control" id="edit_alamat_domisili"
+                                    name="alamat_domisili" required>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -286,7 +300,8 @@
                         <div class="row mb-3">
                             <div class="col-md-4">
                                 <label for="edit_tanggal_reg" class="form-label">Tanggal Register</label>
-                                <input type="date" class="form-control" id="edit_tanggal_reg" name="tanggal_reg" required>
+                                <input type="date" class="form-control" id="edit_tanggal_reg" name="tanggal_reg"
+                                    required>
                             </div>
                             <div class="col-md-4">
                                 <label for="edit_posyandu" class="form-label">Posyandu</label>
@@ -294,13 +309,15 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="edit_nama_kader" class="form-label">Nama Kader</label>
-                                <input type="text" class="form-control" id="edit_nama_kader" name="nama_kader" required>
+                                <input type="text" class="form-control" id="edit_nama_kader" name="nama_kader"
+                                    required>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-4">
                                 <label for="edit_nama_dukum" class="form-label">Nama Dukun</label>
-                                <input type="text" class="form-control" id="edit_nama_dukum" name="nama_dukum" required>
+                                <input type="text" class="form-control" id="edit_nama_dukum" name="nama_dukum"
+                                    required>
                             </div>
                             <div class="col-md-2">
                                 <label for="edit_jamkesmas" class="form-label">Jamkesmas</label>
@@ -351,6 +368,10 @@
                 columns: [{
                         data: 'puskesmas',
                         name: 'puskesmas'
+                    },
+                    {
+                        data: 'NIK',
+                        name: 'NIK'
                     },
                     {
                         data: 'noregis',
@@ -444,48 +465,50 @@
                         orderable: false,
                         searchable: false,
                         render: function(data, type, row) {
-                            let editUrl = '{{ route('pasien.edit_ibu', ':id') }}'.replace(':id',
-                                row.id_ibu);
-                            let deleteUrl = '{{ route('pasien.destroy_ibu', ':id') }}'.replace(
-                                ':id', row.id_ibu);
+                            let editUrl = '{{ route('pasien.edit_ibu', ':nik') }}'.replace(':nik',
+                                row.NIK);
+                            let deleteUrl = '{{ route('pasien.destroy_ibu', ':nik') }}'.replace(
+                                ':nik', row.NIK);
                             return `
-                        <div style="display: flex; align-items: center;">
-                            <button class="btn btn-sm btn-success edit-btn" data-id="${row.id_ibu}" data-bs-toggle="modal" data-bs-target="#modalEdit">
-                                <i class="bi bi-pencil-fill"></i>
+                    <div style="display: flex; align-items: center;">
+                        <button class="btn btn-sm btn-success edit-btn" data-nik="${row.NIK}" data-bs-toggle="modal" data-bs-target="#modalEdit">
+                            <i class="bi bi-pencil-fill"></i>
+                        </button>
+                        <form action="${deleteUrl}" method="POST" style="display:inline; margin-left: 5px;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">
+                                <i class="bi bi-trash3-fill"></i>
                             </button>
-                            <form action="${deleteUrl}" method="POST" style="display:inline; margin-left: 5px;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">
-                                    <i class="bi bi-trash3-fill"></i>
-                                </button>
-                            </form>
-                        </div>
+                        </form>
+                    </div>
                     `;
                         }
                     }
                 ],
-                dom: 'Bfrtp',
-                buttons: [{
-                        extend: 'print',
-                        className: 'btn btn-sm btn-primary btn-margin',
-                        text: 'Print'
-                    },
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print',
                     {
                         extend: 'colvis',
-                        className: 'btn btn-sm btn-primary btn-margin',
-                        text: 'Column Visibility'
+                        text: 'Column visibility'
                     }
-                ]
+                ],
+                columnDefs: [{
+                    targets: [9,10,11,12,14,15,16,17,18,19,20,21,22], 
+                    visible: false
+                }]
             });
         });
 
         $('#ibu-table').on('click', '.edit-btn', function() {
-            let id = $(this).data('id');
+            let nik = $(this).data('nik');
             $.ajax({
-                url: '{{ route('pasien.edit_ibu', ':id') }}'.replace(':id', id),
+                url: '{{ route('pasien.edit_ibu', ':nik') }}'.replace(':nik',
+                    nik),
                 method: 'GET',
                 success: function(data) {
+                    $('#edit_NIK').val(data.NIK);
                     $('#edit_puskesmas').val(data.puskesmas);
                     $('#edit_noregis').val(data.noregis);
                     $('#edit_nama_ibu').val(data.nama_ibu);
@@ -509,13 +532,11 @@
                     $('#edit_gol_darah').val(data.gol_darah);
                     $('#edit_telp').val(data.telp);
                     $('#edit_kab').val(data.kab);
-                    $('#editForm').attr('action', '{{ route('pasien.update_ibu', ':id') }}'.replace(
-                        ':id', id));
+                    $('#editForm').attr('action', '{{ route('pasien.update_ibu', ':nik') }}'.replace(
+                        ':nik', nik));
                     $('#modalEdit').modal('show');
                 }
             });
         });
-
-
     </script>
 @endsection

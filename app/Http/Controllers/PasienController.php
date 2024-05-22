@@ -19,6 +19,7 @@ class PasienController extends Controller
     {
         // dd($request);
         $request->validate([
+            'NIK' => 'required',
             'puskesmas' => 'required',
             'noregis' => 'required',
             'nama_ibu' => 'required',
@@ -30,6 +31,7 @@ class PasienController extends Controller
             'pendidikan_ibu_suami' => 'required',
             'pekerjaaan_ibu_suami' => 'required',
             'umur' => 'required|integer',
+            'rtrw' => 'required',
             'kec' => 'required',
             'prov' => 'required',
             'agama' => 'required',
@@ -43,6 +45,7 @@ class PasienController extends Controller
         ]);
         
         Ibu::create([
+            'NIK' => $request->NIK,
             'puskesmas' => $request->puskesmas,
             'noregis' => $request->noregis,
             'nama_ibu' => $request->nama_ibu,
@@ -54,6 +57,7 @@ class PasienController extends Controller
             'pendidikan_ibu_suami' => $request->pendidikan_ibu_suami,
             'pekerjaaan_ibu_suami' => $request->pekerjaaan_ibu_suami,
             'umur' => $request->umur,
+            'rtrw' => $request->rtrw,
             'kec' => $request->kec,
             'prov' => $request->prov,
             'agama' => $request->agama,
@@ -77,7 +81,7 @@ class PasienController extends Controller
         return DataTables::of($ibu)->make(true);
     }
 
-    public function update_ibu(Request $request, $id)
+    public function update_ibu(Request $request, $NIK)
     {
         $request->validate([
             'puskesmas' => 'required',
@@ -103,7 +107,7 @@ class PasienController extends Controller
             'telp' => 'required',
         ]);
     
-        $ibu = Ibu::findOrFail($id);
+        $ibu = Ibu::findOrFail($NIK);
         $ibu->update([
             'puskesmas' => $request->puskesmas,
             'noregis' => $request->noregis,
@@ -131,15 +135,15 @@ class PasienController extends Controller
         return redirect()->back()->with('success', 'Data anak berhasil diupdate');
     }
 
-    public function edit_ibu($id_ibu)
+    public function edit_ibu($NIK)
     {
-        $ibu = Ibu::findOrFail($id_ibu);
+        $ibu = Ibu::findOrFail($NIK);
         return response()->json($ibu);
     }
 
-    public function destroy_ibu($id_ibu)
+    public function destroy_ibu($NIK)
     {
-        $ibu = Ibu::findOrFail($id_ibu);
+        $ibu = Ibu::findOrFail($NIK);
         $ibu->delete();
 
         return redirect()->back()->with('success', 'Data anak berhasil dihapus');

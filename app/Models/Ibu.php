@@ -8,9 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Ibu extends Model
 {
     protected $table = 'ibu';
-    protected $primaryKey = 'id_ibu';
-
+    protected $primaryKey = 'NIK';
+    public $incrementing = false;
     protected $fillable = [
+        'NIK',
         'puskesmas',
         'noregis',
         'nama_ibu',
