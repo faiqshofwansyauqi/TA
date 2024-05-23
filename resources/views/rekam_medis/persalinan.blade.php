@@ -467,7 +467,9 @@
                                 <label for="edit_pelayanan" class="form-label">Pelayanan</label>
                                 <select class="form-select" id="edit_pelayanan" name="pelayanan" required>
                                     <option value="">Pilih Pelayanan</option>
-                                    <option value="IMD: < 1jam">IMD: < 1jam</option>
+                                    <option value="IMD: < 1jam/>jam">IMD:
+                                        < 1jam />jam
+                                    </option>
                                     <option value="Menggunakan Partograf">Menggunakan Partograf</option>
                                     <option value="Pustu">Pustu</option>
                                     <option value="Catatan di Buku KIA">Catatan di Buku KIA</option>
@@ -823,6 +825,7 @@
                 url: '{{ route('rekam_medis.edit_persalinan', ':id') }}'.replace(':id', id),
                 method: 'GET',
                 success: function(data) {
+                    $('#edit_id_ibu').val(data.id_ibu);
                     $('#edit_kala1').val(data.kala1);
                     $('#edit_kala2').val(data.kala2);
                     $('#edit_bayi_lahir').val(data.bayi_lahir);

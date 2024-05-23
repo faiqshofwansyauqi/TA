@@ -146,7 +146,7 @@ class RekamMedisController extends Controller
     public function show_persalinan($id)
     {
         $persalinan = Persalinan::with(['ibu' => function ($query) {
-            $query->select('id_ibu', 'nama_ibu');
+            $query->select('NIK', 'nama_ibu');
         }])->find($id);
         return response()->json($persalinan);
     }
