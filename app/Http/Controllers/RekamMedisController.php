@@ -160,7 +160,8 @@ class RekamMedisController extends Controller
 
     public function Ropb()
     {
-        return view('rekam_medis.ropb');
+        $ropb = Ropb::all();
+        return view('rekam_medis.ropb', compact('ropb'));
     }
     public function store_ropb(Request $request)
     {
@@ -198,7 +199,45 @@ class RekamMedisController extends Controller
             'tinggi_badan' => $request->tinggi_badan,
             'buku_kia' => $request->buku_kia,
         ]);
-        return redirect()->back()->with('success', 'Data anak berhasil ditambahkan');
+        return redirect()->back()->with('success', 'Data berhasil ditambahkan');
+    }
+    public function update_ropb(Request $request, $id)
+    {
+        // dd($request);
+        $request->validate([
+            'NIK' => 'required',
+            'gravida' => 'required',
+            'partus' => 'required',            
+            'abortus' => 'required',            
+            'hidup' => 'required',            
+            'rwyt_komplikasi' => 'required',            
+            'pnykt_kronis_alergi' => 'required',            
+            'tgl_periksa' => 'required',            
+            'tgl_hpht' => 'required',            
+            'tksrn_persalinan' => 'required',            
+            'prlnan_sebelum' => 'required',            
+            'berat_badan' => 'required',            
+            'tinggi_badan' => 'required',            
+            'buku_kia' => 'required',            
+        ]);
+        $ropb = Ropb::findOrFail($id);
+        $ropb->update([
+            'NIK' => $request->NIK,
+            'gravida' => $request->gravida,
+            'partus' => $request->partus,
+            'abortus' => $request->abortus,
+            'hidup' => $request->hidup,
+            'rwyt_komplikasi' => $request->rwyt_komplikasi,
+            'pnykt_kronis_alergi' => $request->pnykt_kronis_alergi,
+            'tgl_periksa' => $request->tgl_periksa,
+            'tgl_hpht' => $request->tgl_hpht,
+            'tksrn_persalinan' => $request->tksrn_persalinan,
+            'prlnan_sebelum' => $request->prlnan_sebelum,
+            'berat_badan' => $request->berat_badan,
+            'tinggi_badan' => $request->tinggi_badan,
+            'buku_kia' => $request->buku_kia,
+        ]);
+        return redirect()->back()->with('success', 'Data berhasil ditambahkan');
     }
     public function getData_ropb()
     {

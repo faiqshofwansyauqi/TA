@@ -48,17 +48,17 @@
             id="collapseExample4">
             <ul class="nav-content">
                 <li>
-                    <a href="{{ route('rekam_medis.persalinan') }}"
-                        class="{{ request()->is(['rekam_medis.persalinan', 'rekam_medis/persalinan']) ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i>
-                        <span>Persalinan</span>
-                    </a>
                     <a href="{{ route('rekam_medis.ropb') }}"
                         class="{{ request()->is(['rekam_medis.ropb', 'rekam_medis/ropb']) ? 'active' : '' }}">
                         <i class="bi bi-circle"></i>
                         <span>Riwayat Obstetrik dan Pemeriksaan Bidan</span>
                     </a>
                 </li>
+                    <a href="{{ route('rekam_medis.persalinan') }}"
+                        class="{{ request()->is(['rekam_medis.persalinan', 'rekam_medis/persalinan']) ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i>
+                        <span>Persalinan</span>
+                    </a>
             </ul>
         </li>
         <li class="nav-item">

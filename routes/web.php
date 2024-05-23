@@ -70,6 +70,7 @@ Route::prefix('rekam_medis')->group(function () {
     Route::get('ropb', [RekamMedisController::class, 'showIbuPage_ropb'])->name('rekam_medis.ropb');
     Route::delete('/rekam_medis/{id}', [RekamMedisController::class, 'destroy_ropb'])->name('rekam_medis.destroy_ropb');
     Route::get('/rekam_medis/{id}/edit', [RekamMedisController::class, 'edit_ropb'])->name('rekam_medis.edit_ropb');
+    Route::put('rekam_medis/update_ropb/{id}', [RekamMedisController::class, 'update_ropb'])->name('rekam_medis.update_ropb'); 
 });
 
 

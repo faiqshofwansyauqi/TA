@@ -53,265 +53,250 @@
     </section>
 
     <div class="modal fade" id="modalInput" tabindex="-1" aria-labelledby="ModalInput" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-dialog-scrollable modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-4 fw-bold" id="ModalInput">Input Data</h1>
+                    <h1 class="modal-title fs-4 fw-bold" id="ModalInput">Input Riwayat Obstetrik dan Pemeriksaan Bidan</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <!-- Nav tabs -->
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="RiwayatObstetrik-tab" data-bs-toggle="tab"
-                                data-bs-target="#RiwayatObstetrik" type="button" role="tab"
-                                aria-controls="RiwayatObstetrik" aria-selected="true">Riwayat Obstetrik</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="PemeriksaanBidan-tab" data-bs-toggle="tab"
-                                data-bs-target="#PemeriksaanBidan" type="button" role="tab"
-                                aria-controls="PemeriksaanBidan" aria-selected="false">Data
-                                Pemeriksaan Bidan</button>
-                        </li>
-                    </ul>
-                    <!-- Tab panes -->
-                    <div class="tab-content mt-3">
-                        <!-- Data Ibu Form -->
-                        <div class="tab-pane fade show active" id="RiwayatObstetrik" role="tabpanel"
-                            aria-labelledby="RiwayatObstetrik-tab">
-                            <form id="dataForm" action="{{ route('rekam_medis.store_ropb') }}" method="post"
-                                autocomplete="off">
-                                @csrf
-                                <div class="row">
-                                    <div class="col-md-3 mb-3">
-                                        <label for="NIK" class="form-label">Ibu</label>
-                                        <select class="form-control" id="NIK" name="NIK" required>
-                                            <option value="">Pilih Ibu</option>
-                                            @foreach ($ibus as $ibu)
-                                                <option value="{{ $ibu->nama_ibu }}">{{ $ibu->nama_ibu }}</option>
-                                            @endforeach
-                                        </select>
+                    <form action="{{ route('rekam_medis.store_ropb') }}" method="post" autocomplete="off">
+                        @csrf
+                        <div class="row">
+                            <div class="card col-5 mx-5 ">
+                                <div class="card-body">
+                                    <h5 class="card-title">Riwayat Obstetrik</h5>
+                                    <div class="row">
+                                        <div class="col-md-12 mb-2">
+                                            <label for="NIK" class="form-label">Ibu</label>
+                                            <select class="form-control" id="NIK" name="NIK" required>
+                                                <option value="">Pilih Ibu</option>
+                                                @foreach ($ibus as $ibu)
+                                                    <option value="{{ $ibu->nama_ibu }}">{{ $ibu->nama_ibu }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                     </div>
-                                    <div class="col-md-3 mb-3">
-                                        <label for="gravida" class="form-label">Gravida</label>
-                                        <input type="number" class="form-control" id="gravida" name="gravida"
-                                            placeholder="Input gravida" required>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-2">
+                                            <label for="gravida" class="form-label">Gravida</label>
+                                            <input type="number" class="form-control" id="gravida" name="gravida"
+                                                required>
+                                        </div>
+                                        <div class="col-md-6 mb-2">
+                                            <label for="partus" class="form-label">Partus</label>
+                                            <input type="number" class="form-control" id="partus" name="partus"
+                                                required>
+                                        </div>
                                     </div>
-                                    <div class="col-md-3 mb-3">
-                                        <label for="partus" class="form-label">Partus</label>
-                                        <input type="number" class="form-control" id="partus" name="partus"
-                                            placeholder="Input partus" required>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-2">
+                                            <label for="abortus" class="form-label">Abortus</label>
+                                            <input type="number" class="form-control" id="abortus" name="abortus"
+                                                required>
+                                        </div>
+                                        <div class="col-md-6 mb-2">
+                                            <label for="hidup" class="form-label">Hidup</label>
+                                            <input type="number" class="form-control" id="hidup" name="hidup"
+                                                required>
+                                        </div>
                                     </div>
-                                    <div class="col-md-3 mb-3">
-                                        <label for="abortus" class="form-label">Abortus</label>
-                                        <input type="number" class="form-control" id="abortus" name="abortus"
-                                            placeholder="Input abortus" required>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4 mb-3">
-                                        <label for="hidup" class="form-label">Hidup</label>
-                                        <input type="number" class="form-control" id="hidup" name="hidup"
-                                            placeholder="Input hidup" required>
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <label for="rwyt_komplikasi" class="form-label">Riwayat Komplikasi
-                                            Kebidanan</label>
+                                    <div class="col-md-12 mb-2">
+                                        <label for="rwyt_komplikasi" class="form-label">Riwayat Komplikasi Kebidanan</label>
                                         <input type="text" class="form-control" id="rwyt_komplikasi"
-                                            name="rwyt_komplikasi" placeholder="Input riwayat komplikasi kebidanan"
-                                            required>
+                                            name="rwyt_komplikasi" required>
                                     </div>
-                                    <div class="col-md-4 mb-3">
+                                    <div class="col-md-12 mb-2">
                                         <label for="pnykt_kronis_alergi" class="form-label">Penyakit Kronis dan
                                             Alergi</label>
                                         <input type="text" class="form-control" id="pnykt_kronis_alergi"
-                                            name="pnykt_kronis_alergi" placeholder="Input penyakit kronis dan alergi"
-                                            required>
+                                            name="pnykt_kronis_alergi" required>
                                     </div>
-                                </div>
-                        </div>
-                        <!-- Data Anak Form -->
-                        <div class="tab-pane fade" id="PemeriksaanBidan" role="tabpanel"
-                            aria-labelledby="PemeriksaanBidan-tab">
-                            <div class="row">
-                                <div class="col-md-4 mb-3">
-                                    <label for="tgl_periksa" class="form-label">Tanggal Periksa</label>
-                                    <input type="date" class="form-control" id="tgl_periksa" name="tgl_periksa"
-                                        required>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <label for="tgl_hpht" class="form-label">Tanggal HPHT</label>
-                                    <input type="date" class="form-control" id="tgl_hpht" name="tgl_hpht" required>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <label for="tksrn_persalinan" class="form-label">Taksiran Persalinan</label>
-                                    <input type="date" class="form-control" id="tksrn_persalinan"
-                                        name="tksrn_persalinan" required>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-4 mb-3">
-                                    <label for="prlnan_sebelum" class="form-label">Persalinan Sebelumnya</label>
-                                    <input type="date" class="form-control" id="prlnan_sebelum" name="prlnan_sebelum"
-                                        required>
-                                </div>
-                                <div class="col-md-2 mb-3">
-                                    <label for="berat_badan" class="form-label">Berat Badan</label>
-                                    <div class="input-group mb-2">
-                                        <input type="number" class="form-control" id="berat_badan" name="berat_badan"
-                                            placeholder="Input Berat Badan">
-                                        <span class="input-group-text">Kg</span>
+                            <div class="card col-5">
+                                <div class="card-body">
+                                    <h5 class="card-title">Pemeriksaan Bidan</h5>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-2">
+                                            <label for="tgl_periksa" class="form-label">Tanggal Periksa</label>
+                                            <input type="date" class="form-control" id="tgl_periksa"
+                                                name="tgl_periksa" required>
+                                        </div>
+                                        <div class="col-md-6 mb-2">
+                                            <label for="tgl_hpht" class="form-label">Tanggal HPHT</label>
+                                            <input type="date" class="form-control" id="tgl_hpht" name="tgl_hpht"
+                                                required>
+                                        </div>
+                                        <div class="col-md-6 mb-2">
+                                            <label for="tksrn_persalinan" class="form-label">Taksiran Persalinan</label>
+                                            <input type="date" class="form-control" id="tksrn_persalinan"
+                                                name="tksrn_persalinan" required>
+                                        </div>
+                                        <div class="col-md-6 mb-2">
+                                            <label for="prlnan_sebelum" class="form-label">Persalinan Sebelumnya</label>
+                                            <input type="date" class="form-control" id="prlnan_sebelum"
+                                                name="prlnan_sebelum" required>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-2 mb-3">
-                                    <label for="tinggi_badan" class="form-label">Tinggi Badan</label>
-                                    <div class="input-group mb-2">
-                                        <input type="number" class="form-control" id="tinggi_badan" name="tinggi_badan"
-                                            placeholder="Input Tinggi Badan">
-                                        <span class="input-group-text">Cm</span>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-2">
+                                            <label for="berat_badan" class="form-label">Berat Badan</label>
+                                            <div class="input-group mb-2">
+                                                <input type="number" class="form-control" id="berat_badan"
+                                                    name="berat_badan" required>
+                                                <span class="input-group-text">Kg</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-2">
+                                            <label for="tinggi_badan" class="form-label">Berat Tinggi</label>
+                                            <div class="input-group mb-2">
+                                                <input type="number" class="form-control" id="tinggi_badan"
+                                                    name="tinggi_badan" required>
+                                                <span class="input-group-text">Cm</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <label for="buku_kia" class="form-label">Buku Kia</label>
-                                    <select class="form-select" id="buku_kia" name="buku_kia" required>
-                                        <option value="">Pilih Input Buku Kia</option>
-                                        <option value="Memiliki">Memiliki</option>
-                                        <option value="Tidak Memiliki">Tidak Memiliki</option>
-                                    </select>
+                                    <div class="col-md-12 mb-2">
+                                        <label for="buku_kia" class="form-label">Buku KIA</label>
+                                        <select class="form-select" id="buku_kia" name="buku_kia" required>
+                                            <option value="">Pilih Keadaan Ibu</option>
+                                            <option value="Memiliki">Memiliki</option>
+                                            <option value="Tidak">Tidak</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="ModalEdit" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-dialog-scrollable modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-4 fw-bold" id="ModalEdit">Edit Data</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h1 class="modal-title fs-4 fw-bold" id="ModalEdit">Edit Persalinan</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
                 </div>
                 <div class="modal-body">
-                    <!-- Nav tabs -->
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="EditRiwayatObstetrik-tab" data-bs-toggle="tab"
-                                data-bs-target="#EditRiwayatObstetrik" type="button" role="tab"
-                                aria-controls="EditRiwayatObstetrik" aria-selected="true">Riwayat Obstetrik</button>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="EditPemeriksaanBidan-tab" data-bs-toggle="tab"
-                                data-bs-target="#EditPemeriksaanBidan" type="button" role="tab"
-                                aria-controls="EditPemeriksaanBidan" aria-selected="false">Data Pemeriksaan Bidan</button>
-                        </li>
-                    </ul>
-                    <div class="tab-content mt-3">
-                        <!-- Edit Data Ibu Form -->
-                        <div class="tab-pane fade show active" id="EditRiwayatObstetrik" role="tabpanel"
-                            aria-labelledby="EditRiwayatObstetrik-tab">
-                            <form id="editDataForm" action="" method="post"
-                                autocomplete="off">
-                                @csrf
-                                @method('PUT')
-                                <div class="row">
-                                    <div class="col-md-3 mb-3">
-                                        <label for="editNIK" class="form-label">Ibu</label>
-                                        <select class="form-control" id="editNIK" name="NIK" required>
-                                            <option value="">Pilih Ibu</option>
-                                            @foreach ($ibus as $ibu)
-                                                <option value="{{ $ibu->NIK }}">{{ $ibu->nama_ibu }}</option>
-                                            @endforeach
-                                        </select>
+                    <form id="editForm" method="post" autocomplete="off">
+                        @csrf
+                        @method('PUT')
+                        <div class="row">
+                            <div class="card col-md-5 mx-5">
+                                <div class="card-body">
+                                    <h5 class="card-title">Riwayat Obstetrik</h5>
+                                    <div class="row">
+                                        <div class="col-md-12 mb-2">
+                                            <label for="edit_NIK" class="form-label">Ibu</label>
+                                            <select class="form-control" id="edit_NIK" name="NIK" required>
+                                                <option value="">Pilih Ibu</option>
+                                                @foreach ($ibus as $ibu)
+                                                    <option value="{{ $ibu->nama_ibu }}">{{ $ibu->nama_ibu }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                     </div>
-                                    <div class="col-md-3 mb-3">
-                                        <label for="edit_gravida" class="form-label">Gravida</label>
-                                        <input type="number" class="form-control" id="edit_gravida" name="gravida"
-                                            placeholder="Input gravida" required>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-2">
+                                            <label for="edit_gravida" class="form-label">Gravida</label>
+                                            <input type="number" class="form-control" id="edit_gravida" name="gravida"
+                                                required>
+                                        </div>
+                                        <div class="col-md-6 mb-2">
+                                            <label for="edit_partus" class="form-label">Partus</label>
+                                            <input type="number" class="form-control" id="edit_partus" name="partus"
+                                                required>
+                                        </div>
                                     </div>
-                                    <div class="col-md-3 mb-3">
-                                        <label for="edit_partus" class="form-label">Partus</label>
-                                        <input type="number" class="form-control" id="edit_partus" name="partus"
-                                            placeholder="Input partus" required>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-2">
+                                            <label for="edit_abortus" class="form-label">Abortus</label>
+                                            <input type="number" class="form-control" id="edit_abortus" name="abortus"
+                                                required>
+                                        </div>
+                                        <div class="col-md-6 mb-2">
+                                            <label for="edit_hidup" class="form-label">Hidup</label>
+                                            <input type="number" class="form-control" id="edit_hidup" name="hidup"
+                                                required>
+                                        </div>
                                     </div>
-                                    <div class="col-md-3 mb-3">
-                                        <label for="edit_abortus" class="form-label">Abortus</label>
-                                        <input type="number" class="form-control" id="edit_abortus" name="abortus"
-                                            placeholder="Input abortus" required>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4 mb-3">
-                                        <label for="edit_hidup" class="form-label">Hidup</label>
-                                        <input type="number" class="form-control" id="edit_hidup" name="hidup"
-                                            placeholder="Input hidup" required>
-                                    </div>
-                                    <div class="col-md-4 mb-3">
+                                    <div class="col-md-12 mb-2">
                                         <label for="edit_rwyt_komplikasi" class="form-label">Riwayat Komplikasi
                                             Kebidanan</label>
                                         <input type="text" class="form-control" id="edit_rwyt_komplikasi"
-                                            name="rwyt_komplikasi" placeholder="Input riwayat komplikasi kebidanan"
-                                            required>
+                                            name="rwyt_komplikasi" required>
                                     </div>
-                                    <div class="col-md-4 mb-3">
-                                        <label for="edit_pnykt_Kronis_alergi" class="form-label">Penyakit Kronis dan
+                                    <div class="col-md-12 mb-2">
+                                        <label for="edit_pnykt_kronis_alergi" class="form-label">Penyakit Kronis dan
                                             Alergi</label>
-                                        <input type="text" class="form-control" id="edit_pnykt_Kronis_alergi"
-                                            name="pnykt_kronis_alergi" placeholder="Input penyakit kronis dan alergi"
-                                            required>
+                                        <input type="text" class="form-control" id="edit_pnykt_kronis_alergi"
+                                            name="pnykt_kronis_alergi" required>
                                     </div>
                                 </div>
-                        </div>
-
-                        <!-- Edit Data Anak Form -->
-                        <div class="tab-pane fade" id="EditPemeriksaanBidan" role="tabpanel"
-                            aria-labelledby="EditPemeriksaanBidan-tab">
-                            <div class="row">
-                                <div class="col-md-4 mb-3">
-                                    <label for="edit_tgl_periksa" class="form-label">Tanggal Periksa</label>
-                                    <input type="date" class="form-control" id="edit_tgl_periksa" name="tgl_periksa"
-                                        required>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <label for="edit_tgl_hpht" class="form-label">Tanggal HPHT</label>
-                                    <input type="date" class="form-control" id="edit_tgl_hpht" name="tgl_hpht"
-                                        required>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <label for="edit_tksrn_persalinan" class="form-label">Taksiran Persalinan</label>
-                                    <input type="date" class="form-control" id="edit_tksrn_persalinan"
-                                        name="tksrn_persalinan" required>
-                                </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-4 mb-3">
-                                    <label for="edit_prlnan_sebelum" class="form-label">Persalinan Sebelumnya</label>
-                                    <input type="date" class="form-control" id="edit_prlnan_sebelum"
-                                        name="prlnan_sebelum" required>
-                                </div>
-                                <div class="col-md-2 mb-3">
-                                    <label for="edit_berat_badan" class="form-label">Berat Badan</label>
-                                    <div class="input-group mb-2">
-                                        <input type="number" class="form-control" id="edit_berat_badan"
-                                            name="berat_badan" placeholder="Input Berat Badan">
-                                        <span class="input-group-text">Kg</span>
+                            <div class="card col-5">
+                                <div class="card-body">
+                                    <h5 class="card-title">Pemeriksaan Bidan</h5>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-2">
+                                            <label for="edit_tgl_periksa" class="form-label">Tanggal Periksa</label>
+                                            <input type="date" class="form-control" id="edit_tgl_periksa"
+                                                name="tgl_periksa" required>
+                                        </div>
+                                        <div class="col-md-6 mb-2">
+                                            <label for="edit_tgl_hpht" class="form-label">Tanggal HPHT</label>
+                                            <input type="date" class="form-control" id="edit_tgl_hpht"
+                                                name="tgl_hpht" required>
+                                        </div>
+                                        <div class="col-md-6 mb-2">
+                                            <label for="edit_tksrn_persalinan" class="form-label">Taksiran
+                                                Persalinan</label>
+                                            <input type="date" class="form-control" id="edit_tksrn_persalinan"
+                                                name="tksrn_persalinan" required>
+                                        </div>
+                                        <div class="col-md-6 mb-2">
+                                            <label for="edit_prlnan_sebelum" class="form-label">Persalinan
+                                                Sebelumnya</label>
+                                            <input type="date" class="form-control" id="edit_prlnan_sebelum"
+                                                name="prlnan_sebelum" required>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-2">
+                                            <label for="edit_berat_badan" class="form-label">Berat Badan</label>
+                                            <div class="input-group mb-2">
+                                                <input type="number" class="form-control" id="edit_berat_badan"
+                                                    name="berat_badan" required>
+                                                <span class="input-group-text">Kg</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-2">
+                                            <label for="edit_tinggi_badan" class="form-label">Berat Tinggi</label>
+                                            <div class="input-group mb-2">
+                                                <input type="number" class="form-control" id="edit_tinggi_badan"
+                                                    name="tinggi_badan" required>
+                                                <span class="input-group-text">Cm</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-2">
+                                        <label for="edit_buku_kia" class="form-label">Buku KIA</label>
+                                        <select class="form-select" id="edit_buku_kia" name="buku_kia" required>
+                                            <option value="">Pilih Keadaan Ibu</option>
+                                            <option value="Memiliki">Memiliki</option>
+                                            <option value="Tidak">Tidak</option>
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="col-md-2 mb-3">
-                                    <label for="edit_buku_kia" class="form-label">Buku Kia</label>
-                                    <select class="form-select" id="edit_buku_kia" name="buku_kia" required>
-                                        <option value="">Pilih Input Buku Kia</option>
-                                        <option value="Memiliki">Memiliki</option>
-                                        <option value="Tidak Memiliki">Tidak Memiliki</option>
-                                    </select>
-                                </div>
                             </div>
                         </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -452,7 +437,8 @@
                         orderable: false,
                         searchable: false,
                         render: function(data, type, row) {
-                            let editUrl = '{{ route('rekam_medis.edit_ropb', ':id') }}'.replace(':id',
+                            let editUrl = '{{ route('rekam_medis.edit_ropb', ':id') }}'.replace(
+                                ':id',
                                 row.id);
                             let deleteUrl = '{{ route('rekam_medis.destroy_ropb', ':id') }}'
                                 .replace(
@@ -486,6 +472,36 @@
                     targets: [8, 9, 10, 11, 12, 13],
                     visible: false
                 }]
+            });
+        });
+
+        $('#ropb-table').on('click', '.edit-btn', function() {
+            let id = $(this).data('id');
+            $.ajax({
+                url: '{{ route('rekam_medis.edit_ropb', ':id') }}'.replace(':id', id),
+                method: 'GET',
+                success: function(data) {
+                    $('#edit_NIK').val(data.NIK);
+                    $('#edit_gravida').val(data.gravida);
+                    $('#edit_partus').val(data.partus);
+                    $('#edit_abortus').val(data.abortus);
+                    $('#edit_hidup').val(data.hidup);
+                    $('#edit_rwyt_komplikasi').val(data.rwyt_komplikasi);
+                    $('#edit_pnykt_kronis_alergi').val(data.pnykt_kronis_alergi);
+                    $('#edit_tgl_periksa').val(data.tgl_periksa);
+                    $('#edit_tgl_hpht').val(data.tgl_hpht);
+                    $('#edit_tksrn_persalinan').val(data.tksrn_persalinan);
+                    $('#edit_prlnan_sebelum').val(data.prlnan_sebelum);
+                    $('#edit_berat_badan').val(data.berat_badan);
+                    $('#edit_tinggi_badan').val(data.tinggi_badan);
+                    $('#edit_penolong').val(data.penolong);
+                    $('#edit_cara_persalinan').val(data.cara_persalinan);
+                    $('#edit_buku_kia').val(data.buku_kia);
+                    $('#editForm').attr('action', '{{ route('rekam_medis.update_ropb', ':id') }}'
+                        .replace(
+                            ':id', id));
+                    $('#modalEdit').modal('show');
+                }
             });
         });
     </script>
