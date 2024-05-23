@@ -167,6 +167,82 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="card col-11 mx-4 ">
+                                <div class="card-body">
+                                    <h5 class="card-title">Rencana Persalinan</h5>
+                                    <div class="row">
+                                        <div class="col-md-12 mb-2">
+                                            <label for="tgl_persalinan" class="form-label">Tanggal Persalinan</label>
+                                            <input type="date" class="form-control" id="tgl_persalinan"
+                                                name="tgl_persalinan" required>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-2">
+                                            <label for="Penolong" class="form-label">Penolong</label>
+                                            <select class="form-select" id="Penolong" name="Penolong" required>
+                                                <option value="">Pilih Penolong</option>
+                                                <option value="Keluarga">Keluarga</option>
+                                                <option value="Dukun">Dukun</option>
+                                                <option value="Dr. Umum">Dr. Umum</option>
+                                                <option value="Dr. Spesialis">Dr. Spesialis</option>
+                                                <option value="Lain-lain">Lain-lain</option>
+                                                <option value="Tidak ad">Tidak ad</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 mb-2">
+                                            <label for="tempat" class="form-label">Tempat</label>
+                                            <select class="form-select" id="tempat" name="tempat" required>
+                                                <option value="">Pilih Tempat</option>
+                                                <option value="Rumah">Rumah</option>
+                                                <option value="Poskesdas">Poskesdas</option>
+                                                <option value="Pustu">Pustu</option>
+                                                <option value="Puskesmas">Puskesmas</option>
+                                                <option value="RB">RB</option>
+                                                <option value="RSIA">RSIA</option>
+                                                <option value="RS">RS</option>
+                                                <option value="RS ODHA">RS ODHA</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-2">
+                                            <label for="pendamping" class="form-label">Pendamping</label>
+                                            <select class="form-select" id="pendamping" name="pendamping" required>
+                                                <option value="">Pilih Pendamping</option>
+                                                <option value="Suami">Suami</option>
+                                                <option value="Keluarga">Keluarga</option>
+                                                <option value="Teman">Teman</option>
+                                                <option value="Tetangga">Tetangga</option>
+                                                <option value="Lain-lain">Lain-lain</option>
+                                                <option value="Tidak ada">Tidak ada</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 mb-2">
+                                            <label for="transport" class="form-label">Transportasi</label>
+                                            <select class="form-select" id="transport" name="transport" required>
+                                                <option value="">Pilih Transportasi</option>
+                                                <option value="Motor">Motor</option>
+                                                <option value="Mobil">Mobil</option>
+                                                <option value="Ambulans">Ambulans</option>
+                                                <option value="Umum">Umum</option>
+                                                <option value="Lain-lain">Lain-lain</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-2">
+                                        <label for="pendonor" class="form-label">Calon donor darah</label>
+                                        <select class="form-select" id="pendonor" name="pendonor" required>
+                                            <option value="">Pilih Calon donor darah</option>
+                                            <option value="Suami">Suami</option>
+                                            <option value="Keluarga">Keluarga</option>
+                                            <option value="Teman">Teman</option>
+                                            <option value="Lain-lain">Lain-lain</option>
+                                            <option value="Tidak ada">Tidak ada</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
