@@ -26,6 +26,7 @@ class CreateIbuTable extends Migration
             $table->string('pendidikan_ibu_suami');
             $table->string('pekerjaaan_ibu_suami');
             $table->integer('umur');
+            $table->string('rtrw');
             $table->string('kec');
             $table->string('prov');
             $table->string('agama');
