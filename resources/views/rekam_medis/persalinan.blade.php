@@ -677,125 +677,132 @@
                     function formatDate(dateString) {
                         if (!dateString) return '';
                         const date = new Date(dateString);
-                        const formattedDate = ('0' + date.getDate()).slice(-2);
-                        const formattedTime = ('0' + date.getHours()).slice(-2) + ':' + ('0' +
-                            date.getMinutes()).slice(-2);
-                        return formattedDate + ' - ' + formattedTime;
+                        const formattedDay = ('0' + date.getDate()).slice(-2);
+                        const formattedMonth = ('0' + (date.getMonth() + 1)).slice(-2);
+                        const formattedYear = date.getFullYear();
+                        const formattedHours = ('0' + date.getHours()).slice(-2);
+                        const formattedMinutes = ('0' + date.getMinutes()).slice(-2);
+                        return `${formattedDay}-${formattedMonth}-${formattedYear} / ${formattedHours}:${formattedMinutes}`;
                     }
+
                     let fasePersalinanTableHtml = `
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Fase Persalinan</th>
-                            <th class="text-center">Tanggal - Jam</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Kala I Aktif</td>
-                            <td class="text-center">${formatDate(data.kala1)}</td>
-                        </tr>
-                        <tr>
-                            <td>Kala II</td>
-                            <td class="text-center">${formatDate(data.kala2)}</td>
-                        </tr>
-                        <tr>
-                            <td>Bayi Lahir</td>
-                            <td class="text-center">${formatDate(data.bayi_lahir)}</td>
-                        </tr>
-                        <tr>
-                            <td>Piasenta Lahir</td>
-                            <td class="text-center">${formatDate(data.piasenta)}</td>
-                        </tr>
-                        <tr>
-                            <td>Pendarahan</td>
-                            <td class="text-center">${(data.pendarahan)} cc</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Fase Persalinan</th>
+                                <th class="text-center">Tanggal - Jam</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Kala I Aktif</td>
+                                <td class="text-center">${formatDate(data.kala1)}</td>
+                            </tr>
+                            <tr>
+                                <td>Kala II</td>
+                                <td class="text-center">${formatDate(data.kala2)}</td>
+                            </tr>
+                            <tr>
+                                <td>Bayi Lahir</td>
+                                <td class="text-center">${formatDate(data.bayi_lahir)}</td>
+                            </tr>
+                            <tr>
+                                <td>Piasenta Lahir</td>
+                                <td class="text-center">${formatDate(data.piasenta)}</td>
+                            </tr>
+                            <tr>
+                                <td>Pendarahan</td>
+                                <td class="text-center">${(data.pendarahan)} cc</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             `;
                     let additionalInfoTableHtml = `
-                <table class="table table-bordered">
-                    <thead>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Usia Kehamilan</td>
-                            <td>${data.usia_kehamilan} Minggu</td>
-                        </tr>
-                        <tr>
-                            <td>Usia HPHT</td>
-                            <td>${data.usia_hpht} Minggu</td>
-                        </tr>
-                        <tr>
-                            <td>Keadaan Ibu</td>
-                            <td>${data.keadaan_ibu}</td>
-                        </tr>
-                        <tr>
-                            <td>Keadaan Anak</td>
-                            <td>${data.keadaan_bayi}</td>
-                        </tr>
-                        <tr>
-                            <td>Berat Bayi</td>
-                            <td>${data.berat_bayi} Gram</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td>Usia Kehamilan</td>
+                                <td>${data.usia_kehamilan} Minggu</td>
+                            </tr>
+                            <tr>
+                                <td>Usia HPHT</td>
+                                <td>${data.usia_hpht} Minggu</td>
+                            </tr>
+                            <tr>
+                                <td>Keadaan Ibu</td>
+                                <td>${data.keadaan_ibu}</td>
+                            </tr>
+                            <tr>
+                                <td>Keadaan Anak</td>
+                                <td>${data.keadaan_bayi}</td>
+                            </tr>
+                            <tr>
+                                <td>Berat Bayi</td>
+                                <td>${data.berat_bayi} Gram</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             `;
                     let newInfoTableHtml = `
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Fase Persalinan</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Pesentasi</td>
-                            <td>${data.pesentasi}</td>
-                        </tr>
-                        <tr>
-                            <td>Tempat</td>
-                            <td>${data.tempat}</td>
-                        </tr>
-                        <tr>
-                            <td>Penolong</td>
-                            <td>${data.penolong}</td>
-                        </tr>
-                        <tr>
-                            <td>Cara Persalinan</td>
-                            <td>${data.cara_persalinan}</td>
-                        </tr>
-                        <tr>
-                            <td>Manajemen</td>
-                            <td>${data.menejemen}</td>
-                        </tr>
-                        <tr>
-                            <td>Pelayanan</td>
-                            <td>${data.pelayanan}</td>
-                        </tr>
-                        <tr>
-                            <td>Integrasi</td>
-                            <td>${data.integrasi}</td>
-                        </tr>
-                        <tr>
-                            <td>Komplikasi</td>
-                            <td>${data.komplikasi}</td>
-                        </tr>
-                        <tr>
-                            <td>Keadaan Tiba</td>
-                            <td>${data.keadaan_tiba}</td>
-                        </tr>
-                        <tr>
-                            <td>Rujuk</td>
-                            <td>${data.rujuk}</td>
-                        </tr>
-                        <tr>
-                            <td>Alamat Bersalin</td>
-                            <td>${data.alamat_bersalin}</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Fase Persalinan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Pesentasi</td>
+                                <td>${data.pesentasi}</td>
+                            </tr>
+                            <tr>
+                                <td>Tempat</td>
+                                <td>${data.tempat}</td>
+                            </tr>
+                            <tr>
+                                <td>Penolong</td>
+                                <td>${data.penolong}</td>
+                            </tr>
+                            <tr>
+                                <td>Cara Persalinan</td>
+                                <td>${data.cara_persalinan}</td>
+                            </tr>
+                            <tr>
+                                <td>Manajemen</td>
+                                <td>${data.menejemen}</td>
+                            </tr>
+                            <tr>
+                                <td>Pelayanan</td>
+                                <td>${data.pelayanan}</td>
+                            </tr>
+                            <tr>
+                                <td>Integrasi</td>
+                                <td>${data.integrasi}</td>
+                            </tr>
+                            <tr>
+                                <td>Komplikasi</td>
+                                <td>${data.komplikasi}</td>
+                            </tr>
+                            <tr>
+                                <td>Keadaan Tiba</td>
+                                <td>${data.keadaan_tiba}</td>
+                            </tr>
+                            <tr>
+                                <td>Rujuk</td>
+                                <td>${data.rujuk}</td>
+                            </tr>
+                            <tr>
+                                <td>Alamat Bersalin</td>
+                                <td>${data.alamat_bersalin}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             `;
                     let tableHtml = `
                 <div class="row">
@@ -818,6 +825,7 @@
                 }
             });
         });
+
 
         $('#persalinan-table').on('click', '.edit-btn', function() {
             let id = $(this).data('id');

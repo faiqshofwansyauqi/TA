@@ -659,130 +659,131 @@
                 method: 'GET',
                 success: function(data) {
                     let namaIbu = data.ibu.nama_ibu;
-
                     function formatDate(dateString) {
-                        // Handle empty or invalid date strings
                         if (!dateString) return '';
                         if (isNaN(new Date(dateString))) return 'Invalid date format';
                         const date = new Date(dateString);
                         const year = date.getFullYear();
-                        const month = String(date.getMonth() + 1).padStart(2,
-                            '0');
+                        const month = String(date.getMonth() + 1).padStart(2, '0');
                         const day = String(date.getDate()).padStart(2, '0');
-                        return `${day} - ${month} - ${year}`;
+                        return `${day}-${month}-${year}`;
                     }
                     let RiwayatObstetrikHtml = `
-                    <table class="table table-borderless" style="width: 25%; margin-bottom: 0px;">
-                    <h5><strong>Riwayat Obstetrik</strong></h5>
-                    <thead>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Gravida</td>
-                            <td>: ${data.gravida}</td>
-                        </tr>
-                        <tr>
-                            <td>Partus</td>
-                            <td>: ${data.partus}</td>
-                        </tr>
-                        <tr>
-                            <td>Abortus</td>
-                            <td>: ${data.abortus}</td>
-                        </tr>
-                        <tr>
-                            <td>Hidup</td>
-                            <td>: ${data.hidup}</td>
-                        </tr>
-                    </tbody>
-                </table><table class="table table-borderless" style="width: 100%;">
-                    <thead>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="width: 49%;">Riwayat Komplikasi Kebidanan</td>
-                            <td>: ${data.rwyt_komplikasi}</td>
-                        </tr>
-                        <tr>
-                            <td style="width: 49%;">Penyakit Kronis dan Alergi</td>
-                            <td>: ${data.pnykt_kronis_alergi}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            `;
+                    <div class="table-responsive">
+                        <h5><strong>Riwayat Obstetrik</strong></h5>
+                        <table class="table table-borderless">
+                            <thead>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td >Gravida</td>
+                                    <td >${data.gravida}</td>
+                                </tr>
+                                <tr>
+                                    <td>Partus</td>
+                                    <td>${data.partus}</td>
+                                </tr>
+                                <tr>
+                                    <td>Abortus</td>
+                                    <td>${data.abortus}</td>
+                                </tr>
+                                <tr>
+                                    <td>Hidup</td>
+                                    <td>${data.hidup}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+            `;    
+                let RiwayatObstetrikLanjutHtml = `
+                    <div>
+                        <p>Riwayat Komplikasi Kebidanan: ${data.rwyt_komplikasi}</p>                    
+                        <p>Penyakit Kronis dan Alergi: ${data.pnykt_kronis_alergi}</p>
+                    </div>
+                        
+            `;    
                     let PemeriksaanBidanHtml = `
-                <table class="table table-bordered">
-                    <h5><strong>Pemeriksaan Bidan</strong></h5>
-                    <thead>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Tanggal Periks</td>
-                            <td class="text-center">${formatDate(data.tgl_periksa)}</td>
-                        </tr>
-                        <tr>
-                            <td>Tanggal HPHT</td>
-                            <td class="text-center">${formatDate(data.tgl_hpht)}</td>
-                            </tr>
-                        <tr>
-                            <td>Taksiran Persalinan</td>
-                            <td class="text-center">${formatDate(data.tksrn_persalinan)}</td>
-                        </tr>
-                        <tr>
-                            <td>Persalinan Sebelumnya</td>
-                            <td class="text-center">${formatDate(data.prlnan_sebelum)}</td>
-                        </tr>
-                        <tr>
-                            <td>BB sebelum hamil</td>
-                            <td class="text-center">${data.berat_badan} Kg</td>
-                        </tr>
-                        <tr>
-                            <td>Tinggi Badan</td>
-                            <td class="text-center">${data.tinggi_badan} Cm</td>
-                        </tr>
-                        <tr>
-                            <td>Buku KIA</td>
-                            <td class="text-center">${data.buku_kia} Cm</td>
-                        </tr>
-                    </tbody>
-                </table>
+                    <div class="table-responsive">
+                        <h5><strong>Pemeriksaan Bidan</strong></h5>
+                        <table class="table table-borderless">
+                            <thead>                                
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Tanggal Periksa</td>
+                                    <td>${formatDate(data.tgl_periksa)}</td>
+                                    <td>BB Sebelum Hamil</td>
+                                    <td>${data.berat_badan} Kg</td>
+                                </tr>
+                                <tr>
+                                    <td>Tanggal HPHT</td>
+                                    <td>${formatDate(data.tgl_hpht)}</td>
+                                    <td>Tinggi Badan</td>
+                                    <td>${data.tinggi_badan} Cm</td>
+                                </tr>
+                                <tr>
+                                    <td>Taksiran Persalinan</td>
+                                    <td>${formatDate(data.tksrn_persalinan)}</td>
+                                    <td>Buku Kia</td>
+                                    <td>${data.buku_kia}</td>
+                                </tr>
+                                <tr>
+                                    <td>Persalinan Sebelumnya</td>
+                                    <td>${formatDate(data.prlnan_sebelum)}</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
             `;
                     let RencanaPersalinanHtml = `
-                <table class="table table-bordered">
-                    <h5><strong>Rencana Persalinan</strong></h5>
-                    <thead>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <th>Tanggal</th>
-                        <th>Penolong</th>
-                        <th>Tempat</th>
-                        <th>Pendamping</th>
-                        <th>Transportasi</th>
-                        <th>Pendonor</th>
-                    </tr>
-                    <tr>
-                        <td>${formatDate(data.tgl_persalinan)}</td>
-                        <td>${data.pendonor}</td>
-                        <td>${data.tempat}</td>
-                        <td>${data.pendamping}</td>
-                        <td>${data.transport}</td>
-                        <td>${data.pendonor}</td>
-                    </tr>
-                    </tbody>
-                </table>
-            `;
-                    let tableHtml = `
-                <div class="row">
-                    <div class="col-md-6">
-                        ${RiwayatObstetrikHtml}
+                    <div class="table-responsive">
+                        <h5><strong>Rencana Persalinan</strong></h5>
+                        <table class="table table-borderless">
+                            <thead>
+                                <tr>
+                                    <th>Tanggal</th>
+                                    <th>Penolong</th>
+                                    <th>Tempat</th>
+                                    <th>Pendamping</th>
+                                    <th>Transportasi</th>
+                                    <th>Pendonor</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>${formatDate(data.tgl_persalinan)}</td>
+                                    <td>${data.penolong}</td>
+                                    <td>${data.tempat}</td>
+                                    <td>${data.pendamping}</td>
+                                    <td>${data.transport}</td>
+                                    <td>${data.pendonor}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <div class="col-md-6">
-                        ${PemeriksaanBidanHtml}
+            `;
+
+                    let tableHtml = `
+                    <div class="container">
+                    <div class="row justify-content-between"> <!-- Mengatur posisi horizontal ke kanan kiri -->
+                        <div class="col-md-4">
+                            ${RiwayatObstetrikHtml}                
+                        </div>
+                        <div class="col-md-8">
+                            ${PemeriksaanBidanHtml}
+                        </div>
+                        <div class="col-md-8">
+                            ${RiwayatObstetrikLanjutHtml}                
+                        </div>
                     </div>
                 </div>
-                <div class="row mt-3">
-                    <div class="col-md-12">
-                        ${RencanaPersalinanHtml}
+                <div class="container mt-3">
+                    <div class="row justify-content-center"> <!-- Mengatur posisi horizontal ke tengah -->
+                        <div class="col-md-10">
+                            ${RencanaPersalinanHtml}
+                        </div>
                     </div>
                 </div>
             `;
@@ -792,6 +793,7 @@
                 }
             });
         });
+
 
         $('#ropb-table').on('click', '.edit-btn', function() {
             let id = $(this).data('id');
