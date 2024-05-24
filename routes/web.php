@@ -69,6 +69,13 @@ Route::prefix('rekam_medis')->group(function () {
     Route::get('rekam_medis/edit_ropb/{id}', [RekamMedisController::class, 'edit_ropb'])->name('rekam_medis.edit_ropb');
     Route::put('rekam_medis/update_ropb/{id}', [RekamMedisController::class, 'update_ropb'])->name('rekam_medis.update_ropb'); 
     Route::delete('rekam_medis/destroy_ropb/{id}', [RekamMedisController::class, 'destroy_ropb'])->name('rekam_medis.destroy_ropb');
+    ///////////// PEMERIKSAAN DOKTER TM1 /////////////
+    Route::get('tm1', [RekamMedisController::class, 'tm1'])->name('rekam_medis.tm1');
+    Route::post('store-tm1', [RekamMedisController::class, 'store_tm1'])->name('rekam_medis.store_tm1');
+    Route::get('data-tm1', [RekamMedisController::class, 'getData_tm1'])->name('rekam_medis.data_tm1');
+    Route::get('rekam_medis/show_tm1/{id}', [RekamMedisController::class, 'show_tm1'])->name('rekam_medis.show_tm1');
+    Route::get('rekam_medis/edit_tm1/{id}', [RekamMedisController::class, 'edit_tm1'])->name('rekam_medis.edit_tm1');
+    Route::delete('rekam_medis/destroy_tm1/{id}', [RekamMedisController::class, 'destroy_tm1'])->name('rekam_medis.destroy_tm1');
 });
 
 

@@ -486,7 +486,7 @@
 
         $(document).ready(function() {
             $('#ropb-table').DataTable({
-                processing: false,
+                processing: true,
                 serverSide: true,
                 ajax: '{{ route('rekam_medis.data_ropb') }}',
                 scrollX: true,

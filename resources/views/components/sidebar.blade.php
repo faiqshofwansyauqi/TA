@@ -54,15 +54,25 @@
                         <span>Riwayat Obstetrik dan Pemeriksaan Bidan</span>
                     </a>
                 </li>
+                <li>
                     <a href="{{ route('rekam_medis.persalinan') }}"
                         class="{{ request()->is(['rekam_medis.persalinan', 'rekam_medis/persalinan']) ? 'active' : '' }}">
                         <i class="bi bi-circle"></i>
                         <span>Persalinan</span>
                     </a>
+                </li>
+                <li>
+                    <a href="{{ route('rekam_medis.tm1') }}"
+                        class="{{ request()->is(['rekam_medis.tm1', 'rekam_medis/tm1']) ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i>
+                        <span>Pemeriksaan Dokter TM1</span>
+                    </a>
+                </li>
             </ul>
         </li>
         <li class="nav-item">
-            <a class="nav-link {{ request()->is(['master.pasien','master/pasien']) ? '' : 'collapsed' }}" href="{{ route('master.pasien') }}">
+            <a class="nav-link {{ request()->is(['master.pasien', 'master/pasien']) ? '' : 'collapsed' }}"
+                href="{{ route('master.pasien') }}">
                 <i class="bi bi-people-fill"></i>
                 <span>Dashboard</span>
             </a>
