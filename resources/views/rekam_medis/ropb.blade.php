@@ -179,8 +179,8 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6 mb-2">
-                                            <label for="Penolong" class="form-label">Penolong</label>
-                                            <select class="form-select" id="Penolong" name="Penolong" required>
+                                            <label for="penolong" class="form-label">Penolong</label>
+                                            <select class="form-select" id="penolong" name="penolong" required>
                                                 <option value="">Pilih Penolong</option>
                                                 <option value="Keluarga">Keluarga</option>
                                                 <option value="Dukun">Dukun</option>
@@ -366,6 +366,82 @@
                                             <option value="">Pilih Keadaan Ibu</option>
                                             <option value="Memiliki">Memiliki</option>
                                             <option value="Tidak">Tidak</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card col-11 mx-4 ">
+                                <div class="card-body">
+                                    <h5 class="card-title">Rencana Persalinan</h5>
+                                    <div class="row">
+                                        <div class="col-md-12 mb-2">
+                                            <label for="edit_tgl_persalinan" class="form-label">Tanggal Persalinan</label>
+                                            <input type="date" class="form-control" id="edit_tgl_persalinan"
+                                                name="tgl_persalinan" required>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-2">
+                                            <label for="edit_penolong" class="form-label">Penolong</label>
+                                            <select class="form-select" id="edit_penolong" name="penolong" required>
+                                                <option value="">Pilih Penolong</option>
+                                                <option value="Keluarga">Keluarga</option>
+                                                <option value="Dukun">Dukun</option>
+                                                <option value="Dr. Umum">Dr. Umum</option>
+                                                <option value="Dr. Spesialis">Dr. Spesialis</option>
+                                                <option value="Lain-lain">Lain-lain</option>
+                                                <option value="Tidak ad">Tidak ad</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 mb-2">
+                                            <label for="edit_tempat" class="form-label">Tempat</label>
+                                            <select class="form-select" id="edit_tempat" name="tempat" required>
+                                                <option value="">Pilih Tempat</option>
+                                                <option value="Rumah">Rumah</option>
+                                                <option value="Poskesdas">Poskesdas</option>
+                                                <option value="Pustu">Pustu</option>
+                                                <option value="Puskesmas">Puskesmas</option>
+                                                <option value="RB">RB</option>
+                                                <option value="RSIA">RSIA</option>
+                                                <option value="RS">RS</option>
+                                                <option value="RS ODHA">RS ODHA</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-2">
+                                            <label for="edit_pendamping" class="form-label">Pendamping</label>
+                                            <select class="form-select" id="edit_pendamping" name="pendamping" required>
+                                                <option value="">Pilih Pendamping</option>
+                                                <option value="Suami">Suami</option>
+                                                <option value="Keluarga">Keluarga</option>
+                                                <option value="Teman">Teman</option>
+                                                <option value="Tetangga">Tetangga</option>
+                                                <option value="Lain-lain">Lain-lain</option>
+                                                <option value="Tidak ada">Tidak ada</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 mb-2">
+                                            <label for="edit_transport" class="form-label">Transportasi</label>
+                                            <select class="form-select" id="edit_transport" name="transport" required>
+                                                <option value="">Pilih Transportasi</option>
+                                                <option value="Motor">Motor</option>
+                                                <option value="Mobil">Mobil</option>
+                                                <option value="Ambulans">Ambulans</option>
+                                                <option value="Umum">Umum</option>
+                                                <option value="Lain-lain">Lain-lain</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-2">
+                                        <label for="edit_pendonor" class="form-label">Calon donor darah</label>
+                                        <select class="form-select" id="edit_pendonor" name="pendonor" required>
+                                            <option value="">Pilih Calon donor darah</option>
+                                            <option value="Suami">Suami</option>
+                                            <option value="Keluarga">Keluarga</option>
+                                            <option value="Teman">Teman</option>
+                                            <option value="Lain-lain">Lain-lain</option>
+                                            <option value="Tidak ada">Tidak ada</option>
                                         </select>
                                     </div>
                                 </div>
@@ -573,6 +649,12 @@
                     $('#edit_penolong').val(data.penolong);
                     $('#edit_cara_persalinan').val(data.cara_persalinan);
                     $('#edit_buku_kia').val(data.buku_kia);
+                    $('#edit_tgl_persalinan').val(data.tgl_persalinan);
+                    $('#edit_penolong').val(data.penolong);
+                    $('#edit_tempat').val(data.tempat);
+                    $('#edit_pendamping').val(data.pendamping);
+                    $('#edit_transport').val(data.transport);
+                    $('#edit_pendonor').val(data.pendonor);
                     $('#editForm').attr('action', '{{ route('rekam_medis.update_ropb', ':id') }}'
                         .replace(
                             ':id', id));

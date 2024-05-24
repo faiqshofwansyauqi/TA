@@ -14,7 +14,8 @@ class RekamMedisController extends Controller
     public function Persalinan()
     {
         $persalinan = Persalinan::all();
-        return view('rekam_medis.persalinan', compact('persalinan'));
+        $ibus = Ibu::all();
+        return view('rekam_medis.persalinan', compact('persalinan','ibus'));
     }
     public function store_persalinan(Request $request)
     {
@@ -69,7 +70,7 @@ class RekamMedisController extends Controller
             'alamat_bersalin' => $request->alamat_bersalin,
         ]);
 
-        return redirect()->back()->with('success', 'Data anak berhasil ditambahkan');
+        return redirect()->back()->with('success', 'Data persalinan berhasil ditambahkan');
     }
     public function update_persalinan(Request $request, $id)
     {
@@ -130,7 +131,7 @@ class RekamMedisController extends Controller
         $persalinan = Persalinan::findOrFail($id_persalinan);
         $persalinan->delete();
 
-        return redirect()->back()->with('success', 'Data anak berhasil dihapus');
+        return redirect()->back()->with('success', 'Data persalinan berhasil dihapus');
     }
     public function getData_persalinan()
     {
@@ -150,18 +151,13 @@ class RekamMedisController extends Controller
         }])->find($id);
         return response()->json($persalinan);
     }
-    public function showIbuPage_persalinan()
-    {
-        $ibus = Ibu::all();
-        return view('rekam_medis.persalinan')->with('ibus', $ibus);
-    }
-
     //////// RIWAYAT OBSTETRIK DAN PEMERIKSAAN BIDAN ////////
 
     public function Ropb()
     {
         $ropb = Ropb::all();
-        return view('rekam_medis.ropb', compact('ropb'));
+        $ibus = Ibu::all();;
+        return view('rekam_medis.ropb', compact('ropb', 'ibus'));
     }
     public function store_ropb(Request $request)
     {
@@ -169,18 +165,24 @@ class RekamMedisController extends Controller
         $request->validate([
             'NIK' => 'required',
             'gravida' => 'required',
-            'partus' => 'required',            
-            'abortus' => 'required',            
-            'hidup' => 'required',            
-            'rwyt_komplikasi' => 'required',            
-            'pnykt_kronis_alergi' => 'required',            
-            'tgl_periksa' => 'required',            
-            'tgl_hpht' => 'required',            
-            'tksrn_persalinan' => 'required',            
-            'prlnan_sebelum' => 'required',            
-            'berat_badan' => 'required',            
-            'tinggi_badan' => 'required',            
-            'buku_kia' => 'required',            
+            'partus' => 'required',
+            'abortus' => 'required',
+            'hidup' => 'required',
+            'rwyt_komplikasi' => 'required',
+            'pnykt_kronis_alergi' => 'required',
+            'tgl_periksa' => 'required',
+            'tgl_hpht' => 'required',
+            'tksrn_persalinan' => 'required',
+            'prlnan_sebelum' => 'required',
+            'berat_badan' => 'required',
+            'tinggi_badan' => 'required',
+            'buku_kia' => 'required',
+            'tgl_persalinan' => 'required',
+            'penolong' => 'required',
+            'tempat' => 'required',
+            'pendamping' => 'required',
+            'transport' => 'required',
+            'pendonor' => 'required',
         ]);
 
         Ropb::create([
@@ -198,6 +200,12 @@ class RekamMedisController extends Controller
             'berat_badan' => $request->berat_badan,
             'tinggi_badan' => $request->tinggi_badan,
             'buku_kia' => $request->buku_kia,
+            'tgl_persalinan' => $request->tgl_persalinan,
+            'penolong' => $request->penolong,
+            'tempat' => $request->tempat,
+            'pendamping' => $request->pendamping,
+            'transport' => $request->transport,
+            'pendonor' => $request->pendonor,
         ]);
         return redirect()->back()->with('success', 'Data berhasil ditambahkan');
     }
@@ -207,18 +215,24 @@ class RekamMedisController extends Controller
         $request->validate([
             'NIK' => 'required',
             'gravida' => 'required',
-            'partus' => 'required',            
-            'abortus' => 'required',            
-            'hidup' => 'required',            
-            'rwyt_komplikasi' => 'required',            
-            'pnykt_kronis_alergi' => 'required',            
-            'tgl_periksa' => 'required',            
-            'tgl_hpht' => 'required',            
-            'tksrn_persalinan' => 'required',            
-            'prlnan_sebelum' => 'required',            
-            'berat_badan' => 'required',            
-            'tinggi_badan' => 'required',            
-            'buku_kia' => 'required',            
+            'partus' => 'required',
+            'abortus' => 'required',
+            'hidup' => 'required',
+            'rwyt_komplikasi' => 'required',
+            'pnykt_kronis_alergi' => 'required',
+            'tgl_periksa' => 'required',
+            'tgl_hpht' => 'required',
+            'tksrn_persalinan' => 'required',
+            'prlnan_sebelum' => 'required',
+            'berat_badan' => 'required',
+            'tinggi_badan' => 'required',
+            'buku_kia' => 'required',
+            'tgl_persalinan' => 'required',
+            'penolong' => 'required',
+            'tempat' => 'required',
+            'pendamping' => 'required',
+            'transport' => 'required',
+            'pendonor' => 'required',
         ]);
         $ropb = Ropb::findOrFail($id);
         $ropb->update([
@@ -236,8 +250,14 @@ class RekamMedisController extends Controller
             'berat_badan' => $request->berat_badan,
             'tinggi_badan' => $request->tinggi_badan,
             'buku_kia' => $request->buku_kia,
+            'tgl_persalinan' => $request->tgl_persalinan,
+            'penolong' => $request->penolong,
+            'tempat' => $request->tempat,
+            'pendamping' => $request->pendamping,
+            'transport' => $request->transport,
+            'pendonor' => $request->pendonor,
         ]);
-        return redirect()->back()->with('success', 'Data berhasil ditambahkan');
+        return redirect()->back()->with('success', 'Data berhasil diperbaharui');
     }
     public function getData_ropb()
     {
@@ -245,22 +265,16 @@ class RekamMedisController extends Controller
 
         return DataTables::of($ropb)->make(true);
     }
-    public function showIbuPage_ropb()
-    {
-        $ibus = Ibu::all();
-        return view('rekam_medis.ropb')->with('ibus', $ibus);
-    }
     public function destroy_ropb($id)
     {
         $ropb = Ropb::findOrFail($id);
         $ropb->delete();
 
-        return redirect()->back()->with('success', 'Data anak berhasil dihapus');
+        return redirect()->back()->with('success', 'Data berhasil dihapus');
     }
     public function edit_ropb($id)
     {
         $ropb = Ropb::findOrFail($id);
         return response()->json($ropb);
     }
-
 }

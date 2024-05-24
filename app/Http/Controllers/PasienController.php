@@ -71,7 +71,7 @@ class PasienController extends Controller
         ]);
         
 
-        return redirect()->back()->with('success', 'Data anak berhasil ditambahkan');
+        return redirect()->back()->with('success', 'Data ibu berhasil ditambahkan');
     }
 
     public function getData_ibu()
@@ -134,7 +134,7 @@ class PasienController extends Controller
             'telp' => $request->telp,
         ]);
 
-        return redirect()->back()->with('success', 'Data anak berhasil diupdate');
+        return redirect()->back()->with('success', 'Data ibu berhasil diperbaharui');
     }
 
     public function edit_ibu($NIK)
@@ -148,14 +148,15 @@ class PasienController extends Controller
         $ibu = Ibu::findOrFail($NIK);
         $ibu->delete();
 
-        return redirect()->back()->with('success', 'Data anak berhasil dihapus');
+        return redirect()->back()->with('success', 'Data ibu berhasil dihapus');
     }
 
-    ////// ANAK //////
+    //////////// ANAK ////////////
     public function Anak()
     {
         $anak = Anak::all();
-        return view('pasien.anak', compact('anak'));
+        $ibus = Ibu::all();
+        return view('pasien.anak', compact('anak','ibus'));
     }
 
     public function store_anak(Request $request)
@@ -215,13 +216,11 @@ class PasienController extends Controller
         ]);
         return redirect()->back()->with('success', 'Data anak berhasil diupdate');
     }
-
     public function edit_anak($id_anak)
     {
         $anak = Anak::findOrFail($id_anak);
         return response()->json($anak);
     }
-
     public function destroy_anak($id_anak)
     {
         $anak = Anak::findOrFail($id_anak);
@@ -234,10 +233,5 @@ class PasienController extends Controller
         $anak = Anak::select('*');
 
         return DataTables::of($anak)->make(true);
-    }
-    public function showAnakPage()
-    {
-        $ibus = Ibu::all();
-        return view('pasien.anak')->with('ibus', $ibus);
     }
 }

@@ -9,6 +9,7 @@ class Ropb extends Model
     protected $table = 'ropb';
     protected $primaryKey = 'id';
     protected $fillable = [
+        'NIK',
         'gravida',
         'partus',
         'abortus',
@@ -22,8 +23,11 @@ class Ropb extends Model
         'berat_badan',
         'tinggi_badan',
         'buku_kia',
-        'NIK',
+        'tgl_persalinan',
+        'penolong',
+        'tempat',
+        'pendamping',
+        'transport',
+        'pendonor',
     ];
-    
-    
 }
