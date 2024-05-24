@@ -3,12 +3,12 @@
 @section('content')
     <div class="d-flex justify-content-between align-items-center">
         <div class="pagetitle">
-            <h1>Riwayat Obstetrik dan Pemeriksaan Bidan</h1>
+            <h1>Riwayat Obstetrik, Pemeriksaan Bidan dan Rencana Persalinan</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/">Home</a></li>
                     <li class="breadcrumb-item active">Rekam Medis</li>
-                    <li class="breadcrumb-item active">Riwayat Obstetrik dan Pemeriksaan Bidan</li>
+                    <li class="breadcrumb-item active">Riwayat Obstetrik, Pemeriksaan Bidan dan Rencana Persalinan</li>
                 </ol>
             </nav>
         </div>
@@ -56,7 +56,7 @@
         <div class="modal-dialog modal-dialog-scrollable modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-4 fw-bold" id="ModalInput">Input Riwayat Obstetrik dan Pemeriksaan Bidan</h1>
+                    <h3 class="modal-title fs-4 fw-bold" id="ModalInput">Input Riwayat Obstetrik, Pemeriksaan Bidan dan Rencana Persalinan</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -255,7 +255,7 @@
         <div class="modal-dialog modal-dialog-scrollable modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-4 fw-bold" id="ModalEdit">Edit Persalinan</h1>
+                    <h3 class="modal-title fs-4 fw-bold" id="ModalEdit">Edit Riwayat Obstetrik, Pemeriksaan Bidan dan Rencana Persalinan </h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
                 </div>
                 <div class="modal-body">

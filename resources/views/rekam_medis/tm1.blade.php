@@ -70,7 +70,7 @@
                         @csrf
                         <div class="card col-12">
                             <div class="card-body">
-                                <h5 class="card-title">Form Pemeriksaan Fisik</h5>
+                                <h5 class="card-title"></h5>
                                 <div class="row">
                                     <div class="col-md-4 mb-2">
                                         <label for="NIK" class="form-label">Ibu</label>
