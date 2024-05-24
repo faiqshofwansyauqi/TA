@@ -453,6 +453,27 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="modalView" tabindex="-1" aria-labelledby="modalViewLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-4 fw-bold" id="modalViewLabel">Detail Persalinan</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table" id="detailTable">
+                        <thead>
+                            <tr>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('script')
     <script>
@@ -589,26 +610,30 @@
                         orderable: false,
                         searchable: false,
                         render: function(data, type, row) {
-                            let editUrl = '{{ route('rekam_medis.edit_ropb', ':id') }}'.replace(
-                                ':id',
-                                row.id);
+                            let viewUrl = '{{ route('rekam_medis.show_ropb', ':id') }}'
+                                .replace(':id', row.id);
+                            let editUrl = '{{ route('rekam_medis.edit_ropb', ':id') }}'
+                                .replace(':id', row.id);
                             let deleteUrl = '{{ route('rekam_medis.destroy_ropb', ':id') }}'
-                                .replace(
-                                    ':id', row.id);
+                                .replace(':id', row.id);
                             return `
-                    <div style="display: flex; align-items: center;">
-                        <button class="btn btn-sm btn-success edit-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalEdit">
+                            <div style="display: flex; align-items: center;">
+                            <button class="btn btn-sm btn-primary view-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalView">
+                                <i class="bi bi-eye-fill"></i>
+                            </button>
+                            <div style="display: flex; align-items: center;">
+                            <button class="btn btn-sm btn-success edit-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalEdit">
                             <i class="bi bi-pencil-fill"></i>
-                        </button>
-                        <form action="${deleteUrl}" method="POST" style="display:inline; margin-left: 5px;">
+                            </button>
+                            <form action="${deleteUrl}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">
                                 <i class="bi bi-trash3-fill"></i>
                             </button>
-                        </form>
-                    </div>
-                    `;
+                            </form>
+                            </div>
+                            `;
                         }
                     }
                 ],
@@ -624,6 +649,147 @@
                     targets: [8, 9, 10, 11, 12, 13],
                     visible: false
                 }]
+            });
+        });
+
+        $('#ropb-table').on('click', '.view-btn', function() {
+            let id = $(this).data('id');
+            $.ajax({
+                url: '{{ route('rekam_medis.show_ropb', ':id') }}'.replace(':id', id),
+                method: 'GET',
+                success: function(data) {
+                    let namaIbu = data.ibu.nama_ibu;
+
+                    function formatDate(dateString) {
+                        // Handle empty or invalid date strings
+                        if (!dateString) return '';
+                        if (isNaN(new Date(dateString))) return 'Invalid date format';
+                        const date = new Date(dateString);
+                        const year = date.getFullYear();
+                        const month = String(date.getMonth() + 1).padStart(2,
+                            '0');
+                        const day = String(date.getDate()).padStart(2, '0');
+                        return `${day} - ${month} - ${year}`;
+                    }
+                    let RiwayatObstetrikHtml = `
+                    <table class="table table-borderless" style="width: 25%; margin-bottom: 0px;">
+                    <h5><strong>Riwayat Obstetrik</strong></h5>
+                    <thead>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Gravida</td>
+                            <td>: ${data.gravida}</td>
+                        </tr>
+                        <tr>
+                            <td>Partus</td>
+                            <td>: ${data.partus}</td>
+                        </tr>
+                        <tr>
+                            <td>Abortus</td>
+                            <td>: ${data.abortus}</td>
+                        </tr>
+                        <tr>
+                            <td>Hidup</td>
+                            <td>: ${data.hidup}</td>
+                        </tr>
+                    </tbody>
+                </table><table class="table table-borderless" style="width: 100%;">
+                    <thead>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="width: 49%;">Riwayat Komplikasi Kebidanan</td>
+                            <td>: ${data.rwyt_komplikasi}</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 49%;">Penyakit Kronis dan Alergi</td>
+                            <td>: ${data.pnykt_kronis_alergi}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            `;
+                    let PemeriksaanBidanHtml = `
+                <table class="table table-bordered">
+                    <h5><strong>Pemeriksaan Bidan</strong></h5>
+                    <thead>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Tanggal Periks</td>
+                            <td class="text-center">${formatDate(data.tgl_periksa)}</td>
+                        </tr>
+                        <tr>
+                            <td>Tanggal HPHT</td>
+                            <td class="text-center">${formatDate(data.tgl_hpht)}</td>
+                            </tr>
+                        <tr>
+                            <td>Taksiran Persalinan</td>
+                            <td class="text-center">${formatDate(data.tksrn_persalinan)}</td>
+                        </tr>
+                        <tr>
+                            <td>Persalinan Sebelumnya</td>
+                            <td class="text-center">${formatDate(data.prlnan_sebelum)}</td>
+                        </tr>
+                        <tr>
+                            <td>BB sebelum hamil</td>
+                            <td class="text-center">${data.berat_badan} Kg</td>
+                        </tr>
+                        <tr>
+                            <td>Tinggi Badan</td>
+                            <td class="text-center">${data.tinggi_badan} Cm</td>
+                        </tr>
+                        <tr>
+                            <td>Buku KIA</td>
+                            <td class="text-center">${data.buku_kia} Cm</td>
+                        </tr>
+                    </tbody>
+                </table>
+            `;
+                    let RencanaPersalinanHtml = `
+                <table class="table table-bordered">
+                    <h5><strong>Rencana Persalinan</strong></h5>
+                    <thead>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th>Tanggal</th>
+                        <th>Penolong</th>
+                        <th>Tempat</th>
+                        <th>Pendamping</th>
+                        <th>Transportasi</th>
+                        <th>Pendonor</th>
+                    </tr>
+                    <tr>
+                        <td>${formatDate(data.tgl_persalinan)}</td>
+                        <td>${data.pendonor}</td>
+                        <td>${data.tempat}</td>
+                        <td>${data.pendamping}</td>
+                        <td>${data.transport}</td>
+                        <td>${data.pendonor}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            `;
+                    let tableHtml = `
+                <div class="row">
+                    <div class="col-md-6">
+                        ${RiwayatObstetrikHtml}
+                    </div>
+                    <div class="col-md-6">
+                        ${PemeriksaanBidanHtml}
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        ${RencanaPersalinanHtml}
+                    </div>
+                </div>
+            `;
+                    $('#modalViewLabel').html(`Detail Persalinan Ibu ${namaIbu}`);
+                    $('#modalView .modal-body').html(tableHtml);
+                    $('#modalView').modal('show');
+                }
             });
         });
 

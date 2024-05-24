@@ -643,7 +643,7 @@
                             let deleteUrl = '{{ route('rekam_medis.destroy_persalinan', ':id') }}'
                                 .replace(':id', row.id_persalinan);
                             return `
-                        <div style="display: flex; align-items: center;">
+                            <div style="display: flex; align-items: center;">
                             <button class="btn btn-sm btn-primary view-btn" data-id="${row.id_persalinan}" data-bs-toggle="modal" data-bs-target="#modalView">
                                 <i class="bi bi-eye-fill"></i>
                             </button>
@@ -652,14 +652,14 @@
                                 <i class="bi bi-pencil-fill"></i>
                             </button>
                             <form action="${deleteUrl}" method="POST" class="delete-form">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">
-                        <i class="bi bi-trash3-fill"></i>
-                    </button>
-                </form>
-                        </div>
-                    `;
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">
+                                <i class="bi bi-trash3-fill"></i>
+                            </button>
+                            </form>
+                            </div>
+                            `;
                         }
                     }
                 ]

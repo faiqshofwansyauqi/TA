@@ -15,7 +15,7 @@ class RekamMedisController extends Controller
     {
         $persalinan = Persalinan::all();
         $ibus = Ibu::all();
-        return view('rekam_medis.persalinan', compact('persalinan','ibus'));
+        return view('rekam_medis.persalinan', compact('persalinan', 'ibus'));
     }
     public function store_persalinan(Request $request)
     {
@@ -144,13 +144,14 @@ class RekamMedisController extends Controller
         $persalinan = Persalinan::findOrFail($id_persalinan);
         return response()->json($persalinan);
     }
-    public function show_persalinan($id)
+    public function show_persalinan($id_persalinan)
     {
         $persalinan = Persalinan::with(['ibu' => function ($query) {
-            $query->select('NIK', 'nama_ibu');
-        }])->find($id);
+            $query->select('nama_ibu');
+        }])->find($id_persalinan);
         return response()->json($persalinan);
     }
+
     //////// RIWAYAT OBSTETRIK DAN PEMERIKSAAN BIDAN ////////
 
     public function Ropb()
@@ -275,6 +276,13 @@ class RekamMedisController extends Controller
     public function edit_ropb($id)
     {
         $ropb = Ropb::findOrFail($id);
+        return response()->json($ropb);
+    }
+    public function show_ropb($id)
+    {
+        $ropb = Ropb::with(['ibu' => function ($query) {
+            $query->select('nama_ibu');
+        }])->find($id);
         return response()->json($ropb);
     }
 }

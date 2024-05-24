@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\Ibu;
 class Ropb extends Model
 {
     protected $table = 'ropb';
@@ -30,4 +30,8 @@ class Ropb extends Model
         'transport',
         'pendonor',
     ];
+    public function ibu()
+    {
+        return $this->belongsTo(Ibu::class, 'NIK', 'nama_ibu');
+    }
 }
