@@ -75,6 +75,8 @@ Route::prefix('rekam_medis')->group(function () {
     Route::get('data-tm1', [RekamMedisController::class, 'getData_tm1'])->name('rekam_medis.data_tm1');
     Route::get('rekam_medis/show_tm1/{id}', [RekamMedisController::class, 'show_tm1'])->name('rekam_medis.show_tm1');
     Route::get('rekam_medis/edit_tm1/{id}', [RekamMedisController::class, 'edit_tm1'])->name('rekam_medis.edit_tm1');
+    Route::put('rekam_medis/update_tm1/{id}', [RekamMedisController::class, 'update_tm1'])->name('rekam_medis.update_tm1');
+    Route::put('rekam_medis/update_tm1/{id}', [RekamMedisController::class, 'update_tm1'])->name('rekam_medis.update_tm1'); 
     Route::delete('rekam_medis/destroy_tm1/{id}', [RekamMedisController::class, 'destroy_tm1'])->name('rekam_medis.destroy_tm1');
 });
 

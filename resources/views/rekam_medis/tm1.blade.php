@@ -237,6 +237,188 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="ModalEdit" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title fs-4 fw-bold" id="ModalEdit">Pemeriksaan Fisik</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editForm" method="post" autocomplete="off">
+                        @csrf
+                        @method('PUT')
+                        <div class="card col-12">
+                            <div class="card-body">
+                                <h5 class="card-title"></h5>
+                                <div class="row">
+                                    <div class="col-md-4 mb-2">
+                                        <label for="edit_NIK" class="form-label">Ibu</label>
+                                        <select class="form-control" id="edit_NIK" name="NIK" required>
+                                            <option value="">Pilih Ibu</option>
+                                            @foreach ($ibus as $ibu)
+                                                <option value="{{ $ibu->nama_ibu }}">{{ $ibu->nama_ibu }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 mb-2">
+                                        <label for="edit_konjungtiva" class="form-label">Konjungtiva</label>
+                                        <select class="form-select" id="edit_konjungtiva" name="konjungtiva" required>
+                                            <option value="">Pilih Konjungtiva</option>
+                                            <option value="Normal">Normal</option>
+                                            <option value="Tidak">Tidak</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 mb-2">
+                                        <label for="edit_sklera" class="form-label">Sklera</label>
+                                        <select class="form-select" id="edit_sklera" name="sklera" required>
+                                            <option value="">Pilih Sklera</option>
+                                            <option value="Normal">Normal</option>
+                                            <option value="Tidak">Tidak</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-2">
+                                        <label for="edit_kulit" class="form-label">Kulit</label>
+                                        <select class="form-select" id="edit_kulit" name="kulit" required>
+                                            <option value="">Pilih Kulit</option>
+                                            <option value="Normal">Normal</option>
+                                            <option value="Tidak">Tidak</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <label for="edit_leher" class="form-label">Leher</label>
+                                        <select class="form-select" id="edit_leher" name="leher" required>
+                                            <option value="">Pilih Leher</option>
+                                            <option value="Normal">Normal</option>
+                                            <option value="Tidak">Tidak</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 mb-2">
+                                        <label for="edit_gigi_mulut" class="form-label">Gigi/Mulut</label>
+                                        <select class="form-select" id="edit_gigi_mulut" name="gigi_mulut" required>
+                                            <option value="">Pilih Gigi/Mulut</option>
+                                            <option value="Normal">Normal</option>
+                                            <option value="Tidak">Tidak</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 mb-2">
+                                        <label for="edit_tht" class="form-label">THT</label>
+                                        <select class="form-select" id="edit_tht" name="tht" required>
+                                            <option value="">Pilih THT</option>
+                                            <option value="Normal">Normal</option>
+                                            <option value="Tidak">Tidak</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 mb-2">
+                                        <label for="edit_jantung" class="form-label">Jantung</label>
+                                        <select class="form-select" id="edit_jantung" name="jantung" required>
+                                            <option value="">Pilih Jantung</option>
+                                            <option value="Normal">Normal</option>
+                                            <option value="Tidak">Tidak</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 mb-2">
+                                        <label for="edit_paru" class="form-label">Paru</label>
+                                        <select class="form-select" id="edit_paru" name="paru" required>
+                                            <option value="">Pilih Paru</option>
+                                            <option value="Normal">Normal</option>
+                                            <option value="Tidak">Tidak</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 mb-2">
+                                        <label for="edit_perut" class="form-label">Perut</label>
+                                        <select class="form-select" id="edit_perut" name="perut" required>
+                                            <option value="">Pilih Perut</option>
+                                            <option value="Normal">Normal</option>
+                                            <option value="Tidak">Tidak</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 mb-2">
+                                        <label for="edit_tungkai" class="form-label">Tungkai</label>
+                                        <select class="form-select" id="edit_tungkai" name="tungkai" required>
+                                            <option value="">Pilih Tungkai</option>
+                                            <option value="Normal">Normal</option>
+                                            <option value="Tidak">Tidak</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3 mb-2">
+                                        <label for="edit_gs" class="form-label">GS</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="edit_gs" name="gs"
+                                                required>
+                                            <span class="input-group-text">Cm</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 mb-2">
+                                        <label for="edit_crl" class="form-label">CRL</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="edit_crl" name="crl"
+                                                required>
+                                            <span class="input-group-text">Cm</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 mb-2">
+                                        <label for="edit_djj" class="form-label">DJJ</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="edit_djj" name="djj"
+                                                required>
+                                            <span class="input-group-text">dpm</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 mb-2">
+                                        <label for="edit_usia_kehamilan" class="form-label">Usia Kehamilan</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="edit_usia_kehamilan"
+                                                name="usia_kehamilan" required>
+                                            <span class="input-group-text">mgg</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-2">
+                                        <label for="edit_tkrsn_persalinan" class="form-label">Taksiran Persalinan</label>
+                                        <input type="date" class="form-control" id="edit_tkrsn_persalinan"
+                                            name="tkrsn_persalinan" required>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <label for="edit_rekomendasi" class="form-label">Rekomendasi</label>
+                                        <select class="form-select" id="edit_rekomendasi" name="rekomendasi" required>
+                                            <option value="">Pilih Rekomendasi</option>
+                                            <option value="ANC dapat dilanjutkan di FKTP">ANC dapat dilanjutkan di FKTP
+                                            </option>
+                                            <option value="Rujuk FKRTL">Rujuk FKRTL</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mb-2">
+                                    <label for="edit_skrining" class="form-label">Skrining Preeklamasi</label>
+                                    <input type="text" class="form-control" id="edit_skrining" name="skrining"
+                                        required>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="edit_kesimpulan" class="form-label">Kesimpulan</label>
+                                    <input type="text" class="form-control" id="edit_kesimpulan" name="kesimpulan"
+                                        required>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('script')
     <script>
@@ -400,6 +582,39 @@
                     targets: [11, 12, 13, 14, 15, 16, 17, 18],
                     visible: false
                 }]
+            });
+        });
+
+        $('#tm1-table').on('click', '.edit-btn', function() {
+            let id = $(this).data('id');
+            $.ajax({
+                url: '{{ route('rekam_medis.edit_tm1', ':id') }}'.replace(':id', id),
+                method: 'GET',
+                success: function(data) {
+                    $('#edit_NIK').val(data.NIK);
+                    $('#edit_konjungtiva').val(data.konjungtiva);
+                    $('#edit_sklera').val(data.sklera);
+                    $('#edit_kulit').val(data.kulit);
+                    $('#edit_leher').val(data.leher);
+                    $('#edit_gigi_mulut').val(data.gigi_mulut);
+                    $('#edit_tht').val(data.tht);
+                    $('#edit_jantung').val(data.jantung);
+                    $('#edit_paru').val(data.paru);
+                    $('#edit_perut').val(data.perut);
+                    $('#edit_tungkai').val(data.tungkai);
+                    $('#edit_gs').val(data.gs);
+                    $('#edit_crl').val(data.crl);
+                    $('#edit_djj').val(data.djj);
+                    $('#edit_usia_kehamilan').val(data.usia_kehamilan);
+                    $('#edit_tkrsn_persalinan').val(data.tkrsn_persalinan);
+                    $('#edit_skrining').val(data.skrining);
+                    $('#edit_kesimpulan').val(data.kesimpulan);
+                    $('#edit_rekomendasi').val(data.rekomendasi);
+                    $('#editForm').attr('action', '{{ route('rekam_medis.update_tm1', ':id') }}'
+                        .replace(
+                            ':id', id));
+                    $('#modalEdit').modal('show');
+                }
             });
         });
     </script>
