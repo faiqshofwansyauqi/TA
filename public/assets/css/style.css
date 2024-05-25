@@ -103,6 +103,26 @@ h6 {
   opacity: 1;
 }
 
+.table-outside {
+  border-collapse: collapse;
+}
+
+.table-outside th {
+  border: none;
+}
+.table-outside tr {
+  border: 1px solid #999999; /* Atur warna dan ketebalan garis sesuai kebutuhan */
+}
+
+.table-outside {
+  border: 1px solid #999999; /* Atur warna dan ketebalan garis sesuai kebutuhan */
+}
+
+.hidden-text {
+  display: none;
+}
+
+
 /*--------------------------------------------------------------
 # Override some default Bootstrap stylings
 --------------------------------------------------------------*/

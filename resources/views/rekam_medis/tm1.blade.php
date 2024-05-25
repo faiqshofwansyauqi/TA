@@ -419,6 +419,27 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="modalView" tabindex="-1" aria-labelledby="modalViewLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-4 fw-bold" id="modalViewLabel"></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table" id="detailTable">
+                        <thead>
+                            <tr>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('script')
     <script>
@@ -614,6 +635,181 @@
                         .replace(
                             ':id', id));
                     $('#modalEdit').modal('show');
+                }
+            });
+        });
+
+        $('#tm1-table').on('click', '.view-btn', function() {
+            let id = $(this).data('id');
+            $.ajax({
+                url: '{{ route('rekam_medis.show_tm1', ':id') }}'.replace(':id', id),
+                method: 'GET',
+                success: function(data) {
+                    let namaIbu = data.ibu.nama_ibu;
+
+                    function formatDate(dateString) {
+                        if (!dateString) return '';
+                        if (isNaN(new Date(dateString))) return 'Invalid date format';
+                        const date = new Date(dateString);
+                        const year = date.getFullYear();
+                        const month = String(date.getMonth() + 1).padStart(2, '0');
+                        const day = String(date.getDate()).padStart(2, '0');
+                        return `${day} - ${month} - ${year}`;
+                    }
+                    let Table1Html = `
+                    <div class="table-responsive">
+                    <h5><strong>Pemeriksaan Fisik</strong></h5>
+                    <table class="table table-outside">
+                        <thead>                          
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="120">Konjungtiva</td>
+                                <td class="text-center" width="30">:</td>
+                                <td class="text-center">${(data.konjungtiva)}</td>
+                            </tr>
+                            <tr>
+                                <td width="120">Sklera</td>
+                                <td class="text-center" width="30">:</td>
+                                <td class="text-center">${(data.sklera)}</td>
+                            </tr>
+                            <tr>
+                                <td width="120">Kulit</td>
+                                <td class="text-center" width="30">:</td>
+                                <td class="text-center">${(data.kulit)}</td>
+                            </tr>
+                            <tr>
+                                <td width="120">Leher</td>
+                                <td class="text-center" width="30">:</td>
+                                <td class="text-center">${(data.leher)}</td>
+                            </tr>
+                            <tr>
+                                <td width="120">Gigi/mulut</td>
+                                <td class="text-center" width="30">:</td>
+                                <td class="text-center">${(data.gigi_mulut)}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            `;
+                    let Table2Html = `
+                    <div class="table-responsive">
+                        <h5 style="color: white;"><strong>Pemeriksaan Fisik</strong></h5>
+                    <table class="table table-outside">
+                        <thead>                          
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="120">THT</td>
+                                <td class="text-center" width="30">:</td>
+                                <td class="text-center">${(data.tht)}</td>
+                            </tr>
+                            <tr>
+                                <td width="120">Jantung</td>
+                                <td class="text-center" width="30">:</td>
+                                <td class="text-center">${(data.jantung)}</td>
+                            </tr>
+                            <tr>
+                                <td width="120">Paru</td>
+                                <td class="text-center" width="30">:</td>
+                                <td class="text-center">${(data.paru)}</td>
+                            </tr>
+                            <tr>
+                                <td width="120">Perut</td>
+                                <td class="text-center" width="30">:</td>
+                                <td class="text-center">${(data.perut)}</td>
+                            </tr>
+                            <tr>
+                                <td width="120">Tungkai</td>
+                                <td class="text-center" width="30">:</td>
+                                <td class="text-center">${(data.tungkai)}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            `;
+                    let Table3Html = `
+                    <div class="table-responsive">
+                    <h5><strong>USG</strong></h5>
+                    <table class="table table-outside">
+                        <thead>                          
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="250">GS (Gestational Sac)</td>
+                                <td class="text-center" width="30">:</td>
+                                <td class="text-center">${(data.gs)} Cm</td>
+                            </tr>
+                            <tr>
+                                <td width="250">CRL (Crown-rump-lenght)</td>
+                                <td class="text-center" width="30">:</td>
+                                <td class="text-center">${(data.crl)} Cm</td>
+                            </tr>
+                            <tr>
+                                <td width="250">DJJ (Denyut Jantung Janin)</td>
+                                <td class="text-center" width="30">:</td>
+                                <td class="text-center">${(data.djj)} dpm</td>
+                            </tr>
+                            <tr>
+                                <td width="250">Sesuai usia kehamilan</td>
+                                <td class="text-center" width="30">:</td>
+                                <td class="text-center">${(data.usia_kehamilan)} Minggu</td>
+                            </tr>
+                            <tr>
+                                <td width="250">Taksiran persalinan</td>
+                                <td class="text-center" width="30">:</td>
+                                <td class="text-center">${formatDate(data.tkrsn_persalinan)}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            `;
+                    let Table4Html = `
+                    <div class="table-responsive">
+                    <table class="table ttable table-sm">
+                        <thead>                          
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="250">Skrining Preeklamasi</td>
+                                <td class="text-center" width="30">:</td>
+                                <td>${(data.skrining)}</td>
+                            </tr>
+                            <tr>
+                                <td width="250">KESIMPULAN</td>
+                                <td class="text-center" width="30">:</td>
+                                <td>${(data.kesimpulan)}</td>
+                            </tr>
+                            <tr>
+                                <td width="250">REKOMENDASI</td>
+                                <td class="text-center" width="30">:</td>
+                                <td>${(data.rekomendasi)}</td>
+                            </tr>   
+                        </tbody>
+                    </table>
+                </div>
+            `;
+                    let tableHtml = `
+                    <div class="row">
+                        <div class="col-md-4">
+                            ${Table1Html}
+                        </div>
+                        <div class="col-md-3">
+                            ${Table2Html}
+                        </div>
+                        <div class="col-md-5">
+                            ${Table3Html}
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                    <div class="col-md-12">
+                        ${Table4Html}
+                    </div>
+                </div>
+            `;
+                    $('#modalViewLabel').html(`Ibu ${namaIbu}`);
+                    $('#modalView .modal-body').html(tableHtml);
+                    $('#modalView').modal('show');
                 }
             });
         });
