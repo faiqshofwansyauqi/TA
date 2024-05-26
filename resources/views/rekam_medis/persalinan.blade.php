@@ -713,15 +713,21 @@
                 success: function(data) {
                     let namaIbu = data.ibu.nama_ibu;
 
-                    function formatDate(dateString) {
+                    function formatDateOnly(dateString) {
                         if (!dateString) return '';
                         const date = new Date(dateString);
                         const formattedDay = ('0' + date.getDate()).slice(-2);
                         const formattedMonth = ('0' + (date.getMonth() + 1)).slice(-2);
                         const formattedYear = date.getFullYear();
+                        return `${formattedDay}-${formattedMonth}-${formattedYear}`;
+                    }
+
+                    function formatTimeOnly(dateString) {
+                        if (!dateString) return '';
+                        const date = new Date(dateString);
                         const formattedHours = ('0' + date.getHours()).slice(-2);
                         const formattedMinutes = ('0' + date.getMinutes()).slice(-2);
-                        return `${formattedDay}-${formattedMonth}-${formattedYear} / ${formattedHours}:${formattedMinutes}`;
+                        return `${formattedHours}:${formattedMinutes}`;
                     }
 
                     let fasePersalinanTableHtml = `
@@ -730,34 +736,40 @@
                         <thead>
                             <tr>
                                 <th>Fase Persalinan</th>
-                                <th class="text-center">Tanggal - Jam</th>
+                                <th class="text-center">Tanggal</th>
+                                <th class="text-center">Jam</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>Kala I Aktif</td>
-                                <td class="text-center">${formatDate(data.kala1)}</td>
+                                <td class="text-center">${formatDateOnly(data.kala1)}</td>
+                                <td class="text-center">${formatTimeOnly(data.kala1)}</td>
                             </tr>
                             <tr>
                                 <td>Kala II</td>
-                                <td class="text-center">${formatDate(data.kala2)}</td>
+                                <td class="text-center">${formatDateOnly(data.kala2)}</td>
+                                <td class="text-center">${formatTimeOnly(data.kala2)}</td>
                             </tr>
                             <tr>
                                 <td>Bayi Lahir</td>
-                                <td class="text-center">${formatDate(data.bayi_lahir)}</td>
+                                <td class="text-center">${formatDateOnly(data.bayi_lahir)}</td>
+                                <td class="text-center">${formatTimeOnly(data.bayi_lahir)}</td>
                             </tr>
                             <tr>
                                 <td>Piasenta Lahir</td>
-                                <td class="text-center">${formatDate(data.piasenta)}</td>
+                                <td class="text-center">${formatDateOnly(data.piasenta)}</td>
+                                <td class="text-center">${formatTimeOnly(data.piasenta)}</td>
                             </tr>
                             <tr>
-                                <td>Pendarahan</td>
-                                <td class="text-center">${(data.pendarahan)} cc</td>
+                                <td>Pendarahan Kala IV</td>
+                                <td class="text-center" colspan="2">${data.pendarahan} cc</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             `;
+
                     let additionalInfoTableHtml = `
                 <div class="table-responsive">
                     <table class="table table-bordered">
@@ -790,53 +802,50 @@
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <thead>
-                            <tr>
-                                <th>Fase Persalinan</th>
-                            </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Pesentasi</td>
+                                <td width="260">Pesentasi</td>
                                 <td>${data.pesentasi}</td>
                             </tr>
                             <tr>
-                                <td>Tempat</td>
+                                <td width="260">Tempat</td>
                                 <td>${data.tempat}</td>
                             </tr>
                             <tr>
-                                <td>Penolong</td>
+                                <td width="260">Penolong</td>
                                 <td>${data.penolong}</td>
                             </tr>
                             <tr>
-                                <td>Cara Persalinan</td>
+                                <td width="260">Cara Persalinan</td>
                                 <td>${data.cara_persalinan}</td>
                             </tr>
                             <tr>
-                                <td>Manajemen</td>
+                                <td width="260">Manajemen</td>
                                 <td>${data.menejemen}</td>
                             </tr>
                             <tr>
-                                <td>Pelayanan</td>
+                                <td width="260">Pelayanan</td>
                                 <td>${data.pelayanan}</td>
                             </tr>
                             <tr>
-                                <td>Integrasi</td>
+                                <td width="260">Integrasi</td>
                                 <td>${data.integrasi}</td>
                             </tr>
                             <tr>
-                                <td>Komplikasi</td>
+                                <td width="260">Komplikasi</td>
                                 <td>${data.komplikasi}</td>
                             </tr>
                             <tr>
-                                <td>Keadaan Tiba</td>
+                                <td width="260">Keadaan Tiba</td>
                                 <td>${data.keadaan_tiba}</td>
                             </tr>
                             <tr>
-                                <td>Rujuk</td>
+                                <td width="260">Rujuk</td>
                                 <td>${data.rujuk}</td>
                             </tr>
                             <tr>
-                                <td>Alamat Bersalin</td>
+                                <td width="260">Alamat Bersalin</td>
                                 <td>${data.alamat_bersalin}</td>
                             </tr>
                         </tbody>

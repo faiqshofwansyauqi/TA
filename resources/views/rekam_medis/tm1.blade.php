@@ -766,7 +766,7 @@
             `;
                     let Table4Html = `
                     <div class="table-responsive">
-                    <table class="table ttable table-sm">
+                    <table class="table table table-sm">
                         <thead>                          
                         </thead>
                         <tbody>
