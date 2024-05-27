@@ -26,6 +26,7 @@ class Persalinan extends Model
         'menejemen',
         'pelayanan',
         'integrasi',
+        'detail_integrasi',
         'komplikasi',
         'keadaan_tiba',
         'rujuk',

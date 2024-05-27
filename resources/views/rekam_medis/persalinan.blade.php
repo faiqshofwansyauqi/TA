@@ -246,7 +246,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6 mb-3">
+                                    <div class="col-md-3 mb-3 pe-0">
                                         <div class="mb-3">
                                             <label for="integrasi" class="form-label">Integrasi Program</label>
                                             <select class="form-select" id="integrasi" name="integrasi" required>
@@ -256,6 +256,13 @@
                                                 <option value="Obat Anti TB">Obat Anti TB</option>
                                                 <option value="Masase Fundus Uteri">Masase Fundus Uteri</option>
                                             </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 mb-3 ps-0">
+                                        <div class="mb-3">
+                                            <label for="detail_integrasi" class="form-label" style="color: white">Detail</label>
+                                            <input type="text" class="form-control" id="detail_integrasi"
+                                                name="detail_integrasi">
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-3">
