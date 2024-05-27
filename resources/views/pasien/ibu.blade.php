@@ -513,7 +513,7 @@
                         <button class="btn btn-sm btn-success edit-btn" data-nik="${row.NIK}" data-bs-toggle="modal" data-bs-target="#modalEdit">
                             <i class="bi bi-pencil-fill"></i>
                         </button>
-                        <form action="${deleteUrl}" method="POST" style="display:inline; margin-left: 5px;">
+                        <form action="${deleteUrl}" method="POST" style="display:none; margin-left: 5px;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">
