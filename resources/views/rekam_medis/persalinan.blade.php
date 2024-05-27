@@ -33,7 +33,23 @@
                                         <th>Bayi Lahir</th>
                                         <th>Piasenta Lahir</th>
                                         <th>Pendarahan Kala IV</th>
+                                        <th>Usia Kehamilan</th>
+                                        <th>Usia HPHT</th>
+                                        <th>Keadaan Ibu</th>
+                                        <th>Keadaan Bayi</th>
+                                        <th>Berat Bayi</th>
                                         <th>Presentasi</th>
+                                        <th>Penolong</th>
+                                        <th>Tempat</th>
+                                        <th>Cara Persalinan</th>
+                                        <th>Menejemen Aktif Kala III</th>
+                                        <th>Pelayanan</th>
+                                        <th>Integrasi Program</th>
+                                        <th>Komplikasi</th>
+                                        <th>Keadaan Tiba</th>
+                                        <th>Keadaan Pulang</th>
+                                        <th>Dirujuk</th>
+                                        <th>Alamat Bersalin</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -152,8 +168,8 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <div class="mb-3">
+                                    <div class="col-md-6 mb-2">
+                                        <div class="mb-2">
                                             <label for="pesentasi" class="form-label">Presentasi</label>
                                             <select class="form-select" id="pesentasi" name="pesentasi" required>
                                                 <option value="">Pilih Jenis Presentasi</option>
@@ -168,8 +184,8 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 mb-3">
-                                        <div class="mb-3">
+                                    <div class="col-md-6 mb-2">
+                                        <div class="mb-2">
                                             <label for="tempat" class="form-label">Tempat</label>
                                             <select class="form-select" id="tempat" name="tempat" required>
                                                 <option value="">Pilih Tempat</option>
@@ -186,8 +202,8 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <div class="mb-3">
+                                    <div class="col-md-6 mb-2">
+                                        <div class="mb-2">
                                             <label for="penolong" class="form-label">Penolong</label>
                                             <select class="form-select" id="penolong" name="penolong" required>
                                                 <option value="">Pilih Penolong</option>
@@ -201,8 +217,8 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 mb-3">
-                                        <div class="mb-3">
+                                    <div class="col-md-6 mb-2">
+                                        <div class="mb-2">
                                             <label for="cara_persalinan" class="form-label">Cara Persalinan</label>
                                             <select class="form-select" id="cara_persalinan" name="cara_persalinan"
                                                 required>
@@ -216,8 +232,8 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <div class="mb-3">
+                                    <div class="col-md-6 mb-2">
+                                        <div class="mb-2">
                                             <label for="menejemen" class="form-label">Menejemen Aktif Kala III</label>
                                             <select class="form-select" id="menejemen" name="menejemen" required>
                                                 <option value="">Pilih Jenis Menejemen Aktif Kala III</option>
@@ -230,8 +246,8 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 mb-3">
-                                        <div class="mb-3">
+                                    <div class="col-md-6 mb-2">
+                                        <div class="mb-2">
                                             <label for="pelayanan" class="form-label">Pelayanan</label>
                                             <select class="form-select" id="pelayanan" name="pelayanan" required>
                                                 <option value="">Pilih Pelayanan</option>
@@ -246,41 +262,39 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-3 mb-3 pe-0">
-                                        <div class="mb-3">
+                                    <div class="col-md-4 mb-2 pe-0">
+                                        <div class="mb-2">
                                             <label for="integrasi" class="form-label">Integrasi Program</label>
                                             <select class="form-select" id="integrasi" name="integrasi" required>
                                                 <option value="">Pilih Jenis Integrasi Program</option>
-                                                <option value="ARV Profilaksis">ARV Profilaksis</option>
-                                                <option value="Obat Anti Malaria">Obat Anti Malaria</option>
-                                                <option value="Obat Anti TB">Obat Anti TB</option>
-                                                <option value="Masase Fundus Uteri">Masase Fundus Uteri</option>
+                                                <option value="ARV Profilaksis">ARV Profilaksis :</option>
+                                                <option value="Obat Anti Malaria">Obat Anti Malaria "</option>
+                                                <option value="Obat Anti TB">Obat Anti TB :</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-2 mb-3 ps-0">
-                                        <div class="mb-3">
-                                            <label for="detail_integrasi" class="form-label" style="color: white">Detail</label>
+                                    <div class="col-md-2 mb-2 ps-0">
+                                        <div class="mb-2">
+                                            <label for="detail_integrasi" class="form-label"
+                                                style="color: white">Detail</label>
                                             <input type="text" class="form-control" id="detail_integrasi"
                                                 name="detail_integrasi">
                                         </div>
                                     </div>
-                                    <div class="col-md-6 mb-3">
-                                        <div class="mb-3">
+                                    <div class="col-md-3 mb-2">
+                                        <div class="mb-2">
                                             <label for="komplikasi" class="form-label">Komplikasi</label>
                                             <select class="form-select" id="komplikasi" name="komplikasi" required>
                                                 <option value="">Pilih Komplikasi</option>
                                                 <option value="HDK">HDK</option>
-                                                <option value="PPP ">PPP </option>
+                                                <option value="PPP">PPP</option>
                                                 <option value="Inteksi">Inteksi</option>
                                                 <option value="Lainnya">Lainnya</option>
                                             </select>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="mb-3">
+                                    <div class="col-md-3">
+                                        <div class="mb-2">
                                             <label for="keadaan_tiba" class="form-label">Keadaan Tiba</label>
                                             <select class="form-select" id="keadaan_tiba" name="keadaan_tiba" required>
                                                 <option value="">Pilih Keadaan Tiba</option>
@@ -289,8 +303,21 @@
                                             </select>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="mb-2">
+                                            <label for="keadaan_pulang" class="form-label">Keadaan Pulang</label>
+                                            <select class="form-select" id="keadaan_pulang" name="keadaan_pulang"
+                                                required>
+                                                <option value="">Pilih Keadaan Pulang</option>
+                                                <option value="Hidup">Hidup</option>
+                                                <option value="Mati">Mati</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                     <div class="col-md-4">
-                                        <div class="mb-3">
+                                        <div class="mb-2">
                                             <label for="rujuk" class="form-label">Dirujuk Ke</label>
                                             <select class="form-select" id="rujuk" name="rujuk" required>
                                                 <option value="">Pilih Dirujuk Ke</option>
@@ -303,10 +330,10 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="mb-3">
+                                    <div class="col-md-5">
+                                        <div class="mb-2">
                                             <label for="alamat_bersalin" class="form-label">Alamat Bersalin</label>
-                                            <textarea class="form-control" id="alamat_bersalin" rows="3" name="alamat_bersalin"></textarea>
+                                            <textarea class="form-control" id="alamat_bersalin" rows="2" name="alamat_bersalin"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -504,51 +531,80 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="edit_integrasi" class="form-label">Integrasi Program</label>
-                                        <select class="form-select" id="edit_integrasi" name="integrasi" required>
-                                            <option value="">Pilih Jenis Integrasi Program</option>
-                                            <option value="ARV Profilaksis">ARV Profilaksis</option>
-                                            <option value="Obat Anti Malaria">Obat Anti Malaria</option>
-                                            <option value="Obat Anti TB">Obat Anti TB</option>
-                                            <option value="Masase Fundus Uteri">Masase Fundus Uteri</option>
-                                        </select>
+                                    <div class="col-md-4 mb-3 pe-0">
+                                        <div class="mb-3">
+                                            <label for="edit_integrasi" class="form-label">Integrasi Program</label>
+                                            <select class="form-select" id="edit_integrasi" name="integrasi" required>
+                                                <option value="">Pilih Jenis Integrasi Program</option>
+                                                <option value="ARV Profilaksis">ARV Profilaksis :</option>
+                                                <option value="Obat Anti Malaria">Obat Anti Malaria "</option>
+                                                <option value="Obat Anti TB">Obat Anti TB :</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="edit_komplikasi" class="form-label">Komplikasi</label>
-                                        <select class="form-select" id="edit_komplikasi" name="komplikasi" required>
-                                            <option value="">Pilih Komplikasi</option>
-                                            <option value="HDK">HDK</option>
-                                            <option value="PPP">PPP</option>
-                                            <option value="Infeksi">Infeksi</option>
-                                            <option value="Lainnya">Lainnya</option>
-                                        </select>
+                                    <div class="col-md-2 mb-3 ps-0">
+                                        <div class="mb-3">
+                                            <label for="edit_detail_integrasi" class="form-label"
+                                                style="color: white">Detail</label>
+                                            <input type="text" class="form-control" id="edit_detail_integrasi"
+                                                name="detail_integrasi">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 mb-2">
+                                        <div class="mb-2">
+                                            <label for="edit_komplikasi" class="form-label">Komplikasi</label>
+                                            <select class="form-select" id="edit_komplikasi" name="komplikasi" required>
+                                                <option value="">Pilih Komplikasi</option>
+                                                <option value="HDK">HDK</option>
+                                                <option value="PPP">PPP</option>
+                                                <option value="Inteksi">Inteksi</option>
+                                                <option value="Lainnya">Lainnya</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="mb-2">
+                                            <label for="edit_keadaan_tiba" class="form-label">Keadaan Tiba</label>
+                                            <select class="form-select" id="edit_keadaan_tiba" name="keadaan_tiba"
+                                                required>
+                                                <option value="">Pilih Keadaan Tiba</option>
+                                                <option value="Hidup">Hidup</option>
+                                                <option value="Mati">Mati</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4">
-                                        <label for="edit_keadaan_tiba" class="form-label">Keadaan Tiba</label>
-                                        <select class="form-select" id="edit_keadaan_tiba" name="keadaan_tiba" required>
-                                            <option value="">Pilih Keadaan Tiba</option>
-                                            <option value="Hidup">Hidup</option>
-                                            <option value="Mati">Mati</option>
-                                        </select>
+                                    <div class="col-md-3">
+                                        <div class="mb-2">
+                                            <label for="edit_keadaan_pulang" class="form-label">Keadaan Pulang</label>
+                                            <select class="form-select" id=edit_"keadaan_pulang" name="keadaan_pulang"
+                                                required>
+                                                <option value="">Pilih Keadaan Pulang</option>
+                                                <option value="Hidup">Hidup</option>
+                                                <option value="Mati">Mati</option>
+                                            </select>
+                                        </div>
                                     </div>
                                     <div class="col-md-4">
-                                        <label for="edit_rujuk" class="form-label">Dirujuk Ke</label>
-                                        <select class="form-select" id="edit_rujuk" name="rujuk" required>
-                                            <option value="">Pilih Dirujuk Ke</option>
-                                            <option value="Puskesmas">Puskesmas</option>
-                                            <option value="RB">RB</option>
-                                            <option value="RSIA">RSIA</option>
-                                            <option value="RS">RS</option>
-                                            <option value="Lainnya">Lainnya</option>
-                                            <option value="Tidak Dirujuk">Tidak Dirujuk</option>
-                                        </select>
+                                        <div class="mb-2">
+                                            <label for="edit_rujuk" class="form-label">Dirujuk Ke</label>
+                                            <select class="form-select" id="edit_rujuk" name="rujuk" required>
+                                                <option value="">Pilih Dirujuk Ke</option>
+                                                <option value="Puskesmas">Puskesmas</option>
+                                                <option value="RB">RB</option>
+                                                <option value="RSIA">RSIA</option>
+                                                <option value="RS">RS</option>
+                                                <option value="Lainnya">Lainnya</option>
+                                                <option value="Tidak Dirujuk">Tidak Dirujuk</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <label for="edit_alamat_bersalin" class="form-label">Alamat Bersalin</label>
-                                        <textarea class="form-control" id="edit_alamat_bersalin" rows="3" name="alamat_bersalin"></textarea>
+                                    <div class="col-md-5">
+                                        <div class="mb-2">
+                                            <label for="edit_alamat_bersalin" class="form-label">Alamat Bersalin</label>
+                                            <textarea class="form-control" id="edit_alamat_bersalin" rows="2" name="alamat_bersalin"></textarea>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -608,22 +664,27 @@
                         name: 'kala1',
                         render: function(data) {
                             var date = new Date(data);
-                            var formattedDate = ('0' + date.getDate()).slice(-2);
-                            var formattedTime = ('0' + date.getHours()).slice(-2) + ':' + ('0' +
-                                date.getMinutes()).slice(-2);
-                            var dateTimeString = formattedDate + ' - ' + formattedTime;
+                            var formattedDate = ('0' + date.getDate()).slice(-2) + '-' +
+                                ('0' + (date.getMonth() + 1)).slice(-2) + '-' +
+                                date.getFullYear();
+                            var formattedTime = ('0' + date.getHours()).slice(-2) + ':' +
+                                ('0' + date.getMinutes()).slice(-2);
+                            var dateTimeString = formattedDate + ' ' + formattedTime;
                             return dateTimeString;
                         }
                     },
+
                     {
                         data: 'kala2',
                         name: 'kala2',
                         render: function(data) {
                             var date = new Date(data);
-                            var formattedDate = ('0' + date.getDate()).slice(-2);
-                            var formattedTime = ('0' + date.getHours()).slice(-2) + ':' + ('0' +
-                                date.getMinutes()).slice(-2);
-                            var dateTimeString = formattedDate + ' - ' + formattedTime;
+                            var formattedDate = ('0' + date.getDate()).slice(-2) + '-' +
+                                ('0' + (date.getMonth() + 1)).slice(-2) + '-' +
+                                date.getFullYear();
+                            var formattedTime = ('0' + date.getHours()).slice(-2) + ':' +
+                                ('0' + date.getMinutes()).slice(-2);
+                            var dateTimeString = formattedDate + ' ' + formattedTime;
                             return dateTimeString;
                         }
                     },
@@ -632,10 +693,12 @@
                         name: 'bayi_lahir',
                         render: function(data) {
                             var date = new Date(data);
-                            var formattedDate = ('0' + date.getDate()).slice(-2);
-                            var formattedTime = ('0' + date.getHours()).slice(-2) + ':' + ('0' +
-                                date.getMinutes()).slice(-2);
-                            var dateTimeString = formattedDate + ' - ' + formattedTime;
+                            var formattedDate = ('0' + date.getDate()).slice(-2) + '-' +
+                                ('0' + (date.getMonth() + 1)).slice(-2) + '-' +
+                                date.getFullYear();
+                            var formattedTime = ('0' + date.getHours()).slice(-2) + ':' +
+                                ('0' + date.getMinutes()).slice(-2);
+                            var dateTimeString = formattedDate + ' ' + formattedTime;
                             return dateTimeString;
                         }
                     },
@@ -644,10 +707,12 @@
                         name: 'piasenta',
                         render: function(data) {
                             var date = new Date(data);
-                            var formattedDate = ('0' + date.getDate()).slice(-2);
-                            var formattedTime = ('0' + date.getHours()).slice(-2) + ':' + ('0' +
-                                date.getMinutes()).slice(-2);
-                            var dateTimeString = formattedDate + ' - ' + formattedTime;
+                            var formattedDate = ('0' + date.getDate()).slice(-2) + '-' +
+                                ('0' + (date.getMonth() + 1)).slice(-2) + '-' +
+                                date.getFullYear();
+                            var formattedTime = ('0' + date.getHours()).slice(-2) + ':' +
+                                ('0' + date.getMinutes()).slice(-2);
+                            var dateTimeString = formattedDate + ' ' + formattedTime;
                             return dateTimeString;
                         }
                     },
@@ -658,10 +723,85 @@
                             return data + ' cc';
                         }
                     },
-
+                    {
+                        data: 'usia_kehamilan',
+                        name: 'usia_kehamilan',
+                        render: function(data, type, row) {
+                            return data + ' Minggu';
+                        }
+                    },
+                    {
+                        data: 'usia_hpht',
+                        name: 'usia_hpht',
+                        render: function(data, type, row) {
+                            return data + ' Menggu';
+                        }
+                    },
+                    {
+                        data: 'keadaan_ibu',
+                        name: 'keadaan_ibu'
+                    },
+                    {
+                        data: 'keadaan_bayi',
+                        name: 'keadaan_bayi'
+                    },
+                    {
+                        data: 'berat_bayi',
+                        name: 'berat_bayi',
+                        render: function(data, type, row) {
+                            return data + ' Gram';
+                        }
+                    },
                     {
                         data: 'pesentasi',
                         name: 'pesentasi'
+                    },
+                    {
+                        data: 'tempat',
+                        name: 'tempat'
+                    },
+                    {
+                        data: 'penolong',
+                        name: 'penolong'
+                    },
+                    {
+                        data: 'cara_persalinan',
+                        name: 'cara_persalinan'
+                    },
+                    {
+                        data: 'menejemen',
+                        name: 'menejemen'
+                    },
+                    {
+                        data: 'pelayanan',
+                        name: 'pelayanan'
+                    },
+                    {
+                        data: null,
+                        name: 'integrasi_detail_integrasi',
+                        render: function(data) {
+                            return data.integrasi + ' : ' + data.detail_integrasi;
+                        }
+                    },
+                    {
+                        data: 'komplikasi',
+                        name: 'komplikasi'
+                    },
+                    {
+                        data: 'keadaan_tiba',
+                        name: 'keadaan_tiba'
+                    },
+                    {
+                        data: 'keadaan_pulang',
+                        name: 'keadaan_pulang'
+                    },
+                    {
+                        data: 'rujuk',
+                        name: 'rujuk'
+                    },
+                    {
+                        data: 'alamat_bersalin',
+                        name: 'alamat_bersalin'
                     },
                     {
                         data: 'action',
@@ -705,7 +845,7 @@
                     }
                 ],
                 columnDefs: [{
-                    targets: [],
+                    targets: [5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22],
                     visible: false
                 }]
             });
@@ -812,47 +952,51 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td width="260">Pesentasi</td>
+                                <td width="270">Pesentasi</td>
                                 <td>${data.pesentasi}</td>
                             </tr>
                             <tr>
-                                <td width="260">Tempat</td>
+                                <td width="270">Tempat</td>
                                 <td>${data.tempat}</td>
                             </tr>
                             <tr>
-                                <td width="260">Penolong</td>
+                                <td width="270">Penolong</td>
                                 <td>${data.penolong}</td>
                             </tr>
                             <tr>
-                                <td width="260">Cara Persalinan</td>
+                                <td width="270">Cara Persalinan</td>
                                 <td>${data.cara_persalinan}</td>
                             </tr>
                             <tr>
-                                <td width="260">Manajemen</td>
+                                <td width="270">Manajemen Aktif Kala III</td>
                                 <td>${data.menejemen}</td>
                             </tr>
                             <tr>
-                                <td width="260">Pelayanan</td>
+                                <td width="270">Pelayanan</td>
                                 <td>${data.pelayanan}</td>
                             </tr>
                             <tr>
-                                <td width="260">Integrasi</td>
-                                <td>${data.integrasi}</td>
+                                <td width="270">Integrasi Program</td>
+                                <td>${data.integrasi} : ${data.detail_integrasi}</td>
                             </tr>
                             <tr>
-                                <td width="260">Komplikasi</td>
+                                <td width="270">Komplikasi</td>
                                 <td>${data.komplikasi}</td>
                             </tr>
                             <tr>
-                                <td width="260">Keadaan Tiba</td>
+                                <td width="270">Keadaan Tiba</td>
                                 <td>${data.keadaan_tiba}</td>
                             </tr>
                             <tr>
-                                <td width="260">Rujuk</td>
+                                <td width="270">Keadaan Tiba</td>
+                                <td>${data.keadaan_pulang}</td>
+                            </tr>
+                            <tr>
+                                <td width="270">Dirujuk ke</td>
                                 <td>${data.rujuk}</td>
                             </tr>
                             <tr>
-                                <td width="260">Alamat Bersalin</td>
+                                <td width="270">Alamat Bersalin</td>
                                 <td>${data.alamat_bersalin}</td>
                             </tr>
                         </tbody>
@@ -906,6 +1050,7 @@
                     $('#edit_menejemen').val(data.menejemen);
                     $('#edit_pelayanan').val(data.pelayanan);
                     $('#edit_integrasi').val(data.integrasi);
+                    $('#edit_detail_integrasi').val(data.detail_integrasi);
                     $('#edit_komplikasi').val(data.komplikasi);
                     $('#edit_keadaan_tiba').val(data.keadaan_tiba);
                     $('#edit_rujuk').val(data.rujuk);

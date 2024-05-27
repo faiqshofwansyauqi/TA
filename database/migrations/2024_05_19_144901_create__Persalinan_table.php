@@ -37,6 +37,7 @@ class CreatePersalinanTable extends Migration
             $table->string('detail_integrasi');
             $table->string('komplikasi');
             $table->string('keadaan_tiba');
+            $table->string('keadaan_pulang');
             $table->string('rujuk');
             $table->string('alamat_bersalin');
             $table->timestamps();

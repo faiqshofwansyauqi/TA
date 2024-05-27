@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 use App\Models\Ibu;
 use Illuminate\Database\Eloquent\Model;
 
@@ -29,6 +30,7 @@ class Persalinan extends Model
         'detail_integrasi',
         'komplikasi',
         'keadaan_tiba',
+        'keadaan_pulang',
         'rujuk',
         'alamat_bersalin',
         'id_ibu'
