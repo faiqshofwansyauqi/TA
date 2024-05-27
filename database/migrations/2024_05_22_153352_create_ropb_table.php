@@ -29,6 +29,12 @@ class CreateRopbTable extends Migration
             $table->string('berat_badan');
             $table->string('tinggi_badan');
             $table->string('buku_kia');
+            $table->string('tgl_persalinan');
+            $table->string('penolong');
+            $table->string('pendamping');
+            $table->string('transport');
+            $table->string('pendonor');
+            $table->string('pendonor_darah');
             $table->timestamps();
         });
     }

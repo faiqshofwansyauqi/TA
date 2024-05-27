@@ -38,6 +38,8 @@ Route::middleware(['guest'])->group(function () {
     Route::post('register', [AuthController::class, 'register'])->name('register.store');
 });
 
+Route::get('error', [HomeController::class, 'ERROR'])->name('errors.404');
+
 Route::prefix('pasien')->group(function () {
     Route::get('ibu', [PasienController::class, 'Ibu'])->name('pasien.ibu');
     Route::get('anak', [PasienController::class, 'Anak'])->name('pasien.anak');

@@ -29,6 +29,7 @@ class Ropb extends Model
         'pendamping',
         'transport',
         'pendonor',
+        'pendonor_darah',
     ];
     public function ibu()
     {

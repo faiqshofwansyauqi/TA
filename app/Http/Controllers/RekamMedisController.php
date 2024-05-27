@@ -191,6 +191,7 @@ class RekamMedisController extends Controller
             'pendamping' => 'required',
             'transport' => 'required',
             'pendonor' => 'required',
+            'pendonor_darah' => 'required',
         ]);
 
         Ropb::create([
@@ -214,6 +215,7 @@ class RekamMedisController extends Controller
             'pendamping' => $request->pendamping,
             'transport' => $request->transport,
             'pendonor' => $request->pendonor,
+            'pendonor_darah' => $request->pendonor_darah,
         ]);
         return redirect()->back()->with('success', 'Data berhasil ditambahkan');
     }
