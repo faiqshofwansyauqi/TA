@@ -838,7 +838,7 @@
                 ],
                 dom: 'Bfrtip',
                 buttons: [
-                    'copy', 'csv', 'excel', 'pdf', 'print',
+                    'excel', 'pdf', 'print',
                     {
                         extend: 'colvis',
                         text: 'Column visibility'
@@ -988,7 +988,7 @@
                                 <td>${data.keadaan_tiba}</td>
                             </tr>
                             <tr>
-                                <td width="270">Keadaan Tiba</td>
+                                <td width="270">Keadaan Pulang</td>
                                 <td>${data.keadaan_pulang}</td>
                             </tr>
                             <tr>

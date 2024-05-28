@@ -665,14 +665,14 @@
                 ],
                 dom: 'Bfrtip',
                 buttons: [
-                    'copy', 'csv', 'excel', 'pdf', 'print',
+                    'excel', 'pdf', 'print',
                     {
                         extend: 'colvis',
                         text: 'Column visibility'
                     }
                 ],
                 columnDefs: [{
-                    targets: [8, 9, 10, 11, 12, 13],
+                    targets: [5,6,10,11,12,],
                     visible: false
                 }]
             });
