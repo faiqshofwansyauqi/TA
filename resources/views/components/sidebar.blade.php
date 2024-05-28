@@ -1,16 +1,6 @@
 <!-- ======= Sidebar ======= -->
-
 <aside id="sidebar" class="sidebar">
-
     <ul class="sidebar-nav" id="sidebar-nav">
-
-        {{-- <li class="nav-item">
-            <a class="nav-link {{ request()->is(['/']) ? '' : 'collapsed' }}" href="{{ route('home') }}">
-                <i class="bi bi-grid"></i>
-                <span>Dashboard</span>
-            </a>
-        </li> --}}
-
         <li class="nav-item">
             <a class="nav-link {{ request()->is(['pasien', 'pasien/*']) ? '' : 'collapsed' }}" data-bs-toggle="collapse"
                 href="#collapseExample5" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -97,16 +87,15 @@
                         <span>Pemantauan Bayi Dari Ibu HIV dan Pemantauan Bayi Dari Ibu Sifilis</span>
                     </a>
                 </li>
+            </ul>
         </li>
-    </ul>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link {{ request()->is(['master.pasien', 'master/pasien']) ? '' : 'collapsed' }}"
-            href="{{ route('master.pasien') }}">
-            <i class="bi bi-clipboard2-data"></i>
-            <span>Master Data</span>
-        </a>
-    </li>
+        <li class="nav-item">
+            <a class="nav-link {{ request()->is(['master.pasien', 'master/pasien']) ? '' : 'collapsed' }}"
+                href="{{ route('master.pasien') }}">
+                <i class="bi bi-clipboard2-data"></i>
+                <span>Master Data</span>
+            </a>
+        </li>
     </ul>
 
 </aside><!-- End Sidebar-->

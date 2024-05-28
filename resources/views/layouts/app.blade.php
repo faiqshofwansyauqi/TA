@@ -9,9 +9,7 @@
     <meta content="" name="description">
     <meta content="" name="keywords">
 
-    <!-- Favicons -->
-    {{-- <link href="assets/img/favicon.png" rel="icon"> --}}
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -56,7 +54,7 @@
 
         <div class="d-flex align-items-center justify-content-between">
             <a href="{{ route('dashboard') }}" class="logo d-flex align-items-center">
-                <img src="{{ asset('assets/img/logo.png') }}" alt="">
+                {{-- <img src="{{ asset('assets/img/logo.png') }}" alt=""> --}}
                 <span class="d-none d-lg-block" style="font-size: 20px;">BIDAN PRAKTEK MANDIRI</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -126,7 +124,8 @@
             class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="{{ asset('assets/vendor/apexcharts/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/chart.js/chart.umd.js') }}"></script>
@@ -167,14 +166,14 @@
                     toast.addEventListener('mouseenter', Swal.stopTimer)
                     toast.addEventListener('mouseleave', Swal.resumeTimer)
                 }
-            })
-
+            });
             Toast.fire({
                 icon: 'success',
                 title: '{{ session()->get('success') }}'
-            })
+            });
         </script>
     @endif
+
     @if (session()->has('error'))
         <script>
             const Toast = Swal.mixin({
@@ -187,14 +186,14 @@
                     toast.addEventListener('mouseenter', Swal.stopTimer)
                     toast.addEventListener('mouseleave', Swal.resumeTimer)
                 }
-            })
-
+            });
             Toast.fire({
                 icon: 'error',
                 title: '{{ session()->get('error') }}'
-            })
+            });
         </script>
     @endif
+
     <script>
         $(document).ready(function() {
             $('#logout').on('click', function() {
@@ -204,15 +203,14 @@
                     data: {
                         _token: '{{ csrf_token() }}'
                     }
-                }).then(ress => {
-                    console.log(ress);
-                    if (ress.status == 200) {
-                        alertToast('success', ress.msg);
-                        location.href = '{{ route('login') }}'
+                }).then(response => {
+                    if (response.status == 200) {
+                        alertToast('success', response.msg);
+                        location.href = '{{ route('login') }}';
                     } else {
-                        alertToast('error', ress.msg);
+                        alertToast('error', response.msg);
                     }
-                })
+                });
             });
         });
 
@@ -227,16 +225,15 @@
                     toast.addEventListener('mouseenter', Swal.stopTimer)
                     toast.addEventListener('mouseleave', Swal.resumeTimer)
                 }
-            })
-
+            });
             Toast.fire({
                 icon: icon,
                 title: message
-            })
+            });
         }
     </script>
-    @yield('script')
 
+    @yield('script')
 </body>
 
 </html>

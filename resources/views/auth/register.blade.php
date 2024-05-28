@@ -7,9 +7,9 @@
     <title>Register Page</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
-    <!-- Favicons -->
-    {{-- <link href="assets/img/favicon.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> --}}
+
+    <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
+
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
     <link
@@ -27,7 +27,7 @@
   * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    ======================================================== -->
 </head>
 
 <body>
