@@ -8,7 +8,7 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/">Home</a></li>
                     <li class="breadcrumb-item active">Rekam Medis</li>
-                    <li class="breadcrumb-item active">Pemeriksaan Fisik</li>
+                    <li class="breadcrumb-item active">Pemeriksaan Dokter TM1</li>
                 </ol>
             </nav>
         </div>
@@ -440,6 +440,7 @@
             </div>
         </div>
     </div>
+    
 @endsection
 @section('script')
     <script>

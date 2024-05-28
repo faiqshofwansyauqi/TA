@@ -80,6 +80,9 @@ Route::prefix('rekam_medis')->group(function () {
     Route::put('rekam_medis/update_tm1/{id}', [RekamMedisController::class, 'update_tm1'])->name('rekam_medis.update_tm1');
     Route::put('rekam_medis/update_tm1/{id}', [RekamMedisController::class, 'update_tm1'])->name('rekam_medis.update_tm1'); 
     Route::delete('rekam_medis/destroy_tm1/{id}', [RekamMedisController::class, 'destroy_tm1'])->name('rekam_medis.destroy_tm1');
+    ///////////// ANC /////////////
+    Route::get('anc', [RekamMedisController::class, 'anc'])->name('rekam_medis.anc');
+    
 });
 
 

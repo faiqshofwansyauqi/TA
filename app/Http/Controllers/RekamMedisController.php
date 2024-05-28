@@ -7,6 +7,7 @@ use App\Models\Persalinan;
 use App\Models\Ibu;
 use App\Models\Ropb;
 use App\Models\Tm1;
+use App\Models\Anc;
 use Yajra\DataTables\Facades\DataTables;
 
 class RekamMedisController extends Controller
@@ -297,7 +298,6 @@ class RekamMedisController extends Controller
 
     //////// PEMERIKSAAN DOKTER TM 1 ////////
 
-
     public function Tm1()
     {
         $ibus = Ibu::all();
@@ -352,7 +352,6 @@ class RekamMedisController extends Controller
         ]);
         return redirect()->back()->with('success', 'Data berhasil ditambahkan');
     }
-
     public function update_tm1(Request $request, $id)
     {
         // dd($request);
@@ -401,7 +400,6 @@ class RekamMedisController extends Controller
         ]);
         return redirect()->back()->with('success', 'Data berhasil diperbarui');
     }
-
     public function getData_tm1()
     {
         $tm1 = Tm1::select('*');
@@ -426,5 +424,14 @@ class RekamMedisController extends Controller
             $query->select('nama_ibu');
         }])->find($id);
         return response()->json($tm1);
+    }
+    
+    //////////////// ANC ////////////////
+    
+    public function Anc()
+    {
+        $ibus = Ibu::all();
+        // $anc = Anc::all();
+        return view('rekam_medis.anc', compact( 'ibus'));
     }
 }

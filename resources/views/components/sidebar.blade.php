@@ -1,4 +1,5 @@
 <!-- ======= Sidebar ======= -->
+
 <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
@@ -54,19 +55,20 @@
                         <span>Riwayat Obstetrik, Pemeriksaan Bidan dan Rencana Persalinan</span>
                     </a>
                 </li>
-                <a href="{{ route('rekam_medis.tm1') }}"
-                    class="{{ request()->is(['rekam_medis.tm1', 'rekam_medis/tm1']) ? 'active' : '' }}">
-                    <i class="bi bi-circle"></i>
-                    <span>Pemeriksaan Dokter TM1</span>
-                </a>
                 <li>
-                    <a href="{{ route('errors.404') }}"
-                        class="{{ request()->is(['errors.404', 'errors/404']) ? 'active' : '' }}">
+                    <a href="{{ route('rekam_medis.tm1') }}"
+                        class="{{ request()->is(['rekam_medis.tm1', 'rekam_medis/tm1']) ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i>
+                        <span>Pemeriksaan Dokter TM1</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('rekam_medis.anc') }}"
+                        class="{{ request()->is(['rekam_medis.anc', 'rekam_medis/anc']) ? 'active' : '' }}">
                         <i class="bi bi-circle"></i>
                         <span>Antenatal Care</span>
                     </a>
                 </li>
-                
                 <li>
                     <a href="{{ route('rekam_medis.persalinan') }}"
                         class="{{ request()->is(['rekam_medis.persalinan', 'rekam_medis/persalinan']) ? 'active' : '' }}">
@@ -75,37 +77,36 @@
                     </a>
                 </li>
                 <li>
-                    <li>
-                        <a href="{{ route('errors.404') }}"
-                            class="{{ request()->is(['errors.404', 'errors/404']) ? 'active' : '' }}">
-                            <i class="bi bi-circle"></i>
-                            <span>PNC</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('errors.404') }}"
-                            class="{{ request()->is(['errors.404', 'errors/404']) ? 'active' : '' }}">
-                            <i class="bi bi-circle"></i>
-                            <span>Pemantauan PPIA dan Pemantauan Dari Ibu Heptasis B</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('errors.404') }}"
-                            class="{{ request()->is(['errors.404', 'errors/404']) ? 'active' : '' }}">
-                            <i class="bi bi-circle"></i>
-                            <span>Pemantauan Bayi Dari Ibu HIV dan Pemantauan Bayi Dari Ibu Sifilis</span>
-                        </a>
-                    </li>
+                    <a href="{{ route('errors.404') }}"
+                        class="{{ request()->is(['errors.404', 'errors/404']) ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i>
+                        <span>PNC</span>
+                    </a>
                 </li>
-            </ul>
+                <li>
+                    <a href="{{ route('errors.404') }}"
+                        class="{{ request()->is(['errors.404', 'errors/404']) ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i>
+                        <span>Pemantauan PPIA dan Pemantauan Dari Ibu Heptasis B</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('errors.404') }}"
+                        class="{{ request()->is(['errors.404', 'errors/404']) ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i>
+                        <span>Pemantauan Bayi Dari Ibu HIV dan Pemantauan Bayi Dari Ibu Sifilis</span>
+                    </a>
+                </li>
         </li>
-        <li class="nav-item">
-            <a class="nav-link {{ request()->is(['master.pasien', 'master/pasien']) ? '' : 'collapsed' }}"
-                href="{{ route('master.pasien') }}">
-                <i class="bi bi-clipboard2-data"></i>
-                <span>Master Data</span>
-            </a>
-        </li>
+    </ul>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {{ request()->is(['master.pasien', 'master/pasien']) ? '' : 'collapsed' }}"
+            href="{{ route('master.pasien') }}">
+            <i class="bi bi-clipboard2-data"></i>
+            <span>Master Data</span>
+        </a>
+    </li>
     </ul>
 
 </aside><!-- End Sidebar-->
