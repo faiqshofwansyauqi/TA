@@ -6,8 +6,8 @@
             <h1>Persalinan</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/">Home</a></li>
-                    <li class="breadcrumb-item active">Rekam Medis</li>
+                    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
+                    <li class="breadcrumb-item">Rekam Medis</li>
                     <li class="breadcrumb-item active">Persalinan</li>
                 </ol>
             </nav>

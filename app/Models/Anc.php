@@ -10,6 +10,7 @@ class Anc extends Model
     protected $table = 'anc';
     protected $primaryKey = 'id';
     protected $fillable = [
+        'id',    
         'NIK',    
     ];
     public function ibu()

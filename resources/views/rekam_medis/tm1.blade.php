@@ -6,8 +6,8 @@
             <h1>Pemeriksaan Fisik</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/">Home</a></li>
-                    <li class="breadcrumb-item active">Rekam Medis</li>
+                    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
+                    <li class="breadcrumb-item">Rekam Medis</li>
                     <li class="breadcrumb-item active">Pemeriksaan Dokter TM1</li>
                 </ol>
             </nav>
@@ -440,7 +440,6 @@
             </div>
         </div>
     </div>
-    
 @endsection
 @section('script')
     <script>
@@ -574,7 +573,7 @@
                             return `
                             <div style="display: flex; align-items: center;">
                             <button class="btn btn-sm btn-primary view-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalView">
-                                <i class="bi bi-eye-fill"></i>
+                            <i class="bi bi-eye-fill"></i>
                             </button>
                             <div style="display: flex; align-items: center;">
                             <button class="btn btn-sm btn-success edit-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalEdit">
@@ -584,7 +583,7 @@
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">
-                                <i class="bi bi-trash3-fill"></i>
+                            <i class="bi bi-trash3-fill"></i>
                             </button>
                             </form>
                             </div>

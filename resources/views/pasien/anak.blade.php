@@ -6,8 +6,8 @@
             <h1>Data Anak</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/">Home</a></li>
-                    <li class="breadcrumb-item active">Data Pasien</li>
+                    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
+                    <li class="breadcrumb-item">Data Pasien</li>
                     <li class="breadcrumb-item active">Data Anak</li>
                 </ol>
             </nav>

@@ -432,9 +432,9 @@ class RekamMedisController extends Controller
     {
         $ibus = Ibu::all();
         $anc = Anc::all();
+        // dd($anc);
         return view('rekam_medis.anc', compact( 'anc','ibus'));
     }
-
     public function store_anc(Request $request)
     {
         // dd($request);
@@ -447,4 +447,38 @@ class RekamMedisController extends Controller
         ]);
         return redirect()->back()->with('success', 'Data berhasil ditambahkan');
     }
+    public function getData_anc()
+    {
+        $anc = Anc::select('*');
+
+        return DataTables::of($anc)->make(true);
+    }
+    public function destroy_anc($id)
+    {
+        $anc = Anc::findOrFail($id);
+        $anc->delete();
+        return redirect()->back()->with('success', 'Data berhasil dihapus');
+    }
+    public function edit_anc($id)
+    {
+        $anc = Anc::findOrFail($id);
+        return response()->json($anc);
+    }
+    public function update_anc(Request $request, $id)
+    {
+        // dd($request);
+        $request->validate([
+            'NIK' => 'required',
+        ]);
+        $anc = anc::findOrFail($id);
+        $anc->update([
+            'NIK' => $request->NIK,
+        ]);
+        return redirect()->back()->with('success', 'Data berhasil diperbarui');
+    }
+    public function show_anc($id)
+    {
+    $anc = Anc::findOrFail($id);
+    return view('rekam_medis.show_anc', compact('anc'));
+    }         
 }
