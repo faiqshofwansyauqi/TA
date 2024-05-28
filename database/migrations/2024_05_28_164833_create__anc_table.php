@@ -13,8 +13,9 @@ class CreateAncTable extends Migration
      */
     public function up()
     {
-        Schema::create('_anc', function (Blueprint $table) {
+        Schema::create('anc', function (Blueprint $table) {
             $table->id();
+            $table->string('NIK');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ class CreateAncTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_anc');
+        Schema::dropIfExists('anc');
     }
 }

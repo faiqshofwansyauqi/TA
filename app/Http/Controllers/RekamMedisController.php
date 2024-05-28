@@ -431,7 +431,20 @@ class RekamMedisController extends Controller
     public function Anc()
     {
         $ibus = Ibu::all();
-        // $anc = Anc::all();
-        return view('rekam_medis.anc', compact( 'ibus'));
+        $anc = Anc::all();
+        return view('rekam_medis.anc', compact( 'anc','ibus'));
+    }
+
+    public function store_anc(Request $request)
+    {
+        // dd($request);
+        $request->validate([
+            'NIK' => 'required',
+        ]);
+
+        Anc::create([
+            'NIK' => $request->NIK,
+        ]);
+        return redirect()->back()->with('success', 'Data berhasil ditambahkan');
     }
 }
