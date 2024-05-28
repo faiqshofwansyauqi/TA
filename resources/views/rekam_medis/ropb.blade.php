@@ -703,31 +703,49 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td >Gravida</td>
-                                    <td >${data.gravida}</td>
+                                    <td width="170">Gravida</td>
+                                    <td class="text-center" width="30">:</td>
+                                    <td class="text-center">${data.gravida}</td>
                                 </tr>
                                 <tr>
-                                    <td>Partus</td>
-                                    <td>${data.partus}</td>
+                                    <td width="170">Partus</td>
+                                    <td class="text-center" width="30">:</td>
+                                    <td class="text-center">${data.partus}</td>
                                 </tr>
                                 <tr>
-                                    <td>Abortus</td>
-                                    <td>${data.abortus}</td>
+                                    <td width="170">Abortus</td>
+                                    <td class="text-center" width="30">:</td>
+                                    <td class="text-center">${data.abortus}</td>
                                 </tr>
                                 <tr>
-                                    <td>Hidup</td>
-                                    <td>${data.hidup}</td>
+                                    <td width="170">Hidup</td>
+                                    <td class="text-center" width="30">:</td>
+                                    <td class="text-center">${data.hidup}</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
             `;
                     let RiwayatObstetrikLanjutHtml = `
-                    <div>
-                        <p>Riwayat Komplikasi Kebidanan: ${data.rwyt_komplikasi}</p>                    
-                        <p>Penyakit Kronis dan Alergi: ${data.pnykt_kronis_alergi}</p>
+                    <div class="table-responsive">
+                        <table class="table table-borderless">
+                            <thead>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td width="260">Riwayat Komplikasi Kebidanan</td>
+                                    <td class="text-center" width="30">:</td>
+                                    <td >${data.rwyt_komplikasi}</td>
+                                </tr>
+                                <tr>
+                                    <td width="260">Penyakit Kronis dan Alergi</td>
+                                    <td class="text-center" width="30">:</td>
+                                    <td>${data.pnykt_kronis_alergi}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                        
+                    <div>
             `;
                     let PemeriksaanBidanHtml = `
                     <div class="table-responsive">
@@ -738,24 +756,31 @@
                             <tbody>
                                 <tr>
                                     <td>Tanggal Periksa</td>
+                                    <td class="text-center" width="30">:</td>
                                     <td>${formatDate(data.tgl_periksa)}</td>
                                     <td>BB Sebelum Hamil</td>
+                                    <td class="text-center" width="30">:</td>
                                     <td>${data.berat_badan} Kg</td>
                                 </tr>
                                 <tr>
                                     <td>Tanggal HPHT</td>
+                                    <td class="text-center" width="30">:</td>
                                     <td>${formatDate(data.tgl_hpht)}</td>
                                     <td>Tinggi Badan</td>
+                                    <td class="text-center" width="30">:</td>
                                     <td>${data.tinggi_badan} Cm</td>
                                 </tr>
                                 <tr>
                                     <td>Taksiran Persalinan</td>
+                                    <td class="text-center" width="30">:</td>
                                     <td>${formatDate(data.tksrn_persalinan)}</td>
                                     <td>Buku Kia</td>
+                                    <td class="text-center" width="30">:</td>
                                     <td>${data.buku_kia}</td>
                                 </tr>
                                 <tr>
                                     <td>Persalinan Sebelumnya</td>
+                                    <td class="text-center" width="30">:</td>
                                     <td>${formatDate(data.prlnan_sebelum)}</td>
                                     <td></td>
                                     <td></td>
@@ -767,25 +792,25 @@
                     let RencanaPersalinanHtml = `
                     <div class="table-responsive">
                         <h5><strong>Rencana Persalinan</strong></h5>
-                        <table class="table table-borderless">
+                        <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>Tanggal</th>
-                                    <th>Penolong</th>
-                                    <th>Tempat</th>
-                                    <th>Pendamping</th>
-                                    <th>Transportasi</th>
-                                    <th>Pendonor</th>
+                                    <th class="text-center">Tanggal</th>
+                                    <th class="text-center">Penolong</th>
+                                    <th class="text-center">Tempat</th>
+                                    <th class="text-center">Pendamping</th>
+                                    <th class="text-center">Transportasi</th>
+                                    <th class="text-center">Pendonor</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>${formatDate(data.tgl_persalinan)}</td>
-                                    <td>${data.penolong}</td>
-                                    <td>${data.tempat}</td>
-                                    <td>${data.pendamping}</td>
-                                    <td>${data.transport}</td>
-                                    <td>${data.pendonor} / ${data.pendonor_darah} </td>
+                                    <td class="text-center">${formatDate(data.tgl_persalinan)}</td>
+                                    <td class="text-center">${data.penolong}</td>
+                                    <td class="text-center">${data.tempat}</td>
+                                    <td class="text-center">${data.pendamping}</td>
+                                    <td class="text-center">${data.transport}</td>
+                                    <td class="text-center">${data.pendonor} / ${data.pendonor_darah} </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -794,20 +819,20 @@
 
                     let tableHtml = `
                     <div class="container">
-                    <div class="row justify-content-between"> <!-- Mengatur posisi horizontal ke kanan kiri -->
+                    <div class="row justify-content-between">
                         <div class="col-md-4">
                             ${RiwayatObstetrikHtml}                
                         </div>
                         <div class="col-md-8">
                             ${PemeriksaanBidanHtml}
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-12">
                             ${RiwayatObstetrikLanjutHtml}                
                         </div>
                     </div>
                 </div>
                 <div class="container mt-3">
-                    <div class="row justify-content-center"> <!-- Mengatur posisi horizontal ke tengah -->
+                    <div class="row justify-content-center">
                         <div class="col-md-10">
                             ${RencanaPersalinanHtml}
                         </div>
