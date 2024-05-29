@@ -132,6 +132,30 @@ h6 {
   font-weight: normal;
 }
 
+.table-anc th,
+.table-anc td {
+    border: 4px solid #999999; /* Atur warna dan ketebalan garis sesuai kebutuhan */
+}
+
+/* Gunakan font Open Sans atau alternatif sans-serif */
+.table-anc {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px; /* Ukuran font default untuk seluruh tabel */
+}
+
+/* Ukuran font untuk header tabel */
+.table-anc thead th {
+  font-size: 13px; /* Ukuran font untuk header */
+}
+
+.small-text {
+  font-size: 0.80em; /* Ubah ukuran sesuai kebutuhan */
+}
+
+
+
+
+
 
 
 /*--------------------------------------------------------------

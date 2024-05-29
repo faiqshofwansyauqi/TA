@@ -366,7 +366,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6 mb-2">
-                                            <label for="edit_tinggi_badan" class="form-label">Berat Tinggi</label>
+                                            <label for="edit_tinggi_badan" class="form-label">Tinggi Badan</label>
                                             <div class="input-group mb-2">
                                                 <input type="number" class="form-control" id="edit_tinggi_badan"
                                                     name="tinggi_badan" required>
