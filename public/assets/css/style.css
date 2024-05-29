@@ -122,6 +122,12 @@ h6 {
   display: none;
 }
 
+.vertical-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  white-space: nowrap;
+}
+
 
 /*--------------------------------------------------------------
 # Override some default Bootstrap stylings

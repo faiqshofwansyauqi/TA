@@ -160,18 +160,6 @@
                         }
                     }
                 ],
-                dom: 'Bfrtip',
-                buttons: [
-                    'excel', 'pdf', 'print',
-                    {
-                        extend: 'colvis',
-                        text: 'Column visibility'
-                    }
-                ],
-                columnDefs: [{
-                    targets: [],
-                    visible: false
-                }]
             });
         });
 
