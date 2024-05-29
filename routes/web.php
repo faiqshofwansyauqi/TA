@@ -83,7 +83,7 @@ Route::prefix('rekam_medis')->group(function () {
     Route::get('anc', [RekamMedisController::class, 'anc'])->name('rekam_medis.anc');
     Route::post('store-anc', [RekamMedisController::class, 'store_anc'])->name('rekam_medis.store_anc');
     Route::get('data-anc', [RekamMedisController::class, 'getData_anc'])->name('rekam_medis.data_anc');
-    Route::get('/anc/{id}', [RekamMedisController::class, 'show_anc'])->name('rekam_medis.show_anc');
+    Route::get('anc/show_anc/{id}', [RekamMedisController::class, 'show_anc'])->name('rekam_medis.show_anc');
     Route::get('rekam_medis/edit_anc/{id}', [RekamMedisController::class, 'edit_anc'])->name('rekam_medis.edit_anc');
     Route::put('rekam_medis/update_anc/{id}', [RekamMedisController::class, 'update_anc'])->name('rekam_medis.update_anc');
     Route::delete('rekam_medis/destroy_anc/{id}', [RekamMedisController::class, 'destroy_anc'])->name('rekam_medis.destroy_anc');

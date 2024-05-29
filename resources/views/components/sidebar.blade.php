@@ -54,7 +54,7 @@
                 </li>
                 <li>
                     <a href="{{ route('rekam_medis.anc') }}"
-                        class="{{ request()->is(['rekam_medis.anc', 'rekam_medis/anc']) ? 'active' : '' }}">
+                        class="{{ request()->is(['rekam_medis.anc', 'rekam_medis/anc', 'rekam_medis.show_anc', 'rekam_medis/anc/show_anc/*']) ? 'active' : '' }}">
                         <i class="bi bi-circle"></i>
                         <span>Antenatal Care</span>
                     </a>

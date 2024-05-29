@@ -5,7 +5,7 @@
         <h1>Detail Antenatal Care</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
                 <li class="breadcrumb-item"><a href="{{ route('rekam_medis.anc') }}">Antenatal Care</a></li>
                 <li class="breadcrumb-item active">Detail Ibu {{ $anc->NIK }}</li>
                 {{-- <p><strong>Nama Ibu: </strong>{{ $anc->NIK }}</p> --}}
@@ -34,27 +34,35 @@
                                         <th colspan="5" class="text-center">BAYI</th>
                                     </tr>
                                     <tr>
-                                        <th class="align-middle">Tgl</th>
-                                        <th class="vertical-text align-middle text-center">JKN*</th>
-                                        <th class="vertical-text align-middle text-center">Usia Kehamilan</th>
-                                        <th class="vertical-text align-middle text-center">Trimester ke</th>
-                                        <th class="align-middle text-center">Keluhan</th>
-                                        <th class="vertical-text align-middle text-center">BB (kg)</th>
-                                        <th class="vertical-text align-middle text-center">TD (mmHg)</th>
-                                        <th class="vertical-text align-middle text-center">LILA (cm)</th>
-                                        <th class="vertical-text align-middle text-center">Status Gizi <sub><sup>2)</sup></sub></th>
-                                        <th class="vertical-text align-middle text-center">TFU (cm)</th>
-                                        <th class="vertical-text align-middle text-center">Refleks Patella (+/-)</th>
-                                        <th class="vertical-text align-middle text-center">DJJ (x/menit)</th>
-                                        <th class="vertical-text align-middle text-center">Kepala thd PAP <sub><sup>3)</sup></sub></th>
-                                        <th class="vertical-text align-middle text-center">TBJ (gram)</th>
-                                        <th class="vertical-text align-middle text-center">Presentasi <sub><sup>4)</sup></sub></th>
-                                        <th class="vertical-text align-middle text-center">Jumlah Janin <sub><sup>5)</sup></sub></th>
-                                        <th class="vertical-text align-middle text-center">Injeksi Td *</th>
-                                        <th class="vertical-text align-middle text-center">Catat di Buku KIA *</th>
-                                        <th class="vertical-text align-middle text-center">Fe (tab/botol)</th>
-                                        <th class="vertical-text align-middle text-center">PMT Bumil KEK</th>
-                                        <th class="vertical-text align-middle text-center">Ikut Kelas Ibu</th>
+                                        <th class="light align-middle">Tgl</th>
+                                        <th class="light vertical-text align-middle text-center">JKN*</th>
+                                        <th class="light vertical-text align-middle text-center">Usia Kehamilan</th>
+                                        <th class="light vertical-text align-middle text-center">Trimester ke</th>
+                                        <th class="light align-middle text-center">Keluhan</th>
+                                        <th class="light vertical-text align-middle text-center">BB (kg)</th>
+                                        <th class="light vertical-text align-middle text-center">TD (mmHg)</th>
+                                        <th class="light vertical-text align-middle text-center">LILA (cm)</th>
+                                        <th class="light vertical-text align-middle text-center">Status Gizi
+                                            <sub><sup>2)</sup></sub>
+                                        </th>
+                                        <th class="light vertical-text align-middle text-center">TFU (cm)</th>
+                                        <th class="light vertical-text align-middle text-center">Refleks Patella (+/-)</th>
+                                        <th class="light vertical-text align-middle text-center">DJJ (x/menit)</th>
+                                        <th class="light vertical-text align-middle text-center">Kepala thd PAP
+                                            <sub><sup>3)</sup></sub>
+                                        </th>
+                                        <th class="light vertical-text align-middle text-center">TBJ (gram)</th>
+                                        <th class="light vertical-text align-middle text-center">Presentasi
+                                            <sub><sup>4)</sup></sub>
+                                        </th>
+                                        <th class="light vertical-text align-middle text-center">Jumlah Janin
+                                            <sub><sup>5)</sup></sub>
+                                        </th>
+                                        <th class="light vertical-text align-middle text-center">Injeksi Td *</th>
+                                        <th class="light vertical-text align-middle text-center">Catat di Buku KIA *</th>
+                                        <th class="light vertical-text align-middle text-center">Fe (tab/botol)</th>
+                                        <th class="light vertical-text align-middle text-center">PMT Bumil KEK</th>
+                                        <th class="light vertical-text align-middle text-center">Ikut Kelas Ibu</th>
                                     </tr>
                                     <tr>
                                         <td class="text-center">1</td>
@@ -90,4 +98,17 @@
             </div>
         </div>
     </section>
+@endsection
+@section('script')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Periksa apakah halaman saat ini adalah show_anc
+            if (window.location.pathname.includes('/rekam_medis/anc/show_anc')) {
+                // Dapatkan elemen body
+                var body = document.querySelector('body');
+                // Tambahkan kelas 'toggle-sidebar' untuk menutup sidebar
+                body.classList.add('toggle-sidebar');
+            }
+        });
+    </script>
 @endsection
