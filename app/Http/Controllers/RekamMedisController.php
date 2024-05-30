@@ -491,12 +491,13 @@ class RekamMedisController extends Controller
     {
         $anc = Anc::findOrFail($id);
         $ancs = Show_Anc::all();
-        return view('rekam_medis.show_anc', compact('ancs','anc'));
+        return view('rekam_medis.show_anc', compact('ancs', 'anc'));
     }
     public function store_showanc(Request $request)
     {
         // dd($request);
         $request->validate([
+            'NIK' => 'required',
             'tanggal' => 'required',
             'usia_kehamilan' => 'required',
             'trimester' => 'required',
@@ -521,6 +522,7 @@ class RekamMedisController extends Controller
         ]);
 
         Show_Anc::create([
+            'NIK' => $request->NIK,
             'tanggal' => $request->tanggal,
             'usia_kehamilan' => $request->usia_kehamilan,
             'trimester' => $request->trimester,
@@ -545,9 +547,9 @@ class RekamMedisController extends Controller
         ]);
         return redirect()->back()->with('success', 'Data berhasil ditambahkan');
     }
-    public function getData_showanc()
+    public function getData_showanc($NIK)
     {
-        $data = Show_Anc::all();
+        $data = Show_Anc::where('NIK', $NIK)->get(); // Mengambil data ANC sesuai dengan NIK
         return DataTables::of($data)->make(true);
     }
     public function edit_showanc($id)

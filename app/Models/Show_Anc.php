@@ -10,6 +10,7 @@ class Show_Anc extends Model
     protected $table = 'show_anc';
     protected $primaryKey = 'id';
     protected $fillable = [
+        'NIK',    
         'id',    
         'tanggal',
         'usia_kehamilan',

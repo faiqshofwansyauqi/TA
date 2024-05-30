@@ -115,6 +115,7 @@
                             <div class="card-body">
                                 <!-- REGISTER section -->
                                 <h5 class="card-title">Register</h5>
+                                <input type="hidden" name="NIK" value="{{ $anc->NIK }}">
                                 <div class="row mb-3">
                                     <div class="col-md-4">
                                         <label for="tanggal" class="form-label">Tanggal</label>
@@ -302,7 +303,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="ModalEdit" aria-hidden="true">
+    {{-- <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="ModalEdit" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -502,7 +503,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection
 @section('script')
     <script>
@@ -529,11 +530,15 @@
                 paging: false,
                 responsive: true,
                 info: false,
-                ajax: "{{ route('rekam_medis.data_showanc') }}",
+                ajax: "{{ route('rekam_medis.data_showanc', ['NIK' => $anc->NIK]) }}",
                 columns: [{
                         data: 'id',
                         name: 'id',
-                        className: 'text-center'
+                        className: 'text-center',
+                        render: function(data, type, row, meta) {
+                            // Mendapatkan indeks baris dan menambahkannya dengan 1
+                            return meta.row + 1;
+                        }
                     },
                     {
                         data: 'tanggal',
