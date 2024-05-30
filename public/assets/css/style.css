@@ -135,7 +135,7 @@ h6 {
 }
 .normal-header {
     font-weight: normal;
-    font-size: small;
+    font-size: 11pt;
 }
 .vertical-text {
     writing-mode: vertical-rl;

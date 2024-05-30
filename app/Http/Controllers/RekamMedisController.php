@@ -490,7 +490,8 @@ class RekamMedisController extends Controller
     public function show_anc($id)
     {
         $anc = Anc::findOrFail($id);
-        return view('rekam_medis.show_anc', compact('anc'));
+        $ancs = Show_Anc::all();
+        return view('rekam_medis.show_anc', compact('ancs','anc'));
     }
     public function store_showanc(Request $request)
     {
@@ -549,5 +550,9 @@ class RekamMedisController extends Controller
         $data = Show_Anc::all();
         return DataTables::of($data)->make(true);
     }
-
+    public function edit_showanc($id)
+    {
+        $ancs = Show_Anc::findOrFail($id);
+        return response()->json($ancs);
+    }
 }

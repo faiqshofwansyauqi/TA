@@ -13,9 +13,15 @@
                 </ol>
             </nav>
         </div>
-        <button type="button" class="btn btn-success" id="btn-plus">
-            <i class="bi bi-plus-circle"></i> Tambah
-        </button>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button type="button" class="btn btn-primary" id="btn-edit">
+                <i class="bi bi-pencil"></i> Update
+            </button>
+            </button>
+            <button type="button" class="btn btn-success" id="btn-plus">
+                <i class="bi bi-plus-circle"></i> Tambah
+            </button>
+        </div>
     </div>
 
     <section class="section dashboard">
@@ -86,7 +92,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!-- Data dari server-side rendering atau JavaScript -->
                                 </tbody>
                             </table>
                         </div>
@@ -96,7 +101,6 @@
         </div>
     </section>
 
-    <!-- Modal -->
     <div class="modal fade" id="modalInput" tabindex="-1" aria-labelledby="ModalInput" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-lg">
             <div class="modal-content">
@@ -297,6 +301,208 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="ModalEdit" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title fs-4 fw-bold" id="ModalEdit">Update ANC</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editForm" method="post" autocomplete="off">
+                        @csrf
+                        @method('PUT')
+                        <div class="card">
+                            <div class="card-body">
+                                <!-- REGISTER section -->
+                                <h5 class="card-title">Register</h5>
+                                <div class="row mb-3">
+                                    <div class="col-md-4">
+                                        <label for="edit_tanggal" class="form-label">Tanggal</label>
+                                        <input type="date" class="form-control" id="edit_tanggal" name="tanggal"
+                                            required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="edit_usia_kehamilan" class="form-label">Usia Kehamilan</label>
+                                        <input type="number" class="form-control" id="edit_usia_kehamilan"
+                                            name="usia_kehamilan" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="edit_trimester" class="form-label">Trimester ke</label>
+                                        <select class="form-select" id="edit_trimester" name="trimester" required>
+                                            <option value="">Pilih Trimester</option>
+                                            <option value="I">I</option>
+                                            <option value="II">II</option>
+                                            <option value="III">III</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- PEMERIKSAAN IBU section -->
+                                <h5 class="card-title">Pemeriksaan Ibu</h5>
+                                <div class="col-md-12 mb-3">
+                                    <label for="edit_keluhan" class="form-label">Keluhan</label>
+                                    <input type="text" class="form-control" id="edit_keluhan" name="keluhan" required>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-3">
+                                        <label for="edit_berat_badan" class="form-label">Berat Badan <sup>(kg)</sup></label>
+                                        <div class="input-group mb-2">
+                                            <input type="number" class="form-control" id="edit_berat_badan"
+                                                name="berat_badan" required>
+                                            <span class="input-group-text">kg</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="edit_td_mmhg" class="form-label">TD <sup>(mmhg)</sup></label>
+                                        <div class="input-group mb-2">
+                                            <input type="number" class="form-control" id="edit_td_mmhg" name="td_mmhg"
+                                                required>
+                                            <span class="input-group-text">mmhg</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="edit_lila" class="form-label">LILA <sup>(cm)</sup></label>
+                                        <div class="input-group mb-2">
+                                            <input type="number" class="form-control" id="edit_lila" name="lila"
+                                                required>
+                                            <span class="input-group-text">cm</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="edit_sts_gizi" class="form-label">Status Gizi <sup>2)</sup></label>
+                                        <input type="text" class="form-control" id="edit_sts_gizi" name="sts_gizi"
+                                            required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="edit_tfu" class="form-label">TFU <sup>(cm)</sup></label>
+                                        <div class="input-group mb-2">
+                                            <input type="text" class="form-control" id="edit_tfu" name="tfu"
+                                                required>
+                                            <span class="input-group-text">cm</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="edit_sts_imunisasi" class="form-label">Status Imunisasi Td
+                                            <sup>6)</sup></label>
+                                        <select class="form-select" id="edit_sts_imunisasi" name="sts_imunisasi" required>
+                                            <option value="">Pilih Status Imunisasi</option>
+                                            <option value="Td01">Td01</option>
+                                            <option value="Td02">Td02</option>
+                                            <option value="Td03">Td03</option>
+                                            <option value="Td04">Td04</option>
+                                            <option value="Td05">Td05</option>
+                                            <option value="Td06">Td06</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- PEMERIKSAAN BAYI section -->
+                                <h5 class="card-title">Pemeriksaan Bayi</h5>
+                                <div class="row mb-3">
+                                    <div class="col-md-3">
+                                        <label for="edit)djj" class="form-label">DJJ <sup>((x/menit))</sup></label>
+                                        <div class="input-group mb-2">
+                                            <input type="number" class="form-control" id="edit)djj" name="djj"
+                                                required>
+                                            <span class="input-group-text">menit</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="edit_kpl_thd" class="form-label">Kepala thd PAP<sup>3)</sup></label>
+                                        <select class="form-select" id="edit_kpl_thd" name="kpl_thd" required>
+                                            <option value="">Pilih Kepala thd PAP</option>
+                                            <option value="M">M</option>
+                                            <option value="MB">MB</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="edit_tbj" class="form-label">TBJ <sup>(gram)</sup></label>
+                                        <div class="input-group mb-2">
+                                            <input type="number" class="form-control" id="edit_tbj" name="tbj"
+                                                required>
+                                            <span class="input-group-text">gram</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="edit_presentasi" class="form-label">Presentasi<sup>4)</sup></label>
+                                        <select class="form-select" id="edit_presentasi" name="presentasi" required>
+                                            <option value="">Pilih Presentasi</option>
+                                            <option value="KP">KP</option>
+                                            <option value="BS">BS</option>
+                                            <option value="LLO">LLO</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="edit_jmlh_janin" class="form-label">Jumlah Janin<sup>5)</sup></label>
+                                        <select class="form-select" id="edit_jmlh_janin" name="jmlh_janin" required>
+                                            <option value="">Pilih Jumlah Janin</option>
+                                            <option value="T">T</option>
+                                            <option value="G">G</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- PELAYANAN section -->
+                                <h5 class="card-title">Pelayanan</h5>
+                                <div class="row mb-3">
+                                    <div class="col-md-3">
+                                        <label for="edit_injeksi" class="form-label">Injeksi Td*</label>
+                                        <select class="form-select" id="edit_injeksi" name="injeksi" required>
+                                            <option value="">Pilih Injeksi Td*</option>
+                                            <option value="jika iya">&#10003; <!-- Ceklis --></option>
+                                            <option value="jika tidak">&#10007; <!-- Uncek --></option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="edit_buku_kia" class="form-label">Catatan dibuku KIA*</label>
+                                        <select class="form-select" id="edit_buku_kia" name="buku_kia" required>
+                                            <option value="">Pilih Catatan dibuku KIA*</option>
+                                            <option value="jika iya">&#10003; <!-- Ceklis --></option>
+                                            <option value="jika tidak">&#10007; <!-- Uncek --></option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="edit_fe" class="form-label">Fe <sup>(tab/botol)</sup></label>
+                                        <input type="number" class="form-control" id="edit_fe" name="fe"
+                                            required>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="edit_pmt_bumil" class="form-label">PMT Bumil KEK</label>
+                                        <select class="form-select" id="edit_pmt_bumil" name="pmt_bumil" required>
+                                            <option value="">Pilih PMT Bumil KEK*</option>
+                                            <option value="jika iya">&#10003; <!-- Ceklis --></option>
+                                            <option value="jika tidak">&#10007; <!-- Uncek --></option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="edit_kelas_ibu" class="form-label">Ikut Kelas Ibu*</label>
+                                        <select class="form-select" id="edit_kelas_ibu" name="kelas_ibu" required>
+                                            <option value="">Pilih Ikut Kelas Ibu</option>
+                                            <option value="jika iya">&#10003; <!-- Ceklis --></option>
+                                            <option value="jika tidak">&#10007; <!-- Uncek --></option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- KONSELING section -->
+                                <h5 class="card-title">Konseling</h5>
+                                <div class="row mb-3">
+                                    <div class="col-md-12">
+                                        <label for="edit_konseling" class="form-label">Konseling</label>
+                                        <input type="text" class="form-control" id="edit_konseling" name="konseling"
+                                            required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('script')
     <script>
@@ -304,6 +510,12 @@
             let modalInput = $('#modalInput');
             $('#btn-plus').click(function() {
                 modalInput.modal('show');
+            });
+        });
+        $(document).ready(function() {
+            let modalEdit = $('#modalEdit');
+            $('#btn-edit').click(function() {
+                modalEdit.modal('show');
             });
         });
 
