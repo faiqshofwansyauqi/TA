@@ -8,6 +8,7 @@ use App\Models\Ibu;
 use App\Models\Ropb;
 use App\Models\Tm1;
 use App\Models\Anc;
+use App\Models\Show_Anc;
 use Yajra\DataTables\Facades\DataTables;
 
 class RekamMedisController extends Controller
@@ -154,9 +155,11 @@ class RekamMedisController extends Controller
     }
     public function show_persalinan($id_persalinan)
     {
-        $persalinan = Persalinan::with(['ibu' => function ($query) {
-            $query->select('nama_ibu');
-        }])->find($id_persalinan);
+        $persalinan = Persalinan::with([
+            'ibu' => function ($query) {
+                $query->select('nama_ibu');
+            }
+        ])->find($id_persalinan);
         return response()->json($persalinan);
     }
 
@@ -165,7 +168,8 @@ class RekamMedisController extends Controller
     public function Ropb()
     {
         $ropb = Ropb::all();
-        $ibus = Ibu::all();;
+        $ibus = Ibu::all();
+        ;
         return view('rekam_medis.ropb', compact('ropb', 'ibus'));
     }
     public function store_ropb(Request $request)
@@ -290,9 +294,11 @@ class RekamMedisController extends Controller
     }
     public function show_ropb($id)
     {
-        $ropb = Ropb::with(['ibu' => function ($query) {
-            $query->select('nama_ibu');
-        }])->find($id);
+        $ropb = Ropb::with([
+            'ibu' => function ($query) {
+                $query->select('nama_ibu');
+            }
+        ])->find($id);
         return response()->json($ropb);
     }
 
@@ -312,7 +318,7 @@ class RekamMedisController extends Controller
             'konjungtiva' => 'required',
             'sklera' => 'required',
             'kulit' => 'required',
-            'leher'  => 'required',
+            'leher' => 'required',
             'gigi_mulut' => 'required',
             'tht' => 'required',
             'jantung' => 'required',
@@ -334,7 +340,7 @@ class RekamMedisController extends Controller
             'konjungtiva' => $request->konjungtiva,
             'sklera' => $request->sklera,
             'kulit' => $request->kulit,
-            'leher'  => $request->leher,
+            'leher' => $request->leher,
             'gigi_mulut' => $request->gigi_mulut,
             'tht' => $request->tht,
             'jantung' => $request->jantung,
@@ -360,7 +366,7 @@ class RekamMedisController extends Controller
             'konjungtiva' => 'required',
             'sklera' => 'required',
             'kulit' => 'required',
-            'leher'  => 'required',
+            'leher' => 'required',
             'gigi_mulut' => 'required',
             'tht' => 'required',
             'jantung' => 'required',
@@ -382,7 +388,7 @@ class RekamMedisController extends Controller
             'konjungtiva' => $request->konjungtiva,
             'sklera' => $request->sklera,
             'kulit' => $request->kulit,
-            'leher'  => $request->leher,
+            'leher' => $request->leher,
             'gigi_mulut' => $request->gigi_mulut,
             'tht' => $request->tht,
             'jantung' => $request->jantung,
@@ -420,20 +426,22 @@ class RekamMedisController extends Controller
     }
     public function show_tm1($id)
     {
-        $tm1 = Tm1::with(['ibu' => function ($query) {
-            $query->select('nama_ibu');
-        }])->find($id);
+        $tm1 = Tm1::with([
+            'ibu' => function ($query) {
+                $query->select('nama_ibu');
+            }
+        ])->find($id);
         return response()->json($tm1);
     }
-    
+
     //////////////// ANC ////////////////
-    
+
     public function Anc()
     {
         $ibus = Ibu::all();
         $anc = Anc::all();
         // dd($anc);
-        return view('rekam_medis.anc', compact( 'anc','ibus'));
+        return view('rekam_medis.anc', compact('anc', 'ibus'));
     }
     public function store_anc(Request $request)
     {
@@ -476,9 +484,70 @@ class RekamMedisController extends Controller
         ]);
         return redirect()->back()->with('success', 'Data berhasil diperbarui');
     }
+
+    //////////////// SHOW ANC ////////////////
+
     public function show_anc($id)
     {
-    $anc = Anc::findOrFail($id);
-    return view('rekam_medis.show_anc', compact('anc'));
-    }         
+        $anc = Anc::findOrFail($id);
+        return view('rekam_medis.show_anc', compact('anc'));
+    }
+    public function store_showanc(Request $request)
+    {
+        // dd($request);
+        $request->validate([
+            'tanggal' => 'required',
+            'usia_kehamilan' => 'required',
+            'trimester' => 'required',
+            'keluhan' => 'required',
+            'berat_badan' => 'required',
+            'td_mmhg' => 'required',
+            'lila' => 'required',
+            'sts_gizi' => 'required',
+            'tfu' => 'required',
+            'sts_imunisasi' => 'required',
+            'djj' => 'required',
+            'kpl_thd' => 'required',
+            'tbj' => 'required',
+            'presentasi' => 'required',
+            'jmlh_janin' => 'required',
+            'injeksi' => 'required',
+            'buku_kia' => 'required',
+            'fe' => 'required',
+            'pmt_bumil' => 'required',
+            'kelas_ibu' => 'required',
+            'konseling' => 'required',
+        ]);
+
+        Show_Anc::create([
+            'tanggal' => $request->tanggal,
+            'usia_kehamilan' => $request->usia_kehamilan,
+            'trimester' => $request->trimester,
+            'keluhan' => $request->keluhan,
+            'berat_badan' => $request->berat_badan,
+            'td_mmhg' => $request->td_mmhg,
+            'lila' => $request->lila,
+            'sts_gizi' => $request->sts_gizi,
+            'tfu' => $request->tfu,
+            'sts_imunisasi' => $request->sts_imunisasi,
+            'djj' => $request->djj,
+            'kpl_thd' => $request->kpl_thd,
+            'tbj' => $request->tbj,
+            'presentasi' => $request->presentasi,
+            'jmlh_janin' => $request->jmlh_janin,
+            'injeksi' => $request->injeksi,
+            'buku_kia' => $request->buku_kia,
+            'fe' => $request->fe,
+            'pmt_bumil' => $request->pmt_bumil,
+            'kelas_ibu' => $request->kelas_ibu,
+            'konseling' => $request->konseling,
+        ]);
+        return redirect()->back()->with('success', 'Data berhasil ditambahkan');
+    }
+    public function getData_showanc()
+    {
+        $data = Show_Anc::all();
+        return DataTables::of($data)->make(true);
+    }
+
 }
