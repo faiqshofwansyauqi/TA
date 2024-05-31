@@ -124,27 +124,40 @@ h6 {
     border-collapse: collapse;
 }
 
-.table-anc th,
-.table-anc td {
-    border: 2px solid #ddd;
+.table-anc th {
+    border: px solid rgb(144, 142, 142);
     padding: 8px;
 }
 
 .table-anc th {
     background-color: #f2f2f2;
 }
+
+.align-middle {
+    vertical-align: middle;
+}
+
+.text-center {
+    text-align: center;
+}
+
 .normal-header {
     font-weight: normal;
     font-size: 11pt;
 }
-.vertical-text {
+
+
+
+/* .vertical-header {
     writing-mode: vertical-rl;
     transform: rotate(180deg);
-}
-
-.table-responsive {
-    overflow-x: auto;
-}
+    white-space: nowrap;
+    text-align: center;
+    vertical-align: middle;
+    height: 150px; 
+    padding: 10px; 
+    transform-origin: center center;
+} */
 
 /*--------------------------------------------------------------
 # Override some default Bootstrap stylings

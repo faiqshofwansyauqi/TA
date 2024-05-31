@@ -31,7 +31,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Detail ANC</h5>
                         <div class="table-responsive">
-                            <table class="table table-bordered table-anc" id="anc-table" style="width:100%">
+                            <table class="table table-bordered table-anc" id="anc-table">
                                 <thead>
                                     <tr>
                                         <th rowspan="3" class="align-middle text-center">No.</th>
@@ -49,46 +49,22 @@
                                         <th class="align-middle text-center normal-header">Usia Kehamilan</th>
                                         <th class="align-middle text-center normal-header">Trimester ke</th>
                                         <th class="align-middle text-center normal-header">Keluhan</th>
-                                        <th class="align-middle text-center normal-header">BB (kg)</th>
-                                        <th class="align-middle text-center normal-header">TD (mmHg)</th>
-                                        <th class="align-middle text-center normal-header">LILA (cm)</th>
-                                        <th class="align-middle text-center normal-header">Status Gizi</th>
-                                        <th class="align-middle text-center normal-header">TFU (cm)</th>
-                                        <th class="align-middle text-center normal-header">Status Imunisasi Td</th>
-                                        <th class="align-middle text-center normal-header">DJJ (x/menit)</th>
-                                        <th class="align-middle text-center normal-header">Kepala thd PAP</th>
-                                        <th class="align-middle text-center normal-header">TBJ (gram)</th>
-                                        <th class="align-middle text-center normal-header">Presentasi</th>
-                                        <th class="align-middle text-center normal-header">Jumlah Janin</th>
-                                        <th class="align-middle text-center normal-header">Injeksi Td *</th>
-                                        <th class="align-middle text-center normal-header">Catat di Buku KIA *</th>
-                                        <th class="align-middle text-center normal-header">Fe (tab/botol)</th>
+                                        <th class="align-middle text-center normal-header">BB <sup>(kg)</sup></th>
+                                        <th class="align-middle text-center normal-header">TD <sup>(mmHg)</sup></th>
+                                        <th class="align-middle text-center normal-header">LILA <sup>(cm)</sup></th>
+                                        <th class="align-middle text-center normal-header">Status Gizi <sup>2)</sup></th>
+                                        <th class="align-middle text-center normal-header">TFU <sup>(cm)</sup></th>
+                                        <th class="align-middle text-center normal-header">Status Imunisasi Td <sup>6)</sup></th>
+                                        <th class="align-middle text-center normal-header">DJJ <sup>(x/menit)</sup></th>
+                                        <th class="align-middle text-center normal-header">Kepala thd PAP <sup>3)</sup></th>
+                                        <th class="align-middle text-center normal-header">TBJ <sup>(gram)</sup></th>
+                                        <th class="align-middle text-center normal-header">Presentasi <sup>4)</sup></th>
+                                        <th class="align-middle text-center normal-header">Jumlah Janin <sup>5)</sup></th>
+                                        <th class="align-middle text-center normal-header">Injeksi Td <sup>*</sup></th>
+                                        <th class="align-middle text-center normal-header">Catat di Buku KIA <sup>*</sup></th>
+                                        <th class="align-middle text-center normal-header">Fe <sup>(tab/botol)</sup></th>
                                         <th class="align-middle text-center normal-header">PMT Bumil KEK</th>
                                         <th class="align-middle text-center normal-header">Ikut Kelas Ibu</th>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">1</td>
-                                        <td class="text-center">2</td>
-                                        <td class="text-center">3</td>
-                                        <td class="text-center">4</td>
-                                        <td class="text-center">5</td>
-                                        <td class="text-center">6</td>
-                                        <td class="text-center">7</td>
-                                        <td class="text-center">8</td>
-                                        <td class="text-center">9</td>
-                                        <td class="text-center">10</td>
-                                        <td class="text-center">11</td>
-                                        <td class="text-center">12</td>
-                                        <td class="text-center">13</td>
-                                        <td class="text-center">14</td>
-                                        <td class="text-center">15</td>
-                                        <td class="text-center">16</td>
-                                        <td class="text-center">17</td>
-                                        <td class="text-center">18</td>
-                                        <td class="text-center">19</td>
-                                        <td class="text-center">20</td>
-                                        <td class="text-center">21</td>
-                                        <td class="text-center">22</td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -113,19 +89,17 @@
                         @csrf
                         <div class="card">
                             <div class="card-body">
-                                <!-- REGISTER section -->
                                 <h5 class="card-title">Register</h5>
                                 <input type="hidden" name="NIK" value="{{ $anc->NIK }}">
                                 <div class="row mb-3">
                                     <div class="col-md-4">
                                         <label for="tanggal" class="form-label">Tanggal</label>
-                                        <input type="date" class="form-control" id="tanggal" name="tanggal"
-                                            required>
+                                        <input type="date" class="form-control" id="tanggal" name="tanggal" required>
                                     </div>
                                     <div class="col-md-4">
                                         <label for="usia_kehamilan" class="form-label">Usia Kehamilan</label>
-                                        <input type="number" class="form-control" id="usia_kehamilan"
-                                            name="usia_kehamilan" required>
+                                        <input type="number" class="form-control" id="usia_kehamilan" name="usia_kehamilan"
+                                            required>
                                     </div>
                                     <div class="col-md-4">
                                         <label for="trimester" class="form-label">Trimester ke</label>
@@ -137,8 +111,6 @@
                                         </select>
                                     </div>
                                 </div>
-
-                                <!-- PEMERIKSAAN IBU section -->
                                 <h5 class="card-title">Pemeriksaan Ibu</h5>
                                 <div class="col-md-12 mb-3">
                                     <label for="keluhan" class="form-label">Keluhan</label>
@@ -196,8 +168,6 @@
                                         </select>
                                     </div>
                                 </div>
-
-                                <!-- PEMERIKSAAN BAYI section -->
                                 <h5 class="card-title">Pemeriksaan Bayi</h5>
                                 <div class="row mb-3">
                                     <div class="col-md-3">
@@ -242,8 +212,6 @@
                                         </select>
                                     </div>
                                 </div>
-
-                                <!-- PELAYANAN section -->
                                 <h5 class="card-title">Pelayanan</h5>
                                 <div class="row mb-3">
                                     <div class="col-md-3">
@@ -285,7 +253,6 @@
                                     </div>
                                 </div>
 
-                                <!-- KONSELING section -->
                                 <h5 class="card-title">Konseling</h5>
                                 <div class="row mb-3">
                                     <div class="col-md-12">
@@ -303,7 +270,7 @@
         </div>
     </div>
 
-    {{-- <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="ModalEdit" aria-hidden="true">
+    <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="ModalEdit" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -503,7 +470,7 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
 @endsection
 @section('script')
     <script>
@@ -512,182 +479,143 @@
             $('#btn-plus').click(function() {
                 modalInput.modal('show');
             });
-        });
-        $(document).ready(function() {
-            let modalEdit = $('#modalEdit');
-            $('#btn-edit').click(function() {
-                modalEdit.modal('show');
+            $(document).ready(function() {
+                let modalEdit = $('#modalEdit');
+                $('#btn-edit').click(function() {
+                    modalEdit.modal('show');
+                });
             });
         });
-
-        $(document).ready(function() {
-            $('#anc-table').DataTable({
-                processing: true,
-                serverSide: true,
-                lengthChange: false,
-                searching: false,
-                ordering: false,
-                paging: false,
-                responsive: true,
-                info: false,
-                ajax: "{{ route('rekam_medis.data_showanc', ['NIK' => $anc->NIK]) }}",
-                columns: [{
-                        data: 'id',
-                        name: 'id',
-                        className: 'text-center',
-                        render: function(data, type, row, meta) {
-                            // Mendapatkan indeks baris dan menambahkannya dengan 1
-                            return meta.row + 1;
-                        }
-                    },
-                    {
-                        data: 'tanggal',
-                        name: 'tanggal',
-                        className: 'text-center'
-                    },
-                    {
-                        data: 'usia_kehamilan',
-                        name: 'usia_kehamilan',
-                        className: 'text-center'
-                    },
-                    {
-                        data: 'trimester',
-                        name: 'trimester',
-                        className: 'text-center'
-                    },
-                    {
-                        data: 'keluhan',
-                        name: 'keluhan',
-                        className: 'text-center'
-                    },
-                    {
-                        data: 'berat_badan',
-                        name: 'berat_badan',
-                        className: 'text-center'
-                    },
-                    {
-                        data: 'td_mmhg',
-                        name: 'td_mmhg',
-                        className: 'text-center'
-                    },
-                    {
-                        data: 'lila',
-                        name: 'lila',
-                        className: 'text-center'
-                    },
-                    {
-                        data: 'sts_gizi',
-                        name: 'sts_gizi',
-                        className: 'text-center'
-                    },
-                    {
-                        data: 'tfu',
-                        name: 'tfu',
-                        className: 'text-center'
-                    },
-                    {
-                        data: 'sts_imunisasi',
-                        name: 'sts_imunisasi',
-                        className: 'text-center'
-                    },
-                    {
-                        data: 'djj',
-                        name: 'djj',
-                        className: 'text-center'
-                    },
-                    {
-                        data: 'kpl_thd',
-                        name: 'kpl_thd',
-                        className: 'text-center'
-                    },
-                    {
-                        data: 'tbj',
-                        name: 'tbj',
-                        className: 'text-center'
-                    },
-                    {
-                        data: 'presentasi',
-                        name: 'presentasi',
-                        className: 'text-center'
-                    },
-                    {
-                        data: 'jmlh_janin',
-                        name: 'jmlh_janin',
-                        className: 'text-center'
-                    },
-                    {
-                        data: 'injeksi',
-                        name: 'injeksi',
-                        className: 'text-center',
-                        render: function(data, type, row, meta) {
-                            if (data.toLowerCase() === 'jika iya') {
-                                return '&#10003;';
-                            } else if (data.toLowerCase() === 'jika tidak') {
-                                return '&#10007;';
-                                s
-                            }
-                            return data;
-                        }
-                    },
-                    {
-                        data: 'buku_kia',
-                        name: 'buku_kia',
-                        className: 'text-center',
-                        render: function(data, type, row, meta) {
-                            if (data.toLowerCase() === 'jika iya') {
-                                return '&#10003;';
-                            } else if (data.toLowerCase() === 'jika tidak') {
-                                return '&#10007;';
-                                s
-                            }
-                            return data;
-                        }
-                    },
-                    {
-                        data: 'fe',
-                        name: 'fe',
-                        className: 'text-center'
-                    },
-                    {
-                        data: 'pmt_bumil',
-                        name: 'pmt_bumil',
-                        className: 'text-center',
-                        render: function(data, type, row, meta) {
-                            if (data.toLowerCase() === 'jika iya') {
-                                return '&#10003;';
-                            } else if (data.toLowerCase() === 'jika tidak') {
-                                return '&#10007;';
-                                s
-                            }
-                            return data;
-                        }
-                    },
-                    {
-                        data: 'kelas_ibu',
-                        name: 'kelas_ibu',
-                        className: 'text-center',
-                        render: function(data, type, row, meta) {
-                            if (data.toLowerCase() === 'jika iya') {
-                                return '&#10003;';
-                            } else if (data.toLowerCase() === 'jika tidak') {
-                                return '&#10007;';
-                                s
-                            }
-                            return data;
-                        }
-                    },
-                    {
-                        data: 'konseling',
-                        name: 'konseling',
-                        className: 'text-center'
-                    },
-                ],
-                fixedColumns: true,
-                scrollX: true
-            });
+        $('#anc-table').DataTable({
+        processing: true,
+        serverSide: true,
+        lengthChange: false,
+        searching: false,
+        ordering: false,
+        paging: false,
+        info: false,
+        ajax: "{{ route('rekam_medis.data_showanc', ['NIK' => $anc->NIK]) }}",
+        columns: [{
+                data: 'id',
+                name: 'id',
+                render: function(data, type, row, meta) {
+                    return meta.row + 1;
+                }
+            },
+            {
+                data: 'tanggal',
+                name: 'tanggal',
+                render: function(data, type, row, meta) {
+                    var date = new Date(data);
+                    var day = date.getDate();
+                    var month = date.getMonth() + 1;
+                    var year = date.getFullYear().toString().slice(-2);
+                    day = day < 10 ? '0' + day : day;
+                    month = month < 10 ? '0' + month : month;
+                    return day + '/' + month + '/' + year;
+                }
+            },
+            {
+                data: 'usia_kehamilan',
+                name: 'usia_kehamilan'
+            },
+            {
+                data: 'trimester',
+                name: 'trimester'
+            },
+            {
+                data: 'keluhan',
+                name: 'keluhan'
+            },
+            {
+                data: 'berat_badan',
+                name: 'berat_badan'
+            },
+            {
+                data: 'td_mmhg',
+                name: 'td_mmhg'
+            },
+            {
+                data: 'lila',
+                name: 'lila'
+            },
+            {
+                data: 'sts_gizi',
+                name: 'sts_gizi'
+            },
+            {
+                data: 'tfu',
+                name: 'tfu'
+            },
+            {
+                data: 'sts_imunisasi',
+                name: 'sts_imunisasi'
+            },
+            {
+                data: 'djj',
+                name: 'djj'
+            },
+            {
+                data: 'kpl_thd',
+                name: 'kpl_thd'
+            },
+            {
+                data: 'tbj',
+                name: 'tbj'
+            },
+            {
+                data: 'presentasi',
+                name: 'presentasi'
+            },
+            {
+                data: 'jmlh_janin',
+                name: 'jmlh_janin'
+            },
+            {
+                data: 'injeksi',
+                name: 'injeksi',
+                render: function(data, type, row, meta) {
+                    return data.toLowerCase() === 'jika iya' ? '&#10003;' : '&#10007;';
+                }
+            },
+            {
+                data: 'buku_kia',
+                name: 'buku_kia',
+                render: function(data, type, row, meta) {
+                    return data.toLowerCase() === 'jika iya' ? '&#10003;' : '&#10007;';
+                }
+            },
+            {
+                data: 'fe',
+                name: 'fe'
+            },
+            {
+                data: 'pmt_bumil',
+                name: 'pmt_bumil',
+                render: function(data, type, row, meta) {
+                    return data.toLowerCase() === 'jika iya' ? '&#10003;' : '&#10007;';
+                }
+            },
+            {
+                data: 'kelas_ibu',
+                name: 'kelas_ibu',
+                render: function(data, type, row, meta) {
+                    return data.toLowerCase() === 'jika iya' ? '&#10003;' : '&#10007;';
+                }
+            },
+            {
+                data: 'konseling',
+                name: 'konseling'
+            }
+        ],
+        createdRow: function(row, data, dataIndex) {
+            $(row).addClass('text-center');
+        },
+        fixedColumns: false,
+        responsive: false,
+        scrollX: true
         });
-
-
+        
 
         document.addEventListener('DOMContentLoaded', function() {
             if (window.location.pathname.includes('/rekam_medis/anc/show_anc')) {
