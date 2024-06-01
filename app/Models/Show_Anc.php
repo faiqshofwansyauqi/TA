@@ -50,6 +50,13 @@ class Show_Anc extends Model
         'kontak_erat',
         'suspek',
         'konfimasi',
+        'hdk',
+        'abortus',
+        'pendarahan',
+        'infeksi',
+        'anemia',
+        'kpd',
+        'lain_lain',
     ];
     public function ibu()
     {

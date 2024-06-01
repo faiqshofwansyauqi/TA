@@ -54,6 +54,13 @@ class CreateShowAncTable extends Migration
             $table->string('kontak_erat');
             $table->string('suspek');
             $table->string('konfimasi');
+            $table->string('hdk');
+            $table->string('abortus');
+            $table->string('pendarahan');
+            $table->string('infeksi');
+            $table->string('anemia');
+            $table->string('kpd');
+            $table->string('lain_lain');
             $table->timestamps();
         });
     }

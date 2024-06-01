@@ -537,6 +537,13 @@ class RekamMedisController extends Controller
             'kontak_erat' => 'required',
             'suspek' => 'required',
             'konfimasi' => 'required',
+            'hdk' => 'required',
+            'abortus' => 'required',
+            'pendarahan' => 'required',
+            'infeksi' => 'required',
+            'anemia' => 'required',
+            'kpd' => 'required',
+            'lain_lain' => 'required',
         ]);
 
         Show_Anc::create([
@@ -579,6 +586,13 @@ class RekamMedisController extends Controller
             'kontak_erat' => $request ->kontak_erat ,
             'suspek' => $request ->suspek ,
             'konfimasi' => $request ->konfimasi ,
+            'hdk' => $request ->hdk,
+            'abortus' => $request ->abortus,
+            'pendarahan' => $request ->pendarahan,
+            'infeksi' => $request ->infeksi,
+            'anemia' => $request ->anemia,
+            'kpd' => $request ->kpd,
+            'lain_lain' => $request ->lain_lain,
         ]);
         return redirect()->back()->with('success', 'Data berhasil ditambahkan');
     }
@@ -624,6 +638,13 @@ class RekamMedisController extends Controller
             'kontak_erat' => 'required',
             'suspek' => 'required',
             'konfimasi' => 'required',
+            'hdk' => 'required',
+            'abortus' => 'required',
+            'pendarahan' => 'required',
+            'infeksi' => 'required',
+            'anemia' => 'required',
+            'kpd' => 'required',
+            'lain_lain' => 'required',
             
         ]);
         $ancs = Show_Anc::findOrFail($id);
@@ -666,6 +687,13 @@ class RekamMedisController extends Controller
             'kontak_erat' => $request ->kontak_erat ,
             'suspek' => $request ->suspek ,
             'konfimasi' => $request ->konfimasi ,
+            'hdk' => $request ->hdk,
+            'abortus' => $request ->abortus,
+            'pendarahan' => $request ->pendarahan,
+            'infeksi' => $request ->infeksi,
+            'anemia' => $request ->anemia,
+            'kpd' => $request ->kpd,
+            'lain_lain' => $request ->lain_lain,
         ]);
         return redirect()->back()->with('success', 'Data berhasil diperbarui');
     }
