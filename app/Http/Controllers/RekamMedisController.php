@@ -584,7 +584,7 @@ class RekamMedisController extends Controller
     }
     public function update_showanc(Request $request, $id)
     {
-        dd($request);
+        // dd($request);
         $request->validate([
             'tanggal' => 'required',
             'usia_kehamilan' => 'required',
@@ -607,6 +607,24 @@ class RekamMedisController extends Controller
             'pmt_bumil' => 'required',
             'kelas_ibu' => 'required',
             'konseling' => 'required',
+            'hemoglobin' => 'required',
+            'glcs_urine' => 'required',
+            'sifilis' => 'required',
+            'hbsag' => 'required',
+            'hiv' => 'required',
+            'arv' => 'required',
+            'malaria' => 'required',
+            'obat_malaria' => 'required',
+            'kelambu' => 'required',
+            'skrining_anam' => 'required',
+            'dahak' => 'required',
+            'tbc' => 'required',
+            'obat_TB' => 'required',
+            'sehat' => 'required',
+            'kontak_erat' => 'required',
+            'suspek' => 'required',
+            'konfimasi' => 'required',
+            
         ]);
         $ancs = Show_Anc::findOrFail($id);
         $ancs->update([
@@ -631,6 +649,23 @@ class RekamMedisController extends Controller
             'pmt_bumil' => $request->pmt_bumil,
             'kelas_ibu' => $request->kelas_ibu,
             'konseling' => $request->konseling,
+            'hemoglobin' => $request ->hemoglobin ,
+            'glcs_urine' => $request ->glcs_urine ,
+            'sifilis' => $request ->sifilis ,
+            'hbsag' => $request ->hbsag ,
+            'hiv' => $request ->hiv ,
+            'arv' => $request ->arv ,
+            'malaria' => $request ->malaria ,
+            'obat_malaria' => $request ->obat_malaria ,
+            'kelambu' => $request ->kelambu ,
+            'skrining_anam' => $request ->skrining_anam ,
+            'dahak' => $request ->dahak ,
+            'tbc' => $request ->tbc ,
+            'obat_TB' => $request ->obat_TB,
+            'sehat' => $request ->sehat ,
+            'kontak_erat' => $request ->kontak_erat ,
+            'suspek' => $request ->suspek ,
+            'konfimasi' => $request ->konfimasi ,
         ]);
         return redirect()->back()->with('success', 'Data berhasil diperbarui');
     }
