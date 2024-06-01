@@ -90,6 +90,8 @@ Route::prefix('rekam_medis')->group(function () {
     Route::post('store-show_anc', [RekamMedisController::class, 'store_showanc'])->name('rekam_medis.store_showanc');
     Route::get('anc/show_anc/{id}', [RekamMedisController::class, 'show_anc'])->name('rekam_medis.show_anc');
     Route::get('data-show_anc/{NIK}', [RekamMedisController::class, 'getData_showanc'])->name('rekam_medis.data_showanc');
+    Route::get('show_anc/edit_showanc/{id}', [RekamMedisController::class, 'edit_showanc'])->name('rekam_medis.edit_showanc');
+    Route::put('show_ach/update_showanc/{id}', [RekamMedisController::class, 'update_showanc'])->name('rekam_medis.update_showanc');
     
 });
 
