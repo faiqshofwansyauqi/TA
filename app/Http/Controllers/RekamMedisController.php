@@ -491,6 +491,7 @@ class RekamMedisController extends Controller
     {
         $anc = Anc::findOrFail($id);
         $ancs = Show_Anc::all();
+        // dd($anc);
         return view('rekam_medis.show_anc', compact('ancs', 'anc'));
     }
     public function store_showanc(Request $request)
@@ -519,6 +520,23 @@ class RekamMedisController extends Controller
             'pmt_bumil' => 'required',
             'kelas_ibu' => 'required',
             'konseling' => 'required',
+            'hemoglobin' => 'required',
+            'glcs_urine' => 'required',
+            'sifilis' => 'required',
+            'hbsag' => 'required',
+            'hiv' => 'required',
+            'arv' => 'required',
+            'malaria' => 'required',
+            'obat_malaria' => 'required',
+            'kelambu' => 'required',
+            'skrining_anam' => 'required',
+            'dahak' => 'required',
+            'tbc' => 'required',
+            'obat_TB' => 'required',
+            'sehat' => 'required',
+            'kontak_erat' => 'required',
+            'suspek' => 'required',
+            'konfimasi' => 'required',
         ]);
 
         Show_Anc::create([
@@ -544,12 +562,29 @@ class RekamMedisController extends Controller
             'pmt_bumil' => $request->pmt_bumil,
             'kelas_ibu' => $request->kelas_ibu,
             'konseling' => $request->konseling,
+            'hemoglobin' => $request ->hemoglobin ,
+            'glcs_urine' => $request ->glcs_urine ,
+            'sifilis' => $request ->sifilis ,
+            'hbsag' => $request ->hbsag ,
+            'hiv' => $request ->hiv ,
+            'arv' => $request ->arv ,
+            'malaria' => $request ->malaria ,
+            'obat_malaria' => $request ->obat_malaria ,
+            'kelambu' => $request ->kelambu ,
+            'skrining_anam' => $request ->skrining_anam ,
+            'dahak' => $request ->dahak ,
+            'tbc' => $request ->tbc ,
+            'obat_TB' => $request ->obat_TB,
+            'sehat' => $request ->sehat ,
+            'kontak_erat' => $request ->kontak_erat ,
+            'suspek' => $request ->suspek ,
+            'konfimasi' => $request ->konfimasi ,
         ]);
         return redirect()->back()->with('success', 'Data berhasil ditambahkan');
     }
     public function update_showanc(Request $request, $id)
     {
-        // dd($request);
+        dd($request);
         $request->validate([
             'tanggal' => 'required',
             'usia_kehamilan' => 'required',
@@ -601,7 +636,7 @@ class RekamMedisController extends Controller
     }
     public function getData_showanc($NIK)
     {
-        $data = Show_Anc::where('NIK', $NIK)->get(); // Mengambil data ANC sesuai dengan NIK
+        $data = Show_Anc::where('NIK', $NIK)->get();
         return DataTables::of($data)->make(true);
     }
     public function edit_showanc($id)

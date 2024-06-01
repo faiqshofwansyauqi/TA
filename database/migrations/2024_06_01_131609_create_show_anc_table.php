@@ -13,7 +13,7 @@ class CreateShowAncTable extends Migration
      */
     public function up()
     {
-        Schema::create('show__anc', function (Blueprint $table) {
+        Schema::create('show_anc', function (Blueprint $table) {
             $table->id();
             $table->string('NIK');
             $table->date('tanggal');
@@ -37,6 +37,23 @@ class CreateShowAncTable extends Migration
             $table->string('pmt_bumil');
             $table->string('kelas_ibu');
             $table->string('konseling');
+            $table->string('hemoglobin');
+            $table->string('glcs_urine');
+            $table->string('sifilis');
+            $table->string('hbsag');
+            $table->string('hiv');
+            $table->string('arv');
+            $table->string('malaria');
+            $table->string('obat_malaria');
+            $table->string('kelambu');
+            $table->string('skrining_anam');
+            $table->string('dahak');
+            $table->string('tbc');
+            $table->string('obat_TB');
+            $table->string('sehat');
+            $table->string('kontak_erat');
+            $table->string('suspek');
+            $table->string('konfimasi');
             $table->timestamps();
         });
     }
@@ -48,6 +65,6 @@ class CreateShowAncTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('show__anc');
+        Schema::dropIfExists('show_anc');
     }
 }

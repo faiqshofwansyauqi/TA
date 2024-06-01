@@ -10,8 +10,8 @@ class Show_Anc extends Model
     protected $table = 'show_anc';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'NIK',    
-        'id',    
+        'NIK',
+        'id',
         'tanggal',
         'usia_kehamilan',
         'trimester',
@@ -32,7 +32,24 @@ class Show_Anc extends Model
         'fe',
         'pmt_bumil',
         'kelas_ibu',
-        'konseling',    
+        'konseling',
+        'hemoglobin',
+        'glcs_urine',
+        'sifilis',
+        'hbsag',
+        'hiv',
+        'arv',
+        'malaria',
+        'obat_malaria',
+        'kelambu',
+        'skrining_anam',
+        'dahak',
+        'tbc',
+        'obat_TB',
+        'sehat',
+        'kontak_erat',
+        'suspek',
+        'konfimasi',
     ];
     public function ibu()
     {

@@ -33,10 +33,16 @@
                                         <th colspan="12" class="text-center">PEMERIKSAAN</th>
                                         <th colspan="5" rowspan="2" class="text-center align-middle">PELAYANAN</th>
                                         <th rowspan="3" class="text-center align-middle">KONSELING</th>
+                                        <th colspan="2" rowspan="2" class="align-middle text-center">LABORATORIUM</th>
+                                        <th colspan="15" class="text-center">Inetgrasi Program</th>
                                     </tr>
                                     <tr>
                                         <th colspan="7" class="text-center">IBU</th>
                                         <th colspan="5" class="text-center">BAYI</th>
+                                        <th colspan="4" class="text-center">PMTCT</th>
+                                        <th colspan="3" class="text-center">MALARIA</th>
+                                        <th colspan="4" class="text-center">TB</th>
+                                        <th colspan="4" class="text-center">SKRINING COVID-19</th>
                                     </tr>
                                     <tr>
                                         <th class="align-middle text-center normal-header">Tanggal</th>
@@ -61,6 +67,29 @@
                                         <th class="align-middle text-center normal-header">Fe <sup>(tab/botol)</sup></th>
                                         <th class="align-middle text-center normal-header">PMT Bumil KEK</th>
                                         <th class="align-middle text-center normal-header">Ikut Kelas Ibu</th>
+                                        <th class="align-middle text-center normal-header">Hemoglobin <sup>(gr/dl)</sup>
+                                        </th>
+                                        <th class="align-middle text-center normal-header">Glucosa urine<sup>(+/-)</sup>
+                                        </th>
+                                        <th class="align-middle text-center normal-header">Sifilis<sup>(+/-)</sup></th>
+                                        <th class="align-middle text-center normal-header">HBsAG<sup>*</sup></th>
+                                        <th class="align-middle text-center normal-header">HIV<sup>(+/-)</sup></th>
+                                        <th class="align-middle text-center normal-header">ARV Profilaksis<sup>***</sup>
+                                        </th>
+                                        <th class="align-middle text-center normal-header">Malaria<sup>(+/-)</sup></th>
+                                        <th class="align-middle text-center normal-header">Obat<sup>***</sup></th>
+                                        <th class="align-middle text-center normal-header">Kelambu
+                                            berinsektisida<sup>*</sup></th>
+                                        <th class="align-middle text-center normal-header">Skrining anamnesis<sup>*</sup>
+                                        </th>
+                                        <th class="align-middle text-center normal-header">Periksa dahak<sup>*</sup></th>
+                                        <th class="align-middle text-center normal-header">TBC<sup>(+/-)</sup></th>
+                                        <th class="align-middle text-center normal-header">Obat<sup>***</sup></th>
+                                        <th class="align-middle text-center normal-header">Sehat</th>
+                                        <th class="align-middle text-center normal-header">Kontak Erat</th>
+                                        <th class="align-middle text-center normal-header">Suspek</th>
+                                        <th class="align-middle text-center normal-header">Terkonfirmasi</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -74,7 +103,7 @@
     </section>
 
     <div class="modal fade" id="modalInput" tabindex="-1" aria-labelledby="ModalInput" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-dialog modal-dialog-scrollable modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                     <h3 class="modal-title fs-4 fw-bold" id="ModalInput">Input ANC</h3>
@@ -83,178 +112,332 @@
                 <div class="modal-body">
                     <form action="{{ route('rekam_medis.store_showanc') }}" method="post" autocomplete="off">
                         @csrf
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Register</h5>
-                                <input type="hidden" name="NIK" value="{{ $anc->NIK }}">
-                                <div class="row mb-3">
-                                    <div class="col-md-4">
-                                        <label for="tanggal" class="form-label">Tanggal</label>
-                                        <input type="date" class="form-control" id="tanggal" name="tanggal" required>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="card-body">
+                                    <h5 class="card-title">Register</h5>
+                                    <input type="hidden" name="NIK" value="{{ $anc->NIK }}">
+                                    <div class="row mb-3">
+                                        <div class="col-md-4">
+                                            <label for="tanggal" class="form-label">Tanggal</label>
+                                            <input type="date" class="form-control" id="tanggal" name="tanggal"
+                                                required>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="usia_kehamilan" class="form-label">Usia Kehamilan</label>
+                                            <input type="number" class="form-control" id="usia_kehamilan"
+                                                name="usia_kehamilan" required>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="trimester" class="form-label">Trimester ke</label>
+                                            <select class="form-select" id="trimester" name="trimester" required>
+                                                <option value="">Pilih Trimester</option>
+                                                <option value="I">I</option>
+                                                <option value="II">II</option>
+                                                <option value="III">III</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <label for="usia_kehamilan" class="form-label">Usia Kehamilan</label>
-                                        <input type="number" class="form-control" id="usia_kehamilan" name="usia_kehamilan"
+                                    <h5 class="card-title">Pemeriksaan Ibu</h5>
+                                    <div class="col-md-12 mb-3">
+                                        <label for="keluhan" class="form-label">Keluhan</label>
+                                        <input type="text" class="form-control" id="keluhan" name="keluhan"
                                             required>
                                     </div>
-                                    <div class="col-md-4">
-                                        <label for="trimester" class="form-label">Trimester ke</label>
-                                        <select class="form-select" id="trimester" name="trimester" required>
-                                            <option value="">Pilih Trimester</option>
-                                            <option value="I">I</option>
-                                            <option value="II">II</option>
-                                            <option value="III">III</option>
-                                        </select>
+                                    <div class="row mb-3">
+                                        <div class="col-md-4">
+                                            <label for="berat_badan" class="form-label">Berat Badan
+                                                <sup>(kg)</sup></label>
+                                            <div class="input-group mb-2">
+                                                <input type="number" class="form-control" id="berat_badan"
+                                                    name="berat_badan" required>
+                                                <span class="input-group-text">kg</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="td_mmhg" class="form-label">TD <sup>(mmhg)</sup></label>
+                                            <div class="input-group mb-2">
+                                                <input type="number" class="form-control" id="td_mmhg" name="td_mmhg"
+                                                    required>
+                                                <span class="input-group-text">mmhg</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="lila" class="form-label">LILA <sup>(cm)</sup></label>
+                                            <div class="input-group mb-2">
+                                                <input type="number" class="form-control" id="lila" name="lila"
+                                                    required>
+                                                <span class="input-group-text">cm</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="sts_gizi" class="form-label">Status Gizi <sup>2)</sup></label>
+                                            <input type="text" class="form-control" id="sts_gizi" name="sts_gizi"
+                                                required>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="tfu" class="form-label">TFU <sup>(cm)</sup></label>
+                                            <div class="input-group mb-2">
+                                                <input type="text" class="form-control" id="tfu" name="tfu"
+                                                    required>
+                                                <span class="input-group-text">cm</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="sts_imunisasi" class="form-label">Status Imunisasi Td
+                                                <sup>6)</sup></label>
+                                            <select class="form-select" id="sts_imunisasi" name="sts_imunisasi" required>
+                                                <option value="">Pilih Status Imunisasi</option>
+                                                <option value="Td01">Td01</option>
+                                                <option value="Td02">Td02</option>
+                                                <option value="Td03">Td03</option>
+                                                <option value="Td04">Td04</option>
+                                                <option value="Td05">Td05</option>
+                                                <option value="Td06">Td06</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <h5 class="card-title">Pemeriksaan Bayi</h5>
+                                    <div class="row mb-3">
+                                        <div class="col-md-3">
+                                            <label for="djj" class="form-label">DJJ <sup>((x/menit))</sup></label>
+                                            <div class="input-group mb-2">
+                                                <input type="number" class="form-control" id="djj" name="djj"
+                                                    required>
+                                                <span class="input-group-text">menit</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="kpl_thd" class="form-label">Kepala thd PAP<sup>3)</sup></label>
+                                            <select class="form-select" id="kpl_thd" name="kpl_thd" required>
+                                                <option value="">Pilih Kepala thd PAP</option>
+                                                <option value="M">M</option>
+                                                <option value="MB">MB</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="tbj" class="form-label">TBJ <sup>(gram)</sup></label>
+                                            <div class="input-group mb-2">
+                                                <input type="number" class="form-control" id="tbj" name="tbj"
+                                                    required>
+                                                <span class="input-group-text">gram</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="presentasi" class="form-label">Presentasi<sup>4)</sup></label>
+                                            <select class="form-select" id="presentasi" name="presentasi" required>
+                                                <option value="">Pilih Presentasi</option>
+                                                <option value="KP">KP</option>
+                                                <option value="BS">BS</option>
+                                                <option value="LLO">LLO</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="jmlh_janin" class="form-label">Jumlah Janin<sup>5)</sup></label>
+                                            <select class="form-select" id="jmlh_janin" name="jmlh_janin" required>
+                                                <option value="">Pilih Jumlah Janin</option>
+                                                <option value="T">T</option>
+                                                <option value="G">G</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <h5 class="card-title">Pelayanan</h5>
+                                    <div class="row mb-3">
+                                        <div class="col-md-3">
+                                            <label for="buku_kia" class="form-label">Catatan dibuku KIA*</label>
+                                            <select class="form-select" id="buku_kia" name="buku_kia" required>
+                                                <option value="">Pilih Catatan dibuku KIA*</option>
+                                                <option value="jika iya">&#10003; <!-- Ceklis --></option>
+                                                <option value="jika tidak">&#10007; <!-- Uncek --></option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <br>
+                                            <label for="injeksi" class="form-label">Injeksi Td*</label>
+                                            <select class="form-select" id="injeksi" name="injeksi" required>
+                                                <option value="">Pilih Injeksi Td*</option>
+                                                <option value="jika iya">&#10003; <!-- Ceklis --></option>
+                                                <option value="jika tidak">&#10007; <!-- Uncek --></option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <br>
+                                            <label for="fe" class="form-label">Fe <sup>(tab/botol)</sup></label>
+                                            <input type="number" class="form-control" id="fe" name="fe"
+                                                required>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="pmt_bumil" class="form-label">PMT Bumil KEK</label>
+                                            <select class="form-select" id="pmt_bumil" name="pmt_bumil" required>
+                                                <option value="">Pilih PMT Bumil KEK*</option>
+                                                <option value="jika iya">&#10003; <!-- Ceklis --></option>
+                                                <option value="jika tidak">&#10007; <!-- Uncek --></option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="kelas_ibu" class="form-label">Ikut Kelas Ibu*</label>
+                                            <select class="form-select" id="kelas_ibu" name="kelas_ibu" required>
+                                                <option value="">Pilih Ikut Kelas Ibu</option>
+                                                <option value="jika iya">&#10003; <!-- Ceklis --></option>
+                                                <option value="jika tidak">&#10007; <!-- Uncek --></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <h5 class="card-title">Konseling</h5>
+                                    <div class="row mb-3">
+                                        <div class="col-md-12">
+                                            <label for="konseling" class="form-label">Konseling</label>
+                                            <input type="text" class="form-control" id="konseling" name="konseling"
+                                                required>
+                                        </div>
                                     </div>
                                 </div>
-                                <h5 class="card-title">Pemeriksaan Ibu</h5>
-                                <div class="col-md-12 mb-3">
-                                    <label for="keluhan" class="form-label">Keluhan</label>
-                                    <input type="text" class="form-control" id="keluhan" name="keluhan" required>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col-md-3">
-                                        <label for="berat_badan" class="form-label">Berat Badan <sup>(kg)</sup></label>
-                                        <div class="input-group mb-2">
-                                            <input type="number" class="form-control" id="berat_badan"
-                                                name="berat_badan" required>
-                                            <span class="input-group-text">kg</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="td_mmhg" class="form-label">TD <sup>(mmhg)</sup></label>
-                                        <div class="input-group mb-2">
-                                            <input type="number" class="form-control" id="td_mmhg" name="td_mmhg"
+                            </div>
+                            <div class="col-6">
+                                <div class="card-body">
+                                    <h5 class="card-title">Laboratorium</h5>
+                                    <div class="row mb-3">
+                                        <div class="col-md-4">
+                                            <label for="hemoglobin"
+                                                class="form-label">Hemoglobin<sup>(gr/dl)</sup></label>
+                                            <input type="number" class="form-control" id="hemoglobin" name="hemoglobin"
                                                 required>
-                                            <span class="input-group-text">mmhg</span>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="glcs_urine" class="form-label">Glucosa
+                                                Urine<sup>(-/+)</sup></label>
+                                            <select class="form-select" id="glcs_urine" name="glcs_urine" required>
+                                                <option value="">Pilih Glucosa Urine</option>
+                                                <option value="-">-</option>
+                                                <option value="+">+</option>
+                                            </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
-                                        <label for="lila" class="form-label">LILA <sup>(cm)</sup></label>
-                                        <div class="input-group mb-2">
-                                            <input type="number" class="form-control" id="lila" name="lila"
+                                    <h5 class="card-title">Integrasi Program - PMTCT</h5>
+                                    <div class="row">
+                                        <div class="col-md-3 mb-3">
+                                            <label for="sifilis" class="form-label">Sifilis<sup>(-/+)</sup></label>
+                                            <select class="form-select" id="sifilis" name="sifilis" required>
+                                                <option value="">Pilih Sifilis</option>
+                                                <option value="-">-</option>
+                                                <option value="+">+</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="hbsag" class="form-label">HBsAg<sup>(-/+)</sup></label>
+                                            <select class="form-select" id="hbsag" name="hbsag" required>
+                                                <option value="">Pilih HBsAg</option>
+                                                <option value="-">-</option>
+                                                <option value="+">+</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="hiv" class="form-label">HIV<sup>(-/+)</sup></label>
+                                            <select class="form-select" id="hiv" name="hiv" required>
+                                                <option value="">Pilih HIV</option>
+                                                <option value="-">-</option>
+                                                <option value="+">+</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="arv" class="form-label">Arv Profilaksis</label>
+                                            <input type="number" class="form-control" id="arv" name="arv"
                                                 required>
-                                            <span class="input-group-text">cm</span>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
-                                        <label for="sts_gizi" class="form-label">Status Gizi <sup>2)</sup></label>
-                                        <input type="text" class="form-control" id="sts_gizi" name="sts_gizi"
-                                            required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="tfu" class="form-label">TFU <sup>(cm)</sup></label>
-                                        <div class="input-group mb-2">
-                                            <input type="text" class="form-control" id="tfu" name="tfu"
+                                    <h5 class="card-title">Integrasi Program - Malaria</h5>
+                                    <div class="row">
+                                        <div class="col-md-4 mb-3">
+                                            <label for="malaria" class="form-label">Malaria<sup>(-/+)</sup></label>
+                                            <select class="form-select" id="malaria" name="malaria" required>
+                                                <option value="">Pilih Sifilis</option>
+                                                <option value="-">-</option>
+                                                <option value="+">+</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="obat_malaria" class="form-label">Obat<sup>***</sup></label>
+                                            <input type="text" class="form-control" id="obat_malaria"
+                                                name="obat_malaria" required>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <label for="kelambu" class="form-label">Kelambu
+                                                berinsektisida<sup>*</sup></label>
+                                            <input type="text" class="form-control" id="kelambu" name="kelambu"
                                                 required>
-                                            <span class="input-group-text">cm</span>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <label for="sts_imunisasi" class="form-label">Status Imunisasi Td
-                                            <sup>6)</sup></label>
-                                        <select class="form-select" id="sts_imunisasi" name="sts_imunisasi" required>
-                                            <option value="">Pilih Status Imunisasi</option>
-                                            <option value="Td01">Td01</option>
-                                            <option value="Td02">Td02</option>
-                                            <option value="Td03">Td03</option>
-                                            <option value="Td04">Td04</option>
-                                            <option value="Td05">Td05</option>
-                                            <option value="Td06">Td06</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <h5 class="card-title">Pemeriksaan Bayi</h5>
-                                <div class="row mb-3">
-                                    <div class="col-md-3">
-                                        <label for="djj" class="form-label">DJJ <sup>((x/menit))</sup></label>
-                                        <div class="input-group mb-2">
-                                            <input type="number" class="form-control" id="djj" name="djj"
+                                    <h5 class="card-title">Integrasi Program - TB</h5>
+                                    <div class="row">
+                                        <div class="col-md-3 mb-3">
+                                            <label for="skrining_anam" class="form-label">Skrining
+                                                anamnesis<sup>*</sup></label>
+                                            <select class="form-select" id="skrining_anam" name="skrining_anam" required>
+                                                <option value="">Pilih Skrining anamnesis*</option>
+                                                <option value="jika iya">&#10003; <!-- Ceklis --></option>
+                                                <option value="jika tidak">&#10007; <!-- Uncek --></option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="dahak" class="form-label">Periksa Dahak<sup>*</sup></label>
+                                            <select class="form-select" id="dahak" name="dahak" required>
+                                                <option value="">Pilih Periksa Dahak*</option>
+                                                <option value="jika iya">&#10003; <!-- Ceklis --></option>
+                                                <option value="jika tidak">&#10007; <!-- Uncek --></option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <br>
+                                            <label for="tbc" class="form-label">TBC<sup>(-/+)</sup></label>
+                                            <select class="form-select" id="tbc" name="tbc" required>
+                                                <option value="">Pilih Tbc</option>
+                                                <option value="-">-</option>
+                                                <option value="+">+</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <br>
+                                            <label for="obat_TB" class="form-label">Obat<sup>***</sup></label>
+                                            <input type="text" class="form-control" id="obat_TB" name="obat_TB"
                                                 required>
-                                            <span class="input-group-text">menit</span>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
-                                        <label for="kpl_thd" class="form-label">Kepala thd PAP<sup>3)</sup></label>
-                                        <select class="form-select" id="kpl_thd" name="kpl_thd" required>
-                                            <option value="">Pilih Kepala thd PAP</option>
-                                            <option value="M">M</option>
-                                            <option value="MB">MB</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="tbj" class="form-label">TBJ <sup>(gram)</sup></label>
-                                        <div class="input-group mb-2">
-                                            <input type="number" class="form-control" id="tbj" name="tbj"
-                                                required>
-                                            <span class="input-group-text">gram</span>
+                                    <h5 class="card-title">Integrasi Program - Skrining Covid-19</h5>
+                                    <div class="row mb-3">
+                                        <div class="col-md-3">
+                                            <label for="sehat" class="form-label">Sehat</label>
+                                            <select class="form-select" id="sehat" name="sehat" required>
+                                                <option value="">Pilih Skrining Covid-19*</option>
+                                                <option value="jika iya">&#10003; <!-- Ceklis --></option>
+                                                <option value="jika tidak">&#10007; <!-- Uncek --></option>
+                                            </select>
                                         </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="presentasi" class="form-label">Presentasi<sup>4)</sup></label>
-                                        <select class="form-select" id="presentasi" name="presentasi" required>
-                                            <option value="">Pilih Presentasi</option>
-                                            <option value="KP">KP</option>
-                                            <option value="BS">BS</option>
-                                            <option value="LLO">LLO</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="jmlh_janin" class="form-label">Jumlah Janin<sup>5)</sup></label>
-                                        <select class="form-select" id="jmlh_janin" name="jmlh_janin" required>
-                                            <option value="">Pilih Jumlah Janin</option>
-                                            <option value="T">T</option>
-                                            <option value="G">G</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <h5 class="card-title">Pelayanan</h5>
-                                <div class="row mb-3">
-                                    <div class="col-md-3">
-                                        <label for="injeksi" class="form-label">Injeksi Td*</label>
-                                        <select class="form-select" id="injeksi" name="injeksi" required>
-                                            <option value="">Pilih Injeksi Td*</option>
-                                            <option value="jika iya">&#10003; <!-- Ceklis --></option>
-                                            <option value="jika tidak">&#10007; <!-- Uncek --></option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="buku_kia" class="form-label">Catatan dibuku KIA*</label>
-                                        <select class="form-select" id="buku_kia" name="buku_kia" required>
-                                            <option value="">Pilih Catatan dibuku KIA*</option>
-                                            <option value="jika iya">&#10003; <!-- Ceklis --></option>
-                                            <option value="jika tidak">&#10007; <!-- Uncek --></option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="fe" class="form-label">Fe <sup>(tab/botol)</sup></label>
-                                        <input type="number" class="form-control" id="fe" name="fe"
-                                            required>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="pmt_bumil" class="form-label">PMT Bumil KEK</label>
-                                        <select class="form-select" id="pmt_bumil" name="pmt_bumil" required>
-                                            <option value="">Pilih PMT Bumil KEK*</option>
-                                            <option value="jika iya">&#10003; <!-- Ceklis --></option>
-                                            <option value="jika tidak">&#10007; <!-- Uncek --></option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="kelas_ibu" class="form-label">Ikut Kelas Ibu*</label>
-                                        <select class="form-select" id="kelas_ibu" name="kelas_ibu" required>
-                                            <option value="">Pilih Ikut Kelas Ibu</option>
-                                            <option value="jika iya">&#10003; <!-- Ceklis --></option>
-                                            <option value="jika tidak">&#10007; <!-- Uncek --></option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <h5 class="card-title">Konseling</h5>
-                                <div class="row mb-3">
-                                    <div class="col-md-12">
-                                        <label for="konseling" class="form-label">Konseling</label>
-                                        <input type="text" class="form-control" id="konseling" name="konseling"
-                                            required>
+                                        <div class="col-md-3">
+                                            <label for="kontak_erat" class="form-label">Kontak Erat</label>
+                                            <select class="form-select" id="kontak_erat" name="kontak_erat" required>
+                                                <option value="">Pilih Kontak Erat*</option>
+                                                <option value="jika iya">&#10003; <!-- Ceklis --></option>
+                                                <option value="jika tidak">&#10007; <!-- Uncek --></option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="suspek" class="form-label">Suspek</label>
+                                            <select class="form-select" id="suspek" name="suspek" required>
+                                                <option value="">Pilih Suspek*</option>
+                                                <option value="jika iya">&#10003; <!-- Ceklis --></option>
+                                                <option value="jika tidak">&#10007; <!-- Uncek --></option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="konfimasi" class="form-label">Terkonfirmasi</label>
+                                            <select class="form-select" id="konfimasi" name="konfimasi" required>
+                                                <option value="">Pilih Terkonfirmasi*</option>
+                                                <option value="jika iya">&#10003; <!-- Ceklis --></option>
+                                                <option value="jika tidak">&#10007; <!-- Uncek --></option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -279,7 +462,6 @@
                         @method('PUT')
                         <div class="card">
                             <div class="card-body">
-                                <!-- REGISTER section -->
                                 <h5 class="card-title">Register</h5>
                                 <div class="row mb-3">
                                     <div class="col-md-4">
@@ -302,8 +484,6 @@
                                         </select>
                                     </div>
                                 </div>
-
-                                <!-- PEMERIKSAAN IBU section -->
                                 <h5 class="card-title">Pemeriksaan Ibu</h5>
                                 <div class="col-md-12 mb-3">
                                     <label for="edit_keluhan" class="form-label">Keluhan</label>
@@ -364,18 +544,8 @@
                                         </select>
                                     </div>
                                 </div>
-
-                                <!-- PEMERIKSAAN BAYI section -->
                                 <h5 class="card-title">Pemeriksaan Bayi</h5>
                                 <div class="row mb-3">
-                                    <div class="col-md-3">
-                                        <label for="edit_djj" class="form-label">DJJ <sup>((x/menit))</sup></label>
-                                        <div class="input-group mb-2">
-                                            <input type="number" class="form-control" id="edit_djj" name="djj"
-                                                required>
-                                            <span class="input-group-text">menit</span>
-                                        </div>
-                                    </div>
                                     <div class="col-md-3">
                                         <label for="edit_kpl_thd" class="form-label">Kepala thd PAP<sup>3)</sup></label>
                                         <select class="form-select" id="edit_kpl_thd" name="kpl_thd" required>
@@ -383,6 +553,14 @@
                                             <option value="M">M</option>
                                             <option value="MB">MB</option>
                                         </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="edit_djj" class="form-label">DJJ <sup>((x/menit))</sup></label>
+                                        <div class="input-group mb-2">
+                                            <input type="number" class="form-control" id="edit_djj" name="djj"
+                                                required>
+                                            <span class="input-group-text">menit</span>
+                                        </div>
                                     </div>
                                     <div class="col-md-3">
                                         <label for="edit_tbj" class="form-label">TBJ <sup>(gram)</sup></label>
@@ -410,8 +588,6 @@
                                         </select>
                                     </div>
                                 </div>
-
-                                <!-- PELAYANAN section -->
                                 <h5 class="card-title">Pelayanan</h5>
                                 <div class="row mb-3">
                                     <div class="col-md-3">
@@ -452,8 +628,6 @@
                                         </select>
                                     </div>
                                 </div>
-
-                                <!-- KONSELING section -->
                                 <h5 class="card-title">Konseling</h5>
                                 <div class="row mb-3">
                                     <div class="col-md-12">
@@ -479,135 +653,206 @@
                 modalInput.modal('show');
             });
         });
-        $('#anc-table').DataTable({
-            processing: true,
-            serverSide: true,
-            lengthChange: false,
-            searching: false,
-            ordering: false,
-            paging: false,
-            info: false,
-            ajax: "{{ route('rekam_medis.data_showanc', ['NIK' => $anc->NIK]) }}",
-            columns: [{
-                    data: 'id',
-                    name: 'id',
-                    render: function(data, type, row, meta) {
-                        return '<span class="trigger-modal" data-id="' + row.id + '">' + (meta.row + 1) +
-                            '</span>';
-                    }
+        $(document).ready(function() {
+            $('#anc-table').DataTable({
+                processing: true,
+                serverSide: true,
+                lengthChange: false,
+                searching: false,
+                ordering: false,
+                paging: false,
+                info: false,
+                ajax: "{{ route('rekam_medis.data_showanc', ['NIK' => $anc->NIK]) }}",
+                columns: [{
+                        data: 'id',
+                        name: 'id',
+                        render: function(data, type, row, meta) {
+                            return '<span class="trigger-modal" data-id="' + row.id + '">' + (meta
+                                    .row + 1) +
+                                '</span>';
+                        }
+                    },
+                    {
+                        data: 'tanggal',
+                        name: 'tanggal',
+                        render: function(data, type, row, meta) {
+                            var date = new Date(data);
+                            var day = date.getDate();
+                            var month = date.getMonth() + 1;
+                            var year = date.getFullYear().toString().slice(-2);
+                            day = day < 10 ? '0' + day : day;
+                            month = month < 10 ? '0' + month : month;
+                            return day + '/' + month + '/' + year;
+                        }
+                    },
+                    {
+                        data: 'usia_kehamilan',
+                        name: 'usia_kehamilan'
+                    },
+                    {
+                        data: 'trimester',
+                        name: 'trimester'
+                    },
+                    {
+                        data: 'keluhan',
+                        name: 'keluhan'
+                    },
+                    {
+                        data: 'berat_badan',
+                        name: 'berat_badan'
+                    },
+                    {
+                        data: 'td_mmhg',
+                        name: 'td_mmhg'
+                    },
+                    {
+                        data: 'lila',
+                        name: 'lila'
+                    },
+                    {
+                        data: 'sts_gizi',
+                        name: 'sts_gizi'
+                    },
+                    {
+                        data: 'tfu',
+                        name: 'tfu'
+                    },
+                    {
+                        data: 'sts_imunisasi',
+                        name: 'sts_imunisasi'
+                    },
+                    {
+                        data: 'djj',
+                        name: 'djj'
+                    },
+                    {
+                        data: 'kpl_thd',
+                        name: 'kpl_thd'
+                    },
+                    {
+                        data: 'tbj',
+                        name: 'tbj'
+                    },
+                    {
+                        data: 'presentasi',
+                        name: 'presentasi'
+                    },
+                    {
+                        data: 'jmlh_janin',
+                        name: 'jmlh_janin'
+                    },
+                    {
+                        data: 'injeksi',
+                        name: 'injeksi',
+                        render: function(data, type, row, meta) {
+                            return data.toLowerCase() === 'jika iya' ? '&#10003;' : '&#10007;';
+                        }
+                    },
+                    {
+                        data: 'buku_kia',
+                        name: 'buku_kia',
+                        render: function(data, type, row, meta) {
+                            return data.toLowerCase() === 'jika iya' ? '&#10003;' : '&#10007;';
+                        }
+                    },
+                    {
+                        data: 'fe',
+                        name: 'fe'
+                    },
+                    {
+                        data: 'pmt_bumil',
+                        name: 'pmt_bumil',
+                        render: function(data, type, row, meta) {
+                            return data.toLowerCase() === 'jika iya' ? '&#10003;' : '&#10007;';
+                        }
+                    },
+                    {
+                        data: 'kelas_ibu',
+                        name: 'kelas_ibu',
+                        render: function(data, type, row, meta) {
+                            return data.toLowerCase() === 'jika iya' ? '&#10003;' : '&#10007;';
+                        }
+                    },
+                    {
+                        data: 'konseling',
+                        name: 'konseling'
+                    },
+                    {
+                        data: 'hemoglobin',
+                        name: 'hemoglobin'
+                    },
+                    {
+                        data: 'glcs_urine',
+                        name: 'glcs_urine'
+                    },
+                    {
+                        data: 'sifilis',
+                        name: 'sifilis'
+                    },
+                    {
+                        data: 'hbsag',
+                        name: 'hbsag'
+                    },
+                    {
+                        data: 'hiv',
+                        name: 'hiv'
+                    },
+                    {
+                        data: 'arv',
+                        name: 'arv'
+                    },
+                    {
+                        data: 'malaria',
+                        name: 'malaria'
+                    },
+                    {
+                        data: 'obat_malaria',
+                        name: 'obat_malaria'
+                    },
+                    {
+                        data: 'kelambu',
+                        name: 'kelambu'
+                    },
+                    {
+                        data: 'skrining_anam',
+                        name: 'skrining_anam'
+                    },
+                    {
+                        data: 'dahak',
+                        name: 'dahak'
+                    },
+                    {
+                        data: 'tbc',
+                        name: 'tbc'
+                    },
+                    {
+                        data: 'obat_TB',
+                        name: 'obat_TB'
+                    },
+                    {
+                        data: 'sehat',
+                        name: 'sehat'
+                    },
+                    {
+                        data: 'kontak_erat',
+                        name: 'kontak_erat'
+                    },
+                    {
+                        data: 'suspek',
+                        name: 'suspek'
+                    },
+                    {
+                        data: 'konfimasi',
+                        name: 'konfimasi'
+                    },
+                ],
+                createdRow: function(row, data, dataIndex) {
+                    $(row).addClass('text-center');
                 },
-                {
-                    data: 'tanggal',
-                    name: 'tanggal',
-                    render: function(data, type, row, meta) {
-                        var date = new Date(data);
-                        var day = date.getDate();
-                        var month = date.getMonth() + 1;
-                        var year = date.getFullYear().toString().slice(-2);
-                        day = day < 10 ? '0' + day : day;
-                        month = month < 10 ? '0' + month : month;
-                        return day + '/' + month + '/' + year;
-                    }
-                },
-                {
-                    data: 'usia_kehamilan',
-                    name: 'usia_kehamilan'
-                },
-                {
-                    data: 'trimester',
-                    name: 'trimester'
-                },
-                {
-                    data: 'keluhan',
-                    name: 'keluhan'
-                },
-                {
-                    data: 'berat_badan',
-                    name: 'berat_badan'
-                },
-                {
-                    data: 'td_mmhg',
-                    name: 'td_mmhg'
-                },
-                {
-                    data: 'lila',
-                    name: 'lila'
-                },
-                {
-                    data: 'sts_gizi',
-                    name: 'sts_gizi'
-                },
-                {
-                    data: 'tfu',
-                    name: 'tfu'
-                },
-                {
-                    data: 'sts_imunisasi',
-                    name: 'sts_imunisasi'
-                },
-                {
-                    data: 'djj',
-                    name: 'djj'
-                },
-                {
-                    data: 'kpl_thd',
-                    name: 'kpl_thd'
-                },
-                {
-                    data: 'tbj',
-                    name: 'tbj'
-                },
-                {
-                    data: 'presentasi',
-                    name: 'presentasi'
-                },
-                {
-                    data: 'jmlh_janin',
-                    name: 'jmlh_janin'
-                },
-                {
-                    data: 'injeksi',
-                    name: 'injeksi',
-                    render: function(data, type, row, meta) {
-                        return data.toLowerCase() === 'jika iya' ? '&#10003;' : '&#10007;';
-                    }
-                },
-                {
-                    data: 'buku_kia',
-                    name: 'buku_kia',
-                    render: function(data, type, row, meta) {
-                        return data.toLowerCase() === 'jika iya' ? '&#10003;' : '&#10007;';
-                    }
-                },
-                {
-                    data: 'fe',
-                    name: 'fe'
-                },
-                {
-                    data: 'pmt_bumil',
-                    name: 'pmt_bumil',
-                    render: function(data, type, row, meta) {
-                        return data.toLowerCase() === 'jika iya' ? '&#10003;' : '&#10007;';
-                    }
-                },
-                {
-                    data: 'kelas_ibu',
-                    name: 'kelas_ibu',
-                    render: function(data, type, row, meta) {
-                        return data.toLowerCase() === 'jika iya' ? '&#10003;' : '&#10007;';
-                    }
-                },
-                {
-                    data: 'konseling',
-                    name: 'konseling'
-                }
-            ],
-            createdRow: function(row, data, dataIndex) {
-                $(row).addClass('text-center');
-            },
-            fixedColumns: false,
-            responsive: false,
-            scrollX: true
+                fixedColumns: false,
+                responsive: false,
+                scrollX: true
+            });
         });
 
         $('#anc-table').on('click', '.trigger-modal', function() {
@@ -645,8 +890,6 @@
                 }
             });
         });
-
-
 
         document.addEventListener('DOMContentLoaded', function() {
             if (window.location.pathname.includes('/rekam_medis/anc/show_anc')) {
