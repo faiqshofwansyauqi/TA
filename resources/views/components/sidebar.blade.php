@@ -28,14 +28,16 @@
             </ul>
         </li>
         <li class="nav-item">
-            <a class="nav-link {{ request()->is(['antenatal_care', 'antenatal_care/*']) ? '' : 'collapsed' }}" data-bs-toggle="collapse"
-                href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample">
+            <a class="nav-link {{ request()->is(['antenatal_care', 'antenatal_care/*']) ? '' : 'collapsed' }}"
+                data-bs-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false"
+                aria-controls="collapseExample">
                 <i class="bi bi-people-fill"></i>
-                <span>antenatal Care</span>
+                <span>Antenatal Care</span>
                 <i class="bi bi-chevron-down ms-auto"></i>
             </a>
         </li>
-        <li class="nav-item collapse {{ request()->is(['antenatal_care', 'antenatal_care/*']) ? 'show' : '' }}" id="collapseExample1">
+        <li class="nav-item collapse {{ request()->is(['antenatal_care', 'antenatal_care/*']) ? 'show' : '' }}"
+            id="collapseExample1">
             <ul class="nav-content">
                 <li>
                     <a href="{{ route('antenatal_care.tm1') }}"
@@ -52,8 +54,30 @@
                     </a>
                 </li>
             </ul>
-            
         </li>
+        
+        <li class="nav-item">
+            <a class="nav-link {{ request()->is(['intranatal_care', 'intranatal_care/*']) ? '' : 'collapsed' }}"
+                data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false"
+                aria-controls="collapseExample">
+                <i class="bi bi-people-fill"></i>
+                <span>Intranatal Care</span>
+                <i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+        </li>
+        <li class="nav-item collapse {{ request()->is(['intranatal_care', 'intranatal_care/*']) ? 'show' : '' }}"
+            id="collapseExample2">
+            <ul class="nav-content">
+                <li>
+                    <a href="{{ route('intranatal_care.persalinan') }}"
+                        class="{{ request()->is(['intranatal_care.persalinan', 'intranatal_care/persalinan']) ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i>
+                        <span>Persalinan</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
         <li class="nav-item">
             <a class="nav-link {{ request()->is(['rekam_medis', 'rekam_medis/*']) ? '' : 'collapsed' }}"
                 data-bs-toggle="collapse" href="#collapseExample4" role="button" aria-expanded="false"
@@ -71,13 +95,6 @@
                         class="{{ request()->is(['rekam_medis.ropb', 'rekam_medis/ropb']) ? 'active' : '' }}">
                         <i class="bi bi-circle"></i>
                         <span>Riwayat Obstetrik, Pemeriksaan Bidan dan Rencana Persalinan</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('rekam_medis.persalinan') }}"
-                        class="{{ request()->is(['rekam_medis.persalinan', 'rekam_medis/persalinan']) ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i>
-                        <span>Persalinan</span>
                     </a>
                 </li>
                 <li>

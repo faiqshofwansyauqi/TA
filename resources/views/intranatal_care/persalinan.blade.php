@@ -70,7 +70,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('rekam_medis.store_persalinan') }}" method="post" autocomplete="off">
+                    <form action="{{ route('intranatal_care.store_persalinan') }}" method="post" autocomplete="off">
                         @csrf
                         <div class="card col-12">
                             <div class="card-body">
@@ -578,7 +578,7 @@
                                     <div class="col-md-3">
                                         <div class="mb-2">
                                             <label for="edit_keadaan_pulang" class="form-label">Keadaan Pulang</label>
-                                            <select class="form-select" id=edit_"keadaan_pulang" name="keadaan_pulang"
+                                            <select class="form-select" id="edit_keadaan_pulang" name="keadaan_pulang"
                                                 required>
                                                 <option value="">Pilih Keadaan Pulang</option>
                                                 <option value="Hidup">Hidup</option>
@@ -652,7 +652,7 @@
             $('#persalinan-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{{ route('rekam_medis.data_persalinan') }}',
+                ajax: '{{ route('intranatal_care.data_persalinan') }}',
                 scrollX: true,
                 fixedHeader: true,
                 columns: [{
@@ -809,11 +809,11 @@
                         orderable: false,
                         searchable: false,
                         render: function(data, type, row) {
-                            let viewUrl = '{{ route('rekam_medis.show_persalinan', ':id') }}'
+                            let viewUrl = '{{ route('intranatal_care.show_persalinan', ':id') }}'
                                 .replace(':id', row.id_persalinan);
-                            let editUrl = '{{ route('rekam_medis.edit_persalinan', ':id') }}'
+                            let editUrl = '{{ route('intranatal_care.edit_persalinan', ':id') }}'
                                 .replace(':id', row.id_persalinan);
-                            let deleteUrl = '{{ route('rekam_medis.destroy_persalinan', ':id') }}'
+                            let deleteUrl = '{{ route('intranatal_care.destroy_persalinan', ':id') }}'
                                 .replace(':id', row.id_persalinan);
                             return `
                             <div style="display: flex; align-items: center;">
@@ -855,7 +855,7 @@
         $('#persalinan-table').on('click', '.view-btn', function() {
             let id = $(this).data('id');
             $.ajax({
-                url: '{{ route('rekam_medis.show_persalinan', ':id') }}'.replace(':id', id),
+                url: '{{ route('intranatal_care.show_persalinan', ':id') }}'.replace(':id', id),
                 method: 'GET',
                 success: function(data) {
                     let namaIbu = data.ibu.nama_ibu;
@@ -1029,7 +1029,7 @@
         $('#persalinan-table').on('click', '.edit-btn', function() {
             let id = $(this).data('id');
             $.ajax({
-                url: '{{ route('rekam_medis.edit_persalinan', ':id') }}'.replace(':id', id),
+                url: '{{ route('intranatal_care.edit_persalinan', ':id') }}'.replace(':id', id),
                 method: 'GET',
                 success: function(data) {
                     $('#edit_id_ibu').val(data.id_ibu);
@@ -1053,9 +1053,10 @@
                     $('#edit_detail_integrasi').val(data.detail_integrasi);
                     $('#edit_komplikasi').val(data.komplikasi);
                     $('#edit_keadaan_tiba').val(data.keadaan_tiba);
+                    $('#edit_keadaan_pulang').val(data.keadaan_pulang);
                     $('#edit_rujuk').val(data.rujuk);
                     $('#edit_alamat_bersalin').val(data.alamat_bersalin);
-                    $('#editForm').attr('action', '{{ route('rekam_medis.update_persalinan', ':id') }}'
+                    $('#editForm').attr('action', '{{ route('intranatal_care.update_persalinan', ':id') }}'
                         .replace(
                             ':id', id));
                     $('#modalEdit').modal('show');

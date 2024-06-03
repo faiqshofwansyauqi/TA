@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\INCController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\MasterController;
 use App\Http\Controllers\PasienController;
@@ -77,16 +78,28 @@ Route::prefix('antenatal_care')->group(function () {
     Route::get('data-show_anc/{NIK}', [ANCController::class, 'getData_showanc'])->name('antenatal_care.data_showanc');
     Route::get('show_anc/edit_showanc/{id}', [ANCController::class, 'edit_showanc'])->name('antenatal_care.edit_showanc');
     Route::put('show_ach/update_showanc/{id}', [ANCController::class, 'update_showanc'])->name('antenatal_care.update_showanc');
+    ///////////// RENCANA PERSALINAN /////////////
+    Route::get('persalinan', [ANCController::class, 'Persalinan'])->name('antenatal_care.persalinan');
+    Route::post('store-persalinan', [ANCController::class, 'store_persalinan'])->name('antenatal_care.store_persalinan');
+    Route::get('data-persalinan', [ANCController::class, 'getData_persalinan'])->name('antenatal_care.data_persalinan');
+    Route::get('antenatal_care/show_persalinan/{id}', [ANCController::class, 'show_persalinan'])->name('antenatal_care.show_persalinan');
+    Route::get('antenatal_care/edit_persalinan/{id}', [ANCController::class, 'edit_persalinan'])->name('antenatal_care.edit_persalinan');
+    Route::put('antenatal_care/update_persalinan/{id}', [ANCController::class, 'update_persalinan'])->name('antenatal_care.update_persalinan');
+    Route::delete('antenatal_care/destroy_persalinan/{id}', [ANCController::class, 'destroy_persalinan'])->name('antenatal_care.destroy_persalinan');
+});
+Route::prefix('intranatal_care')->group(function () {
+    ///////////// RENCANA PERSALINAN /////////////
+    Route::get('persalinan', [INCController::class, 'Persalinan'])->name('intranatal_care.persalinan');
+    Route::post('store-persalinan', [INCController::class, 'store_persalinan'])->name('intranatal_care.store_persalinan');
+    Route::get('data-persalinan', [INCController::class, 'getData_persalinan'])->name('intranatal_care.data_persalinan');
+    Route::get('intranatal_care/show_persalinan/{id}', [INCController::class, 'show_persalinan'])->name('intranatal_care.show_persalinan');
+    Route::get('intranatal_care/edit_persalinan/{id}', [INCController::class, 'edit_persalinan'])->name('intranatal_care.edit_persalinan');
+    Route::put('intranatal_care/update_persalinan/{id}', [INCController::class, 'update_persalinan'])->name('intranatal_care.update_persalinan');
+    Route::delete('intranatal_care/destroy_persalinan/{id}', [INCController::class, 'destroy_persalinan'])->name('intranatal_care.destroy_persalinan');
 });
 
 Route::prefix('rekam_medis')->group(function () {
-    Route::get('persalinan', [RekamMedisController::class, 'Persalinan'])->name('rekam_medis.persalinan');
-    Route::post('store-persalinan', [RekamMedisController::class, 'store_persalinan'])->name('rekam_medis.store_persalinan');
-    Route::get('data-persalinan', [RekamMedisController::class, 'getData_persalinan'])->name('rekam_medis.data_persalinan');
-    Route::get('rekam_medis/show_persalinan/{id}', [RekamMedisController::class, 'show_persalinan'])->name('rekam_medis.show_persalinan');
-    Route::get('rekam_medis/edit_persalinan/{id}', [RekamMedisController::class, 'edit_persalinan'])->name('rekam_medis.edit_persalinan');
-    Route::put('rekam_medis/update_persalinan/{id}', [RekamMedisController::class, 'update_persalinan'])->name('rekam_medis.update_persalinan');
-    Route::delete('rekam_medis/destroy_persalinan/{id}', [RekamMedisController::class, 'destroy_persalinan'])->name('rekam_medis.destroy_persalinan');
+    
     ///////////// RO PB /////////////
     Route::get('ropb', [RekamMedisController::class, 'ropb'])->name('rekam_medis.ropb');
     Route::post('store-ropb', [RekamMedisController::class, 'store_ropb'])->name('rekam_medis.store_ropb');

@@ -431,4 +431,5 @@ class ANCController extends Controller
         $ancs = Show_Anc::findOrFail($id);
         return response()->json($ancs);
     }
+
 }
