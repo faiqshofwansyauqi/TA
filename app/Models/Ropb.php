@@ -22,14 +22,7 @@ class Ropb extends Model
         'prlnan_sebelum',
         'berat_badan',
         'tinggi_badan',
-        'buku_kia',
-        'tgl_persalinan',
-        'penolong',
-        'tempat',
-        'pendamping',
-        'transport',
-        'pendonor',
-        'pendonor_darah',
+        'buku_kia',       
     ];
     public function ibu()
     {

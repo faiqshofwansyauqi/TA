@@ -86,7 +86,24 @@ Route::prefix('antenatal_care')->group(function () {
     Route::get('antenatal_care/edit_persalinan/{id}', [ANCController::class, 'edit_persalinan'])->name('antenatal_care.edit_persalinan');
     Route::put('antenatal_care/update_persalinan/{id}', [ANCController::class, 'update_persalinan'])->name('antenatal_care.update_persalinan');
     Route::delete('antenatal_care/destroy_persalinan/{id}', [ANCController::class, 'destroy_persalinan'])->name('antenatal_care.destroy_persalinan');
+    ///////////// PEMERIKSAAN BIDAN/DOKTER SAAT K1 /////////////
+    Route::get('ropb', [ANCController::class, 'ropb'])->name('antenatal_care.ropb');
+    Route::post('store-ropb', [ANCController::class, 'store_ropb'])->name('antenatal_care.store_ropb');
+    Route::get('data-ropb', [ANCController::class, 'getData_ropb'])->name('antenatal_care.data_ropb');
+    Route::get('antenatal_care/show_ropb/{id}', [ANCController::class, 'show_ropb'])->name('antenatal_care.show_ropb');
+    Route::get('antenatal_care/edit_ropb/{id}', [ANCController::class, 'edit_ropb'])->name('antenatal_care.edit_ropb');
+    Route::put('antenatal_care/update_ropb/{id}', [ANCController::class, 'update_ropb'])->name('antenatal_care.update_ropb');
+    Route::delete('antenatal_care/destroy_ropb/{id}', [ANCController::class, 'destroy_ropb'])->name('antenatal_care.destroy_ropb');
+    ///////////// RENCANA PERSALINAN /////////////
+    Route::get('rnca', [ANCController::class, 'rnca'])->name('antenatal_care.rnca_persalinan');
+    Route::post('store-rnca', [ANCController::class, 'store_rnca'])->name('antenatal_care.store_rnca');
+    Route::get('data-rnca', [ANCController::class, 'getData_rnca'])->name('antenatal_care.data_rnca');
+    Route::get('antenatal_care/show_rnca/{id}', [ANCController::class, 'show_rnca'])->name('antenatal_care.show_rnca');
+    Route::get('antenatal_care/edit_rnca/{id}', [ANCController::class, 'edit_rnca'])->name('antenatal_care.edit_rnca');
+    Route::put('antenatal_care/update_rnca/{id}', [ANCController::class, 'update_rnca'])->name('antenatal_care.update_rnca');
+    Route::delete('antenatal_care/destroy_rnca/{id}', [ANCController::class, 'destroy_rnca'])->name('antenatal_care.destroy_rnca');
 });
+
 Route::prefix('intranatal_care')->group(function () {
     ///////////// RENCANA PERSALINAN /////////////
     Route::get('persalinan', [INCController::class, 'Persalinan'])->name('intranatal_care.persalinan');
@@ -100,14 +117,7 @@ Route::prefix('intranatal_care')->group(function () {
 
 Route::prefix('rekam_medis')->group(function () {
     
-    ///////////// RO PB /////////////
-    Route::get('ropb', [RekamMedisController::class, 'ropb'])->name('rekam_medis.ropb');
-    Route::post('store-ropb', [RekamMedisController::class, 'store_ropb'])->name('rekam_medis.store_ropb');
-    Route::get('data-ropb', [RekamMedisController::class, 'getData_ropb'])->name('rekam_medis.data_ropb');
-    Route::get('rekam_medis/show_ropb/{id}', [RekamMedisController::class, 'show_ropb'])->name('rekam_medis.show_ropb');
-    Route::get('rekam_medis/edit_ropb/{id}', [RekamMedisController::class, 'edit_ropb'])->name('rekam_medis.edit_ropb');
-    Route::put('rekam_medis/update_ropb/{id}', [RekamMedisController::class, 'update_ropb'])->name('rekam_medis.update_ropb');
-    Route::delete('rekam_medis/destroy_ropb/{id}', [RekamMedisController::class, 'destroy_ropb'])->name('rekam_medis.destroy_ropb');
+    
 });
 
 

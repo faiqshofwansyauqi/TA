@@ -31,7 +31,7 @@
             <a class="nav-link {{ request()->is(['antenatal_care', 'antenatal_care/*']) ? '' : 'collapsed' }}"
                 data-bs-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false"
                 aria-controls="collapseExample">
-                <i class="bi bi-people-fill"></i>
+                <i class="bi bi-journal"></i>
                 <span>Antenatal Care</span>
                 <i class="bi bi-chevron-down ms-auto"></i>
             </a>
@@ -53,14 +53,28 @@
                         <span>Perawatan Selama Hamil</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('antenatal_care.ropb') }}"
+                        class="{{ request()->is(['antenatal_care.ropb', 'antenatal_care/ropb']) ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i>
+                        <span>Pemeriksaan Bidan/Dokter Saat K1</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('antenatal_care.rnca_persalinan') }}"
+                        class="{{ request()->is(['antenatal_care.rnca', 'antenatal_care/rnca']) ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i>
+                        <span>Rencana Persalinan</span>
+                    </a>
+                </li>
             </ul>
         </li>
-        
+
         <li class="nav-item">
             <a class="nav-link {{ request()->is(['intranatal_care', 'intranatal_care/*']) ? '' : 'collapsed' }}"
                 data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false"
                 aria-controls="collapseExample">
-                <i class="bi bi-people-fill"></i>
+                <i class="bi bi-journal-text"></i>
                 <span>Intranatal Care</span>
                 <i class="bi bi-chevron-down ms-auto"></i>
             </a>
@@ -72,7 +86,29 @@
                     <a href="{{ route('intranatal_care.persalinan') }}"
                         class="{{ request()->is(['intranatal_care.persalinan', 'intranatal_care/persalinan']) ? 'active' : '' }}">
                         <i class="bi bi-circle"></i>
-                        <span>Persalinan</span>
+                        <span>Masa Persalinan</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link {{ request()->is(['postnatal_care', 'postnatal_care/*']) ? '' : 'collapsed' }}"
+                data-bs-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false"
+                aria-controls="collapseExample">
+                <i class="bi bi-journals"></i>
+                <span>Postnatal Care</span>
+                <i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+        </li>
+        <li class="nav-item collapse {{ request()->is(['postnatal_care', 'postnatal_care/*']) ? 'show' : '' }}"
+            id="collapseExample3">
+            <ul class="nav-content">
+                <li>
+                    <a href="{{ route('errors.404') }}"
+                        class="{{ request()->is(['intranatal_care.persalinan', 'intranatal_care/persalinan']) ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i>
+                        <span>Masa Persalinan</span>
                     </a>
                 </li>
             </ul>
@@ -90,13 +126,6 @@
         <li class="nav-item collapse {{ request()->is(['rekam_medis', 'rekam_medis/*']) ? 'show' : '' }}"
             id="collapseExample4">
             <ul class="nav-content">
-                <li>
-                    <a href="{{ route('rekam_medis.ropb') }}"
-                        class="{{ request()->is(['rekam_medis.ropb', 'rekam_medis/ropb']) ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i>
-                        <span>Riwayat Obstetrik, Pemeriksaan Bidan dan Rencana Persalinan</span>
-                    </a>
-                </li>
                 <li>
                     <a href="{{ route('errors.404') }}"
                         class="{{ request()->is(['errors.404', 'errors/404']) ? 'active' : '' }}">

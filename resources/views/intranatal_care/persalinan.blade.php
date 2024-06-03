@@ -3,12 +3,12 @@
 @section('content')
     <div class="d-flex justify-content-between align-items-center">
         <div class="pagetitle">
-            <h1>Persalinan</h1>
+            <h1>Masa Persalinan</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                    <li class="breadcrumb-item">Rekam Medis</li>
-                    <li class="breadcrumb-item active">Persalinan</li>
+                    <li class="breadcrumb-item">Intranatal Care</li>
+                    <li class="breadcrumb-item active">Masa Persalinan</li>
                 </ol>
             </nav>
         </div>
@@ -66,7 +66,7 @@
         <div class="modal-dialog modal-dialog-scrollable modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title fs-4 fw-bold" id="ModalInput">Input Persalinan</h3>
+                    <h3 class="modal-title fs-4 fw-bold" id="ModalInput">Input Masa Persalinan</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -352,7 +352,7 @@
         <div class="modal-dialog modal-dialog-scrollable modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title fs-4 fw-bold" id="ModalEdit">Edit Persalinan</h3>
+                    <h3 class="modal-title fs-4 fw-bold" id="ModalEdit">Edit Masa Persalinan</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
                 </div>
                 <div class="modal-body">
@@ -622,7 +622,7 @@
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title fs-4 fw-bold" id="modalViewLabel">Detail Persalinan</h3>
+                    <h3 class="modal-title fs-4 fw-bold" id="modalViewLabel">Detail Masa Persalinan</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">

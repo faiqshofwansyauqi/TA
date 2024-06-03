@@ -3,12 +3,12 @@
 @section('content')
     <div class="d-flex justify-content-between align-items-center">
         <div class="pagetitle">
-            <h1>Riwayat Obstetrik, Pemeriksaan Bidan dan Rencana Persalinan</h1>
+            <h1>Pemeriksaan Bidan/Dokter Saat K1</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                    <li class="breadcrumb-item">Rekam Medis</li>
-                    <li class="breadcrumb-item active">Riwayat Obstetrik, Pemeriksaan Bidan dan Rencana Persalinan</li>
+                    <li class="breadcrumb-item">Antenatal Care</li>
+                    <li class="breadcrumb-item active">Pemeriksaan Bidan/Dokter Saat K1</li>
                 </ol>
             </nav>
         </div>
@@ -56,12 +56,11 @@
         <div class="modal-dialog modal-dialog-scrollable modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title fs-4 fw-bold" id="ModalInput">Input Riwayat Obstetrik, Pemeriksaan Bidan dan
-                        Rencana Persalinan</h3>
+                    <h3 class="modal-title fs-4 fw-bold" id="ModalInput">Input Pemeriksaan Bidan/Dokter Saat K1</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('rekam_medis.store_ropb') }}" method="post" autocomplete="off">
+                    <form action="{{ route('antenatal_care.store_ropb') }}" method="post" autocomplete="off">
                         @csrf
                         <div class="row">
                             <div class="card col-5 mx-5 ">
@@ -168,94 +167,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card col-11 mx-4 ">
-                                <div class="card-body">
-                                    <h5 class="card-title">Rencana Persalinan</h5>
-                                    <div class="row">
-                                        <div class="col-md-12 mb-2">
-                                            <label for="tgl_persalinan" class="form-label">Tanggal Persalinan</label>
-                                            <input type="date" class="form-control" id="tgl_persalinan"
-                                                name="tgl_persalinan" required>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4 mb-2">
-                                            <label for="penolong" class="form-label">Penolong</label>
-                                            <select class="form-select" id="penolong" name="penolong" required>
-                                                <option value="">Pilih Penolong</option>
-                                                <option value="Keluarga">Keluarga</option>
-                                                <option value="Dukun">Dukun</option>
-                                                <option value="Dr. Umum">Dr. Umum</option>
-                                                <option value="Dr. Spesialis">Dr. Spesialis</option>
-                                                <option value="Lain-lain">Lain-lain</option>
-                                                <option value="Tidak ad">Tidak ad</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-4 mb-2">
-                                            <label for="tempat" class="form-label">Tempat</label>
-                                            <select class="form-select" id="tempat" name="tempat" required>
-                                                <option value="">Pilih Tempat</option>
-                                                <option value="Rumah">Rumah</option>
-                                                <option value="Poskesdas">Poskesdas</option>
-                                                <option value="Pustu">Pustu</option>
-                                                <option value="Puskesmas">Puskesmas</option>
-                                                <option value="RB">RB</option>
-                                                <option value="RSIA">RSIA</option>
-                                                <option value="RS">RS</option>
-                                                <option value="RS ODHA">RS ODHA</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-4 mb-2">
-                                            <label for="pendamping" class="form-label">Pendamping</label>
-                                            <select class="form-select" id="pendamping" name="pendamping" required>
-                                                <option value="">Pilih Pendamping</option>
-                                                <option value="Suami">Suami</option>
-                                                <option value="Keluarga">Keluarga</option>
-                                                <option value="Teman">Teman</option>
-                                                <option value="Tetangga">Tetangga</option>
-                                                <option value="Lain-lain">Lain-lain</option>
-                                                <option value="Tidak ada">Tidak ada</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4 mb-2">
-                                            <label for="transport" class="form-label">Transportasi</label>
-                                            <select class="form-select" id="transport" name="transport" required>
-                                                <option value="">Pilih Transportasi</option>
-                                                <option value="Motor">Motor</option>
-                                                <option value="Mobil">Mobil</option>
-                                                <option value="Ambulans">Ambulans</option>
-                                                <option value="Umum">Umum</option>
-                                                <option value="Lain-lain">Lain-lain</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-4 mb-2">
-                                            <label for="pendonor" class="form-label">Calon donor darah</label>
-                                            <select class="form-select" id="pendonor" name="pendonor" required>
-                                                <option value="">Pilih Calon donor darah</option>
-                                                <option value="Suami">Suami</option>
-                                                <option value="Keluarga">Keluarga</option>
-                                                <option value="Teman">Teman</option>
-                                                <option value="Lain-lain">Lain-lain</option>
-                                                <option value="Tidak ada">Tidak ada</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-4 mb-2">
-                                            <label for="pendonor_darah" class="form-label">Gol Darah Pendonor</label>
-                                            <select class="form-select" id="pendonor_darah" name="pendonor_darah"
-                                                required>
-                                                <option value="">Pilih Gol Darah</option>
-                                                <option value="A">A</option>
-                                                <option value="B">B</option>
-                                                <option value="AB">AB</option>
-                                                <option value="O">O</option>
-                                                <option value="Tidak ada">Tidak ada</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
@@ -268,8 +179,7 @@
         <div class="modal-dialog modal-dialog-scrollable modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title fs-4 fw-bold" id="ModalEdit">Edit Riwayat Obstetrik, Pemeriksaan Bidan dan
-                        Rencana Persalinan </h3>
+                    <h3 class="modal-title fs-4 fw-bold" id="ModalEdit">Edit Pemeriksaan Bidan/Dokter Saat K1 </h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
                 </div>
                 <div class="modal-body">
@@ -384,94 +294,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card col-11 mx-4 ">
-                                <div class="card-body">
-                                    <h5 class="card-title">Rencana Persalinan</h5>
-                                    <div class="row">
-                                        <div class="col-md-12 mb-2">
-                                            <label for="edit_tgl_persalinan" class="form-label">Tanggal Persalinan</label>
-                                            <input type="date" class="form-control" id="edit_tgl_persalinan"
-                                                name="tgl_persalinan" required>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4 mb-2">
-                                            <label for="edit_penolong" class="form-label">Penolong</label>
-                                            <select class="form-select" id="edit_penolong" name="penolong" required>
-                                                <option value="">Pilih Penolong</option>
-                                                <option value="Keluarga">Keluarga</option>
-                                                <option value="Dukun">Dukun</option>
-                                                <option value="Dr. Umum">Dr. Umum</option>
-                                                <option value="Dr. Spesialis">Dr. Spesialis</option>
-                                                <option value="Lain-lain">Lain-lain</option>
-                                                <option value="Tidak ad">Tidak ad</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-4 mb-2">
-                                            <label for="edit_tempat" class="form-label">Tempat</label>
-                                            <select class="form-select" id="edit_tempat" name="tempat" required>
-                                                <option value="">Pilih Tempat</option>
-                                                <option value="Rumah">Rumah</option>
-                                                <option value="Poskesdas">Poskesdas</option>
-                                                <option value="Pustu">Pustu</option>
-                                                <option value="Puskesmas">Puskesmas</option>
-                                                <option value="RB">RB</option>
-                                                <option value="RSIA">RSIA</option>
-                                                <option value="RS">RS</option>
-                                                <option value="RS ODHA">RS ODHA</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-4 mb-2">
-                                            <label for="edit_pendamping" class="form-label">Pendamping</label>
-                                            <select class="form-select" id="edit_pendamping" name="pendamping" required>
-                                                <option value="">Pilih Pendamping</option>
-                                                <option value="Suami">Suami</option>
-                                                <option value="Keluarga">Keluarga</option>
-                                                <option value="Teman">Teman</option>
-                                                <option value="Tetangga">Tetangga</option>
-                                                <option value="Lain-lain">Lain-lain</option>
-                                                <option value="Tidak ada">Tidak ada</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4 mb-2">
-                                            <label for="edit_transport" class="form-label">Transportasi</label>
-                                            <select class="form-select" id="edit_transport" name="transport" required>
-                                                <option value="">Pilih Transportasi</option>
-                                                <option value="Motor">Motor</option>
-                                                <option value="Mobil">Mobil</option>
-                                                <option value="Ambulans">Ambulans</option>
-                                                <option value="Umum">Umum</option>
-                                                <option value="Lain-lain">Lain-lain</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-4 mb-2">
-                                            <label for="edit_pendonor" class="form-label">Calon donor darah</label>
-                                            <select class="form-select" id="edit_pendonor" name="pendonor" required>
-                                                <option value="">Pilih Calon donor darah</option>
-                                                <option value="Suami">Suami</option>
-                                                <option value="Keluarga">Keluarga</option>
-                                                <option value="Teman">Teman</option>
-                                                <option value="Lain-lain">Lain-lain</option>
-                                                <option value="Tidak ada">Tidak ada</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-4 mb-2">
-                                            <label for="edit_pendonor_darah" class="form-label">Gol Darah Pendonor</label>
-                                            <select class="form-select" id="edit_pendonor_darah" name="pendonor_darah"
-                                                required>
-                                                <option value="">Pilih Gol Darah</option>
-                                                <option value="A">A</option>
-                                                <option value="B">B</option>
-                                                <option value="AB">AB</option>
-                                                <option value="O">O</option>
-                                                <option value="Tidak ada">Tidak ada</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
@@ -514,7 +336,7 @@
             $('#ropb-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{{ route('rekam_medis.data_ropb') }}',
+                ajax: '{{ route('antenatal_care.data_ropb') }}',
                 scrollX: true,
                 fixedHeader: true,
                 columns: [{
@@ -636,11 +458,11 @@
                         orderable: false,
                         searchable: false,
                         render: function(data, type, row) {
-                            let viewUrl = '{{ route('rekam_medis.show_ropb', ':id') }}'
+                            let viewUrl = '{{ route('antenatal_care.show_ropb', ':id') }}'
                                 .replace(':id', row.id);
-                            let editUrl = '{{ route('rekam_medis.edit_ropb', ':id') }}'
+                            let editUrl = '{{ route('antenatal_care.edit_ropb', ':id') }}'
                                 .replace(':id', row.id);
-                            let deleteUrl = '{{ route('rekam_medis.destroy_ropb', ':id') }}'
+                            let deleteUrl = '{{ route('antenatal_care.destroy_ropb', ':id') }}'
                                 .replace(':id', row.id);
                             return `
                             <div style="display: flex; align-items: center;">
@@ -672,7 +494,7 @@
                     }
                 ],
                 columnDefs: [{
-                    targets: [5,6,10,11,12,],
+                    targets: [5, 6, 10, 11, 12, ],
                     visible: false
                 }]
             });
@@ -681,7 +503,7 @@
         $('#ropb-table').on('click', '.view-btn', function() {
             let id = $(this).data('id');
             $.ajax({
-                url: '{{ route('rekam_medis.show_ropb', ':id') }}'.replace(':id', id),
+                url: '{{ route('antenatal_care.show_ropb', ':id') }}'.replace(':id', id),
                 method: 'GET',
                 success: function(data) {
                     let namaIbu = data.ibu.nama_ibu;
@@ -789,34 +611,6 @@
                         </table>
                     </div>
             `;
-                    let RencanaPersalinanHtml = `
-                    <div class="table-responsive">
-                        <h5><strong>Rencana Persalinan</strong></h5>
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th class="text-center">Tanggal</th>
-                                    <th class="text-center">Penolong</th>
-                                    <th class="text-center">Tempat</th>
-                                    <th class="text-center">Pendamping</th>
-                                    <th class="text-center">Transportasi</th>
-                                    <th class="text-center">Pendonor</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="text-center">${formatDate(data.tgl_persalinan)}</td>
-                                    <td class="text-center">${data.penolong}</td>
-                                    <td class="text-center">${data.tempat}</td>
-                                    <td class="text-center">${data.pendamping}</td>
-                                    <td class="text-center">${data.transport}</td>
-                                    <td class="text-center">${data.pendonor} / ${data.pendonor_darah} </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-            `;
-
                     let tableHtml = `
                     <div class="container">
                     <div class="row justify-content-between">
@@ -828,13 +622,6 @@
                         </div>
                         <div class="col-md-12">
                             ${RiwayatObstetrikLanjutHtml}                
-                        </div>
-                    </div>
-                </div>
-                <div class="container mt-3">
-                    <div class="row justify-content-center">
-                        <div class="col-md-10">
-                            ${RencanaPersalinanHtml}
                         </div>
                     </div>
                 </div>
@@ -850,7 +637,7 @@
         $('#ropb-table').on('click', '.edit-btn', function() {
             let id = $(this).data('id');
             $.ajax({
-                url: '{{ route('rekam_medis.edit_ropb', ':id') }}'.replace(':id', id),
+                url: '{{ route('antenatal_care.edit_ropb', ':id') }}'.replace(':id', id),
                 method: 'GET',
                 success: function(data) {
                     $('#edit_NIK').val(data.NIK);
@@ -869,14 +656,7 @@
                     $('#edit_penolong').val(data.penolong);
                     $('#edit_cara_persalinan').val(data.cara_persalinan);
                     $('#edit_buku_kia').val(data.buku_kia);
-                    $('#edit_tgl_persalinan').val(data.tgl_persalinan);
-                    $('#edit_penolong').val(data.penolong);
-                    $('#edit_tempat').val(data.tempat);
-                    $('#edit_pendamping').val(data.pendamping);
-                    $('#edit_transport').val(data.transport);
-                    $('#edit_pendonor').val(data.pendonor);
-                    $('#edit_pendonor_darah').val(data.pendonor_darah);
-                    $('#editForm').attr('action', '{{ route('rekam_medis.update_ropb', ':id') }}'
+                    $('#editForm').attr('action', '{{ route('antenatal_care.update_ropb', ':id') }}'
                         .replace(
                             ':id', id));
                     $('#modalEdit').modal('show');
