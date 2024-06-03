@@ -7,6 +7,7 @@ use App\Http\Controllers\LandingController;
 use App\Http\Controllers\MasterController;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\RekamMedisController;
+use App\Http\Controllers\ANCController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,6 +55,15 @@ Route::prefix('pasien')->group(function () {
     Route::put('pasien/update_ibu/{id}', [PasienController::class, 'update_ibu'])->name('pasien.update_ibu');
     Route::delete('pasien/destroy_ibu/{id}', [PasienController::class, 'destroy_ibu'])->name('pasien.destroy_ibu');
 });
+Route::prefix('anc')->group(function () {
+    Route::get('pemeriksaan_dokter_tm1', [ANCController::class, 'tm1'])->name('anc.tm1');
+    Route::post('store-tm1', [ANCController::class, 'store_tm1'])->name('anc.store_tm1');
+    Route::get('data-tm1', [ANCController::class, 'getData_tm1'])->name('anc.data_tm1');
+    Route::get('anc/show_tm1/{id}', [ANCController::class, 'show_tm1'])->name('anc.show_tm1');
+    Route::get('anc/edit_tm1/{id}', [ANCController::class, 'edit_tm1'])->name('anc.edit_tm1');
+    Route::put('anc/update_tm1/{id}', [ANCController::class, 'update_tm1'])->name('anc.update_tm1');
+    Route::delete('anc/destroy_tm1/{id}', [ANCController::class, 'destroy_tm1'])->name('anc.destroy_tm1');
+});
 
 Route::prefix('rekam_medis')->group(function () {
     Route::get('persalinan', [RekamMedisController::class, 'Persalinan'])->name('rekam_medis.persalinan');
@@ -71,14 +81,6 @@ Route::prefix('rekam_medis')->group(function () {
     Route::get('rekam_medis/edit_ropb/{id}', [RekamMedisController::class, 'edit_ropb'])->name('rekam_medis.edit_ropb');
     Route::put('rekam_medis/update_ropb/{id}', [RekamMedisController::class, 'update_ropb'])->name('rekam_medis.update_ropb'); 
     Route::delete('rekam_medis/destroy_ropb/{id}', [RekamMedisController::class, 'destroy_ropb'])->name('rekam_medis.destroy_ropb');
-    ///////////// PEMERIKSAAN DOKTER TM1 /////////////
-    Route::get('tm1', [RekamMedisController::class, 'tm1'])->name('rekam_medis.tm1');
-    Route::post('store-tm1', [RekamMedisController::class, 'store_tm1'])->name('rekam_medis.store_tm1');
-    Route::get('data-tm1', [RekamMedisController::class, 'getData_tm1'])->name('rekam_medis.data_tm1');
-    Route::get('rekam_medis/show_tm1/{id}', [RekamMedisController::class, 'show_tm1'])->name('rekam_medis.show_tm1');
-    Route::get('rekam_medis/edit_tm1/{id}', [RekamMedisController::class, 'edit_tm1'])->name('rekam_medis.edit_tm1');
-    Route::put('rekam_medis/update_tm1/{id}', [RekamMedisController::class, 'update_tm1'])->name('rekam_medis.update_tm1');
-    Route::delete('rekam_medis/destroy_tm1/{id}', [RekamMedisController::class, 'destroy_tm1'])->name('rekam_medis.destroy_tm1');
     ///////////// ANC /////////////
     Route::get('anc', [RekamMedisController::class, 'anc'])->name('rekam_medis.anc');
     Route::post('store-anc', [RekamMedisController::class, 'store_anc'])->name('rekam_medis.store_anc');

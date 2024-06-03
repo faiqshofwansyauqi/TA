@@ -26,6 +26,33 @@
                     </a>
                 </li>
             </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {{ request()->is(['anc', 'anc/*']) ? '' : 'collapsed' }}" data-bs-toggle="collapse"
+                href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample">
+                <i class="bi bi-people-fill"></i>
+                <span>antenatal Care</span>
+                <i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+        </li>
+        <li class="nav-item collapse {{ request()->is(['anc', 'anc/*']) ? 'show' : '' }}" id="collapseExample1">
+            <ul class="nav-content">
+                <li>
+                    <a href="{{ route('anc.tm1') }}"
+                        class="{{ request()->is(['anc.tm1', 'anc/tm1']) ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i>
+                        <span>Pemeriksaan Dokter TM1</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('pasien.anak') }}"
+                        class="{{ request()->is(['pasien.anak', 'pasien/anak']) ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i>
+                        <span>Anak</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
         <li class="nav-item">
             <a class="nav-link {{ request()->is(['rekam_medis', 'rekam_medis/*']) ? '' : 'collapsed' }}"
                 data-bs-toggle="collapse" href="#collapseExample4" role="button" aria-expanded="false"
@@ -43,13 +70,6 @@
                         class="{{ request()->is(['rekam_medis.ropb', 'rekam_medis/ropb']) ? 'active' : '' }}">
                         <i class="bi bi-circle"></i>
                         <span>Riwayat Obstetrik, Pemeriksaan Bidan dan Rencana Persalinan</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('rekam_medis.tm1') }}"
-                        class="{{ request()->is(['rekam_medis.tm1', 'rekam_medis/tm1']) ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i>
-                        <span>Pemeriksaan Dokter TM1</span>
                     </a>
                 </li>
                 <li>
