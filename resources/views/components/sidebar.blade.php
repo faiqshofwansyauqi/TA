@@ -28,27 +28,20 @@
             </ul>
         </li>
         <li class="nav-item">
-            <a class="nav-link {{ request()->is(['anc', 'anc/*']) ? '' : 'collapsed' }}" data-bs-toggle="collapse"
+            <a class="nav-link {{ request()->is(['antenatal_care', 'antenatal_care/*']) ? '' : 'collapsed' }}" data-bs-toggle="collapse"
                 href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample">
                 <i class="bi bi-people-fill"></i>
                 <span>antenatal Care</span>
                 <i class="bi bi-chevron-down ms-auto"></i>
             </a>
         </li>
-        <li class="nav-item collapse {{ request()->is(['anc', 'anc/*']) ? 'show' : '' }}" id="collapseExample1">
+        <li class="nav-item collapse {{ request()->is(['antenatal_care', 'antenatal_care/*']) ? 'show' : '' }}" id="collapseExample1">
             <ul class="nav-content">
                 <li>
-                    <a href="{{ route('anc.tm1') }}"
-                        class="{{ request()->is(['anc.tm1', 'anc/tm1']) ? 'active' : '' }}">
+                    <a href="{{ route('antenatal_care.tm1') }}"
+                        class="{{ request()->is(['antenatal_care.tm1', 'antenatal_care/tm1']) ? 'active' : '' }}">
                         <i class="bi bi-circle"></i>
                         <span>Pemeriksaan Dokter TM1</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('pasien.anak') }}"
-                        class="{{ request()->is(['pasien.anak', 'pasien/anak']) ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i>
-                        <span>Anak</span>
                     </a>
                 </li>
             </ul>

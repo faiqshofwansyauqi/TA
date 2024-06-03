@@ -66,7 +66,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('anc.store_tm1') }}" method="post" autocomplete="off">
+                    <form action="{{ route('antenatal_care.store_tm1') }}" method="post" autocomplete="off">
                         @csrf
                         <div class="card col-12">
                             <div class="card-body">
@@ -454,7 +454,7 @@
             $('#tm1-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{{ route('anc.data_tm1') }}',
+                ajax: '{{ route('antenatal_care.data_tm1') }}',
                 scrollX: true,
                 fixedHeader: true,
                 columns: [{
@@ -564,11 +564,11 @@
                         orderable: false,
                         searchable: false,
                         render: function(data, type, row) {
-                            let viewUrl = '{{ route('anc.show_tm1', ':id') }}'
+                            let viewUrl = '{{ route('antenatal_care.show_tm1', ':id') }}'
                                 .replace(':id', row.id);
-                            let editUrl = '{{ route('anc.edit_tm1', ':id') }}'
+                            let editUrl = '{{ route('antenatal_care.edit_tm1', ':id') }}'
                                 .replace(':id', row.id);
-                            let deleteUrl = '{{ route('anc.destroy_tm1', ':id') }}'
+                            let deleteUrl = '{{ route('antenatal_care.destroy_tm1', ':id') }}'
                                 .replace(':id', row.id);
                             return `
                             <div style="display: flex; align-items: center;">
@@ -609,7 +609,7 @@
         $('#tm1-table').on('click', '.edit-btn', function() {
             let id = $(this).data('id');
             $.ajax({
-                url: '{{ route('anc.edit_tm1', ':id') }}'.replace(':id', id),
+                url: '{{ route('antenatal_care.edit_tm1', ':id') }}'.replace(':id', id),
                 method: 'GET',
                 success: function(data) {
                     $('#edit_NIK').val(data.NIK);
@@ -631,7 +631,7 @@
                     $('#edit_skrining').val(data.skrining);
                     $('#edit_kesimpulan').val(data.kesimpulan);
                     $('#edit_rekomendasi').val(data.rekomendasi);
-                    $('#editForm').attr('action', '{{ route('anc.update_tm1', ':id') }}'
+                    $('#editForm').attr('action', '{{ route('antenatal_care.update_tm1', ':id') }}'
                         .replace(
                             ':id', id));
                     $('#modalEdit').modal('show');
@@ -642,7 +642,7 @@
         $('#tm1-table').on('click', '.view-btn', function() {
             let id = $(this).data('id');
             $.ajax({
-                url: '{{ route('anc.show_tm1', ':id') }}'.replace(':id', id),
+                url: '{{ route('antenatal_care.show_tm1', ':id') }}'.replace(':id', id),
                 method: 'GET',
                 success: function(data) {
                     let namaIbu = data.ibu.nama_ibu;

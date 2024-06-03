@@ -55,14 +55,15 @@ Route::prefix('pasien')->group(function () {
     Route::put('pasien/update_ibu/{id}', [PasienController::class, 'update_ibu'])->name('pasien.update_ibu');
     Route::delete('pasien/destroy_ibu/{id}', [PasienController::class, 'destroy_ibu'])->name('pasien.destroy_ibu');
 });
-Route::prefix('anc')->group(function () {
-    Route::get('pemeriksaan_dokter_tm1', [ANCController::class, 'tm1'])->name('anc.tm1');
-    Route::post('store-tm1', [ANCController::class, 'store_tm1'])->name('anc.store_tm1');
-    Route::get('data-tm1', [ANCController::class, 'getData_tm1'])->name('anc.data_tm1');
-    Route::get('anc/show_tm1/{id}', [ANCController::class, 'show_tm1'])->name('anc.show_tm1');
-    Route::get('anc/edit_tm1/{id}', [ANCController::class, 'edit_tm1'])->name('anc.edit_tm1');
-    Route::put('anc/update_tm1/{id}', [ANCController::class, 'update_tm1'])->name('anc.update_tm1');
-    Route::delete('anc/destroy_tm1/{id}', [ANCController::class, 'destroy_tm1'])->name('anc.destroy_tm1');
+
+Route::prefix('antenatal_care')->group(function () {
+    Route::get('tm1', [ANCController::class, 'tm1'])->name('antenatal_care.tm1');
+    Route::post('store-tm1', [ANCController::class, 'store_tm1'])->name('antenatal_care.store_tm1');
+    Route::get('data-tm1', [ANCController::class, 'getData_tm1'])->name('antenatal_care.data_tm1');
+    Route::get('antenatal_care/show_tm1/{id}', [ANCController::class, 'show_tm1'])->name('antenatal_care.show_tm1');
+    Route::get('antenatal_care/edit_tm1/{id}', [ANCController::class, 'edit_tm1'])->name('antenatal_care.edit_tm1');
+    Route::put('antenatal_care/update_tm1/{id}', [ANCController::class, 'update_tm1'])->name('antenatal_care.update_tm1');
+    Route::delete('antenatal_care/destroy_tm1/{id}', [ANCController::class, 'destroy_tm1'])->name('antenatal_care.destroy_tm1');
 });
 
 Route::prefix('rekam_medis')->group(function () {

@@ -13,7 +13,7 @@ class ANCController extends Controller
     {
         $ibus = Ibu::all();
         $tm1 = Tm1::all();
-        return view('anc.tm1', compact('tm1', 'ibus'));
+        return view('antenatal_care.tm1', compact('tm1', 'ibus'));
     }
     public function store_tm1(Request $request)
     {
