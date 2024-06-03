@@ -56,7 +56,15 @@ class Show_Anc extends Model
         'infeksi',
         'anemia',
         'kpd',
-        'lain_lain',
+        'lain_lain_komplikasi',
+        'puskesmas',
+        'klinik',
+        'rsia_rsb',
+        'rs',
+        'lain_lain_dirujuk',
+        'tiba',
+        'pulang',
+        'keterangan',
     ];
     public function ibu()
     {
