@@ -7,7 +7,7 @@
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('rekam_medis.anc') }}">Antenatal Care</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('antenatal_care.anc') }}">Perawatan Selama Hamil</a></li>
                     <li class="breadcrumb-item active">Detail Ibu {{ $anc->NIK }}</li>
                     {{-- <p><strong>Nama Ibu: </strong>{{ $anc->NIK }}</p> --}}
                 </ol>
@@ -129,7 +129,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('rekam_medis.store_showanc') }}" method="post" autocomplete="off">
+                    <form action="{{ route('antenatal_care.store_showanc') }}" method="post" autocomplete="off">
                         @csrf
                         <div class="row">
                             <div class="col-6">
@@ -1071,7 +1071,7 @@
                 ordering: false,
                 paging: false,
                 info: false,
-                ajax: "{{ route('rekam_medis.data_showanc', ['NIK' => $anc->NIK]) }}",
+                ajax: "{{ route('antenatal_care.data_showanc', ['NIK' => $anc->NIK]) }}",
                 columns: [{
                         data: 'id',
                         name: 'id',
@@ -1327,7 +1327,7 @@
         // $('#anc-table').on('click', '.trigger-modal', function() {
         //     let id = $(this).data('id');
         //     $.ajax({
-        //         url: '{{ route('rekam_medis.edit_showanc', ':id') }}'.replace(':id', id),
+        //         url: '{{ route('antenatal_care.edit_showanc', ':id') }}'.replace(':id', id),
         //         method: 'GET',
         //         success: function(data) {
         //             $('#edit_tanggal').val(data.tanggal);
@@ -1376,7 +1376,7 @@
         //             $('#edit_kpd').val(data.kpd);
         //             $('#edit_lain_lain').val(data.lain_lain);
         //             $('#editForm').attr('action',
-        //                 '{{ route('rekam_medis.update_showanc', ':id') }}'
+        //                 '{{ route('antenatal_care.update_showanc', ':id') }}'
         //                 .replace(
         //                     ':id', id));
         //             $('#modalEdit').modal('show');
@@ -1385,7 +1385,7 @@
         // });
 
         document.addEventListener('DOMContentLoaded', function() {
-            if (window.location.pathname.includes('/rekam_medis/anc/show_anc')) {
+            if (window.location.pathname.includes('/antenatal_care/anc/show_anc')) {
                 var body = document.querySelector('body');
                 body.classList.add('toggle-sidebar');
             }

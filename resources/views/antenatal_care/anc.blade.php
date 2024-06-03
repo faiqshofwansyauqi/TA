@@ -7,8 +7,8 @@
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                    <li class="breadcrumb-item">Rekam Medis</li>
-                    <li class="breadcrumb-item active">Antenatal Care</li>
+                    <li class="breadcrumb-item">Antenatal Care</li>
+                    <li class="breadcrumb-item active">Pewaratan Selama Hamil</li>
                 </ol>
             </nav>
         </div>
@@ -48,7 +48,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('rekam_medis.store_anc') }}" method="post" autocomplete="off">
+                    <form action="{{ route('antenatal_care.store_anc') }}" method="post" autocomplete="off">
                         @csrf
                         <div class="card col-12">
                             <div class="card-body">
@@ -120,7 +120,7 @@
             $('#anc-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{{ route('rekam_medis.data_anc') }}',
+                ajax: '{{ route('antenatal_care.data_anc') }}',
                 scrollX: true,
                 fixedHeader: true,
                 columns: [{
@@ -133,11 +133,11 @@
                         orderable: false,
                         searchable: false,
                         render: function(data, type, row) {
-                            let viewUrl = '{{ route('rekam_medis.show_anc', ':id') }}'.replace(
+                            let viewUrl = '{{ route('antenatal_care.show_anc', ':id') }}'.replace(
                                 ':id', row.id);
-                            let editUrl = '{{ route('rekam_medis.edit_anc', ':id') }}'.replace(
+                            let editUrl = '{{ route('antenatal_care.edit_anc', ':id') }}'.replace(
                                 ':id', row.id);
-                            let deleteUrl = '{{ route('rekam_medis.destroy_anc', ':id') }}'.replace(
+                            let deleteUrl = '{{ route('antenatal_care.destroy_anc', ':id') }}'.replace(
                                 ':id', row.id);
                             return `
                             <div style="display: flex; align-items: center;">
@@ -166,11 +166,11 @@
         $('#anc-table').on('click', '.edit-btn', function() {
             let id = $(this).data('id');
             $.ajax({
-                url: '{{ route('rekam_medis.edit_anc', ':id') }}'.replace(':id', id),
+                url: '{{ route('antenatal_care.edit_anc', ':id') }}'.replace(':id', id),
                 method: 'GET',
                 success: function(data) {
                     $('#edit_NIK').val(data.NIK);
-                    $('#editForm').attr('action', '{{ route('rekam_medis.update_anc', ':id') }}'
+                    $('#editForm').attr('action', '{{ route('antenatal_care.update_anc', ':id') }}'
                         .replace(
                             ':id', id));
                     $('#modalEdit').modal('show');

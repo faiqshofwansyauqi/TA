@@ -44,7 +44,15 @@
                         <span>Pemeriksaan Dokter TM1</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('antenatal_care.anc') }}"
+                        class="{{ request()->is(['antenatal_care.anc', 'antenatal_care/anc', 'antenatal_care.show_anc', 'antenatal_care/anc/show_anc/*']) ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i>
+                        <span>Perawatan Selama Hamil</span>
+                    </a>
+                </li>
             </ul>
+            
         </li>
         <li class="nav-item">
             <a class="nav-link {{ request()->is(['rekam_medis', 'rekam_medis/*']) ? '' : 'collapsed' }}"
@@ -63,13 +71,6 @@
                         class="{{ request()->is(['rekam_medis.ropb', 'rekam_medis/ropb']) ? 'active' : '' }}">
                         <i class="bi bi-circle"></i>
                         <span>Riwayat Obstetrik, Pemeriksaan Bidan dan Rencana Persalinan</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('rekam_medis.anc') }}"
-                        class="{{ request()->is(['rekam_medis.anc', 'rekam_medis/anc', 'rekam_medis.show_anc', 'rekam_medis/anc/show_anc/*']) ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i>
-                        <span>Antenatal Care</span>
                     </a>
                 </li>
                 <li>

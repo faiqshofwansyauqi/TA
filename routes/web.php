@@ -64,6 +64,19 @@ Route::prefix('antenatal_care')->group(function () {
     Route::get('antenatal_care/edit_tm1/{id}', [ANCController::class, 'edit_tm1'])->name('antenatal_care.edit_tm1');
     Route::put('antenatal_care/update_tm1/{id}', [ANCController::class, 'update_tm1'])->name('antenatal_care.update_tm1');
     Route::delete('antenatal_care/destroy_tm1/{id}', [ANCController::class, 'destroy_tm1'])->name('antenatal_care.destroy_tm1');
+    ///////////// ANC /////////////
+    Route::get('anc', [ANCController::class, 'anc'])->name('antenatal_care.anc');
+    Route::post('store-anc', [ANCController::class, 'store_anc'])->name('antenatal_care.store_anc');
+    Route::get('data-anc', [ANCController::class, 'getData_anc'])->name('antenatal_care.data_anc');
+    Route::get('antenatal_care/edit_anc/{id}', [ANCController::class, 'edit_anc'])->name('antenatal_care.edit_anc');
+    Route::put('antenatal_care/update_anc/{id}', [ANCController::class, 'update_anc'])->name('antenatal_care.update_anc');
+    Route::delete('antenatal_care/destroy_anc/{id}', [ANCController::class, 'destroy_anc'])->name('antenatal_care.destroy_anc');
+    ///////////// SHOW ANC /////////////
+    Route::post('store-show_anc', [ANCController::class, 'store_showanc'])->name('antenatal_care.store_showanc');
+    Route::get('anc/show_anc/{id}', [ANCController::class, 'show_anc'])->name('antenatal_care.show_anc');
+    Route::get('data-show_anc/{NIK}', [ANCController::class, 'getData_showanc'])->name('antenatal_care.data_showanc');
+    Route::get('show_anc/edit_showanc/{id}', [ANCController::class, 'edit_showanc'])->name('antenatal_care.edit_showanc');
+    Route::put('show_ach/update_showanc/{id}', [ANCController::class, 'update_showanc'])->name('antenatal_care.update_showanc');
 });
 
 Route::prefix('rekam_medis')->group(function () {
@@ -80,22 +93,8 @@ Route::prefix('rekam_medis')->group(function () {
     Route::get('data-ropb', [RekamMedisController::class, 'getData_ropb'])->name('rekam_medis.data_ropb');
     Route::get('rekam_medis/show_ropb/{id}', [RekamMedisController::class, 'show_ropb'])->name('rekam_medis.show_ropb');
     Route::get('rekam_medis/edit_ropb/{id}', [RekamMedisController::class, 'edit_ropb'])->name('rekam_medis.edit_ropb');
-    Route::put('rekam_medis/update_ropb/{id}', [RekamMedisController::class, 'update_ropb'])->name('rekam_medis.update_ropb'); 
+    Route::put('rekam_medis/update_ropb/{id}', [RekamMedisController::class, 'update_ropb'])->name('rekam_medis.update_ropb');
     Route::delete('rekam_medis/destroy_ropb/{id}', [RekamMedisController::class, 'destroy_ropb'])->name('rekam_medis.destroy_ropb');
-    ///////////// ANC /////////////
-    Route::get('anc', [RekamMedisController::class, 'anc'])->name('rekam_medis.anc');
-    Route::post('store-anc', [RekamMedisController::class, 'store_anc'])->name('rekam_medis.store_anc');
-    Route::get('data-anc', [RekamMedisController::class, 'getData_anc'])->name('rekam_medis.data_anc');
-    Route::get('rekam_medis/edit_anc/{id}', [RekamMedisController::class, 'edit_anc'])->name('rekam_medis.edit_anc');
-    Route::put('rekam_medis/update_anc/{id}', [RekamMedisController::class, 'update_anc'])->name('rekam_medis.update_anc');
-    Route::delete('rekam_medis/destroy_anc/{id}', [RekamMedisController::class, 'destroy_anc'])->name('rekam_medis.destroy_anc');
-    ///////////// SHOW ANC /////////////
-    Route::post('store-show_anc', [RekamMedisController::class, 'store_showanc'])->name('rekam_medis.store_showanc');
-    Route::get('anc/show_anc/{id}', [RekamMedisController::class, 'show_anc'])->name('rekam_medis.show_anc');
-    Route::get('data-show_anc/{NIK}', [RekamMedisController::class, 'getData_showanc'])->name('rekam_medis.data_showanc');
-    Route::get('show_anc/edit_showanc/{id}', [RekamMedisController::class, 'edit_showanc'])->name('rekam_medis.edit_showanc');
-    Route::put('show_ach/update_showanc/{id}', [RekamMedisController::class, 'update_showanc'])->name('rekam_medis.update_showanc');
-    
 });
 
 
