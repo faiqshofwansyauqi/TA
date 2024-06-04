@@ -370,7 +370,15 @@ class ANCController extends Controller
             'infeksi' => 'required',
             'anemia' => 'required',
             'kpd' => 'required',
-            'lain_lain' => 'required',
+            'lain_lain_komplikasi' => 'required',
+            'puskesmas' => 'required',
+            'klinik' => 'required',
+            'rsia_rsb' => 'required',
+            'rs' => 'required',
+            'lain_lain_dirujuk' => 'required',
+            'tiba' => 'required',
+            'pulang' => 'required',
+            'keterangan' => 'required',
 
         ]);
         $ancs = Show_Anc::findOrFail($id);
@@ -419,7 +427,15 @@ class ANCController extends Controller
             'infeksi' => $request->infeksi,
             'anemia' => $request->anemia,
             'kpd' => $request->kpd,
-            'lain_lain' => $request->lain_lain,
+            'lain_lain_komplikasi' => $request->lain_lain_komplikasi,
+            'puskesmas' => $request->puskesmas,
+            'klinik' => $request->klinik,
+            'rsia_rsb' => $request->rsia_rsb,
+            'rs' => $request->rs,
+            'lain_lain_dirujuk' => $request->lain_lain_dirujuk,
+            'tiba' => $request->tiba,
+            'pulang' => $request->pulang,
+            'keterangan' => $request->keterangan,
         ]);
         return redirect()->back()->with('success', 'Data berhasil diperbarui');
     }
