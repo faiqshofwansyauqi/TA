@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tm1;
+use App\Models\Tm3;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 use App\Models\Ibu;
@@ -449,8 +450,8 @@ class ANCController extends Controller
         $ancs = Show_Anc::findOrFail($id);
         return response()->json($ancs);
     }
-    //////// RIWAYAT OBSTETRIK DAN PEMERIKSAAN BIDAN ////////
 
+    //////// RIWAYAT OBSTETRIK DAN PEMERIKSAAN BIDAN ////////
     public function Ropb()
     {
         $ropb = Ropb::all();
@@ -562,8 +563,8 @@ class ANCController extends Controller
         ])->find($id);
         return response()->json($ropb);
     }
-    //////// RENCANA PERSALINAN ////////
 
+    //////// RENCANA PERSALINAN ////////
     public function Rnca()
     {
         $rnca = Rencana_Persalinan::all();
@@ -647,6 +648,141 @@ class ANCController extends Controller
             }
         ])->find($id);
         return response()->json($rnca);
+
     }
 
+    //////// RENCANA PERSALINAN ////////
+    public function Tm3()
+    {
+        $ibus = Ibu::all();
+        $tm3 = Tm3::all();
+        return view('antenatal_care.tm3', compact('tm3', 'ibus'));
+    }
+    public function store_tm3(Request $request)
+    {
+        // dd($request);
+        $request->validate([
+            'NIK' => 'required',
+            'konjungtiva' => 'required',
+            'sklera' => 'required',
+            'kulit' => 'required',
+            'leher' => 'required',
+            'gigi_mulut' => 'required',
+            'tht' => 'required',
+            'jantung' => 'required',
+            'paru' => 'required',
+            'perut' => 'required',
+            'tungkai' => 'required',
+            'gs' => 'required',
+            'crl' => 'required',
+            'djj' => 'required',
+            'usia_kehamilan' => 'required',
+            'tkrsn_persalinan' => 'required',
+            'hb' => 'required',
+            'gula_darah' => 'required',
+            'gula_darah_pp' => 'required',
+            'konsultasi' => 'required',
+            'rekomendasi' => 'required',
+            'rnca_persalinan' => 'required',
+            'rnca_kontrasepsi' => 'required',
+        ]);
+        Tm3::create([
+            'NIK' => $request->NIK,
+            'konjungtiva' => $request->konjungtiva,
+            'sklera' => $request->sklera,
+            'kulit' => $request->kulit,
+            'leher' => $request->leher,
+            'gigi_mulut' => $request->gigi_mulut,
+            'tht' => $request->tht,
+            'jantung' => $request->jantung,
+            'paru' => $request->paru,
+            'perut' => $request->perut,
+            'tungkai' => $request->tungkai,
+            'gs' => $request->gs,
+            'crl' => $request->crl,
+            'djj' => $request->djj,
+            'usia_kehamilan' => $request->usia_kehamilan,
+            'tkrsn_persalinan' => $request->tkrsn_persalinan,
+            'hb' => $request->hb,
+            'gula_darah' => $request->gula_darah,
+            'gula_darah_pp' => $request->gula_darah_pp,
+            'konsultasi' => $request->konsultasi,
+            'rekomendasi' => $request->rekomendasi,
+            'rnca_persalinan' => $request->rnca_persalinan,
+            'rnca_kontrasepsi' => $request->rnca_kontrasepsi,
+        ]);
+        return redirect()->back()->with('success', 'Data berhasil ditambahkan');
+    }
+    public function update_tm3(Request $request, $id)
+    {
+        // dd($request);
+        $request->validate([
+            'NIK' => 'required',
+            'konjungtiva' => 'required',
+            'sklera' => 'required',
+            'kulit' => 'required',
+            'leher' => 'required',
+            'gigi_mulut' => 'required',
+            'tht' => 'required',
+            'jantung' => 'required',
+            'paru' => 'required',
+            'perut' => 'required',
+            'tungkai' => 'required',
+            'gs' => 'required',
+            'crl' => 'required',
+            'djj' => 'required',
+            'usia_kehamilan' => 'required',
+            'tkrsn_persalinan' => 'required',
+            'hb' => 'required',
+            'gula_darah' => 'required',
+            'gula_darah_pp' => 'required',
+            'konsultasi' => 'required',
+            'rekomendasi' => 'required',
+            'rnca_persalinan' => 'required',
+            'rnca_kontrasepsi' => 'required',
+        ]);
+        $tm3 = Tm3::findOrFail($id);
+        $tm3->update([
+            'NIK' => $request->NIK,
+            'konjungtiva' => $request->konjungtiva,
+            'sklera' => $request->sklera,
+            'kulit' => $request->kulit,
+            'leher' => $request->leher,
+            'gigi_mulut' => $request->gigi_mulut,
+            'tht' => $request->tht,
+            'jantung' => $request->jantung,
+            'paru' => $request->paru,
+            'perut' => $request->perut,
+            'tungkai' => $request->tungkai,
+            'gs' => $request->gs,
+            'crl' => $request->crl,
+            'djj' => $request->djj,
+            'usia_kehamilan' => $request->usia_kehamilan,
+            'tkrsn_persalinan' => $request->tkrsn_persalinan,
+            'hb' => $request->hb,
+            'gula_darah' => $request->gula_darah,
+            'gula_darah_pp' => $request->gula_darah_pp,
+            'konsultasi' => $request->konsultasi,
+            'rekomendasi' => $request->rekomendasi,
+            'rnca_persalinan' => $request->rnca_persalinan,
+            'rnca_kontrasepsi' => $request->rnca_kontrasepsi,
+        ]);
+        return redirect()->back()->with('success', 'Data berhasil diperbarui');
+    }
+    public function destroy_tm3($id)
+    {
+        $tm3 = Tm3::findOrFail($id);
+        $tm3->delete();
+        return redirect()->back()->with('success', 'Data berhasil dihapus');
+    }
+    public function edit_tm3($id)
+    {
+        $tm3 = Tm3::findOrFail($id);
+        return response()->json($tm3);
+    }
+    public function getData_tm3()
+    {
+        $tm3 = Tm3::select('*');
+        return DataTables::of($tm3)->make(true);
+    }
 }

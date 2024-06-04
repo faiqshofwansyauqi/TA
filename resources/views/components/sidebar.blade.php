@@ -67,9 +67,15 @@
                         <span>Rencana Persalinan</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('antenatal_care.tm3') }}"
+                        class="{{ request()->is(['antenatal_care.tm3', 'antenatal_care/tm3']) ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i>
+                        <span>Pemeriksaan Dokter TM3</span>
+                    </a>
+                </li>
             </ul>
         </li>
-
         <li class="nav-item">
             <a class="nav-link {{ request()->is(['intranatal_care', 'intranatal_care/*']) ? '' : 'collapsed' }}"
                 data-bs-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false"
@@ -91,7 +97,6 @@
                 </li>
             </ul>
         </li>
-
         <li class="nav-item">
             <a class="nav-link {{ request()->is(['postnatal_care', 'postnatal_care/*']) ? '' : 'collapsed' }}"
                 data-bs-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false"
@@ -114,41 +119,6 @@
             </ul>
         </li>
 
-        <li class="nav-item">
-            <a class="nav-link {{ request()->is(['rekam_medis', 'rekam_medis/*']) ? '' : 'collapsed' }}"
-                data-bs-toggle="collapse" href="#collapseExample4" role="button" aria-expanded="false"
-                aria-controls="collapseExample">
-                <i class="bi bi-journal-bookmark"></i>
-                <span>Rekam Medis</span>
-                <i class="bi bi-chevron-down ms-auto"></i>
-            </a>
-        </li>
-        <li class="nav-item collapse {{ request()->is(['rekam_medis', 'rekam_medis/*']) ? 'show' : '' }}"
-            id="collapseExample4">
-            <ul class="nav-content">
-                <li>
-                    <a href="{{ route('errors.404') }}"
-                        class="{{ request()->is(['errors.404', 'errors/404']) ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i>
-                        <span>PNC</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('errors.404') }}"
-                        class="{{ request()->is(['errors.404', 'errors/404']) ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i>
-                        <span>Pemantauan PPIA dan Pemantauan Dari Ibu Heptasis B</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('errors.404') }}"
-                        class="{{ request()->is(['errors.404', 'errors/404']) ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i>
-                        <span>Pemantauan Bayi Dari Ibu HIV dan Pemantauan Bayi Dari Ibu Sifilis</span>
-                    </a>
-                </li>
-            </ul>
-        </li>
         <li class="nav-item">
             <a class="nav-link {{ request()->is(['master.pasien', 'master/pasien']) ? '' : 'collapsed' }}"
                 href="{{ route('master.pasien') }}">

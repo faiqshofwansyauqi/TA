@@ -26,12 +26,9 @@ Route::get('/', [LandingController::class, 'landing'])->name('home');
 Route::get('pendaftaran', [LandingController::class, 'pendaftaran']);
 
 Route::middleware(['auth'])->group(function () {
-
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 });
-
-
 
 Route::middleware(['guest'])->group(function () {
     Route::get('login', [AuthController::class, 'index'])->name('login');
@@ -58,6 +55,7 @@ Route::prefix('pasien')->group(function () {
 });
 
 Route::prefix('antenatal_care')->group(function () {
+    ///////////// PEMERIKSAAN DOKTER TM1 /////////////
     Route::get('tm1', [ANCController::class, 'tm1'])->name('antenatal_care.tm1');
     Route::post('store-tm1', [ANCController::class, 'store_tm1'])->name('antenatal_care.store_tm1');
     Route::get('data-tm1', [ANCController::class, 'getData_tm1'])->name('antenatal_care.data_tm1');
@@ -102,6 +100,13 @@ Route::prefix('antenatal_care')->group(function () {
     Route::get('antenatal_care/edit_rnca/{id}', [ANCController::class, 'edit_rnca'])->name('antenatal_care.edit_rnca');
     Route::put('antenatal_care/update_rnca/{id}', [ANCController::class, 'update_rnca'])->name('antenatal_care.update_rnca');
     Route::delete('antenatal_care/destroy_rnca/{id}', [ANCController::class, 'destroy_rnca'])->name('antenatal_care.destroy_rnca');
+    ///////////// RENCANA PERSALINAN /////////////
+    Route::get('tm3', [ANCController::class, 'tm3'])->name('antenatal_care.tm3');
+    Route::post('store-tm3', [ANCController::class, 'store_tm3'])->name('antenatal_care.store_tm3');
+    Route::get('data-tm3', [ANCController::class, 'getData_tm3'])->name('antenatal_care.data_tm3');
+    Route::put('antenatal_care/update_tm3/{id}', [ANCController::class, 'update_tm3'])->name('antenatal_care.update_tm3');
+    Route::delete('antenatal_care/destroy_tm3/{id}', [ANCController::class, 'destroy_tm3'])->name('antenatal_care.destroy_tm3');
+    Route::get('antenatal_care/edit_tm3/{id}', [ANCController::class, 'edit_tm3'])->name('antenatal_care.edit_tm3');
 });
 
 Route::prefix('intranatal_care')->group(function () {
@@ -116,10 +121,7 @@ Route::prefix('intranatal_care')->group(function () {
 });
 
 Route::prefix('rekam_medis')->group(function () {
-    
-    
 });
-
 
 Route::prefix('master')->group(function () {
     Route::get('pasien', [MasterController::class, 'pasien'])->name('master.pasien');
