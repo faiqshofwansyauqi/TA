@@ -107,6 +107,7 @@ Route::prefix('antenatal_care')->group(function () {
     Route::put('antenatal_care/update_tm3/{id}', [ANCController::class, 'update_tm3'])->name('antenatal_care.update_tm3');
     Route::delete('antenatal_care/destroy_tm3/{id}', [ANCController::class, 'destroy_tm3'])->name('antenatal_care.destroy_tm3');
     Route::get('antenatal_care/edit_tm3/{id}', [ANCController::class, 'edit_tm3'])->name('antenatal_care.edit_tm3');
+    Route::get('antenatal_care/show_tm3/{id}', [ANCController::class, 'show_tm3'])->name('antenatal_care.show_tm3');
 });
 
 Route::prefix('intranatal_care')->group(function () {

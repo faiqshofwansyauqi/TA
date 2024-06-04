@@ -785,4 +785,13 @@ class ANCController extends Controller
         $tm3 = Tm3::select('*');
         return DataTables::of($tm3)->make(true);
     }
+    public function show_tm3($id)
+    {
+        $tm3 = Tm3::with([
+            'ibu' => function ($query) {
+                $query->select('nama_ibu');
+            }
+        ])->find($id);
+        return response()->json($tm3);
+    }
 }

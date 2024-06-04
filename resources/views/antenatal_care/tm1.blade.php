@@ -255,7 +255,7 @@
                                 <div class="row">
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_NIK" class="form-label">Ibu</label>
-                                        <select class="form-control" id="edit_NIK" name="NIK" required>
+                                        <select class="form-control" id="edit_NIK" name="NIK" hidden>
                                             <option value="">Pilih Ibu</option>
                                             @foreach ($ibus as $ibu)
                                                 <option value="{{ $ibu->nama_ibu }}">{{ $ibu->nama_ibu }}</option>

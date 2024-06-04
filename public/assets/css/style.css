@@ -113,6 +113,9 @@ h6 {
 .table-outside tr {
     border: 1px solid #999999; /* Atur warna dan ketebalan garis sesuai kebutuhan */
 }
+.table-outside td1 {
+    border: 1px solid #999999; /* Atur warna dan ketebalan garis sesuai kebutuhan */
+}
 
 .table-outside {
     border: 1px solid #999999; /* Atur warna dan ketebalan garis sesuai kebutuhan */
