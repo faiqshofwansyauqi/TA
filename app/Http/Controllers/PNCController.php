@@ -150,7 +150,6 @@ class PNCController extends Controller
         $nifass->update([
             'tanggal' => $request->tanggal,
             'hari' => $request->hari,
-            'hari' => $request->hari,
             'kf' => $request->kf,
             'td_mmhg' => $request->td_mmhg,
             'suhu' => $request->suhu,
