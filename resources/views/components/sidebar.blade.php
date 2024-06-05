@@ -111,7 +111,7 @@
             <ul class="nav-content">
                 <li>
                     <a href="{{ route('postnatal_care.nifas') }}"
-                        class="{{ request()->is(['postnatal_care.nifas', 'postnatal_care/nifas']) ? 'active' : '' }}">
+                    class="{{ request()->is(['postnatal_care.nifas', 'postnatal_care/nifas', 'postnatal_care.show_nifas', 'postnatal_care/nifas/show_nifas/*']) ? 'active' : '' }}">
                         <i class="bi bi-circle"></i>
                         <span>Masa Nifas</span>
                     </a>

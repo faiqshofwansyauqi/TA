@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Ibu;
 
-class Show_nifas extends Model
+class Show_Nifas extends Model
 {
     protected $table = 'show_nifas';
     protected $primaryKey = 'id';
@@ -12,50 +13,23 @@ class Show_nifas extends Model
         'NIK',
         'id',
         'tanggal',
-        'usia_kehamilan',
-        'trimester',
-        'keluhan',
-        'berat_badan',
+        'hari',
+        'kf',
         'td_mmhg',
-        'lila',
-        'sts_gizi',
-        'tfu',
-        'sts_imunisasi',
-        'djj',
-        'kpl_thd',
-        'tbj',
-        'presentasi',
-        'jmlh_janin',
-        'injeksi',
+        'suhu',
         'buku_kia',
         'fe',
-        'pmt_bumil',
-        'kelas_ibu',
-        'konseling',
-        'hemoglobin',
-        'glcs_urine',
-        'sifilis',
-        'hbsag',
-        'hiv',
+        'vit',
+        'cd_4',
+        'anti_malaria',
+        'anti_tb',
         'arv',
-        'malaria',
-        'obat_malaria',
-        'kelambu',
-        'skrining_anam',
-        'dahak',
-        'tbc',
-        'obat_TB',
-        'sehat',
-        'kontak_erat',
-        'suspek',
-        'konfimasi',
-        'hdk',
-        'abortus',
-        'pendarahan',
+        'ppp',
         'infeksi',
-        'anemia',
-        'kpd',
-        'lain_lain_komplikasi',
+        'hdk',
+        'lainnya_komplikasi',
+        'klasifikasi',
+        'tata_laksana',
         'puskesmas',
         'klinik',
         'rsia_rsb',
@@ -63,7 +37,6 @@ class Show_nifas extends Model
         'lain_lain_dirujuk',
         'tiba',
         'pulang',
-        'keterangan',
     ];
     public function ibu()
     {
