@@ -7,7 +7,7 @@ use App\Http\Controllers\INCController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\MasterController;
 use App\Http\Controllers\PasienController;
-use App\Http\Controllers\RekamMedisController;
+use App\Http\Controllers\PNCController;
 use App\Http\Controllers\ANCController;
 use Illuminate\Support\Facades\Route;
 
@@ -67,8 +67,6 @@ Route::prefix('antenatal_care')->group(function () {
     Route::get('anc', [ANCController::class, 'anc'])->name('antenatal_care.anc');
     Route::post('store-anc', [ANCController::class, 'store_anc'])->name('antenatal_care.store_anc');
     Route::get('data-anc', [ANCController::class, 'getData_anc'])->name('antenatal_care.data_anc');
-    Route::get('antenatal_care/edit_anc/{id}', [ANCController::class, 'edit_anc'])->name('antenatal_care.edit_anc');
-    Route::put('antenatal_care/update_anc/{id}', [ANCController::class, 'update_anc'])->name('antenatal_care.update_anc');
     Route::delete('antenatal_care/destroy_anc/{id}', [ANCController::class, 'destroy_anc'])->name('antenatal_care.destroy_anc');
     ///////////// SHOW ANC /////////////
     Route::post('store-show_anc', [ANCController::class, 'store_showanc'])->name('antenatal_care.store_showanc');
@@ -76,14 +74,6 @@ Route::prefix('antenatal_care')->group(function () {
     Route::get('data-show_anc/{NIK}', [ANCController::class, 'getData_showanc'])->name('antenatal_care.data_showanc');
     Route::get('show_anc/edit_showanc/{id}', [ANCController::class, 'edit_showanc'])->name('antenatal_care.edit_showanc');
     Route::put('show_ach/update_showanc/{id}', [ANCController::class, 'update_showanc'])->name('antenatal_care.update_showanc');
-    ///////////// RENCANA PERSALINAN /////////////
-    Route::get('persalinan', [ANCController::class, 'Persalinan'])->name('antenatal_care.persalinan');
-    Route::post('store-persalinan', [ANCController::class, 'store_persalinan'])->name('antenatal_care.store_persalinan');
-    Route::get('data-persalinan', [ANCController::class, 'getData_persalinan'])->name('antenatal_care.data_persalinan');
-    Route::get('antenatal_care/show_persalinan/{id}', [ANCController::class, 'show_persalinan'])->name('antenatal_care.show_persalinan');
-    Route::get('antenatal_care/edit_persalinan/{id}', [ANCController::class, 'edit_persalinan'])->name('antenatal_care.edit_persalinan');
-    Route::put('antenatal_care/update_persalinan/{id}', [ANCController::class, 'update_persalinan'])->name('antenatal_care.update_persalinan');
-    Route::delete('antenatal_care/destroy_persalinan/{id}', [ANCController::class, 'destroy_persalinan'])->name('antenatal_care.destroy_persalinan');
     ///////////// PEMERIKSAAN BIDAN/DOKTER SAAT K1 /////////////
     Route::get('ropb', [ANCController::class, 'ropb'])->name('antenatal_care.ropb');
     Route::post('store-ropb', [ANCController::class, 'store_ropb'])->name('antenatal_care.store_ropb');
@@ -100,7 +90,7 @@ Route::prefix('antenatal_care')->group(function () {
     Route::get('antenatal_care/edit_rnca/{id}', [ANCController::class, 'edit_rnca'])->name('antenatal_care.edit_rnca');
     Route::put('antenatal_care/update_rnca/{id}', [ANCController::class, 'update_rnca'])->name('antenatal_care.update_rnca');
     Route::delete('antenatal_care/destroy_rnca/{id}', [ANCController::class, 'destroy_rnca'])->name('antenatal_care.destroy_rnca');
-    ///////////// RENCANA PERSALINAN /////////////
+    ///////////// PEMERIKSAAN DOKTER TM3 /////////////
     Route::get('tm3', [ANCController::class, 'tm3'])->name('antenatal_care.tm3');
     Route::post('store-tm3', [ANCController::class, 'store_tm3'])->name('antenatal_care.store_tm3');
     Route::get('data-tm3', [ANCController::class, 'getData_tm3'])->name('antenatal_care.data_tm3');
@@ -111,7 +101,7 @@ Route::prefix('antenatal_care')->group(function () {
 });
 
 Route::prefix('intranatal_care')->group(function () {
-    ///////////// RENCANA PERSALINAN /////////////
+    ///////////// MASA PERSALINAN /////////////
     Route::get('persalinan', [INCController::class, 'Persalinan'])->name('intranatal_care.persalinan');
     Route::post('store-persalinan', [INCController::class, 'store_persalinan'])->name('intranatal_care.store_persalinan');
     Route::get('data-persalinan', [INCController::class, 'getData_persalinan'])->name('intranatal_care.data_persalinan');
@@ -119,6 +109,19 @@ Route::prefix('intranatal_care')->group(function () {
     Route::get('intranatal_care/edit_persalinan/{id}', [INCController::class, 'edit_persalinan'])->name('intranatal_care.edit_persalinan');
     Route::put('intranatal_care/update_persalinan/{id}', [INCController::class, 'update_persalinan'])->name('intranatal_care.update_persalinan');
     Route::delete('intranatal_care/destroy_persalinan/{id}', [INCController::class, 'destroy_persalinan'])->name('intranatal_care.destroy_persalinan');
+});
+Route::prefix('postnatal_care')->group(function () {
+    ///////////// MASA NIFAS /////////////
+    Route::get('nifas', [PNCController::class, 'nifas'])->name('postnatal_care.nifas');
+    Route::post('store-nifas', [PNCController::class, 'store_nifas'])->name('postnatal_care.store_nifas');
+    Route::get('data-nifas', [PNCController::class, 'getData_nifas'])->name('postnatal_care.data_nifas');
+    Route::delete('postnatal_care/destroy_nifas/{id}', [PNCController::class, 'destroy_nifas'])->name('postnatal_care.destroy_nifas');
+    ///////////// SHOW NIFAS /////////////
+    Route::post('store-show_nifas', [PNCController::class, 'store_shownifas'])->name('postnatal_care.store_shownifas');
+    Route::get('nifas/show_nifas/{id}', [PNCController::class, 'show_nifas'])->name('postnatal_care.show_nifas');
+    Route::get('data-show_nifas/{NIK}', [PNCController::class, 'getData_shownifas'])->name('postnatal_care.data_shownifas');
+    Route::get('show_nifas/edit_shownifas/{id}', [PNCController::class, 'edit_shownifas'])->name('postnatal_care.edit_shownifas');
+    Route::put('show_ach/update_shownifas/{id}', [PNCController::class, 'update_shownifas'])->name('postnatal_care.update_shownifas');
 });
 
 Route::prefix('rekam_medis')->group(function () {

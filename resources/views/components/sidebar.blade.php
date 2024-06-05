@@ -110,10 +110,10 @@
             id="collapseExample3">
             <ul class="nav-content">
                 <li>
-                    <a href="{{ route('errors.404') }}"
-                        class="{{ request()->is(['intranatal_care.persalinan', 'intranatal_care/persalinan']) ? 'active' : '' }}">
+                    <a href="{{ route('postnatal_care.nifas') }}"
+                        class="{{ request()->is(['postnatal_care.nifas', 'postnatal_care/nifas']) ? 'active' : '' }}">
                         <i class="bi bi-circle"></i>
-                        <span>Masa Persalinan</span>
+                        <span>Masa Nifas</span>
                     </a>
                 </li>
             </ul>

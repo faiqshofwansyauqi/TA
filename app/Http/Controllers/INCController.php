@@ -10,7 +10,7 @@ use Yajra\DataTables\Facades\DataTables;
 
 class INCController extends Controller
 {
-    //////// PERSALINAN ////////
+    //////// MASA PERSALINAN ////////
     public function Persalinan()
     {
         $persalinan = Persalinan::all();

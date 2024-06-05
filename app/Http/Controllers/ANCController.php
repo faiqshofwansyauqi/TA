@@ -178,23 +178,6 @@ class ANCController extends Controller
         $anc->delete();
         return redirect()->back()->with('success', 'Data berhasil dihapus');
     }
-    public function edit_anc($id)
-    {
-        $anc = Anc::findOrFail($id);
-        return response()->json($anc);
-    }
-    public function update_anc(Request $request, $id)
-    {
-        // dd($request);
-        $request->validate([
-            'NIK' => 'required',
-        ]);
-        $anc = anc::findOrFail($id);
-        $anc->update([
-            'NIK' => $request->NIK,
-        ]);
-        return redirect()->back()->with('success', 'Data berhasil diperbarui');
-    }
 
     //////////////// SHOW ANC ////////////////
 
@@ -651,7 +634,7 @@ class ANCController extends Controller
 
     }
 
-    //////// RENCANA PERSALINAN ////////
+    //////// PEMERIKSAAN DOKTER TM3 ////////
     public function Tm3()
     {
         $ibus = Ibu::all();

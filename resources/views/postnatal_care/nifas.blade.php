@@ -3,12 +3,12 @@
 @section('content')
     <div class="d-flex justify-content-between align-items-center">
         <div class="pagetitle">
-            <h1>Perawatan Selama Hamil</h1>
+            <h1>Masa Nifas</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                    <li class="breadcrumb-item">Antenatal Care</li>
-                    <li class="breadcrumb-item active">Pewaratan Selama Hamil</li>
+                    <li class="breadcrumb-item">Intranatal Care</li>
+                    <li class="breadcrumb-item active">Masa Nifas</li>
                 </ol>
             </nav>
         </div>
@@ -44,11 +44,11 @@
         <div class="modal-dialog modal-dialog-scrollable modal-md">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-4 fw-bold" id="ModalInput">Input Antenatal Care</h1>
+                    <h1 class="modal-title fs-4 fw-bold" id="ModalInput">Input Masa Nifas</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('antenatal_care.store_anc') }}" method="post" autocomplete="off">
+                    <form action="{{ route('postnatal_care.store_nifas') }}" method="post" autocomplete="off">
                         @csrf
                         <div class="card col-12">
                             <div class="card-body">
@@ -87,7 +87,7 @@
             $('#anc-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{{ route('antenatal_care.data_anc') }}',
+                ajax: '{{ route('postnatal_care.data_nifas') }}',
                 scrollX: true,
                 fixedHeader: true,
                 columns: [{
@@ -99,10 +99,10 @@
                         name: 'action',
                         orderable: false,
                         searchable: false,
-                        render: function(data, type, row) {
-                            let viewUrl = '{{ route('antenatal_care.show_anc', ':id') }}'.replace(
-                                ':id', row.id);
-                            let deleteUrl = '{{ route('antenatal_care.destroy_anc', ':id') }}'.replace(
+                        render: function(data, type, row) { 
+                            let viewUrl = '{{ route('postnatal_care.show_nifas', ':id') }}'.replace(
+                                ':id', row.id);                           
+                            let deleteUrl = '{{ route('postnatal_care.destroy_nifas', ':id') }}'.replace(
                                 ':id', row.id);
                             return `
                             <div style="display: flex; align-items: center;">
@@ -122,6 +122,6 @@
                     }
                 ],
             });
-        });       
+        });
     </script>
 @endsection
