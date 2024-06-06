@@ -268,7 +268,7 @@
                                             <select class="form-select" id="integrasi" name="integrasi" required>
                                                 <option value="">Pilih Jenis Integrasi Program</option>
                                                 <option value="ARV Profilaksis">ARV Profilaksis :</option>
-                                                <option value="Obat Anti Malaria">Obat Anti Malaria "</option>
+                                                <option value="Obat Anti Malaria">Obat Anti Malaria :</option>
                                                 <option value="Obat Anti TB">Obat Anti TB :</option>
                                             </select>
                                         </div>
@@ -366,7 +366,7 @@
                                 <div class="row">
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_id_ibu" class="form-label">Ibu</label>
-                                        <select class="form-control" id="edit_id_ibu" name="id_ibu" required>
+                                        <select class="form-control" id="edit_id_ibu" name="id_ibu" disabled >
                                             <option value="">Pilih Ibu</option>
                                             @foreach ($ibus as $ibu)
                                                 <option value="{{ $ibu->nama_ibu }}">{{ $ibu->nama_ibu }}</option>
@@ -537,7 +537,7 @@
                                             <select class="form-select" id="edit_integrasi" name="integrasi" required>
                                                 <option value="">Pilih Jenis Integrasi Program</option>
                                                 <option value="ARV Profilaksis">ARV Profilaksis :</option>
-                                                <option value="Obat Anti Malaria">Obat Anti Malaria "</option>
+                                                <option value="Obat Anti Malaria">Obat Anti Malaria :</option>
                                                 <option value="Obat Anti TB">Obat Anti TB :</option>
                                             </select>
                                         </div>

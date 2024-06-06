@@ -172,24 +172,24 @@
                                     <div class="col-md-3 mb-2">
                                         <label for="gs" class="form-label">GS</label>
                                         <div class="input-group">
-                                            <input type="number" class="form-control" id="gs" name="gs"
-                                                required>
+                                            <input type="text" class="form-control" id="gs" name="gs"
+                                                pattern="[0-9,\.]*" required>
                                             <span class="input-group-text">Cm</span>
                                         </div>
                                     </div>
                                     <div class="col-md-3 mb-2">
                                         <label for="crl" class="form-label">CRL</label>
                                         <div class="input-group">
-                                            <input type="number" class="form-control" id="crl" name="crl"
-                                                required>
+                                            <input type="text" class="form-control" id="crl" name="crl"
+                                                pattern="[0-9,\.]*" required>
                                             <span class="input-group-text">Cm</span>
                                         </div>
                                     </div>
                                     <div class="col-md-3 mb-2">
                                         <label for="djj" class="form-label">DJJ</label>
                                         <div class="input-group">
-                                            <input type="number" class="form-control" id="djj" name="djj"
-                                                required>
+                                            <input type="text" class="form-control" id="djj" name="djj"
+                                                pattern="[0-9,\.]*" required>
                                             <span class="input-group-text">dpm</span>
                                         </div>
                                     </div>
@@ -252,16 +252,16 @@
                         <div class="card col-12">
                             <div class="card-body">
                                 <h5 class="card-title"></h5>
+                                <div class="col-md-4 mb-2">
+                                    <label for="edit_NIK" class="form-label" hidden>Ibu</label>
+                                    <select class="form-control" id="edit_NIK" name="NIK" hidden>
+                                        <option value="">Pilih Ibu</option>
+                                        @foreach ($ibus as $ibu)
+                                            <option value="{{ $ibu->nama_ibu }}">{{ $ibu->nama_ibu }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                                 <div class="row">
-                                    <div class="col-md-4 mb-2">
-                                        <label for="edit_NIK" class="form-label">Ibu</label>
-                                        <select class="form-control" id="edit_NIK" name="NIK" hidden>
-                                            <option value="">Pilih Ibu</option>
-                                            @foreach ($ibus as $ibu)
-                                                <option value="{{ $ibu->nama_ibu }}">{{ $ibu->nama_ibu }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_konjungtiva" class="form-label">Konjungtiva</label>
                                         <select class="form-select" id="edit_konjungtiva" name="konjungtiva" required>
@@ -278,9 +278,7 @@
                                             <option value="Tidak">Tidak</option>
                                         </select>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6 mb-2">
+                                    <div class="col-md-4 mb-2">
                                         <label for="edit_kulit" class="form-label">Kulit</label>
                                         <select class="form-select" id="edit_kulit" name="kulit" required>
                                             <option value="">Pilih Kulit</option>
@@ -288,7 +286,9 @@
                                             <option value="Tidak">Tidak</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-6 mb-2">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 mb-2">
                                         <label for="edit_leher" class="form-label">Leher</label>
                                         <select class="form-select" id="edit_leher" name="leher" required>
                                             <option value="">Pilih Leher</option>
@@ -296,8 +296,6 @@
                                             <option value="Tidak">Tidak</option>
                                         </select>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_gigi_mulut" class="form-label">Gigi/Mulut</label>
                                         <select class="form-select" id="edit_gigi_mulut" name="gigi_mulut" required>
@@ -314,6 +312,8 @@
                                             <option value="Tidak">Tidak</option>
                                         </select>
                                     </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_jantung" class="form-label">Jantung</label>
                                         <select class="form-select" id="edit_jantung" name="jantung" required>
@@ -322,8 +322,6 @@
                                             <option value="Tidak">Tidak</option>
                                         </select>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_paru" class="form-label">Paru</label>
                                         <select class="form-select" id="edit_paru" name="paru" required>
@@ -348,33 +346,31 @@
                                             <option value="Tidak">Tidak</option>
                                         </select>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3 mb-2">
+                                    <div class="col-md-2 mb-2">
                                         <label for="edit_gs" class="form-label">GS</label>
                                         <div class="input-group">
-                                            <input type="number" class="form-control" id="edit_gs" name="gs"
-                                                required>
+                                            <input type="text" class="form-control" id="edit_gs" name="gs"
+                                                pattern="[0-9,\.]*" required>
                                             <span class="input-group-text">Cm</span>
                                         </div>
                                     </div>
-                                    <div class="col-md-3 mb-2">
+                                    <div class="col-md-2 mb-2">
                                         <label for="edit_crl" class="form-label">CRL</label>
                                         <div class="input-group">
-                                            <input type="number" class="form-control" id="edit_crl" name="crl"
-                                                required>
+                                            <input type="text" class="form-control" id="edit_crl" name="crl"
+                                                pattern="[0-9,\.]*" required>
                                             <span class="input-group-text">Cm</span>
                                         </div>
                                     </div>
-                                    <div class="col-md-3 mb-2">
+                                    <div class="col-md-2 mb-2">
                                         <label for="edit_djj" class="form-label">DJJ</label>
                                         <div class="input-group">
-                                            <input type="number" class="form-control" id="edit_djj" name="djj"
-                                                required>
+                                            <input type="text" class="form-control" id="edit_djj" name="djj"
+                                                pattern="[0-9,\.]*" required>
                                             <span class="input-group-text">dpm</span>
                                         </div>
                                     </div>
-                                    <div class="col-md-3 mb-2">
+                                    <div class="col-md-2 mb-2">
                                         <label for="edit_usia_kehamilan" class="form-label">Usia Kehamilan</label>
                                         <div class="input-group">
                                             <input type="number" class="form-control" id="edit_usia_kehamilan"
@@ -564,30 +560,26 @@
                         orderable: false,
                         searchable: false,
                         render: function(data, type, row) {
-                            let viewUrl = '{{ route('antenatal_care.show_tm1', ':id') }}'
-                                .replace(':id', row.id);
-                            let editUrl = '{{ route('antenatal_care.edit_tm1', ':id') }}'
-                                .replace(':id', row.id);
+                            let viewUrl = '{{ route('antenatal_care.show_tm1', ':id') }}'.replace(
+                                ':id', row.id);
+                            let editUrl = '{{ route('antenatal_care.edit_tm1', ':id') }}'.replace(
+                                ':id', row.id);
                             let deleteUrl = '{{ route('antenatal_care.destroy_tm1', ':id') }}'
                                 .replace(':id', row.id);
                             return `
                             <div style="display: flex; align-items: center;">
-                            <button class="btn btn-sm btn-primary view-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalView">
-                            <i class="bi bi-eye-fill"></i>
-                            </button>
-                            <div style="display: flex; align-items: center;">
-                            <button class="btn btn-sm btn-success edit-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalEdit">
-                            <i class="bi bi-pencil-fill"></i>
-                            </button>
-                            <form action="${deleteUrl}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">
-                            <i class="bi bi-trash3-fill"></i>
-                            </button>
-                            </form>
-                            </div>
-                            `;
+                                <button class="btn btn-sm btn-primary view-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalView">
+                                    <i class="bi bi-eye-fill"></i>
+                                </button>
+                                <div style="display: flex; align-items: center;">
+                                    <button class="btn btn-sm btn-success edit-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalEdit">
+                                        <i class="bi bi-pencil-fill"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-danger btn-delete" data-id="${row.id}" data-url="${deleteUrl}">
+                                        <i class="bi bi-trash3-fill"></i>
+                                    </button>
+                                </div>
+                            </div>`;
                         }
                     }
                 ],
@@ -605,6 +597,58 @@
                 }]
             });
         });
+        $('#tm1-table').on('click', '.btn-delete', function() {
+            const id = $(this).data('id');
+            const url = $(this).data('url');
+
+            Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: "Anda tidak akan bisa mengembalikan ini!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal',
+                showLoaderOnConfirm: true,
+                preConfirm: () => {
+                    return $.ajax({
+                        url: url,
+                        type: 'POST',
+                        data: {
+                            _method: 'DELETE',
+                            _token: '{{ csrf_token() }}'
+                        },
+                        error: function(xhr) {
+                            Swal.fire(
+                                'Gagal!',
+                                'Data gagal dihapus.',
+                                'error'
+                            );
+                        }
+                    }).then(response => {
+                        if (response.success) {
+                            Swal.fire(
+                                'Terhapus!',
+                                'Data telah berhasil dihapus.',
+                                'success'
+                            );
+                            $('.swal2-confirm').remove();
+                            setTimeout(function() {
+                                location.reload();
+                            }, 1000);
+                        } else {
+                            Swal.fire(
+                                'Gagal!',
+                                'Data gagal dihapus.',
+                                'error'
+                            );
+                        }
+                    });
+                }
+            });
+        });
+
 
         $('#tm1-table').on('click', '.edit-btn', function() {
             let id = $(this).data('id');

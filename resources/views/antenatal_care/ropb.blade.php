@@ -192,8 +192,8 @@
                                     <h5 class="card-title">Riwayat Obstetrik</h5>
                                     <div class="row">
                                         <div class="col-md-12 mb-2">
-                                            <label for="edit_NIK" class="form-label">Ibu</label>
-                                            <select class="form-control" id="edit_NIK" name="NIK" required>
+                                            <label for="edit_NIK" class="form-label" hidden>Ibu</label>
+                                            <select class="form-control" id="edit_NIK" name="NIK" hidden>
                                                 <option value="">Pilih Ibu</option>
                                                 @foreach ($ibus as $ibu)
                                                     <option value="{{ $ibu->nama_ibu }}">{{ $ibu->nama_ibu }}</option>
@@ -306,7 +306,7 @@
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-4 fw-bold" id="modalViewLabel">Detail Persalinan</h1>
+                    <h1 class="modal-title fs-4 fw-bold" id="modalViewLabel">Detail Pemeriksaan Bidan/Dokter Saat K1</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -458,30 +458,26 @@
                         orderable: false,
                         searchable: false,
                         render: function(data, type, row) {
-                            let viewUrl = '{{ route('antenatal_care.show_ropb', ':id') }}'
-                                .replace(':id', row.id);
-                            let editUrl = '{{ route('antenatal_care.edit_ropb', ':id') }}'
-                                .replace(':id', row.id);
+                            let viewUrl = '{{ route('antenatal_care.show_ropb', ':id') }}'.replace(
+                                ':id', row.id);
+                            let editUrl = '{{ route('antenatal_care.edit_ropb', ':id') }}'.replace(
+                                ':id', row.id);
                             let deleteUrl = '{{ route('antenatal_care.destroy_ropb', ':id') }}'
                                 .replace(':id', row.id);
                             return `
                             <div style="display: flex; align-items: center;">
-                            <button class="btn btn-sm btn-primary view-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalView">
-                                <i class="bi bi-eye-fill"></i>
-                            </button>
-                            <div style="display: flex; align-items: center;">
-                            <button class="btn btn-sm btn-success edit-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalEdit">
-                            <i class="bi bi-pencil-fill"></i>
-                            </button>
-                            <form action="${deleteUrl}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">
-                                <i class="bi bi-trash3-fill"></i>
-                            </button>
-                            </form>
-                            </div>
-                            `;
+                                <button class="btn btn-sm btn-primary view-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalView">
+                                    <i class="bi bi-eye-fill"></i>
+                                </button>
+                                <div style="display: flex; align-items: center;">
+                                    <button class="btn btn-sm btn-success edit-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalEdit">
+                                        <i class="bi bi-pencil-fill"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-danger btn-delete" data-id="${row.id}" data-url="${deleteUrl}">
+                                        <i class="bi bi-trash3-fill"></i>
+                                    </button>
+                                </div>
+                            </div>`;
                         }
                     }
                 ],
@@ -497,6 +493,57 @@
                     targets: [5, 6, 10, 11, 12, ],
                     visible: false
                 }]
+            });
+        });
+        $('#ropb-table').on('click', '.btn-delete', function() {
+            const id = $(this).data('id');
+            const url = $(this).data('url');
+
+            Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: "Anda tidak akan bisa mengembalikan ini!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal',
+                showLoaderOnConfirm: true,
+                preConfirm: () => {
+                    return $.ajax({
+                        url: url,
+                        type: 'POST',
+                        data: {
+                            _method: 'DELETE',
+                            _token: '{{ csrf_token() }}'
+                        },
+                        error: function(xhr) {
+                            Swal.fire(
+                                'Gagal!',
+                                'Data gagal dihapus.',
+                                'error'
+                            );
+                        }
+                    }).then(response => {
+                        if (response.success) {
+                            Swal.fire(
+                                'Terhapus!',
+                                'Data telah berhasil dihapus.',
+                                'success'
+                            );
+                            $('.swal2-confirm').remove();
+                            setTimeout(function() {
+                                location.reload();
+                            }, 1000);
+                        } else {
+                            Swal.fire(
+                                'Gagal!',
+                                'Data gagal dihapus.',
+                                'error'
+                            );
+                        }
+                    });
+                }
             });
         });
 
@@ -626,13 +673,12 @@
                     </div>
                 </div>
             `;
-                    $('#modalViewLabel').html(`Detail Persalinan Ibu ${namaIbu}`);
+                    $('#modalViewLabel').html(`Detail Pemeriksaan Bidan/Dokter Saat K1 ${namaIbu}`);
                     $('#modalView .modal-body').html(tableHtml);
                     $('#modalView').modal('show');
                 }
             });
         });
-
 
         $('#ropb-table').on('click', '.edit-btn', function() {
             let id = $(this).data('id');

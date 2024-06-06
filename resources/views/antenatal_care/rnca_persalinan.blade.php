@@ -51,8 +51,7 @@
         <div class="modal-dialog modal-dialog-scrollable modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title fs-4 fw-bold" id="ModalInput">Input Riwayat Obstetrik, Pemeriksaan Bidan dan
-                        Rencana Persalinan</h3>
+                    <h3 class="modal-title fs-4 fw-bold" id="ModalInput">Input Rencana Persalinan</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -61,8 +60,7 @@
                         <div class="row">
                             <div class="card col-11 mx-4 ">
                                 <div class="card-body">
-                                    <h5 class="card-title">Rencana Persalinan</h5>
-                                    <div class="row">
+                                    <br>
                                         <div class="col-md-4 mb-2">
                                             <label for="NIK" class="form-label">Ibu</label>
                                             <select class="form-control" id="NIK" name="NIK" required>
@@ -77,7 +75,6 @@
                                             <input type="date" class="form-control" id="tgl_persalinan"
                                                 name="tgl_persalinan" required>
                                         </div>
-                                    </div>
                                     <div class="row">
                                         <div class="col-md-4 mb-2">
                                             <label for="penolong" class="form-label">Penolong</label>
@@ -168,8 +165,7 @@
         <div class="modal-dialog modal-dialog-scrollable modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title fs-4 fw-bold" id="ModalEdit">Edit Riwayat Obstetrik, Pemeriksaan Bidan dan
-                        Rencana Persalinan </h3>
+                    <h3 class="modal-title fs-4 fw-bold" id="ModalEdit">Edit Rencana Persalinan </h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
                 </div>
                 <div class="modal-body">
@@ -179,22 +175,19 @@
                         <div class="row">
                             <div class="card col-11 mx-4 ">
                                 <div class="card-body">
-                                    <h5 class="card-title">Rencana Persalinan</h5>
-                                    <div class="row">
-                                        <div class="col-md-4 mb-2">
-                                            <label for="edit_NIK" class="form-label">Ibu</label>
-                                            <select class="form-control" id="edit_NIK" name="NIK" required>
-                                                <option value="">Pilih Ibu</option>
-                                                @foreach ($ibus as $ibu)
-                                                    <option value="{{ $ibu->nama_ibu }}">{{ $ibu->nama_ibu }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        <div class="col-md-12 mb-2">
-                                            <label for="edit_tgl_persalinan" class="form-label">Tanggal Persalinan</label>
-                                            <input type="date" class="form-control" id="edit_tgl_persalinan"
-                                                name="tgl_persalinan" required>
-                                        </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="edit_NIK" class="form-label" hidden>Ibu</label>
+                                        <select class="form-control" id="edit_NIK" name="NIK" hidden>
+                                            <option value="">Pilih Ibu</option>
+                                            @foreach ($ibus as $ibu)
+                                                <option value="{{ $ibu->nama_ibu }}">{{ $ibu->nama_ibu }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-md-12 mb-2">
+                                        <label for="edit_tgl_persalinan" class="form-label">Tanggal Persalinan</label>
+                                        <input type="date" class="form-control" id="edit_tgl_persalinan"
+                                            name="tgl_persalinan" required>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4 mb-2">
@@ -361,30 +354,26 @@
                         orderable: false,
                         searchable: false,
                         render: function(data, type, row) {
-                            let viewUrl = '{{ route('antenatal_care.show_rnca', ':id') }}'
-                                .replace(':id', row.id);
-                            let editUrl = '{{ route('antenatal_care.edit_rnca', ':id') }}'
-                                .replace(':id', row.id);
+                            let viewUrl = '{{ route('antenatal_care.show_rnca', ':id') }}'.replace(
+                                ':id', row.id);
+                            let editUrl = '{{ route('antenatal_care.edit_rnca', ':id') }}'.replace(
+                                ':id', row.id);
                             let deleteUrl = '{{ route('antenatal_care.destroy_rnca', ':id') }}'
                                 .replace(':id', row.id);
                             return `
                             <div style="display: flex; align-items: center;">
-                            <button class="btn btn-sm btn-primary view-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalView">
-                                <i class="bi bi-eye-fill"></i>
-                            </button>
-                            <div style="display: flex; align-items: center;">
-                            <button class="btn btn-sm btn-success edit-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalEdit">
-                            <i class="bi bi-pencil-fill"></i>
-                            </button>
-                            <form action="${deleteUrl}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">
-                                <i class="bi bi-trash3-fill"></i>
-                            </button>
-                            </form>
-                            </div>
-                            `;
+                                <button class="btn btn-sm btn-primary view-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalView">
+                                    <i class="bi bi-eye-fill"></i>
+                                </button>
+                                <div style="display: flex; align-items: center;">
+                                    <button class="btn btn-sm btn-success edit-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalEdit">
+                                        <i class="bi bi-pencil-fill"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-danger btn-delete" data-id="${row.id}" data-url="${deleteUrl}">
+                                        <i class="bi bi-trash3-fill"></i>
+                                    </button>
+                                </div>
+                            </div>`;
                         }
                     }
                 ],
@@ -402,6 +391,58 @@
                 }]
             });
         });
+        $('#rnca-table').on('click', '.btn-delete', function() {
+            const id = $(this).data('id');
+            const url = $(this).data('url');
+
+            Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: "Anda tidak akan bisa mengembalikan ini!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal',
+                showLoaderOnConfirm: true,
+                preConfirm: () => {
+                    return $.ajax({
+                        url: url,
+                        type: 'POST',
+                        data: {
+                            _method: 'DELETE',
+                            _token: '{{ csrf_token() }}'
+                        },
+                        error: function(xhr) {
+                            Swal.fire(
+                                'Gagal!',
+                                'Data gagal dihapus.',
+                                'error'
+                            );
+                        }
+                    }).then(response => {
+                        if (response.success) {
+                            Swal.fire(
+                                'Terhapus!',
+                                'Data telah berhasil dihapus.',
+                                'success'
+                            );
+                            $('.swal2-confirm').remove();
+                            setTimeout(function() {
+                                location.reload();
+                            }, 1000);
+                        } else {
+                            Swal.fire(
+                                'Gagal!',
+                                'Data gagal dihapus.',
+                                'error'
+                            );
+                        }
+                    });
+                }
+            });
+        });
+
 
         $('#rnca-table').on('click', '.view-btn', function() {
             let id = $(this).data('id');
@@ -457,13 +498,12 @@
                     </div>
                 </div>
             `;
-                    $('#modalViewLabel').html(`Detail Persalinan Ibu ${namaIbu}`);
+                    $('#modalViewLabel').html(`Detail Rencana Persalinan Ibu ${namaIbu}`);
                     $('#modalView .modal-body').html(tableHtml);
                     $('#modalView').modal('show');
                 }
             });
         });
-
 
         $('#rnca-table').on('click', '.edit-btn', function() {
             let id = $(this).data('id');

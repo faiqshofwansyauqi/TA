@@ -125,10 +125,13 @@ class ANCController extends Controller
     }
     public function destroy_tm1($id)
     {
-        $tm1 = Tm1::findOrFail($id);
-        $tm1->delete();
-
-        return redirect()->back()->with('success', 'Data berhasil dihapus');
+        try {
+            $tm1 = Tm1::findOrFail($id);
+            $tm1->delete();
+            return response()->json(['success' => true, 'message' => 'Data berhasil dihapus']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Data gagal dihapus']);
+        }
     }
     public function edit_tm1($id)
     {
@@ -174,9 +177,13 @@ class ANCController extends Controller
     }
     public function destroy_anc($id)
     {
-        $anc = Anc::findOrFail($id);
-        $anc->delete();
-        return redirect()->back()->with('success', 'Data berhasil dihapus');
+        try{
+            $anc = Anc::findOrFail($id);
+            $anc->delete();
+            return response()->json(['success' => true, 'message' => 'Data berhasil dihapus']);
+            } catch (\Exception $e) {
+                return response()->json(['success' => false, 'message' => 'Data gagal dihapus']);
+            }        
     }
 
     //////////////// SHOW ANC ////////////////
@@ -523,10 +530,13 @@ class ANCController extends Controller
     }
     public function destroy_ropb($id)
     {
-        $ropb = Ropb::findOrFail($id);
-        $ropb->delete();
-
-        return redirect()->back()->with('success', 'Data berhasil dihapus');
+        try {
+            $ropb = Ropb::findOrFail($id);
+            $ropb->delete();
+            return response()->json(['success' => true, 'message' => 'Data berhasil dihapus']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Data gagal dihapus']);
+        }
     }
     public function edit_ropb($id)
     {
@@ -609,10 +619,13 @@ class ANCController extends Controller
     }
     public function destroy_rnca($id)
     {
-        $rnca = Rencana_Persalinan::findOrFail($id);
-        $rnca->delete();
-
-        return redirect()->back()->with('success', 'Data berhasil dihapus');
+        try {
+            $rnca = Rencana_Persalinan::findOrFail($id);
+            $rnca->delete();
+            return response()->json(['success' => true, 'message' => 'Data berhasil dihapus']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Data gagal dihapus']);
+        }
     }
     public function edit_rnca($id)
     {
@@ -750,9 +763,13 @@ class ANCController extends Controller
     }
     public function destroy_tm3($id)
     {
-        $tm3 = Tm3::findOrFail($id);
-        $tm3->delete();
-        return redirect()->back()->with('success', 'Data berhasil dihapus');
+        try {
+            $tm3 = Tm3::findOrFail($id);
+            $tm3->delete();
+            return response()->json(['success' => true, 'message' => 'Data berhasil dihapus']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Data gagal dihapus']);
+        }
     }
     public function edit_tm3($id)
     {
