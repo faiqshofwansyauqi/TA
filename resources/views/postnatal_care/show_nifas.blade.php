@@ -760,112 +760,114 @@
             }
         });
 
-        var puskesmas = document.getElementById("puskesmas");
-        var klinik = document.getElementById("klinik");
-        var rsia_rsb = document.getElementById("rsia_rsb");
-        var rs = document.getElementById("rs");
-        var lain_lain_dirujuk = document.getElementById("lain_lain_dirujuk");
-        var label_lain_lain_dirujuk = document.querySelector('label[for="lain_lain_dirujuk"]');
-        var ppp = document.getElementById("ppp");
-        var infeksi = document.getElementById("infeksi");
-        var hdk = document.getElementById("hdk");
-        var lainnya_komplikasi = document.getElementById("lainnya_komplikasi");
-        var label_lainnya_komplikasi = document.querySelector('label[for="lainnya_komplikasi"]');
-        puskesmas.addEventListener("change", function() {
-            if (puskesmas.value !== "") {
-                klinik.value = "-";
-                rsia_rsb.value = "-";
-                rs.value = "-";
-                lain_lain_dirujuk.style.display = "none";
-                lain_lain_dirujuk.value = "-";
-                label_lain_lain_dirujuk.style.display = "none";
-            } else {
-                label_lain_lain_dirujuk.style.display = "block";
-            }
-        });
-        klinik.addEventListener("change", function() {
-            if (klinik.value !== "") {
-                puskesmas.value = "-";
-                rsia_rsb.value = "-";
-                rs.value = "-";
-                lain_lain_dirujuk.style.display = "none";
-                lain_lain_dirujuk.value = "-";
-                label_lain_lain_dirujuk.style.display = "none";
-            } else {
-                label_lain_lain_dirujuk.style.display = "block";
-            }
-        });
-        rsia_rsb.addEventListener("change", function() {
-            if (rsia_rsb.value !== "") {
-                puskesmas.value = "-";
-                klinik.value = "-";
-                rs.value = "-";
-                lain_lain_dirujuk.style.display = "none";
-                lain_lain_dirujuk.value = "-";
-                label_lain_lain_dirujuk.style.display = "none";
-            } else {
-                label_lain_lain_dirujuk.style.display = "block";
-            }
-        });
-        rs.addEventListener("change", function() {
-            if (rs.value !== "") {
-                puskesmas.value = "-";
-                klinik.value = "-";
-                rsia_rsb.value = "-";
-                lain_lain_dirujuk.style.display = "none";
-                lain_lain_dirujuk.value = "-";
-                label_lain_lain_dirujuk.style.display = "none";
-            } else {
-                label_lain_lain_dirujuk.style.display = "block";
-            }
-        });
-        lain_lain_dirujuk.addEventListener("change", function() {
-            if (lain_lain_dirujuk.value !== "") {
-                puskesmas.value = "-";
-                klinik.value = "-";
-                rsia_rsb.value = "-";
-                rs.value = "-";
-            }
-        });
-        ppp.addEventListener("change", function() {
-            if (ppp.value !== "") {
-                infeksi.value = "-";
-                hdk.value = "-";
-                lainnya_komplikasi.style.display = "none";
-                lainnya_komplikasi.value = "-";
-                label_lainnya_komplikasi.style.display = "none";
-            } else {
-                label_lainnya_komplikasi.style.display = "block";
-            }
-        });
-        infeksi.addEventListener("change", function() {
-            if (infeksi.value !== "") {
-                ppp.value = "-";
-                hdk.value = "-";
-                lainnya_komplikasi.style.display = "none";
-                lainnya_komplikasi.value = "-";
-                label_lainnya_komplikasi.style.display = "none";
-            } else {
-                label_lainnya_komplikasi.style.display = "block";
-            }
-        });
-        hdk.addEventListener("change", function() {
-            if (hdk.value !== "") {
-                ppp.value = "-";
-                infeksi.value = "-";
-                lainnya_komplikasi.style.display = "none";
-                lainnya_komplikasi.value = "-";
-                label_lainnya_komplikasi.style.display = "none";
-            } else {
-                label_lainnya_komplikasi.style.display = "block";
-            }
-        });
-        lainnya_komplikasi.addEventListener("change", function() {
-            if (lainnya_komplikasi.value !== "") {
-                ppp.value = "-";
-                infeksi.value = "-";
-                hdk.value = "-";
-            }
-        });
+        {
+            var puskesmas = document.getElementById("puskesmas");
+            var klinik = document.getElementById("klinik");
+            var rsia_rsb = document.getElementById("rsia_rsb");
+            var rs = document.getElementById("rs");
+            var lain_lain_dirujuk = document.getElementById("lain_lain_dirujuk");
+            var label_lain_lain_dirujuk = document.querySelector('label[for="lain_lain_dirujuk"]');
+            var ppp = document.getElementById("ppp");
+            var infeksi = document.getElementById("infeksi");
+            var hdk = document.getElementById("hdk");
+            var lainnya_komplikasi = document.getElementById("lainnya_komplikasi");
+            var label_lainnya_komplikasi = document.querySelector('label[for="lainnya_komplikasi"]');
+            puskesmas.addEventListener("change", function() {
+                if (puskesmas.value !== "") {
+                    klinik.value = "-";
+                    rsia_rsb.value = "-";
+                    rs.value = "-";
+                    lain_lain_dirujuk.style.display = "none";
+                    lain_lain_dirujuk.value = "-";
+                    label_lain_lain_dirujuk.style.display = "none";
+                } else {
+                    label_lain_lain_dirujuk.style.display = "block";
+                }
+            });
+            klinik.addEventListener("change", function() {
+                if (klinik.value !== "") {
+                    puskesmas.value = "-";
+                    rsia_rsb.value = "-";
+                    rs.value = "-";
+                    lain_lain_dirujuk.style.display = "none";
+                    lain_lain_dirujuk.value = "-";
+                    label_lain_lain_dirujuk.style.display = "none";
+                } else {
+                    label_lain_lain_dirujuk.style.display = "block";
+                }
+            });
+            rsia_rsb.addEventListener("change", function() {
+                if (rsia_rsb.value !== "") {
+                    puskesmas.value = "-";
+                    klinik.value = "-";
+                    rs.value = "-";
+                    lain_lain_dirujuk.style.display = "none";
+                    lain_lain_dirujuk.value = "-";
+                    label_lain_lain_dirujuk.style.display = "none";
+                } else {
+                    label_lain_lain_dirujuk.style.display = "block";
+                }
+            });
+            rs.addEventListener("change", function() {
+                if (rs.value !== "") {
+                    puskesmas.value = "-";
+                    klinik.value = "-";
+                    rsia_rsb.value = "-";
+                    lain_lain_dirujuk.style.display = "none";
+                    lain_lain_dirujuk.value = "-";
+                    label_lain_lain_dirujuk.style.display = "none";
+                } else {
+                    label_lain_lain_dirujuk.style.display = "block";
+                }
+            });
+            lain_lain_dirujuk.addEventListener("change", function() {
+                if (lain_lain_dirujuk.value !== "") {
+                    puskesmas.value = "-";
+                    klinik.value = "-";
+                    rsia_rsb.value = "-";
+                    rs.value = "-";
+                }
+            });
+            ppp.addEventListener("change", function() {
+                if (ppp.value !== "") {
+                    infeksi.value = "-";
+                    hdk.value = "-";
+                    lainnya_komplikasi.style.display = "none";
+                    lainnya_komplikasi.value = "-";
+                    label_lainnya_komplikasi.style.display = "none";
+                } else {
+                    label_lainnya_komplikasi.style.display = "block";
+                }
+            });
+            infeksi.addEventListener("change", function() {
+                if (infeksi.value !== "") {
+                    ppp.value = "-";
+                    hdk.value = "-";
+                    lainnya_komplikasi.style.display = "none";
+                    lainnya_komplikasi.value = "-";
+                    label_lainnya_komplikasi.style.display = "none";
+                } else {
+                    label_lainnya_komplikasi.style.display = "block";
+                }
+            });
+            hdk.addEventListener("change", function() {
+                if (hdk.value !== "") {
+                    ppp.value = "-";
+                    infeksi.value = "-";
+                    lainnya_komplikasi.style.display = "none";
+                    lainnya_komplikasi.value = "-";
+                    label_lainnya_komplikasi.style.display = "none";
+                } else {
+                    label_lainnya_komplikasi.style.display = "block";
+                }
+            });
+            lainnya_komplikasi.addEventListener("change", function() {
+                if (lainnya_komplikasi.value !== "") {
+                    ppp.value = "-";
+                    infeksi.value = "-";
+                    hdk.value = "-";
+                }
+            });
+        }
     </script>
 @endsection

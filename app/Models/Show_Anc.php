@@ -54,7 +54,6 @@ class Show_Anc extends Model
         'abortus',
         'pendarahan',
         'infeksi',
-        'anemia',
         'kpd',
         'lain_lain_komplikasi',
         'puskesmas',

@@ -35,7 +35,7 @@
                                         <th rowspan="3" class="text-center align-middle">KONSELING</th>
                                         <th colspan="2" rowspan="2" class="align-middle text-center">LABORATORIUM</th>
                                         <th colspan="15" class="text-center">Inetgrasi Program</th>
-                                        <th colspan="7" rowspan="2" class="align-middle text-center">KOMPLIKASI</th>
+                                        <th colspan="6" rowspan="2" class="align-middle text-center">KOMPLIKASI</th>
                                         <th colspan="5" rowspan="2" class="align-middle text-center">DIRUJUK KE</th>
                                         <th colspan="2" rowspan="2" class="align-middle text-center">KEADAAN</th>
                                         <th rowspan="3" class="text-center align-middle">KETERANGAN</th>
@@ -98,7 +98,6 @@
                                         <th class="align-middle text-center normal-header">Abortus</th>
                                         <th class="align-middle text-center normal-header">Pendarahan</th>
                                         <th class="align-middle text-center normal-header">Infeksi</th>
-                                        <th class="align-middle text-center normal-header">Anemia</th>
                                         <th class="align-middle text-center normal-header">KPD</th>
                                         <th class="align-middle text-center normal-header">Lain-lain</th>
                                         <th class="align-middle text-center normal-header">Puskesmas</th>
@@ -458,6 +457,7 @@
                                             <label for="hdk" class="form-label">HDK</label>
                                             <select class="form-select" id="hdk" name="hdk">
                                                 <option value="">Pilih HDK</option>
+                                                <option value="-" hidden>-</option>
                                                 <option value="jika iya">&#10003; <!-- Ceklis --></option>
                                                 <option value="jika tidak">&#10007; <!-- Uncek --></option>
                                             </select>
@@ -465,7 +465,8 @@
                                         <div class="col-md-3">
                                             <label for="abortus" class="form-label">Abortus</label>
                                             <select class="form-select" id="abortus" name="abortus">
-                                                <option value="">Pilih Abortus*</option>
+                                                <option value="">Pilih Abortus</option>
+                                                <option value="-" hidden>-</option>
                                                 <option value="jika iya">&#10003; <!-- Ceklis --></option>
                                                 <option value="jika tidak">&#10007; <!-- Uncek --></option>
                                             </select>
@@ -473,7 +474,8 @@
                                         <div class="col-md-3">
                                             <label for="pendarahan" class="form-label">Pendarahan</label>
                                             <select class="form-select" id="pendarahan" name="pendarahan">
-                                                <option value="">Pilih Pendarahan*</option>
+                                                <option value="">Pilih Pendarahan</option>
+                                                <option value="-" hidden>-</option>
                                                 <option value="jika iya">&#10003; <!-- Ceklis --></option>
                                                 <option value="jika tidak">&#10007; <!-- Uncek --></option>
                                             </select>
@@ -481,15 +483,8 @@
                                         <div class="col-md-3 mb-2">
                                             <label for="infeksi" class="form-label">Infeksi</label>
                                             <select class="form-select" id="infeksi" name="infeksi">
-                                                <option value="">Pilih Infeksi*</option>
-                                                <option value="jika iya">&#10003; <!-- Ceklis --></option>
-                                                <option value="jika tidak">&#10007; <!-- Uncek --></option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <label for="anemia" class="form-label">Anemia</label>
-                                            <select class="form-select" id="anemia" name="anemia">
-                                                <option value="">Pilih Anemia*</option>
+                                                <option value="">Pilih Infeksi</option>
+                                                <option value="-" hidden>-</option>
                                                 <option value="jika iya">&#10003; <!-- Ceklis --></option>
                                                 <option value="jika tidak">&#10007; <!-- Uncek --></option>
                                             </select>
@@ -497,7 +492,8 @@
                                         <div class="col-md-3">
                                             <label for="kpd" class="form-label">KPD</label>
                                             <select class="form-select" id="kpd" name="kpd">
-                                                <option value="">Pilih KPD*</option>
+                                                <option value="">Pilih KPD</option>
+                                                <option value="-" hidden>-</option>
                                                 <option value="jika iya">&#10003; <!-- Ceklis --></option>
                                                 <option value="jika tidak">&#10007; <!-- Uncek --></option>
                                             </select>
@@ -514,6 +510,7 @@
                                             <label for="puskesmas" class="form-label">Puskesmas</label>
                                             <select class="form-select" id="puskesmas" name="puskesmas">
                                                 <option value="">Pilih Puskesmas</option>
+                                                <option value="-" hidden>-</option>
                                                 <option value="jika iya">&#10003; <!-- Ceklis --></option>
                                                 <option value="jika tidak">&#10007; <!-- Uncek --></option>
                                             </select>
@@ -521,7 +518,8 @@
                                         <div class="col-md-3">
                                             <label for="klinik" class="form-label">Klinik</label>
                                             <select class="form-select" id="klinik" name="klinik">
-                                                <option value="">Pilih Klinik*</option>
+                                                <option value="">Pilih Klinik</option>
+                                                <option value="-" hidden>-</option>
                                                 <option value="jika iya">&#10003; <!-- Ceklis --></option>
                                                 <option value="jika tidak">&#10007; <!-- Uncek --></option>
                                             </select>
@@ -529,7 +527,8 @@
                                         <div class="col-md-3">
                                             <label for="rsia_rsb" class="form-label">RSIA/RSB</label>
                                             <select class="form-select" id="rsia_rsb" name="rsia_rsb">
-                                                <option value="">Pilih RSIA/RSB*</option>
+                                                <option value="">Pilih RSIA/RSB</option>
+                                                <option value="-" hidden>-</option>
                                                 <option value="jika iya">&#10003; <!-- Ceklis --></option>
                                                 <option value="jika tidak">&#10007; <!-- Uncek --></option>
                                             </select>
@@ -537,7 +536,8 @@
                                         <div class="col-md-3 mb-2">
                                             <label for="rs" class="form-label">RS</label>
                                             <select class="form-select" id="rs" name="rs">
-                                                <option value="">Pilih RS*</option>
+                                                <option value="">Pilih RS</option>
+                                                <option value="-" hidden>-</option>
                                                 <option value="jika iya">&#10003; <!-- Ceklis --></option>
                                                 <option value="jika tidak">&#10007; <!-- Uncek --></option>
                                             </select>
@@ -649,9 +649,10 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <label for="edit_sts_gizi" class="form-label">Status Gizi <sup>2)</sup></label>
-                                            <input type="text" class="form-control" id="edit_sts_gizi" name="sts_gizi"
-                                                pattern="[0-9,\.]*">
+                                            <label for="edit_sts_gizi" class="form-label">Status Gizi
+                                                <sup>2)</sup></label>
+                                            <input type="text" class="form-control" id="edit_sts_gizi"
+                                                name="sts_gizi" pattern="[0-9,\.]*">
                                         </div>
                                         <div class="col-md-4">
                                             <label for="edit_tfu" class="form-label">TFU <sup>(cm)</sup></label>
@@ -685,7 +686,8 @@
                                             </div>
                                         </div>
                                         <div class="col-md-4">
-                                            <label for="edit_kpl_thd" class="form-label">Kepala thd PAP<sup>3)</sup></label>
+                                            <label for="edit_kpl_thd" class="form-label">Kepala thd
+                                                PAP<sup>3)</sup></label>
                                             <select class="form-select" id="edit_kpl_thd" name="kpl_thd">
                                                 <option value="">Pilih Kepala thd PAP</option>
                                                 <option value="M">Masuk</option>
@@ -703,7 +705,8 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label for="edit_presentasi" class="form-label">Presentasi<sup>4)</sup></label>
+                                            <label for="edit_presentasi"
+                                                class="form-label">Presentasi<sup>4)</sup></label>
                                             <select class="form-select" id="edit_presentasi" name="presentasi">
                                                 <option value="">Pilih Presentasi</option>
                                                 <option value="KP">Kepala</option>
@@ -712,7 +715,8 @@
                                             </select>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="edit_jmlh_janin" class="form-label">Jumlah Janin<sup>5)</sup></label>
+                                            <label for="edit_jmlh_janin" class="form-label">Jumlah
+                                                Janin<sup>5)</sup></label>
                                             <select class="form-select" id="edit_jmlh_janin" name="jmlh_janin">
                                                 <option value="">Pilih Jumlah Janin</option>
                                                 <option value="T">Tunggal</option>
@@ -769,8 +773,8 @@
                                         <div class="col-md-6">
                                             <label for="edit_hemoglobin"
                                                 class="form-label">Hemoglobin<sup>(gr/dl)</sup></label>
-                                            <input type="text" class="form-control" id="edit_hemoglobin" name="hemoglobin"
-                                                pattern="[0-9,\.]*">
+                                            <input type="text" class="form-control" id="edit_hemoglobin"
+                                                name="hemoglobin" pattern="[0-9,\.]*">
                                         </div>
                                         <div class="col-md-6">
                                             <label for="edit_glcs_urine" class="form-label">Protein
@@ -917,6 +921,7 @@
                                             <label for="edit_hdk" class="form-label">HDK</label>
                                             <select class="form-select" id="edit_hdk" name="hdk">
                                                 <option value="">Pilih HDK</option>
+                                                <option value="-" hidden>-</option>
                                                 <option value="jika iya">&#10003; <!-- Ceklis --></option>
                                                 <option value="jika tidak">&#10007; <!-- Uncek --></option>
                                             </select>
@@ -924,7 +929,8 @@
                                         <div class="col-md-3">
                                             <label for="edit_abortus" class="form-label">Abortus</label>
                                             <select class="form-select" id="edit_abortus" name="abortus">
-                                                <option value="">Pilih Abortus*</option>
+                                                <option value="">Pilih Abortus</option>
+                                                <option value="-" hidden>-</option>
                                                 <option value="jika iya">&#10003; <!-- Ceklis --></option>
                                                 <option value="jika tidak">&#10007; <!-- Uncek --></option>
                                             </select>
@@ -932,7 +938,8 @@
                                         <div class="col-md-3">
                                             <label for="edit_pendarahan" class="form-label">Pendarahan</label>
                                             <select class="form-select" id="edit_pendarahan" name="pendarahan">
-                                                <option value="">Pilih Pendarahan*</option>
+                                                <option value="">Pilih Pendarahan</option>
+                                                <option value="-" hidden>-</option>
                                                 <option value="jika iya">&#10003; <!-- Ceklis --></option>
                                                 <option value="jika tidak">&#10007; <!-- Uncek --></option>
                                             </select>
@@ -940,15 +947,8 @@
                                         <div class="col-md-3 mb-2">
                                             <label for="edit_infeksi" class="form-label">Infeksi</label>
                                             <select class="form-select" id="edit_infeksi" name="infeksi">
-                                                <option value="">Pilih Infeksi*</option>
-                                                <option value="jika iya">&#10003; <!-- Ceklis --></option>
-                                                <option value="jika tidak">&#10007; <!-- Uncek --></option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <label for="edit_anemia" class="form-label">Anemia</label>
-                                            <select class="form-select" id="edit_anemia" name="anemia">
-                                                <option value="">Pilih Anemia*</option>
+                                                <option value="">Pilih Infeksi</option>
+                                                <option value="-" hidden>-</option>
                                                 <option value="jika iya">&#10003; <!-- Ceklis --></option>
                                                 <option value="jika tidak">&#10007; <!-- Uncek --></option>
                                             </select>
@@ -956,7 +956,8 @@
                                         <div class="col-md-3">
                                             <label for="edit_kpd" class="form-label">KPD</label>
                                             <select class="form-select" id="edit_kpd" name="kpd">
-                                                <option value="">Pilih KPD*</option>
+                                                <option value="">Pilih KPD</option>
+                                                <option value="-" hidden>-</option>
                                                 <option value="jika iya">&#10003; <!-- Ceklis --></option>
                                                 <option value="jika tidak">&#10007; <!-- Uncek --></option>
                                             </select>
@@ -973,6 +974,7 @@
                                             <label for="edit_puskesmas" class="form-label">Puskesmas</label>
                                             <select class="form-select" id="edit_puskesmas" name="puskesmas">
                                                 <option value="">Pilih Puskesmas</option>
+                                                <option value="-" hidden>-</option>
                                                 <option value="jika iya">&#10003; <!-- Ceklis --></option>
                                                 <option value="jika tidak">&#10007; <!-- Uncek --></option>
                                             </select>
@@ -980,7 +982,8 @@
                                         <div class="col-md-3">
                                             <label for="edit_klinik" class="form-label">Klinik</label>
                                             <select class="form-select" id="edit_klinik" name="klinik">
-                                                <option value="">Pilih Klinik*</option>
+                                                <option value="">Pilih Klinik</option>
+                                                <option value="-" hidden>-</option>
                                                 <option value="jika iya">&#10003; <!-- Ceklis --></option>
                                                 <option value="jika tidak">&#10007; <!-- Uncek --></option>
                                             </select>
@@ -988,7 +991,8 @@
                                         <div class="col-md-3">
                                             <label for="edit_rsia_rsb" class="form-label">RSIA/RSB</label>
                                             <select class="form-select" id="edit_rsia_rsb" name="rsia_rsb">
-                                                <option value="">Pilih RSIA/RSB*</option>
+                                                <option value="">Pilih RSIA/RSB</option>
+                                                <option value="-" hidden>-</option>
                                                 <option value="jika iya">&#10003; <!-- Ceklis --></option>
                                                 <option value="jika tidak">&#10007; <!-- Uncek --></option>
                                             </select>
@@ -996,7 +1000,8 @@
                                         <div class="col-md-3 mb-2">
                                             <label for="edit_rs" class="form-label">RS</label>
                                             <select class="form-select" id="edit_rs" name="rs">
-                                                <option value="">Pilih RS*</option>
+                                                <option value="">Pilih RS</option>
+                                                <option value="-" hidden>-</option>
                                                 <option value="jika iya">&#10003; <!-- Ceklis --></option>
                                                 <option value="jika tidak">&#10007; <!-- Uncek --></option>
                                             </select>
@@ -1027,7 +1032,8 @@
                                         </div>
                                     </div>
                                     <h5 class="card-title" for="edit_keterangan">Keteranagan</h5>
-                                    <input type="text" class="form-control" id="edit_keterangan" name="keterangan">
+                                    <input type="text" class="form-control" id="edit_keterangan"
+                                        name="keterangan">
                                 </div>
                             </div>
                         </div>
@@ -1037,7 +1043,6 @@
             </div>
         </div>
     </div>
-
 @endsection
 @section('script')
     <script>
@@ -1242,27 +1247,43 @@
                     },
                     {
                         data: 'hdk',
-                        name: 'hdk'
+                        name: 'hdk',
+                        render: function(data, type, row, meta) {
+                            return data === '-' ? '-' : (data.toLowerCase() === 'jika iya' ?
+                                '&#10003;' : '&#10007;');
+                        }
                     },
                     {
                         data: 'abortus',
-                        name: 'abortus'
+                        name: 'abortus',
+                        render: function(data, type, row, meta) {
+                            return data === '-' ? '-' : (data.toLowerCase() === 'jika iya' ?
+                                '&#10003;' : '&#10007;');
+                        }
                     },
                     {
                         data: 'pendarahan',
-                        name: 'pendarahan'
+                        name: 'pendarahan',
+                        render: function(data, type, row, meta) {
+                            return data === '-' ? '-' : (data.toLowerCase() === 'jika iya' ?
+                                '&#10003;' : '&#10007;');
+                        }
                     },
                     {
                         data: 'infeksi',
-                        name: 'infeksi'
-                    },
-                    {
-                        data: 'anemia',
-                        name: 'anemia'
+                        name: 'infeksi',
+                        render: function(data, type, row, meta) {
+                            return data === '-' ? '-' : (data.toLowerCase() === 'jika iya' ?
+                                '&#10003;' : '&#10007;');
+                        }
                     },
                     {
                         data: 'kpd',
-                        name: 'kpd'
+                        name: 'kpd',
+                        render: function(data, type, row, meta) {
+                            return data === '-' ? '-' : (data.toLowerCase() === 'jika iya' ?
+                                '&#10003;' : '&#10007;');
+                        }
                     },
                     {
                         data: 'lain_lain_komplikasi',
@@ -1270,19 +1291,35 @@
                     },
                     {
                         data: 'puskesmas',
-                        name: 'puskesmas'
+                        name: 'puskesmas',
+                        render: function(data, type, row, meta) {
+                            return data === '-' ? '-' : (data.toLowerCase() === 'jika iya' ?
+                                '&#10003;' : '&#10007;');
+                        }
                     },
                     {
                         data: 'klinik',
-                        name: 'klinik'
+                        name: 'klinik',
+                        render: function(data, type, row, meta) {
+                            return data === '-' ? '-' : (data.toLowerCase() === 'jika iya' ?
+                                '&#10003;' : '&#10007;');
+                        }
                     },
                     {
                         data: 'rsia_rsb',
-                        name: 'rsia_rsb'
+                        name: 'rsia_rsb',
+                        render: function(data, type, row, meta) {
+                            return data === '-' ? '-' : (data.toLowerCase() === 'jika iya' ?
+                                '&#10003;' : '&#10007;');
+                        }
                     },
                     {
                         data: 'rs',
-                        name: 'rs'
+                        name: 'rs',
+                        render: function(data, type, row, meta) {
+                            return data === '-' ? '-' : (data.toLowerCase() === 'jika iya' ?
+                                '&#10003;' : '&#10007;');
+                        }
                     },
                     {
                         data: 'lain_lain_dirujuk',
@@ -1358,7 +1395,6 @@
                     $('#edit_abortus').val(data.abortus);
                     $('#edit_pendarahan').val(data.pendarahan);
                     $('#edit_infeksi').val(data.infeksi);
-                    $('#edit_anemia').val(data.anemia);
                     $('#edit_kpd').val(data.kpd);
                     $('#edit_lain_lain_komplikasi').val(data.lain_lain_komplikasi);
                     $('#edit_puskesmas').val(data.puskesmas);
@@ -1384,5 +1420,137 @@
                 body.classList.add('toggle-sidebar');
             }
         });
+
+        {
+            var hdk = document.getElementById("hdk");
+            var abortus = document.getElementById("abortus");
+            var pendarahan = document.getElementById("pendarahan");
+            var kpd = document.getElementById("kpd");
+            var lain_lain_komplikasi = document.getElementById("lain_lain_komplikasi");
+            var label_lain_lain_komplikasi = document.querySelector('label[for="lain_lain_komplikasi"]');
+            var puskesmas = document.getElementById("puskesmas");
+            var klinik = document.getElementById("klinik");
+            var rsia_rsb = document.getElementById("rsia_rsb");
+            var rs = document.getElementById("rs");
+            var lain_lain_dirujuk = document.getElementById("lain_lain_dirujuk");
+            var label_lain_lain_dirujuk = document.querySelector('label[for="lain_lain_dirujuk"]');
+            hdk.addEventListener("change", function() {
+                if (hdk.value !== "") {
+                    abortus.value = "-";
+                    pendarahan.value = "-";
+                    infeksi.value = "-";
+                    kpd.value = "-";
+                    lain_lain_komplikasi.style.display = "none";
+                    lain_lain_komplikasi.value = "-";
+                    label_lain_lain_komplikasi.style.display = "none";
+                } else {
+                    label_lain_lain_komplikasi.style.display = "block";
+                }
+            });
+            abortus.addEventListener("change", function() {
+                if (abortus.value !== "") {
+                    hdk.value = "-";
+                    pendarahan.value = "-";
+                    infeksi.value = "-";
+                    kpd.value = "-";
+                    lain_lain_komplikasi.style.display = "none";
+                    lain_lain_komplikasi.value = "-";
+                    label_lain_lain_komplikasi.style.display = "none";
+                } else {
+                    label_lain_lain_komplikasi.style.display = "block";
+                }
+            });
+            pendarahan.addEventListener("change", function() {
+                if (pendarahan.value !== "") {
+                    hdk.value = "-";
+                    abortus.value = "-";
+                    infeksi.value = "-";
+                    kpd.value = "-";
+                    lain_lain_komplikasi.style.display = "none";
+                    lain_lain_komplikasi.value = "-";
+                    label_lain_lain_komplikasi.style.display = "none";
+                } else {
+                    label_lain_lain_komplikasi.style.display = "block";
+                }
+            });
+            kpd.addEventListener("change", function() {
+                if (kpd.value !== "") {
+                    hdk.value = "-";
+                    abortus.value = "-";
+                    infeksi.value = "-";
+                    pendarahan.value = "-";
+                    lain_lain_komplikasi.style.display = "none";
+                    lain_lain_komplikasi.value = "-";
+                    label_lain_lain_komplikasi.style.display = "none";
+                } else {
+                    label_lain_lain_komplikasi.style.display = "block";
+                }
+            });
+            lain_lain_komplikasi.addEventListener("change", function() {
+                if (lain_lain_komplikasi.value !== "") {
+                    hdk.value = "-";
+                    abortus.value = "-";
+                    infeksi.value = "-";
+                    pendarahan.value = "-";
+                    kpd.value = "-";
+                }
+            });
+            puskesmas.addEventListener("change", function() {
+                if (puskesmas.value !== "") {
+                    klinik.value = "-";
+                    rsia_rsb.value = "-";
+                    rs.value = "-";
+                    lain_lain_dirujuk.style.display = "none";
+                    lain_lain_dirujuk.value = "-";
+                    label_lain_lain_dirujuk.style.display = "none";
+                } else {
+                    label_lain_lain_dirujuk.style.display = "block";
+                }
+            });
+            klinik.addEventListener("change", function() {
+                if (klinik.value !== "") {
+                    puskesmas.value = "-";
+                    rsia_rsb.value = "-";
+                    rs.value = "-";
+                    lain_lain_dirujuk.style.display = "none";
+                    lain_lain_dirujuk.value = "-";
+                    label_lain_lain_dirujuk.style.display = "none";
+                } else {
+                    label_lain_lain_dirujuk.style.display = "block";
+                }
+            });
+            rsia_rsb.addEventListener("change", function() {
+                if (rsia_rsb.value !== "") {
+                    puskesmas.value = "-";
+                    klinik.value = "-";
+                    rs.value = "-";
+                    lain_lain_dirujuk.style.display = "none";
+                    lain_lain_dirujuk.value = "-";
+                    label_lain_lain_dirujuk.style.display = "none";
+                } else {
+                    label_lain_lain_dirujuk.style.display = "block";
+                }
+            });
+            rs.addEventListener("change", function() {
+                if (rs.value !== "") {
+                    puskesmas.value = "-";
+                    klinik.value = "-";
+                    rsia_rsb.value = "-";
+                    lain_lain_dirujuk.style.display = "none";
+                    lain_lain_dirujuk.value = "-";
+                    label_lain_lain_dirujuk.style.display = "none";
+                } else {
+                    label_lain_lain_dirujuk.style.display = "block";
+                }
+            });
+            lain_lain_dirujuk.addEventListener("change", function() {
+                if (lain_lain_dirujuk.value !== "") {
+                    puskesmas.value = "-";
+                    klinik.value = "-";
+                    rsia_rsb.value = "-";
+                    rs.value = "-";
+                }
+            });
+        }
     </script>
 @endsection
