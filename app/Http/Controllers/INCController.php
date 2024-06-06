@@ -134,10 +134,13 @@ class INCController extends Controller
     }
     public function destroy_persalinan($id_persalinan)
     {
-        $persalinan = Persalinan::findOrFail($id_persalinan);
-        $persalinan->delete();
-
-        return redirect()->back()->with('success', 'Data persalinan berhasil dihapus');
+        try{
+            $persalinan = Persalinan::findOrFail($id_persalinan);
+            $persalinan->delete();
+            return response()->json(['success' => true, 'message' => 'Data berhasil dihapus']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Data gagal dihapus']);
+        }        
     }
     public function getData_persalinan()
     {

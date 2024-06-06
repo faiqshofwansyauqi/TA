@@ -72,7 +72,6 @@
             </div>
         </div>
     </div>
-
 @endsection
 @section('script')
     <script>
@@ -99,28 +98,76 @@
                         name: 'action',
                         orderable: false,
                         searchable: false,
-                        render: function(data, type, row) { 
+                        render: function(data, type, row) {
                             let viewUrl = '{{ route('postnatal_care.show_nifas', ':id') }}'.replace(
-                                ':id', row.id);                           
-                            let deleteUrl = '{{ route('postnatal_care.destroy_nifas', ':id') }}'.replace(
                                 ':id', row.id);
+                            let deleteUrl = '{{ route('postnatal_care.destroy_nifas', ':id') }}'
+                                .replace(
+                                    ':id', row.id);
                             return `
                             <div style="display: flex; align-items: center;">
                             <a href="${viewUrl}" class="btn btn-sm btn-primary">
                             <i class="bi bi-eye-fill"></i>
                             </a>
-                            <form action="${deleteUrl}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">
-                            <i class="bi bi-trash3-fill"></i>
-                            </button>
-                            </form>
+                        <button type="button" class="btn btn-sm btn-danger btn-delete" data-id="${row.id}" data-url="${deleteUrl}">
+                                        <i class="bi bi-trash3-fill"></i>
+                                    </button>
                             </div>
                             `;
                         }
                     }
                 ],
+            });
+        });
+        $('#anc-table').on('click', '.btn-delete', function() {
+            const id = $(this).data('id');
+            const url = $(this).data('url');
+
+            Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: "Anda tidak akan bisa mengembalikan ini!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal',
+                showLoaderOnConfirm: true,
+                preConfirm: () => {
+                    return $.ajax({
+                        url: url,
+                        type: 'POST',
+                        data: {
+                            _method: 'DELETE',
+                            _token: '{{ csrf_token() }}'
+                        },
+                        error: function(xhr) {
+                            Swal.fire(
+                                'Gagal!',
+                                'Data gagal dihapus.',
+                                'error'
+                            );
+                        }
+                    }).then(response => {
+                        if (response.success) {
+                            Swal.fire(
+                                'Terhapus!',
+                                'Data telah berhasil dihapus.',
+                                'success'
+                            );
+                            $('.swal2-confirm').remove();
+                            setTimeout(function() {
+                                location.reload();
+                            }, 1000);
+                        } else {
+                            Swal.fire(
+                                'Gagal!',
+                                'Data gagal dihapus.',
+                                'error'
+                            );
+                        }
+                    });
+                }
             });
         });
     </script>

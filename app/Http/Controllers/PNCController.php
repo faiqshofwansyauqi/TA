@@ -39,9 +39,13 @@ class PNCController extends Controller
     }
     public function destroy_nifas($id)
     {
-        $nifas = Nifas::findOrFail($id);
-        $nifas->delete();
-        return redirect()->back()->with('success', 'Data berhasil dihapus');
+        try {
+            $nifas = Nifas::findOrFail($id);
+            $nifas->delete();
+            return response()->json(['success' => true, 'message' => 'Data berhasil dihapus']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Data gagal dihapus']);
+        }
     }
 
     /////// SHOW NIFAS ///////
@@ -51,7 +55,7 @@ class PNCController extends Controller
         $nifas = Nifas::findOrFail($id);
         $nifass = Show_Nifas::all();
         // dd($nifass);
-        return view('postnatal_care.show_nifas', compact('nifass','nifas'));
+        return view('postnatal_care.show_nifas', compact('nifass', 'nifas'));
     }
     public function store_shownifas(Request $request)
     {

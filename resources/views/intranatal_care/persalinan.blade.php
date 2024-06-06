@@ -366,7 +366,7 @@
                                 <div class="row">
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_id_ibu" class="form-label">Ibu</label>
-                                        <select class="form-control" id="edit_id_ibu" name="id_ibu" disabled >
+                                        <select class="form-control" id="edit_id_ibu" name="id_ibu" disabled>
                                             <option value="">Pilih Ibu</option>
                                             @foreach ($ibus as $ibu)
                                                 <option value="{{ $ibu->nama_ibu }}">{{ $ibu->nama_ibu }}</option>
@@ -813,26 +813,23 @@
                                 .replace(':id', row.id_persalinan);
                             let editUrl = '{{ route('intranatal_care.edit_persalinan', ':id') }}'
                                 .replace(':id', row.id_persalinan);
-                            let deleteUrl = '{{ route('intranatal_care.destroy_persalinan', ':id') }}'
+                            let deleteUrl =
+                                '{{ route('intranatal_care.destroy_persalinan', ':id') }}'
                                 .replace(':id', row.id_persalinan);
                             return `
                             <div style="display: flex; align-items: center;">
-                            <button class="btn btn-sm btn-primary view-btn" data-id="${row.id_persalinan}" data-bs-toggle="modal" data-bs-target="#modalView">
-                                <i class="bi bi-eye-fill"></i>
-                            </button>
-                            <div style="display: flex; align-items: center;">
-                            <button class="btn btn-sm btn-success edit-btn" data-id="${row.id_persalinan}" data-bs-toggle="modal" data-bs-target="#modalEdit">
-                                <i class="bi bi-pencil-fill"></i>
-                            </button>
-                            <form action="${deleteUrl}" method="POST" class="delete-form">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">
-                                <i class="bi bi-trash3-fill"></i>
-                            </button>
-                            </form>
-                            </div>
-                            `;
+                                <button class="btn btn-sm btn-primary view-btn" data-id="${row.id_persalinan}" data-bs-toggle="modal" data-bs-target="#modalView">
+                                    <i class="bi bi-eye-fill"></i>
+                                </button>
+                                <div style="display: flex; align-items: center;">
+                                    <button class="btn btn-sm btn-success edit-btn" data-id="${row.id_persalinan}" data-bs-toggle="modal" data-bs-target="#modalEdit">
+                                        <i class="bi bi-pencil-fill"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-danger btn-delete" data-id="${row.id_persalinan}" data-url="${deleteUrl}">
+                                        <i class="bi bi-trash3-fill"></i>
+                                    </button>
+                                </div>
+                            </div>`;
                         }
                     }
                 ],
@@ -850,7 +847,57 @@
                 }]
             });
         });
+        $('#persalinan-table').on('click', '.btn-delete', function() {
+            const id = $(this).data('id');
+            const url = $(this).data('url');
 
+            Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: "Anda tidak akan bisa mengembalikan ini!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal',
+                showLoaderOnConfirm: true,
+                preConfirm: () => {
+                    return $.ajax({
+                        url: url,
+                        type: 'POST',
+                        data: {
+                            _method: 'DELETE',
+                            _token: '{{ csrf_token() }}'
+                        },
+                        error: function(xhr) {
+                            Swal.fire(
+                                'Gagal!',
+                                'Data gagal dihapus.',
+                                'error'
+                            );
+                        }
+                    }).then(response => {
+                        if (response.success) {
+                            Swal.fire(
+                                'Terhapus!',
+                                'Data telah berhasil dihapus.',
+                                'success'
+                            );
+                            $('.swal2-confirm').remove();
+                            setTimeout(function() {
+                                location.reload();
+                            }, 1000);
+                        } else {
+                            Swal.fire(
+                                'Gagal!',
+                                'Data gagal dihapus.',
+                                'error'
+                            );
+                        }
+                    });
+                }
+            });
+        });
 
         $('#persalinan-table').on('click', '.view-btn', function() {
             let id = $(this).data('id');
@@ -1056,7 +1103,8 @@
                     $('#edit_keadaan_pulang').val(data.keadaan_pulang);
                     $('#edit_rujuk').val(data.rujuk);
                     $('#edit_alamat_bersalin').val(data.alamat_bersalin);
-                    $('#editForm').attr('action', '{{ route('intranatal_care.update_persalinan', ':id') }}'
+                    $('#editForm').attr('action',
+                        '{{ route('intranatal_care.update_persalinan', ':id') }}'
                         .replace(
                             ':id', id));
                     $('#modalEdit').modal('show');
