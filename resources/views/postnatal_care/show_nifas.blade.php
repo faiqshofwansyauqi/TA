@@ -542,7 +542,7 @@
         $(document).ready(function() {
             $('#nifas-table').DataTable({
                 processing: true,
-                serverSide: false,
+                serverSide: true,
                 lengthChange: false,
                 searching: false,
                 ordering: false,
@@ -709,7 +709,10 @@
                 },
                 fixedColumns: false,
                 responsive: false,
-                scrollX: true
+                scrollX: true,
+                language: {
+                    emptyTable: "Data masa nifas ibu {{ $nifas->NIK }} tidak ada"
+                }
             });
         });
 

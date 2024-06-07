@@ -107,7 +107,6 @@
                                         <th class="align-middle text-center normal-header">Lain-lain</th>
                                         <th class="align-middle text-center normal-header">Tiba<sup>(H/M)</sup></th>
                                         <th class="align-middle text-center normal-header">Pulang<sup>(H/M)</sup></th>
-
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -1343,7 +1342,10 @@
                 },
                 fixedColumns: false,
                 responsive: false,
-                scrollX: true
+                scrollX: true,
+                language: {
+                    emptyTable: "Data anc ibu {{ $anc->NIK }} tidak ada"
+                }
             });
         });
 

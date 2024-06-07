@@ -59,7 +59,7 @@ class PNCController extends Controller
     }
     public function store_shownifas(Request $request)
     {
-        dd($request);
+        // dd($request);
         $request->validate([
             'NIK' => 'required',
             'tanggal' => 'required',
