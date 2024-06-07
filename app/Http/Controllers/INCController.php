@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Persalinan;
-use App\Models\Ibu;
+use App\Models\Rencana_Persalinan;
 use Yajra\DataTables\Facades\DataTables;
 
 
@@ -14,7 +14,7 @@ class INCController extends Controller
     public function Persalinan()
     {
         $persalinan = Persalinan::all();
-        $ibus = Ibu::all();
+        $ibus = Rencana_Persalinan::all();
         return view('intranatal_care.persalinan', compact('persalinan', 'ibus'));
     }
     public function store_persalinan(Request $request)

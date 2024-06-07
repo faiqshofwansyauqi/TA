@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Ibu;
+use App\Models\Anc;
 use App\Models\Nifas;
 use App\Models\Show_Nifas;
 use Yajra\DataTables\Facades\DataTables;
@@ -14,7 +14,7 @@ class PNCController extends Controller
 
     public function Nifas()
     {
-        $ibus = Ibu::all();
+        $ibus = Anc::all();
         $nifas = Nifas::all();
         // dd($nifas);
         return view('postnatal_care.nifas', compact('nifas', 'ibus'));

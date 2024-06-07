@@ -39,13 +39,13 @@
         <li class="nav-item collapse {{ request()->is(['antenatal_care', 'antenatal_care/*']) ? 'show' : '' }}"
             id="collapseExample1">
             <ul class="nav-content">
-                <li>
+                {{-- <li>
                     <a href="{{ route('antenatal_care.tm1') }}"
                         class="{{ request()->is(['antenatal_care.tm1', 'antenatal_care/tm1']) ? 'active' : '' }}">
                         <i class="bi bi-circle"></i>
                         <span>Pemeriksaan Dokter TM1</span>
                     </a>
-                </li>
+                </li> --}}
                 <li>
                     <a href="{{ route('antenatal_care.anc') }}"
                         class="{{ request()->is(['antenatal_care.anc', 'antenatal_care/anc', 'antenatal_care.show_anc', 'antenatal_care/anc/show_anc/*']) ? 'active' : '' }}">
@@ -67,13 +67,13 @@
                         <span>Rencana Persalinan</span>
                     </a>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="{{ route('antenatal_care.tm3') }}"
                         class="{{ request()->is(['antenatal_care.tm3', 'antenatal_care/tm3']) ? 'active' : '' }}">
                         <i class="bi bi-circle"></i>
                         <span>Pemeriksaan Dokter TM3</span>
                     </a>
-                </li>
+                </li> --}}
             </ul>
         </li>
         <li class="nav-item">

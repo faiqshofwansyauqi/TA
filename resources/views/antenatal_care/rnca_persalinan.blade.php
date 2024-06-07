@@ -60,7 +60,7 @@
                                         <select class="form-control" id="NIK" name="NIK" required>
                                             <option value="">Pilih Ibu</option>
                                             @foreach ($ibus as $ibu)
-                                                <option value="{{ $ibu->nama_ibu }}">{{ $ibu->nama_ibu }}</option>
+                                                <option value="{{ $ibu->NIK }}">{{ $ibu->NIK }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -356,14 +356,14 @@
                                 .replace(':id', row.id);
                             return `
                             <div style="display: flex; align-items: center;">
-                                <button class="btn btn-sm btn-primary view-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalView">
+                                <button class="btn btn-sm btn-primary view-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalView" style="margin-right: 5px;">
                                     <i class="bi bi-eye-fill"></i>
                                 </button>
                                 <div style="display: flex; align-items: center;">
                                     <button class="btn btn-sm btn-success edit-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalEdit">
                                         <i class="bi bi-pencil-fill"></i>
                                     </button>
-                                    <button type="button" class="btn btn-sm btn-danger btn-delete" data-id="${row.id}" data-url="${deleteUrl}">
+                                    <button type="button" class="btn btn-sm btn-danger btn-delete" data-id="${row.id}" data-url="${deleteUrl}" hidden>
                                         <i class="bi bi-trash3-fill"></i>
                                     </button>
                                 </div>
@@ -385,57 +385,58 @@
                 }]
             });
         });
-        $('#rnca-table').on('click', '.btn-delete', function() {
-            const id = $(this).data('id');
-            const url = $(this).data('url');
 
-            Swal.fire({
-                title: 'Apakah Anda yakin?',
-                text: "Anda tidak akan bisa mengembalikan ini!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Ya, hapus!',
-                cancelButtonText: 'Batal',
-                showLoaderOnConfirm: true,
-                preConfirm: () => {
-                    return $.ajax({
-                        url: url,
-                        type: 'POST',
-                        data: {
-                            _method: 'DELETE',
-                            _token: '{{ csrf_token() }}'
-                        },
-                        error: function(xhr) {
-                            Swal.fire(
-                                'Gagal!',
-                                'Data gagal dihapus.',
-                                'error'
-                            );
-                        }
-                    }).then(response => {
-                        if (response.success) {
-                            Swal.fire(
-                                'Terhapus!',
-                                'Data telah berhasil dihapus.',
-                                'success'
-                            );
-                            $('.swal2-confirm').remove();
-                            setTimeout(function() {
-                                location.reload();
-                            }, 1000);
-                        } else {
-                            Swal.fire(
-                                'Gagal!',
-                                'Data gagal dihapus.',
-                                'error'
-                            );
-                        }
-                    });
-                }
-            });
-        });
+        // $('#rnca-table').on('click', '.btn-delete', function() {
+        //     const id = $(this).data('id');
+        //     const url = $(this).data('url');
+
+        //     Swal.fire({
+        //         title: 'Apakah Anda yakin?',
+        //         text: "Anda tidak akan bisa mengembalikan ini!",
+        //         icon: 'warning',
+        //         showCancelButton: true,
+        //         confirmButtonColor: '#3085d6',
+        //         cancelButtonColor: '#d33',
+        //         confirmButtonText: 'Ya, hapus!',
+        //         cancelButtonText: 'Batal',
+        //         showLoaderOnConfirm: true,
+        //         preConfirm: () => {
+        //             return $.ajax({
+        //                 url: url,
+        //                 type: 'POST',
+        //                 data: {
+        //                     _method: 'DELETE',
+        //                     _token: '{{ csrf_token() }}'
+        //                 },
+        //                 error: function(xhr) {
+        //                     Swal.fire(
+        //                         'Gagal!',
+        //                         'Data gagal dihapus.',
+        //                         'error'
+        //                     );
+        //                 }
+        //             }).then(response => {
+        //                 if (response.success) {
+        //                     Swal.fire(
+        //                         'Terhapus!',
+        //                         'Data telah berhasil dihapus.',
+        //                         'success'
+        //                     );
+        //                     $('.swal2-confirm').remove();
+        //                     setTimeout(function() {
+        //                         location.reload();
+        //                     }, 1000);
+        //                 } else {
+        //                     Swal.fire(
+        //                         'Gagal!',
+        //                         'Data gagal dihapus.',
+        //                         'error'
+        //                     );
+        //                 }
+        //             });
+        //         }
+        //     });
+        // });
 
 
         $('#rnca-table').on('click', '.view-btn', function() {
@@ -445,7 +446,6 @@
                 method: 'GET',
                 success: function(data) {
                     let namaIbu = data.ibu.nama_ibu;
-
                     function formatDate(dateString) {
                         if (!dateString) return '';
                         if (isNaN(new Date(dateString))) return 'Invalid date format';

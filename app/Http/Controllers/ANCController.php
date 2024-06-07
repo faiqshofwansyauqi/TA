@@ -557,7 +557,7 @@ class ANCController extends Controller
     public function Rnca()
     {
         $rnca = Rencana_Persalinan::all();
-        $ibus = Ibu::all();
+        $ibus = Ropb::all();
         return view('antenatal_care.rnca_persalinan', compact('rnca', 'ibus'));
     }
     public function store_rnca(Request $request)
