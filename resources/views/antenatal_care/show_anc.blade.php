@@ -4,18 +4,11 @@
     <div class="d-flex justify-content-between align-items-center">
         <div class="pagetitle">
             <h1>Detail Perawatan Selama Hamil</h1>
-            <nav>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('antenatal_care.anc') }}">Perawatan Selama Hamil</a></li>
-                    <li class="breadcrumb-item active">Detail Ibu {{ $anc->NIK }}</li>
-                    {{-- <p><strong>Nama Ibu: </strong>{{ $anc->NIK }}</p> --}}
-                </ol>
-            </nav>
+            <br>
+            <button type="button" class="btn btn-success" id="btn-plus">
+                <i class="bi bi-plus-circle"></i> Tambah
+            </button>
         </div>
-        <button type="button" class="btn btn-success" id="btn-plus">
-            <i class="bi bi-plus-circle"></i> Tambah
-        </button>
     </div>
 
     <section class="section dashboard">
@@ -962,7 +955,8 @@
                                             </select>
                                         </div>
                                         <div class="col-md-5">
-                                            <label for="edit_lain_lain_komplikasi" class="form-label">Lain - lain</label>
+                                            <label for="edit_lain_lain_komplikasi" class="form-label">Lain -
+                                                lain</label>
                                             <input type="text" class="form-control" id="edit_lain_lain_komplikasi"
                                                 name="lain_lain_komplikasi">
                                         </div>

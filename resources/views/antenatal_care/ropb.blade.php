@@ -4,17 +4,11 @@
     <div class="d-flex justify-content-between align-items-center">
         <div class="pagetitle">
             <h1>Pemeriksaan Bidan/Dokter Saat K1</h1>
-            <nav>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                    <li class="breadcrumb-item">Antenatal Care</li>
-                    <li class="breadcrumb-item active">Pemeriksaan Bidan/Dokter Saat K1</li>
-                </ol>
-            </nav>
+            <br>
+            <button type="button" class="btn btn-success" id="btn-plus">
+                <i class="bi bi-plus-circle"></i> Tambah
+            </button>
         </div>
-        <button type="button" class="btn btn-success" id="btn-plus">
-            <i class="bi bi-plus-circle"></i> Tambah
-        </button>
     </div>
     <section class="section dashboard">
         <div class="row">
@@ -120,8 +114,8 @@
                                     <div class="row">
                                         <div class="col-md-6 mb-2">
                                             <label for="tgl_periksa" class="form-label">Tanggal Periksa</label>
-                                            <input type="date" class="form-control" id="tgl_periksa"
-                                                name="tgl_periksa" required>
+                                            <input type="date" class="form-control" id="tgl_periksa" name="tgl_periksa"
+                                                required>
                                         </div>
                                         <div class="col-md-6 mb-2">
                                             <label for="tgl_hpht" class="form-label">Tanggal HPHT</label>

@@ -4,18 +4,11 @@
     <div class="d-flex justify-content-between align-items-center">
         <div class="pagetitle">
             <h1>Detail Masa Nifas</h1>
-            <nav>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('postnatal_care.nifas') }}">Masa Nifas</a></li>
-                    <li class="breadcrumb-item active">Ibu {{ $nifas->NIK }}</li>
-                    {{-- <p><strong>Nama Ibu: </strong>{{ $anc->NIK }}</p> --}}
-                </ol>
-            </nav>
+            <br>
+            <button type="button" class="btn btn-success" id="btn-plus">
+                <i class="bi bi-plus-circle"></i> Tambah
+            </button>
         </div>
-        <button type="button" class="btn btn-success" id="btn-plus">
-            <i class="bi bi-plus-circle"></i> Tambah
-        </button>
     </div>
 
     <section class="section dashboard">

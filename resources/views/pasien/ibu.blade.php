@@ -4,17 +4,11 @@
     <div class="d-flex justify-content-between align-items-center">
         <div class="pagetitle">
             <h1>Data Ibu</h1>
-            <nav>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                    <li class="breadcrumb-item">Data Pasien</li>
-                    <li class="breadcrumb-item active">Data Ibu</li>
-                </ol>
-            </nav>
+            <br>
+            <button type="button" class="btn btn-success" id="btn-plus">
+                <i class="bi bi-plus-circle"></i> Tambah
+            </button>
         </div>
-        <button type="button" class="btn btn-success" id="btn-plus">
-            <i class="bi bi-plus-circle"></i> Tambah
-        </button>
     </div>
 
     <section class="section dashboard">
@@ -117,8 +111,7 @@
                                 <div class="row mb-3">
                                     <div class="col-md-4">
                                         <label for="desa" class="form-label">Desa</label>
-                                        <input type="text" class="form-control" id="desa" name="desa"
-                                            required>
+                                        <input type="text" class="form-control" id="desa" name="desa" required>
                                     </div>
                                     <div class="col-md-4">
                                         <label for="kab" class="form-label">Kabupaten</label>
@@ -208,7 +201,8 @@
                                     </div>
                                     <div class="col-md-4">
                                         <label for="telp" class="form-label">Nomer Telp</label>
-                                        <input type="number" class="form-control" id="telp" name="telp" maxlength="13" pattern="\d{1,13}" required>
+                                        <input type="number" class="form-control" id="telp" name="telp"
+                                            maxlength="13" pattern="\d{1,13}" required>
                                     </div>
                                 </div>
                                 <div class="col-12">

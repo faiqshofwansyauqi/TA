@@ -3,18 +3,12 @@
 @section('content')
     <div class="d-flex justify-content-between align-items-center">
         <div class="pagetitle">
-            <h1>Pemeriksaan Fisik</h1>
-            <nav>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                    <li class="breadcrumb-item">Antenatal Care</li>
-                    <li class="breadcrumb-item active">Pemeriksaan Dokter TM1</li>
-                </ol>
-            </nav>
+            <h1>Pemeriksaan Dokter TM1</h1>
+            <br>
+            <button type="button" class="btn btn-success" id="btn-plus">
+                <i class="bi bi-plus-circle"></i> Tambah
+            </button>
         </div>
-        <button type="button" class="btn btn-success" id="btn-plus">
-            <i class="bi bi-plus-circle"></i> Tambah
-        </button>
     </div>
 
     <section class="section dashboard">

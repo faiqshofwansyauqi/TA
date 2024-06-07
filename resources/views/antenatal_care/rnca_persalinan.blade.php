@@ -4,17 +4,11 @@
     <div class="d-flex justify-content-between align-items-center">
         <div class="pagetitle">
             <h1>Rencana Persalinan</h1>
-            <nav>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                    <li class="breadcrumb-item">Antenatal Care</li>
-                    <li class="breadcrumb-item active">Rencana Persalinan</li>
-                </ol>
-            </nav>
+            <br>
+            <button type="button" class="btn btn-success" id="btn-plus">
+                <i class="bi bi-plus-circle"></i> Tambah
+            </button>
         </div>
-        <button type="button" class="btn btn-success" id="btn-plus">
-            <i class="bi bi-plus-circle"></i> Tambah
-        </button>
     </div>
     <section class="section dashboard">
         <div class="row">
@@ -61,20 +55,20 @@
                             <div class="card col-11 mx-4 ">
                                 <div class="card-body">
                                     <br>
-                                        <div class="col-md-4 mb-2">
-                                            <label for="NIK" class="form-label">Ibu</label>
-                                            <select class="form-control" id="NIK" name="NIK" required>
-                                                <option value="">Pilih Ibu</option>
-                                                @foreach ($ibus as $ibu)
-                                                    <option value="{{ $ibu->nama_ibu }}">{{ $ibu->nama_ibu }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        <div class="col-md-12 mb-2">
-                                            <label for="tgl_persalinan" class="form-label">Tanggal Persalinan</label>
-                                            <input type="date" class="form-control" id="tgl_persalinan"
-                                                name="tgl_persalinan" required>
-                                        </div>
+                                    <div class="col-md-4 mb-2">
+                                        <label for="NIK" class="form-label">Ibu</label>
+                                        <select class="form-control" id="NIK" name="NIK" required>
+                                            <option value="">Pilih Ibu</option>
+                                            @foreach ($ibus as $ibu)
+                                                <option value="{{ $ibu->nama_ibu }}">{{ $ibu->nama_ibu }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-md-12 mb-2">
+                                        <label for="tgl_persalinan" class="form-label">Tanggal Persalinan</label>
+                                        <input type="date" class="form-control" id="tgl_persalinan" name="tgl_persalinan"
+                                            required>
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-4 mb-2">
                                             <label for="penolong" class="form-label">Penolong</label>
