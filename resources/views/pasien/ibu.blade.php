@@ -18,7 +18,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Data Pasien Ibu</h5>
                         <div class="table-responsive">
-                            <table class="table small" id="ibu-table" style="width:100%">
+                            <table class="table table-bordered table-anc" id="ibu-table" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>Puskesmas</th>
@@ -395,6 +395,7 @@
             $('#ibu-table').DataTable({
                 processing: false,
                 serverSide: true,
+                ordering: false,
                 ajax: '{{ route('pasien.data_ibu') }}',
                 scrollX: true,
                 fixedHeader: true,

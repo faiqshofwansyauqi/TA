@@ -81,6 +81,7 @@
             $('#anc-table').DataTable({
                 processing: true,
                 serverSide: true,
+                ordering: false,
                 ajax: '{{ route('postnatal_care.data_nifas') }}',
                 scrollX: true,
                 fixedHeader: true,

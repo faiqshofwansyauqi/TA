@@ -111,14 +111,14 @@
             <ul class="nav-content">
                 <li>
                     <a href="{{ route('postnatal_care.nifas') }}"
-                    class="{{ request()->is(['postnatal_care.nifas', 'postnatal_care/nifas', 'postnatal_care.show_nifas', 'postnatal_care/nifas/show_nifas/*']) ? 'active' : '' }}">
+                        class="{{ request()->is(['postnatal_care.nifas', 'postnatal_care/nifas', 'postnatal_care.show_nifas', 'postnatal_care/nifas/show_nifas/*']) ? 'active' : '' }}">
                         <i class="bi bi-circle"></i>
                         <span>Masa Nifas</span>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('postnatal_care.ppia') }}"
-                        class="{{ request()->is(['postnatal_care.ppia', 'postnatal_care/ppia']) ? 'active' : '' }}">
+                        class="{{ request()->is(['postnatal_care.ppia', 'postnatal_care/ppia', 'postnatal_care.show_ppia', 'postnatal_care/ppia/show_ppia/*']) ? 'active' : '' }}">
                         <i class="bi bi-circle"></i>
                         <span>Pemantauan PPIA</span>
                     </a>

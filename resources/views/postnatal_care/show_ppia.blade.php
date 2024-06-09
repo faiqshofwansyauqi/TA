@@ -3,7 +3,7 @@
 @section('content')
     <div class="d-flex justify-content-between align-items-center">
         <div class="pagetitle">
-            <h1>Detail Masa Nifas</h1>
+            <h1>Detail Pemantauan PPIA</h1>
             <br>
             <button type="button" class="btn btn-success" id="btn-plus">
                 <i class="bi bi-plus-circle"></i> Tambah

@@ -19,7 +19,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Data Pasien Anak</h5>
                         <div class="table-responsive">
-                            <table class="table small" id="anak-table">
+                            <table class="table table-bordered table-anc" id="anak-table">
                                 <thead>
                                     <tr>
                                         <th>ID Anak</th>
@@ -243,6 +243,7 @@
             $('#anak-table').DataTable({
                 processing: true,
                 serverSide: true,
+                ordering: false,
                 ajax: '{{ route('pasien.data_anak') }}',
                 columns: [{
                         data: 'id_anak',
