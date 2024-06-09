@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Anc;
 use App\Models\Nifas;
+use App\Models\Ppia;
 use App\Models\Show_Nifas;
+use App\Models\Show_Ppia;
 use Yajra\DataTables\Facades\DataTables;
 
 class PNCController extends Controller
@@ -189,5 +191,153 @@ class PNCController extends Controller
     {
         $nifass = Show_Nifas::findOrFail($id);
         return response()->json($nifass);
+    }
+
+    ///////  PEMANTAUAN PPIA ///////
+
+    public function Ppia()
+    {
+        $ibus = Anc::all();
+        $ppia = Ppia::all();
+        return view('postnatal_care.ppia', compact('ppia', 'ibus'));
+    }
+    public function store_ppia(Request $request)
+    {
+        $request->validate([
+            'NIK' => 'required',
+        ]);
+        Ppia::create([
+            'NIK' => $request->NIK,
+        ]);
+        return redirect()->back()->with('success', 'Data berhasil ditambahkan');
+    }
+    public function getData_ppia()
+    {
+        $ppia = Ppia::select('*');
+        return DataTables::of($ppia)->make(true);
+    }
+    public function destroy_ppia($id)
+    {
+        try {
+            $ppia = Ppia::findOrFail($id);
+            $ppia->delete();
+            return response()->json(['success' => true, 'message' => 'Data berhasil dihapus']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Data gagal dihapus']);
+        }
+    }
+
+    ///////  PEMANTAUAN SHOW PPIA ///////
+
+    public function show_ppia($id)
+    {
+        // Mengambil data PPIA berdasarkan ID
+        $ppia = Ppia::findOrFail($id);
+
+        // Mendapatkan NIK dari data PPIA yang ditemukan
+        $NIK = $ppia->NIK;
+
+        // Mengambil data PPIA berdasarkan NIK
+        $ppias = Show_Ppia::where('NIK', $NIK)->get();
+
+        // Mengirimkan data ke tampilan
+        return view('postnatal_care.show_ppia', compact('ppias', 'ppia'));
+    }
+
+    public function store_showppia(Request $request)
+    {
+        // dd($request);
+        $request->validate([
+            'NIK' => 'required',
+            'tanggal_screening_hbsag' => 'required',
+            'tanggal_screening_hiv' => 'required',
+            'tanggal_screening_sifilis' => 'required',
+            'kode_specimen_hbsag' => 'required',
+            'kode_specimen_hiv' => 'required',
+            'kode_specimen_sifilis' => 'required',
+            'hasil_screening_hbsag' => 'required',
+            'hasil_screening_hiv' => 'required',
+            'hasil_screening_sifilis' => 'required',
+            'tgl_masuk_pdp' => 'required',
+            'tgl_mulai_arv' => 'required',
+            'ditangani_sifilis' => 'required',
+            'obat_adequat' => 'required',
+            'dirujuk' => 'required',
+            'status_hiv' => 'required',
+            'periksa_sifilis' => 'required',
+            'faskes_rujukan' => 'required',
+        ]);
+
+        Show_Ppia::create([
+            'NIK' => $request->NIK,
+            'tanggal_screening_hbsag' => $request->tanggal_screening_hbsag,
+            'tanggal_screening_hiv' => $request->tanggal_screening_hiv,
+            'tanggal_screening_sifilis' => $request->tanggal_screening_sifilis,
+            'kode_specimen_hbsag' => $request->kode_specimen_hbsag,
+            'kode_specimen_hiv' => $request->kode_specimen_hiv,
+            'kode_specimen_sifilis' => $request->kode_specimen_sifilis,
+            'hasil_screening_hbsag' => $request->hasil_screening_hbsag,
+            'hasil_screening_hiv' => $request->hasil_screening_hiv,
+            'hasil_screening_sifilis' => $request->hasil_screening_sifilis,
+            'tgl_masuk_pdp' => $request->tgl_masuk_pdp,
+            'tgl_mulai_arv' => $request->tgl_mulai_arv,
+            'ditangani_sifilis' => $request->ditangani_sifilis,
+            'obat_adequat' => $request->obat_adequat,
+            'dirujuk' => $request->dirujuk,
+            'status_hiv' => $request->status_hiv,
+            'periksa_sifilis' => $request->periksa_sifilis,
+            'faskes_rujukan' => $request->faskes_rujukan,
+        ]);
+        return redirect()->back()->with('success', 'Data berhasil ditambahkan');
+    }
+    public function update_showppia(Request $request, $id)
+    {
+        // dd($request);
+        $request->validate([
+            'tanggal_screening_hbsag' => 'required',
+            'tanggal_screening_hiv' => 'required',
+            'tanggal_screening_sifilis' => 'required',
+            'kode_specimen_hbsag' => 'required',
+            'kode_specimen_hiv' => 'required',
+            'kode_specimen_sifilis' => 'required',
+            'hasil_screening_hbsag' => 'required',
+            'hasil_screening_hiv' => 'required',
+            'hasil_screening_sifilis' => 'required',
+            'tgl_masuk_pdp' => 'required',
+            'tgl_mulai_arv' => 'required',
+            'ditangani_sifilis' => 'required',
+            'obat_adequat' => 'required',
+            'dirujuk' => 'required',
+            'status_hiv' => 'required',
+            'periksa_sifilis' => 'required',
+            'faskes_rujukan' => 'required',
+
+        ]);
+        $ppias = Show_Ppia::findOrFail($id);
+        $ppias->update([
+            'tanggal_screening_hbsag' => $request->tanggal_screening_hbsag,
+            'tanggal_screening_hiv' => $request->tanggal_screening_hiv,
+            'tanggal_screening_sifilis' => $request->tanggal_screening_sifilis,
+            'kode_specimen_hbsag' => $request->kode_specimen_hbsag,
+            'kode_specimen_hiv' => $request->kode_specimen_hiv,
+            'kode_specimen_sifilis' => $request->kode_specimen_sifilis,
+            'hasil_screening_hbsag' => $request->hasil_screening_hbsag,
+            'hasil_screening_hiv' => $request->hasil_screening_hiv,
+            'hasil_screening_sifilis' => $request->hasil_screening_sifilis,
+            'tgl_masuk_pdp' => $request->tgl_masuk_pdp,
+            'tgl_mulai_arv' => $request->tgl_mulai_arv,
+            'ditangani_sifilis' => $request->ditangani_sifilis,
+            'obat_adequat' => $request->obat_adequat,
+            'dirujuk' => $request->dirujuk,
+            'status_hiv' => $request->status_hiv,
+            'periksa_sifilis' => $request->periksa_sifilis,
+            'faskes_rujukan' => $request->faskes_rujukan,
+        ]);
+        return redirect()->back()->with('success', 'Data berhasil diperbarui');
+    }
+    public function edit_showppia($id)
+    {
+        $ppias = Show_Ppia::findOrFail($id);
+        return response()->json($ppias);
     }
 }

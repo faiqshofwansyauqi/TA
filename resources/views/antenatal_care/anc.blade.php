@@ -18,7 +18,7 @@
                     <div class="card-body">
                         <h5 class="card-title"></h5>
                         <div class="table-responsive">
-                            <table class="table small" id="anc-table" style="width:100%">
+                            <table class="table table-bordered table-anc" id="anc-table" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>Nama Ibu</th>
@@ -38,7 +38,7 @@
         <div class="modal-dialog modal-dialog-scrollable modal-md">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-4 fw-bold" id="ModalInput">Input Antenatal Care</h1>
+                    <h1 class="modal-title fs-4 fw-bold" id="ModalInput">Input Perawatan Selama Hamil</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -80,6 +80,7 @@
             $('#anc-table').DataTable({
                 processing: true,
                 serverSide: true,
+                ordering: false,
                 ajax: '{{ route('antenatal_care.data_anc') }}',
                 scrollX: true,
                 fixedHeader: true,

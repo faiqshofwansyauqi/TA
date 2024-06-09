@@ -16,7 +16,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Detail ANC</h5>
+                        <br>
                         <div class="table-responsive">
                             <table class="table table-bordered table-anc" id="anc-table">
                                 <thead>
@@ -116,7 +116,7 @@
         <div class="modal-dialog modal-dialog-scrollable modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title fs-4 fw-bold" id="ModalInput">Input ANC</h3>
+                    <h3 class="modal-title fs-4 fw-bold" id="ModalInput">Input Detail Perawatan Selama Hamil</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">

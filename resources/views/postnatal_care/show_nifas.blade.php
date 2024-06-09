@@ -16,7 +16,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Detail Masa Nifas</h5>
+                        <br>
                         <div class="table-responsive">
                             <table class="table table-bordered table-anc" id="nifas-table">
                                 <thead>
@@ -701,8 +701,7 @@
                     $(row).addClass('text-center');
                 },
                 fixedColumns: false,
-                responsive: false,
-                scrollX: true,
+                responsive: false,            
                 language: {
                     emptyTable: "Data masa nifas ibu {{ $nifas->NIK }} tidak ada"
                 }

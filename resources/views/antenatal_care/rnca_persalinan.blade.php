@@ -17,10 +17,10 @@
                     <div class="card-body">
                         <h5 class="card-title"></h5>
                         <div class="table-responsive">
-                            <table class="table small" id="rnca-table" style="width:100%">
+                            <table class="table table-bordered table-anc" id="rnca-table" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>NO</th>
+                                        <th>No</th>
                                         <th>NIK</th>
                                         <th>Tanggal</th>
                                         <th>Penolong</th>
@@ -302,6 +302,7 @@
         $(document).ready(function() {
             $('#rnca-table').DataTable({
                 processing: true,
+                ordering: false,
                 serverSide: true,
                 ajax: '{{ route('antenatal_care.data_rnca') }}',
                 scrollX: true,
@@ -492,7 +493,6 @@
                     </div>
                 </div>
             `;
-                    $('#modalViewLabel').html(`Detail Rencana Persalinan Ibu ${namaIbu}`);
                     $('#modalView .modal-body').html(tableHtml);
                     $('#modalView').modal('show');
                 }

@@ -73,7 +73,7 @@ Route::prefix('antenatal_care')->group(function () {
     Route::get('anc/show_anc/{id}', [ANCController::class, 'show_anc'])->name('antenatal_care.show_anc');
     Route::get('data-show_anc/{NIK}', [ANCController::class, 'getData_showanc'])->name('antenatal_care.data_showanc');
     Route::get('show_anc/edit_showanc/{id}', [ANCController::class, 'edit_showanc'])->name('antenatal_care.edit_showanc');
-    Route::put('show_ach/update_showanc/{id}', [ANCController::class, 'update_showanc'])->name('antenatal_care.update_showanc');
+    Route::put('show_anc/update_showanc/{id}', [ANCController::class, 'update_showanc'])->name('antenatal_care.update_showanc');
     ///////////// PEMERIKSAAN BIDAN/DOKTER SAAT K1 /////////////
     Route::get('ropb', [ANCController::class, 'ropb'])->name('antenatal_care.ropb');
     Route::post('store-ropb', [ANCController::class, 'store_ropb'])->name('antenatal_care.store_ropb');
@@ -121,7 +121,18 @@ Route::prefix('postnatal_care')->group(function () {
     Route::get('nifas/show_nifas/{id}', [PNCController::class, 'show_nifas'])->name('postnatal_care.show_nifas');
     Route::get('data-show_nifas/{NIK}', [PNCController::class, 'getData_shownifas'])->name('postnatal_care.data_shownifas');
     Route::get('show_nifas/edit_shownifas/{id}', [PNCController::class, 'edit_shownifas'])->name('postnatal_care.edit_shownifas');
-    Route::put('show_ach/update_shownifas/{id}', [PNCController::class, 'update_shownifas'])->name('postnatal_care.update_shownifas');
+    Route::put('show_anc/update_shownifas/{id}', [PNCController::class, 'update_shownifas'])->name('postnatal_care.update_shownifas');
+    ///////////// PEMANTAUAN PPIA /////////////
+    Route::get('ppia', [PNCController::class, 'ppia'])->name('postnatal_care.ppia');
+    Route::post('store-ppia', [PNCController::class, 'store_ppia'])->name('postnatal_care.store_ppia');
+    Route::get('data-ppia', [PNCController::class, 'getData_ppia'])->name('postnatal_care.data_ppia');
+    Route::delete('postnatal_care/destroy_ppia/{id}', [PNCController::class, 'destroy_ppia'])->name('postnatal_care.destroy_ppia');
+    ///////////// SHOW PEMANTAUAN PPIA /////////////
+    Route::post('store-show_ppia', [PNCController::class, 'store_showppia'])->name('postnatal_care.store_showppia');
+    Route::get('ppia/show_ppia/{id}', [PNCController::class, 'show_ppia'])->name('postnatal_care.show_ppia');
+    Route::get('data-show_ppia/{NIK}', [PNCController::class, 'getData_showppia'])->name('postnatal_care.data_showppia');
+    Route::get('show_ppia/edit_showppia/{id}', [PNCController::class, 'edit_showppia'])->name('postnatal_care.edit_showppia');
+    Route::put('show_anc/update_showppia/{id}', [PNCController::class, 'update_showppia'])->name('postnatal_care.update_showppia');
 });
 
 Route::prefix('rekam_medis')->group(function () {

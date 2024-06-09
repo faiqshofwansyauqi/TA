@@ -116,6 +116,13 @@
                         <span>Masa Nifas</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('postnatal_care.ppia') }}"
+                        class="{{ request()->is(['postnatal_care.ppia', 'postnatal_care/ppia']) ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i>
+                        <span>Pemantauan PPIA</span>
+                    </a>
+                </li>
             </ul>
         </li>
 

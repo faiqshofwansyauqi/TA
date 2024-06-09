@@ -3,7 +3,7 @@
 @section('content')
     <div class="d-flex justify-content-between align-items-center">
         <div class="pagetitle">
-            <h1>Masa Nifas</h1>
+            <h1>Pemantauan PPIA</h1>
             <br>
             <button type="button" class="btn btn-success" id="btn-plus">
                 <i class="bi bi-plus-circle"></i> Tambah
@@ -18,7 +18,7 @@
                     <div class="card-body">
                         <h5 class="card-title"></h5>
                         <div class="table-responsive">
-                            <table class="table table-bordered table-anc" id="anc-table" style="width:100%">
+                            <table class="table table-bordered table-anc" id="ppia-table" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>Nama Ibu</th>
@@ -38,11 +38,11 @@
         <div class="modal-dialog modal-dialog-scrollable modal-md">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-4 fw-bold" id="ModalInput">Input Masa Nifas</h1>
+                    <h1 class="modal-title fs-4 fw-bold" id="ModalInput">Input Pemantauan PPIA</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('postnatal_care.store_nifas') }}" method="post" autocomplete="off">
+                    <form action="{{ route('postnatal_care.store_ppia') }}" method="post" autocomplete="off">
                         @csrf
                         <div class="card col-12">
                             <div class="card-body">
@@ -66,7 +66,6 @@
             </div>
         </div>
     </div>
-    
 @endsection
 @section('script')
     <script>
@@ -78,10 +77,11 @@
         });
 
         $(document).ready(function() {
-            $('#anc-table').DataTable({
+            $('#ppia-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{{ route('postnatal_care.data_nifas') }}',
+                ordering: false,
+                ajax: '{{ route('postnatal_care.data_ppia') }}',
                 scrollX: true,
                 fixedHeader: true,
                 columns: [{
@@ -94,9 +94,9 @@
                         orderable: false,
                         searchable: false,
                         render: function(data, type, row) {
-                            let viewUrl = '{{ route('postnatal_care.show_nifas', ':id') }}'.replace(
+                            let viewUrl = '{{ route('postnatal_care.show_ppia', ':id') }}'.replace(
                                 ':id', row.id);
-                            let deleteUrl = '{{ route('postnatal_care.destroy_nifas', ':id') }}'
+                            let deleteUrl = '{{ route('postnatal_care.destroy_ppia', ':id') }}'
                                 .replace(
                                     ':id', row.id);
                             return `
@@ -114,57 +114,5 @@
                 ],
             });
         });
-
-        // $('#anc-table').on('click', '.btn-delete', function() {
-        //     const id = $(this).data('id');
-        //     const url = $(this).data('url');
-
-        //     Swal.fire({
-        //         title: 'Apakah Anda yakin?',
-        //         text: "Anda tidak akan bisa mengembalikan ini!",
-        //         icon: 'warning',
-        //         showCancelButton: true,
-        //         confirmButtonColor: '#3085d6',
-        //         cancelButtonColor: '#d33',
-        //         confirmButtonText: 'Ya, hapus!',
-        //         cancelButtonText: 'Batal',
-        //         showLoaderOnConfirm: true,
-        //         preConfirm: () => {
-        //             return $.ajax({
-        //                 url: url,
-        //                 type: 'POST',
-        //                 data: {
-        //                     _method: 'DELETE',
-        //                     _token: '{{ csrf_token() }}'
-        //                 },
-        //                 error: function(xhr) {
-        //                     Swal.fire(
-        //                         'Gagal!',
-        //                         'Data gagal dihapus.',
-        //                         'error'
-        //                     );
-        //                 }
-        //             }).then(response => {
-        //                 if (response.success) {
-        //                     Swal.fire(
-        //                         'Terhapus!',
-        //                         'Data telah berhasil dihapus.',
-        //                         'success'
-        //                     );
-        //                     $('.swal2-confirm').remove();
-        //                     setTimeout(function() {
-        //                         location.reload();
-        //                     }, 1000);
-        //                 } else {
-        //                     Swal.fire(
-        //                         'Gagal!',
-        //                         'Data gagal dihapus.',
-        //                         'error'
-        //                     );
-        //                 }
-        //             });
-        //         }
-        //     });
-        // });
     </script>
 @endsection

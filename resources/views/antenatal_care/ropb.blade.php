@@ -17,7 +17,7 @@
                     <div class="card-body">
                         <h5 class="card-title"></h5>
                         <div class="table-responsive">
-                            <table class="table small" id="ropb-table" style="width:100%">
+                            <table class="table table-bordered table-anc" id="ropb-table" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>Nama Ibu</th>
@@ -330,6 +330,7 @@
             $('#ropb-table').DataTable({
                 processing: true,
                 serverSide: true,
+                ordering: false,
                 ajax: '{{ route('antenatal_care.data_ropb') }}',
                 scrollX: true,
                 fixedHeader: true,
@@ -489,7 +490,7 @@
                 }]
             });
         });
-        
+
         // $('#ropb-table').on('click', '.btn-delete', function() {
         //     const id = $(this).data('id');
         //     const url = $(this).data('url');
@@ -668,7 +669,6 @@
                     </div>
                 </div>
             `;
-                    $('#modalViewLabel').html(`Detail Pemeriksaan Bidan/Dokter Saat K1 ${namaIbu}`);
                     $('#modalView .modal-body').html(tableHtml);
                     $('#modalView').modal('show');
                 }

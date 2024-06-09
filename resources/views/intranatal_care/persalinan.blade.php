@@ -18,7 +18,7 @@
                     <div class="card-body">
                         <h5 class="card-title"></h5>
                         <div class="table-responsive">
-                            <table class="table small" id="persalinan-table" style="width:100%">
+                            <table class="table table-bordered table-anc" id="persalinan-table" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>Nama Ibu</th>
@@ -646,6 +646,7 @@
             $('#persalinan-table').DataTable({
                 processing: true,
                 serverSide: true,
+                ordering: false,
                 ajax: '{{ route('intranatal_care.data_persalinan') }}',
                 scrollX: true,
                 fixedHeader: true,
@@ -1060,7 +1061,6 @@
                     </div>
                 </div>
             `;
-                    $('#modalViewLabel').html(`Detail Persalinan Ibu ${namaIbu}`);
                     $('#modalView .modal-body').html(tableHtml);
                     $('#modalView').modal('show');
                 }
