@@ -123,6 +123,13 @@
                         <span>Pemantauan PPIA</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route('postnatal_care.pemantauan_bayi') }}"
+                        class="{{ request()->is(['postnatal_care.pemantauan_bayi', 'postnatal_care/pemantauan_bayi']) ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i>
+                        <span>Pemantauan Bayi</span>
+                    </a>
+                </li>
             </ul>
         </li>
 

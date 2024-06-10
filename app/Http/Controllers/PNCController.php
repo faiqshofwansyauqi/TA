@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Anc;
+use App\Models\Pemantauan_Bayi;
 use App\Models\Nifas;
 use App\Models\Ppia;
 use App\Models\Show_Nifas;
@@ -231,19 +232,11 @@ class PNCController extends Controller
 
     public function show_ppia($id)
     {
-        // Mengambil data PPIA berdasarkan ID
         $ppia = Ppia::findOrFail($id);
-
-        // Mendapatkan NIK dari data PPIA yang ditemukan
         $NIK = $ppia->NIK;
-
-        // Mengambil data PPIA berdasarkan NIK
         $ppias = Show_Ppia::where('NIK', $NIK)->get();
-
-        // Mengirimkan data ke tampilan
         return view('postnatal_care.show_ppia', compact('ppias', 'ppia'));
     }
-
     public function store_showppia(Request $request)
     {
         // dd($request);
@@ -339,5 +332,40 @@ class PNCController extends Controller
     {
         $ppias = Show_Ppia::findOrFail($id);
         return response()->json($ppias);
+    }
+
+    ///////  PEMANTAUAN BAYI ///////
+
+    public function pemantauan_bayi()
+    {
+        $ibus = Anc::all();
+        $pb = Pemantauan_Bayi::all();
+        return view('postnatal_care.pemantauan_bayi', compact('ibus', 'pb'));
+    }
+
+    public function store_pemantauan_bayi(Request $request)
+    {
+        $request->validate([
+            'NIK' => 'required',
+        ]);
+        Pemantauan_Bayi::create([
+            'NIK' => $request->NIK,
+        ]);
+        return redirect()->back()->with('success', 'Data berhasil ditambahkan');
+    }
+    public function getData_pemantauan_bayi()
+    {
+        $pb = Pemantauan_Bayi::select('*');
+        return DataTables::of($pb)->make(true);
+    }
+    public function destroy_pemantauan_bayi($id)
+    {
+        try {
+            $pb = Pemantauan_Bayi::findOrFail($id);
+            $pb->delete();
+            return response()->json(['success' => true, 'message' => 'Data berhasil dihapus']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Data gagal dihapus']);
+        }
     }
 }

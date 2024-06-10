@@ -133,6 +133,11 @@ Route::prefix('postnatal_care')->group(function () {
     Route::get('data-show_ppia/{NIK}', [PNCController::class, 'getData_showppia'])->name('postnatal_care.data_showppia');
     Route::get('show_ppia/edit_showppia/{id}', [PNCController::class, 'edit_showppia'])->name('postnatal_care.edit_showppia');
     Route::put('show_anc/update_showppia/{id}', [PNCController::class, 'update_showppia'])->name('postnatal_care.update_showppia');
+    ///////////// PEMANTAUAN BAYI /////////////
+    Route::get('pemantauan_bayi', [PNCController::class, 'pemantauan_bayi'])->name('postnatal_care.pemantauan_bayi');
+    Route::post('store-pemantauan_bayi', [PNCController::class, 'store_pemantauan_bayi'])->name('postnatal_care.store_pemantauan_bayi');
+    Route::get('data-pemantauan_bayi', [PNCController::class, 'getData_pemantauan_bayi'])->name('postnatal_care.data_pemantauan_bayi');
+    Route::delete('postnatal_care/destroy_pemantauan_bayi/{id}', [PNCController::class, 'destroy_pemantauan_bayi'])->name('postnatal_care.destroy_pemantauan_bayi');
 });
 
 Route::prefix('rekam_medis')->group(function () {
