@@ -22,7 +22,9 @@
                                 <thead>
                                     <tr>
                                         <th>Nama Ibu</th>
-                                        <th>Action</th>
+                                        <th>Pemantauan Ibu Hepatitis</th>
+                                        <th>Pemantauan Bayi Ibu HIV</th>
+                                        <th>Pemantauan Ibu Sifilis</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
@@ -67,6 +69,7 @@
         </div>
     </div>
 @endsection
+
 @section('script')
     <script>
         $(document).ready(function() {
@@ -74,9 +77,7 @@
             $('#btn-plus').click(function() {
                 modalInput.modal('show');
             });
-        });
 
-        $(document).ready(function() {
             $('#pmntn-table').DataTable({
                 processing: true,
                 serverSide: true,
@@ -89,22 +90,33 @@
                         name: 'NIK'
                     },
                     {
-                        data: 'action',
-                        name: 'action',
-                        orderable: false,
-                        searchable: false,
+                        data: 'pemantauan_ibu_hepatitis',
+                        name: 'pemantauan_ibu_hepatitis',
                         render: function(data, type, row) {
-                            let deleteUrl = '{{ route('postnatal_care.destroy_pemantauan_bayi', ':id') }}'
-                                .replace(
-                                    ':id', row.id);
-                            return `
-                            <div style="display: flex; align-items: center;">
-                            
-                        <button type="button" class="btn btn-sm btn-danger btn-delete" data-id="${row.id}" data-url="${deleteUrl}" hidden>
-                                        <i class="bi bi-trash3-fill"></i>
-                                    </button>
-                            </div>
-                            `;
+                            let viewUrl = '{{ route('postnatal_care.show_hepatitis', ':id') }}'
+                                .replace(':id', row.id);
+                            return `<a href="${viewUrl}" class="btn btn-sm btn-primary">
+                                        <i class="bi bi-eye-fill"></i></a>`;
+                        }
+                    },
+                    {
+                        data: 'pemantauan_bayi_hiv',
+                        name: 'pemantauan_bayi_hiv',
+                        render: function(data, type, row) {
+                            let viewUrl = '{{ route('postnatal_care.show_hiv', ':id') }}'.replace(
+                                ':id', row.id);
+                            return `<a href="${viewUrl}" class="btn btn-sm btn-primary">
+                                        <i class="bi bi-eye-fill"></i></a>`;
+                        }
+                    },
+                    {
+                        data: 'pemantauan_bayi_sifilis',
+                        name: 'pemantauan_bayi_sifilis',
+                        render: function(data, type, row) {
+                            let viewUrl = '{{ route('postnatal_care.show_sifilis', ':id') }}'.replace(
+                                ':id', row.id);
+                            return `<a href="${viewUrl}" class="btn btn-sm btn-primary">
+                                        <i class="bi bi-eye-fill"></i></a>`;
                         }
                     }
                 ],

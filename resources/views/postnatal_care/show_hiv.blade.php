@@ -3,20 +3,20 @@
 @section('content')
     <div class="d-flex justify-content-between align-items-center">
         <div class="pagetitle">
-            <h1>Detail Pemantauan PPIA</h1>
+            <h1>Detail Pemantauan Bayi Ibu HIV</h1>
             <br>
             <button type="button" class="btn btn-success" id="btn-plus">
                 <i class="bi bi-plus-circle"></i> Tambah
             </button>
-            @foreach ($ppias as $item)
+            {{-- @foreach ($ppias as $item)
                 <button type="button" class="btn btn-primary btn-edit" data-id="{{ $item->id }}">
                     <i class="bi bi-pencil-square"></i> Edit
                 </button>
-            @endforeach
+            @endforeach --}}
         </div>
     </div>
 
-    <section class="section dashboard">
+    {{-- <section class="section dashboard">
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
@@ -103,13 +103,13 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
-    <div class="modal fade" id="modalInput" tabindex="-1" aria-labelledby="ModalInput" aria-hidden="true">
+    {{-- <div class="modal fade" id="modalInput" tabindex="-1" aria-labelledby="ModalInput" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title fs-4 fw-bold" id="ModalInput">Input Pemantauan PPIA</h3>
+                    <h3 class="modal-title fs-4 fw-bold" id="ModalInput">Input Masa Nifas</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -294,7 +294,7 @@
         <div class="modal-dialog modal-dialog-scrollable modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title fs-4 fw-bold" id="ModalEdit">Update Pemantauan PPIA</h3>
+                    <h3 class="modal-title fs-4 fw-bold" id="ModalEdit">Update ANC</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
                 </div>
                 <div class="modal-body">
@@ -474,68 +474,75 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection
 @section('script')
     <script>
-        $(document).ready(function() {
-            function toggleButtons() {
-                const tableBody = $('.table-anc tbody');
-                const addButton = $('#btn-plus');
-                const editButton = $('#btn-edit');
+        // $(document).ready(function() {
+        //     function toggleButtons() {
+        //         const tableBody = $('.table-anc tbody');
+        //         const addButton = $('#btn-plus');
+        //         const editButton = $('#btn-edit');
 
-                if (tableBody.children('tr').length > 0) {
-                    addButton.hide();
-                    editButton.show();
-                } else {
-                    addButton.show();
-                    editButton.hide();
-                }
-            }
-            toggleButtons();
-            let modalEdit = $('#modalEdit');
-            modalEdit.modal('hide');
+        //         if (tableBody.children('tr').length > 0) {
+        //             addButton.hide();
+        //             editButton.show();
+        //         } else {
+        //             addButton.show();
+        //             editButton.hide();
+        //         }
+        //     }
 
-            $('#btn-plus').click(function() {
-                let modalInput = $('#modalInput');
-                modalInput.modal('show');
-            });
+        //     toggleButtons();
 
-            $(document).on('click', '.btn-edit', function() {
-                var id = $(this).data('id');
-                $.ajax({
-                    url: '{{ route('postnatal_care.edit_showppia', ':id') }}'.replace(':id', id),
-                    method: "GET",
-                    success: function(data) {
-                        $('#modalEdit').modal('show');
-                        $('#editForm').attr('action',
-                            '{{ route('postnatal_care.update_showppia', ':id') }}'
-                            .replace(
-                                ':id', id));
-                        $('#editForm').attr('method', "POST");
-                        $('input[name="_method"]').val(
-                            'PUT');
-                        $('#edit_tanggal_screening_hbsag').val(data.tanggal_screening_hbsag);
-                        $('#edit_tanggal_screening_hiv').val(data.tanggal_screening_hiv);
-                        $('#edit_tanggal_screening_sifilis').val(data
-                            .tanggal_screening_sifilis);
-                        $('#edit_kode_specimen_hbsag').val(data.kode_specimen_hbsag);
-                        $('#edit_kode_specimen_hiv').val(data.kode_specimen_hiv);
-                        $('#edit_kode_specimen_sifilis').val(data.kode_specimen_sifilis);
-                        $('#edit_hasil_screening_hbsag').val(data.hasil_screening_hbsag);
-                        $('#edit_hasil_screening_hiv').val(data.hasil_screening_hiv);
-                        $('#edit_hasil_screening_sifilis').val(data.hasil_screening_sifilis);
-                        $('#edit_tgl_masuk_pdp').val(data.tgl_masuk_pdp);
-                        $('#edit_tgl_mulai_arv').val(data.tgl_mulai_arv);
-                        $('#edit_ditangani_sifilis').val(data.ditangani_sifilis);
-                        $('#edit_obat_adequat').val(data.obat_adequat);
-                        $('#edit_dirujuk').val(data.dirujuk);
-                        $('#edit_status_hiv').val(data.status_hiv);
-                        $('#edit_periksa_sifilis').val(data.periksa_sifilis);
-                        $('#edit_faskes_rujukan').val(data.faskes_rujukan);
-                    }
-                });
-            });
-        });
+        //     // Pastikan modal edit disembunyikan
+        //     let modalEdit = $('#modalEdit');
+        //     modalEdit.modal('hide'); // Pastikan modal edit disembunyikan secara default
+
+        //     $('#btn-plus').click(function() {
+        //         let modalInput = $('#modalInput');
+        //         modalInput.modal('show');
+        //     });
+
+        //     // Open modal for editing existing data
+        //     // Menggunakan event delegation untuk tombol edit
+        //     $(document).on('click', '.btn-edit', function() {
+        //         var id = $(this).data('id'); // Get the ID from data-id attribute
+        //         $.ajax({
+        //             url: '{{ route('postnatal_care.edit_showppia', ':id') }}'.replace(':id', id),
+        //             method: "GET",
+        //             success: function(data) {
+        //                 $('#modalEdit').modal('show'); // Show the modal
+        //                 $('#editForm').attr('action',
+        //                     '{{ route('postnatal_care.update_showppia', ':id') }}'
+        //                     .replace(
+        //                         ':id', id));
+        //                 $('#editForm').attr('method', "POST"); // Set the method to POST
+        //                 $('input[name="_method"]').val(
+        //                     'PUT'); // Set the hidden method input to PUT
+
+        //                 // Fill the form with the data
+        //                 $('#edit_tanggal_screening_hbsag').val(data.tanggal_screening_hbsag);
+        //                 $('#edit_tanggal_screening_hiv').val(data.tanggal_screening_hiv);
+        //                 $('#edit_tanggal_screening_sifilis').val(data
+        //                     .tanggal_screening_sifilis);
+        //                 $('#edit_kode_specimen_hbsag').val(data.kode_specimen_hbsag);
+        //                 $('#edit_kode_specimen_hiv').val(data.kode_specimen_hiv);
+        //                 $('#edit_kode_specimen_sifilis').val(data.kode_specimen_sifilis);
+        //                 $('#edit_hasil_screening_hbsag').val(data.hasil_screening_hbsag);
+        //                 $('#edit_hasil_screening_hiv').val(data.hasil_screening_hiv);
+        //                 $('#edit_hasil_screening_sifilis').val(data.hasil_screening_sifilis);
+        //                 $('#edit_tgl_masuk_pdp').val(data.tgl_masuk_pdp);
+        //                 $('#edit_tgl_mulai_arv').val(data.tgl_mulai_arv);
+        //                 $('#edit_ditangani_sifilis').val(data.ditangani_sifilis);
+        //                 $('#edit_obat_adequat').val(data.obat_adequat);
+        //                 $('#edit_dirujuk').val(data.dirujuk);
+        //                 $('#edit_status_hiv').val(data.status_hiv);
+        //                 $('#edit_periksa_sifilis').val(data.periksa_sifilis);
+        //                 $('#edit_faskes_rujukan').val(data.faskes_rujukan);
+        //             }
+        //         });
+        //     });
+        // });
     </script>
 @endsection

@@ -9,6 +9,8 @@ use App\Models\Nifas;
 use App\Models\Ppia;
 use App\Models\Show_Nifas;
 use App\Models\Show_Ppia;
+use App\Models\Show_Hepatitis;
+use Carbon\Carbon;
 use Yajra\DataTables\Facades\DataTables;
 
 class PNCController extends Controller
@@ -367,5 +369,105 @@ class PNCController extends Controller
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'Data gagal dihapus']);
         }
+    }
+
+    ///////  PEMANTAUAN BAYI IBU HEPATITIS B ///////
+
+    public function show_hepatitis($id)
+    {
+        $pb = Pemantauan_Bayi::findOrFail($id);
+        $NIK = $pb->NIK;
+        $hepatitis = Show_Hepatitis::where('NIK', $NIK)->get();
+
+        foreach ($hepatitis as $item) {
+            $item->hbo = Carbon::parse($item->hbo)->format('d-m-Y / H:i');
+            $item->hb2 = Carbon::parse($item->hb2)->format('d-m-Y / H:i');
+            $item->hbig = Carbon::parse($item->hbig)->format('d-m-Y / H:i');
+            $item->hb3 = Carbon::parse($item->hb3)->format('d-m-Y / H:i');
+            $item->hb1 = Carbon::parse($item->hb1)->format('d-m-Y / H:i');
+            $item->tanggal_hbsag = Carbon::parse($item->tanggal_hbsag)->format('d-m-Y / H:i');
+            $item->tanggal_antihbs = Carbon::parse($item->tanggal_antihbs)->format('d-m-Y / H:i');
+        }
+
+        return view('postnatal_care.show_hepatitis', compact('pb', 'hepatitis'));
+    }
+    public function store_showhepatitis(Request $request)
+    {
+        // dd($request);
+        $request->validate([
+            'NIK' => 'required',
+            'hbo' => 'required',
+            'hb2' => 'required',
+            'hbig' => 'required',
+            'hb3' => 'required',
+            'hb1' => 'required',
+            'tanggal_hbsag' => 'required',
+            'hasil_hbsag' => 'required',
+            'tanggal_antihbs' => 'required',
+            'hasil_antihbs' => 'required',
+        ]);
+
+        Show_hepatitis::create([
+            'NIK' => $request->NIK,
+            'hbo' => $request->hbo,
+            'hb2' => $request->hb2,
+            'hbig' => $request->hbig,
+            'hb3' => $request->hb3,
+            'hb1' => $request->hb1,
+            'tanggal_hbsag' => $request->tanggal_hbsag,
+            'hasil_hbsag' => $request->hasil_hbsag,
+            'tanggal_antihbs' => $request->tanggal_antihbs,
+            'hasil_antihbs' => $request->hasil_antihbs,
+        ]);
+        return redirect()->back()->with('success', 'Data berhasil ditambahkan');
+    }
+    public function update_showhepatitis(Request $request, $id)
+    {
+        // dd($request);
+        $request->validate([
+            'hbo' => 'required',
+            'hb2' => 'required',
+            'hbig' => 'required',
+            'hb3' => 'required',
+            'hb1' => 'required',
+            'tanggal_hbsag' => 'required',
+            'hasil_hbsag' => 'required',
+            'tanggal_antihbs' => 'required',
+            'hasil_antihbs' => 'required',
+
+        ]);
+        $hepatitis = Show_Hepatitis::findOrFail($id);
+        $hepatitis->update([
+            'hbo' => $request->hbo,
+            'hb2' => $request->hb2,
+            'hbig' => $request->hbig,
+            'hb3' => $request->hb3,
+            'hb1' => $request->hb1,
+            'tanggal_hbsag' => $request->tanggal_hbsag,
+            'hasil_hbsag' => $request->hasil_hbsag,
+            'tanggal_antihbs' => $request->tanggal_antihbs,
+            'hasil_antihbs' => $request->hasil_antihbs,
+        ]);
+        return redirect()->back()->with('success', 'Data berhasil diperbarui');
+    }
+    public function edit_showhepatitis($id)
+    {
+        $hepatitis = Show_Hepatitis::findOrFail($id);
+        return response()->json($hepatitis);
+    }
+
+    ///////  PEMANTAUAN BAYI IBU HIV ///////
+
+    public function show_hiv($id)
+    {
+
+        return view('postnatal_care.show_hiv');
+    }
+    ///////  PEMANTAUAN BAYI IBU SIFILIS ///////
+
+    public function show_sifilis($id)
+    {
+
+        return view('postnatal_care.show_sifilis');
     }
 }
