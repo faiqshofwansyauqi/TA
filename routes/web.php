@@ -145,6 +145,9 @@ Route::prefix('postnatal_care')->group(function () {
     Route::put('show_hepatitis/update_showhepatitis/{id}', [PNCController::class, 'update_showhepatitis'])->name('postnatal_care.update_showhepatitis');
     ///////////// PEMANTAUAN BAYI IBU HIV/////////////
     Route::get('pemantauan_bayi/show_hiv/{id}', [PNCController::class, 'show_hiv'])->name('postnatal_care.show_hiv');
+    Route::post('store-show_hiv', [PNCController::class, 'store_showhiv'])->name('postnatal_care.store_showhiv');
+    Route::get('show_hiv/edit_showhiv/{id}', [PNCController::class, 'edit_showhiv'])->name('postnatal_care.edit_showhiv');
+    Route::put('show_hiv/update_showhiv/{id}', [PNCController::class, 'update_showhiv'])->name('postnatal_care.update_showhiv');
     ///////////// PEMANTAUAN BAYI IBU SIFILIS/////////////
     Route::get('pemantauan_bayi/show_sifilis/{id}', [PNCController::class, 'show_sifilis'])->name('postnatal_care.show_sifilis');
 });

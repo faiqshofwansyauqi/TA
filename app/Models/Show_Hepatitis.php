@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use App\Models\Ibu;
 use Illuminate\Database\Eloquent\Model;
 
 class Show_Hepatitis extends Model

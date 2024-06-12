@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Show_Hiv;
 use Illuminate\Http\Request;
 use App\Models\Anc;
 use App\Models\Pemantauan_Bayi;
@@ -344,7 +345,6 @@ class PNCController extends Controller
         $pb = Pemantauan_Bayi::all();
         return view('postnatal_care.pemantauan_bayi', compact('ibus', 'pb'));
     }
-
     public function store_pemantauan_bayi(Request $request)
     {
         $request->validate([
@@ -460,8 +460,86 @@ class PNCController extends Controller
 
     public function show_hiv($id)
     {
+        $pb = Pemantauan_Bayi::findOrFail($id);
+        $NIK = $pb->NIK;
+        $hiv = Show_Hiv::where('NIK', $NIK)->get();
+        return view('postnatal_care.show_hiv', compact('pb', 'hiv'));
+    }
+    public function store_showhiv(Request $request)
+    {
+        // dd($request);
+        $request->validate([
+            'NIK' => 'required',
+            'tgl_pemberian_arv' => 'required',
+            'hasil_pemberian_arv' => 'required',
+            'tgl_bds' => 'required',
+            'hasil_bds' => 'required',
+            'tgl_konfirmasi_bds' => 'required',
+            'hasil_konfirmasi_bds' => 'required',
+            'tgl_pemeriksaan_balita' => 'required',
+            'hasil_pemeriksaan_balita' => 'required',
+            'tgl_perawatan_pdp' => 'required',
+            'hasil_perawatan_pdp' => 'required',
+            'tgl_pengobatan_arv' => 'required',
+            'hasil_pengobatan_arv' => 'required',
+        ]);
 
-        return view('postnatal_care.show_hiv');
+        Show_hiv::create([
+            'NIK' => $request->NIK,
+            'tgl_pemberian_arv' => $request->tgl_pemberian_arv,
+            'hasil_pemberian_arv' => $request->hasil_pemberian_arv,
+            'tgl_bds' => $request->tgl_bds,
+            'hasil_bds' => $request->hasil_bds,
+            'tgl_konfirmasi_bds' => $request->tgl_konfirmasi_bds,
+            'hasil_konfirmasi_bds' => $request->hasil_konfirmasi_bds,
+            'tgl_pemeriksaan_balita' => $request->tgl_pemeriksaan_balita,
+            'hasil_pemeriksaan_balita' => $request->hasil_pemeriksaan_balita,
+            'tgl_perawatan_pdp' => $request->tgl_perawatan_pdp,
+            'hasil_perawatan_pdp' => $request->hasil_perawatan_pdp,
+            'tgl_pengobatan_arv' => $request->tgl_pengobatan_arv,
+            'hasil_pengobatan_arv' => $request->hasil_pengobatan_arv,
+        ]);
+        return redirect()->back()->with('success', 'Data berhasil ditambahkan');
+    }
+    public function update_showhiv(Request $request, $id)
+    {
+        // dd($request);
+        $request->validate([
+            'tgl_pemberian_arv' => 'required',
+            'hasil_pemberian_arv' => 'required',
+            'tgl_bds' => 'required',
+            'hasil_bds' => 'required',
+            'tgl_konfirmasi_bds' => 'required',
+            'hasil_konfirmasi_bds' => 'required',
+            'tgl_pemeriksaan_balita' => 'required',
+            'hasil_pemeriksaan_balita' => 'required',
+            'tgl_perawatan_pdp' => 'required',
+            'hasil_perawatan_pdp' => 'required',
+            'tgl_pengobatan_arv' => 'required',
+            'hasil_pengobatan_arv' => 'required',
+
+        ]);
+        $hiv = Show_Hiv::findOrFail($id);
+        $hiv->update([
+            'tgl_pemberian_arv' => $request->tgl_pemberian_arv,
+            'hasil_pemberian_arv' => $request->hasil_pemberian_arv,
+            'tgl_bds' => $request->tgl_bds,
+            'hasil_bds' => $request->hasil_bds,
+            'tgl_konfirmasi_bds' => $request->tgl_konfirmasi_bds,
+            'hasil_konfirmasi_bds' => $request->hasil_konfirmasi_bds,
+            'tgl_pemeriksaan_balita' => $request->tgl_pemeriksaan_balita,
+            'hasil_pemeriksaan_balita' => $request->hasil_pemeriksaan_balita,
+            'tgl_perawatan_pdp' => $request->tgl_perawatan_pdp,
+            'hasil_perawatan_pdp' => $request->hasil_perawatan_pdp,
+            'tgl_pengobatan_arv' => $request->tgl_pengobatan_arv,
+            'hasil_pengobatan_arv' => $request->hasil_pengobatan_arv,
+        ]);
+        return redirect()->back()->with('success', 'Data berhasil diperbarui');
+    }
+    public function edit_showhiv($id)
+    {
+        $hiv = Show_Hiv::findOrFail($id);
+        return response()->json($hiv);
     }
     ///////  PEMANTAUAN BAYI IBU SIFILIS ///////
 
