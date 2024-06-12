@@ -11,6 +11,7 @@ use App\Models\Ppia;
 use App\Models\Show_Nifas;
 use App\Models\Show_Ppia;
 use App\Models\Show_Hepatitis;
+use App\Models\Show_Sifilis;
 use Carbon\Carbon;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -484,7 +485,7 @@ class PNCController extends Controller
             'hasil_pengobatan_arv' => 'required',
         ]);
 
-        Show_hiv::create([
+        Show_Hiv::create([
             'NIK' => $request->NIK,
             'tgl_pemberian_arv' => $request->tgl_pemberian_arv,
             'hasil_pemberian_arv' => $request->hasil_pemberian_arv,
@@ -545,7 +546,52 @@ class PNCController extends Controller
 
     public function show_sifilis($id)
     {
-
-        return view('postnatal_care.show_sifilis');
+        $pb = Pemantauan_Bayi::findOrFail($id);
+        $NIK = $pb->NIK;
+        $sifilis = Show_Sifilis::where('NIK', $NIK)->get();
+        return view('postnatal_care.show_sifilis', compact('pb', 'sifilis'));
     }
+    public function store_showsifilis(Request $request)
+    {
+        // dd($request);
+        $request->validate([
+            'NIK' => 'required',
+            'sifilis_dirujuk' => 'required',
+            'periksa_sifilis' => 'required',
+            'hasil_sifilis' => 'required',
+        ]);
+
+        Show_Sifilis::create([
+            'NIK' => $request->NIK,
+            'sifilis_dirujuk' => $request->sifilis_dirujuk,
+            'periksa_sifilis' => $request->periksa_sifilis,
+            'hasil_sifilis' => $request->hasil_sifilis,
+        ]);
+        return redirect()->back()->with('success', 'Data berhasil ditambahkan');
+    }
+    public function update_showsifilis(Request $request, $id)
+    {
+        // dd($request);
+        $request->validate([
+            'NIK' => 'required',
+            'sifilis_dirujuk' => 'required',
+            'periksa_sifilis' => 'required',
+            'hasil_sifilis' => 'required',
+
+        ]);
+        $sifilis = Show_Sifilis::findOrFail($id);
+        $sifilis->update([
+            'NIK' => $request->NIK,
+            'sifilis_dirujuk' => $request->sifilis_dirujuk,
+            'periksa_sifilis' => $request->periksa_sifilis,
+            'hasil_sifilis' => $request->hasil_sifilis,
+        ]);
+        return redirect()->back()->with('success', 'Data berhasil diperbarui');
+    }
+    public function edit_showsifilis($id)
+    {
+        $sifilis = Show_Sifilis::findOrFail($id);
+        return response()->json($sifilis);
+    }
+
 }

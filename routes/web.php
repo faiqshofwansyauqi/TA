@@ -150,6 +150,9 @@ Route::prefix('postnatal_care')->group(function () {
     Route::put('show_hiv/update_showhiv/{id}', [PNCController::class, 'update_showhiv'])->name('postnatal_care.update_showhiv');
     ///////////// PEMANTAUAN BAYI IBU SIFILIS/////////////
     Route::get('pemantauan_bayi/show_sifilis/{id}', [PNCController::class, 'show_sifilis'])->name('postnatal_care.show_sifilis');
+    Route::post('store-show_sifilis', [PNCController::class, 'store_showsifilis'])->name('postnatal_care.store_showsifilis');
+    Route::get('show_sifilis/edit_showsifilis/{id}', [PNCController::class, 'edit_showsifilis'])->name('postnatal_care.edit_showsifilis');
+    Route::put('show_sifilis/update_showsifilis/{id}', [PNCController::class, 'update_showsifilis'])->name('postnatal_care.update_showsifilis');
 });
 
 Route::prefix('rekam_medis')->group(function () {
