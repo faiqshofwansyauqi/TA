@@ -5,9 +5,11 @@
         <div class="pagetitle">
             <h1>Data Ibu</h1>
             <br>
-            <button type="button" class="btn btn-success" id="btn-plus">
-                <i class="bi bi-plus-circle"></i> Tambah
-            </button>
+            @can('akses_tambah', \App\Models\Ibu::class)
+                <button type="button" class="btn btn-success" id="btn-plus">
+                    <i class="bi bi-plus-circle"></i> Tambah
+                </button>
+            @endcan
         </div>
     </div>
 
@@ -44,7 +46,9 @@
                                         <th>Jamkesmas</th>
                                         <th>Gol Darah</th>
                                         <th>Telp/HP</th>
-                                        <th>Action</th>
+                                        @can('akses_edit', \App\Models\Ibu::class)
+                                            <th>Action</th>
+                                        @endcan
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
@@ -392,6 +396,129 @@
         });
 
         $(document).ready(function() {
+            let canEdit =
+                @can('akses_edit', \App\Models\Ibu::class)
+                    true
+                @else
+                    false
+                @endcan ;
+
+            let columns = [{
+                    data: 'puskesmas',
+                    name: 'puskesmas'
+                },
+                {
+                    data: 'NIK',
+                    name: 'NIK'
+                },
+                {
+                    data: 'noregis',
+                    name: 'noregis'
+                },
+                {
+                    data: 'nama_ibu',
+                    name: 'nama_ibu'
+                },
+                {
+                    data: 'nama_suami',
+                    name: 'nama_suami'
+                },
+                {
+                    data: 'tanggal_lahir',
+                    name: 'tanggal_lahir'
+                },
+                {
+                    data: 'alamat_domisili',
+                    name: 'alamat_domisili'
+                },
+                {
+                    data: 'desa',
+                    name: 'desa'
+                },
+                {
+                    data: 'kab',
+                    name: 'kab'
+                },
+                {
+                    data: 'pendidikan_ibu_suami',
+                    name: 'pendidikan_ibu_suami'
+                },
+                {
+                    data: 'pekerjaaan_ibu_suami',
+                    name: 'pekerjaaan_ibu_suami'
+                },
+                {
+                    data: 'umur',
+                    name: 'umur',
+                    render: function(data, type, row) {
+                        return data + ' tahun';
+                    }
+                },
+                {
+                    data: 'rtrw',
+                    name: 'rtrw'
+                },
+                {
+                    data: 'kec',
+                    name: 'kec'
+                },
+                {
+                    data: 'prov',
+                    name: 'prov'
+                },
+                {
+                    data: 'agama',
+                    name: 'agama'
+                },
+                {
+                    data: 'tanggal_reg',
+                    name: 'tanggal_reg'
+                },
+                {
+                    data: 'posyandu',
+                    name: 'posyandu'
+                },
+                {
+                    data: 'nama_kader',
+                    name: 'nama_kader'
+                },
+                {
+                    data: 'nama_dukum',
+                    name: 'nama_dukum'
+                },
+                {
+                    data: 'jamkesmas',
+                    name: 'jamkesmas'
+                },
+                {
+                    data: 'gol_darah',
+                    name: 'gol_darah'
+                },
+                {
+                    data: 'telp',
+                    name: 'telp'
+                }
+            ];
+
+            if (canEdit) {
+                columns.push({
+                    data: 'action',
+                    name: 'action',
+                    orderable: false,
+                    searchable: false,
+                    render: function(data, type, row) {
+                        let editUrl = '{{ route('pasien.edit_ibu', ':nik') }}'.replace(':nik', row.NIK);
+                        return `
+                        <div style="display: flex; align-items: center;">
+                            <button class="btn btn-sm btn-success edit-btn" data-nik="${row.NIK}" data-bs-toggle="modal" data-bs-target="#modalEdit">
+                                <i class="bi bi-pencil-fill"></i>
+                            </button>
+                        </div>
+                    `;
+                    }
+                });
+            }
+
             $('#ibu-table').DataTable({
                 processing: false,
                 serverSide: true,
@@ -399,127 +526,7 @@
                 ajax: '{{ route('pasien.data_ibu') }}',
                 scrollX: true,
                 fixedHeader: true,
-                columns: [{
-                        data: 'puskesmas',
-                        name: 'puskesmas'
-                    },
-                    {
-                        data: 'NIK',
-                        name: 'NIK'
-                    },
-                    {
-                        data: 'noregis',
-                        name: 'noregis'
-                    },
-                    {
-                        data: 'nama_ibu',
-                        name: 'nama_ibu'
-                    },
-                    {
-                        data: 'nama_suami',
-                        name: 'nama_suami'
-                    },
-                    {
-                        data: 'tanggal_lahir',
-                        name: 'tanggal_lahir'
-                    },
-                    {
-                        data: 'alamat_domisili',
-                        name: 'alamat_domisili'
-                    },
-                    {
-                        data: 'desa',
-                        name: 'desa'
-                    },
-                    {
-                        data: 'kab',
-                        name: 'kab'
-                    },
-                    {
-                        data: 'pendidikan_ibu_suami',
-                        name: 'pendidikan_ibu_suami'
-                    },
-                    {
-                        data: 'pekerjaaan_ibu_suami',
-                        name: 'pekerjaaan_ibu_suami',
-                    },
-                    {
-                        data: 'umur',
-                        name: 'umur',
-                        render: function(data, type, row) {
-                            return data + ' tahun';
-                        }
-                    },
-                    {
-                        data: 'rtrw',
-                        name: 'rtrw'
-                    },
-                    {
-                        data: 'kec',
-                        name: 'kec'
-                    },
-                    {
-                        data: 'prov',
-                        name: 'prov'
-                    },
-                    {
-                        data: 'agama',
-                        name: 'agama'
-                    },
-                    {
-                        data: 'tanggal_reg',
-                        name: 'tanggal_reg'
-                    },
-                    {
-                        data: 'posyandu',
-                        name: 'posyandu'
-                    },
-                    {
-                        data: 'nama_kader',
-                        name: 'nama_kader'
-                    },
-                    {
-                        data: 'nama_dukum',
-                        name: 'nama_dukum'
-                    },
-                    {
-                        data: 'jamkesmas',
-                        name: 'jamkesmas'
-                    },
-                    {
-                        data: 'gol_darah',
-                        name: 'gol_darah'
-                    },
-                    {
-                        data: 'telp',
-                        name: 'telp'
-                    }, {
-                        data: 'action',
-                        name: 'action',
-                        orderable: false,
-                        searchable: false,
-                        render: function(data, type, row) {
-                            let editUrl = '{{ route('pasien.edit_ibu', ':nik') }}'.replace(':nik',
-                                row.NIK);
-                            let deleteUrl = '{{ route('pasien.destroy_ibu', ':nik') }}'.replace(
-                                ':nik', row.NIK);
-                            return `
-                    <div style="display: flex; align-items: center;">
-                        <button class="btn btn-sm btn-success edit-btn" data-nik="${row.NIK}" data-bs-toggle="modal" data-bs-target="#modalEdit">
-                            <i class="bi bi-pencil-fill"></i>
-                        </button>
-                        <form action="${deleteUrl}" method="POST" style="display:none; margin-left: 5px;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">
-                                <i class="bi bi-trash3-fill"></i>
-                            </button>
-                        </form>
-                    </div>
-                    `;
-                        }
-                    }
-                ],
+                columns: columns,
                 dom: 'Bfrtip',
                 buttons: [
                     'excel', 'pdf', 'print',
@@ -529,7 +536,9 @@
                     }
                 ],
                 columnDefs: [{
-                    targets: [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22],
+                    targets: canEdit ? [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] : [9, 10,
+                        11, 12, 13, 14, 15, 16, 17, 18, 19, 20
+                    ],
                     visible: false
                 }]
             });
