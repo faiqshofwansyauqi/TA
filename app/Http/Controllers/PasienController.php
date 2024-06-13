@@ -40,10 +40,10 @@ class PasienController extends Controller
             'nama_kader' => 'required',
             'nama_dukum' => 'required',
             'jamkesmas' => 'required',
-            'gol_darah' => 'required',            
+            'gol_darah' => 'required',
             'telp' => 'required',
         ]);
-        
+
         Ibu::create([
             'NIK' => $request->NIK,
             'puskesmas' => $request->puskesmas,
@@ -66,10 +66,10 @@ class PasienController extends Controller
             'nama_kader' => $request->nama_kader,
             'nama_dukum' => $request->nama_dukum,
             'jamkesmas' => $request->jamkesmas,
-            'gol_darah' => $request->gol_darah,            
+            'gol_darah' => $request->gol_darah,
             'telp' => $request->telp,
         ]);
-        
+
 
         return redirect()->back()->with('success', 'Data ibu berhasil ditambahkan');
     }
@@ -104,10 +104,10 @@ class PasienController extends Controller
             'nama_kader' => 'required',
             'nama_dukum' => 'required',
             'jamkesmas' => 'required',
-            'gol_darah' => 'required',            
+            'gol_darah' => 'required',
             'telp' => 'required',
         ]);
-    
+
         $ibu = Ibu::findOrFail($NIK);
         $ibu->update([
             'puskesmas' => $request->puskesmas,
@@ -130,7 +130,7 @@ class PasienController extends Controller
             'nama_kader' => $request->nama_kader,
             'nama_dukum' => $request->nama_dukum,
             'jamkesmas' => $request->jamkesmas,
-            'gol_darah' => $request->gol_darah,            
+            'gol_darah' => $request->gol_darah,
             'telp' => $request->telp,
         ]);
 
@@ -156,7 +156,7 @@ class PasienController extends Controller
     {
         $anak = Anak::all();
         $ibus = Ibu::all();
-        return view('pasien.anak', compact('anak','ibus'));
+        return view('pasien.anak', compact('anak', 'ibus'));
     }
 
     public function store_anak(Request $request)
@@ -173,14 +173,13 @@ class PasienController extends Controller
             'gol_darah' => 'required',
         ]);
 
-        $tempat_tanggal_lahir = $request->tempat_lahir . ', ' . $request->tanggal_lahir;
-
         Anak::create([
             'tanggal_terdaftar' => $request->tanggal_terdaftar,
             'nama_anak' => $request->nama_anak,
             'id_ibu' => $request->id_ibu,
             'usia_anak' => $request->usia_anak,
-            'tempat_tanggal_lahir' => $tempat_tanggal_lahir,
+            'tempat_lahir' => $request->tempat_lahir,
+            'tanggal_lahir' => $request->tanggal_lahir,
             'jenis_kelamin' => $request->jenis_kelamin,
             'anak_ke' => $request->anak_ke,
             'gol_darah' => $request->gol_darah,
@@ -202,14 +201,14 @@ class PasienController extends Controller
             'anak_ke' => 'required',
             'gol_darah' => 'required',
         ]);
-        $tempat_tanggal_lahir = $request->tempat_lahir . ', ' . $request->tanggal_lahir;
         $anak = Anak::findOrFail($id);
         $anak->update([
             'tanggal_terdaftar' => $request->tanggal_terdaftar,
             'nama_anak' => $request->nama_anak,
             'usia_anak' => $request->usia_anak,
             'id_ibu' => $request->id_ibu,
-            'tempat_tanggal_lahir' => $tempat_tanggal_lahir,
+            'tempat_lahir' => $request->tempat_lahir,
+            'tanggal_lahir' => $request->tanggal_lahir,
             'jenis_kelamin' => $request->jenis_kelamin,
             'anak_ke' => $request->anak_ke,
             'gol_darah' => $request->gol_darah,

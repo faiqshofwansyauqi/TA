@@ -22,7 +22,6 @@ class CreatePersalinanTable extends Migration
             $table->string('piasenta');
             $table->string('pendarahan');
             $table->string('usia_kehamilan');
-            $table->string('usia_kemilan');
             $table->string('usia_hpht');
             $table->string('keadaan_ibu');
             $table->string('keadaan_bayi');

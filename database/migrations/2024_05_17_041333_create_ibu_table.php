@@ -14,7 +14,7 @@ class CreateIbuTable extends Migration
     public function up()
     {
         Schema::create('ibu', function (Blueprint $table) {
-            $table->id('id_ibu');
+            $table->id('NIK');
             $table->string('puskesmas');
             $table->string('noregis');
             $table->string('nama_ibu');
@@ -36,7 +36,7 @@ class CreateIbuTable extends Migration
             $table->string('nama_dukum');
             $table->string('jamkesmas');
             $table->string('gol_darah');
-            $table->date('telp');
+            $table->string('telp');
 
             $table->timestamps();
         });

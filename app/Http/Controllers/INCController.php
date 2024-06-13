@@ -73,7 +73,6 @@ class INCController extends Controller
             'rujuk' => $request->rujuk,
             'alamat_bersalin' => $request->alamat_bersalin,
         ]);
-
         return redirect()->back()->with('success', 'Data persalinan berhasil ditambahkan');
     }
     public function update_persalinan(Request $request, $id)
@@ -101,6 +100,7 @@ class INCController extends Controller
             'detail_integrasi' => 'required',
             'komplikasi' => 'required',
             'keadaan_tiba' => 'required',
+            'keadaan_pulang' => 'required',
             'rujuk' => 'required',
             'alamat_bersalin' => 'required',
         ]);
@@ -127,20 +127,21 @@ class INCController extends Controller
             'detail_integrasi' => $request->detail_integrasi,
             'komplikasi' => $request->komplikasi,
             'keadaan_tiba' => $request->keadaan_tiba,
+            'keadaan_pulang' => $request->keadaan_pulang,
             'rujuk' => $request->rujuk,
             'alamat_bersalin' => $request->alamat_bersalin,
         ]);
         return redirect()->back()->with('success', 'Data persalinan berhasil diperbarui');
     }
-    public function destroy_persalinan($id_persalinan)
+    public function destroy_persalinan($id)
     {
-        try{
-            $persalinan = Persalinan::findOrFail($id_persalinan);
+        try {
+            $persalinan = Persalinan::findOrFail($id);
             $persalinan->delete();
             return response()->json(['success' => true, 'message' => 'Data berhasil dihapus']);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'message' => 'Data gagal dihapus']);
-        }        
+        }
     }
     public function getData_persalinan()
     {
@@ -148,18 +149,18 @@ class INCController extends Controller
 
         return DataTables::of($persalinan)->make(true);
     }
-    public function edit_persalinan($id_persalinan)
+    public function edit_persalinan($id)
     {
-        $persalinan = Persalinan::findOrFail($id_persalinan);
+        $persalinan = Persalinan::findOrFail($id);
         return response()->json($persalinan);
     }
-    public function show_persalinan($id_persalinan)
+    public function show_persalinan($id)
     {
         $persalinan = Persalinan::with([
             'ibu' => function ($query) {
                 $query->select('nama_ibu');
             }
-        ])->find($id_persalinan);
+        ])->find($id);
         return response()->json($persalinan);
     }
 }

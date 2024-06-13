@@ -18,6 +18,7 @@ class CreateRencanaPersalinanTable extends Migration
             $table->string('tgl_persalinan');
             $table->string('NIK');
             $table->string('penolong');
+            $table->string('tempat');
             $table->string('pendamping');
             $table->string('transport');
             $table->string('pendonor');

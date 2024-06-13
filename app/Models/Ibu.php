@@ -23,7 +23,7 @@ class Ibu extends Model
         'pendidikan_ibu_suami',
         'pekerjaaan_ibu_suami',
         'umur',
-        'rwtw',
+        'rtrw',
         'kec',
         'prov',
         'agama',

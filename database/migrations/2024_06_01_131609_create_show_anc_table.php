@@ -58,9 +58,16 @@ class CreateShowAncTable extends Migration
             $table->string('abortus');
             $table->string('pendarahan');
             $table->string('infeksi');
-            $table->string('anemia');
             $table->string('kpd');
-            $table->string('lain_lain');
+            $table->string('lain_lain_komplikasi');
+            $table->string('puskesmas');
+            $table->string('klinik');
+            $table->string('rsia_rsb');
+            $table->string('rs');
+            $table->string('lain_lain_dirujuk');
+            $table->string('tiba');
+            $table->string('pulang');
+            $table->string('keterangan');
             $table->timestamps();
         });
     }

@@ -309,7 +309,10 @@
                 fixedHeader: true,
                 columns: [{
                         data: 'id',
-                        name: 'id'
+                        name: 'id',
+                        render: function(data, type, row, meta) {
+                            return meta.row + meta.settings._iDisplayStart + 1;
+                        }
                     },
                     {
                         data: 'NIK',
@@ -447,6 +450,7 @@
                 method: 'GET',
                 success: function(data) {
                     let namaIbu = data.ibu.nama_ibu;
+
                     function formatDate(dateString) {
                         if (!dateString) return '';
                         if (isNaN(new Date(dateString))) return 'Invalid date format';

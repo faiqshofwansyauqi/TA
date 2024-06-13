@@ -22,7 +22,7 @@
                             <table class="table table-bordered table-anc" id="anak-table">
                                 <thead>
                                     <tr>
-                                        <th>ID Anak</th>
+                                        <th>No</th>
                                         <th>Tanggal Terdaftar</th>
                                         <th>Nama Anak</th>
                                         <th>Anak Dari Ibu</th>
@@ -247,7 +247,10 @@
                 ajax: '{{ route('pasien.data_anak') }}',
                 columns: [{
                         data: 'id_anak',
-                        name: 'id_anak'
+                        name: 'id_anak',
+                        render: function(data, type, row, meta) {
+                            return meta.row + meta.settings._iDisplayStart + 1;
+                        }
                     },
                     {
                         data: 'tanggal_terdaftar',
@@ -269,8 +272,11 @@
                         }
                     },
                     {
-                        data: 'tempat_tanggal_lahir',
-                        name: 'tempat_tanggal_lahir'
+                        data: null,
+                        name: 'tempat_tanggal_lahir',
+                        render: function(data, type, row) {
+                            return row.tempat_lahir + ', ' + row.tanggal_lahir;
+                        }
                     },
                     {
                         data: 'jenis_kelamin',
@@ -328,6 +334,7 @@
                 success: function(data) {
                     $('#edit_tanggal_terdaftar').val(data.tanggal_terdaftar);
                     $('#edit_nama_anak').val(data.nama_anak);
+                    $('#edit_id_ibu').val(data.id_ibu);
                     $('#edit_usia_anak').val(data.usia_anak);
                     $('#edit_tempat_lahir').val(data.tempat_lahir);
                     $('#edit_tanggal_lahir').val(data.tanggal_lahir);
