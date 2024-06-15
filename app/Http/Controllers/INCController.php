@@ -13,6 +13,7 @@ class INCController extends Controller
     //////// MASA PERSALINAN ////////
     public function Persalinan()
     {
+        $this->authorize("akses_page", Persalinan::class);
         $persalinan = Persalinan::all();
         $ibus = Rencana_Persalinan::all();
         return view('intranatal_care.persalinan', compact('persalinan', 'ibus'));

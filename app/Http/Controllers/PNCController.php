@@ -21,14 +21,13 @@ class PNCController extends Controller
 
     public function Nifas()
     {
+        $this->authorize("akses_page", Nifas::class);
         $ibus = Anc::all();
         $nifas = Nifas::all();
-        // dd($nifas);
         return view('postnatal_care.nifas', compact('nifas', 'ibus'));
     }
     public function store_nifas(Request $request)
     {
-        // dd($request);
         $request->validate([
             'NIK' => 'required',
         ]);
@@ -59,9 +58,9 @@ class PNCController extends Controller
 
     public function show_nifas($id)
     {
+        $this->authorize("akses_page", Show_Nifas::class);
         $nifas = Nifas::findOrFail($id);
         $nifass = Show_Nifas::all();
-        // dd($nifass);
         return view('postnatal_care.show_nifas', compact('nifass', 'nifas'));
     }
     public function store_shownifas(Request $request)
@@ -202,6 +201,7 @@ class PNCController extends Controller
 
     public function Ppia()
     {
+        $this->authorize("akses_page",Ppia::class);
         $ibus = Anc::all();
         $ppia = Ppia::all();
         return view('postnatal_care.ppia', compact('ppia', 'ibus'));
@@ -236,6 +236,7 @@ class PNCController extends Controller
 
     public function show_ppia($id)
     {
+        $this->authorize("akses_page", Show_Ppia::class);
         $ppia = Ppia::findOrFail($id);
         $NIK = $ppia->NIK;
         $ppias = Show_Ppia::where('NIK', $NIK)->get();
@@ -342,6 +343,7 @@ class PNCController extends Controller
 
     public function pemantauan_bayi()
     {
+        $this->authorize("akses_page", Pemantauan_Bayi::class);
         $ibus = Anc::all();
         $pb = Pemantauan_Bayi::all();
         return view('postnatal_care.pemantauan_bayi', compact('ibus', 'pb'));
@@ -361,21 +363,13 @@ class PNCController extends Controller
         $pb = Pemantauan_Bayi::select('*');
         return DataTables::of($pb)->make(true);
     }
-    public function destroy_pemantauan_bayi($id)
-    {
-        try {
-            $pb = Pemantauan_Bayi::findOrFail($id);
-            $pb->delete();
-            return response()->json(['success' => true, 'message' => 'Data berhasil dihapus']);
-        } catch (\Exception $e) {
-            return response()->json(['success' => false, 'message' => 'Data gagal dihapus']);
-        }
-    }
+    
 
     ///////  PEMANTAUAN BAYI IBU HEPATITIS B ///////
 
     public function show_hepatitis($id)
     {
+        $this->authorize("akses_page", Show_Hepatitis::class);
         $pb = Pemantauan_Bayi::findOrFail($id);
         $NIK = $pb->NIK;
         $hepatitis = Show_Hepatitis::where('NIK', $NIK)->get();
@@ -461,6 +455,7 @@ class PNCController extends Controller
 
     public function show_hiv($id)
     {
+        $this->authorize("akses_page", Show_Hiv::class);
         $pb = Pemantauan_Bayi::findOrFail($id);
         $NIK = $pb->NIK;
         $hiv = Show_Hiv::where('NIK', $NIK)->get();
@@ -542,10 +537,12 @@ class PNCController extends Controller
         $hiv = Show_Hiv::findOrFail($id);
         return response()->json($hiv);
     }
+
     ///////  PEMANTAUAN BAYI IBU SIFILIS ///////
 
     public function show_sifilis($id)
     {
+        $this->authorize("akses_page", Show_Sifilis::class);
         $pb = Pemantauan_Bayi::findOrFail($id);
         $NIK = $pb->NIK;
         $sifilis = Show_Sifilis::where('NIK', $NIK)->get();

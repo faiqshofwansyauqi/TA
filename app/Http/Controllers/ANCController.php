@@ -17,6 +17,7 @@ class ANCController extends Controller
     //////// PEMERIKSAAN DOKTER TM 1 ////////
     public function Tm1()
     {
+        $this->authorize("akses_page", Tm1::class);
         $ibus = Ibu::all();
         $tm1 = Tm1::all();
         return view('antenatal_care.tm1', compact('tm1', 'ibus'));
@@ -152,9 +153,9 @@ class ANCController extends Controller
 
     public function Anc()
     {
+        $this->authorize("akses_page", Anc::class);
         $ibus = Ibu::all();
         $anc = Anc::all();
-        // dd($anc);
         return view('antenatal_care.anc', compact('anc', 'ibus'));
     }
     public function store_anc(Request $request)
@@ -190,9 +191,9 @@ class ANCController extends Controller
 
     public function show_anc($id)
     {
+        $this->authorize("akses_page", Show_Anc::class);
         $anc = Anc::findOrFail($id);
-        $ancs = Show_Anc::all();
-        // dd($anc);
+        $ancs = Show_Anc::all();        
         return view('antenatal_care.show_anc', compact('ancs', 'anc'));
     }
     public function store_showanc(Request $request)
@@ -440,9 +441,9 @@ class ANCController extends Controller
     //////// RIWAYAT OBSTETRIK DAN PEMERIKSAAN BIDAN ////////
     public function Ropb()
     {
+        $this->authorize("akses_page", Ropb::class);
         $ropb = Ropb::all();
         $ibus = Ibu::all();
-        ;
         return view('antenatal_care.ropb', compact('ropb', 'ibus'));
     }
     public function store_ropb(Request $request)
@@ -556,6 +557,7 @@ class ANCController extends Controller
     //////// RENCANA PERSALINAN ////////
     public function Rnca()
     {
+        $this->authorize("akses_page", Rencana_Persalinan::class);
         $rnca = Rencana_Persalinan::all();
         $ibus = Ropb::all();
         return view('antenatal_care.rnca_persalinan', compact('rnca', 'ibus'));
@@ -646,6 +648,7 @@ class ANCController extends Controller
     //////// PEMERIKSAAN DOKTER TM3 ////////
     public function Tm3()
     {
+        $this->authorize("akses_page", Tm3::class);
         $ibus = Ibu::all();
         $tm3 = Tm3::all();
         return view('antenatal_care.tm3', compact('tm3', 'ibus'));

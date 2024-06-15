@@ -5,7 +5,7 @@ namespace App\Policies;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class AksesButtonPolicy
+class AksesPagePolicy
 {
     use HandlesAuthorization;
 
@@ -20,6 +20,14 @@ class AksesButtonPolicy
     }
 
     public function akses_tambah(User $user)
+    {
+        return $user->name == 'Bidan' || $user->name == 'Admin';
+    }
+    public function akses_sidebar(User $user)
+    {
+        return $user->name == 'Bidan' || $user->name == 'Admin';
+    }
+    public function akses_page(User $user)
     {
         return $user->name == 'Bidan' || $user->name == 'Admin';
     }

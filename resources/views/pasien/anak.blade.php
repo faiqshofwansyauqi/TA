@@ -5,11 +5,9 @@
         <div class="pagetitle">
             <h1>Data Anak</h1>
             <br>
-            @can('akses_tambah', \App\Models\Anak::class)
-                <button type="button" class="btn btn-success" id="btn-plus">
-                    <i class="bi bi-plus-circle"></i> Tambah
-                </button>
-            @endcan
+            <button type="button" class="btn btn-success" id="btn-plus">
+                <i class="bi bi-plus-circle"></i> Tambah
+            </button>
         </div>
     </div>
 
@@ -33,9 +31,7 @@
                                         <th>Jenis Kelamin</th>
                                         <th>Anak Ke</th>
                                         <th>Golongan Darah</th>
-                                        @can('akses_edit', \App\Models\Anak::class)
-                                            <th>Action</th>
-                                        @endcan
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
@@ -244,88 +240,86 @@
         });
 
         $(document).ready(function() {
-            let canEdit =
-                @can('akses_edit', \App\Models\Anak::class)
-                    true
-                @else
-                    false
-                @endcan ;
-            let columns = [{
-                    data: 'id_anak',
-                    name: 'id_anak',
-                    render: function(data, type, row, meta) {
-                        return meta.row + meta.settings._iDisplayStart + 1;
-                    }
-                },
-                {
-                    data: 'tanggal_terdaftar',
-                    name: 'tanggal_terdaftar'
-                },
-                {
-                    data: 'nama_anak',
-                    name: 'nama_anak'
-                },
-                {
-                    data: 'id_ibu',
-                    name: 'nama_ibu'
-                },
-                {
-                    data: 'usia_anak',
-                    name: 'usia_anak',
-                    render: function(data, type, row) {
-                        return data + ' tahun';
-                    }
-                },
-                {
-                    data: null,
-                    name: 'tempat_tanggal_lahir',
-                    render: function(data, type, row) {
-                        return row.tempat_lahir + ', ' + row.tanggal_lahir;
-                    }
-                },
-                {
-                    data: 'jenis_kelamin',
-                    name: 'jenis_kelamin'
-                },
-                {
-                    data: 'anak_ke',
-                    name: 'anak_ke'
-                },
-                {
-                    data: 'gol_darah',
-                    name: 'gol_darah'
-                },
-            ];
-            if (canEdit) {
-                columns.push({
-                    data: 'action',
-                    name: 'action',
-                    orderable: false,
-                    searchable: false,
-                    render: function(data, type, row) {
-                        let editUrl = '{{ route('pasien.edit_anak', ':id') }}'
-                            .replace(':id',
-                                row.id_anak);
-                        return `
-                        <div style="display: flex; align-items: center;">
-                            <button class="btn btn-sm btn-success edit-btn" data-id="${row.id_anak}" data-bs-toggle="modal" data-bs-target="#modalEdit">
-                                <i class="bi bi-pencil-fill"></i>
-                            </button>
-                        </div>
-                    `;
-                    }
-                });
-            }
             $('#anak-table').DataTable({
                 processing: true,
                 serverSide: true,
                 ordering: false,
-                ajax: '{{ route('pasien.data_anak') }}',                
-                scrollX: true,
-                fixedHeader: true,
-                columns: columns,
+                ajax: '{{ route('pasien.data_anak') }}',
+                columns: [{
+                        data: 'id_anak',
+                        name: 'id_anak',
+                        render: function(data, type, row, meta) {
+                            return meta.row + meta.settings._iDisplayStart + 1;
+                        }
+                    },
+                    {
+                        data: 'tanggal_terdaftar',
+                        name: 'tanggal_terdaftar'
+                    },
+                    {
+                        data: 'nama_anak',
+                        name: 'nama_anak'
+                    },
+                    {
+                        data: 'id_ibu',
+                        name: 'nama_ibu'
+                    },
+                    {
+                        data: 'usia_anak',
+                        name: 'usia_anak',
+                        render: function(data, type, row) {
+                            return data + ' tahun';
+                        }
+                    },
+                    {
+                        data: null,
+                        name: 'tempat_tanggal_lahir',
+                        render: function(data, type, row) {
+                            return row.tempat_lahir + ', ' + row.tanggal_lahir;
+                        }
+                    },
+                    {
+                        data: 'jenis_kelamin',
+                        name: 'jenis_kelamin'
+                    },
+                    {
+                        data: 'anak_ke',
+                        name: 'anak_ke'
+                    },
+                    {
+                        data: 'gol_darah',
+                        name: 'gol_darah'
+                    },
+                    {
+                        data: 'action',
+                        name: 'action',
+                        orderable: false,
+                        searchable: false,
+                        render: function(data, type, row) {
+                            let editUrl = '{{ route('pasien.edit_anak', ':id') }}'.replace(':id',
+                                row.id_anak);
+                            let deleteUrl = '{{ route('pasien.destroy_anak', ':id') }}'.replace(
+                                ':id', row.id_anak);
+                            return `
+                        <div style="display: flex; align-items: center;">
+                            <button class="btn btn-sm btn-success edit-btn" data-id="${row.id_anak}" data-bs-toggle="modal" data-bs-target="#modalEdit">
+                                <i class="bi bi-pencil-fill"></i>
+                            </button>
+                            <form action="${deleteUrl}" method="POST" style="display:inline; margin-left: 5px;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">
+                                    <i class="bi bi-trash3-fill"></i>
+                                </button>
+                            </form>
+                        </div>
+                    `;
+                        }
+                    }
+                ]
             });
         });
+
 
         document.addEventListener('DOMContentLoaded', (event) => {
             const today = new Date().toISOString().split('T')[0];
@@ -347,9 +341,8 @@
                     $('#edit_jenis_kelamin').val(data.jenis_kelamin);
                     $('#edit_anak_ke').val(data.anak_ke);
                     $('#edit_gol_darah').val(data.gol_darah);
-                    $('#editForm').attr('action',
-                        '{{ route('pasien.update_anak', ':id') }}'.replace(
-                            ':id', id));
+                    $('#editForm').attr('action', '{{ route('pasien.update_anak', ':id') }}'.replace(
+                        ':id', id));
                     $('#modalEdit').modal('show');
                 }
             });

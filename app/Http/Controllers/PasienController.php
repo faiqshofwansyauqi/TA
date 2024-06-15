@@ -11,6 +11,7 @@ class PasienController extends Controller
 {
     public function Ibu()
     {
+        $this->authorize("akses_page", Ibu::class);
         $ibu = Ibu::all();
         return view('pasien.ibu', compact('ibu'));
     }
@@ -154,6 +155,7 @@ class PasienController extends Controller
     //////////// ANAK ////////////
     public function Anak()
     {
+        $this->authorize("akses_page", Anak::class);
         $anak = Anak::all();
         $ibus = Ibu::all();
         return view('pasien.anak', compact('anak', 'ibus'));
