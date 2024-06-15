@@ -11,6 +11,7 @@ use App\Models\Anc;
 use App\Models\Ropb;
 use App\Models\Show_Anc;
 use App\Models\Rencana_Persalinan;
+use Illuminate\Support\Facades\Auth;
 
 class ANCController extends Controller
 {
@@ -153,10 +154,15 @@ class ANCController extends Controller
 
     public function Anc()
     {
-        $this->authorize("akses_page", Anc::class);
-        $ibus = Ibu::all();
-        $anc = Anc::all();
-        return view('antenatal_care.anc', compact('anc', 'ibus'));
+        $user = Auth::user();
+        if ($user->hasRole(['bidan', 'admin'])) {
+            $this->authorize('akses_page', Anc::class);
+            $ibus = Ibu::all();
+            $anc = Anc::all();
+            return view('antenatal_care.anc', compact('anc', 'ibus'));
+        } else {
+            return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
+        }
     }
     public function store_anc(Request $request)
     {
@@ -178,23 +184,28 @@ class ANCController extends Controller
     }
     public function destroy_anc($id)
     {
-        try{
+        try {
             $anc = Anc::findOrFail($id);
             $anc->delete();
             return response()->json(['success' => true, 'message' => 'Data berhasil dihapus']);
-            } catch (\Exception $e) {
-                return response()->json(['success' => false, 'message' => 'Data gagal dihapus']);
-            }        
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Data gagal dihapus']);
+        }
     }
 
     //////////////// SHOW ANC ////////////////
 
     public function show_anc($id)
     {
-        $this->authorize("akses_page", Show_Anc::class);
-        $anc = Anc::findOrFail($id);
-        $ancs = Show_Anc::all();        
-        return view('antenatal_care.show_anc', compact('ancs', 'anc'));
+        $user = Auth::user();
+        if ($user->hasRole(['bidan', 'admin'])) {
+            $this->authorize('akses_page', Show_Anc::class);
+            $anc = Anc::findOrFail($id);
+            $ancs = Show_Anc::all();
+            return view('antenatal_care.show_anc', compact('ancs', 'anc'));
+        } else {
+            return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
+        }
     }
     public function store_showanc(Request $request)
     {
@@ -441,10 +452,16 @@ class ANCController extends Controller
     //////// RIWAYAT OBSTETRIK DAN PEMERIKSAAN BIDAN ////////
     public function Ropb()
     {
-        $this->authorize("akses_page", Ropb::class);
-        $ropb = Ropb::all();
-        $ibus = Ibu::all();
-        return view('antenatal_care.ropb', compact('ropb', 'ibus'));
+
+        $user = Auth::user();
+        if ($user->hasRole(['bidan', 'admin'])) {
+            $this->authorize('akses_page', Ropb::class);
+            $ropb = Ropb::all();
+            $ibus = Ibu::all();
+            return view('antenatal_care.ropb', compact('ropb', 'ibus'));
+        } else {
+            return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
+        }
     }
     public function store_ropb(Request $request)
     {
@@ -557,10 +574,15 @@ class ANCController extends Controller
     //////// RENCANA PERSALINAN ////////
     public function Rnca()
     {
-        $this->authorize("akses_page", Rencana_Persalinan::class);
-        $rnca = Rencana_Persalinan::all();
-        $ibus = Ropb::all();
-        return view('antenatal_care.rnca_persalinan', compact('rnca', 'ibus'));
+        $user = Auth::user();
+        if ($user->hasRole(['bidan', 'admin'])) {
+            $this->authorize('akses_page', Rencana_Persalinan::class);
+            $rnca = Rencana_Persalinan::all();
+            $ibus = Ropb::all();
+            return view('antenatal_care.rnca_persalinan', compact('rnca', 'ibus'));
+        } else {
+            return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
+        }
     }
     public function store_rnca(Request $request)
     {
@@ -648,10 +670,15 @@ class ANCController extends Controller
     //////// PEMERIKSAAN DOKTER TM3 ////////
     public function Tm3()
     {
-        $this->authorize("akses_page", Tm3::class);
-        $ibus = Ibu::all();
-        $tm3 = Tm3::all();
-        return view('antenatal_care.tm3', compact('tm3', 'ibus'));
+        $user = Auth::user();
+        if ($user->hasRole(['bidan', 'admin'])) {
+            $this->authorize('akses_page', Tm3::class);
+            $ibus = Ibu::all();
+            $tm3 = Tm3::all();
+            return view('antenatal_care.tm3', compact('tm3', 'ibus'));
+        } else {
+            return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
+        }
     }
     public function store_tm3(Request $request)
     {

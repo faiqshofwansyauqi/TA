@@ -19,20 +19,12 @@ class AksesPagePolicy
         //
     }
 
-    public function akses_tambah(User $user)
-    {
-        return $user->name == 'Bidan' || $user->name == 'Admin';
-    }
     public function akses_sidebar(User $user)
     {
-        return $user->name == 'Bidan' || $user->name == 'Admin';
+        return $user->hasRole('bidan') || $user->hasRole('admin');
     }
     public function akses_page(User $user)
     {
-        return $user->name == 'Bidan' || $user->name == 'Admin';
-    }
-    public function akses_edit(User $user)
-    {
-        return $user->name == 'Bidan' || $user->name == 'Admin';
+        return $user->hasRole('bidan') || $user->hasRole('admin');
     }
 }

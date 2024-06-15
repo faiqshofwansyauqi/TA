@@ -14,6 +14,7 @@ use App\Models\Show_Hepatitis;
 use App\Models\Show_Sifilis;
 use Carbon\Carbon;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Auth;
 
 class PNCController extends Controller
 {
@@ -21,10 +22,16 @@ class PNCController extends Controller
 
     public function Nifas()
     {
-        $this->authorize("akses_page", Nifas::class);
-        $ibus = Anc::all();
-        $nifas = Nifas::all();
-        return view('postnatal_care.nifas', compact('nifas', 'ibus'));
+        $user = Auth::user();
+        if ($user->hasRole(['bidan', 'admin'])) {
+            $this->authorize('akses_page', Nifas::class);
+            $ibus = Anc::all();
+            $nifas = Nifas::all();
+            return view('postnatal_care.nifas', compact('nifas', 'ibus'));
+
+        } else {
+            return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
+        }
     }
     public function store_nifas(Request $request)
     {
@@ -58,10 +65,15 @@ class PNCController extends Controller
 
     public function show_nifas($id)
     {
-        $this->authorize("akses_page", Show_Nifas::class);
-        $nifas = Nifas::findOrFail($id);
-        $nifass = Show_Nifas::all();
-        return view('postnatal_care.show_nifas', compact('nifass', 'nifas'));
+        $user = Auth::user();
+        if ($user->hasRole(['bidan', 'admin'])) {
+            $this->authorize('akses_page', Show_Nifas::class);
+            $nifas = Nifas::findOrFail($id);
+            $nifass = Show_Nifas::all();
+            return view('postnatal_care.show_nifas', compact('nifass', 'nifas'));
+        } else {
+            return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
+        }
     }
     public function store_shownifas(Request $request)
     {
@@ -201,10 +213,15 @@ class PNCController extends Controller
 
     public function Ppia()
     {
-        $this->authorize("akses_page",Ppia::class);
-        $ibus = Anc::all();
-        $ppia = Ppia::all();
-        return view('postnatal_care.ppia', compact('ppia', 'ibus'));
+        $user = Auth::user();
+        if ($user->hasRole(['bidan', 'admin'])) {
+            $this->authorize('akses_page', Ppia::class);
+            $ibus = Anc::all();
+            $ppia = Ppia::all();
+            return view('postnatal_care.ppia', compact('ppia', 'ibus'));
+        } else {
+            return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
+        }
     }
     public function store_ppia(Request $request)
     {
@@ -236,11 +253,16 @@ class PNCController extends Controller
 
     public function show_ppia($id)
     {
-        $this->authorize("akses_page", Show_Ppia::class);
-        $ppia = Ppia::findOrFail($id);
-        $NIK = $ppia->NIK;
-        $ppias = Show_Ppia::where('NIK', $NIK)->get();
-        return view('postnatal_care.show_ppia', compact('ppias', 'ppia'));
+        $user = Auth::user();
+        if ($user->hasRole(['bidan', 'admin'])) {
+            $this->authorize('akses_page', Show_Ppia::class);
+            $ppia = Ppia::findOrFail($id);
+            $NIK = $ppia->NIK;
+            $ppias = Show_Ppia::where('NIK', $NIK)->get();
+            return view('postnatal_care.show_ppia', compact('ppias', 'ppia'));
+        } else {
+            return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
+        }
     }
     public function store_showppia(Request $request)
     {
@@ -343,10 +365,15 @@ class PNCController extends Controller
 
     public function pemantauan_bayi()
     {
-        $this->authorize("akses_page", Pemantauan_Bayi::class);
-        $ibus = Anc::all();
-        $pb = Pemantauan_Bayi::all();
-        return view('postnatal_care.pemantauan_bayi', compact('ibus', 'pb'));
+        $user = Auth::user();
+        if ($user->hasRole(['bidan', 'admin'])) {
+            $this->authorize('akses_page', Pemantauan_Bayi::class);
+            $ibus = Anc::all();
+            $pb = Pemantauan_Bayi::all();
+            return view('postnatal_care.pemantauan_bayi', compact('ibus', 'pb'));
+        } else {
+            return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
+        }
     }
     public function store_pemantauan_bayi(Request $request)
     {
@@ -363,28 +390,32 @@ class PNCController extends Controller
         $pb = Pemantauan_Bayi::select('*');
         return DataTables::of($pb)->make(true);
     }
-    
+
 
     ///////  PEMANTAUAN BAYI IBU HEPATITIS B ///////
 
     public function show_hepatitis($id)
     {
-        $this->authorize("akses_page", Show_Hepatitis::class);
-        $pb = Pemantauan_Bayi::findOrFail($id);
-        $NIK = $pb->NIK;
-        $hepatitis = Show_Hepatitis::where('NIK', $NIK)->get();
+        $user = Auth::user();
+        if ($user->hasRole(['bidan', 'admin'])) {
+            $this->authorize('akses_page', Show_Hepatitis::class);
+            $pb = Pemantauan_Bayi::findOrFail($id);
+            $NIK = $pb->NIK;
+            $hepatitis = Show_Hepatitis::where('NIK', $NIK)->get();
 
-        foreach ($hepatitis as $item) {
-            $item->hbo = Carbon::parse($item->hbo)->format('d-m-Y / H:i');
-            $item->hb2 = Carbon::parse($item->hb2)->format('d-m-Y / H:i');
-            $item->hbig = Carbon::parse($item->hbig)->format('d-m-Y / H:i');
-            $item->hb3 = Carbon::parse($item->hb3)->format('d-m-Y / H:i');
-            $item->hb1 = Carbon::parse($item->hb1)->format('d-m-Y / H:i');
-            $item->tanggal_hbsag = Carbon::parse($item->tanggal_hbsag)->format('d-m-Y / H:i');
-            $item->tanggal_antihbs = Carbon::parse($item->tanggal_antihbs)->format('d-m-Y / H:i');
+            foreach ($hepatitis as $item) {
+                $item->hbo = Carbon::parse($item->hbo)->format('d-m-Y / H:i');
+                $item->hb2 = Carbon::parse($item->hb2)->format('d-m-Y / H:i');
+                $item->hbig = Carbon::parse($item->hbig)->format('d-m-Y / H:i');
+                $item->hb3 = Carbon::parse($item->hb3)->format('d-m-Y / H:i');
+                $item->hb1 = Carbon::parse($item->hb1)->format('d-m-Y / H:i');
+                $item->tanggal_hbsag = Carbon::parse($item->tanggal_hbsag)->format('d-m-Y / H:i');
+                $item->tanggal_antihbs = Carbon::parse($item->tanggal_antihbs)->format('d-m-Y / H:i');
+            }
+            return view('postnatal_care.show_hepatitis', compact('pb', 'hepatitis'));
+        } else {
+            return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
         }
-
-        return view('postnatal_care.show_hepatitis', compact('pb', 'hepatitis'));
     }
     public function store_showhepatitis(Request $request)
     {
@@ -455,11 +486,16 @@ class PNCController extends Controller
 
     public function show_hiv($id)
     {
-        $this->authorize("akses_page", Show_Hiv::class);
-        $pb = Pemantauan_Bayi::findOrFail($id);
-        $NIK = $pb->NIK;
-        $hiv = Show_Hiv::where('NIK', $NIK)->get();
-        return view('postnatal_care.show_hiv', compact('pb', 'hiv'));
+        $user = Auth::user();
+        if ($user->hasRole(['bidan', 'admin'])) {
+            $this->authorize('akses_page', Show_Hiv::class);
+            $pb = Pemantauan_Bayi::findOrFail($id);
+            $NIK = $pb->NIK;
+            $hiv = Show_Hiv::where('NIK', $NIK)->get();
+            return view('postnatal_care.show_hiv', compact('pb', 'hiv'));
+        } else {
+            return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
+        }
     }
     public function store_showhiv(Request $request)
     {
@@ -542,11 +578,16 @@ class PNCController extends Controller
 
     public function show_sifilis($id)
     {
-        $this->authorize("akses_page", Show_Sifilis::class);
-        $pb = Pemantauan_Bayi::findOrFail($id);
-        $NIK = $pb->NIK;
-        $sifilis = Show_Sifilis::where('NIK', $NIK)->get();
-        return view('postnatal_care.show_sifilis', compact('pb', 'sifilis'));
+        $user = Auth::user();
+        if ($user->hasRole(['bidan', 'admin'])) {
+            $this->authorize('akses_page', Show_sifilis::class);
+            $pb = Pemantauan_Bayi::findOrFail($id);
+            $NIK = $pb->NIK;
+            $sifilis = Show_Sifilis::where('NIK', $NIK)->get();
+            return view('postnatal_care.show_sifilis', compact('pb', 'sifilis'));
+        } else {
+            return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
+        }
     }
     public function store_showsifilis(Request $request)
     {

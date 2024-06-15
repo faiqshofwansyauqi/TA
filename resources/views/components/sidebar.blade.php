@@ -1,7 +1,7 @@
 <!-- ======= Sidebar ======= -->
 <aside id="sidebar" class="sidebar">
     <ul class="sidebar-nav" id="sidebar-nav">
-        @can('akses_sidebar', \App\Models\Ibu::class)
+        @role('bidan|admin')
             <li class="nav-item">
                 <a class="nav-link {{ request()->is(['pasien', 'pasien/*']) ? '' : 'collapsed' }}" data-bs-toggle="collapse"
                     href="#collapseExample5" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -133,7 +133,8 @@
                     </li>
                 </ul>
             </li>
-        @endcan
+        @endrole
+
 
         <li class="nav-item">
             <a class="nav-link {{ request()->is(['master.pasien', 'master/pasien']) ? '' : 'collapsed' }}"

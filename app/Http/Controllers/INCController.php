@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Persalinan;
 use App\Models\Rencana_Persalinan;
+use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\DataTables;
 
 
@@ -13,10 +14,15 @@ class INCController extends Controller
     //////// MASA PERSALINAN ////////
     public function Persalinan()
     {
-        $this->authorize("akses_page", Persalinan::class);
-        $persalinan = Persalinan::all();
-        $ibus = Rencana_Persalinan::all();
-        return view('intranatal_care.persalinan', compact('persalinan', 'ibus'));
+        $user = Auth::user();
+        if ($user->hasRole(['bidan', 'admin'])) {
+            $this->authorize('akses_page', Persalinan::class);
+            $persalinan = Persalinan::all();
+            $ibus = Rencana_Persalinan::all();
+            return view('intranatal_care.persalinan', compact('persalinan', 'ibus'));
+        } else {
+            return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
+        }
     }
     public function store_persalinan(Request $request)
     {
