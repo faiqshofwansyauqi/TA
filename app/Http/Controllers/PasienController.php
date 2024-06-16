@@ -6,14 +6,20 @@ use App\Models\Anak;
 use App\Models\Ibu;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PasienController extends Controller
 {
     public function Ibu()
     {
-        $this->authorize("akses_page", Ibu::class);
-        $ibu = Ibu::all();
-        return view('pasien.ibu', compact('ibu'));
+        $user = Auth::user();
+        if ($user->hasRole(['Bidan', 'Admin'])) {
+            $this->authorize('akses_page', Ibu::class);
+            $ibu = Ibu::all();
+            return view('pasien.ibu', compact('ibu'));
+        } else {
+            return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
+        }
     }
 
     public function store_ibu(Request $request)
@@ -155,10 +161,15 @@ class PasienController extends Controller
     //////////// ANAK ////////////
     public function Anak()
     {
-        $this->authorize("akses_page", Anak::class);
-        $anak = Anak::all();
-        $ibus = Ibu::all();
-        return view('pasien.anak', compact('anak', 'ibus'));
+        $user = Auth::user();
+        if ($user->hasRole(['Bidan', 'Admin'])) {
+            $this->authorize('akses_page', Anak::class);
+            $anak = Anak::all();
+            $ibus = Ibu::all();
+            return view('pasien.anak', compact('anak', 'ibus'));
+        } else {
+            return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
+        }
     }
 
     public function store_anak(Request $request)

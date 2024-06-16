@@ -9,6 +9,7 @@ use App\Http\Controllers\MasterController;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\PNCController;
 use App\Http\Controllers\ANCController;
+use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,7 +54,6 @@ Route::prefix('pasien')->group(function () {
     Route::put('pasien/update_ibu/{id}', [PasienController::class, 'update_ibu'])->name('pasien.update_ibu');
     Route::delete('pasien/destroy_ibu/{id}', [PasienController::class, 'destroy_ibu'])->name('pasien.destroy_ibu');
 });
-
 Route::prefix('antenatal_care')->group(function () {
     ///////////// PEMERIKSAAN DOKTER TM1 /////////////
     Route::get('tm1', [ANCController::class, 'tm1'])->name('antenatal_care.tm1');
@@ -99,7 +99,6 @@ Route::prefix('antenatal_care')->group(function () {
     Route::get('antenatal_care/edit_tm3/{id}', [ANCController::class, 'edit_tm3'])->name('antenatal_care.edit_tm3');
     Route::get('antenatal_care/show_tm3/{id}', [ANCController::class, 'show_tm3'])->name('antenatal_care.show_tm3');
 });
-
 Route::prefix('intranatal_care')->group(function () {
     ///////////// MASA PERSALINAN /////////////
     Route::get('persalinan', [INCController::class, 'Persalinan'])->name('intranatal_care.persalinan');
@@ -155,7 +154,13 @@ Route::prefix('postnatal_care')->group(function () {
     Route::put('show_sifilis/update_showsifilis/{id}', [PNCController::class, 'update_showsifilis'])->name('postnatal_care.update_showsifilis');
 });
 
-Route::prefix('rekam_medis')->group(function () {
+Route::prefix('setting')->group(function () {
+    Route::get('role', [SettingController::class, 'role'])->name('setting.role');
+    Route::post('store-role', [SettingController::class, 'store_role'])->name('setting.store_role');
+    Route::get('data-role', [SettingController::class, 'getData_role'])->name('setting.data_role');
+    Route::get('setting/edit_role/{id}', [SettingController::class, 'edit_role'])->name('setting.edit_role');
+    Route::put('setting/update_role/{id}', [SettingController::class, 'update_role'])->name('setting.update_role');
+    Route::delete('setting/destroy_role/{id}', [SettingController::class, 'destroy_role'])->name('setting.destroy_role');
 });
 
 Route::prefix('master')->group(function () {

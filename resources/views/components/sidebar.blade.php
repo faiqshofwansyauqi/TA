@@ -1,7 +1,7 @@
 <!-- ======= Sidebar ======= -->
 <aside id="sidebar" class="sidebar">
     <ul class="sidebar-nav" id="sidebar-nav">
-        @role('bidan|admin')
+        @role('Bidan|Admin')
             <li class="nav-item">
                 <a class="nav-link {{ request()->is(['pasien', 'pasien/*']) ? '' : 'collapsed' }}" data-bs-toggle="collapse"
                     href="#collapseExample5" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -135,6 +135,14 @@
             </li>
         @endrole
 
+
+        <li class="nav-item">
+            <a class="nav-link {{ request()->is(['setting.role', 'setting/role']) ? '' : 'collapsed' }}"
+                href="{{ route('setting.role') }}">
+                <i class="bi bi-gear"></i>
+                <span>Setting</span>
+            </a>
+        </li>
 
         <li class="nav-item">
             <a class="nav-link {{ request()->is(['master.pasien', 'master/pasien']) ? '' : 'collapsed' }}"

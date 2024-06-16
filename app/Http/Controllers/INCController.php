@@ -15,7 +15,7 @@ class INCController extends Controller
     public function Persalinan()
     {
         $user = Auth::user();
-        if ($user->hasRole(['bidan', 'admin'])) {
+        if ($user->hasRole(['Bidan', 'Admin'])) {
             $this->authorize('akses_page', Persalinan::class);
             $persalinan = Persalinan::all();
             $ibus = Rencana_Persalinan::all();

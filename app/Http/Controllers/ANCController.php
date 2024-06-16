@@ -155,7 +155,7 @@ class ANCController extends Controller
     public function Anc()
     {
         $user = Auth::user();
-        if ($user->hasRole(['bidan', 'admin'])) {
+        if ($user->hasRole(['Bidan', 'Admin'])) {
             $this->authorize('akses_page', Anc::class);
             $ibus = Ibu::all();
             $anc = Anc::all();
@@ -198,7 +198,7 @@ class ANCController extends Controller
     public function show_anc($id)
     {
         $user = Auth::user();
-        if ($user->hasRole(['bidan', 'admin'])) {
+        if ($user->hasRole(['Bidan', 'Admin'])) {
             $this->authorize('akses_page', Show_Anc::class);
             $anc = Anc::findOrFail($id);
             $ancs = Show_Anc::all();
@@ -454,7 +454,7 @@ class ANCController extends Controller
     {
 
         $user = Auth::user();
-        if ($user->hasRole(['bidan', 'admin'])) {
+        if ($user->hasRole(['Bidan', 'Admin'])) {
             $this->authorize('akses_page', Ropb::class);
             $ropb = Ropb::all();
             $ibus = Ibu::all();
@@ -575,7 +575,7 @@ class ANCController extends Controller
     public function Rnca()
     {
         $user = Auth::user();
-        if ($user->hasRole(['bidan', 'admin'])) {
+        if ($user->hasRole(['Bidan', 'Admin'])) {
             $this->authorize('akses_page', Rencana_Persalinan::class);
             $rnca = Rencana_Persalinan::all();
             $ibus = Ropb::all();
@@ -671,7 +671,7 @@ class ANCController extends Controller
     public function Tm3()
     {
         $user = Auth::user();
-        if ($user->hasRole(['bidan', 'admin'])) {
+        if ($user->hasRole(['Bidan', 'Admin'])) {
             $this->authorize('akses_page', Tm3::class);
             $ibus = Ibu::all();
             $tm3 = Tm3::all();
