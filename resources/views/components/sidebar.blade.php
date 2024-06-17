@@ -139,8 +139,8 @@
         <li class="nav-item">
             <a class="nav-link {{ request()->is(['setting.role', 'setting/role']) ? '' : 'collapsed' }}"
                 href="{{ route('setting.role') }}">
-                <i class="bi bi-gear"></i>
-                <span>Setting</span>
+                <i class="bi bi-person-badge"></i>  
+                <span>Role</span>
             </a>
         </li>
 

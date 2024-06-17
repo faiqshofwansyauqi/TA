@@ -393,7 +393,7 @@
 
         $(document).ready(function() {
             $('#ibu-table').DataTable({
-                processing: false,
+                processing: true,
                 serverSide: true,
                 ordering: false,
                 ajax: '{{ route('pasien.data_ibu') }}',

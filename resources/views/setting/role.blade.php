@@ -139,6 +139,9 @@
         $('#role-table').DataTable({
             processing: true,
             serverSide: true,
+            ordering: false,
+            scrollX: true,
+            fixedHeader: true,
             ajax: '{{ route('setting.data_role') }}',
             columns: [{
                     data: 'name',
