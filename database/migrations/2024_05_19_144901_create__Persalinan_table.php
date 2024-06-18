@@ -26,6 +26,8 @@ class CreatePersalinanTable extends Migration
             $table->string('keadaan_ibu');
             $table->string('keadaan_bayi');
             $table->string('berat_bayi');
+            $table->string('jenis_kelamin');
+            $table->string('panjang_bayi');
             $table->string('pesentasi');
             $table->string('tempat');
             $table->string('penolong');

@@ -247,8 +247,8 @@
                                             <label for="jmlh_janin" class="form-label">Jumlah Janin<sup>5)</sup></label>
                                             <select class="form-select" id="jmlh_janin" name="jmlh_janin">
                                                 <option value="">Pilih Jumlah Janin</option>
-                                                <option value="T">Tunggal</option>
-                                                <option value="G">Ganda</option>
+                                                <option value="Tunggal">T</option>
+                                                <option value="Ganda">G</option>
                                             </select>
                                         </div>
                                     </div>
@@ -711,8 +711,8 @@
                                                 Janin<sup>5)</sup></label>
                                             <select class="form-select" id="edit_jmlh_janin" name="jmlh_janin">
                                                 <option value="">Pilih Jumlah Janin</option>
-                                                <option value="T">Tunggal</option>
-                                                <option value="G">Ganda</option>
+                                                <option value="Tunggal">T</option>
+                                                <option value="Ganda">G</option>
                                             </select>
                                         </div>
                                     </div>
@@ -1132,7 +1132,16 @@
                     },
                     {
                         data: 'jmlh_janin',
-                        name: 'jmlh_janin'
+                        name: 'jmlh_janin',
+                        render: function(data, type, row) {
+                            if (data === 'Tungal') {
+                                return 'T';
+                            } else if (data === 'Ganda') {
+                                return 'G';
+                            } else {
+                                return data;
+                            }
+                        }
                     },
                     {
                         data: 'injeksi',

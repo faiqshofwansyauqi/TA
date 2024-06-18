@@ -29,6 +29,9 @@ Route::get('pendaftaran', [LandingController::class, 'pendaftaran']);
 Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+    Route::get('ibu', [PasienController::class, 'Ibu'])->name('pasien.ibu');
+    Route::get('anak', [PasienController::class, 'Anak'])->name('pasien.anak');
+    
 });
 
 Route::middleware(['guest'])->group(function () {
@@ -47,6 +50,7 @@ Route::prefix('pasien')->group(function () {
     Route::post('store-ibu', [PasienController::class, 'store_ibu'])->name('pasien.store_ibu');
     Route::get('data-anak', [PasienController::class, 'getData_anak'])->name('pasien.data_anak');
     Route::get('data-ibu', [PasienController::class, 'getData_ibu'])->name('pasien.data_ibu');
+    Route::get('pasien/anak/{nama_ibu}', [PasienController::class, 'getInfo_ibu'])->name('pasien.info_ibu');
     Route::get('pasien/edit_anak/{id}', [PasienController::class, 'edit_anak'])->name('pasien.edit_anak');
     Route::put('pasien/update_anak/{id}', [PasienController::class, 'update_anak'])->name('pasien.update_anak');
     Route::delete('pasien/destroy_anak/{id}', [PasienController::class, 'destroy_anak'])->name('pasien.destroy_anak');

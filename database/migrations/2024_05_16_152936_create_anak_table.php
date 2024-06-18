@@ -15,14 +15,19 @@ class CreateAnakTable extends Migration
     {
         Schema::create('anak', function (Blueprint $table) {
             $table->id('id_anak');
-            $table->date('tanggal_terdaftar');
             $table->string('nama_anak');
-            $table->integer('usia_anak');
-            $table->string('tanggal_lahir');
-            $table->string('tanggal_lahir');
+            $table->string('nama_ibu');
+            $table->string('nama_suami');
+            $table->string('alamat');
+            $table->string('kec');
+            $table->string('kab');
             $table->string('jenis_kelamin');
-            $table->integer('anak_ke');
-            $table->string('gol_darah');
+            $table->string('jenis_kelahiran');
+            $table->string('anak_ke');
+            $table->string('berat_bayi');
+            $table->string('panjang_bayi');
+            $table->string('bayi_bayi');
+            $table->string('tempat');
             $table->timestamps();
         });
     }

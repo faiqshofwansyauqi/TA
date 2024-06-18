@@ -12,15 +12,19 @@ class Anak extends Model
 
 
     protected $fillable = [
-        'tanggal_terdaftar',
         'nama_anak',
-        'usia_anak',
-        'tempat_lahir',
-        'tanggal_lahir',
+        'nama_ibu',
+        'nama_suami',
+        'alamat',
+        'kec',
+        'kab',
         'jenis_kelamin',
+        'jenis_kelahiran',
         'anak_ke',
-        'gol_darah',
-        'id_ibu'
+        'berat_bayi',
+        'panjang_bayi',
+        'bayi_lahir',
+        'tempat',
     ];
     public function ibu()
     {

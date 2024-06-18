@@ -21,6 +21,8 @@ class Persalinan extends Model
             'keadaan_ibu',
             'keadaan_bayi',
             'berat_bayi',
+            'jenis_kelamin',
+            'panjang_bayi',
             'pesentasi',
             'tempat',
             'penolong',
