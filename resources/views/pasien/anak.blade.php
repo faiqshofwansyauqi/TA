@@ -120,7 +120,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-3 mb-2">
-                                        <label for="berat_bayi" class="form-label">Panjang Bayi</label>
+                                        <label for="berat_bayi" class="form-label">Berat Bayi</label>
                                         <div class="input-group mb-2">
                                             <input type="text" class="form-control" id="berat_bayi" name="berat_bayi"
                                                 inputmode="numeric" pattern="\d*">
@@ -233,7 +233,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-3 mb-2">
-                                        <label for="edit_berat_bayi" class="form-label">Panjang Bayi</label>
+                                        <label for="edit_berat_bayi" class="form-label">Berat Bayi</label>
                                         <div class="input-group mb-2">
                                             <input type="text" class="form-control" id="edit_berat_bayi"
                                                 name="berat_bayi" inputmode="numeric" pattern="\d*">
@@ -262,7 +262,6 @@
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Update</button>
                     </form>
                 </div>
             </div>
@@ -397,32 +396,31 @@
         });
 
 
-        // document.addEventListener('DOMContentLoaded', (event) => {
-        //     const today = new Date().toISOString().split('T')[0];
-        //     document.getElementById('tanggal_terdaftar').value = today;
-        // });
-
-        // $('#anak-table').on('click', '.edit-btn', function() {
-        //     let id = $(this).data('id');
-        //     $.ajax({
-        //         url: '{{ route('pasien.edit_anak', ':id') }}'.replace(':id', id),
-        //         method: 'GET',
-        //         success: function(data) {
-        //             $('#edit_tanggal_terdaftar').val(data.tanggal_terdaftar);
-        //             $('#edit_nama_anak').val(data.nama_anak);
-        //             $('#edit_id_ibu').val(data.id_ibu);
-        //             $('#edit_usia_anak').val(data.usia_anak);
-        //             $('#edit_tempat_lahir').val(data.tempat_lahir);
-        //             $('#edit_tanggal_lahir').val(data.tanggal_lahir);
-        //             $('#edit_jenis_kelamin').val(data.jenis_kelamin);
-        //             $('#edit_anak_ke').val(data.anak_ke);
-        //             $('#edit_gol_darah').val(data.gol_darah);
-        //             $('#editForm').attr('action', '{{ route('pasien.update_anak', ':id') }}'.replace(
-        //                 ':id', id));
-        //             $('#modalEdit').modal('show');
-        //         }
-        //     });
-        // });
+        $('#anak-table').on('click', '.edit-btn', function() {
+            let id = $(this).data('id');
+            $.ajax({
+                url: '{{ route('pasien.edit_anak', ':id') }}'.replace(':id', id),
+                method: 'GET',
+                success: function(data) {
+                    $('#edit_nama_anak').val(data.nama_anak);
+                    $('#edit_nama_ibu').val(data.nama_ibu);
+                    $('#edit_nama_suami').val(data.nama_suami);
+                    $('#edit_alamat').val(data.alamat);
+                    $('#edit_kec').val(data.kec);
+                    $('#edit_kab').val(data.kab);
+                    $('#edit_jenis_kelamin').val(data.jenis_kelamin);
+                    $('#edit_jenis_kelahiran').val(data.jenis_kelahiran);
+                    $('#edit_anak_ke').val(data.anak_ke);
+                    $('#edit_berat_bayi').val(data.berat_bayi);
+                    $('#edit_panjang_bayi').val(data.panjang_bayi);
+                    $('#edit_bayi_lahir').val(data.bayi_lahir);
+                    $('#edit_tempat').val(data.tempat);
+                    $('#editForm').attr('action', '{{ route('pasien.update_anak', ':id') }}'.replace(
+                        ':id', id));
+                    $('#modalEdit').modal('show');
+                }
+            });
+        });
         $(document).ready(function() {
             $('#nama_ibu').change(function() {
                 var nama_ibu = $(this).val();

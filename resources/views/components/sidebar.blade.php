@@ -49,7 +49,14 @@
                 </li> --}}
                     <li>
                         <a href="{{ route('antenatal_care.anc') }}"
-                            class="{{ request()->is(['antenatal_care.anc', 'antenatal_care/anc', 'antenatal_care.show_anc', 'antenatal_care/anc/show_anc/*']) ? 'active' : '' }}">
+                            class="{{ request()->is([
+                                'antenatal_care.anc',
+                                'antenatal_care/anc',
+                                'antenatal_care.show_anc',
+                                'antenatal_care/anc/show_anc/*',
+                            ])
+                                ? 'active'
+                                : '' }}">
                             <i class="bi bi-circle"></i>
                             <span>Perawatan Selama Hamil</span>
                         </a>
@@ -112,21 +119,46 @@
                 <ul class="nav-content">
                     <li>
                         <a href="{{ route('postnatal_care.nifas') }}"
-                            class="{{ request()->is(['postnatal_care.nifas', 'postnatal_care/nifas', 'postnatal_care.show_nifas', 'postnatal_care/nifas/show_nifas/*']) ? 'active' : '' }}">
+                            class="{{ request()->is([
+                                'postnatal_care.nifas',
+                                'postnatal_care/nifas',
+                                'postnatal_care.show_nifas',
+                                'postnatal_care/nifas/show_nifas/*',
+                            ])
+                                ? 'active'
+                                : '' }}">
                             <i class="bi bi-circle"></i>
                             <span>Masa Nifas</span>
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('postnatal_care.ppia') }}"
-                            class="{{ request()->is(['postnatal_care.ppia', 'postnatal_care/ppia', 'postnatal_care.show_ppia', 'postnatal_care/ppia/show_ppia/*']) ? 'active' : '' }}">
+                            class="{{ request()->is([
+                                'postnatal_care.ppia',
+                                'postnatal_care/ppia',
+                                'postnatal_care.show_ppia',
+                                'postnatal_care/ppia/show_ppia/*',
+                            ])
+                                ? 'active'
+                                : '' }}">
                             <i class="bi bi-circle"></i>
                             <span>Pemantauan PPIA</span>
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('postnatal_care.pemantauan_bayi') }}"
-                            class="{{ request()->is(['postnatal_care.pemantauan_bayi', 'postnatal_care/pemantauan_bayi']) ? 'active' : '' }}">
+                            class="{{ request()->is([
+                                'postnatal_care.pemantauan_bayi',
+                                'postnatal_care/pemantauan_bayi',
+                                'postnatal_care.show_hepatitis',
+                                'postnatal_care/pemantauan_bayi/show_hepatitis/*',
+                                'postnatal_care.show_hiv',
+                                'postnatal_care/pemantauan_bayi/show_hiv/*',
+                                'postnatal_care.show_sifilis',
+                                'postnatal_care/pemantauan_bayi/show_sifilis/*',
+                            ])
+                                ? 'active'
+                                : '' }}">
                             <i class="bi bi-circle"></i>
                             <span>Pemantauan Bayi</span>
                         </a>

@@ -21,6 +21,7 @@
                             <table class="table table-bordered table-anc" id="ppia-table" style="width:100%">
                                 <thead>
                                     <tr>
+                                        <th>No</th>
                                         <th>Nama Ibu</th>
                                         <th>Action</th>
                                     </tr>
