@@ -16,7 +16,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title"></h5>
+                        <br>
                         <div class="table-responsive">
                             <table class="table table-bordered table-anc" id="pmntn-table" style="width:100%">
                                 <thead>
@@ -113,13 +113,16 @@
                         data: 'pemantauan_bayi_sifilis',
                         name: 'pemantauan_bayi_sifilis',
                         render: function(data, type, row) {
-                            let viewUrl = '{{ route('postnatal_care.show_sifilis', ':id') }}'.replace(
-                                ':id', row.id);
+                            let viewUrl = '{{ route('postnatal_care.show_sifilis', ':id') }}'
+                                .replace(
+                                    ':id', row.id);
                             return `<a href="${viewUrl}" class="btn btn-sm btn-primary">
                                         <i class="bi bi-eye-fill"></i></a>`;
                         }
                     }
                 ],
+                dom: '<"d-flex justify-content-between align-items-center"lBf>rtip',
+                buttons: [],
             });
         });
     </script>

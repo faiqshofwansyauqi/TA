@@ -135,14 +135,15 @@
             </li>
         @endrole
 
-
-        <li class="nav-item">
-            <a class="nav-link {{ request()->is(['setting.role', 'setting/role']) ? '' : 'collapsed' }}"
-                href="{{ route('setting.role') }}">
-                <i class="bi bi-person-badge"></i>  
-                <span>Role</span>
-            </a>
-        </li>
+        @role('Admin')
+            <li class="nav-item">
+                <a class="nav-link {{ request()->is(['setting.role', 'setting/role']) ? '' : 'collapsed' }}"
+                    href="{{ route('setting.role') }}">
+                    <i class="bi bi-person-badge"></i>
+                    <span>Role</span>
+                </a>
+            </li>
+        @endrole
 
         <li class="nav-item">
             <a class="nav-link {{ request()->is(['master.pasien', 'master/pasien']) ? '' : 'collapsed' }}"

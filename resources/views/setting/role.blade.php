@@ -16,7 +16,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title"></h5>
+                        <br>
                         <div class="table-responsive">
                             <table class="table table-bordered table-anc" id="role-table" style="width:100%">
                                 <thead>
@@ -136,44 +136,52 @@
             });
         });
 
-        $('#role-table').DataTable({
-            processing: true,
-            serverSide: true,
-            ordering: false,
-            scrollX: true,
-            fixedHeader: true,
-            ajax: '{{ route('setting.data_role') }}',
-            columns: [{
-                    data: 'name',
-                    name: 'name'
-                },
-                {
-                    data: 'email',
-                    name: 'email'
-                },
-                {
-                    data: 'roles',
-                    name: 'roles'
-                }, {
-                    data: 'action',
-                    name: 'action',
-                    orderable: false,
-                    searchable: false,
-                    render: function(data, type, row) {
-                        let editUrl = '{{ route('setting.edit_role', ':id') }}'.replace(':id', row.id);
-                        let deleteUrl = '{{ route('setting.destroy_role', ':id') }}'.replace(':id', row.id);
-                        return `
-                    <div style="display: flex; align-items: center;">
-                        <button class="btn btn-sm btn-success edit-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalEdit" style="margin-right: 5px;">
-                            <i class="bi bi-pencil-fill"></i>
-                        </button>
-                        <button class="btn btn-sm btn-danger btn-delete" data-id="${row.id}" data-url="${deleteUrl}">
+        $(document).ready(function() {
+            $('#role-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ordering: false,
+                ajax: '{{ route('setting.data_role') }}',
+                scrollX: true,
+                fixedHeader: true,
+                columns: [{
+                        data: 'name',
+                        name: 'name'
+                    },
+                    {
+                        data: 'email',
+                        name: 'email'
+                    },
+                    {
+                        data: 'roles',
+                        name: 'roles'
+                    },
+                    {
+                        data: 'action',
+                        name: 'action',
+                        orderable: false,
+                        searchable: false,
+                        render: function(data, type, row) {
+                            let editUrl = '{{ route('setting.edit_role', ':id') }}'.replace(':id',
+                                row.id);
+                            let deleteUrl = '{{ route('setting.destroy_role', ':id') }}'.replace(
+                                ':id', row.id);
+                            return `
+                            <div style="display: flex; align-items: center;">
+                                <button class="btn btn-sm btn-success edit-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalEdit" style="margin-right: 5px;">
+                                    <i class="bi bi-pencil-fill"></i>
+                                </button>
+                                <button class="btn btn-sm btn-danger btn-delete" data-id="${row.id}" data-url="${deleteUrl}">
                             <i class="bi bi-trash3-fill"></i>
                         </button>
-                    </div>`;
+                            </div>
+                        `;
+                        }
                     }
-                }
-            ],
+                ],
+                dom: '<"d-flex justify-content-between align-items-center"lBf>rtip',
+                buttons: [],
+            });
         });
 
         $('#role-table').on('click', '.edit-btn', function() {
@@ -187,7 +195,8 @@
                     $('#edit_email').val(data.email);
                     $('#edit_password').val(data.password);
                     $('#edit_roles').val(data.roles.map(role => role.name));
-                    $('#editForm').attr('action', '{{ route('setting.update_role', ':id') }}'
+                    $('#editForm').attr('action',
+                        '{{ route('setting.update_role', ':id') }}'
                         .replace(
                             ':id', id));
                     $('#modalEdit').modal('show');
