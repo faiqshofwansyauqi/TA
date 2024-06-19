@@ -15,11 +15,12 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                    <br>
+                        <br>
                         <div class="table-responsive">
                             <table class="table table-bordered table-anc" id="ropb-table" style="width:100%">
                                 <thead>
                                     <tr>
+                                        <th>No</th>
                                         <th>Nama Ibu</th>
                                         <th>Gravida</th>
                                         <th>Pertus</th>
@@ -335,6 +336,13 @@
                 scrollX: true,
                 fixedHeader: true,
                 columns: [{
+                        data: 'id',
+                        name: 'id',
+                        render: function(data, type, row, meta) {
+                            return meta.row + meta.settings._iDisplayStart + 1;
+                        }
+                    },
+                    {
                         data: 'NIK',
                         name: 'NIK'
                     },
@@ -481,7 +489,7 @@
                     'colvis',
                 ],
                 columnDefs: [{
-                    targets: [5, 6, 10, 11, 12, ],
+                    targets: [5, 6, 10, 11, 12, 13, ],
                     visible: false
                 }]
             });

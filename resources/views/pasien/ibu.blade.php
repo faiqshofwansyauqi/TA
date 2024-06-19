@@ -72,75 +72,77 @@
                                 <div class="row">
                                     <div class="col-md-4 mb-2">
                                         <label for="nama_ibu" class="form-label">Nama Ibu</label>
-                                        <input type="text" class="form-control" id="nama_ibu" name="nama_ibu">
+                                        <input type="text" class="form-control" id="nama_ibu" name="nama_ibu" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="nama_suami" class="form-label">Nama Suami</label>
-                                        <input type="text" class="form-control" id="nama_suami" name="nama_suami">
+                                        <input type="text" class="form-control" id="nama_suami" name="nama_suami"
+                                            required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
-                                        <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir">
+                                        <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir"
+                                            required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="alamat_domisili" class="form-label">Alamat Domisili</label>
-                                        <textarea class="form-control" id="alamat_domisili" name="alamat_domisili"></textarea>
+                                        <textarea class="form-control" id="alamat_domisili" name="alamat_domisili"></textarea required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="desa" class="form-label">Desa / Kelurahan</label>
-                                        <input type="text" class="form-control" id="desa" name="desa">
+                                        <input type="text" class="form-control" id="desa" name="desa" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="kab" class="form-label">Kabupaten</label>
-                                        <input type="text" class="form-control" id="kab" name="kab">
+                                        <input type="text" class="form-control" id="kab" name="kab"required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="pendidikan_ibu" class="form-label">Pendidikan Ibu</label>
                                         <input type="text" class="form-control" id="pendidikan_ibu"
-                                            name="pendidikan_ibu">
+                                            name="pendidikan_ibu" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="pekerjaaan_ibu" class="form-label">Pekerjaan Ibu</label>
                                         <input type="text" class="form-control" id="pekerjaaan_ibu"
-                                            name="pekerjaaan_ibu">
+                                            name="pekerjaaan_ibu" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="NIK" class="form-label">NIK</label>
                                         <input type="text" class="form-control" id="NIK" name="NIK"
-                                            maxlength="16">
+                                            maxlength="16" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="noregis" class="form-label">Nomer Registrasi Ibu</label>
                                         <input type="text" class="form-control" id="noregis" name="noregis"
-                                            maxlength="13">
+                                            maxlength="13" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="umur" class="form-label">Umur</label>
-                                        <input type="number" class="form-control" id="umur" name="umur">
+                                        <input type="number" class="form-control" id="umur" name="umur" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="rtrw" class="form-label">RT/RW</label>
-                                        <input type="text" class="form-control" id="rtrw" name="rtrw">
+                                        <input type="text" class="form-control" id="rtrw" name="rtrw" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="puskesmas" class="form-label">Puskesmas</label>
-                                        <input type="text" class="form-control" id="puskesmas" name="puskesmas">
+                                        <input type="text" class="form-control" id="puskesmas" name="puskesmas" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="kec" class="form-label">Kecamatan</label>
-                                        <input type="text" class="form-control" id="kec" name="kec">
+                                        <input type="text" class="form-control" id="kec" name="kec" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="prov" class="form-label">Provinsi</label>
-                                        <input type="text" class="form-control" id="prov" name="prov">
+                                        <input type="text" class="form-control" id="prov" name="prov" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="agama" class="form-label">Agama</label>
-                                        <input type="text" class="form-control" id="agama" name="agama">
+                                        <input type="text" class="form-control" id="agama" name="agama" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="jamkesmas" class="form-label">Jamkesmas</label>
-                                        <select class="form-select" id="jamkesmas" name="jamkesmas">
+                                        <select class="form-select" id="jamkesmas" name="jamkesmas" required>
                                             <option value="">Pilih Jamkesmas</option>
                                             <option value="Ya">Ya</option>
                                             <option value="Tidak">Tidak</option>
@@ -148,23 +150,23 @@
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="posyandu" class="form-label">Posyandu</label>
-                                        <input type="text" class="form-control" id="posyandu" name="posyandu">
+                                        <input type="text" class="form-control" id="posyandu" name="posyandu" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="nama_kader" class="form-label">Nama Kader</label>
-                                        <input type="text" class="form-control" id="nama_kader" name="nama_kader">
+                                        <input type="text" class="form-control" id="nama_kader" name="nama_kader" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="nama_dukum" class="form-label">Nama Dukun</label>
-                                        <input type="text" class="form-control" id="nama_dukum" name="nama_dukum">
+                                        <input type="text" class="form-control" id="nama_dukum" name="nama_dukum" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="tanggal_reg" class="form-label">Tanggal Register</label>
-                                        <input type="date" class="form-control" id="tanggal_reg" name="tanggal_reg">
+                                        <input type="date" class="form-control" id="tanggal_reg" name="tanggal_reg" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="gol_darah" class="form-label">Gol Darah</label>
-                                        <select class="form-select" id="gol_darah" name="gol_darah">
+                                        <select class="form-select" id="gol_darah" name="gol_darah" required>
                                             <option value="">Pilih Golongan Darah</option>
                                             <option value="A">A</option>
                                             <option value="B">B</option>
@@ -175,7 +177,7 @@
                                     <div class="col-md-4 mb-2">
                                         <label for="telp" class="form-label">Nomer Telp</label>
                                         <input type="number" class="form-control" id="telp" name="telp"
-                                            maxlength="13" pattern="\d{1,13}">
+                                            maxlength="13" pattern="\d{1,13}" required>
                                     </div>
                                 </div>
                                 <br>
@@ -205,17 +207,17 @@
                                 <div class="row">
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_nama_ibu" class="form-label">Nama Ibu</label>
-                                        <input type="text" class="form-control" id="edit_nama_ibu" name="nama_ibu">
+                                        <input type="text" class="form-control" id="edit_nama_ibu" name="nama_ibu" required> 
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_nama_suami" class="form-label">Nama Suami</label>
                                         <input type="text" class="form-control" id="edit_nama_suami"
-                                            name="nama_suami">
+                                            name="nama_suami" required> 
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_tanggal_lahir" class="form-label">Tanggal Lahir</label>
                                         <input type="date" class="form-control" id="edit_tanggal_lahir"
-                                            name="tanggal_lahir">
+                                            name="tanggal_lahir" required> 
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_alamat_domisili" class="form-label">Alamat Domisili</label>
@@ -223,21 +225,23 @@
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_desa" class="form-label">Desa / Kelurahan</label>
-                                        <input type="text" class="form-control" id="edit_desa" name="desa">
+                                        <input type="text" class="form-control" id="edit_desa" name="desa"
+                                            required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_kab" class="form-label">Kabupaten</label>
-                                        <input type="text" class="form-control" id="edit_kab" name="kab">
+                                        <input type="text" class="form-control" id="edit_kab" name="kab"
+                                            required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_pendidikan_ibu" class="form-label">Pendidikan Ibu</label>
                                         <input type="text" class="form-control" id="edit_pendidikan_ibu"
-                                            name="pendidikan_ibu">
+                                            name="pendidikan_ibu" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_pekerjaaan_ibu" class="form-label">Pekerjaan Ibu</label>
                                         <input type="text" class="form-control" id="edit_pekerjaaan_ibu"
-                                            name="pekerjaaan_ibu">
+                                            name="pekerjaaan_ibu" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_NIK" class="form-label">NIK</label>
@@ -247,35 +251,41 @@
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_noregis" class="form-label">Nomer Registrasi Ibu</label>
                                         <input type="text" class="form-control" id="edit_noregis" name="noregis"
-                                            maxlength="13">
+                                            maxlength="13" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_umur" class="form-label">Umur</label>
-                                        <input type="number" class="form-control" id="edit_umur" name="umur">
+                                        <input type="number" class="form-control" id="edit_umur" name="umur"
+                                            required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_rtrw" class="form-label">RT/RW</label>
-                                        <input type="text" class="form-control" id="edit_rtrw" name="rtrw">
+                                        <input type="text" class="form-control" id="edit_rtrw" name="rtrw"
+                                            required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_puskesmas" class="form-label">Puskesmas</label>
-                                        <input type="text" class="form-control" id="edit_puskesmas" name="puskesmas">
+                                        <input type="text" class="form-control" id="edit_puskesmas" name="puskesmas"
+                                            required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_kec" class="form-label">Kecamatan</label>
-                                        <input type="text" class="form-control" id="edit_kec" name="kec">
+                                        <input type="text" class="form-control" id="edit_kec" name="kec"
+                                            required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_prov" class="form-label">Provinsi</label>
-                                        <input type="text" class="form-control" id="edit_prov" name="prov">
+                                        <input type="text" class="form-control" id="edit_prov" name="prov"
+                                            required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_agama" class="form-label">Agama</label>
-                                        <input type="text" class="form-control" id="edit_agama" name="agama">
+                                        <input type="text" class="form-control" id="edit_agama" name="agama"
+                                            required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_jamkesmas" class="form-label">Jamkesmas</label>
-                                        <select class="form-select" id="edit_jamkesmas" name="jamkesmas">
+                                        <select class="form-select" id="edit_jamkesmas" name="jamkesmas" required>
                                             <option value="">Pilih Jamkesmas</option>
                                             <option value="Ya">Ya</option>
                                             <option value="Tidak">Tidak</option>
@@ -283,26 +293,27 @@
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_posyandu" class="form-label">Posyandu</label>
-                                        <input type="text" class="form-control" id="edit_posyandu" name="posyandu">
+                                        <input type="text" class="form-control" id="edit_posyandu" name="posyandu"
+                                            required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_nama_kader" class="form-label">Nama Kader</label>
                                         <input type="text" class="form-control" id="edit_nama_kader"
-                                            name="nama_kader">
+                                            name="nama_kader" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_nama_dukum" class="form-label">Nama Dukun</label>
                                         <input type="text" class="form-control" id="edit_nama_dukum"
-                                            name="nama_dukum">
+                                            name="nama_dukum" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_tanggal_reg" class="form-label">Tanggal Register</label>
                                         <input type="date" class="form-control" id="edit_tanggal_reg"
-                                            name="tanggal_reg">
+                                            name="tanggal_reg" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_gol_darah" class="form-label">Gol Darah</label>
-                                        <select class="form-select" id="edit_gol_darah" name="gol_darah">
+                                        <select class="form-select" id="edit_gol_darah" name="gol_darah" required>
                                             <option value="">Pilih Golongan Darah</option>
                                             <option value="A">A</option>
                                             <option value="B">B</option>
@@ -313,7 +324,7 @@
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_telp" class="form-label">Nomer Telp</label>
                                         <input type="number" class="form-control" id="edit_telp" name="telp"
-                                            maxlength="13" pattern="\d{1,13}">
+                                            maxlength="13" pattern="\d{1,13}" required>
                                     </div>
                                 </div>
                                 <br>
@@ -357,7 +368,20 @@
                     },
                     {
                         data: 'tanggal_lahir',
-                        name: 'tanggal_lahir'
+                        name: 'tanggal_lahir',
+                        render: function(data) {
+                            var date = new Date(data);
+                            var day = date.getDate();
+                            var month = date.getMonth() + 1;
+                            var year = date.getFullYear();
+                            if (day < 10) {
+                                day = '0' + day;
+                            }
+                            if (month < 10) {
+                                month = '0' + month;
+                            }
+                            return day + ' - ' + month + ' - ' + year;
+                        }
                     },
                     {
                         data: 'alamat_domisili',

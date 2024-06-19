@@ -85,6 +85,13 @@
                 scrollX: true,
                 fixedHeader: true,
                 columns: [{
+                        data: 'id',
+                        name: 'id',
+                        render: function(data, type, row, meta) {
+                            return meta.row + meta.settings._iDisplayStart + 1;
+                        }
+                    },
+                    {
                         data: 'NIK',
                         name: 'NIK'
                     },

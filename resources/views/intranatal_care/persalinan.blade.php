@@ -21,6 +21,7 @@
                             <table class="table table-bordered table-anc" id="persalinan-table" style="width:100%">
                                 <thead>
                                     <tr>
+                                        <th>No</th>
                                         <th>Nama Ibu</th>
                                         <th>Kala I Aktif</th>
                                         <th>Kala II</th>
@@ -633,6 +634,13 @@
                 scrollX: true,
                 fixedHeader: true,
                 columns: [{
+                        data: 'id',
+                        name: 'id',
+                        render: function(data, type, row, meta) {
+                            return meta.row + meta.settings._iDisplayStart + 1;
+                        }
+                    },
+                    {
                         data: 'id_ibu',
                         name: 'id_ibu'
                     },
@@ -826,7 +834,7 @@
                     'colvis',
                 ],
                 columnDefs: [{
-                    targets: [4 , 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22],
+                    targets: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22],
                     visible: false
                 }]
             });
@@ -891,6 +899,7 @@
                 method: 'GET',
                 success: function(data) {
                     let namaIbu = data.ibu.nama_ibu;
+
                     function formatDateOnly(dateString) {
                         if (!dateString) return '';
                         const date = new Date(dateString);
@@ -899,6 +908,7 @@
                         const formattedYear = date.getFullYear();
                         return `${formattedDay}-${formattedMonth}-${formattedYear}`;
                     }
+
                     function formatTimeOnly(dateString) {
                         if (!dateString) return '';
                         const date = new Date(dateString);

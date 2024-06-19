@@ -21,7 +21,7 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>NIK</th>
+                                        <th>Nama Ibu</th>
                                         <th>Tanggal</th>
                                         <th>Penolong</th>
                                         <th>Pendamping</th>
@@ -174,7 +174,7 @@
                                         <select class="form-control" id="edit_NIK" name="NIK" hidden>
                                             <option value="">Pilih Ibu</option>
                                             @foreach ($ibus as $ibu)
-                                                <option value="{{ $ibu->nama_ibu }}">{{ $ibu->nama_ibu }}</option>
+                                                <option value="{{ $ibu->NIK }}">{{ $ibu->NIK }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -320,7 +320,20 @@
                     },
                     {
                         data: 'tgl_persalinan',
-                        name: 'tgl_persalinan'
+                        name: 'tgl_persalinan',
+                        render: function(data) {
+                            var date = new Date(data);
+                            var day = date.getDate();
+                            var month = date.getMonth() + 1;
+                            var year = date.getFullYear();
+                            if (day < 10) {
+                                day = '0' + day;
+                            }
+                            if (month < 10) {
+                                month = '0' + month;
+                            }
+                            return day + ' - ' + month + ' - ' + year;
+                        }
                     },
                     {
                         data: 'penolong',
@@ -380,7 +393,7 @@
                     'colvis',
                 ],
                 columnDefs: [{
-                    targets: [],
+                    targets: [7, 8],
                     visible: false
                 }]
             });

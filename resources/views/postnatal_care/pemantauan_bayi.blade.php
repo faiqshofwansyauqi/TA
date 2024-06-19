@@ -21,6 +21,7 @@
                             <table class="table table-bordered table-anc" id="pmntn-table" style="width:100%">
                                 <thead>
                                     <tr>
+                                        <th>No</th>
                                         <th>Nama Ibu</th>
                                         <th>Pemantauan Ibu Hepatitis</th>
                                         <th>Pemantauan Bayi Ibu HIV</th>
@@ -86,6 +87,13 @@
                 scrollX: true,
                 fixedHeader: true,
                 columns: [{
+                        data: 'id',
+                        name: 'id',
+                        render: function(data, type, row, meta) {
+                            return meta.row + meta.settings._iDisplayStart + 1;
+                        }
+                    },
+                    {
                         data: 'NIK',
                         name: 'NIK'
                     },

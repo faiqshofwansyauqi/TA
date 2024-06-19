@@ -21,6 +21,7 @@
                             <table class="table table-bordered table-anc" id="anc-table" style="width:100%">
                                 <thead>
                                     <tr>
+                                        <th>No</th>
                                         <th>Nama Ibu</th>
                                         <th>Action</th>
                                     </tr>
@@ -52,7 +53,7 @@
                                     <select class="form-control" id="NIK" name="NIK" required>
                                         <option value="">Pilih Ibu</option>
                                         @foreach ($ibus as $ibu)
-                                            <option value="{{ $ibu->nama_ibu }}">{{ $ibu->nama_ibu }}</option>
+                                            <option value="{{ $ibu->NIK }}">{{ $ibu->NIK }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -85,6 +86,10 @@
                 scrollX: true,
                 fixedHeader: true,
                 columns: [{
+                        data: 'id',
+                        name: 'id'
+                    },
+                    {
                         data: 'NIK',
                         name: 'NIK'
                     },

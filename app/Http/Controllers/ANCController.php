@@ -157,7 +157,7 @@ class ANCController extends Controller
         $user = Auth::user();
         if ($user->hasRole(['Bidan', 'Admin'])) {
             $this->authorize('akses_page', Anc::class);
-            $ibus = Ibu::all();
+            $ibus = Rencana_Persalinan::all();
             $anc = Anc::all();
             return view('antenatal_care.anc', compact('anc', 'ibus'));
         } else {
