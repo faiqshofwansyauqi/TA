@@ -155,7 +155,7 @@
         <div class="modal-dialog modal-dialog-scrollable modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title fs-4 fw-bold" id="ModalEdit">Update Pemantauan Bayi Ibu Hepatitis B</h3>
+                    <h3 class="modal-title fs-4 fw-bold" id="ModalEdit">Edit Pemantauan Bayi Ibu Hepatitis B</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
                 </div>
                 <div class="modal-body">

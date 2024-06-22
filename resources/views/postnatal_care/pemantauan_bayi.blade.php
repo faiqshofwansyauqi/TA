@@ -41,7 +41,7 @@
         <div class="modal-dialog modal-dialog-scrollable modal-md">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-4 fw-bold" id="ModalInput">Input Pemantauan PPIA</h1>
+                    <h1 class="modal-title fs-4 fw-bold" id="ModalInput">Input Pemantauan Bayi</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">

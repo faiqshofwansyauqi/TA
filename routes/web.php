@@ -4,6 +4,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\INCController;
+use App\Http\Controllers\KMSContronller;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\MasterController;
 use App\Http\Controllers\PasienController;
@@ -31,7 +32,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
     Route::get('ibu', [PasienController::class, 'Ibu'])->name('pasien.ibu');
     Route::get('anak', [PasienController::class, 'Anak'])->name('pasien.anak');
-    
+
 });
 
 Route::middleware(['guest'])->group(function () {
@@ -157,7 +158,6 @@ Route::prefix('postnatal_care')->group(function () {
     Route::get('show_sifilis/edit_showsifilis/{id}', [PNCController::class, 'edit_showsifilis'])->name('postnatal_care.edit_showsifilis');
     Route::put('show_sifilis/update_showsifilis/{id}', [PNCController::class, 'update_showsifilis'])->name('postnatal_care.update_showsifilis');
 });
-
 Route::prefix('setting')->group(function () {
     Route::get('role', [SettingController::class, 'role'])->name('setting.role');
     Route::post('store-role', [SettingController::class, 'store_role'])->name('setting.store_role');
@@ -165,6 +165,18 @@ Route::prefix('setting')->group(function () {
     Route::get('setting/edit_role/{id}', [SettingController::class, 'edit_role'])->name('setting.edit_role');
     Route::put('setting/update_role/{id}', [SettingController::class, 'update_role'])->name('setting.update_role');
     Route::delete('setting/destroy_role/{id}', [SettingController::class, 'destroy_role'])->name('setting.destroy_role');
+});
+
+Route::prefix('kms')->group(function () {
+    ///////////// KMS /////////////
+    Route::get('kms', [KMSContronller::class, 'kms'])->name('kms.kms');
+    Route::post('store-kms', [KMSContronller::class, 'store_kms'])->name('kms.store_kms');
+    Route::get('kms/{nama_anak}', [KMSContronller::class, 'getInfo_anak'])->name('kms.info_anak');
+    Route::get('data-kms', [KMSContronller::class, 'getData_kms'])->name('kms.data_kms');
+    Route::delete('kms/destroy_kms/{id}', [KMSContronller::class, 'destroy_kms'])->name('kms.destroy_kms');
+    ///////////// SHOW KMS /////////////
+    Route::get('kms/show_kms/{id}', [KMSContronller::class, 'show_kms'])->name('kms.show_kms');
+    Route::post('store-show_kms', [KMSContronller::class, 'store_show_kms'])->name('kms.store_show_kms');
 });
 
 Route::prefix('master')->group(function () {

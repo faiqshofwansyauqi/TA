@@ -232,7 +232,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-3 mb-2">
+                                    <div class="col-md-2 mb-2">
                                         <label for="edit_berat_bayi" class="form-label">Berat Bayi</label>
                                         <div class="input-group mb-2">
                                             <input type="text" class="form-control" id="edit_berat_bayi"
@@ -240,7 +240,7 @@
                                             <span class="input-group-text">gram</span>
                                         </div>
                                     </div>
-                                    <div class="col-md-3 mb-2">
+                                    <div class="col-md-2 mb-2">
                                         <label for="edit_panjang_bayi" class="form-label">Panjang Bayi</label>
                                         <div class="input-group mb-2">
                                             <input type="text" class="form-control" id="edit_panjang_bayi"

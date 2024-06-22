@@ -76,7 +76,7 @@
         <div class="modal-dialog modal-dialog-scrollable modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title fs-4 fw-bold" id="ModalInput">Input Masa Nifas</h3>
+                    <h3 class="modal-title fs-4 fw-bold" id="ModalInput">Input Detail Masa Nifas</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -301,7 +301,7 @@
         <div class="modal-dialog modal-dialog-scrollable modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title fs-4 fw-bold" id="ModalEdit">Update ANC</h3>
+                    <h3 class="modal-title fs-4 fw-bold" id="ModalEdit">Edit Detail Masa Nifas</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
                 </div>
                 <div class="modal-body">
