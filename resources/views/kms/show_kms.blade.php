@@ -11,19 +11,19 @@
         </div>
     </div>
 
+
     <section class="section dashboard">
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <canvas id="kmsChart" width="200" height="200"></canvas>
-                        <br>
+                        <canvas id="kmsChart" width="1400" height="700" style="margin-bottom: 20px;"></canvas>
                         <div class="table-responsive">
                             <table class="table table-bordered table-anc" id="kms-table" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>Umur (Bulan)</th>
-                                        @for ($i = 0; $i <= 24; $i++)
+                                        @for ($i = 0; $i <= 60; $i++)
                                             <th style="width: 130px; text-align: center;">{{ $i }}</th>
                                         @endfor
                                     </tr>
@@ -39,7 +39,7 @@
                                                 </div>
                                             </td>
                                         @endforeach
-                                        @for ($i = count($kmss); $i <= 24; $i++)
+                                        @for ($i = count($kmss); $i <= 60; $i++)
                                             <td></td>
                                         @endfor
                                     </tr>
@@ -48,7 +48,7 @@
                                         @foreach ($kmss as $kms)
                                             <td style="text-align: center">{{ $kms->barat_badan }}</td>
                                         @endforeach
-                                        @for ($i = count($kmss); $i <= 24; $i++)
+                                        @for ($i = count($kmss); $i <= 60; $i++)
                                             <td></td>
                                         @endfor
                                     </tr>
@@ -69,7 +69,7 @@
                                         @foreach ($kmss as $kms)
                                             <td style="text-align: center">{{ $kms->nt }}</td>
                                         @endforeach
-                                        @for ($i = count($kmss); $i <= 24; $i++)
+                                        @for ($i = count($kmss); $i <= 60; $i++)
                                             <td></td>
                                         @endfor
                                     </tr>
@@ -92,6 +92,7 @@
             </div>
         </div>
     </section>
+
 
     <div class="modal fade" id="modalInput" tabindex="-1" aria-labelledby="ModalInput" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-md">
@@ -175,27 +176,23 @@
                 checkAndHideAsiEksklusif();
             });
 
-            // Ambil data dari tabel
             const labels = [];
             const data = [];
 
-            // Mengambil label dari header tabel ke array labels
+            
             $('#kms-table thead tr th').each(function(index, element) {
-                if (index > 0) { // Skip header pertama
+                if (index > 0) {
                     labels.push($(element).text());
                 }
             });
-            console.log('Labels:', labels); // Log labels array to console
+            console.log('Labels:', labels);
 
-            // Mengambil data berat badan dari semua kolom
             $('#kms-table tbody tr:nth-child(2) td').each(function(tdIndex, tdElement) {
                 const value = $(tdElement).text();
                 data.push(value ? parseFloat(value) : null);
             });
 
-            console.log('Data:', data); // Log data array to console
-
-            // Buat grafik menggunakan Chart.js
+            console.log('Data:', data);
             const ctx = document.getElementById('kmsChart').getContext('2d');
             const kmsChart = new Chart(ctx, {
                 type: 'line',
@@ -211,19 +208,34 @@
                 },
                 options: {
                     responsive: true,
+                    plugins: {
+                        zoom: {
+                            pan: {
+                                enabled: true,
+                                mode: 'x',
+                            },
+                        }
+                    },
                     scales: {
                         x: {
                             title: {
                                 display: true,
                                 text: 'Umur (bulan)'
+                            },
+                            min: 0,
+                            max: 60,
+                            ticks: {
+                                autoSkip: false,
+                                maxRotation: 0,
+                                minRotation: 0
                             }
                         },
                         y: {
-                            min: 0, // Set the minimum value of the y-axis to 1 kg
-                            max: 18, // Set the maximum value of the y-axis to 18 kg
+                            min: 1,
+                            max: 28,
                             ticks: {
-                                beginAtZero: false, // Ensure that the axis starts exactly at the min value
-                                stepSize: 1 // Set the step size to 1 kg for better readability
+                                beginAtZero: true,
+                                stepSize: 1
                             },
                             title: {
                                 display: true,
@@ -233,9 +245,14 @@
                     }
                 }
             });
+            console.log('Chart created successfully.');
+        });
 
-            console.log('Chart created successfully.'); // Log confirmation of chart creation
-
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.location.pathname.includes('/kms/show_kms')) {
+                var body = document.querySelector('body');
+                body.classList.add('toggle-sidebar');
+            }
         });
     </script>
 @endsection

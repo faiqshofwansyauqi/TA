@@ -38,17 +38,9 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
     @yield('style')
-    <!-- =======================================================
-  * Template Name: NiceAdmin
-  * Updated: Aug 30 2023 with Bootstrap v5.3.1
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-======================================================== -->
 </head>
 
 <body>
-
     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
 
@@ -58,19 +50,16 @@
                 <span class="d-none d-lg-block" style="font-size: 20px;">BIDAN PRAKTEK MANDIRI</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
-        </div><!-- End Logo -->
+        </div>
 
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
-
                 <li class="nav-item dropdown pe-3">
-
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
                         data-bs-toggle="dropdown">
                         <img src="{{ asset('assets/img/profile-img.jpg') }}" alt="Profile" class="rounded-circle">
                         <span class="d-none d-md-block dropdown-toggle ps-2">{{ Auth::user()->name }}</span>
                     </a><!-- End Profile Iamge Icon -->
-
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
                             <h5>{{ Auth::user()->name }}</h5>
@@ -78,7 +67,6 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-
                         <li>
                             <a class="dropdown-item d-flex align-items-center" href={{ Auth::user()->name }}>
                                 <i class="bi bi-person"></i>
@@ -88,7 +76,6 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-
                         <li>
                             <a class="dropdown-item d-flex align-items-center" id="logout"
                                 href="{{ route('logout') }}">
@@ -96,27 +83,22 @@
                                 <span>Sign Out</span>
                             </a>
                         </li>
-
-                    </ul><!-- End Profile Dropdown Items -->
-                </li><!-- End Profile Nav -->
-
+                    </ul>
+                    </li>
             </ul>
-        </nav><!-- End Icons Navigation -->
-
-    </header><!-- End Header -->
-
+        </nav>
+    </header>
     <x-sidebar />
 
     <main id="main" class="main vh-100">
         {{-- <main id="main"> --}}
         @yield('content')
-
     </main><!-- End #main -->
 
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
         <div class="copyright">
-            &copy; Copyright <strong><span>Ritsuka</span></strong>. All Rights Reserved
+            &copy; Copyright <strong><span>REKAM MEDIS IBU DAN ANAK</span></strong>. All Rights Reserved
         </div>
     </footer><!-- End Footer -->
 
@@ -232,7 +214,6 @@
             });
         }
     </script>
-
     @yield('script')
 </body>
 
