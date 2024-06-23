@@ -16,6 +16,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
+                        <canvas id="kmsChart" width="200" height="200"></canvas>
                         <br>
                         <div class="table-responsive">
                             <table class="table table-bordered table-anc" id="kms-table" style="width:100%">
@@ -91,7 +92,6 @@
             </div>
         </div>
     </section>
-
 
     <div class="modal fade" id="modalInput" tabindex="-1" aria-labelledby="ModalInput" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-md">
@@ -174,13 +174,68 @@
             $('#kms-table').on('draw.dt', function() {
                 checkAndHideAsiEksklusif();
             });
-        });
 
-        document.addEventListener('DOMContentLoaded', function() {
-            if (window.location.pathname.includes('/kms/kms/show_kms')) {
-                var body = document.querySelector('body');
-                body.classList.add('toggle-sidebar');
-            }
+            // Ambil data dari tabel
+            const labels = [];
+            const data = [];
+
+            // Mengambil label dari header tabel ke array labels
+            $('#kms-table thead tr th').each(function(index, element) {
+                if (index > 0) { // Skip header pertama
+                    labels.push($(element).text());
+                }
+            });
+            console.log('Labels:', labels); // Log labels array to console
+
+            // Mengambil data berat badan dari semua kolom
+            $('#kms-table tbody tr:nth-child(2) td').each(function(tdIndex, tdElement) {
+                const value = $(tdElement).text();
+                data.push(value ? parseFloat(value) : null);
+            });
+
+            console.log('Data:', data); // Log data array to console
+
+            // Buat grafik menggunakan Chart.js
+            const ctx = document.getElementById('kmsChart').getContext('2d');
+            const kmsChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Berat Badan (kg)',
+                        data: data,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1,
+                        fill: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Umur (bulan)'
+                            }
+                        },
+                        y: {
+                            min: 0, // Set the minimum value of the y-axis to 1 kg
+                            max: 18, // Set the maximum value of the y-axis to 18 kg
+                            ticks: {
+                                beginAtZero: false, // Ensure that the axis starts exactly at the min value
+                                stepSize: 1 // Set the step size to 1 kg for better readability
+                            },
+                            title: {
+                                display: true,
+                                text: 'Berat Badan (kg)'
+                            }
+                        }
+                    }
+                }
+            });
+
+            console.log('Chart created successfully.'); // Log confirmation of chart creation
+
         });
     </script>
 @endsection
