@@ -165,15 +165,15 @@
                     </li>
                 </ul>
             </li>
-        @endrole
 
-        <li class="nav-item">
-            <a class="nav-link {{ request()->is(['kms.kms', 'kms/kms']) ? '' : 'collapsed' }}"
-                href="{{ route('kms.kms') }}">
-                <i class="bi bi-card-list"></i>
-                <span>Kartu Menuju Sehat</span>
-            </a>
-        </li>
+            <li class="nav-item">
+                <a class="nav-link {{ request()->is(['kms.kms', 'kms/kms']) ? '' : 'collapsed' }}"
+                    href="{{ route('kms.kms') }}">
+                    <i class="bi bi-card-list"></i>
+                    <span>Kartu Menuju Sehat</span>
+                </a>
+            </li>
+        @endrole
 
         @role('Admin')
             <li class="nav-item">

@@ -11,6 +11,11 @@ use Yajra\DataTables\Facades\DataTables;
 
 class INCController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     //////// MASA PERSALINAN ////////
     public function Persalinan()
     {

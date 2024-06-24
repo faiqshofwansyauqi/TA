@@ -15,6 +15,11 @@ use Illuminate\Support\Facades\Auth;
 
 class ANCController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     //////// PEMERIKSAAN DOKTER TM 1 ////////
     public function Tm1()
     {

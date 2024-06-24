@@ -8,16 +8,28 @@ use App\Models\KMS;
 use App\Models\Anak;
 use Yajra\DataTables\Facades\DataTables;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class KMSContronller extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     ////////// KMS //////////
     public function Kms()
     {
-        $kms = KMS::all();
-        $anaks = Anak::all();
-        return view('kms.kms', compact('kms', 'anaks'));
+        $user = Auth::user();
+        if ($user->hasRole(['Bidan', 'Admin'])) {
+            $this->authorize('akses_page', KMS::class);
+            $kms = KMS::all();
+            $anaks = Anak::all();
+            return view('kms.kms', compact('kms', 'anaks'));
+        } else {
+            return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
+        }
     }
 
     public function getInfo_anak($nama_anak)
@@ -61,11 +73,17 @@ class KMSContronller extends Controller
 
     public function show_kms($id)
     {
-        $kms = KMS::findOrFail($id);
-        $anaks = Anak::all();
-        $nama_anak = $kms->nama_anak;
-        $kmss = Show_Kms::where('nama_anak', $nama_anak)->get();
-        return view('kms.show_kms', compact('kms', 'anaks', 'kmss'));
+        $user = Auth::user();
+        if ($user->hasRole(['Bidan', 'Admin'])) {
+            $this->authorize('akses_page', Show_Kms::class);
+            $kms = KMS::findOrFail($id);
+            $anaks = Anak::all();
+            $nama_anak = $kms->nama_anak;
+            $kmss = Show_Kms::where('nama_anak', $nama_anak)->get();
+            return view('kms.show_kms', compact('kms', 'anaks', 'kmss'));
+        } else {
+            return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
+        }
     }
     public function store_show_kms(Request $request)
     {

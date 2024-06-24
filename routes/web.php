@@ -30,8 +30,7 @@ Route::get('pendaftaran', [LandingController::class, 'pendaftaran']);
 Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
-    Route::get('ibu', [PasienController::class, 'Ibu'])->name('pasien.ibu');
-    Route::get('anak', [PasienController::class, 'Anak'])->name('pasien.anak');
+    
 
 });
 

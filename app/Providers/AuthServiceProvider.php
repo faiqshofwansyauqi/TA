@@ -28,6 +28,9 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\Show_Hepatitis' => 'App\Policies\AksesPagePolicy',
         'App\Models\Show_Hiv' => 'App\Policies\AksesPagePolicy',
         'App\Models\Show_Sifilis' => 'App\Policies\AksesPagePolicy',
+        'App\Models\KMS' => 'App\Policies\AksesPagePolicy',
+        'App\Models\Show_Kms' => 'App\Policies\AksesPagePolicy',
+        'Spatie\Permission\Models\Role' => 'App\Policies\AksesPagePolicy',
         User::class => AksesPagePolicy::class,
     ];
 

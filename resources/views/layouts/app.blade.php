@@ -90,7 +90,7 @@
     </header>
     <x-sidebar />
 
-    <main id="main" class="main vh-100">
+    <main id="main" style="min-height: 100vh">
         {{-- <main id="main"> --}}
         @yield('content')
     </main><!-- End #main -->

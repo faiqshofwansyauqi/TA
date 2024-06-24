@@ -18,6 +18,11 @@ use Illuminate\Support\Facades\Auth;
 
 class PNCController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     //////// MASA NIFAS ////////
 
     public function Nifas()

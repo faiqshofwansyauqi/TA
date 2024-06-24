@@ -8,14 +8,25 @@ use Yajra\DataTables\Facades\DataTables;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Auth;
 
 
 class SettingController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function Role()
     {
-        $roles = Role::all();
-        return view('setting.role', compact('roles'));
+        $user = Auth::user();
+        if ($user->hasRole(['Admin'])) {
+            $this->authorize('akses_page', Role::class);
+            $roles = Role::all();
+            return view('setting.role', compact('roles'));
+        } else {
+            return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
+        }
     }
 
     public function getData_role(Request $request)
@@ -63,17 +74,12 @@ class SettingController extends Controller
 
         $user = User::findOrFail($id);
         $data = $request->only(['name', 'email']);
-
-        // Update password jika ada input baru
         if ($request->filled('password')) {
             $data['password'] = Hash::make($request->password);
         }
 
         $user->update($data);
-
-        // Assign roles baru
         $user->syncRoles($request->roles);
-
         return redirect()->back()->with('success', 'Data berhasil diperbarui');
     }
     public function destroy_role($id)
