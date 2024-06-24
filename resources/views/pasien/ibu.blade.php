@@ -3,11 +3,15 @@
 @section('content')
     <div class="d-flex justify-content-between align-items-center">
         <div class="pagetitle">
-            <h1>Data Ibu</h1>
-            <br>
-            <button type="button" class="btn btn-success" id="btn-plus">
-                <i class="bi bi-plus-circle"></i> Tambah
-            </button>
+            <h1 style="margin-bottom: 5px">Data Ibu</h1>
+            <div class="header-right">
+                <button type="button" class="btn btn-success btn-custom1" id="btn-plus">
+                    <i class="bi bi-plus-circle"></i> Tambah
+                </button>
+                <div id="colvis-button">
+                    <!-- Konten tambahan di sini -->
+                </div>
+            </div>
         </div>
     </div>
 
@@ -44,7 +48,7 @@
                                         <th>Tgl. Register</th>
                                         <th>Telp/HP</th>
                                         <th>Gol Darah</th>
-                                        <th>Action</th>
+                                        <th style="text-align: center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
@@ -344,15 +348,14 @@
             $('#btn-plus').click(function() {
                 modalInput.modal('show');
             });
-        });
 
-        $(document).ready(function() {
-            $('#ibu-table').DataTable({
+
+            let table = $('#ibu-table').DataTable({
                 processing: true,
                 serverSide: true,
                 ordering: false,
                 ajax: '{{ route('pasien.data_ibu') }}',
-                scrollX: true,
+                scrollX: false,
                 fixedHeader: true,
                 columns: [{
                         data: 'noregis',
@@ -471,33 +474,40 @@
                             let editUrl = '{{ route('pasien.edit_ibu', ':nik') }}'.replace(':nik',
                                 row.NIK);
                             let deleteUrl = '{{ route('pasien.destroy_ibu', ':nik') }}'.replace(
-                                ':nik', row.NIK);
+                                ':nik', row
+                                .NIK);
                             return `
-                            <div style="display: flex; align-items: center;">
-                                <button class="btn btn-sm btn-success edit-btn" data-id="${row.NIK}" data-bs-toggle="modal" data-bs-target="#modalEdit" style="margin-right: 5px;">
-                                    <i class="bi bi-pencil-fill"></i>
-                                </button>
-                               <button class="btn btn-sm btn-danger btn-delete" data-id="${row.NIK}" data-url="${deleteUrl}">
-                            <i class="bi bi-trash3-fill"></i>
-                        </button>
-                            </div>
-                        `;
+                                <div style="display: flex; justify-content: center;">
+                                    <button class="btn btn-sm btn-success edit-btn" data-id="${row.NIK}" data-bs-toggle="modal" data-bs-target="#modalEdit" style="margin-right: 5px;">
+                                        <i class="bi bi-pencil-fill"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-danger btn-delete" data-id="${row.NIK}" data-url="${deleteUrl}">
+                                        <i class="bi bi-trash3-fill"></i>
+                                    </button>
+                                </div>
+                            `;
                         }
                     }
                 ],
-                dom: '<"d-flex justify-content-between align-items-center"Bf>rtip',
-                buttons: [
-                    'colvis',
-                ],
+                dom: '<"d-flex justify-content-between align-items-center"<"#dt-buttons"B>f>rtip',
+                buttons: [{
+                    extend: 'colvis',
+                    className: 'btn btn-secondary btn-custom2',
+                }],
                 columnDefs: [{
-                    targets: [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22],
+                    targets: [4, 5, 6, 7, 8, 14, 15, 16, 17, 18, 19, 20, 21, 22],
                     visible: false
                 }]
             });
+
+
+            table.buttons().container().appendTo(
+                '#colvis-button');
         });
 
+
         $('#ibu-table').on('click', '.edit-btn', function() {
-            let nik = $(this).data('id'); // Corrected line to retrieve data-id
+            let nik = $(this).data('id');
             $.ajax({
                 url: '{{ route('pasien.edit_ibu', ':nik') }}'.replace(':nik', nik),
                 method: 'GET',

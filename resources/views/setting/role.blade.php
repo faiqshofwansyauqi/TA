@@ -25,7 +25,7 @@
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Roles</th>
-                                        <th>Action</th>
+                                        <th style="text-align: center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
@@ -143,7 +143,7 @@
                 serverSide: true,
                 ordering: false,
                 ajax: '{{ route('setting.data_role') }}',
-                scrollX: true,
+                scrollX: false,
                 fixedHeader: true,
                 columns: [{
                         data: 'id',
@@ -175,7 +175,7 @@
                             let deleteUrl = '{{ route('setting.destroy_role', ':id') }}'.replace(
                                 ':id', row.id);
                             return `
-                            <div style="display: flex; align-items: center;">
+                            <div style="display: flex; justify-content: center;">
                                 <button class="btn btn-sm btn-success edit-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalEdit" style="margin-right: 5px;">
                                     <i class="bi bi-pencil-fill"></i>
                                 </button>

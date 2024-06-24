@@ -84,7 +84,7 @@
                 serverSide: true,
                 ordering: false,
                 ajax: '{{ route('postnatal_care.data_pemantauan_bayi') }}',
-                scrollX: true,
+                scrollX: false,
                 fixedHeader: true,
                 columns: [{
                         data: 'id',
@@ -103,18 +103,24 @@
                         render: function(data, type, row) {
                             let viewUrl = '{{ route('postnatal_care.show_hepatitis', ':id') }}'
                                 .replace(':id', row.id);
-                            return `<a href="${viewUrl}" class="btn btn-sm btn-primary">
-                                        <i class="bi bi-eye-fill"></i></a>`;
+                            return `<div style="text-align: center;">
+                            <a href="${viewUrl}" class="btn btn-sm btn-primary">
+                                <i class="bi bi-eye-fill"></i>
+                            </a>
+                        </div>`;
                         }
                     },
                     {
                         data: 'pemantauan_bayi_hiv',
                         name: 'pemantauan_bayi_hiv',
                         render: function(data, type, row) {
-                            let viewUrl = '{{ route('postnatal_care.show_hiv', ':id') }}'.replace(
-                                ':id', row.id);
-                            return `<a href="${viewUrl}" class="btn btn-sm btn-primary">
-                                        <i class="bi bi-eye-fill"></i></a>`;
+                            let viewUrl = '{{ route('postnatal_care.show_hiv', ':id') }}'
+                                .replace(':id', row.id);
+                            return `<div style="text-align: center;">
+                            <a href="${viewUrl}" class="btn btn-sm btn-primary">
+                                <i class="bi bi-eye-fill"></i>
+                            </a>
+                        </div>`;
                         }
                     },
                     {
@@ -122,10 +128,12 @@
                         name: 'pemantauan_bayi_sifilis',
                         render: function(data, type, row) {
                             let viewUrl = '{{ route('postnatal_care.show_sifilis', ':id') }}'
-                                .replace(
-                                    ':id', row.id);
-                            return `<a href="${viewUrl}" class="btn btn-sm btn-primary">
-                                        <i class="bi bi-eye-fill"></i></a>`;
+                                .replace(':id', row.id);
+                            return `<div style="text-align: center;">
+                            <a href="${viewUrl}" class="btn btn-sm btn-primary">
+                                <i class="bi bi-eye-fill"></i>
+                            </a>
+                        </div>`;
                         }
                     }
                 ],

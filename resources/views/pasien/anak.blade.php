@@ -35,7 +35,7 @@
                                         <th>Panjang Bayi</th>
                                         <th>Tanggal Lahir</th>
                                         <th>Tempat Lahir</th>
-                                        <th>Action</th>
+                                        <th style="text-align: center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
@@ -283,7 +283,7 @@
                 serverSide: true,
                 ordering: false,
                 ajax: '{{ route('pasien.data_anak') }}',
-                scrollX: true,
+                scrollX: false,
                 fixedHeader: true,
                 columns: [{
                         data: 'id_anak',
@@ -294,15 +294,18 @@
                     },
                     {
                         data: 'nama_anak',
-                        name: 'nama_anak'
+                        name: 'nama_anak',
+                        width: '100px',
                     },
                     {
                         data: 'nama_ibu',
-                        name: 'nama_ibu'
+                        name: 'nama_ibu',
+                        width: '100px',
                     },
                     {
                         data: 'nama_suami',
-                        name: 'nama_suami'
+                        name: 'nama_suami',
+                        width: '100px',
                     },
                     {
                         data: 'alamat',
@@ -318,7 +321,8 @@
                     },
                     {
                         data: 'jenis_kelamin',
-                        name: 'jenis_kelamin'
+                        name: 'jenis_kelamin',
+                        width: '100px',
                     },
                     {
                         data: 'jenis_kelahiran',
@@ -372,7 +376,7 @@
                             let deleteUrl = '{{ route('pasien.destroy_anak', ':id') }}'.replace(
                                 ':id', row.id_anak);
                             return `
-                            <div style="display: flex; align-items: center;">
+                            <div style="display: flex; justify-content: center;">
                                 <button class="btn btn-sm btn-success edit-btn" data-id="${row.id_anak}" data-bs-toggle="modal" data-bs-target="#modalEdit" style="margin-right: 5px;">
                                     <i class="bi bi-pencil-fill"></i>
                                 </button>

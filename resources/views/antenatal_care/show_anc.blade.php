@@ -1345,7 +1345,7 @@
                 },
                 fixedColumns: false,
                 responsive: false,
-                scrollX: true,
+                scrollX: false,
                 language: {
                     emptyTable: "Data anc ibu {{ $anc->NIK }} tidak ada"
                 }

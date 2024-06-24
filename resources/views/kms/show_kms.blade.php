@@ -195,12 +195,13 @@
             console.log('Data:', data);
             const ctx = document.getElementById('kmsChart').getContext('2d');
             const kmsChart = new Chart(ctx, {
-                type: 'line',
+                type: 'bar',
                 data: {
                     labels: labels,
                     datasets: [{
                         label: 'Berat Badan (kg)',
                         data: data,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
                         borderColor: 'rgba(75, 192, 192, 1)',
                         borderWidth: 1,
                         fill: false
@@ -231,7 +232,7 @@
                             }
                         },
                         y: {
-                            min: 1,
+                            min: 0,
                             max: 28,
                             ticks: {
                                 beginAtZero: true,

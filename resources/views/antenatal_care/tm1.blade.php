@@ -40,7 +40,7 @@
                                         <th>Skrining Preeklamasi</th>
                                         <th>KESIMPULAN</th>
                                         <th>REKOMENDASI</th>
-                                        <th>Action</th>
+                                        <th style="text-align: center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
@@ -445,7 +445,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: '{{ route('antenatal_care.data_tm1') }}',
-                scrollX: true,
+                scrollX: false,
                 fixedHeader: true,
                 columns: [{
                         data: 'NIK',
@@ -561,18 +561,16 @@
                             let deleteUrl = '{{ route('antenatal_care.destroy_tm1', ':id') }}'
                                 .replace(':id', row.id);
                             return `
-                            <div style="display: flex; align-items: center;">
+                            <div style="display: flex; justify-content: center;">
                                 <button class="btn btn-sm btn-primary view-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalView" style="margin-right: 5px;">
                                     <i class="bi bi-eye-fill"></i>
                                 </button>
-                                <div style="display: flex; align-items: center;">
                                     <button class="btn btn-sm btn-success edit-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalEdit">
                                         <i class="bi bi-pencil-fill"></i>
                                     </button>
                                     <button type="button" class="btn btn-sm btn-danger btn-delete" data-id="${row.id}" data-url="${deleteUrl}" hidden>
                                         <i class="bi bi-trash3-fill"></i>
                                     </button>
-                                </div>
                             </div>`;
                         }
                     }

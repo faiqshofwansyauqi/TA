@@ -23,7 +23,7 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Nama Ibu</th>
-                                        <th>Action</th>
+                                        <th style="text-align: center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
@@ -83,7 +83,7 @@
                 serverSide: true,
                 ordering: false,
                 ajax: '{{ route('antenatal_care.data_anc') }}',
-                scrollX: true,
+                scrollX: false,
                 fixedHeader: true,
                 columns: [{
                         data: 'id',
@@ -105,10 +105,10 @@
                                 .replace(
                                     ':id', row.id);
                             return `
-                            <div style="display: flex; align-items: center;">
-                            <a href="${viewUrl}" class="btn btn-sm btn-primary">
-                            <i class="bi bi-eye-fill"></i>
-                            </a>
+                            <div style="display: flex; justify-content: center;">
+                                <a href="${viewUrl}" class="btn btn-sm btn-primary">
+                                <i class="bi bi-eye-fill"></i>
+                                </a>
                             <button type="button" class="btn btn-sm btn-danger btn-delete" data-id="${row.id}" data-url="${deleteUrl}" hidden>
                                         <i class="bi bi-trash3-fill"></i>
                                     </button>
