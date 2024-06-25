@@ -3,13 +3,17 @@
 @section('content')
     <div class="d-flex justify-content-between align-items-center">
         <div class="pagetitle">
-            <h1>Rencana Persalinan</h1>
-            <br>
-            <button type="button" class="btn btn-success" id="btn-plus">
-                <i class="bi bi-plus-circle"></i> Tambah
-            </button>
+            <h1 style="margin-bottom: 5px">Rencana Persalinan</h1>
+            <div class="header-right">
+                <button type="button" class="btn btn-success btn-custom1" id="btn-plus">
+                    <i class="bi bi-plus-circle"></i> Tambah
+                </button>
+                <div id="colvis-button">
+                </div>
+            </div>
         </div>
     </div>
+
     <section class="section dashboard">
         <div class="row">
             <div class="col-lg-12">
@@ -297,10 +301,8 @@
             $('#btn-plus').click(function() {
                 modalInput.modal('show');
             });
-        });
 
-        $(document).ready(function() {
-            $('#rnca-table').DataTable({
+            let table = $('#rnca-table').DataTable({
                 processing: true,
                 ordering: false,
                 serverSide: true,
@@ -365,11 +367,16 @@
                         orderable: false,
                         searchable: false,
                         render: function(data, type, row) {
-                            let viewUrl = '{{ route('antenatal_care.show_rnca', ':id') }}'.replace(
-                                ':id', row.id);
-                            let editUrl = '{{ route('antenatal_care.edit_rnca', ':id') }}'.replace(
-                                ':id', row.id);
-                            let deleteUrl = '{{ route('antenatal_care.destroy_rnca', ':id') }}'
+                            let viewUrl =
+                                '{{ route('antenatal_care.show_rnca', ':id') }}'
+                                .replace(
+                                    ':id', row.id);
+                            let editUrl =
+                                '{{ route('antenatal_care.edit_rnca', ':id') }}'
+                                .replace(
+                                    ':id', row.id);
+                            let deleteUrl =
+                                '{{ route('antenatal_care.destroy_rnca', ':id') }}'
                                 .replace(':id', row.id);
                             return `
                             <div style="display: flex; justify-content: center;">
@@ -386,15 +393,18 @@
                         }
                     }
                 ],
-                dom: '<"d-flex justify-content-between align-items-center"Bf>rtip',
-                buttons: [
-                    'colvis',
-                ],
+                dom: '<"d-flex justify-content-between align-items-center"<"#dt-buttons"B>f>rtip',
+                buttons: [{
+                    extend: 'colvis',
+                    className: 'btn btn-secondary btn-custom2',
+                }],
                 columnDefs: [{
                     targets: [7, 8],
                     visible: false
                 }]
             });
+            table.buttons().container().appendTo(
+                '#colvis-button');
         });
 
         // $('#rnca-table').on('click', '.btn-delete', function() {
@@ -524,7 +534,8 @@
                     $('#edit_transport').val(data.transport);
                     $('#edit_pendonor').val(data.pendonor);
                     $('#edit_pendonor_darah').val(data.pendonor_darah);
-                    $('#editForm').attr('action', '{{ route('antenatal_care.update_rnca', ':id') }}'
+                    $('#editForm').attr('action',
+                        '{{ route('antenatal_care.update_rnca', ':id') }}'
                         .replace(
                             ':id', id));
                     $('#modalEdit').modal('show');

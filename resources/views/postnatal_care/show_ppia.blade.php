@@ -3,13 +3,12 @@
 @section('content')
     <div class="d-flex justify-content-between align-items-center">
         <div class="pagetitle">
-            <h1>Detail Pemantauan PPIA</h1>
-            <br>
-            <button type="button" class="btn btn-success" id="btn-plus">
+            <h1 style="margin-bottom: 5px">Detail Pemantauan PPIA</h1>
+            <button type="button" class="btn btn-success btn-custom1" id="btn-plus">
                 <i class="bi bi-plus-circle"></i> Tambah
             </button>
             @foreach ($ppias as $item)
-                <button type="button" class="btn btn-primary btn-edit" data-id="{{ $item->id }}">
+                <button type="button" class="btn btn-primary btn-edit btn-custom1" data-id="{{ $item->id }}">
                     <i class="bi bi-pencil-square"></i> Edit
                 </button>
             @endforeach

@@ -3,13 +3,17 @@
 @section('content')
     <div class="d-flex justify-content-between align-items-center">
         <div class="pagetitle">
-            <h1>Pemeriksaan Bidan/Dokter Saat K1</h1>
-            <br>
-            <button type="button" class="btn btn-success" id="btn-plus">
-                <i class="bi bi-plus-circle"></i> Tambah
-            </button>
+            <h1 style="margin-bottom: 5px">Pemeriksaan Bidan Saat K1</h1>
+            <div class="header-right">
+                <button type="button" class="btn btn-success btn-custom1" id="btn-plus">
+                    <i class="bi bi-plus-circle"></i> Tambah
+                </button>
+                <div id="colvis-button">
+                </div>
+            </div>
         </div>
     </div>
+
     <section class="section dashboard">
         <div class="row">
             <div class="col-lg-12">
@@ -115,8 +119,8 @@
                                     <div class="row">
                                         <div class="col-md-6 mb-2">
                                             <label for="tgl_periksa" class="form-label">Tanggal Periksa</label>
-                                            <input type="date" class="form-control" id="tgl_periksa" name="tgl_periksa"
-                                                required>
+                                            <input type="date" class="form-control" id="tgl_periksa"
+                                                name="tgl_periksa" required>
                                         </div>
                                         <div class="col-md-6 mb-2">
                                             <label for="tgl_hpht" class="form-label">Tanggal HPHT</label>
@@ -325,10 +329,8 @@
             $('#btn-plus').click(function() {
                 modalInput.modal('show');
             });
-        });
 
-        $(document).ready(function() {
-            $('#ropb-table').DataTable({
+            let table = $('#ropb-table').DataTable({
                 processing: true,
                 serverSide: true,
                 ordering: false,
@@ -482,15 +484,18 @@
                         }
                     }
                 ],
-                dom: '<"d-flex justify-content-between align-items-center"Bf>rtip',
-                buttons: [
-                    'colvis',
-                ],
+                dom: '<"d-flex justify-content-between align-items-center"<"#dt-buttons"B>f>rtip',
+                buttons: [{
+                    extend: 'colvis',
+                    className: 'btn btn-secondary btn-custom2',
+                }],
                 columnDefs: [{
                     targets: [5, 6, 10, 11, 12, 13, ],
                     visible: false
                 }]
             });
+            table.buttons().container().appendTo(
+                '#colvis-button');
         });
 
         // $('#ropb-table').on('click', '.btn-delete', function() {

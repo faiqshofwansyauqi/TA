@@ -3,9 +3,8 @@
 @section('content')
     <div class="d-flex justify-content-between align-items-center">
         <div class="pagetitle">
-            <h1>Pemantauan Bayi</h1>
-            <br>
-            <button type="button" class="btn btn-success" id="btn-plus">
+            <h1 style="margin-bottom: 5px">Pemantauan Bayi</h1>
+            <button type="button" class="btn btn-success btn-custom1" id="btn-plus">
                 <i class="bi bi-plus-circle"></i> Tambah
             </button>
         </div>
@@ -23,9 +22,9 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Nama Ibu</th>
-                                        <th>Pemantauan Ibu Hepatitis</th>
-                                        <th>Pemantauan Bayi Ibu HIV</th>
-                                        <th>Pemantauan Ibu Sifilis</th>
+                                        <th style="text-align: center">Pemantauan Ibu Hepatitis</th>
+                                        <th style="text-align: center">Pemantauan Bayi Ibu HIV</th>
+                                        <th style="text-align: center">Pemantauan Ibu Sifilis</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>

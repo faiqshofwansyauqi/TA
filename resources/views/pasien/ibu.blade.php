@@ -499,8 +499,6 @@
                     visible: false
                 }]
             });
-
-
             table.buttons().container().appendTo(
                 '#colvis-button');
         });

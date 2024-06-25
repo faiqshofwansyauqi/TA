@@ -3,11 +3,14 @@
 @section('content')
     <div class="d-flex justify-content-between align-items-center">
         <div class="pagetitle">
-            <h1>Masa Nifas</h1>
-            <br>
-            <button type="button" class="btn btn-success" id="btn-plus">
-                <i class="bi bi-plus-circle"></i> Tambah
-            </button>
+            <h1 style="margin-bottom: 5px">Masa Nifas</h1>
+            <div class="header-right">
+                <button type="button" class="btn btn-success btn-custom1" id="btn-plus">
+                    <i class="bi bi-plus-circle"></i> Tambah
+                </button>
+                <div id="colvis-button">
+                </div>
+            </div>
         </div>
     </div>
 
@@ -75,39 +78,37 @@
             $('#btn-plus').click(function() {
                 modalInput.modal('show');
             });
-        });
 
-        $(document).ready(function() {
-            $('#anc-table').DataTable({
-                processing: true,
-                serverSide: true,
-                ordering: false,
-                ajax: '{{ route('postnatal_care.data_nifas') }}',
-                scrollX: false,
-                fixedHeader: true,
-                columns: [{
-                        data: 'id',
-                        name: 'id',
-                        render: function(data, type, row, meta) {
-                            return meta.row + meta.settings._iDisplayStart + 1;
-                        }
-                    },
-                    {
-                        data: 'NIK',
-                        name: 'NIK'
-                    },
-                    {
-                        data: 'action',
-                        name: 'action',
-                        orderable: false,
-                        searchable: false,
-                        render: function(data, type, row) {
-                            let viewUrl = '{{ route('postnatal_care.show_nifas', ':id') }}'.replace(
+        let table = $('#anc-table').DataTable({
+            processing: true,
+            serverSide: true,
+            ordering: false,
+            ajax: '{{ route('postnatal_care.data_nifas') }}',
+            scrollX: false,
+            fixedHeader: true,
+            columns: [{
+                    data: 'id',
+                    name: 'id',
+                    render: function(data, type, row, meta) {
+                        return meta.row + meta.settings._iDisplayStart + 1;
+                    }
+                },
+                {
+                    data: 'NIK',
+                    name: 'NIK'
+                },
+                {
+                    data: 'action',
+                    name: 'action',
+                    orderable: false,
+                    searchable: false,
+                    render: function(data, type, row) {
+                        let viewUrl = '{{ route('postnatal_care.show_nifas', ':id') }}'.replace(
+                            ':id', row.id);
+                        let deleteUrl = '{{ route('postnatal_care.destroy_nifas', ':id') }}'
+                            .replace(
                                 ':id', row.id);
-                            let deleteUrl = '{{ route('postnatal_care.destroy_nifas', ':id') }}'
-                                .replace(
-                                    ':id', row.id);
-                            return `
+                        return `
                             <div style="display: flex; justify-content: center;">
                             <a href="${viewUrl}" class="btn btn-sm btn-primary">
                             <i class="bi bi-eye-fill"></i>
@@ -117,12 +118,14 @@
                                     </button>
                             </div>
                             `;
-                        }
                     }
-                ],
-                dom: '<"d-flex justify-content-between align-items-center"lBf>rtip',
-                buttons: [],
-            });
+                }
+            ],
+            dom: '<"d-flex justify-content-between align-items-center"<"#dt-buttons"B>f>rtip',
+            buttons: [],
+        });
+        table.buttons().container().appendTo(
+        '#colvis-button');
         });
 
         // $('#anc-table').on('click', '.btn-delete', function() {

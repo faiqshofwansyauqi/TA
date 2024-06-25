@@ -3,9 +3,8 @@
 @section('content')
     <div class="d-flex justify-content-between align-items-center">
         <div class="pagetitle">
-            <h1>Setting Role</h1>
-            <br>
-            <button type="button" class="btn btn-success" id="btn-plus">
+            <h1 style="margin-bottom: 5px">Setting Role</h1>
+            <button type="button" class="btn btn-success btn-custom1" id="btn-plus">
                 <i class="bi bi-plus-circle"></i> Tambah
             </button>
         </div>

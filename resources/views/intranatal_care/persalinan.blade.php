@@ -3,11 +3,14 @@
 @section('content')
     <div class="d-flex justify-content-between align-items-center">
         <div class="pagetitle">
-            <h1>Masa Persalinan</h1>
-            <br>
-            <button type="button" class="btn btn-success" id="btn-plus">
-                <i class="bi bi-plus-circle"></i> Tambah
-            </button>
+            <h1 style="margin-bottom: 5px">Masa Persalinan</h1>
+            <div class="header-right">
+                <button type="button" class="btn btn-success btn-custom1" id="btn-plus">
+                    <i class="bi bi-plus-circle"></i> Tambah
+                </button>
+                <div id="colvis-button">
+                </div>
+            </div>
         </div>
     </div>
 
@@ -623,10 +626,8 @@
             $('#btn-plus').click(function() {
                 modalInput.modal('show');
             });
-        });
 
-        $(document).ready(function() {
-            $('#persalinan-table').DataTable({
+            let table = $('#persalinan-table').DataTable({
                 processing: true,
                 serverSide: true,
                 ordering: false,
@@ -828,15 +829,18 @@
                         }
                     }
                 ],
-                dom: '<"d-flex justify-content-between align-items-center"Bf>rtip',
-                buttons: [
-                    'colvis',
-                ],
+                dom: '<"d-flex justify-content-between align-items-center"<"#dt-buttons"B>f>rtip',
+                buttons: [{
+                    extend: 'colvis',
+                    className: 'btn btn-secondary btn-custom2',
+                }],
                 columnDefs: [{
                     targets: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22],
                     visible: false
                 }]
             });
+            table.buttons().container().appendTo(
+                '#colvis-button');
         });
 
         // $('#persalinan-table').on('click', '.btn-delete', function() {
