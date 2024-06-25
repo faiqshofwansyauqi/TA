@@ -16,8 +16,8 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <canvas id="kmsChart" width="1400" height="700" style="margin-bottom: 20px;"></canvas>
                         <div class="table-responsive">
+                            <canvas id="kmsChart" width="2446.88" height="800.11" style="margin-bottom: 20px;"></canvas>
                             <table class="table table-bordered table-anc" id="kms-table" style="width:100%">
                                 <thead>
                                     <tr>
@@ -91,7 +91,6 @@
             </div>
         </div>
     </section>
-
 
     <div class="modal fade" id="modalInput" tabindex="-1" aria-labelledby="ModalInput" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-md">
@@ -178,7 +177,7 @@
             const labels = [];
             const data = [];
 
-            
+
             $('#kms-table thead tr th').each(function(index, element) {
                 if (index > 0) {
                     labels.push($(element).text());
@@ -202,12 +201,12 @@
                         data: data,
                         backgroundColor: 'rgba(75, 192, 192, 0.2)',
                         borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 1,
+                        borderWidth: 0,
                         fill: false
                     }]
                 },
                 options: {
-                    responsive: true,
+                    responsive: false, // Disable responsiveness
                     plugins: {
                         zoom: {
                             pan: {

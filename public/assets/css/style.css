@@ -165,6 +165,11 @@ h6 {
     height: 30px; /* Tinggi tombol */
     font-size: 12px; /* Ukuran teks di dalam tombol */
 }
+#kmsChart {
+    width: 2446.88px !important;
+    height: 800.11px !important;
+}
+
 
 /* .vertical-header {
     writing-mode: vertical-rl;
