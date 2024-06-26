@@ -120,6 +120,7 @@
                 buttons: [],
             });
         });
+        
         // $('#anc-table').on('click', '.btn-delete', function() {
         //     const id = $(this).data('id');
         //     const url = $(this).data('url');

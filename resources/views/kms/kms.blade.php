@@ -22,8 +22,8 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Nama Anak</th>
-                                        <th>Jenis Kelamin</th>
                                         <th>Nama Ibu</th>
+                                        <th>Jenis Kelamin</th>
                                         <th style="text-align: center">Action</th>
                                     </tr>
                                 </thead>
