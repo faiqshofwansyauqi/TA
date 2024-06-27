@@ -24,7 +24,7 @@
                             <table class="table table-bordered table-anc" id="anak-table" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
+                                        <th style="text-align: center">No</th>
                                         <th>Nama Anak</th>
                                         <th>Nama Ibu</th>
                                         <th>Nama Ayah</th>
@@ -290,7 +290,8 @@
                         data: 'id_anak',
                         name: 'id_anak',
                         render: function(data, type, row, meta) {
-                            return meta.row + meta.settings._iDisplayStart + 1;
+                            return '<div style="text-align: center;">' + (meta.row + meta.settings
+                                ._iDisplayStart + 1) + '</div>';
                         }
                     },
                     {
@@ -381,7 +382,7 @@
                                 <button class="btn btn-sm btn-success edit-btn" data-id="${row.id_anak}" data-bs-toggle="modal" data-bs-target="#modalEdit" style="margin-right: 5px;">
                                     <i class="bi bi-pencil-fill"></i>
                                 </button>
-                                <button class="btn btn-sm btn-danger btn-delete" data-id="${row.id_anak}" data-url="${deleteUrl}">
+                                <button class="btn btn-sm btn-danger btn-delete" data-id="${row.id_anak}" data-url="${deleteUrl}" hidden>
                             <i class="bi bi-trash3-fill"></i>
                         </button>
                             </div>

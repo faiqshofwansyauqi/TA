@@ -20,7 +20,7 @@
                             <table class="table table-bordered table-anc" id="role-table" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
+                                        <th style="text-align: center">No</th>
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Roles</th>
@@ -148,7 +148,8 @@
                         data: 'id',
                         name: 'id',
                         render: function(data, type, row, meta) {
-                            return meta.row + meta.settings._iDisplayStart + 1;
+                            return '<div style="text-align: center;">' + (meta.row + meta.settings
+                                ._iDisplayStart + 1) + '</div>';
                         }
                     },
                     {

@@ -481,7 +481,7 @@
                                     <button class="btn btn-sm btn-success edit-btn" data-id="${row.NIK}" data-bs-toggle="modal" data-bs-target="#modalEdit" style="margin-right: 5px;">
                                         <i class="bi bi-pencil-fill"></i>
                                     </button>
-                                    <button class="btn btn-sm btn-danger btn-delete" data-id="${row.NIK}" data-url="${deleteUrl}">
+                                    <button class="btn btn-sm btn-danger btn-delete" data-id="${row.NIK}" data-url="${deleteUrl}" hidden>
                                         <i class="bi bi-trash3-fill"></i>
                                     </button>
                                 </div>

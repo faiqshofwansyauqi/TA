@@ -3,7 +3,7 @@
 @section('content')
     <div class="d-flex justify-content-between align-items-center">
         <div class="pagetitle">
-            <h1 style="margin-bottom: 5px">Kartu Menuju Sehat</h1>            
+            <h1 style="margin-bottom: 5px">Kartu Menuju Sehat</h1>
             <button type="button" class="btn btn-success btn-custom1" id="btn-plus">
                 <i class="bi bi-plus-circle"></i> Tambah
             </button>
@@ -20,7 +20,7 @@
                             <table class="table table-bordered table-anc" id="kms-table" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
+                                        <th style="text-align: center">No</th>
                                         <th>Nama Anak</th>
                                         <th>Nama Ibu</th>
                                         <th>Jenis Kelamin</th>
@@ -100,7 +100,12 @@
                     fixedHeader: true,
                     columns: [{
                             data: 'id',
-                            name: 'id'
+                            name: 'id',
+                            render: function(data, type, row, meta) {
+                                return '<div style="text-align: center;">' + (meta.row +
+                                    meta.settings
+                                    ._iDisplayStart + 1) + '</div>';
+                            }
                         },
                         {
                             data: 'nama_anak',

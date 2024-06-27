@@ -24,7 +24,7 @@
                             <table class="table table-bordered table-anc" id="rnca-table" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
+                                        <th style="text-align: center">No</th>
                                         <th>Nama Ibu</th>
                                         <th>Tanggal</th>
                                         <th>Penolong</th>
@@ -313,7 +313,8 @@
                         data: 'id',
                         name: 'id',
                         render: function(data, type, row, meta) {
-                            return meta.row + meta.settings._iDisplayStart + 1;
+                            return '<div style="text-align: center;">' + (meta.row + meta.settings
+                                ._iDisplayStart + 1) + '</div>';
                         }
                     },
                     {
