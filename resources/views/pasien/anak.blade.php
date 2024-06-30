@@ -100,24 +100,29 @@
                                 <div class="row">
                                     <div class="col-md-4 mb-2">
                                         <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
-                                        <input type="text" class="form-control" id="jenis_kelamin" name="jenis_kelamin"
-                                            required>
+                                        <select class="form-select" id="jenis_kelamin" name="jenis_kelamin" required>
+                                            <option value="-">Pilih Jenis Kelamin</option>
+                                            <option value="Laki-laki">Laki-laki</option>
+                                            <option value="Perempuan">Perempuan</option>
+                                        </select>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="jenis_kelahiran" class="form-label">Jenis Kelahiran</label>
-                                        <input type="text" class="form-control" id="jenis_kelahiran"
-                                            name="jenis_kelahiran" required>
+                                        <select class="form-select" id="jenis_kelahiran" name="jenis_kelahiran" required>
+                                            <option value="-">Pilih Jenis Kelamin</option>
+                                            <option value="Tunggal">Tunggal</option>
+                                            <option value="Ganda">Ganda</option>
+                                        </select>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="anak_ke" class="form-label">Anak Ke</label>
-                                        <select class="form-select" id="anak_ke" name="anak_ke">
+                                        <select class="form-select" id="anak_ke" name="anak_ke" required>
                                             <option value="">Pilih Anak Ke</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
                                             <option value="3">3</option>
                                             <option value="4">4</option>
                                             <option value="5">5</option>
-
                                         </select>
                                     </div>
                                 </div>
@@ -126,21 +131,21 @@
                                         <label for="berat_bayi" class="form-label">Berat Bayi</label>
                                         <div class="input-group mb-2">
                                             <input type="text" class="form-control" id="berat_bayi" name="berat_bayi"
-                                                inputmode="numeric" pattern="\d*">
+                                                inputmode="numeric" pattern="\d*" required>
                                             <span class="input-group-text">gram</span>
                                         </div>
                                     </div>
-                                    <div class="col-md-3 mb-2">
+                                    <div class="col-md-2 mb-2">
                                         <label for="panjang_bayi" class="form-label">Panjang Bayi</label>
                                         <div class="input-group mb-2">
                                             <input type="text" class="form-control" id="panjang_bayi"
-                                                name="panjang_bayi" inputmode="numeric" pattern="\d*">
+                                                name="panjang_bayi" inputmode="numeric" pattern="\d*" required>
                                             <span class="input-group-text">cm</span>
                                         </div>
                                     </div>
                                     <div class="col-md-3 mb-2">
                                         <label for="bayi_lahir" class="form-label">Tanggal Lahir</label>
-                                        <input type="datetime-local" class="form-control" id="bayi_lahir"
+                                        <input type="datetime-local" class="form-control" id="bayi_lahir" required
                                             name="bayi_lahir">
                                     </div>
                                     <div class="col-md-3 mb-2">
@@ -180,13 +185,8 @@
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_nama_ibu" class="form-label">Nama Ibu</label>
-                                        <select class="form-control" id="edit_nama_ibu" name="nama_ibu" required
-                                            disabled>
-                                            <option value="">Pilih Ibu</option>
-                                            @foreach ($ibus as $ibu)
-                                                <option value="{{ $ibu->nama_ibu }}">{{ $ibu->nama_ibu }}</option>
-                                            @endforeach
-                                        </select>
+                                        <input type="text" class="form-control" id="edit_nama_ibu" name="nama_ibu"
+                                            value="{{ $ibu }}" readonly>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_nama_suami" class="form-label">Nama Suami</label>
@@ -213,13 +213,19 @@
                                 <div class="row">
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_jenis_kelamin" class="form-label">Jenis Kelamin</label>
-                                        <input type="text" class="form-control" id="edit_jenis_kelamin"
-                                            name="jenis_kelamin" required>
+                                        <select class="form-select" id="edit_jenis_kelamin" name="jenis_kelamin">
+                                            <option value="-">Pilih Jenis Kelamin</option>
+                                            <option value="Laki-laki">Laki-laki</option>
+                                            <option value="Perempuan">Perempuan</option>
+                                        </select>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_jenis_kelahiran" class="form-label">Jenis Kelahiran</label>
-                                        <input type="text" class="form-control" id="edit_jenis_kelahiran"
-                                            name="jenis_kelahiran" required>
+                                        <select class="form-select" id="edit_jenis_kelahiran" name="jenis_kelahiran">
+                                            <option value="-">Pilih Jenis Kelamin</option>
+                                            <option value="Tunggal">Tunggal</option>
+                                            <option value="Ganda">Ganda</option>
+                                        </select>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_anak_ke" class="form-label">Anak Ke</label>
@@ -230,12 +236,11 @@
                                             <option value="3">3</option>
                                             <option value="4">4</option>
                                             <option value="5">5</option>
-
                                         </select>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-2 mb-2">
+                                    <div class="col-md-3 mb-2">
                                         <label for="edit_berat_bayi" class="form-label">Berat Bayi</label>
                                         <div class="input-group mb-2">
                                             <input type="text" class="form-control" id="edit_berat_bayi"
@@ -243,7 +248,7 @@
                                             <span class="input-group-text">gram</span>
                                         </div>
                                     </div>
-                                    <div class="col-md-2 mb-2">
+                                    <div class="col-md-3 mb-2">
                                         <label for="edit_panjang_bayi" class="form-label">Panjang Bayi</label>
                                         <div class="input-group mb-2">
                                             <input type="text" class="form-control" id="edit_panjang_bayi"
@@ -380,7 +385,7 @@
                             return `
                             <div style="display: flex; justify-content: center;">
                                 <button class="btn btn-sm btn-success edit-btn" data-id="${row.id_anak}" data-bs-toggle="modal" data-bs-target="#modalEdit" style="margin-right: 5px;">
-                                    <i class="bi bi-pencil-fill"></i>
+                                    <i class="ri-edit-2-fill"></i>
                                 </button>
                                 <button class="btn btn-sm btn-danger btn-delete" data-id="${row.id_anak}" data-url="${deleteUrl}" hidden>
                             <i class="bi bi-trash3-fill"></i>
@@ -396,7 +401,7 @@
                     className: 'btn btn-secondary btn-custom2',
                 }],
                 columnDefs: [{
-                    targets: [7, 8, 9, 10, 11, 12, 13],
+                    targets: [7,4, 8, 9, 10, 11, 12, 13],
                     visible: false
                 }]
             });
@@ -479,7 +484,6 @@
         $('#anak-table').on('click', '.btn-delete', function() {
             const id = $(this).data('id');
             const url = $(this).data('url');
-
             Swal.fire({
                 title: 'Apakah Anda yakin?',
                 text: "Anda tidak akan bisa mengembalikan ini!",

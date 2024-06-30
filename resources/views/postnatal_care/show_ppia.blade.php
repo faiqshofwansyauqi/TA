@@ -9,7 +9,7 @@
             </button>
             @foreach ($ppias as $item)
                 <button type="button" class="btn btn-primary btn-edit btn-custom1" data-id="{{ $item->id }}">
-                    <i class="bi bi-pencil-square"></i> Edit
+                    <i class="ri-edit-2-fill"></i> Edit
                 </button>
             @endforeach
         </div>

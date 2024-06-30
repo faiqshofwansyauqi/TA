@@ -111,7 +111,7 @@
                                 ':id', row.id);
                         return `
                             <div style="display: flex; justify-content: center;">
-                            <a href="${viewUrl}" class="btn btn-sm btn-primary">
+                            <a href="${viewUrl}" class="btn btn-sm btn-dark">
                             <i class="bi bi-eye-fill"></i>
                             </a>
                         <button type="button" class="btn btn-sm btn-danger btn-delete" data-id="${row.id}" data-url="${deleteUrl}" hidden>

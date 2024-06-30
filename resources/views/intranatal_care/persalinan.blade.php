@@ -816,11 +816,11 @@
                                 .replace(':id', row.id_persalinan);
                             return `
                             <div style="display: flex; justify-content: center;">
-                                <button class="btn btn-sm btn-primary view-btn" data-id="${row.id_persalinan}" data-bs-toggle="modal" data-bs-target="#modalView" style="margin-right: 5px;">
+                                <button class="btn btn-sm btn-dark view-btn" data-id="${row.id_persalinan}" data-bs-toggle="modal" data-bs-target="#modalView" style="margin-right: 5px;">
                                     <i class="bi bi-eye-fill"></i>
                                 </button>
-                                    <button class="btn btn-sm btn-success edit-btn" data-id="${row.id_persalinan}" data-bs-toggle="modal" data-bs-target="#modalEdit">
-                                        <i class="bi bi-pencil-fill"></i>
+                                    <button class="btn btn-sm btn-primary edit-btn" data-id="${row.id_persalinan}" data-bs-toggle="modal" data-bs-target="#modalEdit">
+                                        <i class="ri-edit-2-fill"></i>
                                     </button>
                                     <button type="button" class="btn btn-sm btn-danger btn-delete" data-id="${row.id_persalinan}" data-url="${deleteUrl}" hidden>
                                         <i class="bi bi-trash3-fill"></i>

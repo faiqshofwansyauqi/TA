@@ -476,8 +476,8 @@
                                 .NIK);
                             return `
                                 <div style="display: flex; justify-content: center;">
-                                    <button class="btn btn-sm btn-success edit-btn" data-id="${row.NIK}" data-bs-toggle="modal" data-bs-target="#modalEdit" style="margin-right: 5px;">
-                                        <i class="bi bi-pencil-fill"></i>
+                                    <button class="btn btn-sm btn-primary edit-btn" data-id="${row.NIK}" data-bs-toggle="modal" data-bs-target="#modalEdit" style="margin-right: 5px;">
+                                        <i class="ri-edit-2-fill"></i>
                                     </button>
                                     <button class="btn btn-sm btn-danger btn-delete" data-id="${row.NIK}" data-url="${deleteUrl}" hidden>
                                         <i class="bi bi-trash3-fill"></i>
@@ -493,7 +493,7 @@
                     className: 'btn btn-secondary btn-custom2',
                 }],
                 columnDefs: [{
-                    targets: [4, 5, 6, 7, 8, 14, 15, 16, 17, 18, 19, 20, 21, 22],
+                    targets: [4, 5, 6, 7, 8, 9, 10, 11,14, 15, 16, 17, 18, 19, 20, 21, 22],
                     visible: false
                 }]
             });

@@ -176,8 +176,8 @@
                                 ':id', row.id);
                             return `
                             <div style="display: flex; justify-content: center;">
-                                <button class="btn btn-sm btn-success edit-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalEdit" style="margin-right: 5px;">
-                                    <i class="bi bi-pencil-fill"></i>
+                                <button class="btn btn-sm btn-primary edit-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalEdit" style="margin-right: 5px;">
+                                    <i class="ri-edit-2-fill"></i>
                                 </button>
                                 <button class="btn btn-sm btn-danger btn-delete" data-id="${row.id}" data-url="${deleteUrl}">
                             <i class="bi bi-trash3-fill"></i>

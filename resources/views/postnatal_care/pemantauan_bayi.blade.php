@@ -104,7 +104,7 @@
                             let viewUrl = '{{ route('postnatal_care.show_hepatitis', ':id') }}'
                                 .replace(':id', row.id);
                             return `<div style="text-align: center;">
-                            <a href="${viewUrl}" class="btn btn-sm btn-primary">
+                            <a href="${viewUrl}" class="btn btn-sm btn-dark">
                                 <i class="bi bi-eye-fill"></i>
                             </a>
                         </div>`;
@@ -117,7 +117,7 @@
                             let viewUrl = '{{ route('postnatal_care.show_hiv', ':id') }}'
                                 .replace(':id', row.id);
                             return `<div style="text-align: center;">
-                            <a href="${viewUrl}" class="btn btn-sm btn-primary">
+                            <a href="${viewUrl}" class="btn btn-sm btn-dark">
                                 <i class="bi bi-eye-fill"></i>
                             </a>
                         </div>`;
@@ -130,7 +130,7 @@
                             let viewUrl = '{{ route('postnatal_care.show_sifilis', ':id') }}'
                                 .replace(':id', row.id);
                             return `<div style="text-align: center;">
-                            <a href="${viewUrl}" class="btn btn-sm btn-primary">
+                            <a href="${viewUrl}" class="btn btn-sm btn-dark">
                                 <i class="bi bi-eye-fill"></i>
                             </a>
                         </div>`;

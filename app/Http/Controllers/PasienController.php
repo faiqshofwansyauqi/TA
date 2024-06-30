@@ -229,27 +229,35 @@ class PasienController extends Controller
     public function update_anak(Request $request, $id)
     {
         $request->validate([
-            'tanggal_terdaftar' => 'required',
             'nama_anak' => 'required',
-            'id_ibu' => 'required',
-            'usia_anak' => 'required',
-            'tempat_lahir' => 'required',
-            'tanggal_lahir' => 'required',
+            'nama_ibu' => 'required',
+            'nama_suami' => 'required',
+            'alamat' => 'required',
+            'kec' => 'required',
+            'kab' => 'required',
             'jenis_kelamin' => 'required',
+            'jenis_kelahiran' => 'required',
             'anak_ke' => 'required',
-            'gol_darah' => 'required',
+            'berat_bayi' => 'required',
+            'panjang_bayi' => 'required',
+            'bayi_lahir' => 'required',
+            'tempat' => 'required',
         ]);
         $anak = Anak::findOrFail($id);
         $anak->update([
-            'tanggal_terdaftar' => $request->tanggal_terdaftar,
             'nama_anak' => $request->nama_anak,
-            'usia_anak' => $request->usia_anak,
-            'id_ibu' => $request->id_ibu,
-            'tempat_lahir' => $request->tempat_lahir,
-            'tanggal_lahir' => $request->tanggal_lahir,
+            'nama_ibu' => $request->nama_ibu,
+            'nama_suami' => $request->nama_suami,
+            'alamat' => $request->alamat,
+            'kec' => $request->kec,
+            'kab' => $request->kab,
             'jenis_kelamin' => $request->jenis_kelamin,
+            'jenis_kelahiran' => $request->jenis_kelahiran,
             'anak_ke' => $request->anak_ke,
-            'gol_darah' => $request->gol_darah,
+            'berat_bayi' => $request->berat_bayi,
+            'panjang_bayi' => $request->panjang_bayi,
+            'bayi_lahir' => $request->bayi_lahir,
+            'tempat' => $request->tempat,
         ]);
         return redirect()->back()->with('success', 'Data anak berhasil diupdate');
     }
