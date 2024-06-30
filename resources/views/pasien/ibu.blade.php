@@ -76,17 +76,17 @@
                                 <div class="row">
                                     <div class="col-md-4 mb-2">
                                         <label for="nama_ibu" class="form-label">Nama Ibu</label>
-                                        <input type="text" class="form-control" id="nama_ibu" name="nama_ibu" required>
+                                        <input type="text" class="form-control" id="nama_ibu" name="nama_ibu"required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="nama_suami" class="form-label">Nama Suami</label>
-                                        <input type="text" class="form-control" id="nama_suami" name="nama_suami"
-                                            required>
+                                        <input type="text" class="form-control" id="nama_suami"
+                                            name="nama_suami"required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
-                                        <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir"
-                                            required>
+                                        <input type="date" class="form-control" id="tanggal_lahir"
+                                            name="tanggal_lahir"required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="alamat_domisili" class="form-label">Alamat Domisili</label>
@@ -112,13 +112,13 @@
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="NIK" class="form-label">NIK</label>
-                                        <input type="text" class="form-control" id="NIK" name="NIK"
-                                            maxlength="16" required>
+                                        <input type="text" class="form-control" id="NIK" name="NIK" required
+                                            maxlength="16" >
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="noregis" class="form-label">Nomer Registrasi Ibu</label>
-                                        <input type="text" class="form-control" id="noregis" name="noregis"
-                                            maxlength="13" required>
+                                        <input type="text" class="form-control" id="noregis" name="noregis" required
+                                            maxlength="4" pattern="\d{1,13}">
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="umur" class="form-label">Umur</label>
@@ -147,7 +147,7 @@
                                     <div class="col-md-4 mb-2">
                                         <label for="jamkesmas" class="form-label">Jamkesmas</label>
                                         <select class="form-select" id="jamkesmas" name="jamkesmas" required>
-                                            <option value="">Pilih Jamkesmas</option>
+                                            <option value="-">Pilih Jamkesmas</option>
                                             <option value="Ya">Ya</option>
                                             <option value="Tidak">Tidak</option>
                                         </select>
@@ -171,7 +171,7 @@
                                     <div class="col-md-4 mb-2">
                                         <label for="gol_darah" class="form-label">Gol Darah</label>
                                         <select class="form-select" id="gol_darah" name="gol_darah" required>
-                                            <option value="">Pilih Golongan Darah</option>
+                                            <option value="-">Pilih Golongan Darah</option>
                                             <option value="A">A</option>
                                             <option value="B">B</option>
                                             <option value="AB">AB</option>
@@ -180,8 +180,7 @@
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="telp" class="form-label">Nomer Telp</label>
-                                        <input type="number" class="form-control" id="telp" name="telp"
-                                            maxlength="13" pattern="\d{1,13}" required>
+                                        <input type="text" class="form-control" id="telp" name="telp" maxlength="13" pattern="\d{1,13}" required>
                                     </div>
                                 </div>
                                 <br>
@@ -255,7 +254,7 @@
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_noregis" class="form-label">Nomer Registrasi Ibu</label>
                                         <input type="text" class="form-control" id="edit_noregis" name="noregis"
-                                            maxlength="13" required>
+                                            maxlength="4" pattern="\d{1,13}">
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_umur" class="form-label">Umur</label>
@@ -318,7 +317,7 @@
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_gol_darah" class="form-label">Gol Darah</label>
                                         <select class="form-select" id="edit_gol_darah" name="gol_darah" required>
-                                            <option value="">Pilih Golongan Darah</option>
+                                            <option value="-">Pilih Golongan Darah</option>
                                             <option value="A">A</option>
                                             <option value="B">B</option>
                                             <option value="AB">AB</option>
@@ -327,8 +326,8 @@
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_telp" class="form-label">Nomer Telp</label>
-                                        <input type="number" class="form-control" id="edit_telp" name="telp"
-                                            maxlength="13" pattern="\d{1,13}" required>
+                                        <input type="text" class="form-control" id="edit_telp" name="telp"
+                                            maxlength="13" pattern="\d{1,13}">
                                     </div>
                                 </div>
                                 <br>
@@ -348,7 +347,6 @@
             $('#btn-plus').click(function() {
                 modalInput.modal('show');
             });
-
 
             let table = $('#ibu-table').DataTable({
                 processing: true,
@@ -503,7 +501,6 @@
                 '#colvis-button');
         });
 
-
         $('#ibu-table').on('click', '.edit-btn', function() {
             let nik = $(this).data('id');
             $.ajax({
@@ -590,6 +587,43 @@
                     });
                 }
             });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            function restrictInputToNumbers(input, maxLength) {
+                input.addEventListener('input', function() {
+                    var value = input.value;
+                    value = value.replace(/\D/g, '');
+                    if (value.length > maxLength) {
+                        value = value.substring(0, maxLength);
+                    }
+                    input.value = value;
+                });
+            }
+            function restrictInputToNumbersAndSlash(input, maxLength) {
+                input.addEventListener('input', function() {
+                    var value = input.value;
+                    value = value.replace(/[^0-9/]/g, '');
+
+                    if (value.length > maxLength) {
+                        value = value.substring(0, maxLength);
+                    }
+                    input.value = value;
+                });
+            }
+            var telpInput = document.getElementById('telp');
+            var telpEdit = document.getElementById('edit_telp');
+            var nikInput = document.getElementById('NIK');
+            var noregisInput = document.getElementById('noregis');
+            var noregisEdit = document.getElementById('edit_noregis');
+            var rtrwInput = document.getElementById('rtrw');
+
+            restrictInputToNumbers(telpInput, 13);
+            restrictInputToNumbers(telpEdit, 13);
+            restrictInputToNumbers(nikInput, 16);
+            restrictInputToNumbers(noregisInput, 4);
+            restrictInputToNumbers(noregisEdit, 4);
+            restrictInputToNumbersAndSlash(rtrwInput, 5);
         });
     </script>
 @endsection
