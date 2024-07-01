@@ -593,7 +593,7 @@ class ANCController extends Controller
     {
         // dd($request);
         $request->validate([
-            'NIK' => 'required',
+            'nama_ibu' => 'required',
             'tgl_persalinan' => 'required',
             'penolong' => 'required',
             'tempat' => 'required',
@@ -604,7 +604,7 @@ class ANCController extends Controller
         ]);
 
         Rencana_Persalinan::create([
-            'NIK' => $request->NIK,
+            'nama_ibu' => $request->nama_ibu,
             'tgl_persalinan' => $request->tgl_persalinan,
             'penolong' => $request->penolong,
             'tempat' => $request->tempat,
@@ -619,7 +619,7 @@ class ANCController extends Controller
     {
         // dd($request);
         $request->validate([
-            'NIK' => 'required',
+            'nama_ibu' => 'required',
             'tgl_persalinan' => 'required',
             'penolong' => 'required',
             'tempat' => 'required',
@@ -630,7 +630,7 @@ class ANCController extends Controller
         ]);
         $rnca = Rencana_Persalinan::findOrFail($id);
         $rnca->update([
-            'NIK' => $request->NIK,
+            'nama_ibu' => $request->nama_ibu,
             'tgl_persalinan' => $request->tgl_persalinan,
             'penolong' => $request->penolong,
             'tempat' => $request->tempat,

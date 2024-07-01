@@ -46,7 +46,7 @@
     </section>
 
     <div class="modal fade" id="modalInput" tabindex="-1" aria-labelledby="ModalInput" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable modal-xl">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h3 class="modal-title fs-4 fw-bold" id="ModalInput">Input Rencana Persalinan</h3>
@@ -60,11 +60,11 @@
                                 <br>
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <label for="NIK" class="form-label">Ibu</label>
-                                        <select class="form-control" id="NIK" name="NIK" required>
+                                        <label for="nama_ibu" class="form-label">Ibu</label>
+                                        <select class="form-control" id="nama_ibu" name="nama_ibu" required>
                                             <option value="">Pilih Ibu</option>
                                             @foreach ($ibus as $ibu)
-                                                <option value="{{ $ibu->NIK }}">{{ $ibu->NIK }}</option>
+                                                <option value="{{ $ibu->nama_ibu }}">{{ $ibu->nama_ibu }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -159,7 +159,7 @@
     </div>
 
     <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="ModalEdit" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable modal-xl">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h3 class="modal-title fs-4 fw-bold" id="ModalEdit">Edit Rencana Persalinan </h3>
@@ -172,11 +172,11 @@
                         <div class="col-12">
                             <div class="card-body">
                                 <div class="col-md-4 mb-3">
-                                    <label for="edit_NIK" class="form-label" hidden>Ibu</label>
-                                    <select class="form-control" id="edit_NIK" name="NIK" hidden>
+                                    <label for="edit_nama_ibu" class="form-label" hidden>Ibu</label>
+                                    <select class="form-control" id="edit_nama_ibu" name="nama_ibu" hidden>
                                         <option value="">Pilih Ibu</option>
                                         @foreach ($ibus as $ibu)
-                                            <option value="{{ $ibu->NIK }}">{{ $ibu->NIK }}</option>
+                                            <option value="{{ $ibu->nama_ibu }}">{{ $ibu->nama_ibu }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -271,7 +271,7 @@
     </div>
 
     <div class="modal fade" id="modalView" tabindex="-1" aria-labelledby="modalViewLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-4 fw-bold" id="modalViewLabel">Detail Persalinan</h1>
@@ -315,8 +315,8 @@
                         }
                     },
                     {
-                        data: 'NIK',
-                        name: 'NIK'
+                        data: 'nama_ibu',
+                        name: 'nama_ibu'
                     },
                     {
                         data: 'tgl_persalinan',
@@ -464,7 +464,7 @@
                 url: '{{ route('antenatal_care.show_rnca', ':id') }}'.replace(':id', id),
                 method: 'GET',
                 success: function(data) {
-                    let namaIbu = data.ibu.nama_ibu;
+                    let namaIbu = data.nama_ibu;
 
                     function formatDate(dateString) {
                         if (!dateString) return '';
@@ -524,7 +524,7 @@
                 url: '{{ route('antenatal_care.edit_rnca', ':id') }}'.replace(':id', id),
                 method: 'GET',
                 success: function(data) {
-                    $('#edit_NIK').val(data.NIK);
+                    $('#edit_nama_ibu').val(data.nama_ibu);
                     $('#edit_tgl_persalinan').val(data.tgl_persalinan);
                     $('#edit_penolong').val(data.penolong);
                     $('#edit_tempat').val(data.tempat);

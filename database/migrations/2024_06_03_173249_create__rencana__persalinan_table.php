@@ -16,7 +16,7 @@ class CreateRencanaPersalinanTable extends Migration
         Schema::create('rnca_persalinan', function (Blueprint $table) {
             $table->id();
             $table->string('tgl_persalinan');
-            $table->string('NIK');
+            $table->string('nama_ibu');
             $table->string('penolong');
             $table->string('tempat');
             $table->string('pendamping');
