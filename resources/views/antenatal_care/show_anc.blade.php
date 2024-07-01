@@ -125,7 +125,7 @@
                             <div class="col-6">
                                 <div class="card-body">
                                     <h5 class="card-title">Register</h5>
-                                    <input type="hidden" name="NIK" value="{{ $anc->NIK }}">
+                                    <input type="hidden" name="nama_ibu" value="{{ $anc->nama_ibu }}">
                                     <div class="row">
                                         <div class="col-md-4 mb-3">
                                             <label for="tanggal" class="form-label">Tanggal</label>
@@ -164,7 +164,7 @@
                                         <div class="col-md-4 mb-3">
                                             <label for="td_mmhg" class="form-label">TD <sup>(mmhg)</sup></label>
                                             <div class="input-group">
-                                                <input type="number" class="form-control" id="td_mmhg"
+                                                <input type="text" class="form-control" id="td_mmhg"
                                                     name="td_mmhg">
                                                 <span class="input-group-text">mmhg</span>
                                             </div>
@@ -213,7 +213,7 @@
                                             <div class="input-group">
                                                 <input type="number" class="form-control" id="djj"
                                                     name="djj">
-                                                <span class="input-group-text">menit</span>
+                                                <span class="input-group-text">/menit</span>
                                             </div>
                                         </div>
                                         <div class="col-md-4 mb-3">
@@ -594,7 +594,7 @@
                             <div class="col-6">
                                 <div class="card-body">
                                     <h5 class="card-title">Register</h5>
-                                    <input type="hidden" name="NIK" value="{{ $anc->NIK }}">
+                                    <input type="hidden" name="nama_ibu" value="{{ $anc->nama_ibu }}">
                                     <div class="row">
                                         <div class="col-md-4 mb-3">
                                             <label for="edit_tanggal" class="form-label">Tanggal</label>
@@ -633,7 +633,7 @@
                                         <div class="col-md-4 mb-3">
                                             <label for="edit_td_mmhg" class="form-label">TD <sup>(mmhg)</sup></label>
                                             <div class="input-group">
-                                                <input type="number" class="form-control" id="edit_td_mmhg"
+                                                <input type="text" class="form-control" id="edit_td_mmhg"
                                                     name="td_mmhg">
                                                 <span class="input-group-text">mmhg</span>
                                             </div>
@@ -683,7 +683,7 @@
                                             <div class="input-group">
                                                 <input type="number" class="form-control" id="edit_djj"
                                                     name="djj">
-                                                <span class="input-group-text">menit</span>
+                                                <span class="input-group-text">/menit</span>
                                             </div>
                                         </div>
                                         <div class="col-md-4 mb-3">
@@ -1072,7 +1072,7 @@
                 ordering: false,
                 paging: false,
                 info: false,
-                ajax: "{{ route('antenatal_care.data_showanc', ['NIK' => $anc->NIK]) }}",
+                ajax: "{{ route('antenatal_care.data_showanc', ['nama_ibu' => $anc->nama_ibu]) }}",
                 columns: [{
                         data: 'id',
                         name: 'id',
@@ -1230,15 +1230,24 @@
                     },
                     {
                         data: 'kelambu',
-                        name: 'kelambu'
+                        name: 'kelambu',
+                        render: function(data, type, row, meta) {
+                            return data.toLowerCase() === 'jika iya' ? '&#10003;' : '&#10007;';
+                        }
                     },
                     {
                         data: 'skrining_anam',
-                        name: 'skrining_anam'
+                        name: 'skrining_anam',
+                        render: function(data, type, row, meta) {
+                            return data.toLowerCase() === 'jika iya' ? '&#10003;' : '&#10007;';
+                        }
                     },
                     {
                         data: 'dahak',
-                        name: 'dahak'
+                        name: 'dahak',
+                        render: function(data, type, row, meta) {
+                            return data.toLowerCase() === 'jika iya' ? '&#10003;' : '&#10007;';
+                        }
                     },
                     {
                         data: 'tbc',
@@ -1250,19 +1259,31 @@
                     },
                     {
                         data: 'sehat',
-                        name: 'sehat'
+                        name: 'sehat',
+                        render: function(data, type, row, meta) {
+                            return data.toLowerCase() === 'jika iya' ? '&#10003;' : '&#10007;';
+                        }
                     },
                     {
                         data: 'kontak_erat',
-                        name: 'kontak_erat'
+                        name: 'kontak_erat',
+                        render: function(data, type, row, meta) {
+                            return data.toLowerCase() === 'jika iya' ? '&#10003;' : '&#10007;';
+                        }
                     },
                     {
                         data: 'suspek',
-                        name: 'suspek'
+                        name: 'suspek',
+                        render: function(data, type, row, meta) {
+                            return data.toLowerCase() === 'jika iya' ? '&#10003;' : '&#10007;';
+                        }
                     },
                     {
                         data: 'konfimasi',
-                        name: 'konfimasi'
+                        name: 'konfimasi',
+                        render: function(data, type, row, meta) {
+                            return data.toLowerCase() === 'jika iya' ? '&#10003;' : '&#10007;';
+                        }
                     },
                     {
                         data: 'hdk',
@@ -1444,9 +1465,8 @@
         });
 
         document.getElementById('lila').addEventListener('input', function() {
-            var lilaValue = parseFloat(this.value.replace(',', '.')); // Ganti koma dengan titik, jika ada
+            var lilaValue = parseFloat(this.value.replace(',', '.'));
             var stsGiziSelect = document.getElementById('sts_gizi');
-
             if (!isNaN(lilaValue)) {
                 if (lilaValue < 23.5) {
                     stsGiziSelect.value = 'K';
@@ -1454,8 +1474,35 @@
                     stsGiziSelect.value = 'N';
                 }
             } else {
-                stsGiziSelect.value = '-'; // Reset ke pilihan awal jika input tidak valid
+                stsGiziSelect.value = '-';
             }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            function restrictInputToNumbers(input, maxLength) {
+                input.addEventListener('input', function() {
+                    var value = input.value;
+                    value = value.replace(/\D/g, '');
+                    if (value.length > maxLength) {
+                        value = value.substring(0, maxLength);
+                    }
+                    input.value = value;
+                });
+            }
+            function restrictInputToNumbersAndSlash(input, maxLength) {
+                input.addEventListener('input', function() {
+                    var value = input.value;
+                    value = value.replace(/[^0-9/]/g, '');
+                    if (value.length > maxLength) {
+                        value = value.substring(0, maxLength);
+                    }
+                    input.value = value;
+                });
+            }
+            var td_mmhgInput = document.getElementById('td_mmhg');
+            var td_mmhgEdit = document.getElementById('td_mmhg');
+            restrictInputToNumbersAndSlash(td_mmhgInput, 10);
+            restrictInputToNumbersAndSlash(td_mmhgEdit, 10);
         });
 
         {

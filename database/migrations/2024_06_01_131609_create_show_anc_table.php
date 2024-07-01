@@ -15,7 +15,7 @@ class CreateShowAncTable extends Migration
     {
         Schema::create('show_anc', function (Blueprint $table) {
             $table->id();
-            $table->string('NIK');
+            $table->string('nama_ibu');
             $table->date('tanggal');
             $table->string('usia_kehamilan');
             $table->string('trimester');

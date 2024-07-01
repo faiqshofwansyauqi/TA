@@ -66,7 +66,7 @@ Route::middleware(['auth'])->group(function () {
         ///////////// SHOW ANC /////////////
         Route::post('store-show_anc', [ANCController::class, 'store_showanc'])->name('antenatal_care.store_showanc');
         Route::get('anc/show_anc/{id}', [ANCController::class, 'show_anc'])->name('antenatal_care.show_anc');
-        Route::get('data-show_anc/{NIK}', [ANCController::class, 'getData_showanc'])->name('antenatal_care.data_showanc');
+        Route::get('data-show_anc/{nama_ibu}', [ANCController::class, 'getData_showanc'])->name('antenatal_care.data_showanc');
         Route::get('show_anc/edit_showanc/{id}', [ANCController::class, 'edit_showanc'])->name('antenatal_care.edit_showanc');
         Route::put('show_anc/update_showanc/{id}', [ANCController::class, 'update_showanc'])->name('antenatal_care.update_showanc');
         ///////////// PEMERIKSAAN BIDAN/DOKTER SAAT K1 /////////////

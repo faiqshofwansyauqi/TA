@@ -48,11 +48,11 @@
                             <div class="card-body">
                                 <h5 class="card-title"></h5>
                                 <div class="col-md-12 mb-3">
-                                    <label for="NIK" class="form-label">Ibu</label>
-                                    <select class="form-control" id="NIK" name="NIK" required>
+                                    <label for="nama_ibu" class="form-label">Ibu</label>
+                                    <select class="form-control" id="nama_ibu" name="nama_ibu" required>
                                         <option value="">Pilih Ibu</option>
                                         @foreach ($ibus as $ibu)
-                                            <option value="{{ $ibu->NIK }}">{{ $ibu->NIK }}</option>
+                                            <option value="{{ $ibu->nama_ibu }}">{{ $ibu->nama_ibu }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -93,8 +93,8 @@
                         }
                     },
                     {
-                        data: 'NIK',
-                        name: 'NIK'
+                        data: 'nama_ibu',
+                        name: 'nama_ibu'
                     },
                     {
                         data: 'action',

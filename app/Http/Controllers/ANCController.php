@@ -162,9 +162,8 @@ class ANCController extends Controller
         $user = Auth::user();
         if ($user->hasRole(['Bidan', 'Admin'])) {
             $this->authorize('akses_page', Anc::class);
-            $ibus = Rencana_Persalinan::all();
-            $anc = Anc::all();
-            return view('antenatal_care.anc', compact('anc', 'ibus'));
+            $ibus = Rencana_Persalinan::select('nama_ibu')->get();
+            return view('antenatal_care.anc', compact( 'ibus'));
         } else {
             return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
         }
@@ -173,11 +172,11 @@ class ANCController extends Controller
     {
         // dd($request);
         $request->validate([
-            'NIK' => 'required',
+            'nama_ibu' => 'required',
         ]);
 
         Anc::create([
-            'NIK' => $request->NIK,
+            'nama_ibu' => $request->nama_ibu,
         ]);
         return redirect()->back()->with('success', 'Data berhasil ditambahkan');
     }
@@ -216,7 +215,7 @@ class ANCController extends Controller
     {
         // dd($request);
         $request->validate([
-            'NIK' => 'required',
+            'nama_ibu' => 'required',
             'tanggal' => 'required',
             'usia_kehamilan' => 'required',
             'trimester' => 'required',
@@ -272,7 +271,7 @@ class ANCController extends Controller
         ]);
 
         Show_Anc::create([
-            'NIK' => $request->NIK,
+            'nama_ibu' => $request->nama_ibu,
             'tanggal' => $request->tanggal,
             'usia_kehamilan' => $request->usia_kehamilan,
             'trimester' => $request->trimester,
@@ -443,9 +442,9 @@ class ANCController extends Controller
         ]);
         return redirect()->back()->with('success', 'Data berhasil diperbarui');
     }
-    public function getData_showanc($NIK)
+    public function getData_showanc($nama_ibu)
     {
-        $data = Show_Anc::where('NIK', $NIK)->get();
+        $data = Show_Anc::where('nama_ibu', $nama_ibu)->get();
         return DataTables::of($data)->make(true);
     }
     public function edit_showanc($id)
@@ -461,9 +460,8 @@ class ANCController extends Controller
         $user = Auth::user();
         if ($user->hasRole(['Bidan', 'Admin'])) {
             $this->authorize('akses_page', Ropb::class);
-            $ropb = Ropb::all();
-            $ibus = Ibu::all();
-            return view('antenatal_care.ropb', compact('ropb', 'ibus'));
+            $ibus = Ibu::select('nama_ibu')->get();
+            return view('antenatal_care.ropb', compact( 'ibus'));
         } else {
             return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
         }
@@ -582,9 +580,8 @@ class ANCController extends Controller
         $user = Auth::user();
         if ($user->hasRole(['Bidan', 'Admin'])) {
             $this->authorize('akses_page', Rencana_Persalinan::class);
-            $rnca = Rencana_Persalinan::all();
-            $ibus = Ropb::all();
-            return view('antenatal_care.rnca_persalinan', compact('rnca', 'ibus'));
+            $ibus = Ropb::select('nama_ibu')->get();
+            return view('antenatal_care.rnca_persalinan', compact('ibus'));
         } else {
             return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
         }

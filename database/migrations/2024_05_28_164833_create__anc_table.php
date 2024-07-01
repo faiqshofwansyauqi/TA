@@ -15,7 +15,7 @@ class CreateAncTable extends Migration
     {
         Schema::create('anc', function (Blueprint $table) {
             $table->id();
-            $table->string('NIK');
+            $table->string('nama_ibu');
             $table->timestamps();
         });
     }
