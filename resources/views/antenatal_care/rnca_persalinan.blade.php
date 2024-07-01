@@ -55,11 +55,11 @@
                 <div class="modal-body">
                     <form action="{{ route('antenatal_care.store_rnca') }}" method="post" autocomplete="off">
                         @csrf
-                        <div class="row">
-                            <div class="card col-11 mx-4 ">
-                                <div class="card-body">
-                                    <br>
-                                    <div class="col-md-4 mb-2">
+                        <div class="col-12">
+                            <div class="card-body">
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
                                         <label for="NIK" class="form-label">Ibu</label>
                                         <select class="form-control" id="NIK" name="NIK" required>
                                             <option value="">Pilih Ibu</option>
@@ -68,91 +68,90 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="col-md-12 mb-2">
+                                    <div class="col-md-6 mb-3">
                                         <label for="tgl_persalinan" class="form-label">Tanggal Persalinan</label>
                                         <input type="date" class="form-control" id="tgl_persalinan" name="tgl_persalinan"
                                             required>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-4 mb-2">
-                                            <label for="penolong" class="form-label">Penolong</label>
-                                            <select class="form-select" id="penolong" name="penolong" required>
-                                                <option value="">Pilih Penolong</option>
-                                                <option value="Keluarga">Keluarga</option>
-                                                <option value="Dukun">Dukun</option>
-                                                <option value="Dr. Umum">Dr. Umum</option>
-                                                <option value="Dr. Spesialis">Dr. Spesialis</option>
-                                                <option value="Lain-lain">Lain-lain</option>
-                                                <option value="Tidak ad">Tidak ad</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-4 mb-2">
-                                            <label for="tempat" class="form-label">Tempat</label>
-                                            <select class="form-select" id="tempat" name="tempat" required>
-                                                <option value="">Pilih Tempat</option>
-                                                <option value="Rumah">Rumah</option>
-                                                <option value="Poskesdas">Poskesdas</option>
-                                                <option value="Pustu">Pustu</option>
-                                                <option value="Puskesmas">Puskesmas</option>
-                                                <option value="RB">RB</option>
-                                                <option value="RSIA">RSIA</option>
-                                                <option value="RS">RS</option>
-                                                <option value="RS ODHA">RS ODHA</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-4 mb-2">
-                                            <label for="pendamping" class="form-label">Pendamping</label>
-                                            <select class="form-select" id="pendamping" name="pendamping" required>
-                                                <option value="">Pilih Pendamping</option>
-                                                <option value="Suami">Suami</option>
-                                                <option value="Keluarga">Keluarga</option>
-                                                <option value="Teman">Teman</option>
-                                                <option value="Tetangga">Tetangga</option>
-                                                <option value="Lain-lain">Lain-lain</option>
-                                                <option value="Tidak ada">Tidak ada</option>
-                                            </select>
-                                        </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="penolong" class="form-label">Penolong</label>
+                                        <select class="form-select" id="penolong" name="penolong" required>
+                                            <option value="">Pilih Penolong</option>
+                                            <option value="Keluarga">Keluarga</option>
+                                            <option value="Dukun">Dukun</option>
+                                            <option value="Dr. Umum">Dr. Umum</option>
+                                            <option value="Dr. Spesialis">Dr. Spesialis</option>
+                                            <option value="Lain-lain">Lain-lain</option>
+                                            <option value="Tidak ad">Tidak ad</option>
+                                        </select>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-4 mb-2">
-                                            <label for="transport" class="form-label">Transportasi</label>
-                                            <select class="form-select" id="transport" name="transport" required>
-                                                <option value="">Pilih Transportasi</option>
-                                                <option value="Motor">Motor</option>
-                                                <option value="Mobil">Mobil</option>
-                                                <option value="Ambulans">Ambulans</option>
-                                                <option value="Umum">Umum</option>
-                                                <option value="Lain-lain">Lain-lain</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-4 mb-2">
-                                            <label for="pendonor" class="form-label">Calon donor darah</label>
-                                            <select class="form-select" id="pendonor" name="pendonor" required>
-                                                <option value="">Pilih Calon donor darah</option>
-                                                <option value="Suami">Suami</option>
-                                                <option value="Keluarga">Keluarga</option>
-                                                <option value="Teman">Teman</option>
-                                                <option value="Lain-lain">Lain-lain</option>
-                                                <option value="Tidak ada">Tidak ada</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-4 mb-2">
-                                            <label for="pendonor_darah" class="form-label">Gol Darah Pendonor</label>
-                                            <select class="form-select" id="pendonor_darah" name="pendonor_darah"
-                                                required>
-                                                <option value="">Pilih Gol Darah</option>
-                                                <option value="A">A</option>
-                                                <option value="B">B</option>
-                                                <option value="AB">AB</option>
-                                                <option value="O">O</option>
-                                                <option value="Tidak ada">Tidak ada</option>
-                                            </select>
-                                        </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="tempat" class="form-label">Tempat</label>
+                                        <select class="form-select" id="tempat" name="tempat" required>
+                                            <option value="">Pilih Tempat</option>
+                                            <option value="Rumah">Rumah</option>
+                                            <option value="Poskesdas">Poskesdas</option>
+                                            <option value="Pustu">Pustu</option>
+                                            <option value="Puskesmas">Puskesmas</option>
+                                            <option value="RB">RB</option>
+                                            <option value="RSIA">RSIA</option>
+                                            <option value="RS">RS</option>
+                                            <option value="RS ODHA">RS ODHA</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="pendamping" class="form-label">Pendamping</label>
+                                        <select class="form-select" id="pendamping" name="pendamping" required>
+                                            <option value="">Pilih Pendamping</option>
+                                            <option value="Suami">Suami</option>
+                                            <option value="Keluarga">Keluarga</option>
+                                            <option value="Teman">Teman</option>
+                                            <option value="Tetangga">Tetangga</option>
+                                            <option value="Lain-lain">Lain-lain</option>
+                                            <option value="Tidak ada">Tidak ada</option>
+                                        </select>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="transport" class="form-label">Transportasi</label>
+                                        <select class="form-select" id="transport" name="transport" required>
+                                            <option value="">Pilih Transportasi</option>
+                                            <option value="Motor">Motor</option>
+                                            <option value="Mobil">Mobil</option>
+                                            <option value="Ambulans">Ambulans</option>
+                                            <option value="Umum">Umum</option>
+                                            <option value="Lain-lain">Lain-lain</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="pendonor" class="form-label">Calon donor darah</label>
+                                        <select class="form-select" id="pendonor" name="pendonor" required>
+                                            <option value="">Pilih Calon donor darah</option>
+                                            <option value="Suami">Suami</option>
+                                            <option value="Keluarga">Keluarga</option>
+                                            <option value="Teman">Teman</option>
+                                            <option value="Lain-lain">Lain-lain</option>
+                                            <option value="Tidak ada">Tidak ada</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="pendonor_darah" class="form-label">Gol Darah Pendonor</label>
+                                        <select class="form-select" id="pendonor_darah" name="pendonor_darah" required>
+                                            <option value="">Pilih Gol Darah</option>
+                                            <option value="A">A</option>
+                                            <option value="B">B</option>
+                                            <option value="AB">AB</option>
+                                            <option value="O">O</option>
+                                            <option value="Tidak ada">Tidak ada</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
             </div>
@@ -170,103 +169,101 @@
                     <form id="editForm" method="post" autocomplete="off">
                         @csrf
                         @method('PUT')
-                        <div class="row">
-                            <div class="card col-11 mx-4 ">
-                                <div class="card-body">
+                        <div class="col-12">
+                            <div class="card-body">
+                                <div class="col-md-4 mb-3">
+                                    <label for="edit_NIK" class="form-label" hidden>Ibu</label>
+                                    <select class="form-control" id="edit_NIK" name="NIK" hidden>
+                                        <option value="">Pilih Ibu</option>
+                                        @foreach ($ibus as $ibu)
+                                            <option value="{{ $ibu->NIK }}">{{ $ibu->NIK }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-12 mb-3">
+                                    <label for="edit_tgl_persalinan" class="form-label">Tanggal Persalinan</label>
+                                    <input type="date" class="form-control" id="edit_tgl_persalinan"
+                                        name="tgl_persalinan" required>
+                                </div>
+                                <div class="row">
                                     <div class="col-md-4 mb-3">
-                                        <label for="edit_NIK" class="form-label" hidden>Ibu</label>
-                                        <select class="form-control" id="edit_NIK" name="NIK" hidden>
-                                            <option value="">Pilih Ibu</option>
-                                            @foreach ($ibus as $ibu)
-                                                <option value="{{ $ibu->NIK }}">{{ $ibu->NIK }}</option>
-                                            @endforeach
+                                        <label for="edit_penolong" class="form-label">Penolong</label>
+                                        <select class="form-select" id="edit_penolong" name="penolong" required>
+                                            <option value="">Pilih Penolong</option>
+                                            <option value="Keluarga">Keluarga</option>
+                                            <option value="Dukun">Dukun</option>
+                                            <option value="Dr. Umum">Dr. Umum</option>
+                                            <option value="Dr. Spesialis">Dr. Spesialis</option>
+                                            <option value="Lain-lain">Lain-lain</option>
+                                            <option value="Tidak ad">Tidak ad</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-12 mb-2">
-                                        <label for="edit_tgl_persalinan" class="form-label">Tanggal Persalinan</label>
-                                        <input type="date" class="form-control" id="edit_tgl_persalinan"
-                                            name="tgl_persalinan" required>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="edit_tempat" class="form-label">Tempat</label>
+                                        <select class="form-select" id="edit_tempat" name="tempat" required>
+                                            <option value="">Pilih Tempat</option>
+                                            <option value="Rumah">Rumah</option>
+                                            <option value="Poskesdas">Poskesdas</option>
+                                            <option value="Pustu">Pustu</option>
+                                            <option value="Puskesmas">Puskesmas</option>
+                                            <option value="RB">RB</option>
+                                            <option value="RSIA">RSIA</option>
+                                            <option value="RS">RS</option>
+                                            <option value="RS ODHA">RS ODHA</option>
+                                        </select>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-4 mb-2">
-                                            <label for="edit_penolong" class="form-label">Penolong</label>
-                                            <select class="form-select" id="edit_penolong" name="penolong" required>
-                                                <option value="">Pilih Penolong</option>
-                                                <option value="Keluarga">Keluarga</option>
-                                                <option value="Dukun">Dukun</option>
-                                                <option value="Dr. Umum">Dr. Umum</option>
-                                                <option value="Dr. Spesialis">Dr. Spesialis</option>
-                                                <option value="Lain-lain">Lain-lain</option>
-                                                <option value="Tidak ad">Tidak ad</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-4 mb-2">
-                                            <label for="edit_tempat" class="form-label">Tempat</label>
-                                            <select class="form-select" id="edit_tempat" name="tempat" required>
-                                                <option value="">Pilih Tempat</option>
-                                                <option value="Rumah">Rumah</option>
-                                                <option value="Poskesdas">Poskesdas</option>
-                                                <option value="Pustu">Pustu</option>
-                                                <option value="Puskesmas">Puskesmas</option>
-                                                <option value="RB">RB</option>
-                                                <option value="RSIA">RSIA</option>
-                                                <option value="RS">RS</option>
-                                                <option value="RS ODHA">RS ODHA</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-4 mb-2">
-                                            <label for="edit_pendamping" class="form-label">Pendamping</label>
-                                            <select class="form-select" id="edit_pendamping" name="pendamping" required>
-                                                <option value="">Pilih Pendamping</option>
-                                                <option value="Suami">Suami</option>
-                                                <option value="Keluarga">Keluarga</option>
-                                                <option value="Teman">Teman</option>
-                                                <option value="Tetangga">Tetangga</option>
-                                                <option value="Lain-lain">Lain-lain</option>
-                                                <option value="Tidak ada">Tidak ada</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4 mb-2">
-                                            <label for="edit_transport" class="form-label">Transportasi</label>
-                                            <select class="form-select" id="edit_transport" name="transport" required>
-                                                <option value="">Pilih Transportasi</option>
-                                                <option value="Motor">Motor</option>
-                                                <option value="Mobil">Mobil</option>
-                                                <option value="Ambulans">Ambulans</option>
-                                                <option value="Umum">Umum</option>
-                                                <option value="Lain-lain">Lain-lain</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-4 mb-2">
-                                            <label for="edit_pendonor" class="form-label">Calon donor darah</label>
-                                            <select class="form-select" id="edit_pendonor" name="pendonor" required>
-                                                <option value="">Pilih Calon donor darah</option>
-                                                <option value="Suami">Suami</option>
-                                                <option value="Keluarga">Keluarga</option>
-                                                <option value="Teman">Teman</option>
-                                                <option value="Lain-lain">Lain-lain</option>
-                                                <option value="Tidak ada">Tidak ada</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-4 mb-2">
-                                            <label for="edit_pendonor_darah" class="form-label">Gol Darah Pendonor</label>
-                                            <select class="form-select" id="edit_pendonor_darah" name="pendonor_darah"
-                                                required>
-                                                <option value="">Pilih Gol Darah</option>
-                                                <option value="A">A</option>
-                                                <option value="B">B</option>
-                                                <option value="AB">AB</option>
-                                                <option value="O">O</option>
-                                                <option value="Tidak ada">Tidak ada</option>
-                                            </select>
-                                        </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="edit_pendamping" class="form-label">Pendamping</label>
+                                        <select class="form-select" id="edit_pendamping" name="pendamping" required>
+                                            <option value="">Pilih Pendamping</option>
+                                            <option value="Suami">Suami</option>
+                                            <option value="Keluarga">Keluarga</option>
+                                            <option value="Teman">Teman</option>
+                                            <option value="Tetangga">Tetangga</option>
+                                            <option value="Lain-lain">Lain-lain</option>
+                                            <option value="Tidak ada">Tidak ada</option>
+                                        </select>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="edit_transport" class="form-label">Transportasi</label>
+                                        <select class="form-select" id="edit_transport" name="transport" required>
+                                            <option value="">Pilih Transportasi</option>
+                                            <option value="Motor">Motor</option>
+                                            <option value="Mobil">Mobil</option>
+                                            <option value="Ambulans">Ambulans</option>
+                                            <option value="Umum">Umum</option>
+                                            <option value="Lain-lain">Lain-lain</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="edit_pendonor" class="form-label">Calon donor darah</label>
+                                        <select class="form-select" id="edit_pendonor" name="pendonor" required>
+                                            <option value="">Pilih Calon donor darah</option>
+                                            <option value="Suami">Suami</option>
+                                            <option value="Keluarga">Keluarga</option>
+                                            <option value="Teman">Teman</option>
+                                            <option value="Lain-lain">Lain-lain</option>
+                                            <option value="Tidak ada">Tidak ada</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="edit_pendonor_darah" class="form-label">Gol Darah Pendonor</label>
+                                        <select class="form-select" id="edit_pendonor_darah" name="pendonor_darah"
+                                            required>
+                                            <option value="">Pilih Gol Darah</option>
+                                            <option value="A">A</option>
+                                            <option value="B">B</option>
+                                            <option value="AB">AB</option>
+                                            <option value="O">O</option>
+                                            <option value="Tidak ada">Tidak ada</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
             </div>

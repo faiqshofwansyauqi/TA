@@ -62,11 +62,11 @@
                     <form action="{{ route('antenatal_care.store_ropb') }}" method="post" autocomplete="off">
                         @csrf
                         <div class="row">
-                            <div class="card col-5 mx-5 ">
+                            <div class=" col-6">
                                 <div class="card-body">
                                     <h5 class="card-title">Riwayat Obstetrik</h5>
                                     <div class="row">
-                                        <div class="col-md-12 mb-2">
+                                        <div class="col-md-12 mb-3">
                                             <label for="NIK" class="form-label">Ibu</label>
                                             <select class="form-control" id="NIK" name="NIK" required>
                                                 <option value="">Pilih Ibu</option>
@@ -77,97 +77,95 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6 mb-2">
+                                        <div class="col-md-3 mb-3">
                                             <label for="gravida" class="form-label">Gravida</label>
                                             <input type="number" class="form-control" id="gravida" name="gravida"
                                                 required>
                                         </div>
-                                        <div class="col-md-6 mb-2">
+                                        <div class="col-md-3 mb-3">
                                             <label for="partus" class="form-label">Partus</label>
                                             <input type="number" class="form-control" id="partus" name="partus"
                                                 required>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6 mb-2">
+                                        <div class="col-md-3 mb-3">
                                             <label for="abortus" class="form-label">Abortus</label>
                                             <input type="number" class="form-control" id="abortus" name="abortus"
                                                 required>
                                         </div>
-                                        <div class="col-md-6 mb-2">
+                                        <div class="col-md-3 mb-3">
                                             <label for="hidup" class="form-label">Hidup</label>
                                             <input type="number" class="form-control" id="hidup" name="hidup"
                                                 required>
                                         </div>
                                     </div>
-                                    <div class="col-md-12 mb-2">
+                                    <div class="col-md-12 mb-3">
                                         <label for="rwyt_komplikasi" class="form-label">Riwayat Komplikasi Kebidanan</label>
                                         <input type="text" class="form-control" id="rwyt_komplikasi"
                                             name="rwyt_komplikasi" required>
                                     </div>
-                                    <div class="col-md-12 mb-2">
+                                    <div class="col-md-12 mb-3">
                                         <label for="pnykt_kronis_alergi" class="form-label">Penyakit Kronis dan
                                             Alergi</label>
                                         <input type="text" class="form-control" id="pnykt_kronis_alergi"
                                             name="pnykt_kronis_alergi" required>
                                     </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </div>
-                            <div class="card col-5">
+                            <div class=" col-6">
                                 <div class="card-body">
                                     <h5 class="card-title">Pemeriksaan Bidan</h5>
                                     <div class="row">
-                                        <div class="col-md-6 mb-2">
+                                        <div class="col-md-6 mb-3">
                                             <label for="tgl_periksa" class="form-label">Tanggal Periksa</label>
                                             <input type="date" class="form-control" id="tgl_periksa"
                                                 name="tgl_periksa" required>
                                         </div>
-                                        <div class="col-md-6 mb-2">
+                                        <div class="col-md-6 mb-3">
                                             <label for="tgl_hpht" class="form-label">Tanggal HPHT</label>
                                             <input type="date" class="form-control" id="tgl_hpht" name="tgl_hpht"
                                                 required>
                                         </div>
-                                        <div class="col-md-6 mb-2">
+                                        <div class="col-md-6 mb-3">
                                             <label for="tksrn_persalinan" class="form-label">Taksiran Persalinan</label>
                                             <input type="date" class="form-control" id="tksrn_persalinan"
                                                 name="tksrn_persalinan" required>
                                         </div>
-                                        <div class="col-md-6 mb-2">
+                                        <div class="col-md-6 mb-3">
                                             <label for="prlnan_sebelum" class="form-label">Persalinan Sebelumnya</label>
                                             <input type="date" class="form-control" id="prlnan_sebelum"
                                                 name="prlnan_sebelum" required>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6 mb-2">
+                                        <div class="col-md-6 mb-3">
                                             <label for="berat_badan" class="form-label">Berat Badan</label>
-                                            <div class="input-group mb-2">
+                                            <div class="input-group">
                                                 <input type="number" class="form-control" id="berat_badan"
                                                     name="berat_badan" required>
                                                 <span class="input-group-text">Kg</span>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 mb-2">
+                                        <div class="col-md-6 mb-3">
                                             <label for="tinggi_badan" class="form-label">Berat Tinggi</label>
-                                            <div class="input-group mb-2">
+                                            <div class="input-group">
                                                 <input type="number" class="form-control" id="tinggi_badan"
                                                     name="tinggi_badan" required>
                                                 <span class="input-group-text">Cm</span>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-12 mb-2">
-                                        <label for="buku_kia" class="form-label">Buku KIA</label>
-                                        <select class="form-select" id="buku_kia" name="buku_kia" required>
-                                            <option value="">Pilih Keadaan Ibu</option>
-                                            <option value="Memiliki">Memiliki</option>
-                                            <option value="Tidak">Tidak</option>
-                                        </select>
+                                        <div class="col-md-12 mb-3">
+                                            <label for="buku_kia" class="form-label">Buku KIA</label>
+                                            <select class="form-select" id="buku_kia" name="buku_kia" required>
+                                                <option value="">Pilih Keadaan Ibu</option>
+                                                <option value="Memiliki">Memiliki</option>
+                                                <option value="Tidak">Tidak</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
             </div>
@@ -186,13 +184,13 @@
                         @csrf
                         @method('PUT')
                         <div class="row">
-                            <div class="card col-md-5 mx-5">
+                            <div class=" col-6">
                                 <div class="card-body">
                                     <h5 class="card-title">Riwayat Obstetrik</h5>
                                     <div class="row">
-                                        <div class="col-md-12 mb-2">
-                                            <label for="edit_NIK" class="form-label" hidden>Ibu</label>
-                                            <select class="form-control" id="edit_NIK" name="NIK" hidden>
+                                        <div class="col-md-12 mb-3">
+                                            <label for="edit_NIK" class="form-label">Ibu</label>
+                                            <select class="form-control" id="edit_NIK" name="NIK" required>
                                                 <option value="">Pilih Ibu</option>
                                                 @foreach ($ibus as $ibu)
                                                     <option value="{{ $ibu->nama_ibu }}">{{ $ibu->nama_ibu }}</option>
@@ -201,100 +199,95 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6 mb-2">
+                                        <div class="col-md-3 mb-3">
                                             <label for="edit_gravida" class="form-label">Gravida</label>
                                             <input type="number" class="form-control" id="edit_gravida" name="gravida"
                                                 required>
                                         </div>
-                                        <div class="col-md-6 mb-2">
+                                        <div class="col-md-3 mb-3">
                                             <label for="edit_partus" class="form-label">Partus</label>
                                             <input type="number" class="form-control" id="edit_partus" name="partus"
                                                 required>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6 mb-2">
+                                        <div class="col-md-3 mb-3">
                                             <label for="edit_abortus" class="form-label">Abortus</label>
                                             <input type="number" class="form-control" id="edit_abortus" name="abortus"
                                                 required>
                                         </div>
-                                        <div class="col-md-6 mb-2">
+                                        <div class="col-md-3 mb-3">
                                             <label for="edit_hidup" class="form-label">Hidup</label>
                                             <input type="number" class="form-control" id="edit_hidup" name="hidup"
                                                 required>
                                         </div>
                                     </div>
-                                    <div class="col-md-12 mb-2">
-                                        <label for="edit_rwyt_komplikasi" class="form-label">Riwayat Komplikasi
-                                            Kebidanan</label>
+                                    <div class="col-md-12 mb-3">
+                                        <label for="edit_rwyt_komplikasi" class="form-label">Riwayat Komplikasi Kebidanan</label>
                                         <input type="text" class="form-control" id="edit_rwyt_komplikasi"
                                             name="rwyt_komplikasi" required>
                                     </div>
-                                    <div class="col-md-12 mb-2">
+                                    <div class="col-md-12 mb-3">
                                         <label for="edit_pnykt_kronis_alergi" class="form-label">Penyakit Kronis dan
                                             Alergi</label>
                                         <input type="text" class="form-control" id="edit_pnykt_kronis_alergi"
                                             name="pnykt_kronis_alergi" required>
                                     </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </div>
-                            <div class="card col-5">
+                            <div class=" col-6">
                                 <div class="card-body">
                                     <h5 class="card-title">Pemeriksaan Bidan</h5>
                                     <div class="row">
-                                        <div class="col-md-6 mb-2">
+                                        <div class="col-md-6 mb-3">
                                             <label for="edit_tgl_periksa" class="form-label">Tanggal Periksa</label>
                                             <input type="date" class="form-control" id="edit_tgl_periksa"
                                                 name="tgl_periksa" required>
                                         </div>
-                                        <div class="col-md-6 mb-2">
+                                        <div class="col-md-6 mb-3">
                                             <label for="edit_tgl_hpht" class="form-label">Tanggal HPHT</label>
-                                            <input type="date" class="form-control" id="edit_tgl_hpht"
-                                                name="tgl_hpht" required>
+                                            <input type="date" class="form-control" id="edit_tgl_hpht" name="tgl_hpht"
+                                                required>
                                         </div>
-                                        <div class="col-md-6 mb-2">
-                                            <label for="edit_tksrn_persalinan" class="form-label">Taksiran
-                                                Persalinan</label>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="edit_tksrn_persalinan" class="form-label">Taksiran Persalinan</label>
                                             <input type="date" class="form-control" id="edit_tksrn_persalinan"
                                                 name="tksrn_persalinan" required>
                                         </div>
-                                        <div class="col-md-6 mb-2">
-                                            <label for="edit_prlnan_sebelum" class="form-label">Persalinan
-                                                Sebelumnya</label>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="edit_prlnan_sebelum" class="form-label">Persalinan Sebelumnya</label>
                                             <input type="date" class="form-control" id="edit_prlnan_sebelum"
                                                 name="prlnan_sebelum" required>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6 mb-2">
+                                        <div class="col-md-6 mb-3">
                                             <label for="edit_berat_badan" class="form-label">Berat Badan</label>
-                                            <div class="input-group mb-2">
+                                            <div class="input-group">
                                                 <input type="number" class="form-control" id="edit_berat_badan"
                                                     name="berat_badan" required>
                                                 <span class="input-group-text">Kg</span>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 mb-2">
-                                            <label for="edit_tinggi_badan" class="form-label">Tinggi Badan</label>
-                                            <div class="input-group mb-2">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="edit_tinggi_badan" class="form-label">Berat Tinggi</label>
+                                            <div class="input-group">
                                                 <input type="number" class="form-control" id="edit_tinggi_badan"
                                                     name="tinggi_badan" required>
                                                 <span class="input-group-text">Cm</span>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-12 mb-2">
-                                        <label for="edit_buku_kia" class="form-label">Buku KIA</label>
-                                        <select class="form-select" id="edit_buku_kia" name="buku_kia" required>
-                                            <option value="">Pilih Buku KIA</option>
-                                            <option value="Memiliki">Memiliki</option>
-                                            <option value="Tidak">Tidak</option>
-                                        </select>
+                                        <div class="col-md-12 mb-3">
+                                            <label for="edit_buku_kia" class="form-label">Buku KIA</label>
+                                            <select class="form-select" id="edit_buku_kia" name="buku_kia" required>
+                                                <option value="">Pilih Keadaan Ibu</option>
+                                                <option value="Memiliki">Memiliki</option>
+                                                <option value="Tidak">Tidak</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
             </div>
