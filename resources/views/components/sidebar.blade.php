@@ -65,7 +65,7 @@
                         <a href="{{ route('antenatal_care.ropb') }}"
                             class="{{ request()->is(['antenatal_care.ropb', 'antenatal_care/ropb']) ? 'active' : '' }}">
                             <i class="bi bi-circle"></i>
-                            <span>Pemeriksaan Bidan/Dokter Saat K1</span>
+                            <span>Pemeriksaan Bidan Saat K1</span>
                         </a>
                     </li>
                     <li>

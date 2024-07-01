@@ -25,14 +25,15 @@
                             <table class="table table-bordered table-anc" id="ibu-table" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>No Registrasi Ibu</th>
+                                        <th style="text-align: center">No</th>
+                                        <th>Puskesmas</th>
+                                        <th>No Regis Ibu</th>
                                         <th>Nama Ibu</th>
                                         <th>Nama Suami</th>
                                         <th>Tanggal Lahir</th>
                                         <th>Alamat Domisili</th>
                                         <th>Desa / Kelurahan</th>
                                         <th>Kabupaten</th>
-                                        <th>Puskesmas</th>
                                         <th>Pekerjaan Ibu</th>
                                         <th>Pendidikan Ibu</th>
                                         <th>NIK</th>
@@ -61,7 +62,7 @@
     </section>
 
     <div class="modal fade" id="modalInput" tabindex="-1" aria-labelledby="ModalInput" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-4 fw-bold" id="ModalInput">Input Identitas Ibu</h1>
@@ -70,83 +71,81 @@
                 <div class="modal-body">
                     <form action="{{ route('pasien.store_ibu') }}" method="post" autocomplete="off">
                         @csrf
-                        <div class="card col-12">
+                        <div class="col-12">
                             <div class="card-body">
                                 <br>
                                 <div class="row">
                                     <div class="col-md-4 mb-2">
                                         <label for="nama_ibu" class="form-label">Nama Ibu</label>
-                                        <input type="text" class="form-control" id="nama_ibu" name="nama_ibu"required>
+                                        <input type="text" class="form-control" id="nama_ibu" name="nama_ibu">
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="nama_suami" class="form-label">Nama Suami</label>
-                                        <input type="text" class="form-control" id="nama_suami"
-                                            name="nama_suami"required>
+                                        <input type="text" class="form-control" id="nama_suami" name="nama_suami">
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
-                                        <input type="date" class="form-control" id="tanggal_lahir"
-                                            name="tanggal_lahir"required>
+                                        <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir">
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="alamat_domisili" class="form-label">Alamat Domisili</label>
-                                        <textarea class="form-control" id="alamat_domisili" name="alamat_domisili"></textarea required>
+                                        <textarea class="form-control" id="alamat_domisili" name="alamat_domisili"></textarea >
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="desa" class="form-label">Desa / Kelurahan</label>
-                                        <input type="text" class="form-control" id="desa" name="desa" required>
+                                        <input type="text" class="form-control" id="desa" name="desa" >
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="kab" class="form-label">Kabupaten</label>
-                                        <input type="text" class="form-control" id="kab" name="kab"required>
+                                        <input type="text" class="form-control" id="kab" name="kab">
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="pendidikan_ibu" class="form-label">Pendidikan Ibu</label>
                                         <input type="text" class="form-control" id="pendidikan_ibu"
-                                            name="pendidikan_ibu" required>
+                                            name="pendidikan_ibu" >
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="pekerjaaan_ibu" class="form-label">Pekerjaan Ibu</label>
                                         <input type="text" class="form-control" id="pekerjaaan_ibu"
-                                            name="pekerjaaan_ibu" required>
+                                            name="pekerjaaan_ibu" >
                                     </div>
                                     <div class="col-md-4 mb-2">
-                                        <label for="NIK" class="form-label">NIK</label>
-                                        <input type="text" class="form-control" id="NIK" name="NIK" required
+                                        <label for="nik" class="form-label">NIK</label>
+                                        <input type="text" class="form-control" id="nik" name="nik" 
                                             maxlength="16" >
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="noregis" class="form-label">Nomer Registrasi Ibu</label>
-                                        <input type="text" class="form-control" id="noregis" name="noregis" required
+                                        <input type="text" class="form-control" id="noregis" name="noregis" 
                                             maxlength="4" pattern="\d{1,13}">
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="umur" class="form-label">Umur</label>
-                                        <input type="number" class="form-control" id="umur" name="umur" required>
+                                        <input type="number" class="form-control" id="umur" name="umur" >
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="rtrw" class="form-label">RT/RW</label>
-                                        <input type="text" class="form-control" id="rtrw" name="rtrw" required>
+                                        <input type="text" class="form-control" id="rtrw" name="rtrw" >
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="puskesmas" class="form-label">Puskesmas</label>
-                                        <input type="text" class="form-control" id="puskesmas" name="puskesmas" required>
+                                        <input type="text" class="form-control" id="puskesmas" name="puskesmas" >
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="kec" class="form-label">Kecamatan</label>
-                                        <input type="text" class="form-control" id="kec" name="kec" required>
+                                        <input type="text" class="form-control" id="kec" name="kec" >
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="prov" class="form-label">Provinsi</label>
-                                        <input type="text" class="form-control" id="prov" name="prov" required>
+                                        <input type="text" class="form-control" id="prov" name="prov" >
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="agama" class="form-label">Agama</label>
-                                        <input type="text" class="form-control" id="agama" name="agama" required>
+                                        <input type="text" class="form-control" id="agama" name="agama" >
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="jamkesmas" class="form-label">Jamkesmas</label>
-                                        <select class="form-select" id="jamkesmas" name="jamkesmas" required>
+                                        <select class="form-select" id="jamkesmas" name="jamkesmas" >
                                             <option value="-">Pilih Jamkesmas</option>
                                             <option value="Ya">Ya</option>
                                             <option value="Tidak">Tidak</option>
@@ -154,23 +153,23 @@
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="posyandu" class="form-label">Posyandu</label>
-                                        <input type="text" class="form-control" id="posyandu" name="posyandu" required>
+                                        <input type="text" class="form-control" id="posyandu" name="posyandu" >
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="nama_kader" class="form-label">Nama Kader</label>
-                                        <input type="text" class="form-control" id="nama_kader" name="nama_kader" required>
+                                        <input type="text" class="form-control" id="nama_kader" name="nama_kader" >
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="nama_dukum" class="form-label">Nama Dukun</label>
-                                        <input type="text" class="form-control" id="nama_dukum" name="nama_dukum" required>
+                                        <input type="text" class="form-control" id="nama_dukum" name="nama_dukum" >
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="tanggal_reg" class="form-label">Tanggal Register</label>
-                                        <input type="date" class="form-control" id="tanggal_reg" name="tanggal_reg" required>
+                                        <input type="date" class="form-control" id="tanggal_reg" name="tanggal_reg" >
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="gol_darah" class="form-label">Gol Darah</label>
-                                        <select class="form-select" id="gol_darah" name="gol_darah" required>
+                                        <select class="form-select" id="gol_darah" name="gol_darah" >
                                             <option value="-">Pilih Golongan Darah</option>
                                             <option value="A">A</option>
                                             <option value="B">B</option>
@@ -180,7 +179,7 @@
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="telp" class="form-label">Nomer Telp</label>
-                                        <input type="text" class="form-control" id="telp" name="telp" maxlength="13" pattern="\d{1,13}" required>
+                                        <input type="text" class="form-control" id="telp" name="telp" maxlength="13" pattern="\d{1,13}" >
                                     </div>
                                 </div>
                                 <br>
@@ -194,7 +193,7 @@
     </div>
 
     <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="ModalEdit" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg"">
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-4 fw-bold" id="ModalEdit">Edit Identitas Ibu</h1>
@@ -204,13 +203,13 @@
                     <form id="editForm" method="post" autocomplete="off">
                         @csrf
                         @method('PUT')
-                        <div class="card col-12">
+                        <div class="col-12">
                             <div class="card-body">
                                 <br>
                                 <div class="row">
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_nama_ibu" class="form-label">Nama Ibu</label>
-                                        <input type="text" class="form-control" id="edit_nama_ibu" name="nama_ibu" required> 
+                                        <input type="text" class="form-control" id="edit_nama_ibu" name="nama_ibu" readonly> 
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_nama_suami" class="form-label">Nama Suami</label>
@@ -247,10 +246,9 @@
                                             name="pekerjaaan_ibu" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
-                                        <label for="edit_NIK" class="form-label">NIK</label>
-                                        <input type="text" class="form-control" id="edit_NIK" name="NIK"
-                                            maxlength="16" disabled>
-                                    </div>
+                                        <label for="edit_nik" class="form-label">NIK</label>
+                                        <input type="text" class="form-control" id="edit_nik" name="nik" maxlength="16" readonly>
+                                    </div>                                    
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_noregis" class="form-label">Nomer Registrasi Ibu</label>
                                         <input type="text" class="form-control" id="edit_noregis" name="noregis"
@@ -356,6 +354,18 @@
                 scrollX: false,
                 fixedHeader: true,
                 columns: [{
+                        data: 'id_ibu',
+                        name: 'id_ibu',
+                        render: function(data, type, row, meta) {
+                            return '<div style="text-align: center;">' + (meta.row + meta.settings
+                                ._iDisplayStart + 1) + '</div>';
+                        }
+                    },
+                    {
+                        data: 'puskesmas',
+                        name: 'puskesmas'
+                    },
+                    {
                         data: 'noregis',
                         name: 'noregis'
                     },
@@ -397,10 +407,6 @@
                         name: 'kab'
                     },
                     {
-                        data: 'puskesmas',
-                        name: 'puskesmas'
-                    },
-                    {
                         data: 'pekerjaaan_ibu',
                         name: 'pekerjaaan_ibu'
                     },
@@ -409,8 +415,8 @@
                         name: 'pendidikan_ibu'
                     },
                     {
-                        data: 'NIK',
-                        name: 'NIK'
+                        data: 'nik',
+                        name: 'nik'
                     },
                     {
                         data: 'umur',
@@ -469,14 +475,14 @@
                         orderable: false,
                         searchable: false,
                         render: function(data, type, row) {
-                            let editUrl = '{{ route('pasien.edit_ibu', ':nik') }}'.replace(':nik',
-                                row.NIK);
-                            let deleteUrl = '{{ route('pasien.destroy_ibu', ':nik') }}'.replace(
-                                ':nik', row
-                                .NIK);
+                            let editUrl = '{{ route('pasien.edit_ibu', ':id') }}'.replace(':id',
+                                row.id_ibu);
+                            let deleteUrl = '{{ route('pasien.destroy_ibu', ':id') }}'.replace(
+                                ':id', row
+                                .id_ibu);
                             return `
                                 <div style="display: flex; justify-content: center;">
-                                    <button class="btn btn-sm btn-primary edit-btn" data-id="${row.NIK}" data-bs-toggle="modal" data-bs-target="#modalEdit" style="margin-right: 5px;">
+                                    <button class="btn btn-sm btn-primary edit-btn" data-id="${row.id_ibu}" data-bs-toggle="modal" data-bs-target="#modalEdit" style="margin-right: 5px;">
                                         <i class="ri-edit-2-fill"></i>
                                     </button>
                                     <button class="btn btn-sm btn-danger btn-delete" data-id="${row.NIK}" data-url="${deleteUrl}" hidden>
@@ -493,7 +499,8 @@
                     className: 'btn btn-secondary btn-custom2',
                 }],
                 columnDefs: [{
-                    targets: [4, 5, 6, 7, 8, 9, 10, 11,14, 15, 16, 17, 18, 19, 20, 21, 22],
+                    // targets: [],
+                    targets: [5, 6, 7, 8, 9, 10, 11, 14, 15, 16, 17, 18, 19, 20, 21, 22],
                     visible: false
                 }]
             });
@@ -502,12 +509,12 @@
         });
 
         $('#ibu-table').on('click', '.edit-btn', function() {
-            let nik = $(this).data('id');
+            let id = $(this).data('id');
             $.ajax({
-                url: '{{ route('pasien.edit_ibu', ':nik') }}'.replace(':nik', nik),
+                url: '{{ route('pasien.edit_ibu', ':id') }}'.replace(':id', id),
                 method: 'GET',
                 success: function(data) {
-                    $('#edit_NIK').val(data.NIK);
+                    $('#edit_nik').val(data.nik);
                     $('#edit_puskesmas').val(data.puskesmas);
                     $('#edit_noregis').val(data.noregis);
                     $('#edit_nama_ibu').val(data.nama_ibu);
@@ -531,8 +538,8 @@
                     $('#edit_gol_darah').val(data.gol_darah);
                     $('#edit_telp').val(data.telp);
                     $('#edit_kab').val(data.kab);
-                    $('#editForm').attr('action', '{{ route('pasien.update_ibu', ':nik') }}'.replace(
-                        ':nik', nik));
+                    $('#editForm').attr('action', '{{ route('pasien.update_ibu', ':id') }}'.replace(
+                        ':id', id));
                     $('#modalEdit').modal('show');
                 }
             });
@@ -600,6 +607,7 @@
                     input.value = value;
                 });
             }
+
             function restrictInputToNumbersAndSlash(input, maxLength) {
                 input.addEventListener('input', function() {
                     var value = input.value;
@@ -613,10 +621,11 @@
             }
             var telpInput = document.getElementById('telp');
             var telpEdit = document.getElementById('edit_telp');
-            var nikInput = document.getElementById('NIK');
+            var nikInput = document.getElementById('nik');
             var noregisInput = document.getElementById('noregis');
             var noregisEdit = document.getElementById('edit_noregis');
             var rtrwInput = document.getElementById('rtrw');
+            var rtrwEdit = document.getElementById('edit_rtrw');
 
             restrictInputToNumbers(telpInput, 13);
             restrictInputToNumbers(telpEdit, 13);
@@ -624,6 +633,7 @@
             restrictInputToNumbers(noregisInput, 4);
             restrictInputToNumbers(noregisEdit, 4);
             restrictInputToNumbersAndSlash(rtrwInput, 5);
+            restrictInputToNumbersAndSlash(rtrwEdit, 5);
         });
     </script>
 @endsection

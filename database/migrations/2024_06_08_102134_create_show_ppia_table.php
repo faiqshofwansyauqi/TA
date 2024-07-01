@@ -15,7 +15,7 @@ class CreateShowPpiaTable extends Migration
     {
         Schema::create('show_ppia', function (Blueprint $table) {
             $table->id();
-            $table->string('NIK');
+            $table->string('nama_ibu');
             $table->string('tanggal_screening_hbsag');
             $table->string('tanggal_screening_hiv');
             $table->string('tanggal_screening_sifilis');

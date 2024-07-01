@@ -9,7 +9,7 @@ class Ropb extends Model
     protected $table = 'ropb';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'NIK',
+        'nama_ibu',
         'gravida',
         'partus',
         'abortus',

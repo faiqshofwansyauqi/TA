@@ -472,7 +472,7 @@ class ANCController extends Controller
     {
         // dd($request);
         $request->validate([
-            'NIK' => 'required',
+            'nama_ibu' => 'required',
             'gravida' => 'required',
             'partus' => 'required',
             'abortus' => 'required',
@@ -482,14 +482,14 @@ class ANCController extends Controller
             'tgl_periksa' => 'required',
             'tgl_hpht' => 'required',
             'tksrn_persalinan' => 'required',
-            'prlnan_sebelum' => 'required',
+            'prlnan_sebelum',
             'berat_badan' => 'required',
             'tinggi_badan' => 'required',
             'buku_kia' => 'required',
         ]);
 
         Ropb::create([
-            'NIK' => $request->NIK,
+            'nama_ibu' => $request->nama_ibu,
             'gravida' => $request->gravida,
             'partus' => $request->partus,
             'abortus' => $request->abortus,
@@ -510,7 +510,7 @@ class ANCController extends Controller
     {
         // dd($request);
         $request->validate([
-            'NIK' => 'required',
+            'nama_ibu' => 'required',
             'gravida' => 'required',
             'partus' => 'required',
             'abortus' => 'required',
@@ -520,7 +520,7 @@ class ANCController extends Controller
             'tgl_periksa' => 'required',
             'tgl_hpht' => 'required',
             'tksrn_persalinan' => 'required',
-            'prlnan_sebelum' => 'required',
+            'prlnan_sebelum',
             'berat_badan' => 'required',
             'tinggi_badan' => 'required',
             'buku_kia' => 'required',
@@ -528,7 +528,7 @@ class ANCController extends Controller
         ]);
         $ropb = Ropb::findOrFail($id);
         $ropb->update([
-            'NIK' => $request->NIK,
+            'nama_ibu' => $request->nama_ibu,
             'gravida' => $request->gravida,
             'partus' => $request->partus,
             'abortus' => $request->abortus,

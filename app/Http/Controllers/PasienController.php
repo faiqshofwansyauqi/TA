@@ -31,7 +31,7 @@ class PasienController extends Controller
     {
         // dd($request);
         $request->validate([
-            'NIK' => 'required',
+            'nik' => 'required',
             'puskesmas' => 'required',
             'noregis' => 'required',
             'nama_ibu' => 'required',
@@ -57,7 +57,7 @@ class PasienController extends Controller
         ]);
 
         Ibu::create([
-            'NIK' => $request->NIK,
+            'nik' => $request->nik,
             'puskesmas' => $request->puskesmas,
             'noregis' => $request->noregis,
             'nama_ibu' => $request->nama_ibu,
@@ -88,9 +88,10 @@ class PasienController extends Controller
         $ibu = Ibu::select('*');
         return DataTables::of($ibu)->make(true);
     }
-    public function update_ibu(Request $request, $NIK)
+    public function update_ibu(Request $request, $id)
     {
         $request->validate([
+            'nik' => 'required',
             'puskesmas' => 'required',
             'noregis' => 'required',
             'nama_ibu' => 'required',
@@ -115,8 +116,9 @@ class PasienController extends Controller
             'telp' => 'required',
         ]);
 
-        $ibu = Ibu::findOrFail($NIK);
+        $ibu = Ibu::findOrFail($id);
         $ibu->update([
+            'nik' => $request->nik,
             'puskesmas' => $request->puskesmas,
             'noregis' => $request->noregis,
             'nama_ibu' => $request->nama_ibu,
@@ -143,15 +145,15 @@ class PasienController extends Controller
 
         return redirect()->back()->with('success', 'Data ibu berhasil diperbaharui');
     }
-    public function edit_ibu($NIK)
+    public function edit_ibu($id)
     {
-        $ibu = Ibu::findOrFail($NIK);
+        $ibu = Ibu::findOrFail($id);
         return response()->json($ibu);
     }
-    public function destroy_ibu($NIK)
+    public function destroy_ibu($id)
     {
         try {
-            $ibu = Ibu::findOrFail($NIK);
+            $ibu = Ibu::findOrFail($id);
             $ibu->delete();
             return response()->json(['success' => true, 'message' => 'Data berhasil dihapus']);
         } catch (\Exception $e) {

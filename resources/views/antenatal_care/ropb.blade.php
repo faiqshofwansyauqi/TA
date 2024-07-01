@@ -55,7 +55,7 @@
         <div class="modal-dialog modal-dialog-scrollable modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title fs-4 fw-bold" id="ModalInput">Input Pemeriksaan Bidan/Dokter Saat K1</h3>
+                    <h3 class="modal-title fs-4 fw-bold" id="ModalInput">Input Pemeriksaan Bidan Saat K1</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -67,8 +67,8 @@
                                     <h5 class="card-title">Riwayat Obstetrik</h5>
                                     <div class="row">
                                         <div class="col-md-12 mb-3">
-                                            <label for="NIK" class="form-label">Ibu</label>
-                                            <select class="form-control" id="NIK" name="NIK" required>
+                                            <label for="nama_ibu" class="form-label">Ibu</label>
+                                            <select class="form-control" id="nama_ibu" name="nama_ibu" required>
                                                 <option value="">Pilih Ibu</option>
                                                 @foreach ($ibus as $ibu)
                                                     <option value="{{ $ibu->nama_ibu }}">{{ $ibu->nama_ibu }}</option>
@@ -134,7 +134,7 @@
                                         <div class="col-md-6 mb-3">
                                             <label for="prlnan_sebelum" class="form-label">Persalinan Sebelumnya</label>
                                             <input type="date" class="form-control" id="prlnan_sebelum"
-                                                name="prlnan_sebelum" required>
+                                                name="prlnan_sebelum">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -176,7 +176,7 @@
         <div class="modal-dialog modal-dialog-scrollable modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title fs-4 fw-bold" id="ModalEdit">Edit Pemeriksaan Bidan/Dokter Saat K1 </h3>
+                    <h3 class="modal-title fs-4 fw-bold" id="ModalEdit">Edit Pemeriksaan Bidan Saat K1 </h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
                 </div>
                 <div class="modal-body">
@@ -189,8 +189,8 @@
                                     <h5 class="card-title">Riwayat Obstetrik</h5>
                                     <div class="row">
                                         <div class="col-md-12 mb-3">
-                                            <label for="edit_NIK" class="form-label">Ibu</label>
-                                            <select class="form-control" id="edit_NIK" name="NIK" required>
+                                            <label for="edit_nama_ibu" class="form-label">Ibu</label>
+                                            <select class="form-control" id="edit_nama_ibu" name="nama_ibu" required>
                                                 <option value="">Pilih Ibu</option>
                                                 @foreach ($ibus as $ibu)
                                                     <option value="{{ $ibu->nama_ibu }}">{{ $ibu->nama_ibu }}</option>
@@ -221,7 +221,8 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12 mb-3">
-                                        <label for="edit_rwyt_komplikasi" class="form-label">Riwayat Komplikasi Kebidanan</label>
+                                        <label for="edit_rwyt_komplikasi" class="form-label">Riwayat Komplikasi
+                                            Kebidanan</label>
                                         <input type="text" class="form-control" id="edit_rwyt_komplikasi"
                                             name="rwyt_komplikasi" required>
                                     </div>
@@ -245,18 +246,20 @@
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="edit_tgl_hpht" class="form-label">Tanggal HPHT</label>
-                                            <input type="date" class="form-control" id="edit_tgl_hpht" name="tgl_hpht"
-                                                required>
+                                            <input type="date" class="form-control" id="edit_tgl_hpht"
+                                                name="tgl_hpht" required>
                                         </div>
                                         <div class="col-md-6 mb-3">
-                                            <label for="edit_tksrn_persalinan" class="form-label">Taksiran Persalinan</label>
+                                            <label for="edit_tksrn_persalinan" class="form-label">Taksiran
+                                                Persalinan</label>
                                             <input type="date" class="form-control" id="edit_tksrn_persalinan"
                                                 name="tksrn_persalinan" required>
                                         </div>
                                         <div class="col-md-6 mb-3">
-                                            <label for="edit_prlnan_sebelum" class="form-label">Persalinan Sebelumnya</label>
+                                            <label for="edit_prlnan_sebelum" class="form-label">Persalinan
+                                                Sebelumnya</label>
                                             <input type="date" class="form-control" id="edit_prlnan_sebelum"
-                                                name="prlnan_sebelum" required>
+                                                name="prlnan_sebelum">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -339,8 +342,8 @@
                         }
                     },
                     {
-                        data: 'NIK',
-                        name: 'NIK'
+                        data: 'nama_ibu',
+                        name: 'nama_ibu'
                     },
                     {
                         data: 'gravida',
@@ -421,6 +424,9 @@
                         data: 'prlnan_sebelum',
                         name: 'prlnan_sebelum',
                         render: function(data) {
+                            if (data === null || data === undefined) {
+                                return '-';
+                            }
                             var date = new Date(data);
                             var day = date.getDate();
                             var month = date.getMonth() + 1;
@@ -434,6 +440,7 @@
                             return day + ' - ' + month + ' - ' + year;
                         }
                     },
+
                     {
                         data: 'berat_badan',
                         name: 'berat_badan',
@@ -550,7 +557,7 @@
                 url: '{{ route('antenatal_care.show_ropb', ':id') }}'.replace(':id', id),
                 method: 'GET',
                 success: function(data) {
-                    let namaIbu = data.ibu.nama_ibu;
+                    let namaIbu = data.nama_ibu;
 
                     function formatDate(dateString) {
                         if (!dateString) return '';
@@ -682,7 +689,7 @@
                 url: '{{ route('antenatal_care.edit_ropb', ':id') }}'.replace(':id', id),
                 method: 'GET',
                 success: function(data) {
-                    $('#edit_NIK').val(data.NIK);
+                    $('#edit_nama_ibu').val(data.nama_ibu);
                     $('#edit_gravida').val(data.gravida);
                     $('#edit_partus').val(data.partus);
                     $('#edit_abortus').val(data.abortus);

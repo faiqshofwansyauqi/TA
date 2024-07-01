@@ -8,10 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Ibu extends Model
 {
     protected $table = 'ibu';
-    protected $primaryKey = 'NIK';
-    public $incrementing = false;
+    protected $primaryKey = 'id_ibu';
+    
     protected $fillable = [
-        'NIK',
         'puskesmas',
         'noregis',
         'nama_ibu',
@@ -22,6 +21,7 @@ class Ibu extends Model
         'kab',
         'pendidikan_ibu',
         'pekerjaaan_ibu',
+        'nik',
         'umur',
         'rtrw',
         'kec',
