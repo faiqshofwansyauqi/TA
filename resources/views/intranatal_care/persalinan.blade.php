@@ -72,11 +72,10 @@
                 <div class="modal-body">
                     <form action="{{ route('intranatal_care.store_persalinan') }}" method="post" autocomplete="off">
                         @csrf
-                        <div class="card col-12">
+                        <div class="col-12">
                             <div class="card-body">
-                                <h5 class="card-title"></h5>
                                 <div class="row">
-                                    <div class="col-md-4 mb-2">
+                                    <div class="col-md-4 mb-3">
                                         <label for="id_ibu" class="form-label">Ibu</label>
                                         <select class="form-control" id="id_ibu" name="id_ibu" required>
                                             <option value="">Pilih Ibu</option>
@@ -85,95 +84,95 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="col-md-4 mb-2">
+                                    <div class="col-md-4 mb-3">
                                         <label for="kala1" class="form-label">Kala I Aktif</label>
-                                        <input type="datetime-local" class="form-control" id="kala1" name="kala1">
+                                        <input type="datetime-local" class="form-control" id="kala1" name="kala1" required>
                                     </div>
-                                    <div class="col-md-4 mb-2">
+                                    <div class="col-md-4 mb-3">
                                         <label for="kala2" class="form-label">Kala II</label>
-                                        <input type="datetime-local" class="form-control" id="kala2" name="kala2">
+                                        <input type="datetime-local" class="form-control" id="kala2" name="kala2" required>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6 mb-2">
+                                    <div class="col-md-6 mb-3">
                                         <label for="bayi_lahir" class="form-label">Bayi Lahir</label>
-                                        <input type="datetime-local" class="form-control" id="bayi_lahir" name="bayi_lahir">
+                                        <input type="datetime-local" class="form-control" id="bayi_lahir" name="bayi_lahir" required>
                                     </div>
-                                    <div class="col-md-6 mb-2">
+                                    <div class="col-md-6 mb-3">
                                         <label for="piasenta" class="form-label">Piasenta Lahir</label>
-                                        <input type="datetime-local" class="form-control" id="piasenta" name="piasenta">
+                                        <input type="datetime-local" class="form-control" id="piasenta" name="piasenta" required>
                                     </div>
-                                    <div class='row'>
-                                        <div class="col-md-3 mb-2">
-                                            <label for="pendarahan" class="form-label">Pendarahan Kala IV</label>
-                                            <div class="input-group mb-2">
-                                                <input type="number" class="form-control" id="pendarahan" name="pendarahan"
-                                                    placeholder="Input Pendarahan Kala IV">
-                                                <span class="input-group-text">cc</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 mb-2">
-                                            <label for="usia_kehamilan" class="form-label">Usia Kehamilan</label>
-                                            <div class="input-group mb-2">
-                                                <input type="number" class="form-control" id="usia_kehamilan"
-                                                    name="usia_kehamilan" placeholder="input Usia Kehamilan">
-                                                <span class="input-group-text">minggu</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 mb-2">
-                                            <label for="usia_hpht" class="form-label">Usia HP HT</label>
-                                            <div class="input-group mb-2">
-                                                <input type="number" class="form-control" id="usia_hpht"
-                                                    name="usia_hpht" placeholder="input Usia HP HT">
-                                                <span class="input-group-text">minggu</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 mb-2">
-                                            <label for="keadaan_ibu" class="form-label">Keadaan Ibu</label>
-                                            <select class="form-select" id="keadaan_ibu" name="keadaan_ibu" required>
-                                                <option value="">Pilih Keadaan Ibu</option>
-                                                <option value="Mati">Mati</option>
-                                                <option value="Hidup">Hidup</option>
-                                            </select>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3 mb-3">
+                                        <label for="pendarahan" class="form-label">Pendarahan Kala IV</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="pendarahan" name="pendarahan"
+                                                placeholder="Input Pendarahan Kala IV" pattern="[0-9,\,]*" required>
+                                            <span class="input-group-text">cc</span>
                                         </div>
                                     </div>
-                                    <div class='row'>
-                                        <div class="col-md-3 mb-2">
-                                            <label for="keadaan_bayi" class="form-label">Keadaan Bayi</label>
-                                            <select class="form-select" id="keadaan_bayi" name="keadaan_bayi" required>
-                                                <option value="">Pilih Keadaan Bayi</option>
-                                                <option value="Mati">Mati</option>
-                                                <option value="Hidup">Hidup</option>
-                                            </select>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="usia_kehamilan" class="form-label">Usia Kehamilan</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="usia_kehamilan"
+                                                name="usia_kehamilan" placeholder="input Usia Kehamilan" required>
+                                            <span class="input-group-text">mgg</span>
                                         </div>
-                                        <div class="col-md-3 mb-2">
-                                            <label for="berat_bayi" class="form-label">Berat Bayi</label>
-                                            <div class="input-group mb-2">
-                                                <input type="number" class="form-control" id="berat_bayi"
-                                                    name="berat_bayi" placeholder="input Berat Bayi">
-                                                <span class="input-group-text">gram</span>
-                                            </div>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="usia_hpht" class="form-label">Usia HP HT</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="usia_hpht" name="usia_hpht"
+                                                placeholder="input Usia HP HT" required>
+                                            <span class="input-group-text">mgg</span>
                                         </div>
-                                        <div class="col-md-3 mb-2">
-                                            <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
-                                            <select class="form-select" id="jenis_kelamin" name="jenis_kelamin" required>
-                                                <option value="">Pilih Jenis Kelamin</option>
-                                                <option value="Laki-laki">Laki-laki</option>
-                                                <option value="Perempuan">Perempuan</option>
-                                            </select>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="keadaan_ibu" class="form-label">Keadaan Ibu</label>
+                                        <select class="form-select" id="keadaan_ibu" name="keadaan_ibu" required>
+                                            <option value="">Pilih Keadaan Ibu</option>
+                                            <option value="Mati">Mati</option>
+                                            <option value="Hidup">Hidup</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class='row'>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="keadaan_bayi" class="form-label">Keadaan Bayi</label>
+                                        <select class="form-select" id="keadaan_bayi" name="keadaan_bayi" required>
+                                            <option value="">Pilih Keadaan Bayi</option>
+                                            <option value="Mati">Mati</option>
+                                            <option value="Hidup">Hidup</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="berat_bayi" class="form-label">Berat Bayi</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="berat_bayi" name="berat_bayi"
+                                                placeholder="input Berat Bayi" pattern="[0-9,\,]*" required>
+                                            <span class="input-group-text">gr</span>
                                         </div>
-                                        <div class="col-md-3 mb-2">
-                                            <label for="panjang_bayi" class="form-label">Panjang Bayi</label>
-                                            <div class="input-group mb-2">
-                                                <input type="number" class="form-control" id="panjang_bayi"
-                                                    name="panjang_bayi" placeholder="input Berat Bayi">
-                                                <span class="input-group-text">cm</span>
-                                            </div>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
+                                        <select class="form-select" id="jenis_kelamin" name="jenis_kelamin" required>
+                                            <option value="">Pilih Jenis Kelamin</option>
+                                            <option value="Laki-laki">Laki-laki</option>
+                                            <option value="Perempuan">Perempuan</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="panjang_bayi" class="form-label">Panjang Bayi</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="panjang_bayi"
+                                                name="panjang_bayi" placeholder="input Berat Bayi" pattern="[0-9,\,]*" required>
+                                            <span class="input-group-text">cm</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6 mb-2">
+                                    <div class="col-md-4 mb-3">
                                         <label for="pesentasi" class="form-label">Presentasi</label>
                                         <select class="form-select" id="pesentasi" name="pesentasi" required>
                                             <option value="">Pilih Jenis Presentasi</option>
@@ -187,7 +186,7 @@
                                             <option value="Kaki">Kaki</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-6 mb-2">
+                                    <div class="col-md-4 mb-3">
                                         <label for="tempat" class="form-label">Tempat</label>
                                         <select class="form-select" id="tempat" name="tempat" required>
                                             <option value="">Pilih Tempat</option>
@@ -201,9 +200,7 @@
                                             <option value="RS ODHA">RB</option>
                                         </select>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6 mb-2">
+                                    <div class="col-md-4 mb-3">
                                         <label for="penolong" class="form-label">Penolong</label>
                                         <select class="form-select" id="penolong" name="penolong" required>
                                             <option value="">Pilih Penolong</option>
@@ -216,7 +213,9 @@
                                             <option value="Tidak Ada">Tidak Ada</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-6 mb-2">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
                                         <label for="cara_persalinan" class="form-label">Cara Persalinan</label>
                                         <select class="form-select" id="cara_persalinan" name="cara_persalinan" required>
                                             <option value="">Pilih Cara Persalinan</option>
@@ -226,9 +225,7 @@
                                             <option value="Seksio Sesarea">Seksio Sesarea</option>
                                         </select>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6 mb-2">
+                                    <div class="col-md-4 mb-3">
                                         <label for="menejemen" class="form-label">Menejemen Aktif Kala III</label>
                                         <select class="form-select" id="menejemen" name="menejemen" required>
                                             <option value="">Pilih Jenis Menejemen Aktif Kala III</option>
@@ -240,7 +237,7 @@
                                             <option value="Masase Fundus Uteri">Masase Fundus Uteri</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-6 mb-2">
+                                    <div class="col-md-4 mb-3">
                                         <label for="pelayanan" class="form-label">Pelayanan</label>
                                         <select class="form-select" id="pelayanan" name="pelayanan" required>
                                             <option value="">Pilih Pelayanan</option>
@@ -254,7 +251,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4 mb-2 pe-0">
+                                    <div class="col-md-3 mb-3 pe-0">
                                         <label for="integrasi" class="form-label">Integrasi Program</label>
                                         <select class="form-select" id="integrasi" name="integrasi" required>
                                             <option value="">Pilih Jenis Integrasi Program</option>
@@ -263,13 +260,13 @@
                                             <option value="Obat Anti TB">Obat Anti TB :</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-2 mb-2 ps-0">
+                                    <div class="col-md-1 mb-3 ps-0">
                                         <label for="detail_integrasi" class="form-label"
                                             style="color: white">Detail</label>
                                         <input type="text" class="form-control" id="detail_integrasi"
                                             name="detail_integrasi">
                                     </div>
-                                    <div class="col-md-3 mb-2">
+                                    <div class="col-md-4 mb-3">
                                         <label for="komplikasi" class="form-label">Komplikasi</label>
                                         <select class="form-select" id="komplikasi" name="komplikasi" required>
                                             <option value="">Pilih Komplikasi</option>
@@ -279,7 +276,7 @@
                                             <option value="Lainnya">Lainnya</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4 mb-3">
                                         <label for="keadaan_tiba" class="form-label">Keadaan Tiba</label>
                                         <select class="form-select" id="keadaan_tiba" name="keadaan_tiba" required>
                                             <option value="">Pilih Keadaan Tiba</option>
@@ -289,7 +286,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 mb-3">
                                         <label for="keadaan_pulang" class="form-label">Keadaan Pulang</label>
                                         <select class="form-select" id="keadaan_pulang" name="keadaan_pulang" required>
                                             <option value="">Pilih Keadaan Pulang</option>
@@ -297,7 +294,7 @@
                                             <option value="Mati">Mati</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 mb-3">
                                         <label for="rujuk" class="form-label">Dirujuk Ke</label>
                                         <select class="form-select" id="rujuk" name="rujuk" required>
                                             <option value="">Pilih Dirujuk Ke</option>
@@ -309,9 +306,9 @@
                                             <option value="Tidak Dirujuk">Tidak Dirujuk</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-5">
+                                    <div class="col-md-5 mb-3">
                                         <label for="alamat_bersalin" class="form-label">Alamat Bersalin</label>
-                                        <textarea class="form-control" id="alamat_bersalin" rows="2" name="alamat_bersalin"></textarea>
+                                        <textarea class="form-control" id="alamat_bersalin" rows="2" name="alamat_bersalin" required></textarea>
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -372,11 +369,12 @@
                                             name="piasenta">
                                     </div>
                                     <div class='row'>
-                                        <div class="col-md-3 mb-2">
+                                        <div class="col-md-3 mb-3">
                                             <label for="edit_pendarahan" class="form-label">Pendarahan Kala IV</label>
-                                            <div class="input-group mb-2">
-                                                <input type="number" class="form-control" id="edit_pendarahan"
-                                                    name="pendarahan" placeholder="Input Pendarahan Kala IV">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="edit_pendarahan"
+                                                    name="pendarahan" placeholder="Input Pendarahan Kala IV"
+                                                    pattern="[0-9,\,]*">
                                                 <span class="input-group-text">cc</span>
                                             </div>
                                         </div>
@@ -419,8 +417,8 @@
                                         <div class="col-md-3 mb-2">
                                             <label for="edit_berat_bayi" class="form-label">Berat Bayi</label>
                                             <div class="input-group mb-2">
-                                                <input type="number" class="form-control" id="edit_berat_bayi"
-                                                    name="berat_bayi" placeholder="input Berat Bayi">
+                                                <input type="text" class="form-control" id="edit_berat_bayi"
+                                                    name="berat_bayi" placeholder="input Berat Bayi" pattern="[0-9,\,]*">
                                                 <span class="input-group-text">gram</span>
                                             </div>
                                         </div>
@@ -436,8 +434,9 @@
                                         <div class="col-md-3 mb-2">
                                             <label for="edit_panjang_bayi" class="form-label">Panjang Bayi</label>
                                             <div class="input-group mb-2">
-                                                <input type="number" class="form-control" id="edit_panjang_bayi"
-                                                    name="panjang_bayi" placeholder="input Berat Bayi">
+                                                <input type="text" class="form-control" id="edit_panjang_bayi"
+                                                    name="panjang_bayi" placeholder="input Berat Bayi"
+                                                    pattern="[0-9,\,]*">
                                                 <span class="input-group-text">cm</span>
                                             </div>
                                         </div>
@@ -844,6 +843,33 @@
                 '#colvis-button');
         });
 
+        document.addEventListener('DOMContentLoaded', function() {
+            function restrictInputToNumbers(input, maxLength) {
+                input.addEventListener('input', function() {
+                    var value = input.value;
+                    value = value.replace(/[^0-9/,]/g, '');
+                    if (value.length > maxLength) {
+                        value = value.substring(0, maxLength);
+                    }
+                    input.value = value;
+                });
+            }
+
+            var berat_bayiInput = document.getElementById('berat_bayi');
+            var berat_bayiEdit = document.getElementById('edit_berat_bayi');
+            var panjang_bayiInput = document.getElementById('panjang_bayi');
+            var panjang_bayiEdit = document.getElementById('edit_panjang_bayi');
+            var pendarahanInput = document.getElementById('pendarahan');
+            var pendarahanEdit = document.getElementById('edit_pendarahan');
+
+            restrictInputToNumbers(berat_bayiEdit, 5);
+            restrictInputToNumbers(panjang_bayiEdit, 10);
+            restrictInputToNumbers(pendarahanEdit, 10);
+            restrictInputToNumbers(berat_bayiInput, 5);
+            restrictInputToNumbers(panjang_bayiInput, 10);
+            restrictInputToNumbers(pendarahanInput, 10);
+        });
+
         // $('#persalinan-table').on('click', '.btn-delete', function() {
         //     const id = $(this).data('id');
         //     const url = $(this).data('url');
@@ -1073,7 +1099,6 @@
                 }
             });
         });
-
 
         $('#persalinan-table').on('click', '.edit-btn', function() {
             let id = $(this).data('id');

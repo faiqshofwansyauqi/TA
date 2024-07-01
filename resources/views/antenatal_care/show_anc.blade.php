@@ -228,7 +228,7 @@
                                             <label for="tbj" class="form-label">TBJ <sup>(gram)</sup></label>
                                             <div class="input-group">
                                                 <input type="number" class="form-control" id="tbj" name="tbj"
-                                                    pattern="[0-9,\.]*">
+                                                    pattern="[0-9,\,]*">
                                                 <span class="input-group-text">gram</span>
                                             </div>
                                         </div>
@@ -275,7 +275,7 @@
                                             <br>
                                             <label for="fe" class="form-label">Fe <sup>(tab/botol)</sup></label>
                                             <input type="number" class="form-control" id="fe" name="fe"
-                                                pattern="[0-9,\.]*">
+                                                pattern="[0-9,\,]*">
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="pmt_bumil" class="form-label">PMT Bumil KEK</label>
@@ -306,7 +306,7 @@
                                             <label for="hemoglobin"
                                                 class="form-label">Hemoglobin<sup>(gr/dl)</sup></label>
                                             <input type="text" class="form-control" id="hemoglobin" name="hemoglobin"
-                                                pattern="[0-9,\.]*">
+                                                pattern="[0-9,\,]*">
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="glcs_urine" class="form-label">Protein
@@ -647,7 +647,8 @@
                                             </div>
                                         </div>
                                         <div class="col-md-4 mb-3">
-                                            <label for="edit_sts_gizi" class="form-label">Status Gizi <sup>2)</sup></label>
+                                            <label for="edit_sts_gizi" class="form-label">Status Gizi
+                                                <sup>2)</sup></label>
                                             <select class="form-select" id="edit_sts_gizi" name="sts_gizi">
                                                 <option value="-">Pilih Status Gizi</option>
                                                 <option value="K">KEK</option>
@@ -686,7 +687,8 @@
                                             </div>
                                         </div>
                                         <div class="col-md-4 mb-3">
-                                            <label for="edit_kpl_thd" class="form-label">Kepala thd PAP<sup>3)</sup></label>
+                                            <label for="edit_kpl_thd" class="form-label">Kepala thd
+                                                PAP<sup>3)</sup></label>
                                             <select class="form-select" id="edit_kpl_thd" name="kpl_thd">
                                                 <option value="-">Pilih Kepala thd PAP</option>
                                                 <option value="M">Masuk</option>
@@ -704,7 +706,8 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
-                                            <label for="edit_presentasi" class="form-label">Presentasi<sup>4)</sup></label>
+                                            <label for="edit_presentasi"
+                                                class="form-label">Presentasi<sup>4)</sup></label>
                                             <select class="form-select" id="edit_presentasi" name="presentasi">
                                                 <option value="-">Pilih Presentasi</option>
                                                 <option value="KP">Kepala</option>
@@ -713,7 +716,8 @@
                                             </select>
                                         </div>
                                         <div class="col-md-6 mb-3">
-                                            <label for="edit_jmlh_janin" class="form-label">Jumlah Janin<sup>5)</sup></label>
+                                            <label for="edit_jmlh_janin" class="form-label">Jumlah
+                                                Janin<sup>5)</sup></label>
                                             <select class="form-select" id="edit_jmlh_janin" name="jmlh_janin">
                                                 <option value="-">Pilih Jumlah Janin</option>
                                                 <option value="Tunggal">T</option>
@@ -774,8 +778,8 @@
                                         <div class="col-md-6 mb-3">
                                             <label for="edit_hemoglobin"
                                                 class="form-label">Hemoglobin<sup>(gr/dl)</sup></label>
-                                            <input type="text" class="form-control" id="edit_hemoglobin" name="hemoglobin"
-                                                pattern="[0-9,\.]*">
+                                            <input type="text" class="form-control" id="edit_hemoglobin"
+                                                name="hemoglobin" pattern="[0-9,\.]*">
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="edit_glcs_urine" class="form-label">Protein
@@ -965,7 +969,8 @@
                                             </select>
                                         </div>
                                         <div class="col-md-5 mb-3">
-                                            <label for="edit_lain_lain_komplikasi" class="form-label">Lain - lain</label>
+                                            <label for="edit_lain_lain_komplikasi" class="form-label">Lain -
+                                                lain</label>
                                             <input type="text" class="form-control" id="edit_lain_lain_komplikasi"
                                                 name="lain_lain_komplikasi">
                                         </div>
