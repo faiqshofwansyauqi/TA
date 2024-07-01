@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Show_Hiv;
 use Illuminate\Http\Request;
-use App\Models\Anc;
+use App\Models\Persalinan;
 use App\Models\Pemantauan_Bayi;
+use App\Models\ANC;
 use App\Models\Nifas;
 use App\Models\Ppia;
 use App\Models\Show_Nifas;
@@ -30,10 +31,9 @@ class PNCController extends Controller
         $user = Auth::user();
         if ($user->hasRole(['Bidan', 'Admin'])) {
             $this->authorize('akses_page', Nifas::class);
-            $ibus = Anc::all();
+            $ibus = Persalinan::all();
             $nifas = Nifas::all();
             return view('postnatal_care.nifas', compact('nifas', 'ibus'));
-
         } else {
             return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
         }
@@ -373,7 +373,7 @@ class PNCController extends Controller
         $user = Auth::user();
         if ($user->hasRole(['Bidan', 'Admin'])) {
             $this->authorize('akses_page', Pemantauan_Bayi::class);
-            $ibus = Anc::all();
+            $ibus = Ppia::all();
             $pb = Pemantauan_Bayi::all();
             return view('postnatal_care.pemantauan_bayi', compact('ibus', 'pb'));
         } else {
