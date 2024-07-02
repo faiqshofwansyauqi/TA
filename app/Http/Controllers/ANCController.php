@@ -204,9 +204,8 @@ class ANCController extends Controller
         $user = Auth::user();
         if ($user->hasRole(['Bidan', 'Admin'])) {
             $this->authorize('akses_page', Show_Anc::class);
-            $anc = Anc::findOrFail($id);
-            $ancs = Show_Anc::all();
-            return view('antenatal_care.show_anc', compact('ancs', 'anc'));
+            $anc = Anc::findOrFail($id);        
+            return view('antenatal_care.show_anc', compact('anc'));
         } else {
             return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
         }

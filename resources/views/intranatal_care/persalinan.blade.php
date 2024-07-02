@@ -76,11 +76,11 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-4 mb-3">
-                                        <label for="id_ibu" class="form-label">Ibu</label>
-                                        <select class="form-control" id="id_ibu" name="id_ibu" required>
+                                        <label for="nama_ibu" class="form-label">Ibu</label>
+                                        <select class="form-control" id="nama_ibu" name="nama_ibu" required>
                                             <option value="">Pilih Ibu</option>
                                             @foreach ($ibus as $ibu)
-                                                <option value="{{ $ibu->NIK }}">{{ $ibu->NIK }}</option>
+                                                <option value="{{ $ibu->nama_ibu }}">{{ $ibu->nama_ibu }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -338,13 +338,9 @@
                                 <h5 class="card-title"></h5>
                                 <div class="row">
                                     <div class="col-md-4 mb-2">
-                                        <label for="edit_id_ibu" class="form-label">Ibu</label>
-                                        <select class="form-control" id="edit_id_ibu" name="id_ibu" required>
-                                            <option value="">Pilih Ibu</option>
-                                            @foreach ($ibus as $ibu)
-                                                <option value="{{ $ibu->NIK }}">{{ $ibu->NIK }}</option>
-                                            @endforeach
-                                        </select>
+                                        <label for="edit_nama_ibu" class="form-label">Nama Ibu</label>
+                                        <input type="text" class="form-control" id="edit_nama_ibu" name="nama_ibu"
+                                            value="{{ $ibu }}" readonly>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_kala1" class="form-label">Kala I Aktif</label>
@@ -642,8 +638,8 @@
                         }
                     },
                     {
-                        data: 'id_ibu',
-                        name: 'id_ibu'
+                        data: 'nama_ibu',
+                        name: 'nama_ibu'
                     },
                     {
                         data: 'kala1',
@@ -807,21 +803,21 @@
                         searchable: false,
                         render: function(data, type, row) {
                             let viewUrl = '{{ route('intranatal_care.show_persalinan', ':id') }}'
-                                .replace(':id', row.id_persalinan);
+                                .replace(':id', row.id);
                             let editUrl = '{{ route('intranatal_care.edit_persalinan', ':id') }}'
-                                .replace(':id', row.id_persalinan);
+                                .replace(':id', row.id);
                             let deleteUrl =
                                 '{{ route('intranatal_care.destroy_persalinan', ':id') }}'
-                                .replace(':id', row.id_persalinan);
+                                .replace(':id', row.id);
                             return `
                             <div style="display: flex; justify-content: center;">
-                                <button class="btn btn-sm btn-dark view-btn" data-id="${row.id_persalinan}" data-bs-toggle="modal" data-bs-target="#modalView" style="margin-right: 5px;">
+                                <button class="btn btn-sm btn-dark view-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalView" style="margin-right: 5px;">
                                     <i class="bi bi-eye-fill"></i>
                                 </button>
-                                    <button class="btn btn-sm btn-primary edit-btn" data-id="${row.id_persalinan}" data-bs-toggle="modal" data-bs-target="#modalEdit">
+                                    <button class="btn btn-sm btn-primary edit-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalEdit">
                                         <i class="ri-edit-2-fill"></i>
                                     </button>
-                                    <button type="button" class="btn btn-sm btn-danger btn-delete" data-id="${row.id_persalinan}" data-url="${deleteUrl}" hidden>
+                                    <button type="button" class="btn btn-sm btn-danger btn-delete" data-id="${row.id}" data-url="${deleteUrl}" hidden>
                                         <i class="bi bi-trash3-fill"></i>
                                     </button>
                                 
@@ -928,7 +924,7 @@
                 url: '{{ route('intranatal_care.show_persalinan', ':id') }}'.replace(':id', id),
                 method: 'GET',
                 success: function(data) {
-                    let namaIbu = data.ibu.nama_ibu;
+                    let namaIbu = data.nama_ibu;
 
                     function formatDateOnly(dateString) {
                         if (!dateString) return '';
@@ -1107,7 +1103,7 @@
                 method: 'GET',
                 success: function(data) {
                     console.log("Pesan diterima:", data);
-                    $('#edit_id_ibu').val(data.id_ibu);
+                    $('#edit_nama_ibu').val(data.nama_ibu);
                     $('#edit_kala1').val(data.kala1);
                     $('#edit_kala2').val(data.kala2);
                     $('#edit_bayi_lahir').val(data.bayi_lahir);

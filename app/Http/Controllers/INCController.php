@@ -22,9 +22,8 @@ class INCController extends Controller
         $user = Auth::user();
         if ($user->hasRole(['Bidan', 'Admin'])) {
             $this->authorize('akses_page', Persalinan::class);
-            $persalinan = Persalinan::all();
-            $ibus = Rencana_Persalinan::all();
-            return view('intranatal_care.persalinan', compact('persalinan', 'ibus'));
+            $ibus = Rencana_Persalinan::select('nama_ibu')->get();
+            return view('intranatal_care.persalinan', compact('ibus'));
         } else {
             return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
         }
@@ -33,7 +32,7 @@ class INCController extends Controller
     {
         // dd($request->all());
         $request->validate([
-            'id_ibu' => 'required',
+            'nama_ibu' => 'required',
             'kala1' => 'required',
             'kala2' => 'required',
             'bayi_lahir' => 'required',
@@ -62,7 +61,7 @@ class INCController extends Controller
         ]);
 
         Persalinan::create([
-            'id_ibu' => $request->id_ibu,
+            'nama_ibu' => $request->nama_ibu,
             'kala1' => $request->kala1,
             'kala2' => $request->kala2,
             'bayi_lahir' => $request->bayi_lahir,
@@ -95,7 +94,7 @@ class INCController extends Controller
     {
         // dd($request->all());
         $request->validate([
-            'id_ibu' => 'required',
+            'nama_ibu' => 'required',
             'kala1' => 'required',
             'kala2' => 'required',
             'bayi_lahir' => 'required',
@@ -124,7 +123,7 @@ class INCController extends Controller
         ]);
         $persalinan = Persalinan::findOrFail($id);
         $persalinan->update([
-            'id_ibu' => $request->id_ibu,
+            'nama_ibu' => $request->nama_ibu,
             'kala1' => $request->kala1,
             'kala2' => $request->kala2,
             'bayi_lahir' => $request->bayi_lahir,
