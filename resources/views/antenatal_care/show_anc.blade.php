@@ -1385,7 +1385,7 @@
                 responsive: false,
                 scrollX: false,
                 language: {
-                    emptyTable: "Data anc ibu {{ $anc->NIK }} tidak ada"
+                    emptyTable: "Data anc ibu {{ $anc->nama_ibu }} tidak ada"
                 }
             });
         });
@@ -1500,7 +1500,7 @@
                 });
             }
             var td_mmhgInput = document.getElementById('td_mmhg');
-            var td_mmhgEdit = document.getElementById('td_mmhg');
+            var td_mmhgEdit = document.getElementById('edit_td_mmhg');
             restrictInputToNumbersAndSlash(td_mmhgInput, 10);
             restrictInputToNumbersAndSlash(td_mmhgEdit, 10);
         });

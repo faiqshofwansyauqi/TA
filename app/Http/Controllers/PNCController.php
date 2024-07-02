@@ -31,9 +31,8 @@ class PNCController extends Controller
         $user = Auth::user();
         if ($user->hasRole(['Bidan', 'Admin'])) {
             $this->authorize('akses_page', Nifas::class);
-            $ibus = Persalinan::all();
-            $nifas = Nifas::all();
-            return view('postnatal_care.nifas', compact('nifas', 'ibus'));
+            $ibus = Persalinan::select('nama_ibu')->get();
+            return view('postnatal_care.nifas', compact('ibus'));
         } else {
             return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
         }
@@ -41,11 +40,11 @@ class PNCController extends Controller
     public function store_nifas(Request $request)
     {
         $request->validate([
-            'NIK' => 'required',
+            'nama_ibu' => 'required',
         ]);
 
         Nifas::create([
-            'NIK' => $request->NIK,
+            'nama_ibu' => $request->nama_ibu,
         ]);
         return redirect()->back()->with('success', 'Data berhasil ditambahkan');
     }
@@ -74,8 +73,7 @@ class PNCController extends Controller
         if ($user->hasRole(['Bidan', 'Admin'])) {
             $this->authorize('akses_page', Show_Nifas::class);
             $nifas = Nifas::findOrFail($id);
-            $nifass = Show_Nifas::all();
-            return view('postnatal_care.show_nifas', compact('nifass', 'nifas'));
+            return view('postnatal_care.show_nifas', compact( 'nifas'));
         } else {
             return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
         }
@@ -84,7 +82,7 @@ class PNCController extends Controller
     {
         // dd($request);
         $request->validate([
-            'NIK' => 'required',
+            'nama_ibu' => 'required',
             'tanggal' => 'required',
             'hari' => 'required',
             'kf' => 'required',
@@ -113,7 +111,7 @@ class PNCController extends Controller
         ]);
 
         Show_Nifas::create([
-            'NIK' => $request->NIK,
+            'nama_ibu' => $request->nama_ibu,
             'tanggal' => $request->tanggal,
             'hari' => $request->hari,
             'kf' => $request->kf,
@@ -203,9 +201,9 @@ class PNCController extends Controller
         ]);
         return redirect()->back()->with('success', 'Data berhasil diperbarui');
     }
-    public function getData_shownifas($NIK)
+    public function getData_shownifas($nama_ibu)
     {
-        $data = Show_Nifas::where('NIK', $NIK)->get();
+        $data = Show_Nifas::where('nama_ibu', $nama_ibu)->get();
         return DataTables::of($data)->make(true);
     }
     public function edit_shownifas($id)

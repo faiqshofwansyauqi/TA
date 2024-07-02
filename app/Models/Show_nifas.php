@@ -10,8 +10,8 @@ class Show_Nifas extends Model
     protected $table = 'show_nifas';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'NIK',
         'id',
+        'nama_ibu',
         'tanggal',
         'hari',
         'kf',

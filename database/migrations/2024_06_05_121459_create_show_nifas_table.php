@@ -15,7 +15,7 @@ class CreateShowNifasTable extends Migration
     {
         Schema::create('show_nifas', function (Blueprint $table) {
             $table->id();
-            $table->string('NIK');
+            $table->string('nama_ibu');
             $table->string('tanggal');
             $table->string('hari');
             $table->string('kf');
