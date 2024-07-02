@@ -160,7 +160,7 @@ class ANCController extends Controller
     public function Anc()
     {
         $user = Auth::user();
-        if ($user->hasRole(['Bidan', 'Admin'])) {
+        if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Anc::class);
             $ibus = Rencana_Persalinan::select('nama_ibu')->get();
             return view('antenatal_care.anc', compact( 'ibus'));
@@ -202,7 +202,7 @@ class ANCController extends Controller
     public function show_anc($id)
     {
         $user = Auth::user();
-        if ($user->hasRole(['Bidan', 'Admin'])) {
+        if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Show_Anc::class);
             $anc = Anc::findOrFail($id);        
             return view('antenatal_care.show_anc', compact('anc'));
@@ -455,9 +455,8 @@ class ANCController extends Controller
     //////// RIWAYAT OBSTETRIK DAN PEMERIKSAAN BIDAN ////////
     public function Ropb()
     {
-
         $user = Auth::user();
-        if ($user->hasRole(['Bidan', 'Admin'])) {
+        if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Ropb::class);
             $ibus = Ibu::select('nama_ibu')->get();
             return view('antenatal_care.ropb', compact( 'ibus'));
@@ -577,7 +576,7 @@ class ANCController extends Controller
     public function Rnca()
     {
         $user = Auth::user();
-        if ($user->hasRole(['Bidan', 'Admin'])) {
+        if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Rencana_Persalinan::class);
             $ibus = Ropb::select('nama_ibu')->get();
             return view('antenatal_care.rnca_persalinan', compact('ibus'));
@@ -672,7 +671,7 @@ class ANCController extends Controller
     public function Tm3()
     {
         $user = Auth::user();
-        if ($user->hasRole(['Bidan', 'Admin'])) {
+        if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Tm3::class);
             $ibus = Ibu::all();
             $tm3 = Tm3::all();

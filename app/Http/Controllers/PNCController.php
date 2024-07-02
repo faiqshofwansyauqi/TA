@@ -29,7 +29,7 @@ class PNCController extends Controller
     public function Nifas()
     {
         $user = Auth::user();
-        if ($user->hasRole(['Bidan', 'Admin'])) {
+        if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Nifas::class);
             $ibus = Persalinan::select('nama_ibu')->get();
             return view('postnatal_care.nifas', compact('ibus'));
@@ -70,7 +70,7 @@ class PNCController extends Controller
     public function show_nifas($id)
     {
         $user = Auth::user();
-        if ($user->hasRole(['Bidan', 'Admin'])) {
+        if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Show_Nifas::class);
             $nifas = Nifas::findOrFail($id);
             return view('postnatal_care.show_nifas', compact( 'nifas'));
@@ -217,7 +217,7 @@ class PNCController extends Controller
     public function Ppia()
     {
         $user = Auth::user();
-        if ($user->hasRole(['Bidan', 'Admin'])) {
+        if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Ppia::class);
             $ibus = Anc::select('nama_ibu')->get();            
             return view('postnatal_care.ppia', compact('ibus'));
@@ -256,7 +256,7 @@ class PNCController extends Controller
     public function show_ppia($id)
     {
         $user = Auth::user();
-        if ($user->hasRole(['Bidan', 'Admin'])) {
+        if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Show_Ppia::class);
             $ppia = Ppia::findOrFail($id);
             $nama_ibu = $ppia->nama_ibu;
@@ -368,7 +368,7 @@ class PNCController extends Controller
     public function pemantauan_bayi()
     {
         $user = Auth::user();
-        if ($user->hasRole(['Bidan', 'Admin'])) {
+        if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Pemantauan_Bayi::class);
             $ibus = Ppia::select('nama_ibu')->get();
             return view('postnatal_care.pemantauan_bayi', compact('ibus',));
@@ -398,7 +398,7 @@ class PNCController extends Controller
     public function show_hepatitis($id)
     {
         $user = Auth::user();
-        if ($user->hasRole(['Bidan', 'Admin'])) {
+        if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Show_Hepatitis::class);
             $pb = Pemantauan_Bayi::findOrFail($id);
             $nama_ibu = $pb->nama_ibu;
@@ -488,7 +488,7 @@ class PNCController extends Controller
     public function show_hiv($id)
     {
         $user = Auth::user();
-        if ($user->hasRole(['Bidan', 'Admin'])) {
+        if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Show_Hiv::class);
             $pb = Pemantauan_Bayi::findOrFail($id);
             $NIK = $pb->NIK;
@@ -580,7 +580,7 @@ class PNCController extends Controller
     public function show_sifilis($id)
     {
         $user = Auth::user();
-        if ($user->hasRole(['Bidan', 'Admin'])) {
+        if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Show_sifilis::class);
             $pb = Pemantauan_Bayi::findOrFail($id);
             $NIK = $pb->NIK;

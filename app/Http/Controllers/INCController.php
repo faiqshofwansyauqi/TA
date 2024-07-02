@@ -20,7 +20,7 @@ class INCController extends Controller
     public function Persalinan()
     {
         $user = Auth::user();
-        if ($user->hasRole(['Bidan', 'Admin'])) {
+        if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Persalinan::class);
             $ibus = Rencana_Persalinan::select('nama_ibu')->get();
             return view('intranatal_care.persalinan', compact('ibus'));

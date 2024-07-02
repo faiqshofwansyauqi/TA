@@ -19,7 +19,7 @@ class PasienController extends Controller
     public function Ibu()
     {
         $user = Auth::user();
-        if ($user->hasRole(['Bidan', 'Admin'])) {
+        if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Ibu::class);
             $ibu = Ibu::all();
             return view('pasien.ibu', compact('ibu'));
@@ -165,7 +165,7 @@ class PasienController extends Controller
     public function Anak()
     {
         $user = Auth::user();
-        if ($user->hasRole(['Bidan', 'Admin'])) {
+        if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Anak::class);
             $anak = Anak::all();
             $ibus = Ibu::all();

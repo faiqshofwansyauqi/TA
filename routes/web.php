@@ -175,7 +175,3 @@ Route::middleware(['guest'])->group(function () {
     Route::get('register', [AuthController::class, 'showRegistrationForm'])->name('register');
     Route::post('register', [AuthController::class, 'register'])->name('register.store');
 });
-
-Route::prefix('master')->group(function () {
-    Route::get('pasien', [MasterController::class, 'pasien'])->name('master.pasien');
-});

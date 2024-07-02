@@ -22,7 +22,7 @@ class KMSContronller extends Controller
     public function Kms()
     {
         $user = Auth::user();
-        if ($user->hasRole(['Bidan', 'Admin'])) {
+        if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', KMS::class);
             $kms = KMS::all();
             $anaks = Anak::all();
@@ -74,7 +74,7 @@ class KMSContronller extends Controller
     public function show_kms($id)
     {
         $user = Auth::user();
-        if ($user->hasRole(['Bidan', 'Admin'])) {
+        if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Show_Kms::class);
             $kms = KMS::findOrFail($id);
             $anaks = Anak::all();
