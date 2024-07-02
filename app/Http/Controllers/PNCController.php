@@ -219,9 +219,8 @@ class PNCController extends Controller
         $user = Auth::user();
         if ($user->hasRole(['Bidan', 'Admin'])) {
             $this->authorize('akses_page', Ppia::class);
-            $ibus = Anc::all();
-            $ppia = Ppia::all();
-            return view('postnatal_care.ppia', compact('ppia', 'ibus'));
+            $ibus = Anc::select('nama_ibu')->get();            
+            return view('postnatal_care.ppia', compact('ibus'));
         } else {
             return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
         }
@@ -229,10 +228,10 @@ class PNCController extends Controller
     public function store_ppia(Request $request)
     {
         $request->validate([
-            'NIK' => 'required',
+            'nama_ibu' => 'required',
         ]);
         Ppia::create([
-            'NIK' => $request->NIK,
+            'nama_ibu' => $request->nama_ibu,
         ]);
         return redirect()->back()->with('success', 'Data berhasil ditambahkan');
     }
@@ -260,8 +259,8 @@ class PNCController extends Controller
         if ($user->hasRole(['Bidan', 'Admin'])) {
             $this->authorize('akses_page', Show_Ppia::class);
             $ppia = Ppia::findOrFail($id);
-            $NIK = $ppia->NIK;
-            $ppias = Show_Ppia::where('NIK', $NIK)->get();
+            $nama_ibu = $ppia->nama_ibu;
+            $ppias = Show_Ppia::where('nama_ibu', $nama_ibu)->get();
             return view('postnatal_care.show_ppia', compact('ppias', 'ppia'));
         } else {
             return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
@@ -271,7 +270,7 @@ class PNCController extends Controller
     {
         // dd($request);
         $request->validate([
-            'NIK' => 'required',
+            'nama_ibu' => 'required',
             'tanggal_screening_hbsag' => 'required',
             'tanggal_screening_hiv' => 'required',
             'tanggal_screening_sifilis' => 'required',
@@ -292,7 +291,7 @@ class PNCController extends Controller
         ]);
 
         Show_Ppia::create([
-            'NIK' => $request->NIK,
+            'nama_ibu' => $request->nama_ibu,
             'tanggal_screening_hbsag' => $request->tanggal_screening_hbsag,
             'tanggal_screening_hiv' => $request->tanggal_screening_hiv,
             'tanggal_screening_sifilis' => $request->tanggal_screening_sifilis,

@@ -11,7 +11,7 @@ class Show_Ppia extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'id',
-        'NIK',
+        'nama_ibu',
         'tanggal_screening_hbsag',
         'tanggal_screening_hiv',
         'tanggal_screening_sifilis',

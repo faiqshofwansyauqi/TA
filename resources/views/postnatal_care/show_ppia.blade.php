@@ -118,7 +118,7 @@
                         <div class="row">
                             <div class="col-3 mb-3">
                                 <div class="card-body">
-                                    <input type="hidden" name="NIK" value="{{ $ppia->NIK }}">
+                                    <input type="hidden" name="nama_ibu" value="{{ $ppia->nama_ibu }}">
                                     <h5 class="card-title">Tanggal Screening</h5>
                                     <div class="mb-3">
                                         <div class="mb-2">
@@ -169,7 +169,7 @@
                                             <label for="hasil_screening_hbsag" class="form-label">HBsAG</label>
                                             <select class="form-select" id="hasil_screening_hbsag"
                                                 name="hasil_screening_hbsag">
-                                                <option value="">Pilih Tiba</option>
+                                                <option value="">Pilih Hasil Screening HBsAh</option>
                                                 <option value="Reaktif">Reaktif</option>
                                                 <option value="Non Reaktif">Non Reaktif</option>
                                             </select>
@@ -178,7 +178,7 @@
                                             <label for="hasil_screening_hiv" class="form-label">HIV</label>
                                             <select class="form-select" id="hasil_screening_hiv"
                                                 name="hasil_screening_hiv">
-                                                <option value="">Pilih Tiba</option>
+                                                <option value="">Pilih Hasil Screening HIV</option>
                                                 <option value="Reaktif">Reaktif</option>
                                                 <option value="Non Reaktif">Non Reaktif</option>
                                             </select>
@@ -187,7 +187,7 @@
                                             <label for="hasil_screening_sifilis" class="form-label">Sifilis</label>
                                             <select class="form-select" id="hasil_screening_sifilis"
                                                 name="hasil_screening_sifilis">
-                                                <option value="">Pilih Tiba</option>
+                                                <option value="">Pilih Hasil Screening Sifilis</option>
                                                 <option value="Reaktif">Reaktif</option>
                                                 <option value="Non Reaktif">Non Reaktif</option>
                                             </select>
@@ -259,7 +259,7 @@
                                             <label for="status_hiv" class="form-label">Pasangan mengetahui status
                                                 HIV</label>
                                             <select class="form-select" id="status_hiv" name="status_hiv">
-                                                <option value="">Pilih Dirujuk</option>
+                                                <option value="">Pilih Status HIV</option>
                                                 <option value="Ya">Ya</option>
                                                 <option value="Tidak">Tidak</option>
                                             </select>
@@ -268,7 +268,7 @@
                                             <label for="periksa_sifilis" class="form-label">Pasangan diperiksa
                                                 sifilis</label>
                                             <select class="form-select" id="periksa_sifilis" name="periksa_sifilis">
-                                                <option value="">Pilih Dirujuk</option>
+                                                <option value="">Pilih Periksa Sifilis</option>
                                                 <option value="Ya">Ya</option>
                                                 <option value="Tidak">Tidak</option>
                                             </select>
@@ -303,7 +303,7 @@
                         <div class="row">
                             <div class="col-3 mb-3">
                                 <div class="card-body">
-                                    <input type="hidden" name="NIK" value="{{ $ppia->NIK }}">
+                                    <input type="hidden" name="nama_ibu" value="{{ $ppia->nama_ibu }}">
                                     <h5 class="card-title">Tanggal Screening</h5>
                                     <div class="mb-3">
                                         <div class="mb-2">
@@ -354,7 +354,7 @@
                                             <label for="edit_hasil_screening_hbsag" class="form-label">HBsAG</label>
                                             <select class="form-select" id="edit_hasil_screening_hbsag"
                                                 name="hasil_screening_hbsag">
-                                                <option value="">Pilih Tiba</option>
+                                                <option value="">Pilih Hasil Screening HBsAG</option>
                                                 <option value="Reaktif">Reaktif</option>
                                                 <option value="Non Reaktif">Non Reaktif</option>
                                             </select>
@@ -363,7 +363,7 @@
                                             <label for="edit_hasil_screening_hiv" class="form-label">HIV</label>
                                             <select class="form-select" id="edit_hasil_screening_hiv"
                                                 name="hasil_screening_hiv">
-                                                <option value="">Pilih Tiba</option>
+                                                <option value="">Pilih Hasil Screening HIV</option>
                                                 <option value="Reaktif">Reaktif</option>
                                                 <option value="Non Reaktif">Non Reaktif</option>
                                             </select>
@@ -372,7 +372,7 @@
                                             <label for="edit_hasil_screening_sifilis" class="form-label">Sifilis</label>
                                             <select class="form-select" id="edit_hasil_screening_sifilis"
                                                 name="hasil_screening_sifilis">
-                                                <option value="">Pilih Tiba</option>
+                                                <option value="">Pilih Hasil Screening Sifilis</option>
                                                 <option value="Reaktif">Reaktif</option>
                                                 <option value="Non Reaktif">Non Reaktif</option>
                                             </select>
@@ -445,7 +445,7 @@
                                             <label for="edit_status_hiv" class="form-label">Pasangan mengetahui status
                                                 HIV</label>
                                             <select class="form-select" id="edit_status_hiv" name="status_hiv">
-                                                <option value="">Pilih Dirujuk</option>
+                                                <option value="">Pilih Status HIV</option>
                                                 <option value="Ya">Ya</option>
                                                 <option value="Tidak">Tidak</option>
                                             </select>
@@ -454,7 +454,7 @@
                                             <label for="edit_periksa_sifilis" class="form-label">Pasangan diperiksa
                                                 sifilis</label>
                                             <select class="form-select" id="edit_periksa_sifilis" name="periksa_sifilis">
-                                                <option value="">Pilih Dirujuk</option>
+                                                <option value="">Pilih Periksa Sifilis</option>
                                                 <option value="Ya">Ya</option>
                                                 <option value="Tidak">Tidak</option>
                                             </select>

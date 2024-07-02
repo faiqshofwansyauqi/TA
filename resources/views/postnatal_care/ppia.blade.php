@@ -8,12 +8,10 @@
                 <button type="button" class="btn btn-success btn-custom1" id="btn-plus">
                     <i class="bi bi-plus-circle"></i> Tambah
                 </button>
-                <div id="colvis-button">
-                </div>
+                <div id="colvis-button"></div>
             </div>
         </div>
     </div>
-
 
     <section class="section dashboard">
         <div class="row">
@@ -39,6 +37,7 @@
         </div>
     </section>
 
+    <!-- Modal for Input -->
     <div class="modal fade" id="modalInput" tabindex="-1" aria-labelledby="ModalInput" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-md">
             <div class="modal-content">
@@ -47,17 +46,21 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <!-- Alert message -->
+                    <div class="alert alert-warning" role="alert" id="pehatikan-message" style="display: none;">
+                        Pehatikan! Diisi jika ibu positif PPIA
+                    </div>
                     <form action="{{ route('postnatal_care.store_ppia') }}" method="post" autocomplete="off">
                         @csrf
                         <div class="card col-12">
                             <div class="card-body">
                                 <h5 class="card-title"></h5>
                                 <div class="col-md-12 mb-3">
-                                    <label for="NIK" class="form-label">Ibu</label>
-                                    <select class="form-control" id="NIK" name="NIK" required>
+                                    <label for="nama_ibu" class="form-label">Ibu</label>
+                                    <select class="form-control" id="nama_ibu" name="nama_ibu" required>
                                         <option value="">Pilih Ibu</option>
                                         @foreach ($ibus as $ibu)
-                                            <option value="{{ $ibu->NIK }}">{{ $ibu->NIK }}</option>
+                                            <option value="{{ $ibu->nama_ibu }}">{{ $ibu->nama_ibu }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -72,14 +75,20 @@
         </div>
     </div>
 @endsection
+
 @section('script')
     <script>
         $(document).ready(function() {
             let modalInput = $('#modalInput');
+            let pehatikanMessage = $('#pehatikan-message');
+
+            // Show modal and alert message on button click
             $('#btn-plus').click(function() {
+                pehatikanMessage.show(); // Show the alert message
                 modalInput.modal('show');
             });
 
+            // Initialize DataTable
             let table = $('#ppia-table').DataTable({
                 processing: true,
                 serverSide: true,
@@ -96,8 +105,8 @@
                         }
                     },
                     {
-                        data: 'NIK',
-                        name: 'NIK'
+                        data: 'nama_ibu',
+                        name: 'nama_ibu'
                     },
                     {
                         data: 'action',
@@ -108,23 +117,22 @@
                             let viewUrl = '{{ route('postnatal_care.show_ppia', ':id') }}'.replace(
                                 ':id', row.id);
                             let deleteUrl = '{{ route('postnatal_care.destroy_ppia', ':id') }}'
-                                .replace(
-                                    ':id', row.id);
+                                .replace(':id', row.id);
                             return `
-                            <div style="display: flex; justify-content: center;">
-                            <a href="${viewUrl}" class="btn btn-sm btn-dark">
-                            <i class="bi bi-eye-fill"></i>
-                            </a>
-                        <button type="button" class="btn btn-sm btn-danger btn-delete" data-id="${row.id}" data-url="${deleteUrl}" hidden>
+                                <div style="display: flex; justify-content: center;">
+                                    <a href="${viewUrl}" class="btn btn-sm btn-dark">
+                                        <i class="bi bi-eye-fill"></i>
+                                    </a>
+                                    <button type="button" class="btn btn-sm btn-danger btn-delete" data-id="${row.id}" data-url="${deleteUrl}" hidden>
                                         <i class="bi bi-trash3-fill"></i>
                                     </button>
-                            </div>
+                                </div>
                             `;
                         }
                     }
                 ],
                 dom: '<"d-flex justify-content-between align-items-center"lBf>rtip',
-                buttons: [],
+                buttons: []
             });
         });
     </script>

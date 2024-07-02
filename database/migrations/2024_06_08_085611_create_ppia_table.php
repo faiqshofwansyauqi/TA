@@ -15,7 +15,7 @@ class CreatePpiaTable extends Migration
     {
         Schema::create('ppia', function (Blueprint $table) {
             $table->id();
-            $table->string('NIK');
+            $table->string('nama_ibu');
             $table->timestamps();
         });
     }
