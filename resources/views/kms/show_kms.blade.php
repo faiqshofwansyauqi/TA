@@ -10,7 +10,6 @@
         </div>
     </div>
 
-
     <section class="section dashboard">
         <div class="row">
             <div class="col-lg-12">
@@ -61,7 +60,7 @@
                                         <td>500</td>
                                         <td colspan="2" style="text-align: center">400</td>
                                         <td colspan="4" style="text-align: center">300</td>
-                                        <td colspan="13" style="text-align: center">200</td>
+                                        <td colspan="49" style="text-align: center">200</td>
                                     </tr>
                                     <tr>
                                         <th>N/T</th>
@@ -119,7 +118,7 @@
                                 <div class="mb-3">
                                     <label for="nt" class="form-label">N/T</label>
                                     <select class="form-select" id="nt" name="nt">
-                                        <option value="">Pilih N/T</option>
+                                        <option value="-">Pilih N/T</option>
                                         <option value="N">Naik</option>
                                         <option value="T">Turun</option>
                                     </select>
@@ -127,7 +126,7 @@
                                 <div class="mb-3" id="asi-eks-group">
                                     <label for="asi_eksklusif" class="form-label">Asi Eksklusif</label>
                                     <select class="form-select" id="asi_eksklusif" name="asi_eksklusif">
-                                        <option value="">Pilih Asi Eksklusif</option>
+                                        <option value="-">Pilih Asi Eksklusif</option>
                                         <option value="jika iya">&#10003; <!-- Ceklis --></option>
                                         <option value="jika tidak">&#10007; <!-- Uncek --></option>
                                     </select>
