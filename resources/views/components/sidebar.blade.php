@@ -48,20 +48,6 @@
                     </a>
                 </li> --}}
                     <li>
-                        <a href="{{ route('antenatal_care.anc') }}"
-                            class="{{ request()->is([
-                                'antenatal_care.anc',
-                                'antenatal_care/anc',
-                                'antenatal_care.show_anc',
-                                'antenatal_care/anc/show_anc/*',
-                            ])
-                                ? 'active'
-                                : '' }}">
-                            <i class="bi bi-circle"></i>
-                            <span>Perawatan Selama Hamil</span>
-                        </a>
-                    </li>
-                    <li>
                         <a href="{{ route('antenatal_care.ropb') }}"
                             class="{{ request()->is(['antenatal_care.ropb', 'antenatal_care/ropb']) ? 'active' : '' }}">
                             <i class="bi bi-circle"></i>
@@ -73,6 +59,20 @@
                             class="{{ request()->is(['antenatal_care.rnca', 'antenatal_care/rnca']) ? 'active' : '' }}">
                             <i class="bi bi-circle"></i>
                             <span>Rencana Persalinan</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('antenatal_care.anc') }}"
+                            class="{{ request()->is([
+                                'antenatal_care.anc',
+                                'antenatal_care/anc',
+                                'antenatal_care.show_anc',
+                                'antenatal_care/anc/show_anc/*',
+                            ])
+                                ? 'active'
+                                : '' }}">
+                            <i class="bi bi-circle"></i>
+                            <span>Perawatan Selama Hamil</span>
                         </a>
                     </li>
                     {{-- <li>
