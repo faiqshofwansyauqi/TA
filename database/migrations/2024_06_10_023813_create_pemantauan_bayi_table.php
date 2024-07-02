@@ -15,7 +15,7 @@ class CreatePemantauanBayiTable extends Migration
     {
         Schema::create('pemantauan_bayi', function (Blueprint $table) {
             $table->id();
-            $table->string('NIK');
+            $table->string('nama_ibu');
             $table->timestamps();
         });
     }

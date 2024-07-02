@@ -46,7 +46,6 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <!-- Alert message -->
                     <div class="alert alert-warning" role="alert" id="pehatikan-message" style="display: none;">
                         Pehatikan! Diisi jika ibu positif PPIA
                     </div>
@@ -82,13 +81,11 @@
             let modalInput = $('#modalInput');
             let pehatikanMessage = $('#pehatikan-message');
 
-            // Show modal and alert message on button click
             $('#btn-plus').click(function() {
-                pehatikanMessage.show(); // Show the alert message
+                pehatikanMessage.show();
                 modalInput.modal('show');
             });
 
-            // Initialize DataTable
             let table = $('#ppia-table').DataTable({
                 processing: true,
                 serverSide: true,

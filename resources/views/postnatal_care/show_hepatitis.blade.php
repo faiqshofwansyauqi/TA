@@ -80,7 +80,7 @@
                         @csrf
                         <div class="card col-12">
                             <div class="card-body">
-                                <input type="hidden" name="NIK" value="{{ $pb->NIK }}">
+                                <input type="hidden" name="nama_ibu" value="{{ $pb->nama_ibu }}">
                                 <h5 class="card-title">Jam / Tanggal Pemberian</h5>
                                 <div class="row">
                                     <div class="col-md-4 mb-3">
@@ -163,7 +163,7 @@
                         @method('PUT')
                         <div class="card col-12">
                             <div class="card-body">
-                                <input type="hidden" name="NIK" value="{{ $pb->NIK }}">
+                                <input type="hidden" name="nama_ibu" value="{{ $pb->nama_ibu }}">
                                 <h5 class="card-title">Jam / Tanggal Pemberian</h5>
                                 <div class="row">
                                     <div class="col-md-4 mb-3">

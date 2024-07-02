@@ -44,17 +44,20 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <div class="alert alert-warning" role="alert" id="pehatikan-message" style="display: none;">
+                        Pehatikan! Diisi jika ibu positif PPIA
+                    </div>
                     <form action="{{ route('postnatal_care.store_pemantauan_bayi') }}" method="post" autocomplete="off">
                         @csrf
                         <div class="card col-12">
                             <div class="card-body">
                                 <h5 class="card-title"></h5>
                                 <div class="col-md-12 mb-3">
-                                    <label for="NIK" class="form-label">Ibu</label>
-                                    <select class="form-control" id="NIK" name="NIK" required>
+                                    <label for="nama_ibu" class="form-label">Ibu</label>
+                                    <select class="form-control" id="nama_ibu" name="nama_ibu" required>
                                         <option value="">Pilih Ibu</option>
                                         @foreach ($ibus as $ibu)
-                                            <option value="{{ $ibu->NIK }}">{{ $ibu->NIK }}</option>
+                                            <option value="{{ $ibu->nama_ibu }}">{{ $ibu->nama_ibu }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -74,7 +77,10 @@
     <script>
         $(document).ready(function() {
             let modalInput = $('#modalInput');
+            let pehatikanMessage = $('#pehatikan-message');
+
             $('#btn-plus').click(function() {
+                pehatikanMessage.show();
                 modalInput.modal('show');
             });
 
@@ -94,8 +100,8 @@
                         }
                     },
                     {
-                        data: 'NIK',
-                        name: 'NIK'
+                        data: 'nama_ibu',
+                        name: 'nama_ibu'
                     },
                     {
                         data: 'pemantauan_ibu_hepatitis',

@@ -370,9 +370,8 @@ class PNCController extends Controller
         $user = Auth::user();
         if ($user->hasRole(['Bidan', 'Admin'])) {
             $this->authorize('akses_page', Pemantauan_Bayi::class);
-            $ibus = Ppia::all();
-            $pb = Pemantauan_Bayi::all();
-            return view('postnatal_care.pemantauan_bayi', compact('ibus', 'pb'));
+            $ibus = Ppia::select('nama_ibu')->get();
+            return view('postnatal_care.pemantauan_bayi', compact('ibus',));
         } else {
             return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
         }
@@ -380,10 +379,10 @@ class PNCController extends Controller
     public function store_pemantauan_bayi(Request $request)
     {
         $request->validate([
-            'NIK' => 'required',
+            'nama_ibu' => 'required',
         ]);
         Pemantauan_Bayi::create([
-            'NIK' => $request->NIK,
+            'nama_ibu' => $request->nama_ibu,
         ]);
         return redirect()->back()->with('success', 'Data berhasil ditambahkan');
     }
@@ -402,8 +401,8 @@ class PNCController extends Controller
         if ($user->hasRole(['Bidan', 'Admin'])) {
             $this->authorize('akses_page', Show_Hepatitis::class);
             $pb = Pemantauan_Bayi::findOrFail($id);
-            $NIK = $pb->NIK;
-            $hepatitis = Show_Hepatitis::where('NIK', $NIK)->get();
+            $nama_ibu = $pb->nama_ibu;
+            $hepatitis = Show_Hepatitis::where('nama_ibu', $nama_ibu)->get();
 
             foreach ($hepatitis as $item) {
                 $item->hbo = Carbon::parse($item->hbo)->format('d-m-Y / H:i');
@@ -423,7 +422,7 @@ class PNCController extends Controller
     {
         // dd($request);
         $request->validate([
-            'NIK' => 'required',
+            'nama_ibu' => 'required',
             'hbo' => 'required',
             'hb2' => 'required',
             'hbig' => 'required',
@@ -436,7 +435,7 @@ class PNCController extends Controller
         ]);
 
         Show_hepatitis::create([
-            'NIK' => $request->NIK,
+            'nama_ibu' => $request->nama_ibu,
             'hbo' => $request->hbo,
             'hb2' => $request->hb2,
             'hbig' => $request->hbig,

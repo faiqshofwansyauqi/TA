@@ -15,7 +15,7 @@ class CreateIbuHepatitisTable extends Migration
     {
         Schema::create('ibu_hepatitis', function (Blueprint $table) {
             $table->id();
-            $table->string('NIK');
+            $table->string('nama_ibu');
             $table->string('hbo');
             $table->string('hb2');
             $table->string('hbig');

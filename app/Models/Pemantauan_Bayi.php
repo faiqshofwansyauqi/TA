@@ -11,7 +11,7 @@ class Pemantauan_Bayi extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'id',
-        'NIK',
+        'nama_ibu',
     ];
     public function ibu()
     {
