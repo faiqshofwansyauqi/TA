@@ -178,9 +178,8 @@ class PasienController extends Controller
     {
         $ibu = Ibu::where('nama_ibu', $nama_ibu)->first();
         if ($ibu) {
-            $persalinan = Persalinan::where('id_ibu', $ibu->nama_ibu)->first();
-            $show_anc = Show_Anc::where('NIK', $ibu->nama_ibu)->first();
-
+            $persalinan = Persalinan::where('nama_ibu', $ibu->nama_ibu)->first();
+            $show_anc = Show_Anc::where('nama_ibu', $ibu->nama_ibu)->first();
             return response()->json([
                 'ibu' => $ibu,
                 'persalinan' => $persalinan,

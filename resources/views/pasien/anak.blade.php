@@ -60,15 +60,15 @@
                 <div class="modal-body">
                     <form action="{{ route('pasien.store_anak') }}" method="post" autocomplete="off">
                         @csrf
-                        <div class="card col-12">
+                        <div class="col-12">
                             <div class="card-body">
                                 <br>
                                 <div class="row">
-                                    <div class="col-md-4 mb-2">
+                                    <div class="col-md-4 mb-3">
                                         <label for="nama_anak" class="form-label">Nama Anak</label>
                                         <input type="text" class="form-control" id="nama_anak" name="nama_anak" required>
                                     </div>
-                                    <div class="col-md-4 mb-2">
+                                    <div class="col-md-4 mb-3">
                                         <label for="nama_ibu" class="form-label">Nama Ibu</label>
                                         <select class="form-control" id="nama_ibu" name="nama_ibu" required>
                                             <option value="">Pilih Ibu</option>
@@ -77,28 +77,28 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="col-md-4 mb-2">
+                                    <div class="col-md-4 mb-3">
                                         <label for="nama_suami" class="form-label">Nama Suami</label>
                                         <input type="text" class="form-control" id="nama_suami" name="nama_suami"
                                             required>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4 mb-2">
+                                    <div class="col-md-4 mb-3">
                                         <label for="alamat" class="form-label">Alamat</label>
                                         <textarea type="text" class="form-control" id="alamat" name="alamat" required></textarea>
                                     </div>
-                                    <div class="col-md-4 mb-2">
+                                    <div class="col-md-4 mb-3">
                                         <label for="kec" class="form-label">Kecamatan</label>
                                         <input type="text" class="form-control" id="kec" name="kec" required>
                                     </div>
-                                    <div class="col-md-4 mb-2">
+                                    <div class="col-md-4 mb-3">
                                         <label for="kab" class="form-label">Kabupaten</label>
                                         <input type="text" class="form-control" id="kab" name="kab" required>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4 mb-2">
+                                    <div class="col-md-4 mb-3">
                                         <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
                                         <select class="form-select" id="jenis_kelamin" name="jenis_kelamin" required>
                                             <option value="-">Pilih Jenis Kelamin</option>
@@ -106,7 +106,7 @@
                                             <option value="Perempuan">Perempuan</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-4 mb-2">
+                                    <div class="col-md-4 mb-3">
                                         <label for="jenis_kelahiran" class="form-label">Jenis Kelahiran</label>
                                         <select class="form-select" id="jenis_kelahiran" name="jenis_kelahiran" required>
                                             <option value="-">Pilih Jenis Kelamin</option>
@@ -114,7 +114,7 @@
                                             <option value="Ganda">Ganda</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-4 mb-2">
+                                    <div class="col-md-4 mb-3">
                                         <label for="anak_ke" class="form-label">Anak Ke</label>
                                         <select class="form-select" id="anak_ke" name="anak_ke" required>
                                             <option value="">Pilih Anak Ke</option>
@@ -127,28 +127,28 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-3 mb-2">
+                                    <div class="col-md-3 mb-3">
                                         <label for="berat_bayi" class="form-label">Berat Bayi</label>
-                                        <div class="input-group mb-2">
+                                        <div class="input-group mb-3">
                                             <input type="text" class="form-control" id="berat_bayi" name="berat_bayi"
                                                 inputmode="numeric" pattern="\d*" required>
                                             <span class="input-group-text">gram</span>
                                         </div>
                                     </div>
-                                    <div class="col-md-2 mb-2">
+                                    <div class="col-md-2 mb-3">
                                         <label for="panjang_bayi" class="form-label">Panjang Bayi</label>
-                                        <div class="input-group mb-2">
+                                        <div class="input-group mb-3">
                                             <input type="text" class="form-control" id="panjang_bayi"
                                                 name="panjang_bayi" inputmode="numeric" pattern="\d*" required>
                                             <span class="input-group-text">cm</span>
                                         </div>
                                     </div>
-                                    <div class="col-md-3 mb-2">
+                                    <div class="col-md-3 mb-3">
                                         <label for="bayi_lahir" class="form-label">Tanggal Lahir</label>
                                         <input type="datetime-local" class="form-control" id="bayi_lahir" required
                                             name="bayi_lahir">
                                     </div>
-                                    <div class="col-md-3 mb-2">
+                                    <div class="col-md-3 mb-3">
                                         <label for="tempat" class="form-label">Tempat Lahir</label>
                                         <input type="text" class="form-control" id="tempat" name="tempat"
                                             required>
@@ -174,44 +174,44 @@
                     <form id="editForm" method="post" autocomplete="off">
                         @csrf
                         @method('PUT')
-                        <div class="card col-12">
+                        <div class="col-12">
                             <div class="card-body">
                                 <br>
                                 <div class="row">
-                                    <div class="col-md-4 mb-2">
+                                    <div class="col-md-4 mb-3">
                                         <label for="nama_anak" class="form-label">Nama Anak</label>
                                         <input type="text" class="form-control" id="edit_nama_anak" name="nama_anak"
                                             required>
                                     </div>
-                                    <div class="col-md-4 mb-2">
+                                    <div class="col-md-4 mb-3">
                                         <label for="edit_nama_ibu" class="form-label">Nama Ibu</label>
                                         <input type="text" class="form-control" id="edit_nama_ibu" name="nama_ibu"
                                             value="{{ $ibu }}" readonly>
                                     </div>
-                                    <div class="col-md-4 mb-2">
+                                    <div class="col-md-4 mb-3">
                                         <label for="edit_nama_suami" class="form-label">Nama Suami</label>
                                         <input type="text" class="form-control" id="edit_nama_suami"
                                             name="nama_suami" required>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4 mb-2">
+                                    <div class="col-md-4 mb-3">
                                         <label for="edit_alamat" class="form-label">Alamat</label>
                                         <textarea type="text" class="form-control" id="edit_alamat" name="alamat" required></textarea>
                                     </div>
-                                    <div class="col-md-4 mb-2">
+                                    <div class="col-md-4 mb-3">
                                         <label for="edit_kec" class="form-label">Kecamatan</label>
                                         <input type="text" class="form-control" id="edit_kec" name="kec"
                                             required>
                                     </div>
-                                    <div class="col-md-4 mb-2">
+                                    <div class="col-md-4 mb-3">
                                         <label for="edit_kab" class="form-label">Kabupaten</label>
                                         <input type="text" class="form-control" id="edit_kab" name="kab"
                                             required>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4 mb-2">
+                                    <div class="col-md-4 mb-3">
                                         <label for="edit_jenis_kelamin" class="form-label">Jenis Kelamin</label>
                                         <select class="form-select" id="edit_jenis_kelamin" name="jenis_kelamin">
                                             <option value="-">Pilih Jenis Kelamin</option>
@@ -219,7 +219,7 @@
                                             <option value="Perempuan">Perempuan</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-4 mb-2">
+                                    <div class="col-md-4 mb-3">
                                         <label for="edit_jenis_kelahiran" class="form-label">Jenis Kelahiran</label>
                                         <select class="form-select" id="edit_jenis_kelahiran" name="jenis_kelahiran">
                                             <option value="-">Pilih Jenis Kelamin</option>
@@ -227,7 +227,7 @@
                                             <option value="Ganda">Ganda</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-4 mb-2">
+                                    <div class="col-md-4 mb-3">
                                         <label for="edit_anak_ke" class="form-label">Anak Ke</label>
                                         <select class="form-select" id="edit_anak_ke" name="anak_ke">
                                             <option value="">Pilih Anak Ke</option>
@@ -240,28 +240,28 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-3 mb-2">
+                                    <div class="col-md-3 mb-3">
                                         <label for="edit_berat_bayi" class="form-label">Berat Bayi</label>
-                                        <div class="input-group mb-2">
+                                        <div class="input-group mb-3">
                                             <input type="text" class="form-control" id="edit_berat_bayi"
                                                 name="berat_bayi" inputmode="numeric" pattern="\d*">
                                             <span class="input-group-text">gram</span>
                                         </div>
                                     </div>
-                                    <div class="col-md-3 mb-2">
+                                    <div class="col-md-3 mb-3">
                                         <label for="edit_panjang_bayi" class="form-label">Panjang Bayi</label>
-                                        <div class="input-group mb-2">
+                                        <div class="input-group mb-3">
                                             <input type="text" class="form-control" id="edit_panjang_bayi"
                                                 name="panjang_bayi" inputmode="numeric" pattern="\d*">
                                             <span class="input-group-text">cm</span>
                                         </div>
                                     </div>
-                                    <div class="col-md-3 mb-2">
+                                    <div class="col-md-3 mb-3">
                                         <label for="edit_bayi_lahir" class="form-label">Tanggal Lahir</label>
                                         <input type="datetime-local" class="form-control" id="edit_bayi_lahir"
                                             name="bayi_lahir">
                                     </div>
-                                    <div class="col-md-3 mb-2">
+                                    <div class="col-md-3 mb-3">
                                         <label for="edit_tempat" class="form-label">Tempat Lahir</label>
                                         <input type="text" class="form-control" id="edit_tempat" name="tempat"
                                             required>
@@ -462,7 +462,6 @@
                                 $('#kec').val(response.ibu.kec);
                                 $('#kab').val(response.ibu.kab);
                             }
-
                             if (response.persalinan) {
                                 $('#bayi_lahir').val(response.persalinan.bayi_lahir);
                                 $('#jenis_kelamin').val(response.persalinan.jenis_kelamin);
