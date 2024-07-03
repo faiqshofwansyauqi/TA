@@ -44,7 +44,7 @@
                 <div class="modal-body">
                     <form action="{{ route('antenatal_care.store_anc') }}" method="post" autocomplete="off">
                         @csrf
-                        <div class="card col-12">
+                        <div class="col-12">
                             <div class="card-body">
                                 <div class="col-md-12 mb-3">
                                     <label for="nama_ibu" class="form-label">Ibu</label>

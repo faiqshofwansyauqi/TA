@@ -118,7 +118,7 @@
                                     <div class="col-md-4 mb-3">
                                         <label for="hasil_hbsag" class="form-label">Hasil HBsAg</label>
                                         <select class="form-select" id="hasil_hbsag" name="hasil_hbsag">
-                                            <option value="">Pilih Tiba</option>
+                                            <option value="">Pilih Hasil HBsAG</option>
                                             <option value="Reaktif">Reaktif</option>
                                             <option value="Non Reaktif">Non Reaktif</option>
                                         </select>
@@ -131,9 +131,9 @@
                                             name="tanggal_antihbs">
                                     </div>
                                     <div class="col-md-4 mb-3">
-                                        <label for="hasil_antihbs" class="form-label">Hasil HBsAg</label>
+                                        <label for="hasil_antihbs" class="form-label">Hasil Anti HBsAg</label>
                                         <select class="form-select" id="hasil_antihbs" name="hasil_antihbs">
-                                            <option value="">Pilih Tiba</option>
+                                            <option value="">Pilih Anti HBsAg</option>
                                             <option value="Reaktif">Reaktif</option>
                                             <option value="Non Reaktif">Non Reaktif</option>
                                         </select>
@@ -201,7 +201,7 @@
                                     <div class="col-md-4 mb-3">
                                         <label for="edit_hasil_hbsag" class="form-label">Hasil HBsAg</label>
                                         <select class="form-select" id="edit_hasil_hbsag" name="hasil_hbsag">
-                                            <option value="">Pilih Tiba</option>
+                                            <option value="">Pilih Hasil HBsAg</option>
                                             <option value="Reaktif">Reaktif</option>
                                             <option value="Non Reaktif">Non Reaktif</option>
                                         </select>
@@ -214,9 +214,9 @@
                                             name="tanggal_antihbs">
                                     </div>
                                     <div class="col-md-4 mb-3">
-                                        <label for="edit_hasil_antihbs" class="form-label">Hasil HBsAg</label>
+                                        <label for="edit_hasil_antihbs" class="form-label">Hasil Anti HBsAg</label>
                                         <select class="form-select" id="edit_hasil_antihbs" name="hasil_antihbs">
-                                            <option value="">Pilih Tiba</option>
+                                            <option value="">Pilih Hasil Anti HBsAh</option>
                                             <option value="Reaktif">Reaktif</option>
                                             <option value="Non Reaktif">Non Reaktif</option>
                                         </select>

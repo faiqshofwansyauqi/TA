@@ -338,7 +338,7 @@
                     <form id="editForm" method="post" autocomplete="off">
                         @csrf
                         @method('PUT')
-                        <div class="card col-12">
+                        <div class="col-12">
                             <div class="card-body">
                                 <h5 class="card-title"></h5>
                                 <div class="row">
