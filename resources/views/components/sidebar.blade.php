@@ -177,10 +177,24 @@
 
         @role('Admin')
             <li class="nav-item">
-                <a class="nav-link {{ request()->is(['setting.role', 'setting/role']) ? '' : 'collapsed' }}"
-                    href="{{ route('setting.role') }}">
-                    <i class="bi bi-person-badge"></i>
-                    <span>Role</span>
+                <a class="nav-link {{ request()->is(['setting.admin', 'setting/admin']) ? '' : 'collapsed' }}"
+                    href="{{ route('setting.admin') }}">
+                    <i class="ri-admin-line"></i>
+                    <span>Master Admin</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ request()->is(['setting.bidan', 'setting/bidan']) ? '' : 'collapsed' }}"
+                    href="{{ route('setting.bidan') }}">
+                    <i class="ri-user-heart-line"></i>
+                    <span>Master Bidan</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ request()->is(['setting.ibi_puskesmas', 'setting/ibi_puskesmas']) ? '' : 'collapsed' }}"
+                    href="{{ route('setting.ibi_puskesmas') }}">
+                    <i class="ri-user-star-line"></i>
+                    <span>Master IBI dan Puskesmas</span>
                 </a>
             </li>
         @endrole

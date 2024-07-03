@@ -3,7 +3,7 @@
 @section('content')
     <div class="d-flex justify-content-between align-items-center">
         <div class="pagetitle">
-            <h1 style="margin-bottom: 5px">Setting Role</h1>
+            <h1 style="margin-bottom: 5px">Master Admin</h1>
             <button type="button" class="btn btn-success btn-custom1" id="btn-plus">
                 <i class="bi bi-plus-circle"></i> Tambah
             </button>
@@ -17,7 +17,7 @@
                     <div class="card-body">
                         <br>
                         <div class="table-responsive">
-                            <table class="table table-bordered table-anc" id="role-table" style="width:100%">
+                            <table class="table table-bordered table-anc" id="admin-table" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th style="text-align: center">No</th>
@@ -44,24 +44,36 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('setting.store_role') }}" method="post" autocomplete="off">
+                    <form action="{{ route('setting.store_user') }}" autocomplete="off" class="row g-3 needs-validation"
+                        novalidate method="POST" id="userForm">
                         @csrf
-                        <div class="card col-12">
+                        <div class="col-12">
                             <div class="card-body">
-                                <h5 class="card-title"></h5>
-                                <div class="mb-3">
-                                    <label for="name" class="form-label">Name</label>
-                                    <input type="text" class="form-control" id="name" name="name" required>
+                                <div class="col-12 mb-1">
+                                    <label for="yourName" class="form-label">Full Name</label>
+                                    <input type="text" name="name" class="form-control" id="yourName" required>
+                                    <div class="invalid-feedback">Please enter your full name.</div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email" required>
+                                <div class="col-12 mb-1">
+                                    <label for="yourEmail" class="form-label">Email</label>
+                                    <div class="input-group has-validation">
+                                        <span class="input-group-text" id="inputGroupPrepend">@</span>
+                                        <input type="email" name="email" class="form-control" id="yourEmail" required>
+                                        <div class="invalid-feedback">Please enter a valid email address.</div>
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="password" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password" required>
+                                <div class="col-12 mb-1">
+                                    <label for="yourPassword" class="form-label">Password</label>
+                                    <input type="password" name="password" class="form-control" id="yourPassword" required>
+                                    <div class="invalid-feedback">Please enter a password.</div>
                                 </div>
-                                <div class="mb-3">
+                                <div class="col-12 mb-1">
+                                    <label for="confirmPassword" class="form-label">Confirm Password</label>
+                                    <input type="password" name="password_confirmation" class="form-control"
+                                        id="confirmPassword" required>
+                                    <div class="invalid-feedback">Please confirm your password.</div>
+                                </div>
+                                <div class="col-12 mb-3">
                                     <label for="roles" class="form-label">Roles</label>
                                     <select class="form-control" id="roles" name="roles[]" required>
                                         <option value="">Pilih Role</option>
@@ -92,9 +104,8 @@
                     <form id="editForm" method="post" autocomplete="off">
                         @csrf
                         @method('PUT')
-                        <div class="card col-12">
+                        <div class="col-12">
                             <div class="card-body">
-                                <h5 class="card-title"></h5>
                                 <input type="hidden" name="edit_id" value="id">
                                 <div class="mb-3">
                                     <label for="edit_name" class="form-label">Name</label>
@@ -102,7 +113,11 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="edit_email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="edit_email" name="email" required>
+                                    <div class="input-group has-validation">
+                                        <span class="input-group-text" id="inputGroupPrepend">@</span>
+                                        <input type="email" name="email" class="form-control" id="edit_email"
+                                            required>
+                                    </div>
                                 </div>
                                 <div class="mb-3">
                                     <input type="hidden" name="edit_password" value="password">
@@ -137,11 +152,11 @@
         });
 
         $(document).ready(function() {
-            $('#role-table').DataTable({
+            $('#admin-table').DataTable({
                 processing: true,
                 serverSide: true,
                 ordering: false,
-                ajax: '{{ route('setting.data_role') }}',
+                ajax: '{{ route('setting.data_admin') }}',
                 scrollX: false,
                 fixedHeader: true,
                 columns: [{
@@ -170,9 +185,9 @@
                         orderable: false,
                         searchable: false,
                         render: function(data, type, row) {
-                            let editUrl = '{{ route('setting.edit_role', ':id') }}'.replace(':id',
+                            let editUrl = '{{ route('setting.edit_user', ':id') }}'.replace(':id',
                                 row.id);
-                            let deleteUrl = '{{ route('setting.destroy_role', ':id') }}'.replace(
+                            let deleteUrl = '{{ route('setting.destroy_user', ':id') }}'.replace(
                                 ':id', row.id);
                             return `
                             <div style="display: flex; justify-content: center;">
@@ -192,10 +207,10 @@
             });
         });
 
-        $('#role-table').on('click', '.edit-btn', function() {
+        $('#admin-table').on('click', '.edit-btn', function() {
             let id = $(this).data('id');
             $.ajax({
-                url: '{{ route('setting.edit_role', ':id') }}'.replace(':id', id),
+                url: '{{ route('setting.edit_user', ':id') }}'.replace(':id', id),
                 method: 'GET',
                 success: function(data) {
                     $('#edit_id').val(data.id);
@@ -204,7 +219,7 @@
                     $('#edit_password').val(data.password);
                     $('#edit_roles').val(data.roles.map(role => role.name));
                     $('#editForm').attr('action',
-                        '{{ route('setting.update_role', ':id') }}'
+                        '{{ route('setting.update_user', ':id') }}'
                         .replace(
                             ':id', id));
                     $('#modalEdit').modal('show');
@@ -212,10 +227,9 @@
             });
         });
 
-        $('#role-table').on('click', '.btn-delete', function() {
+        $('#admin-table').on('click', '.btn-delete', function() {
             const id = $(this).data('id');
             const url = $(this).data('url');
-
             Swal.fire({
                 title: 'Apakah Anda yakin?',
                 text: "Anda tidak akan bisa mengembalikan ini!",
@@ -259,6 +273,25 @@
                             );
                         }
                     });
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('userForm');
+            const password = document.getElementById('yourPassword');
+            const confirmPassword = document.getElementById('confirmPassword');
+
+            form.addEventListener('submit', function(event) {
+                console.log('Form submit event triggered');
+                if (password.value !== confirmPassword.value) {
+                    console.log('Passwords do not match');
+                    event.preventDefault();
+                    confirmPassword.setCustomValidity("Passwords do not match");
+                    confirmPassword.reportValidity();
+                } else {
+                    console.log('Passwords match');
+                    confirmPassword.setCustomValidity("");
                 }
             });
         });

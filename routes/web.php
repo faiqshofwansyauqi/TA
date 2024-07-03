@@ -149,12 +149,16 @@ Route::middleware(['auth'])->group(function () {
         Route::put('show_sifilis/update_showsifilis/{id}', [PNCController::class, 'update_showsifilis'])->name('postnatal_care.update_showsifilis');
     });
     Route::prefix('setting')->group(function () {
-        Route::get('role', [SettingController::class, 'role'])->name('setting.role');
-        Route::post('store-role', [SettingController::class, 'store_role'])->name('setting.store_role');
-        Route::get('data-role', [SettingController::class, 'getData_role'])->name('setting.data_role');
-        Route::get('setting/edit_role/{id}', [SettingController::class, 'edit_role'])->name('setting.edit_role');
-        Route::put('setting/update_role/{id}', [SettingController::class, 'update_role'])->name('setting.update_role');
-        Route::delete('setting/destroy_role/{id}', [SettingController::class, 'destroy_role'])->name('setting.destroy_role');
+        Route::get('admin', [SettingController::class, 'admin'])->name('setting.admin');
+        Route::get('bidan', [SettingController::class, 'bidan'])->name('setting.bidan');
+        Route::get('ibi_puskesmas', [SettingController::class, 'ibi_puskesmas'])->name('setting.ibi_puskesmas');
+        Route::get('data-admin', [SettingController::class, 'getData_admin'])->name('setting.data_admin');
+        Route::get('data-bidan', [SettingController::class, 'getData_bidan'])->name('setting.data_bidan');
+        Route::get('data-ibi_puskesmas', [SettingController::class, 'getData_ibi_puskesmas'])->name('setting.data_ibi_puskesmas');
+        Route::post('store-user', [SettingController::class, 'store_user'])->name('setting.store_user');
+        Route::get('setting/edit_user/{id}', [SettingController::class, 'edit_user'])->name('setting.edit_user');
+        Route::put('setting/update_user/{id}', [SettingController::class, 'update_user'])->name('setting.update_user');
+        Route::delete('setting/destroy_user/{id}', [SettingController::class, 'destroy_user'])->name('setting.destroy_user');
     });
     Route::prefix('kms')->group(function () {
         ///////////// KMS /////////////
