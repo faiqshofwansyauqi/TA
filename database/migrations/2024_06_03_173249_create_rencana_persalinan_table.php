@@ -15,7 +15,8 @@ class CreateRencanaPersalinanTable extends Migration
     {
         Schema::create('rnca_persalinan', function (Blueprint $table) {
             $table->id();
-            $table->string('tgl_persalinan');
+            $table->unsignedBigInteger('user_id');
+            $table->date('tgl_persalinan');
             $table->string('nama_ibu');
             $table->string('penolong');
             $table->string('tempat');
@@ -24,6 +25,7 @@ class CreateRencanaPersalinanTable extends Migration
             $table->string('pendonor');
             $table->string('pendonor_darah');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -34,6 +36,9 @@ class CreateRencanaPersalinanTable extends Migration
      */
     public function down()
     {
+        Schema::table('rnca_persalinan', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+        });
         Schema::dropIfExists('rnca_persalinan');
     }
 }

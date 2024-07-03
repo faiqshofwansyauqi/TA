@@ -83,7 +83,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('antenatal_care/show_rnca/{id}', [ANCController::class, 'show_rnca'])->name('antenatal_care.show_rnca');
         Route::get('antenatal_care/edit_rnca/{id}', [ANCController::class, 'edit_rnca'])->name('antenatal_care.edit_rnca');
         Route::put('antenatal_care/update_rnca/{id}', [ANCController::class, 'update_rnca'])->name('antenatal_care.update_rnca');
-        Route::delete('antenatal_care/destroy_rnca/{id}', [ANCController::class, 'destroy_rnca'])->name('antenatal_care.destroy_rnca');
         ///////////// PEMERIKSAAN DOKTER TM3 /////////////
         Route::get('tm3', [ANCController::class, 'tm3'])->name('antenatal_care.tm3');
         Route::post('store-tm3', [ANCController::class, 'store_tm3'])->name('antenatal_care.store_tm3');

@@ -373,9 +373,6 @@
                                 '{{ route('antenatal_care.edit_rnca', ':id') }}'
                                 .replace(
                                     ':id', row.id);
-                            let deleteUrl =
-                                '{{ route('antenatal_care.destroy_rnca', ':id') }}'
-                                .replace(':id', row.id);
                             return `
                             <div style="display: flex; justify-content: center;">
                                 <button class="btn btn-sm btn-dark view-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalView" style="margin-right: 5px;">
@@ -383,9 +380,6 @@
                                 </button>
                                     <button class="btn btn-sm btn-primary edit-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalEdit">
                                         <i class="ri-edit-2-fill"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-sm btn-danger btn-delete" data-id="${row.id}" data-url="${deleteUrl}" hidden>
-                                        <i class="bi bi-trash3-fill"></i>
                                     </button>
                             </div>`;
                         }
@@ -404,59 +398,6 @@
             table.buttons().container().appendTo(
                 '#colvis-button');
         });
-
-        // $('#rnca-table').on('click', '.btn-delete', function() {
-        //     const id = $(this).data('id');
-        //     const url = $(this).data('url');
-
-        //     Swal.fire({
-        //         title: 'Apakah Anda yakin?',
-        //         text: "Anda tidak akan bisa mengembalikan ini!",
-        //         icon: 'warning',
-        //         showCancelButton: true,
-        //         confirmButtonColor: '#3085d6',
-        //         cancelButtonColor: '#d33',
-        //         confirmButtonText: 'Ya, hapus!',
-        //         cancelButtonText: 'Batal',
-        //         showLoaderOnConfirm: true,
-        //         preConfirm: () => {
-        //             return $.ajax({
-        //                 url: url,
-        //                 type: 'POST',
-        //                 data: {
-        //                     _method: 'DELETE',
-        //                     _token: '{{ csrf_token() }}'
-        //                 },
-        //                 error: function(xhr) {
-        //                     Swal.fire(
-        //                         'Gagal!',
-        //                         'Data gagal dihapus.',
-        //                         'error'
-        //                     );
-        //                 }
-        //             }).then(response => {
-        //                 if (response.success) {
-        //                     Swal.fire(
-        //                         'Terhapus!',
-        //                         'Data telah berhasil dihapus.',
-        //                         'success'
-        //                     );
-        //                     $('.swal2-confirm').remove();
-        //                     setTimeout(function() {
-        //                         location.reload();
-        //                     }, 1000);
-        //                 } else {
-        //                     Swal.fire(
-        //                         'Gagal!',
-        //                         'Data gagal dihapus.',
-        //                         'error'
-        //                     );
-        //                 }
-        //             });
-        //         }
-        //     });
-        // });
-
 
         $('#rnca-table').on('click', '.view-btn', function() {
             let id = $(this).data('id');

@@ -10,6 +10,7 @@ class Rencana_Persalinan extends Model
     protected $table = 'rnca_persalinan';
     protected $primaryKey = 'id';
     protected $fillable = [
+        'user_id',
         'nama_ibu',
         'tgl_persalinan',
         'penolong',
