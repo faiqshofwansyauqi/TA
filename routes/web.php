@@ -104,7 +104,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('nifas', [PNCController::class, 'nifas'])->name('postnatal_care.nifas');
         Route::post('store-nifas', [PNCController::class, 'store_nifas'])->name('postnatal_care.store_nifas');
         Route::get('data-nifas', [PNCController::class, 'getData_nifas'])->name('postnatal_care.data_nifas');
-        Route::delete('postnatal_care/destroy_nifas/{id}', [PNCController::class, 'destroy_nifas'])->name('postnatal_care.destroy_nifas');
         ///////////// SHOW NIFAS /////////////
         Route::post('store-show_nifas', [PNCController::class, 'store_shownifas'])->name('postnatal_care.store_shownifas');
         Route::get('nifas/show_nifas/{id}', [PNCController::class, 'show_nifas'])->name('postnatal_care.show_nifas');

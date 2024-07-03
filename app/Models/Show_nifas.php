@@ -11,6 +11,7 @@ class Show_Nifas extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'id',
+        'user_id',
         'nama_ibu',
         'tanggal',
         'hari',

@@ -15,8 +15,10 @@ class CreateNifasTable extends Migration
     {
         Schema::create('nifas', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('nama_ibu');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -26,7 +28,9 @@ class CreateNifasTable extends Migration
      * @return void
      */
     public function down()
-    {
-        Schema::dropIfExists('nifas');
+    {Schema::table('nifas', function (Blueprint $table) {
+        $table->dropForeign(['user_id']);
+    });
+    Schema::dropIfExists('nifas');
     }
 }

@@ -174,7 +174,6 @@ class ANCController extends Controller
         $request->validate([
             'nama_ibu' => 'required',
         ]);
-
         Anc::create([
             'user_id' => Auth::id(),
             'nama_ibu' => $request->nama_ibu,
