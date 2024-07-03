@@ -15,6 +15,7 @@ class CreateIbuTable extends Migration
     {
         Schema::create('ibu', function (Blueprint $table) {
             $table->id('id_ibu');
+            $table->unsignedBigInteger('user_id');
             $table->string('puskesmas');
             $table->string('noregis');
             $table->string('nama_ibu');
@@ -38,11 +39,10 @@ class CreateIbuTable extends Migration
             $table->string('jamkesmas');
             $table->string('gol_darah');
             $table->string('telp');
-
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
-
     /**
      * Reverse the migrations.
      *
@@ -50,6 +50,10 @@ class CreateIbuTable extends Migration
      */
     public function down()
     {
+        Schema::table('ibu', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+        });
+
         Schema::dropIfExists('ibu');
     }
 }

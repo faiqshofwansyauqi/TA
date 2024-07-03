@@ -458,7 +458,7 @@ class ANCController extends Controller
         $user = Auth::user();
         if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Ropb::class);
-            $ibus = Ibu::select('nama_ibu')->get();
+            $ibus = Ibu::where('user_id', $user->id)->get();
             return view('antenatal_care.ropb', compact( 'ibus'));
         } else {
             return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
@@ -485,6 +485,7 @@ class ANCController extends Controller
         ]);
 
         Ropb::create([
+            'user_id' => Auth::id(),
             'nama_ibu' => $request->nama_ibu,
             'gravida' => $request->gravida,
             'partus' => $request->partus,
@@ -543,19 +544,9 @@ class ANCController extends Controller
     }
     public function getData_ropb()
     {
-        $ropb = Ropb::select('*');
+        $ropb = Ropb::where('user_id', Auth::id())->select('*');
 
         return DataTables::of($ropb)->make(true);
-    }
-    public function destroy_ropb($id)
-    {
-        try {
-            $ropb = Ropb::findOrFail($id);
-            $ropb->delete();
-            return response()->json(['success' => true, 'message' => 'Data berhasil dihapus']);
-        } catch (\Exception $e) {
-            return response()->json(['success' => false, 'message' => 'Data gagal dihapus']);
-        }
     }
     public function edit_ropb($id)
     {

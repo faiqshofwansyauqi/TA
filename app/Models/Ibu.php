@@ -11,6 +11,7 @@ class Ibu extends Model
     protected $primaryKey = 'id_ibu';
     
     protected $fillable = [
+        'user_id',
         'puskesmas',
         'noregis',
         'nama_ibu',

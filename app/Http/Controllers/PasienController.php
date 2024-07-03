@@ -21,7 +21,7 @@ class PasienController extends Controller
         $user = Auth::user();
         if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Ibu::class);
-            $ibu = Ibu::all();
+            $ibu = Ibu::where('user_id', $user->id)->get();
             return view('pasien.ibu', compact('ibu'));
         } else {
             return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
@@ -57,6 +57,7 @@ class PasienController extends Controller
         ]);
 
         Ibu::create([
+            'user_id' => Auth::id(),
             'nik' => $request->nik,
             'puskesmas' => $request->puskesmas,
             'noregis' => $request->noregis,
@@ -85,7 +86,7 @@ class PasienController extends Controller
     }
     public function getData_ibu()
     {
-        $ibu = Ibu::select('*');
+        $ibu = Ibu::where('user_id', Auth::id())->select('*');
         return DataTables::of($ibu)->make(true);
     }
     public function update_ibu(Request $request, $id)
@@ -153,7 +154,7 @@ class PasienController extends Controller
     public function destroy_ibu($id)
     {
         try {
-            $ibu = Ibu::findOrFail($id);
+            $ibu = Ibu::where('id', $id)->where('user_id', Auth::id())->firstOrFail();
             $ibu->delete();
             return response()->json(['success' => true, 'message' => 'Data berhasil dihapus']);
         } catch (\Exception $e) {

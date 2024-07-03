@@ -76,7 +76,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('antenatal_care/show_ropb/{id}', [ANCController::class, 'show_ropb'])->name('antenatal_care.show_ropb');
         Route::get('antenatal_care/edit_ropb/{id}', [ANCController::class, 'edit_ropb'])->name('antenatal_care.edit_ropb');
         Route::put('antenatal_care/update_ropb/{id}', [ANCController::class, 'update_ropb'])->name('antenatal_care.update_ropb');
-        Route::delete('antenatal_care/destroy_ropb/{id}', [ANCController::class, 'destroy_ropb'])->name('antenatal_care.destroy_ropb');
         ///////////// RENCANA PERSALINAN /////////////
         Route::get('rnca', [ANCController::class, 'rnca'])->name('antenatal_care.rnca_persalinan');
         Route::post('store-rnca', [ANCController::class, 'store_rnca'])->name('antenatal_care.store_rnca');
