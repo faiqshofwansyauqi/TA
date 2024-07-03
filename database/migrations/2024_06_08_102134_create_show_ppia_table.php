@@ -15,6 +15,7 @@ class CreateShowPpiaTable extends Migration
     {
         Schema::create('show_ppia', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('nama_ibu');
             $table->string('tanggal_screening_hbsag');
             $table->string('tanggal_screening_hiv');
@@ -44,6 +45,9 @@ class CreateShowPpiaTable extends Migration
      */
     public function down()
     {
+        Schema::table('show_ppia', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+        });
         Schema::dropIfExists('show_ppia');
     }
 }

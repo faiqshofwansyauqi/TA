@@ -211,7 +211,7 @@ class PNCController extends Controller
         $user = Auth::user();
         if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Ppia::class);
-            $ibus = Anc::select('nama_ibu')->get();
+            $ibus = Anc::where('user_id', $user->id)->get();
             return view('postnatal_care.ppia', compact('ibus'));
         } else {
             return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
@@ -223,24 +223,15 @@ class PNCController extends Controller
             'nama_ibu' => 'required',
         ]);
         Ppia::create([
+            'user_id' => Auth::id(),
             'nama_ibu' => $request->nama_ibu,
         ]);
         return redirect()->back()->with('success', 'Data berhasil ditambahkan');
     }
     public function getData_ppia()
     {
-        $ppia = Ppia::select('*');
+        $ppia = Ppia::where('user_id', Auth::id())->select('*');
         return DataTables::of($ppia)->make(true);
-    }
-    public function destroy_ppia($id)
-    {
-        try {
-            $ppia = Ppia::findOrFail($id);
-            $ppia->delete();
-            return response()->json(['success' => true, 'message' => 'Data berhasil dihapus']);
-        } catch (\Exception $e) {
-            return response()->json(['success' => false, 'message' => 'Data gagal dihapus']);
-        }
     }
 
     ///////  PEMANTAUAN SHOW PPIA ///////
@@ -252,7 +243,7 @@ class PNCController extends Controller
             $this->authorize('akses_page', Show_Ppia::class);
             $ppia = Ppia::findOrFail($id);
             $nama_ibu = $ppia->nama_ibu;
-            $ppias = Show_Ppia::where('nama_ibu', $nama_ibu)->get();
+            $ppias = Show_Ppia::where('user_id', $user->id)->get();
             return view('postnatal_care.show_ppia', compact('ppias', 'ppia'));
         } else {
             return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
@@ -283,6 +274,7 @@ class PNCController extends Controller
         ]);
 
         Show_Ppia::create([
+            'user_id' => Auth::id(),
             'nama_ibu' => $request->nama_ibu,
             'tanggal_screening_hbsag' => $request->tanggal_screening_hbsag,
             'tanggal_screening_hiv' => $request->tanggal_screening_hiv,

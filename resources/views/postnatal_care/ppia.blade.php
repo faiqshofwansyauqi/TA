@@ -51,9 +51,8 @@
                     </div>
                     <form action="{{ route('postnatal_care.store_ppia') }}" method="post" autocomplete="off">
                         @csrf
-                        <div class="card col-12">
+                        <div class="col-12">
                             <div class="card-body">
-                                <h5 class="card-title"></h5>
                                 <div class="col-md-12 mb-3">
                                     <label for="nama_ibu" class="form-label">Ibu</label>
                                     <select class="form-control" id="nama_ibu" name="nama_ibu" required>
