@@ -10,7 +10,8 @@ class Show_Hiv extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'id',
-        'NIK',
+        'user_id',
+        'nama_ibu',
         'tgl_pemberian_arv',
         'hasil_pemberian_arv',
         'tgl_bds',

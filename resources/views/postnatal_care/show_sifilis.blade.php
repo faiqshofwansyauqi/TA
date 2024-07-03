@@ -66,7 +66,7 @@
                 <div class="modal-body">
                     <form action="{{ route('postnatal_care.store_showsifilis') }}" method="post" autocomplete="off">
                         @csrf
-                        <div class="card col-12">
+                        <div class="col-12">
                             <div class="row d-flex align-items-stretch">
                                 <div class="card-body col-md-4 d-flex flex-column" style="padding: 30px;">
                                     <input type="hidden" name="nama_ibu" value="{{ $pb->nama_ibu }}">
@@ -153,7 +153,7 @@
                                     <div class="col-md-12 mb-2">
                                         <label for="edit_sifilis_dirujuk" class="form-label" hidden></label>
                                         <select class="form-select" id="edit_sifilis_dirujuk" name="sifilis_dirujuk">
-                                            <option value="">Pilih Tiba</option>
+                                            <option value="">Pilih Rujuk</option>
                                             <option value="Ya">Ya</option>
                                             <option value="Tidak">Tidak</option>
                                         </select>
@@ -161,7 +161,7 @@
                                     <div class="col-md-12 mb-2">
                                         <label for="edit_periksa_sifilis" class="form-label" hidden></label>
                                         <select class="form-select" id="edit_periksa_sifilis" name="periksa_sifilis">
-                                            <option value="">Pilih Tiba</option>
+                                            <option value="">Pilih Periksa Sifilis</option>
                                             <option value="Ya">Ya</option>
                                             <option value="Tidak">Tidak</option>
                                         </select>
@@ -169,7 +169,7 @@
                                     <div class="col-md-12 mb-2">
                                         <label for="edit_hasil_sifilis" class="form-label" hidden></label>
                                         <select class="form-select" id="edit_hasil_sifilis" name="hasil_sifilis">
-                                            <option value="">Pilih Tiba</option>
+                                            <option value="">Pilih Hasil Sifilis</option>
                                             <option value="Reaktif">Reaktif</option>
                                             <option value="Non Reaktif">Non Reaktif</option>
                                         </select>

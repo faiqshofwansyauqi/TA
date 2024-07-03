@@ -78,7 +78,7 @@
                 <div class="modal-body">
                     <form action="{{ route('postnatal_care.store_showhepatitis') }}" method="post" autocomplete="off">
                         @csrf
-                        <div class="card col-12">
+                        <div class="col-12">
                             <div class="card-body">
                                 <input type="hidden" name="nama_ibu" value="{{ $pb->nama_ibu }}">
                                 <h5 class="card-title">Jam / Tanggal Pemberian</h5>

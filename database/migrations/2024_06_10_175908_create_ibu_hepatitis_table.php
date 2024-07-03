@@ -15,6 +15,7 @@ class CreateIbuHepatitisTable extends Migration
     {
         Schema::create('ibu_hepatitis', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('nama_ibu');
             $table->string('hbo');
             $table->string('hb2');
@@ -36,6 +37,9 @@ class CreateIbuHepatitisTable extends Migration
      */
     public function down()
     {
+        Schema::table('ibu_hepatitis', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+        });
         Schema::dropIfExists('ibu_hepatitis');
     }
 }

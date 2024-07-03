@@ -10,6 +10,7 @@ class Show_Hepatitis extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'id',
+        'user_id',
         'nama_ibu',
         'hbo',
         'hb2',

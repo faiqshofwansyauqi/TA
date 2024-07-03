@@ -354,7 +354,7 @@ class PNCController extends Controller
         $user = Auth::user();
         if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Pemantauan_Bayi::class);
-            $ibus = Ppia::select('nama_ibu')->get();
+            $ibus = Ppia::where('user_id', $user->id)->get();
             return view('postnatal_care.pemantauan_bayi', compact('ibus', ));
         } else {
             return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
@@ -366,13 +366,14 @@ class PNCController extends Controller
             'nama_ibu' => 'required',
         ]);
         Pemantauan_Bayi::create([
+            'user_id' => Auth::id(),
             'nama_ibu' => $request->nama_ibu,
         ]);
         return redirect()->back()->with('success', 'Data berhasil ditambahkan');
     }
     public function getData_pemantauan_bayi()
     {
-        $pb = Pemantauan_Bayi::select('*');
+        $pb = Pemantauan_Bayi::where('user_id', Auth::id())->select('*');
         return DataTables::of($pb)->make(true);
     }
 
@@ -386,7 +387,7 @@ class PNCController extends Controller
             $this->authorize('akses_page', Show_Hepatitis::class);
             $pb = Pemantauan_Bayi::findOrFail($id);
             $nama_ibu = $pb->nama_ibu;
-            $hepatitis = Show_Hepatitis::where('nama_ibu', $nama_ibu)->get();
+            $hepatitis = Show_Hepatitis::where('user_id', $user->id)->get();
 
             foreach ($hepatitis as $item) {
                 $item->hbo = Carbon::parse($item->hbo)->format('d-m-Y / H:i');
@@ -419,6 +420,7 @@ class PNCController extends Controller
         ]);
 
         Show_hepatitis::create([
+            'user_id' => Auth::id(),
             'nama_ibu' => $request->nama_ibu,
             'hbo' => $request->hbo,
             'hb2' => $request->hb2,
@@ -475,8 +477,8 @@ class PNCController extends Controller
         if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Show_Hiv::class);
             $pb = Pemantauan_Bayi::findOrFail($id);
-            $NIK = $pb->NIK;
-            $hiv = Show_Hiv::where('NIK', $NIK)->get();
+            $nama_ibu = $pb->nama_ibu;
+            $hiv = Show_Hiv::where('nama_ibu', $nama_ibu)->get();
             return view('postnatal_care.show_hiv', compact('pb', 'hiv'));
         } else {
             return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
@@ -486,7 +488,7 @@ class PNCController extends Controller
     {
         // dd($request);
         $request->validate([
-            'NIK' => 'required',
+            'nama_ibu' => 'required',
             'tgl_pemberian_arv' => 'required',
             'hasil_pemberian_arv' => 'required',
             'tgl_bds' => 'required',
@@ -502,7 +504,8 @@ class PNCController extends Controller
         ]);
 
         Show_Hiv::create([
-            'NIK' => $request->NIK,
+            'user_id' => Auth::id(),
+            'nama_ibu' => $request->nama_ibu,
             'tgl_pemberian_arv' => $request->tgl_pemberian_arv,
             'hasil_pemberian_arv' => $request->hasil_pemberian_arv,
             'tgl_bds' => $request->tgl_bds,
@@ -567,8 +570,8 @@ class PNCController extends Controller
         if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Show_sifilis::class);
             $pb = Pemantauan_Bayi::findOrFail($id);
-            $NIK = $pb->NIK;
-            $sifilis = Show_Sifilis::where('NIK', $NIK)->get();
+            $nama_ibu = $pb->nama_ibu;
+            $sifilis = Show_Sifilis::where('user_id', $user->id)->get();
             return view('postnatal_care.show_sifilis', compact('pb', 'sifilis'));
         } else {
             return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
@@ -578,14 +581,15 @@ class PNCController extends Controller
     {
         // dd($request);
         $request->validate([
-            'NIK' => 'required',
+            'nama_ibu' => 'required',
             'sifilis_dirujuk' => 'required',
             'periksa_sifilis' => 'required',
             'hasil_sifilis' => 'required',
         ]);
 
         Show_Sifilis::create([
-            'NIK' => $request->NIK,
+            'user_id' => Auth::id(),
+            'nama_ibu' => $request->nama_ibu,
             'sifilis_dirujuk' => $request->sifilis_dirujuk,
             'periksa_sifilis' => $request->periksa_sifilis,
             'hasil_sifilis' => $request->hasil_sifilis,
@@ -596,7 +600,7 @@ class PNCController extends Controller
     {
         // dd($request);
         $request->validate([
-            'NIK' => 'required',
+            'nama_ibu' => 'required',
             'sifilis_dirujuk' => 'required',
             'periksa_sifilis' => 'required',
             'hasil_sifilis' => 'required',
@@ -604,7 +608,7 @@ class PNCController extends Controller
         ]);
         $sifilis = Show_Sifilis::findOrFail($id);
         $sifilis->update([
-            'NIK' => $request->NIK,
+            'nama_ibu' => $request->nama_ibu,
             'sifilis_dirujuk' => $request->sifilis_dirujuk,
             'periksa_sifilis' => $request->periksa_sifilis,
             'hasil_sifilis' => $request->hasil_sifilis,

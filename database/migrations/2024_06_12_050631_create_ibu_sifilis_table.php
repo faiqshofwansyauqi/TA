@@ -15,11 +15,13 @@ class CreateIbuSifilisTable extends Migration
     {
         Schema::create('ibu_sifilis', function (Blueprint $table) {
             $table->id();
-            $table->string('NIK');
+            $table->unsignedBigInteger('user_id');
+            $table->string('nama_ibu');
             $table->string('sifilis_dirujuk');
             $table->string('periksa_sifilis');
             $table->string('hasil_sifilis');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -30,6 +32,9 @@ class CreateIbuSifilisTable extends Migration
      */
     public function down()
     {
+        Schema::table('ibu_sifilis', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+        });
         Schema::dropIfExists('ibu_sifilis');
     }
 }

@@ -93,7 +93,7 @@
                         <div class="card col-12">
                             <div class="row d-flex align-items-stretch">
                                 <div class="card-body col-md-4 d-flex flex-column" style="padding: 20px;">
-                                    <input type="hidden" name="NIK" value="{{ $pb->NIK }}">
+                                    <input type="hidden" name="nama_ibu" value="{{ $pb->nama_ibu }}">
                                     <h5 class="card-title">Jenis Pemantauan</h5>
                                     <div class="col-md-12 mb-3">
                                         <label class="form-label">Pemberian ARV</label>
@@ -221,7 +221,7 @@
                         <div class="card col-12">
                             <div class="row d-flex align-items-stretch">
                                 <div class="card-body col-md-4 d-flex flex-column" style="padding: 20px;">
-                                    <input type="hidden" name="NIK" value="{{ $pb->NIK }}">
+                                    <input type="hidden" name="nama_ibu" value="{{ $pb->nama_ibu }}">
                                     <h5 class="card-title">Jenis Pemantauan</h5>
                                     <div class="col-md-12 mb-3">
                                         <label class="form-label">Pemberian ARV</label>

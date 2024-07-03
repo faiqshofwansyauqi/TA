@@ -15,7 +15,8 @@ class CreateIbuHivTable extends Migration
     {
         Schema::create('ibu_hiv', function (Blueprint $table) {
             $table->id();
-            $table->string('NIK');
+            $table->unsignedBigInteger('user_id');
+            $table->string('nama_ibu');
             $table->string('tgl_pemberian_arv');
             $table->string('hasil_pemberian_arv');
             $table->string('tgl_bds');
@@ -29,6 +30,8 @@ class CreateIbuHivTable extends Migration
             $table->string('tgl_pengobatan_arv');
             $table->string('hasil_pengobatan_arv');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
         });
     }
 
@@ -39,6 +42,9 @@ class CreateIbuHivTable extends Migration
      */
     public function down()
     {
+        Schema::table('ibu_hiv', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+        });
         Schema::dropIfExists('ibu_hiv');
     }
 }
