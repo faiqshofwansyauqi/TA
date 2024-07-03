@@ -162,7 +162,7 @@ class ANCController extends Controller
         $user = Auth::user();
         if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Anc::class);
-            $ibus = Rencana_Persalinan::select('nama_ibu')->get();
+            $ibus = Rencana_Persalinan::where('user_id', $user->id)->get();
             return view('antenatal_care.anc', compact('ibus'));
         } else {
             return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
@@ -176,25 +176,15 @@ class ANCController extends Controller
         ]);
 
         Anc::create([
+            'user_id' => Auth::id(),
             'nama_ibu' => $request->nama_ibu,
         ]);
         return redirect()->back()->with('success', 'Data berhasil ditambahkan');
     }
     public function getData_anc()
     {
-        $anc = Anc::select('*');
-
+        $anc = Anc::where('user_id', Auth::id())->select('*');
         return DataTables::of($anc)->make(true);
-    }
-    public function destroy_anc($id)
-    {
-        try {
-            $anc = Anc::findOrFail($id);
-            $anc->delete();
-            return response()->json(['success' => true, 'message' => 'Data berhasil dihapus']);
-        } catch (\Exception $e) {
-            return response()->json(['success' => false, 'message' => 'Data gagal dihapus']);
-        }
     }
 
     //////////////// SHOW ANC ////////////////
@@ -270,6 +260,7 @@ class ANCController extends Controller
         ]);
 
         Show_Anc::create([
+            'user_id' => Auth::id(),
             'nama_ibu' => $request->nama_ibu,
             'tanggal' => $request->tanggal,
             'usia_kehamilan' => $request->usia_kehamilan,

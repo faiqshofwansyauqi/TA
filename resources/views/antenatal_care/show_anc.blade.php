@@ -567,7 +567,7 @@
                                     <h5 class="card-title">Keteranagan</h5>
                                     <div class="col-md-12 mb-3">
                                         <label for="keterangan" class="form-label">
-                                            Konseling</label>
+                                            Keterangan</label>
                                         <input type="text" class="form-control" id="keterangan" name="keterangan">
                                     </div>
                                 </div>
@@ -1041,7 +1041,7 @@
                                     <h5 class="card-title">Keteranagan</h5>
                                     <div class="col-md-12 mb-3">
                                         <label for="edit_keterangan" class="form-label">
-                                            Konseling</label>
+                                            Keterangan</label>
                                         <input type="text" class="form-control" id="edit_keterangan"
                                             name="keterangan">
                                     </div>

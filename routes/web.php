@@ -62,7 +62,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('anc', [ANCController::class, 'anc'])->name('antenatal_care.anc');
         Route::post('store-anc', [ANCController::class, 'store_anc'])->name('antenatal_care.store_anc');
         Route::get('data-anc', [ANCController::class, 'getData_anc'])->name('antenatal_care.data_anc');
-        Route::delete('antenatal_care/destroy_anc/{id}', [ANCController::class, 'destroy_anc'])->name('antenatal_care.destroy_anc');
         ///////////// SHOW ANC /////////////
         Route::post('store-show_anc', [ANCController::class, 'store_showanc'])->name('antenatal_care.store_showanc');
         Route::get('anc/show_anc/{id}', [ANCController::class, 'show_anc'])->name('antenatal_care.show_anc');

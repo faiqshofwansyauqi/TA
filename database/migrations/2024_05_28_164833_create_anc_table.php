@@ -15,8 +15,10 @@ class CreateAncTable extends Migration
     {
         Schema::create('anc', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('nama_ibu');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -27,6 +29,9 @@ class CreateAncTable extends Migration
      */
     public function down()
     {
+        Schema::table('anc', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+        });
         Schema::dropIfExists('anc');
     }
 }

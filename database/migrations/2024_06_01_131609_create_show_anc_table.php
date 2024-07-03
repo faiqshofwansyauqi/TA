@@ -15,6 +15,7 @@ class CreateShowAncTable extends Migration
     {
         Schema::create('show_anc', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('nama_ibu');
             $table->date('tanggal');
             $table->string('usia_kehamilan');
@@ -69,6 +70,7 @@ class CreateShowAncTable extends Migration
             $table->string('pulang');
             $table->string('keterangan');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -79,6 +81,9 @@ class CreateShowAncTable extends Migration
      */
     public function down()
     {
+        Schema::table('show_anc', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+        });
         Schema::dropIfExists('show_anc');
     }
 }
