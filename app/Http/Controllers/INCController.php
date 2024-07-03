@@ -22,7 +22,7 @@ class INCController extends Controller
         $user = Auth::user();
         if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Persalinan::class);
-            $ibus = Rencana_Persalinan::select('nama_ibu')->get();
+            $ibus = Rencana_Persalinan::where('user_id', $user->id)->get();
             return view('intranatal_care.persalinan', compact('ibus'));
         } else {
             return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
@@ -61,6 +61,7 @@ class INCController extends Controller
         ]);
 
         Persalinan::create([
+            'user_id' => Auth::id(),
             'nama_ibu' => $request->nama_ibu,
             'kala1' => $request->kala1,
             'kala2' => $request->kala2,
@@ -152,20 +153,9 @@ class INCController extends Controller
         ]);
         return redirect()->back()->with('success', 'Data persalinan berhasil diperbarui');
     }
-    public function destroy_persalinan($id)
-    {
-        try {
-            $persalinan = Persalinan::findOrFail($id);
-            $persalinan->delete();
-            return response()->json(['success' => true, 'message' => 'Data berhasil dihapus']);
-        } catch (\Exception $e) {
-            return response()->json(['success' => false, 'message' => 'Data gagal dihapus']);
-        }
-    }
     public function getData_persalinan()
     {
-        $persalinan = Persalinan::select('*');
-
+        $persalinan = Persalinan::where('user_id', Auth::id())->select('*');
         return DataTables::of($persalinan)->make(true);
     }
     public function edit_persalinan($id)

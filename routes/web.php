@@ -6,7 +6,6 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\INCController;
 use App\Http\Controllers\KMSContronller;
 use App\Http\Controllers\LandingController;
-use App\Http\Controllers\MasterController;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\PNCController;
 use App\Http\Controllers\ANCController;
@@ -99,7 +98,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('intranatal_care/show_persalinan/{id}', [INCController::class, 'show_persalinan'])->name('intranatal_care.show_persalinan');
         Route::get('intranatal_care/edit_persalinan/{id}', [INCController::class, 'edit_persalinan'])->name('intranatal_care.edit_persalinan');
         Route::put('intranatal_care/update_persalinan/{id}', [INCController::class, 'update_persalinan'])->name('intranatal_care.update_persalinan');
-        Route::delete('intranatal_care/destroy_persalinan/{id}', [INCController::class, 'destroy_persalinan'])->name('intranatal_care.destroy_persalinan');
     });
     Route::prefix('postnatal_care')->group(function () {
         ///////////// MASA NIFAS /////////////

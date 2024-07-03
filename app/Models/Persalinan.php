@@ -10,6 +10,7 @@ class Persalinan extends Model
     protected $table = 'persalinan';
     protected $primaryKey = 'id';
     protected $fillable = [
+        'user_id',
         'nama_ibu',
         'kala1',
         'kala2',

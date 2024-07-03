@@ -86,21 +86,25 @@
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="kala1" class="form-label">Kala I Aktif</label>
-                                        <input type="datetime-local" class="form-control" id="kala1" name="kala1" required>
+                                        <input type="datetime-local" class="form-control" id="kala1" name="kala1"
+                                            required>
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="kala2" class="form-label">Kala II</label>
-                                        <input type="datetime-local" class="form-control" id="kala2" name="kala2" required>
+                                        <input type="datetime-local" class="form-control" id="kala2" name="kala2"
+                                            required>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label for="bayi_lahir" class="form-label">Bayi Lahir</label>
-                                        <input type="datetime-local" class="form-control" id="bayi_lahir" name="bayi_lahir" required>
+                                        <input type="datetime-local" class="form-control" id="bayi_lahir" name="bayi_lahir"
+                                            required>
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="piasenta" class="form-label">Piasenta Lahir</label>
-                                        <input type="datetime-local" class="form-control" id="piasenta" name="piasenta" required>
+                                        <input type="datetime-local" class="form-control" id="piasenta" name="piasenta"
+                                            required>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -166,7 +170,8 @@
                                         <label for="panjang_bayi" class="form-label">Panjang Bayi</label>
                                         <div class="input-group">
                                             <input type="text" class="form-control" id="panjang_bayi"
-                                                name="panjang_bayi" placeholder="input Berat Bayi" pattern="[0-9,\,]*" required>
+                                                name="panjang_bayi" placeholder="input Berat Bayi" pattern="[0-9,\,]*"
+                                                required>
                                             <span class="input-group-text">cm</span>
                                         </div>
                                     </div>
@@ -806,9 +811,6 @@
                                 .replace(':id', row.id);
                             let editUrl = '{{ route('intranatal_care.edit_persalinan', ':id') }}'
                                 .replace(':id', row.id);
-                            let deleteUrl =
-                                '{{ route('intranatal_care.destroy_persalinan', ':id') }}'
-                                .replace(':id', row.id);
                             return `
                             <div style="display: flex; justify-content: center;">
                                 <button class="btn btn-sm btn-dark view-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalView" style="margin-right: 5px;">
@@ -817,10 +819,6 @@
                                     <button class="btn btn-sm btn-primary edit-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalEdit">
                                         <i class="ri-edit-2-fill"></i>
                                     </button>
-                                    <button type="button" class="btn btn-sm btn-danger btn-delete" data-id="${row.id}" data-url="${deleteUrl}" hidden>
-                                        <i class="bi bi-trash3-fill"></i>
-                                    </button>
-                                
                             </div>`;
                         }
                     }
