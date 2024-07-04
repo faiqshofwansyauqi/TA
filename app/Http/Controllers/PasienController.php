@@ -168,9 +168,8 @@ class PasienController extends Controller
         $user = Auth::user();
         if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Anak::class);
-            $anak = Anak::all();
-            $ibus = Ibu::all();
-            return view('pasien.anak', compact('anak', 'ibus'));
+            $ibus = Ibu::where('user_id', $user->id)->get();
+            return view('pasien.anak', compact('ibus'));
         } else {
             return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
         }
@@ -211,6 +210,7 @@ class PasienController extends Controller
         ]);
 
         Anak::create([
+            'user_id' => Auth::id(),
             'nama_anak' => $request->nama_anak,
             'nama_ibu' => $request->nama_ibu,
             'nama_suami' => $request->nama_suami,
@@ -280,7 +280,7 @@ class PasienController extends Controller
     }
     public function getData_anak()
     {
-        $anak = Anak::select('*');
+        $anak = Anak::where('user_id', Auth::id())->select('*');
 
         return DataTables::of($anak)->make(true);
     }

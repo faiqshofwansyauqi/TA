@@ -131,7 +131,7 @@
                                         <label for="berat_bayi" class="form-label">Berat Bayi</label>
                                         <div class="input-group mb-3">
                                             <input type="text" class="form-control" id="berat_bayi" name="berat_bayi"
-                                                inputmode="numeric" pattern="\d*" required>
+                                                inputmode="numeric" pattern="\,d*" required>
                                             <span class="input-group-text">gram</span>
                                         </div>
                                     </div>
@@ -139,7 +139,7 @@
                                         <label for="panjang_bayi" class="form-label">Panjang Bayi</label>
                                         <div class="input-group mb-3">
                                             <input type="text" class="form-control" id="panjang_bayi"
-                                                name="panjang_bayi" inputmode="numeric" pattern="\d*" required>
+                                                name="panjang_bayi" inputmode="numeric" pattern="\,d*" required>
                                             <span class="input-group-text">cm</span>
                                         </div>
                                     </div>
@@ -244,7 +244,7 @@
                                         <label for="edit_berat_bayi" class="form-label">Berat Bayi</label>
                                         <div class="input-group mb-3">
                                             <input type="text" class="form-control" id="edit_berat_bayi"
-                                                name="berat_bayi" inputmode="numeric" pattern="\d*">
+                                                name="berat_bayi" inputmode="numeric" pattern="\,d*">
                                             <span class="input-group-text">gram</span>
                                         </div>
                                     </div>
@@ -252,7 +252,7 @@
                                         <label for="edit_panjang_bayi" class="form-label">Panjang Bayi</label>
                                         <div class="input-group mb-3">
                                             <input type="text" class="form-control" id="edit_panjang_bayi"
-                                                name="panjang_bayi" inputmode="numeric" pattern="\d*">
+                                                name="panjang_bayi" inputmode="numeric" pattern="\,d*">
                                             <span class="input-group-text">cm</span>
                                         </div>
                                     </div>

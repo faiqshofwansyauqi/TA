@@ -9,9 +9,8 @@ class Anak extends Model
 {
     protected $table = 'anak';
     protected $primaryKey = 'id_anak';
-
-
     protected $fillable = [
+        'user_id',
         'nama_anak',
         'nama_ibu',
         'nama_suami',
