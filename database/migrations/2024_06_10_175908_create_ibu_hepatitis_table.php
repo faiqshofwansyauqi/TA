@@ -27,6 +27,7 @@ class CreateIbuHepatitisTable extends Migration
             $table->string('tanggal_antihbs');
             $table->string('hasil_antihbs');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
