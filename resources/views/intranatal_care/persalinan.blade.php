@@ -651,8 +651,8 @@
                         name: 'kala1',
                         render: function(data) {
                             var date = new Date(data);
-                            var formattedDate = ('0' + date.getDate()).slice(-2) + '-' +
-                                ('0' + (date.getMonth() + 1)).slice(-2) + '-' +
+                            var formattedDate = ('0' + date.getDate()).slice(-2) + '/' +
+                                ('0' + (date.getMonth() + 1)).slice(-2) + '/' +
                                 date.getFullYear();
                             var formattedTime = ('0' + date.getHours()).slice(-2) + ':' +
                                 ('0' + date.getMinutes()).slice(-2);
@@ -666,8 +666,8 @@
                         name: 'kala2',
                         render: function(data) {
                             var date = new Date(data);
-                            var formattedDate = ('0' + date.getDate()).slice(-2) + '-' +
-                                ('0' + (date.getMonth() + 1)).slice(-2) + '-' +
+                            var formattedDate = ('0' + date.getDate()).slice(-2) + '/' +
+                                ('0' + (date.getMonth() + 1)).slice(-2) + '/' +
                                 date.getFullYear();
                             var formattedTime = ('0' + date.getHours()).slice(-2) + ':' +
                                 ('0' + date.getMinutes()).slice(-2);
@@ -680,8 +680,8 @@
                         name: 'bayi_lahir',
                         render: function(data) {
                             var date = new Date(data);
-                            var formattedDate = ('0' + date.getDate()).slice(-2) + '-' +
-                                ('0' + (date.getMonth() + 1)).slice(-2) + '-' +
+                            var formattedDate = ('0' + date.getDate()).slice(-2) + '/' +
+                                ('0' + (date.getMonth() + 1)).slice(-2) + '/' +
                                 date.getFullYear();
                             var formattedTime = ('0' + date.getHours()).slice(-2) + ':' +
                                 ('0' + date.getMinutes()).slice(-2);
@@ -694,8 +694,8 @@
                         name: 'piasenta',
                         render: function(data) {
                             var date = new Date(data);
-                            var formattedDate = ('0' + date.getDate()).slice(-2) + '-' +
-                                ('0' + (date.getMonth() + 1)).slice(-2) + '-' +
+                            var formattedDate = ('0' + date.getDate()).slice(-2) + '/' +
+                                ('0' + (date.getMonth() + 1)).slice(-2) + '/' +
                                 date.getFullYear();
                             var formattedTime = ('0' + date.getHours()).slice(-2) + ':' +
                                 ('0' + date.getMinutes()).slice(-2);
@@ -930,7 +930,7 @@
                         const formattedDay = ('0' + date.getDate()).slice(-2);
                         const formattedMonth = ('0' + (date.getMonth() + 1)).slice(-2);
                         const formattedYear = date.getFullYear();
-                        return `${formattedDay}-${formattedMonth}-${formattedYear}`;
+                        return `${formattedDay}/${formattedMonth}/${formattedYear}`;
                     }
 
                     function formatTimeOnly(dateString) {

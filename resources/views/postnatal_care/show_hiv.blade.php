@@ -90,7 +90,7 @@
                 <div class="modal-body">
                     <form action="{{ route('postnatal_care.store_showhiv') }}" method="post" autocomplete="off">
                         @csrf
-                        <div class="card col-12">
+                        <div class="col-12">
                             <div class="row d-flex align-items-stretch">
                                 <div class="card-body col-md-4 d-flex flex-column" style="padding: 20px;">
                                     <input type="hidden" name="nama_ibu" value="{{ $pb->nama_ibu }}">
@@ -218,7 +218,7 @@
                     <form id="editForm" method="post" autocomplete="off">
                         @csrf
                         @method('PUT')
-                        <div class="card col-12">
+                        <div class="col-12">
                             <div class="row d-flex align-items-stretch">
                                 <div class="card-body col-md-4 d-flex flex-column" style="padding: 20px;">
                                     <input type="hidden" name="nama_ibu" value="{{ $pb->nama_ibu }}">

@@ -372,52 +372,40 @@
                     {
                         data: 'tgl_periksa',
                         name: 'tgl_periksa',
-                        render: function(data) {
+                        render: function(data, type, row, meta) {
                             var date = new Date(data);
                             var day = date.getDate();
                             var month = date.getMonth() + 1;
-                            var year = date.getFullYear();
-                            if (day < 10) {
-                                day = '0' + day;
-                            }
-                            if (month < 10) {
-                                month = '0' + month;
-                            }
-                            return day + ' - ' + month + ' - ' + year;
+                            var year = date.getFullYear().toString().slice();
+                            day = day < 10 ? '0' + day : day;
+                            month = month < 10 ? '0' + month : month;
+                            return day + '/' + month + '/' + year;
                         }
                     },
                     {
                         data: 'tgl_hpht',
                         name: 'tgl_hpht',
-                        render: function(data) {
+                        render: function(data, type, row, meta) {
                             var date = new Date(data);
                             var day = date.getDate();
                             var month = date.getMonth() + 1;
-                            var year = date.getFullYear();
-                            if (day < 10) {
-                                day = '0' + day;
-                            }
-                            if (month < 10) {
-                                month = '0' + month;
-                            }
-                            return day + ' - ' + month + ' - ' + year;
+                            var year = date.getFullYear().toString().slice();
+                            day = day < 10 ? '0' + day : day;
+                            month = month < 10 ? '0' + month : month;
+                            return day + '/' + month + '/' + year;
                         }
                     },
                     {
                         data: 'tksrn_persalinan',
                         name: 'tksrn_persalinan',
-                        render: function(data) {
+                        render: function(data, type, row, meta) {
                             var date = new Date(data);
                             var day = date.getDate();
                             var month = date.getMonth() + 1;
-                            var year = date.getFullYear();
-                            if (day < 10) {
-                                day = '0' + day;
-                            }
-                            if (month < 10) {
-                                month = '0' + month;
-                            }
-                            return day + ' - ' + month + ' - ' + year;
+                            var year = date.getFullYear().toString().slice();
+                            day = day < 10 ? '0' + day : day;
+                            month = month < 10 ? '0' + month : month;
+                            return day + '/' + month + '/' + year;
                         }
                     },
                     {
@@ -509,7 +497,7 @@
                         const year = date.getFullYear();
                         const month = String(date.getMonth() + 1).padStart(2, '0');
                         const day = String(date.getDate()).padStart(2, '0');
-                        return `${day}-${month}-${year}`;
+                        return `${day}/${month}/${year}`;
                     }
                     let RiwayatObstetrikHtml = `
                     <div class="table-responsive">

@@ -19,8 +19,8 @@ class CreatePersalinanTable extends Migration
             $table->string('nama_ibu');
             $table->string('kala1');
             $table->string('kala2');
-            $table->string('bayi_lahir');
-            $table->string('piasenta');
+            $table->dateTime('bayi_lahir');
+            $table->dateTime('piasenta');
             $table->string('pendarahan');
             $table->string('usia_kehamilan');
             $table->string('usia_hpht');
@@ -41,7 +41,7 @@ class CreatePersalinanTable extends Migration
             $table->string('keadaan_tiba');
             $table->string('keadaan_pulang');
             $table->string('rujuk');
-            $table->string('alamat_bersalin');
+            $table->text('alamat_bersalin');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

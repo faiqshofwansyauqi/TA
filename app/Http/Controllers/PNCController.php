@@ -390,13 +390,13 @@ class PNCController extends Controller
             $hepatitis = Show_Hepatitis::where('user_id', $user->id)->get();
 
             foreach ($hepatitis as $item) {
-                $item->hbo = Carbon::parse($item->hbo)->format('d-m-Y / H:i');
-                $item->hb2 = Carbon::parse($item->hb2)->format('d-m-Y / H:i');
-                $item->hbig = Carbon::parse($item->hbig)->format('d-m-Y / H:i');
-                $item->hb3 = Carbon::parse($item->hb3)->format('d-m-Y / H:i');
-                $item->hb1 = Carbon::parse($item->hb1)->format('d-m-Y / H:i');
-                $item->tanggal_hbsag = Carbon::parse($item->tanggal_hbsag)->format('d-m-Y / H:i');
-                $item->tanggal_antihbs = Carbon::parse($item->tanggal_antihbs)->format('d-m-Y / H:i');
+                $item->hbo = Carbon::parse($item->hbo)->format('d M Y / H:i');
+                $item->hb2 = Carbon::parse($item->hb2)->format('d M Y / H:i');
+                $item->hbig = Carbon::parse($item->hbig)->format('d M Y / H:i');
+                $item->hb3 = Carbon::parse($item->hb3)->format('d M Y / H:i');
+                $item->hb1 = Carbon::parse($item->hb1)->format('d M Y / H:i');
+                $item->tanggal_hbsag = Carbon::parse($item->tanggal_hbsag)->format('d M Y / H:i');
+                $item->tanggal_antihbs = Carbon::parse($item->tanggal_antihbs)->format('d M Y / H:i');
             }
             return view('postnatal_care.show_hepatitis', compact('pb', 'hepatitis'));
         } else {
@@ -479,6 +479,14 @@ class PNCController extends Controller
             $pb = Pemantauan_Bayi::findOrFail($id);
             $nama_ibu = $pb->nama_ibu;
             $hiv = Show_Hiv::where('nama_ibu', $nama_ibu)->get();
+            foreach ($hiv as $item) {
+                $item->tgl_pemberian_arv = Carbon::parse($item->tgl_pemberian_arv)->format('d M Y');
+                $item->tgl_bds = Carbon::parse($item->tgl_bds)->format('d M Y');
+                $item->tgl_konfirmasi_bds = Carbon::parse($item->tgl_konfirmasi_bds)->format('d M Y');
+                $item->tgl_pemeriksaan_balita = Carbon::parse($item->tgl_pemeriksaan_balita)->format('d M Y');
+                $item->tgl_perawatan_pdp = Carbon::parse($item->tgl_perawatan_pdp)->format('d M Y');
+                $item->tgl_pengobatan_arv = Carbon::parse($item->tgl_pengobatan_arv)->format('d M Y');
+            }
             return view('postnatal_care.show_hiv', compact('pb', 'hiv'));
         } else {
             return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');

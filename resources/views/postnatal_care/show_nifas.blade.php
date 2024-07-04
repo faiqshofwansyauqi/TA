@@ -27,7 +27,8 @@
                                     <tr>
                                         <th rowspan="2" class="align-middle text-center">No</th>
                                         <th rowspan="2" class="align-middle text-center">Tanggal</th>
-                                        <th rowspan="2" class="align-middle text-center" style="width: 100px">HARI KE/IF</th>
+                                        <th rowspan="2" class="align-middle text-center">HARI KE/IF
+                                        </th>
                                         <th colspan="2" class="align-middle text-center">TANDA VITAL</th>
                                         <th colspan="3" class="align-middle text-center">PELAYANAN</th>
                                         <th colspan="4" class="align-middle text-center">INTEGRASI PROGRAM
@@ -41,7 +42,7 @@
                                     </tr>
                                     <tr>
                                         <th class="align-middle text-center normal-header">TD <sup>mmHg</sup></th>
-                                        <th class="align-middle text-center normal-header" style="width: 50px;">Suhu
+                                        <th class="align-middle text-center normal-header">Suhu
                                             <sup>°C</sup>
                                         </th>
                                         <th class="align-middle text-center normal-header">Catatan di Buku KIA <sup>*</sup>

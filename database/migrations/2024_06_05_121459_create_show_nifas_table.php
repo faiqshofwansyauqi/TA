@@ -17,11 +17,11 @@ class CreateShowNifasTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('nama_ibu');
-            $table->string('tanggal');
+            $table->date('tanggal');
             $table->string('hari');
             $table->string('kf');
             $table->string('td_mmhg');
-            $table->string('suhu');
+            $table->integer('suhu');
             $table->string('buku_kia');
             $table->string('fe');
             $table->string('vit');
