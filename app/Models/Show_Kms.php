@@ -10,9 +10,10 @@ class Show_Kms extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'id',
+        'user_id',
         'nama_anak',
         'bulan_penimbangan',
-        'barat_badan',
+        'berat_badan',
         'nt',
         'asi_eksklusif',
     ];

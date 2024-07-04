@@ -46,7 +46,7 @@
                 <div class="modal-body">
                     <form action="{{ route('kms.store_kms') }}" method="post" autocomplete="off">
                         @csrf
-                        <div class="card col-12">
+                        <div class="col-12">
                             <div class="card-body">
                                 <h5 class="card-title"></h5>
                                 <div class="col-md-12 mb-3">

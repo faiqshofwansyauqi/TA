@@ -15,12 +15,14 @@ class CreateShowKMSTable extends Migration
     {
         Schema::create('show_kms', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('nama_anak');
             $table->string('bulan_penimbangan');
             $table->string('berat_badan');
             $table->string('nt');
             $table->string('asi_eksklusif');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -31,6 +33,9 @@ class CreateShowKMSTable extends Migration
      */
     public function down()
     {
+        Schema::table('show_kms', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+        });
         Schema::dropIfExists('show_kms');
     }
 }

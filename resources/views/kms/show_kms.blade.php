@@ -44,7 +44,7 @@
                                     <tr>
                                         <th>BB (kg)</th>
                                         @foreach ($kmss as $kms)
-                                            <td style="text-align: center">{{ $kms->barat_badan }}</td>
+                                            <td style="text-align: center">{{ $kms->berat_badan }}</td>
                                         @endforeach
                                         @for ($i = count($kmss); $i <= 60; $i++)
                                             <td></td>
@@ -101,7 +101,7 @@
                 <div class="modal-body">
                     <form action="{{ route('kms.store_show_kms') }}" method="post" autocomplete="off">
                         @csrf
-                        <div class="card col-12">
+                        <div class="col-12">
                             <div class="card-body">
                                 <h5 class="card-title"></h5>
                                 <input type="hidden" name="nama_anak" value="{{ $kms->nama_anak }}">
@@ -111,8 +111,8 @@
                                         name="bulan_penimbangan">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="barat_badan">BB (kg)</label>
-                                    <input type="number" class="form-control" id="barat_badan" name="barat_badan"
+                                    <label for="berat_badan">BB (kg)</label>
+                                    <input type="number" class="form-control" id="berat_badan" name="berat_badan"
                                         step="any">
                                 </div>
                                 <div class="mb-3">

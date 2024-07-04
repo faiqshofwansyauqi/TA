@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKMSTable extends Migration
+class CreateKmsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,10 +15,12 @@ class CreateKMSTable extends Migration
     {
         Schema::create('kms', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('nama_anak');
-            $table->string('nam_ibu');
-            $table->string('jenis_kelamin');            
+            $table->string('nama_ibu');
+            $table->string('jenis_kelamin');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -29,6 +31,9 @@ class CreateKMSTable extends Migration
      */
     public function down()
     {
+        Schema::table('kms', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+        });
         Schema::dropIfExists('kms');
     }
 }

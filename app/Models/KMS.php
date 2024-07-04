@@ -10,6 +10,7 @@ class KMS extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'id',
+        'user_id',
         'nama_anak',        
         'jenis_kelamin',        
         'nama_ibu',        
