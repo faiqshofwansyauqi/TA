@@ -35,6 +35,7 @@ class CreateShowPpiaTable extends Migration
             $table->string('periksa_sifilis');
             $table->string('faskes_rujukan');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

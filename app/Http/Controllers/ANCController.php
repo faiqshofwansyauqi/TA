@@ -458,7 +458,7 @@ class ANCController extends Controller
     {
         // dd($request);
         $request->validate([
-            'nama_ibu' => 'required',
+            'id_ibu' => 'required',
             'gravida' => 'required',
             'partus' => 'required',
             'abortus' => 'required',
@@ -476,7 +476,7 @@ class ANCController extends Controller
 
         Ropb::create([
             'user_id' => Auth::id(),
-            'nama_ibu' => $request->nama_ibu,
+            'id_ibu' => $request->id_ibu,
             'gravida' => $request->gravida,
             'partus' => $request->partus,
             'abortus' => $request->abortus,
@@ -497,7 +497,7 @@ class ANCController extends Controller
     {
         // dd($request);
         $request->validate([
-            'nama_ibu' => 'required',
+            'id_ibu' => 'required|exists:users,id',
             'gravida' => 'required',
             'partus' => 'required',
             'abortus' => 'required',
@@ -515,7 +515,7 @@ class ANCController extends Controller
         ]);
         $ropb = Ropb::findOrFail($id);
         $ropb->update([
-            'nama_ibu' => $request->nama_ibu,
+            'id_ibu' => $request->id_ibu,
             'gravida' => $request->gravida,
             'partus' => $request->partus,
             'abortus' => $request->abortus,
@@ -534,9 +534,14 @@ class ANCController extends Controller
     }
     public function getData_ropb()
     {
-        $ropb = Ropb::where('user_id', Auth::id())->select('*');
+        $ropb = Ropb::with('ibu')->where('user_id', Auth::id())->get();
 
-        return DataTables::of($ropb)->make(true);
+        // return DataTables::of($ropb)->make(true);
+        return DataTables::of($ropb)
+        ->addColumn('nama_ibu', function ($row) {
+            return $row->ibu ? $row->ibu->nama_ibu : 'N/A';
+        })
+        ->make(true);
     }
     public function edit_ropb($id)
     {
@@ -547,9 +552,10 @@ class ANCController extends Controller
     {
         $ropb = Ropb::with([
             'ibu' => function ($query) {
-                $query->select('nama_ibu');
+                $query->select('id', 'name');
             }
         ])->find($id);
+
         return response()->json($ropb);
     }
 

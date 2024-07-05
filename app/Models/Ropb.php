@@ -10,7 +10,7 @@ class Ropb extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'user_id',
-        'nama_ibu',
+        'id_ibu',
         'gravida',
         'partus',
         'abortus',
@@ -27,6 +27,6 @@ class Ropb extends Model
     ];
     public function ibu()
     {
-        return $this->belongsTo(Ibu::class, 'NIK', 'nama_ibu');
+        return $this->belongsTo(Ibu::class, 'id_ibu');
     }
 }

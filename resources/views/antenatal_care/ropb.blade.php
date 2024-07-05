@@ -67,11 +67,11 @@
                                     <h5 class="card-title">Riwayat Obstetrik</h5>
                                     <div class="row">
                                         <div class="col-md-12 mb-3">
-                                            <label for="nama_ibu" class="form-label">Ibu</label>
-                                            <select class="form-control" id="nama_ibu" name="nama_ibu" required>
+                                            <label for="id_ibu" class="form-label">Ibu</label>
+                                            <select class="form-control" id="id_ibu" name="id_ibu" required>
                                                 <option value="">Pilih Ibu</option>
                                                 @foreach ($ibus as $ibu)
-                                                    <option value="{{ $ibu->nama_ibu }}">{{ $ibu->nama_ibu }}</option>
+                                                    <option value="{{ $ibu->id_ibu }}">{{ $ibu->nama_ibu }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -189,11 +189,11 @@
                                     <h5 class="card-title">Riwayat Obstetrik</h5>
                                     <div class="row">
                                         <div class="col-md-12 mb-3">
-                                            <label for="edit_nama_ibu" class="form-label">Ibu</label>
-                                            <select class="form-control" id="edit_nama_ibu" name="nama_ibu" required>
+                                            <label for="edit_id_ibu" class="form-label">Ibu</label>
+                                            <select class="form-control" id="edit_id_ibu" name="id_ibu" required>
                                                 <option value="">Pilih Ibu</option>
                                                 @foreach ($ibus as $ibu)
-                                                    <option value="{{ $ibu->nama_ibu }}">{{ $ibu->nama_ibu }}</option>
+                                                    <option value="{{ $ibu->ibu }}">{{ $ibu->nama_ibu }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -343,7 +343,7 @@
                     },
                     {
                         data: 'nama_ibu',
-                        name: 'nama_ibu'
+                        name: 'nama_ibu',
                     },
                     {
                         data: 'gravida',

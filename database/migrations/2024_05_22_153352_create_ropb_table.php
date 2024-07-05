@@ -16,7 +16,7 @@ class CreateRopbTable extends Migration
         Schema::create('ropb', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('nama_ibu');
+            $table->unsignedBigInteger('id_ibu');
             $table->string('gravida');
             $table->string('partus');
             $table->string('abortus');
@@ -32,6 +32,7 @@ class CreateRopbTable extends Migration
             $table->string('buku_kia');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('id_ibu')->references('id_ibu')->on('ibu')->onDelete('cascade');
         });
     }
 
@@ -44,6 +45,7 @@ class CreateRopbTable extends Migration
     {
         Schema::table('ropb', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
+            $table->dropForeign(['id_ibu']);
         });
         Schema::dropIfExists('ropb');
     }

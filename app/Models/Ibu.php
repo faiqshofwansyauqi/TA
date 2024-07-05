@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Anak;
+use App\Models\Ropb;
 use Illuminate\Database\Eloquent\Model;
 
 class Ibu extends Model
@@ -39,6 +40,10 @@ class Ibu extends Model
     public function anak()
     {
         return $this->hasMany(Anak::class, 'id_ibu', 'nama_ibu');
+    }
+    public function ropb()
+    {
+        return $this->hasMany(Ropb::class, 'id_ibu');
     }
     public $timestamps = false;
 }
