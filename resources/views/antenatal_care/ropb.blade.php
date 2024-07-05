@@ -188,17 +188,6 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Riwayat Obstetrik</h5>
                                     <div class="row">
-                                        <div class="col-md-12 mb-3">
-                                            <label for="edit_id_ibu" class="form-label">Ibu</label>
-                                            <select class="form-control" id="edit_id_ibu" name="id_ibu" required>
-                                                <option value="">Pilih Ibu</option>
-                                                @foreach ($ibus as $ibu)
-                                                    <option value="{{ $ibu->ibu }}">{{ $ibu->nama_ibu }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-md-3 mb-3">
                                             <label for="edit_gravida" class="form-label">Gravida</label>
                                             <input type="number" class="form-control" id="edit_gravida" name="gravida"
@@ -232,7 +221,7 @@
                                         <input type="text" class="form-control" id="edit_pnykt_kronis_alergi"
                                             name="pnykt_kronis_alergi" required>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary" style="margin-top: 50px">Submit</button>
                                 </div>
                             </div>
                             <div class=" col-6">
@@ -620,7 +609,7 @@
                 url: '{{ route('antenatal_care.edit_ropb', ':id') }}'.replace(':id', id),
                 method: 'GET',
                 success: function(data) {
-                    $('#edit_nama_ibu').val(data.nama_ibu);
+                    $('#edit_id_ibu').val(data.id_ibu);
                     $('#edit_gravida').val(data.gravida);
                     $('#edit_partus').val(data.partus);
                     $('#edit_abortus').val(data.abortus);

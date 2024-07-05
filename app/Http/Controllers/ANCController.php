@@ -497,7 +497,6 @@ class ANCController extends Controller
     {
         // dd($request);
         $request->validate([
-            'id_ibu' => 'required|exists:users,id',
             'gravida' => 'required',
             'partus' => 'required',
             'abortus' => 'required',
@@ -515,7 +514,6 @@ class ANCController extends Controller
         ]);
         $ropb = Ropb::findOrFail($id);
         $ropb->update([
-            'id_ibu' => $request->id_ibu,
             'gravida' => $request->gravida,
             'partus' => $request->partus,
             'abortus' => $request->abortus,
@@ -536,12 +534,11 @@ class ANCController extends Controller
     {
         $ropb = Ropb::with('ibu')->where('user_id', Auth::id())->get();
 
-        // return DataTables::of($ropb)->make(true);
         return DataTables::of($ropb)
-        ->addColumn('nama_ibu', function ($row) {
-            return $row->ibu ? $row->ibu->nama_ibu : 'N/A';
-        })
-        ->make(true);
+            ->addColumn('nama_ibu', function ($row) {
+                return $row->ibu ? $row->ibu->nama_ibu : 'N/A';
+            })
+            ->make(true);
     }
     public function edit_ropb($id)
     {
@@ -552,7 +549,7 @@ class ANCController extends Controller
     {
         $ropb = Ropb::with([
             'ibu' => function ($query) {
-                $query->select('id', 'name');
+                $query->select('id_ibu');
             }
         ])->find($id);
 
@@ -565,7 +562,7 @@ class ANCController extends Controller
         $user = Auth::user();
         if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Rencana_Persalinan::class);
-            $ibus = Ropb::where('user_id', $user->id)->get();
+            $ibus = Ropb::with('ibu')->where('user_id', $user->id)->get();
             return view('antenatal_care.rnca_persalinan', compact('ibus'));
         } else {
             return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
@@ -575,7 +572,7 @@ class ANCController extends Controller
     {
         // dd($request);
         $request->validate([
-            'nama_ibu' => 'required',
+            'id_ibu' => 'required',
             'tgl_persalinan' => 'required',
             'penolong' => 'required',
             'tempat' => 'required',
@@ -587,7 +584,7 @@ class ANCController extends Controller
 
         Rencana_Persalinan::create([
             'user_id' => Auth::id(),
-            'nama_ibu' => $request->nama_ibu,
+            'id_ibu' => $request->id_ibu,
             'tgl_persalinan' => $request->tgl_persalinan,
             'penolong' => $request->penolong,
             'tempat' => $request->tempat,
@@ -602,7 +599,6 @@ class ANCController extends Controller
     {
         // dd($request);
         $request->validate([
-            'nama_ibu' => 'required',
             'tgl_persalinan' => 'required',
             'penolong' => 'required',
             'tempat' => 'required',
@@ -613,7 +609,6 @@ class ANCController extends Controller
         ]);
         $rnca = Rencana_Persalinan::findOrFail($id);
         $rnca->update([
-            'nama_ibu' => $request->nama_ibu,
             'tgl_persalinan' => $request->tgl_persalinan,
             'penolong' => $request->penolong,
             'tempat' => $request->tempat,
@@ -626,8 +621,11 @@ class ANCController extends Controller
     public function getData_rnca()
     {
         $rnca = Rencana_Persalinan::where('user_id', Auth::id())->select('*');
-
-        return DataTables::of($rnca)->make(true);
+        return DataTables::of($rnca)
+            ->addColumn('nama_ibu', function ($row) {
+                return $row->ibu ? $row->ibu->nama_ibu : 'N/A';
+            })
+            ->make(true);
     }
     public function edit_rnca($id)
     {
@@ -638,7 +636,7 @@ class ANCController extends Controller
     {
         $rnca = Rencana_Persalinan::with([
             'ibu' => function ($query) {
-                $query->select('nama_ibu');
+                $query->select('id_ibu');
             }
         ])->find($id);
         return response()->json($rnca);

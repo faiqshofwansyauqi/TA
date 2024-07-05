@@ -4,13 +4,14 @@ namespace App\Models;
 
 use App\Models\Anak;
 use App\Models\Ropb;
+use App\Models\Rencana_Persalinan;
 use Illuminate\Database\Eloquent\Model;
 
 class Ibu extends Model
 {
     protected $table = 'ibu';
     protected $primaryKey = 'id_ibu';
-    
+
     protected $fillable = [
         'user_id',
         'puskesmas',
@@ -37,13 +38,13 @@ class Ibu extends Model
         'gol_darah',
         'telp',
     ];
-    public function anak()
-    {
-        return $this->hasMany(Anak::class, 'id_ibu', 'nama_ibu');
-    }
     public function ropb()
     {
         return $this->hasMany(Ropb::class, 'id_ibu');
+    }
+    public function rnca_persalinan()
+    {
+        return $this->hasMany(Rencana_Persalinan::class, 'id_ibu');
     }
     public $timestamps = false;
 }

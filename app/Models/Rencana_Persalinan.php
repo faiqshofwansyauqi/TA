@@ -11,7 +11,7 @@ class Rencana_Persalinan extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'user_id',
-        'nama_ibu',
+        'id_ibu',
         'tgl_persalinan',
         'penolong',
         'tempat',
@@ -22,6 +22,6 @@ class Rencana_Persalinan extends Model
     ];
     public function ibu()
     {
-        return $this->belongsTo(Ibu::class, 'NIK', 'nama_ibu');
+        return $this->belongsTo(Ibu::class, 'id_ibu');
     }
 }

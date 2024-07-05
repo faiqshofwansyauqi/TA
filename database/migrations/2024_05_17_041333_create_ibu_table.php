@@ -16,9 +16,9 @@ class CreateIbuTable extends Migration
         Schema::create('ibu', function (Blueprint $table) {
             $table->id('id_ibu');
             $table->unsignedBigInteger('user_id');
+            $table->string('nama_ibu');
             $table->string('puskesmas');
             $table->string('noregis');
-            $table->string('nama_ibu');
             $table->string('nama_suami');
             $table->date('tanggal_lahir');
             $table->text('alamat_domisili');

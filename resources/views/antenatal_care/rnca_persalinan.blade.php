@@ -60,11 +60,11 @@
                                 <br>
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <label for="nama_ibu" class="form-label">Ibu</label>
-                                        <select class="form-control" id="nama_ibu" name="nama_ibu" required>
+                                        <label for="id_ibu" class="form-label">Ibu</label>
+                                        <select class="form-control" id="id_ibu" name="id_ibu" required>
                                             <option value="">Pilih Ibu</option>
-                                            @foreach ($ibus as $ibu)
-                                                <option value="{{ $ibu->nama_ibu }}">{{ $ibu->nama_ibu }}</option>
+                                            @foreach ($ibus as $ropb)
+                                                <option value="{{ $ropb->ibu->id_ibu }}">{{ $ropb->ibu->nama_ibu }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -171,15 +171,6 @@
                         @method('PUT')
                         <div class="col-12">
                             <div class="card-body">
-                                <div class="col-md-4 mb-3">
-                                    <label for="edit_nama_ibu" class="form-label" hidden>Ibu</label>
-                                    <select class="form-control" id="edit_nama_ibu" name="nama_ibu" hidden>
-                                        <option value="">Pilih Ibu</option>
-                                        @foreach ($ibus as $ibu)
-                                            <option value="{{ $ibu->nama_ibu }}">{{ $ibu->nama_ibu }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
                                 <div class="col-md-12 mb-3">
                                     <label for="edit_tgl_persalinan" class="form-label">Tanggal Persalinan</label>
                                     <input type="date" class="form-control" id="edit_tgl_persalinan"
