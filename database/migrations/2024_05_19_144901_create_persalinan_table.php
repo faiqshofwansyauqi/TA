@@ -16,7 +16,7 @@ class CreatePersalinanTable extends Migration
         Schema::create('persalinan', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('nama_ibu');
+            $table->unsignedBigInteger('id_ibu');
             $table->string('kala1');
             $table->string('kala2');
             $table->dateTime('bayi_lahir');
@@ -44,6 +44,7 @@ class CreatePersalinanTable extends Migration
             $table->text('alamat_bersalin');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('id_ibu')->references('id_ibu')->on('ibu')->onDelete('cascade');
         });
     }
 
@@ -56,6 +57,7 @@ class CreatePersalinanTable extends Migration
     {
         Schema::table('persalinan', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
+            $table->dropForeign(['id_ibu']);
         });
         Schema::dropIfExists('persalinan');
     }

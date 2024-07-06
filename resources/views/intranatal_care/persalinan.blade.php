@@ -76,11 +76,11 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-4 mb-3">
-                                        <label for="nama_ibu" class="form-label">Ibu</label>
-                                        <select class="form-control" id="nama_ibu" name="nama_ibu" required>
+                                        <label for="id_ibu" class="form-label">Ibu</label>
+                                        <select class="form-control" id="id_ibu" name="id_ibu" required>
                                             <option value="">Pilih Ibu</option>
-                                            @foreach ($ibus as $ibu)
-                                                <option value="{{ $ibu->nama_ibu }}">{{ $ibu->nama_ibu }}</option>
+                                            @foreach ($ibus as $anc)
+                                                <option value="{{ $anc->ibu->id_ibu }}">{{ $anc->ibu->nama_ibu }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -340,19 +340,13 @@
                         @method('PUT')
                         <div class="col-12">
                             <div class="card-body">
-                                <h5 class="card-title"></h5>
                                 <div class="row">
-                                    <div class="col-md-4 mb-2">
-                                        <label for="edit_nama_ibu" class="form-label">Nama Ibu</label>
-                                        <input type="text" class="form-control" id="edit_nama_ibu" name="nama_ibu"
-                                            value="{{ $ibu }}" readonly>
-                                    </div>
-                                    <div class="col-md-4 mb-2">
+                                    <div class="col-md-6 mb-2">
                                         <label for="edit_kala1" class="form-label">Kala I Aktif</label>
                                         <input type="datetime-local" class="form-control" id="edit_kala1"
                                             name="kala1">
                                     </div>
-                                    <div class="col-md-4 mb-2">
+                                    <div class="col-md-6 mb-2">
                                         <label for="edit_kala2" class="form-label">Kala II</label>
                                         <input type="datetime-local" class="form-control" id="edit_kala2"
                                             name="kala2">

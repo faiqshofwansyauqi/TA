@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Anak;
 use App\Models\Ropb;
+use App\Models\Persalinan;
 use App\Models\Anc;
 use App\Models\Show_Anc;
 use App\Models\Rencana_Persalinan;
@@ -47,6 +48,10 @@ class Ibu extends Model
     public function anc()
     {
         return $this->hasMany(Anc::class, 'id_ibu');
+    }
+    public function persalinan()
+    {
+        return $this->hasMany(Persalinan::class, 'id_ibu');
     }
     public function ropb()
     {

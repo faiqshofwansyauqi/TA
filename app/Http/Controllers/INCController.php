@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Persalinan;
-use App\Models\Rencana_Persalinan;
+use App\Models\Anc;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -22,7 +22,7 @@ class INCController extends Controller
         $user = Auth::user();
         if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Persalinan::class);
-            $ibus = Rencana_Persalinan::where('user_id', $user->id)->get();
+            $ibus = Anc::with('ibu')->where('user_id', $user->id)->get();
             return view('intranatal_care.persalinan', compact('ibus'));
         } else {
             return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
@@ -32,7 +32,7 @@ class INCController extends Controller
     {
         // dd($request->all());
         $request->validate([
-            'nama_ibu' => 'required',
+            'id_ibu' => 'required',
             'kala1' => 'required',
             'kala2' => 'required',
             'bayi_lahir' => 'required',
@@ -62,7 +62,7 @@ class INCController extends Controller
 
         Persalinan::create([
             'user_id' => Auth::id(),
-            'nama_ibu' => $request->nama_ibu,
+            'id_ibu' => $request->id_ibu,
             'kala1' => $request->kala1,
             'kala2' => $request->kala2,
             'bayi_lahir' => $request->bayi_lahir,
@@ -94,8 +94,7 @@ class INCController extends Controller
     public function update_persalinan(Request $request, $id)
     {
         // dd($request->all());
-        $request->validate([
-            'nama_ibu' => 'required',
+        $request->validate([            
             'kala1' => 'required',
             'kala2' => 'required',
             'bayi_lahir' => 'required',
@@ -124,7 +123,6 @@ class INCController extends Controller
         ]);
         $persalinan = Persalinan::findOrFail($id);
         $persalinan->update([
-            'nama_ibu' => $request->nama_ibu,
             'kala1' => $request->kala1,
             'kala2' => $request->kala2,
             'bayi_lahir' => $request->bayi_lahir,
@@ -156,7 +154,11 @@ class INCController extends Controller
     public function getData_persalinan()
     {
         $persalinan = Persalinan::where('user_id', Auth::id())->select('*');
-        return DataTables::of($persalinan)->make(true);
+        return DataTables::of($persalinan)
+            ->addColumn('nama_ibu', function ($row) {
+                return $row->ibu ? $row->ibu->nama_ibu : 'N/A';
+            })
+            ->make(true);
     }
     public function edit_persalinan($id)
     {
@@ -167,7 +169,7 @@ class INCController extends Controller
     {
         $persalinan = Persalinan::with([
             'ibu' => function ($query) {
-                $query->select('nama_ibu');
+                $query->select('id_ibu');
             }
         ])->find($id);
         return response()->json($persalinan);

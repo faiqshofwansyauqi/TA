@@ -11,7 +11,7 @@ class Persalinan extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'user_id',
-        'nama_ibu',
+        'id_ibu',
         'kala1',
         'kala2',
         'bayi_lahir',
@@ -40,7 +40,6 @@ class Persalinan extends Model
     ];
     public function ibu()
     {
-        return $this->belongsTo(Ibu::class, 'id_ibu', 'nama_ibu');
+        return $this->belongsTo(Ibu::class, 'id_ibu');
     }
-    public $timestamps = false;
 }
