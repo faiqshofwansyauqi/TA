@@ -16,7 +16,7 @@ class CreateShowNifasTable extends Migration
         Schema::create('show_nifas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('nama_ibu');
+            $table->unsignedBigInteger('id_ibu');
             $table->date('tanggal');
             $table->string('hari');
             $table->string('kf');
@@ -44,6 +44,7 @@ class CreateShowNifasTable extends Migration
             $table->string('pulang');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('id_ibu')->references('id_ibu')->on('ibu')->onDelete('cascade');
         });
     }
 
@@ -56,6 +57,7 @@ class CreateShowNifasTable extends Migration
     {
         Schema::table('show_nifas', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
+            $table->dropForeign(['id_ibu']);
         });
         Schema::dropIfExists('show_nifas');
     }

@@ -89,7 +89,7 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="card-body">
-                                    <input type="hidden" name="nama_ibu" value="{{ $nifas->nama_ibu }}">
+                                    <input type="hidden" name="id_ibu" value="{{ $nifas->id_ibu }}">
                                     <h5 class="card-title">Registrasi</h5>
                                     <div class="row">
                                         <div class="col-md-4 mb-3">
@@ -316,7 +316,7 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="card-body">
-                                    <input type="hidden" name="nama_ibu" value="{{ $nifas->nama_ibu }}">
+                                    <input type="hidden" name="id_ibu" value="{{ $nifas->id_ibu }}">
                                     <h5 class="card-title">Registrasi</h5>
                                     <div class="row">
                                         <div class="col-md-4 mb-3">
@@ -547,7 +547,7 @@
                 ordering: false,
                 paging: false,
                 info: false,
-                ajax: "{{ route('postnatal_care.data_shownifas', ['nama_ibu' => $nifas->nama_ibu]) }}",
+                ajax: "{{ route('postnatal_care.data_shownifas', ['id_ibu' => $nifas->id_ibu]) }}",
                 columns: [{
                         data: 'id',
                         name: 'id',
@@ -709,7 +709,7 @@
                 fixedColumns: false,
                 responsive: false,
                 language: {
-                    emptyTable: "Data masa nifas ibu {{ $nifas->nama_ibu }} tidak ada"
+                    emptyTable: "Data masa nifas ibu {{ $nifas->ibu->nama_ibu }} tidak ada"
                 }
             });
         });

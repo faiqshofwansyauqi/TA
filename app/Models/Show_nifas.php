@@ -12,7 +12,7 @@ class Show_Nifas extends Model
     protected $fillable = [
         'id',
         'user_id',
-        'nama_ibu',
+        'id_ibu',
         'tanggal',
         'hari',
         'kf',
@@ -41,6 +41,6 @@ class Show_Nifas extends Model
     ];
     public function ibu()
     {
-        return $this->belongsTo(Ibu::class, 'NIK', 'nama_ibu');
+        return $this->belongsTo(Ibu::class, 'id_ibu');
     }
 }

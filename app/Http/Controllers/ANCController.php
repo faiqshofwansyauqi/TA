@@ -163,7 +163,6 @@ class ANCController extends Controller
         if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Anc::class);
             $ibus = Rencana_Persalinan::with('ibu')->where('user_id', $user->id)->get();
-            // dd($ibus);
             return view('antenatal_care.anc', compact('ibus'));
         } else {
             return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');

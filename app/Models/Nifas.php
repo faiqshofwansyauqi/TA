@@ -12,10 +12,10 @@ class Nifas extends Model
     protected $fillable = [
         'id',    
         'user_id',
-        'nama_ibu',    
+        'id_ibu',    
     ];
     public function ibu()
     {
-        return $this->belongsTo(Ibu::class, 'nama_ibu', 'nama_ibu');
+        return $this->belongsTo(Ibu::class, 'id_ibu');
     }
 }

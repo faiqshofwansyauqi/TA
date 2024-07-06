@@ -107,7 +107,7 @@ Route::middleware(['auth'])->group(function () {
         ///////////// SHOW NIFAS /////////////
         Route::post('store-show_nifas', [PNCController::class, 'store_shownifas'])->name('postnatal_care.store_shownifas');
         Route::get('nifas/show_nifas/{id}', [PNCController::class, 'show_nifas'])->name('postnatal_care.show_nifas');
-        Route::get('data-show_nifas/{nama_ibu}', [PNCController::class, 'getData_shownifas'])->name('postnatal_care.data_shownifas');
+        Route::get('data-show_nifas/{id_ibu}', [PNCController::class, 'getData_shownifas'])->name('postnatal_care.data_shownifas');
         Route::get('show_nifas/edit_shownifas/{id}', [PNCController::class, 'edit_shownifas'])->name('postnatal_care.edit_shownifas');
         Route::put('show_anc/update_shownifas/{id}', [PNCController::class, 'update_shownifas'])->name('postnatal_care.update_shownifas');
         ///////////// PEMANTAUAN PPIA /////////////

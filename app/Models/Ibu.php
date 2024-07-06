@@ -6,7 +6,9 @@ use App\Models\Anak;
 use App\Models\Ropb;
 use App\Models\Persalinan;
 use App\Models\Anc;
+use App\Models\Nifas;
 use App\Models\Show_Anc;
+use App\Models\Show_Nifas;
 use App\Models\Rencana_Persalinan;
 use Illuminate\Database\Eloquent\Model;
 
@@ -41,13 +43,21 @@ class Ibu extends Model
         'gol_darah',
         'telp',
     ];
-    public function sgow_anc()
+    public function show_anc()
     {
         return $this->hasMany(Show_Anc::class, 'id_ibu');
+    }
+    public function show_nifas()
+    {
+        return $this->hasMany(Show_Nifas::class, 'id_ibu');
     }
     public function anc()
     {
         return $this->hasMany(Anc::class, 'id_ibu');
+    }
+    public function nifas()
+    {
+        return $this->hasMany(Nifas::class, 'id_ibu');
     }
     public function persalinan()
     {
