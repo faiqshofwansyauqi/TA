@@ -125,7 +125,7 @@
                             <div class="col-6">
                                 <div class="card-body">
                                     <h5 class="card-title">Register</h5>
-                                    <input type="hidden" name="nama_ibu" value="{{ $anc->nama_ibu }}">
+                                    <input type="hidden" name="id_ibu" value="{{ $anc->id_ibu }}">
                                     <div class="row">
                                         <div class="col-md-4 mb-3">
                                             <label for="tanggal" class="form-label">Tanggal</label>
@@ -594,7 +594,7 @@
                             <div class="col-6">
                                 <div class="card-body">
                                     <h5 class="card-title">Register</h5>
-                                    <input type="hidden" name="nama_ibu" value="{{ $anc->nama_ibu }}">
+                                    <input type="hidden" name="id_ibu" value="{{ $anc->id_ibu }}">
                                     <div class="row">
                                         <div class="col-md-4 mb-3">
                                             <label for="edit_tanggal" class="form-label">Tanggal</label>
@@ -1072,7 +1072,7 @@
                 ordering: false,
                 paging: false,
                 info: false,
-                ajax: "{{ route('antenatal_care.data_showanc', ['nama_ibu' => $anc->nama_ibu]) }}",
+                ajax: "{{ route('antenatal_care.data_showanc', ['id_ibu' => $anc->id_ibu]) }}",
                 columns: [{
                         data: 'id',
                         name: 'id',
@@ -1385,7 +1385,7 @@
                 responsive: false,
                 scrollX: false,
                 language: {
-                    emptyTable: "Data anc ibu {{ $anc->nama_ibu }} tidak ada"
+                    emptyTable: "Data anc ibu {{ $anc->ibu->nama_ibu }} tidak ada"
                 }
             });
         });

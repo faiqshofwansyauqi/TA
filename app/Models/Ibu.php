@@ -4,6 +4,8 @@ namespace App\Models;
 
 use App\Models\Anak;
 use App\Models\Ropb;
+use App\Models\Anc;
+use App\Models\Show_Anc;
 use App\Models\Rencana_Persalinan;
 use Illuminate\Database\Eloquent\Model;
 
@@ -38,6 +40,14 @@ class Ibu extends Model
         'gol_darah',
         'telp',
     ];
+    public function sgow_anc()
+    {
+        return $this->hasMany(Show_Anc::class, 'id_ibu');
+    }
+    public function anc()
+    {
+        return $this->hasMany(Anc::class, 'id_ibu');
+    }
     public function ropb()
     {
         return $this->hasMany(Ropb::class, 'id_ibu');

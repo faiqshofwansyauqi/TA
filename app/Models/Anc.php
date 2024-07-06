@@ -10,12 +10,12 @@ class Anc extends Model
     protected $table = 'anc';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'id',    
+        'id',
         'user_id',
-        'nama_ibu',    
+        'id_ibu',
     ];
     public function ibu()
     {
-        return $this->belongsTo(Ibu::class, 'NIK', 'nama_ibu');
+        return $this->belongsTo(Ibu::class, 'id_ibu');
     }
 }

@@ -162,7 +162,8 @@ class ANCController extends Controller
         $user = Auth::user();
         if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Anc::class);
-            $ibus = Rencana_Persalinan::where('user_id', $user->id)->get();
+            $ibus = Rencana_Persalinan::with('ibu')->where('user_id', $user->id)->get();
+            // dd($ibus);
             return view('antenatal_care.anc', compact('ibus'));
         } else {
             return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
@@ -172,18 +173,22 @@ class ANCController extends Controller
     {
         // dd($request);
         $request->validate([
-            'nama_ibu' => 'required',
+            'id_ibu' => 'required',
         ]);
         Anc::create([
             'user_id' => Auth::id(),
-            'nama_ibu' => $request->nama_ibu,
+            'id_ibu' => $request->id_ibu,
         ]);
         return redirect()->back()->with('success', 'Data berhasil ditambahkan');
     }
     public function getData_anc()
     {
         $anc = Anc::where('user_id', Auth::id())->select('*');
-        return DataTables::of($anc)->make(true);
+        return DataTables::of($anc)
+        ->addColumn('nama_ibu', function ($row) {
+            return $row->ibu ? $row->ibu->nama_ibu : 'N/A';
+        })
+        ->make(true);
     }
 
     //////////////// SHOW ANC ////////////////
@@ -203,7 +208,7 @@ class ANCController extends Controller
     {
         // dd($request);
         $request->validate([
-            'nama_ibu' => 'required',
+            'id_ibu' => 'required',
             'tanggal' => 'required',
             'usia_kehamilan' => 'required',
             'trimester' => 'required',
@@ -260,7 +265,7 @@ class ANCController extends Controller
 
         Show_Anc::create([
             'user_id' => Auth::id(),
-            'nama_ibu' => $request->nama_ibu,
+            'id_ibu' => $request->id_ibu,
             'tanggal' => $request->tanggal,
             'usia_kehamilan' => $request->usia_kehamilan,
             'trimester' => $request->trimester,
@@ -431,9 +436,9 @@ class ANCController extends Controller
         ]);
         return redirect()->back()->with('success', 'Data berhasil diperbarui');
     }
-    public function getData_showanc($nama_ibu)
+    public function getData_showanc($id_ibu)
     {
-        $data = Show_Anc::where('nama_ibu', $nama_ibu)->get();
+        $data = Show_Anc::where('id_ibu', $id_ibu)->get();
         return DataTables::of($data)->make(true);
     }
     public function edit_showanc($id)
