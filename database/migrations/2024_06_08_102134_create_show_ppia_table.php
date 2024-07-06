@@ -16,26 +16,27 @@ class CreateShowPpiaTable extends Migration
         Schema::create('show_ppia', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('nama_ibu');
-            $table->dateTime('tanggal_screening_hbsag');
-            $table->dateTime('tanggal_screening_hiv');
-            $table->dateTime('tanggal_screening_sifilis');
-            $table->string('kode_specimen_hbsag');
-            $table->string('hasil_screening_hbsag');
-            $table->string('kode_specimen_hiv');
-            $table->string('hasil_screening_hiv');
-            $table->string('kode_specimen_sifilis');
-            $table->string('hasil_screening_sifilis');
-            $table->dateTime('tgl_masuk_pdp');
-            $table->dateTime('tgl_mulai_arv');
-            $table->string('ditangani_sifilis');
-            $table->string('obat_adequat');
-            $table->string('dirujuk');
-            $table->string('status_hiv');
-            $table->string('periksa_sifilis');
-            $table->string('faskes_rujukan');
+            $table->unsignedBigInteger('id_ibu');
+            $table->date('tanggal_screening_hbsag')->nullable();
+            $table->date('tanggal_screening_hiv')->nullable();
+            $table->date('tanggal_screening_sifilis')->nullable();
+            $table->string('kode_specimen_hbsag')->nullable();
+            $table->string('hasil_screening_hbsag')->nullable();
+            $table->string('kode_specimen_hiv')->nullable();
+            $table->string('hasil_screening_hiv')->nullable();
+            $table->string('kode_specimen_sifilis')->nullable();
+            $table->string('hasil_screening_sifilis')->nullable();
+            $table->date('tgl_masuk_pdp')->nullable();
+            $table->date('tgl_mulai_arv')->nullable();
+            $table->string('ditangani_sifilis')->nullable();
+            $table->string('obat_adequat')->nullable();
+            $table->string('dirujuk')->nullable();
+            $table->string('status_hiv')->nullable();
+            $table->string('periksa_sifilis')->nullable();
+            $table->string('faskes_rujukan')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('id_ibu')->references('id_ibu')->on('ibu')->onDelete('cascade');
         });
     }
 
@@ -48,6 +49,7 @@ class CreateShowPpiaTable extends Migration
     {
         Schema::table('show_ppia', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
+            $table->dropForeign(['id_user']);
         });
         Schema::dropIfExists('show_ppia');
     }

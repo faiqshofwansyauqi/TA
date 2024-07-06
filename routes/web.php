@@ -118,7 +118,7 @@ Route::middleware(['auth'])->group(function () {
         ///////////// SHOW PEMANTAUAN PPIA /////////////
         Route::post('store-show_ppia', [PNCController::class, 'store_showppia'])->name('postnatal_care.store_showppia');
         Route::get('ppia/show_ppia/{id}', [PNCController::class, 'show_ppia'])->name('postnatal_care.show_ppia');
-        Route::get('data-show_ppia/{NIK}', [PNCController::class, 'getData_showppia'])->name('postnatal_care.data_showppia');
+        Route::get('data-show_ppia/{id_ibu}', [PNCController::class, 'getData_showppia'])->name('postnatal_care.data_showppia');
         Route::get('show_ppia/edit_showppia/{id}', [PNCController::class, 'edit_showppia'])->name('postnatal_care.edit_showppia');
         Route::put('show_ppia/update_showppia/{id}', [PNCController::class, 'update_showppia'])->name('postnatal_care.update_showppia');
         ///////////// PEMANTAUAN BAYI /////////////

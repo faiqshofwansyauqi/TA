@@ -12,7 +12,7 @@ class Show_Ppia extends Model
     protected $fillable = [
         'id',
         'user_id',
-        'nama_ibu',
+        'id_ibu',
         'tanggal_screening_hbsag',
         'tanggal_screening_hiv',
         'tanggal_screening_sifilis',
@@ -34,6 +34,6 @@ class Show_Ppia extends Model
     ];
     public function ibu()
     {
-        return $this->belongsTo(Ibu::class, 'NIK', 'nama_ibu');
+        return $this->belongsTo(Ibu::class, 'id_ibu');
     }
 }

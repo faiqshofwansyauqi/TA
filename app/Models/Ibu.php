@@ -7,6 +7,7 @@ use App\Models\Ropb;
 use App\Models\Persalinan;
 use App\Models\Anc;
 use App\Models\Nifas;
+use App\Models\Ppia;
 use App\Models\Show_Anc;
 use App\Models\Show_Nifas;
 use App\Models\Rencana_Persalinan;
@@ -46,6 +47,10 @@ class Ibu extends Model
     public function show_anc()
     {
         return $this->hasMany(Show_Anc::class, 'id_ibu');
+    }
+    public function ppia()
+    {
+        return $this->hasMany(Ppia::class, 'id_ibu');
     }
     public function show_nifas()
     {

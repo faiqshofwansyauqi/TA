@@ -94,7 +94,7 @@ class INCController extends Controller
     public function update_persalinan(Request $request, $id)
     {
         // dd($request->all());
-        $request->validate([            
+        $request->validate([
             'kala1' => 'required',
             'kala2' => 'required',
             'bayi_lahir' => 'required',

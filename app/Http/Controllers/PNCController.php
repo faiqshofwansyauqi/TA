@@ -54,10 +54,10 @@ class PNCController extends Controller
     {
         $nifas = Nifas::where('user_id', Auth::id())->select('*');
         return DataTables::of($nifas)
-        ->addColumn('nama_ibu', function ($row) {
-            return $row->ibu ? $row->ibu->nama_ibu : 'N/A';
-        })
-        ->make(true);
+            ->addColumn('nama_ibu', function ($row) {
+                return $row->ibu ? $row->ibu->nama_ibu : 'N/A';
+            })
+            ->make(true);
     }
 
     /////// SHOW NIFAS ///////
@@ -215,7 +215,7 @@ class PNCController extends Controller
         $user = Auth::user();
         if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Show_Ppia::class);
-            $ibus = Anc::where('user_id', $user->id)->get();
+            $ibus = Anc::with('ibu')->where('user_id', $user->id)->get();
             return view('postnatal_care.ppia', compact('ibus'));
         } else {
             return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
@@ -223,19 +223,24 @@ class PNCController extends Controller
     }
     public function store_ppia(Request $request)
     {
+        // dd($request);
         $request->validate([
-            'nama_ibu',
+            'id_ibu',
         ]);
         Show_Ppia::create([
             'user_id' => Auth::id(),
-            'nama_ibu' => $request->nama_ibu,
+            'id_ibu' => $request->id_ibu,
         ]);
         return redirect()->back()->with('success', 'Data berhasil ditambahkan');
     }
     public function getData_ppia()
     {
         $ppia = Show_Ppia::where('user_id', Auth::id())->select('*');
-        return DataTables::of($ppia)->make(true);
+        return DataTables::of($ppia)
+            ->addColumn('nama_ibu', function ($row) {
+                return $row->ibu ? $row->ibu->nama_ibu : 'N/A';
+            })
+            ->make(true);
     }
 
     ///////  PEMANTAUAN SHOW PPIA ///////
@@ -246,60 +251,13 @@ class PNCController extends Controller
         if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Show_Ppia::class);
             $ppia = Show_Ppia::findOrFail($id);
-            $nama_ibu = $ppia->nama_ibu;
-            $ppias = Show_Ppia::where('user_id', $user->id)->get();
+            $id_ibu = $ppia->id_ibu;
+            $ppias = Show_Ppia::with('ibu')->where('user_id', $user->id)->get();
             return view('postnatal_care.show_ppia', compact('ppias', 'ppia'));
         } else {
             return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
         }
     }
-    // public function store_showppia(Request $request)
-    // {
-    //     // dd($request);
-    //     $request->validate([
-    //         'nama_ibu' => 'required',
-    //         'tanggal_screening_hbsag' => 'required',
-    //         'tanggal_screening_hiv' => 'required',
-    //         'tanggal_screening_sifilis' => 'required',
-    //         'kode_specimen_hbsag' => 'required',
-    //         'kode_specimen_hiv' => 'required',
-    //         'kode_specimen_sifilis' => 'required',
-    //         'hasil_screening_hbsag' => 'required',
-    //         'hasil_screening_hiv' => 'required',
-    //         'hasil_screening_sifilis' => 'required',
-    //         'tgl_masuk_pdp' => 'required',
-    //         'tgl_mulai_arv' => 'required',
-    //         'ditangani_sifilis' => 'required',
-    //         'obat_adequat' => 'required',
-    //         'dirujuk' => 'required',
-    //         'status_hiv' => 'required',
-    //         'periksa_sifilis' => 'required',
-    //         'faskes_rujukan' => 'required',
-    //     ]);
-
-    //     Show_Ppia::create([
-    //         'user_id' => Auth::id(),
-    //         'nama_ibu' => $request->nama_ibu,
-    //         'tanggal_screening_hbsag' => $request->tanggal_screening_hbsag,
-    //         'tanggal_screening_hiv' => $request->tanggal_screening_hiv,
-    //         'tanggal_screening_sifilis' => $request->tanggal_screening_sifilis,
-    //         'kode_specimen_hbsag' => $request->kode_specimen_hbsag,
-    //         'kode_specimen_hiv' => $request->kode_specimen_hiv,
-    //         'kode_specimen_sifilis' => $request->kode_specimen_sifilis,
-    //         'hasil_screening_hbsag' => $request->hasil_screening_hbsag,
-    //         'hasil_screening_hiv' => $request->hasil_screening_hiv,
-    //         'hasil_screening_sifilis' => $request->hasil_screening_sifilis,
-    //         'tgl_masuk_pdp' => $request->tgl_masuk_pdp,
-    //         'tgl_mulai_arv' => $request->tgl_mulai_arv,
-    //         'ditangani_sifilis' => $request->ditangani_sifilis,
-    //         'obat_adequat' => $request->obat_adequat,
-    //         'dirujuk' => $request->dirujuk,
-    //         'status_hiv' => $request->status_hiv,
-    //         'periksa_sifilis' => $request->periksa_sifilis,
-    //         'faskes_rujukan' => $request->faskes_rujukan,
-    //     ]);
-    //     return redirect()->back()->with('success', 'Data berhasil ditambahkan');
-    // }
     public function update_showppia(Request $request, $id)
     {
         // dd($request);
