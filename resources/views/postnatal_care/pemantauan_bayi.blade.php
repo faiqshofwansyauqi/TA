@@ -52,11 +52,11 @@
                         <div class="col-12">
                             <div class="card-body">
                                 <div class="col-md-12 mb-3">
-                                    <label for="nama_ibu" class="form-label">Ibu</label>
-                                    <select class="form-control" id="nama_ibu" name="nama_ibu" required>
+                                    <label for="id_ibu" class="form-label">Ibu</label>
+                                    <select class="form-control" id="id_ibu" name="id_ibu" required>
                                         <option value="">Pilih Ibu</option>
-                                        @foreach ($ibus as $ibu)
-                                            <option value="{{ $ibu->nama_ibu }}">{{ $ibu->nama_ibu }}</option>
+                                        @foreach ($ibus as $nifas)
+                                            <option value="{{ $nifas->ibu->id_ibu }}">{{ $nifas->ibu->nama_ibu }}</option>
                                         @endforeach
                                     </select>
                                 </div>

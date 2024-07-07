@@ -4,10 +4,7 @@
     <div class="d-flex justify-content-between align-items-center">
         <div class="pagetitle">
             <h1 style="margin-bottom: 5px">Detail Pemantauan Bayi Ibu HIV</h1>
-            <button type="button" class="btn btn-success btn-custom1" id="btn-plus">
-                <i class="bi bi-plus-circle"></i> Tambah
-            </button>
-            @foreach ($hiv as $item)
+            @foreach ($hivs as $item)
                 <button type="button" class="btn btn-primary btn-edit btn-custom1" data-id="{{ $item->id }}">
                     <i class="ri-edit-2-fill"></i> Edit
                 </button>
@@ -22,7 +19,7 @@
                     <div class="card-body">
                         <br>
                         <div class="table-responsive">
-                            @if (count($hiv) > 0)
+                            @if (count($hivs) > 0)
                                 <table class="table table-bordered table-anc">
                                     <thead>
                                         <tr>
@@ -32,7 +29,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($hiv as $item)
+                                        @foreach ($hivs as $item)
                                             <tr>
                                                 <td>Pemberian ARV</td>
                                                 <td> {{ $item->tgl_pemberian_arv }}</td>
@@ -50,8 +47,7 @@
                                             </tr>
                                             <tr>
                                                 <td>Pemeriksaan balita terdeteksi HIV (serologis) (Bayi usia >=9 bulan atau
-                                                    anak
-                                                    balita)</td>
+                                                    anak balita)</td>
                                                 <td> {{ $item->tgl_pemeriksaan_balita }}</td>
                                                 <td> {{ $item->hasil_pemeriksaan_balita }}</td>
                                             </tr>
@@ -80,133 +76,6 @@
         </div>
     </section>
 
-    <div class="modal fade" id="modalInput" tabindex="-1" aria-labelledby="ModalInput" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable modal-xl">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title fs-4 fw-bold" id="ModalInput">Input Pemantauan Bayi Ibu HIV</h3>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ route('postnatal_care.store_showhiv') }}" method="post" autocomplete="off">
-                        @csrf
-                        <div class="col-12">
-                            <div class="row d-flex align-items-stretch">
-                                <div class="card-body col-md-4 d-flex flex-column" style="padding: 20px;">
-                                    <input type="hidden" name="nama_ibu" value="{{ $pb->nama_ibu }}">
-                                    <h5 class="card-title">Jenis Pemantauan</h5>
-                                    <div class="col-md-12 mb-3">
-                                        <label class="form-label">Pemberian ARV</label>
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label class="form-label">DBS EID pada usia 6-8 minggu</label>
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label class="form-label">Konfirmasi EID dalam 12 bulan</label>
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label class="form-label">Pemeriksaan balita terdeteksi HIV (serologis) (Bayi usia
-                                            >=9 bulan atau anak balita)</label>
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label class="form-label">Balita HIV masuk perawatan PDP</label>
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label class="form-label">Balita HIV mendapat pengobatan ARV </label>
-                                    </div>
-                                    <div class="col-12 mt-auto">
-                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                    </div>
-                                </div>
-                                <div class="card-body col-md-3 d-flex flex-column" style="padding: 20px;">
-                                    <h5 class="card-title">Tanggal</h5>
-                                    <div class="col-md-12 mb-3">
-                                        <label for="tgl_pemberian_arv" class="form-label" hidden>Tanggal Pemberian
-                                            ARV</label>
-                                        <input type="date" class="form-control" id="tgl_pemberian_arv"
-                                            name="tgl_pemberian_arv">
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label for="tgl_bds" class="form-label" hidden>Tanggal DBS EID</label>
-                                        <input type="date" class="form-control" id="tgl_bds" name="tgl_bds">
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label for="tgl_konfirmasi_bds" class="form-label" hidden>Tanggal Konfirmasi
-                                            EID</label>
-                                        <input type="date" class="form-control" id="tgl_konfirmasi_bds"
-                                            name="tgl_konfirmasi_bds">
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label for="tgl_pemeriksaan_balita" class="form-label" hidden>Tanggal Pemeriksaan
-                                            Balita</label>
-                                        <input type="date" class="form-control" id="tgl_pemeriksaan_balita"
-                                            name="tgl_pemeriksaan_balita">
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label for="tgl_perawatan_pdp" class="form-label" hidden>Tanggal Perawatan
-                                            PDP</label>
-                                        <input type="date" class="form-control" id="tgl_perawatan_pdp"
-                                            name="tgl_perawatan_pdp">
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label for="tgl_pengobatan_arv" class="form-label" hidden>Tanggal Pengobatan
-                                            ARV</label>
-                                        <input type="date" class="form-control" id="tgl_pengobatan_arv"
-                                            name="tgl_pengobatan_arv">
-                                    </div>
-                                </div>
-                                <div class="card-body col-md-3 d-flex flex-column" style="padding: 20px;">
-                                    <h5 class="card-title">Hasil</h5>
-                                    <div class="col-md-12 mb-3">
-                                        <label for="hasil_pemberian_arv" class="form-label" hidden></label>
-                                        <input type="text" class="form-control" id="hasil_pemberian_arv"
-                                            name="hasil_pemberian_arv">
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label for="hasil_bds" class="form-label" hidden></label>
-                                        <select class="form-select" id="hasil_bds" name="hasil_bds">
-                                            <option value="">Pilih Hasil</option>
-                                            <option value="Reaktif">Reaktif</option>
-                                            <option value="Non Reaktif">Non Reaktif</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label for="hasil_konfirmasi_bds" class="form-label" hidden></label>
-                                        <select class="form-select" id="hasil_konfirmasi_bds"
-                                            name="hasil_konfirmasi_bds">
-                                            <option value="">Pilih Hasil</option>
-                                            <option value="Reaktif">Reaktif</option>
-                                            <option value="Non Reaktif">Non Reaktif</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label for="hasil_pemeriksaan_balita" class="form-label" hidden></label>
-                                        <select class="form-select" id="hasil_pemeriksaan_balita"
-                                            name="hasil_pemeriksaan_balita">
-                                            <option value="">Pilih Hasil</option>
-                                            <option value="Reaktif">Reaktif</option>
-                                            <option value="Non Reaktif">Non Reaktif</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label for="hasil_perawatan_pdp" class="form-label" hidden></label>
-                                        <input type="text" class="form-control" id="hasil_perawatan_pdp"
-                                            name="hasil_perawatan_pdp">
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label for="hasil_pengobatan_arv" class="form-label" hidden></label>
-                                        <input type="text" class="form-control" id="hasil_pengobatan_arv"
-                                            name="hasil_pengobatan_arv">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="ModalEdit" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-xl">
             <div class="modal-content">
@@ -221,7 +90,7 @@
                         <div class="col-12">
                             <div class="row d-flex align-items-stretch">
                                 <div class="card-body col-md-4 d-flex flex-column" style="padding: 20px;">
-                                    <input type="hidden" name="nama_ibu" value="{{ $pb->nama_ibu }}">
+                                    <input type="hidden" name="id_ibu" value="{{ $hiv->id_ibu }}">
                                     <h5 class="card-title">Jenis Pemantauan</h5>
                                     <div class="col-md-12 mb-3">
                                         <label class="form-label">Pemberian ARV</label>
@@ -266,8 +135,7 @@
                                     </div>
                                     <div class="col-md-12 mb-3">
                                         <label for="edit_tgl_pemeriksaan_balita" class="form-label" hidden>Tanggal
-                                            Pemeriksaan
-                                            Balita</label>
+                                            Pemeriksaan Balita</label>
                                         <input type="date" class="form-control" id="edit_tgl_pemeriksaan_balita"
                                             name="tgl_pemeriksaan_balita">
                                     </div>
@@ -336,52 +204,19 @@
         </div>
     </div>
 @endsection
+
 @section('script')
     <script>
         $(document).ready(function() {
-            function toggleButtons() {
-                const tableBody = $('.table-anc tbody');
-                const addButton = $('#btn-plus');
-                const editButton = $('#btn-edit');
-
-                if (tableBody.children('tr').length > 0) {
-                    addButton.hide();
-                    editButton.show();
-                } else {
-                    addButton.show();
-                    editButton.hide();
-                }
-            }
-
-            toggleButtons();
-
-            // Pastikan modal edit disembunyikan
             let modalEdit = $('#modalEdit');
-            modalEdit.modal('hide'); // Pastikan modal edit disembunyikan secara default
+            modalEdit.modal('hide');
 
-            $('#btn-plus').click(function() {
-                let modalInput = $('#modalInput');
-                modalInput.modal('show');
-            });
-
-            // Open modal for editing existing data
-            // Menggunakan event delegation untuk tombol edit
             $(document).on('click', '.btn-edit', function() {
-                var id = $(this).data('id'); // Get the ID from data-id attribute
+                var id = $(this).data('id');
                 $.ajax({
                     url: '{{ route('postnatal_care.edit_showhiv', ':id') }}'.replace(':id', id),
                     method: "GET",
                     success: function(data) {
-                        $('#modalEdit').modal('show'); // Show the modal
-                        $('#editForm').attr('action',
-                            '{{ route('postnatal_care.update_showhiv', ':id') }}'
-                            .replace(
-                                ':id', id));
-                        $('#editForm').attr('method', "POST"); // Set the method to POST
-                        $('input[name="_method"]').val(
-                            'PUT'); // Set the hidden method input to PUT
-
-                        // Fill the form with the data
                         $('#edit_tanggal_screening_hbsag').val(data.tanggal_screening_hbsag);
                         $('#edit_tgl_pemberian_arv').val(data.tgl_pemberian_arv);
                         $('#edit_hasil_pemberian_arv').val(data.hasil_pemberian_arv);
@@ -395,6 +230,12 @@
                         $('#edit_hasil_perawatan_pdp').val(data.hasil_perawatan_pdp);
                         $('#edit_tgl_pengobatan_arv').val(data.tgl_pengobatan_arv);
                         $('#edit_hasil_pengobatan_arv').val(data.hasil_pengobatan_arv);
+                        $('#modalEdit').modal('show');
+                        $('#editForm').attr('action',
+                            '{{ route('postnatal_care.update_showhiv', ':id') }}'
+                            .replace(':id', id));
+                        $('#editForm').attr('method', "POST");
+                        $('input[name="_method"]').val('PUT');
                     }
                 });
             });

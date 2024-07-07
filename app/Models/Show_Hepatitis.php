@@ -11,7 +11,7 @@ class Show_Hepatitis extends Model
     protected $fillable = [
         'id',
         'user_id',
-        'nama_ibu',
+        'id_ibu',
         'hbo',
         'hb2',
         'hbig',
@@ -25,7 +25,7 @@ class Show_Hepatitis extends Model
     ];
     public function ibu()
     {
-        return $this->belongsTo(Ibu::class, 'NIK', 'nama_ibu');
+        return $this->belongsTo(Ibu::class, 'id_ibu');
     }
     
 }

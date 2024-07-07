@@ -316,7 +316,7 @@ class PNCController extends Controller
         $user = Auth::user();
         if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Pemantauan_Bayi::class);
-            $ibus = Ppia::where('user_id', $user->id)->get();
+            $ibus = Show_Ppia::with('ibu')->where('user_id', $user->id)->get();
             return view('postnatal_care.pemantauan_bayi', compact('ibus', ));
         } else {
             return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
@@ -325,18 +325,30 @@ class PNCController extends Controller
     public function store_pemantauan_bayi(Request $request)
     {
         $request->validate([
-            'nama_ibu' => 'required',
+            'id_ibu',
         ]);
-        Pemantauan_Bayi::create([
+        Show_hepatitis::create([
             'user_id' => Auth::id(),
-            'nama_ibu' => $request->nama_ibu,
+            'id_ibu' => $request->id_ibu,
+        ]);
+        Show_Hiv::create([
+            'user_id' => Auth::id(),
+            'id_ibu' => $request->id_ibu,
+        ]);
+        Show_Sifilis::create([
+            'user_id' => Auth::id(),
+            'id_ibu' => $request->id_ibu,
         ]);
         return redirect()->back()->with('success', 'Data berhasil ditambahkan');
     }
     public function getData_pemantauan_bayi()
     {
-        $pb = Pemantauan_Bayi::where('user_id', Auth::id())->select('*');
-        return DataTables::of($pb)->make(true);
+        $pemantauan_bayi = Show_Hepatitis::where('user_id', Auth::id())->select('*');
+        return DataTables::of($pemantauan_bayi)
+            ->addColumn('nama_ibu', function ($row) {
+                return $row->ibu ? $row->ibu->nama_ibu : 'N/A';
+            })
+            ->make(true);
     }
 
 
@@ -347,72 +359,41 @@ class PNCController extends Controller
         $user = Auth::user();
         if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Show_Hepatitis::class);
-            $pb = Pemantauan_Bayi::findOrFail($id);
-            $nama_ibu = $pb->nama_ibu;
-            $hepatitis = Show_Hepatitis::where('user_id', $user->id)->get();
+            $hepatitis = Show_Hepatitis::findOrFail($id);
+            $id_ibu = $hepatitis->id_ibu;
+            $hepatitiss = Show_Hepatitis::with('ibu')->where('user_id', $user->id)->get();
 
-            foreach ($hepatitis as $item) {
-                $item->hbo = Carbon::parse($item->hbo)->format('d M Y / H:i');
-                $item->hb2 = Carbon::parse($item->hb2)->format('d M Y / H:i');
-                $item->hbig = Carbon::parse($item->hbig)->format('d M Y / H:i');
-                $item->hb3 = Carbon::parse($item->hb3)->format('d M Y / H:i');
-                $item->hb1 = Carbon::parse($item->hb1)->format('d M Y / H:i');
-                $item->tanggal_hbsag = Carbon::parse($item->tanggal_hbsag)->format('d M Y / H:i');
-                $item->tanggal_antihbs = Carbon::parse($item->tanggal_antihbs)->format('d M Y / H:i');
+            foreach ($hepatitiss as $item) {
+                $item->hbo = $item->hbo ? Carbon::parse($item->hbo)->format('d/m/Y H:i') : null;
+                $item->hb2 = $item->hb2 ? Carbon::parse($item->hb2)->format('d/m/Y H:i') : null;
+                $item->hbig = $item->hbig ? Carbon::parse($item->hbig)->format('d/m/Y H:i') : null;
+                $item->hb3 = $item->hb3 ? Carbon::parse($item->hb3)->format('d/m/Y H:i') : null;
+                $item->hb1 = $item->hb1 ? Carbon::parse($item->hb1)->format('d/m/Y H:i') : null;
+                $item->tanggal_hbsag = $item->tanggal_hbsag ? Carbon::parse($item->tanggal_hbsag)->format('d/m/Y H:i') : null;
+                $item->tanggal_antihbs = $item->tanggal_antihbs ? Carbon::parse($item->tanggal_antihbs)->format('d/m/Y H:i') : null;
             }
-            return view('postnatal_care.show_hepatitis', compact('pb', 'hepatitis'));
+            return view('postnatal_care.show_hepatitis', compact('hepatitiss', 'hepatitis'));
         } else {
             return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
         }
-    }
-    public function store_showhepatitis(Request $request)
-    {
-        // dd($request);
-        $request->validate([
-            'nama_ibu' => 'required',
-            'hbo' => 'required',
-            'hb2' => 'required',
-            'hbig' => 'required',
-            'hb3' => 'required',
-            'hb1' => 'required',
-            'tanggal_hbsag' => 'required',
-            'hasil_hbsag' => 'required',
-            'tanggal_antihbs' => 'required',
-            'hasil_antihbs' => 'required',
-        ]);
-
-        Show_hepatitis::create([
-            'user_id' => Auth::id(),
-            'nama_ibu' => $request->nama_ibu,
-            'hbo' => $request->hbo,
-            'hb2' => $request->hb2,
-            'hbig' => $request->hbig,
-            'hb3' => $request->hb3,
-            'hb1' => $request->hb1,
-            'tanggal_hbsag' => $request->tanggal_hbsag,
-            'hasil_hbsag' => $request->hasil_hbsag,
-            'tanggal_antihbs' => $request->tanggal_antihbs,
-            'hasil_antihbs' => $request->hasil_antihbs,
-        ]);
-        return redirect()->back()->with('success', 'Data berhasil ditambahkan');
     }
     public function update_showhepatitis(Request $request, $id)
     {
         // dd($request);
         $request->validate([
-            'hbo' => 'required',
-            'hb2' => 'required',
-            'hbig' => 'required',
-            'hb3' => 'required',
-            'hb1' => 'required',
-            'tanggal_hbsag' => 'required',
-            'hasil_hbsag' => 'required',
-            'tanggal_antihbs' => 'required',
-            'hasil_antihbs' => 'required',
+            'hbo',
+            'hb2',
+            'hbig',
+            'hb3',
+            'hb1',
+            'tanggal_hbsag',
+            'hasil_hbsag',
+            'tanggal_antihbs',
+            'hasil_antihbs',
 
         ]);
-        $hepatitis = Show_Hepatitis::findOrFail($id);
-        $hepatitis->update([
+        $hepatitiss = Show_Hepatitis::findOrFail($id);
+        $hepatitiss->update([
             'hbo' => $request->hbo,
             'hb2' => $request->hb2,
             'hbig' => $request->hbig,
@@ -427,8 +408,8 @@ class PNCController extends Controller
     }
     public function edit_showhepatitis($id)
     {
-        $hepatitis = Show_Hepatitis::findOrFail($id);
-        return response()->json($hepatitis);
+        $hepatitiss = Show_Hepatitis::findOrFail($id);
+        return response()->json($hepatitiss);
     }
 
     ///////  PEMANTAUAN BAYI IBU HIV ///////
@@ -438,79 +419,43 @@ class PNCController extends Controller
         $user = Auth::user();
         if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Show_Hiv::class);
-            $pb = Pemantauan_Bayi::findOrFail($id);
-            $nama_ibu = $pb->nama_ibu;
-            $hiv = Show_Hiv::where('nama_ibu', $nama_ibu)->get();
-            foreach ($hiv as $item) {
-                $item->tgl_pemberian_arv = Carbon::parse($item->tgl_pemberian_arv)->format('d M Y');
-                $item->tgl_bds = Carbon::parse($item->tgl_bds)->format('d M Y');
-                $item->tgl_konfirmasi_bds = Carbon::parse($item->tgl_konfirmasi_bds)->format('d M Y');
-                $item->tgl_pemeriksaan_balita = Carbon::parse($item->tgl_pemeriksaan_balita)->format('d M Y');
-                $item->tgl_perawatan_pdp = Carbon::parse($item->tgl_perawatan_pdp)->format('d M Y');
-                $item->tgl_pengobatan_arv = Carbon::parse($item->tgl_pengobatan_arv)->format('d M Y');
+            $hiv = Show_Hiv::findOrFail($id);
+            $id_ibu = $hiv->id_ibu;
+            $hivs = Show_Hiv::with('ibu')->where('user_id', $user->id)->get();
+
+            foreach ($hivs as $item) {
+                $item->tgl_pemberian_arv = $item->tgl_pemberian_arv ? Carbon::parse($item->tgl_pemberian_arv)->format('d/m/Y') : null;
+                $item->tgl_bds = $item->tgl_bds ? Carbon::parse($item->tgl_bds)->format('d/m/Y') : null;
+                $item->tgl_konfirmasi_bds = $item->tgl_konfirmasi_bds ? Carbon::parse($item->tgl_konfirmasi_bds)->format('d/m/Y') : null;
+                $item->tgl_pemeriksaan_balita = $item->tgl_pemeriksaan_balita ? Carbon::parse($item->tgl_pemeriksaan_balita)->format('d/m/Y') : null;
+                $item->tgl_perawatan_pdp = $item->tgl_perawatan_pdp ? Carbon::parse($item->tgl_perawatan_pdp)->format('d/m/Y') : null;
+                $item->tgl_pengobatan_arv = $item->tgl_pengobatan_arv ? Carbon::parse($item->tgl_pengobatan_arv)->format('d/m/Y') : null;
             }
-            return view('postnatal_care.show_hiv', compact('pb', 'hiv'));
+            return view('postnatal_care.show_hiv', compact('hivs', 'hiv'));
         } else {
             return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
         }
-    }
-    public function store_showhiv(Request $request)
-    {
-        // dd($request);
-        $request->validate([
-            'nama_ibu' => 'required',
-            'tgl_pemberian_arv' => 'required',
-            'hasil_pemberian_arv' => 'required',
-            'tgl_bds' => 'required',
-            'hasil_bds' => 'required',
-            'tgl_konfirmasi_bds' => 'required',
-            'hasil_konfirmasi_bds' => 'required',
-            'tgl_pemeriksaan_balita' => 'required',
-            'hasil_pemeriksaan_balita' => 'required',
-            'tgl_perawatan_pdp' => 'required',
-            'hasil_perawatan_pdp' => 'required',
-            'tgl_pengobatan_arv' => 'required',
-            'hasil_pengobatan_arv' => 'required',
-        ]);
-
-        Show_Hiv::create([
-            'user_id' => Auth::id(),
-            'nama_ibu' => $request->nama_ibu,
-            'tgl_pemberian_arv' => $request->tgl_pemberian_arv,
-            'hasil_pemberian_arv' => $request->hasil_pemberian_arv,
-            'tgl_bds' => $request->tgl_bds,
-            'hasil_bds' => $request->hasil_bds,
-            'tgl_konfirmasi_bds' => $request->tgl_konfirmasi_bds,
-            'hasil_konfirmasi_bds' => $request->hasil_konfirmasi_bds,
-            'tgl_pemeriksaan_balita' => $request->tgl_pemeriksaan_balita,
-            'hasil_pemeriksaan_balita' => $request->hasil_pemeriksaan_balita,
-            'tgl_perawatan_pdp' => $request->tgl_perawatan_pdp,
-            'hasil_perawatan_pdp' => $request->hasil_perawatan_pdp,
-            'tgl_pengobatan_arv' => $request->tgl_pengobatan_arv,
-            'hasil_pengobatan_arv' => $request->hasil_pengobatan_arv,
-        ]);
-        return redirect()->back()->with('success', 'Data berhasil ditambahkan');
     }
     public function update_showhiv(Request $request, $id)
     {
         // dd($request);
         $request->validate([
-            'tgl_pemberian_arv' => 'required',
-            'hasil_pemberian_arv' => 'required',
-            'tgl_bds' => 'required',
-            'hasil_bds' => 'required',
-            'tgl_konfirmasi_bds' => 'required',
-            'hasil_konfirmasi_bds' => 'required',
-            'tgl_pemeriksaan_balita' => 'required',
-            'hasil_pemeriksaan_balita' => 'required',
-            'tgl_perawatan_pdp' => 'required',
-            'hasil_perawatan_pdp' => 'required',
-            'tgl_pengobatan_arv' => 'required',
-            'hasil_pengobatan_arv' => 'required',
+            'tgl_pemberian_arv',
+            'hasil_pemberian_arv',
+            'tgl_bds',
+            'hasil_bds',
+            'tgl_konfirmasi_bds',
+            'hasil_konfirmasi_bds',
+            'tgl_pemeriksaan_balita',
+            'hasil_pemeriksaan_balita',
+            'tgl_perawatan_pdp',
+            'hasil_perawatan_pdp',
+            'tgl_pengobatan_arv',
+            'hasil_pengobatan_arv',
 
         ]);
-        $hiv = Show_Hiv::findOrFail($id);
-        $hiv->update([
+        $hivs = Show_Hiv::findOrFail($id);
+        $hivs->update([
             'tgl_pemberian_arv' => $request->tgl_pemberian_arv,
             'hasil_pemberian_arv' => $request->hasil_pemberian_arv,
             'tgl_bds' => $request->tgl_bds,
@@ -528,8 +473,8 @@ class PNCController extends Controller
     }
     public function edit_showhiv($id)
     {
-        $hiv = Show_Hiv::findOrFail($id);
-        return response()->json($hiv);
+        $hivs = Show_Hiv::findOrFail($id);
+        return response()->json($hivs);
     }
 
     ///////  PEMANTAUAN BAYI IBU SIFILIS ///////
@@ -539,46 +484,25 @@ class PNCController extends Controller
         $user = Auth::user();
         if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Show_sifilis::class);
-            $pb = Pemantauan_Bayi::findOrFail($id);
-            $nama_ibu = $pb->nama_ibu;
-            $sifilis = Show_Sifilis::where('user_id', $user->id)->get();
-            return view('postnatal_care.show_sifilis', compact('pb', 'sifilis'));
+            $sifilis = Show_Sifilis::findOrFail($id);
+            $id_ibu = $sifilis->id_ibu;
+            $sifiliss = Show_Sifilis::with('ibu')->where('user_id', $user->id)->get();
+            return view('postnatal_care.show_sifilis', compact('sifiliss', 'sifilis'));
         } else {
             return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
         }
-    }
-    public function store_showsifilis(Request $request)
-    {
-        // dd($request);
-        $request->validate([
-            'nama_ibu' => 'required',
-            'sifilis_dirujuk' => 'required',
-            'periksa_sifilis' => 'required',
-            'hasil_sifilis' => 'required',
-        ]);
-
-        Show_Sifilis::create([
-            'user_id' => Auth::id(),
-            'nama_ibu' => $request->nama_ibu,
-            'sifilis_dirujuk' => $request->sifilis_dirujuk,
-            'periksa_sifilis' => $request->periksa_sifilis,
-            'hasil_sifilis' => $request->hasil_sifilis,
-        ]);
-        return redirect()->back()->with('success', 'Data berhasil ditambahkan');
     }
     public function update_showsifilis(Request $request, $id)
     {
         // dd($request);
         $request->validate([
-            'nama_ibu' => 'required',
-            'sifilis_dirujuk' => 'required',
-            'periksa_sifilis' => 'required',
-            'hasil_sifilis' => 'required',
+            'sifilis_dirujuk',
+            'periksa_sifilis',
+            'hasil_sifilis',
 
         ]);
-        $sifilis = Show_Sifilis::findOrFail($id);
-        $sifilis->update([
-            'nama_ibu' => $request->nama_ibu,
+        $sifiliss = Show_Sifilis::findOrFail($id);
+        $sifiliss->update([
             'sifilis_dirujuk' => $request->sifilis_dirujuk,
             'periksa_sifilis' => $request->periksa_sifilis,
             'hasil_sifilis' => $request->hasil_sifilis,
@@ -587,8 +511,8 @@ class PNCController extends Controller
     }
     public function edit_showsifilis($id)
     {
-        $sifilis = Show_Sifilis::findOrFail($id);
-        return response()->json($sifilis);
+        $sifiliss = Show_Sifilis::findOrFail($id);
+        return response()->json($sifiliss);
     }
 
 }

@@ -11,7 +11,7 @@ class Show_Hiv extends Model
     protected $fillable = [
         'id',
         'user_id',
-        'nama_ibu',
+        'id_ibu',
         'tgl_pemberian_arv',
         'hasil_pemberian_arv',
         'tgl_bds',
@@ -27,6 +27,6 @@ class Show_Hiv extends Model
     ];
     public function ibu()
     {
-        return $this->belongsTo(Ibu::class, 'NIK', 'nama_ibu');
+        return $this->belongsTo(Ibu::class, 'id_ibu');
     }
 }

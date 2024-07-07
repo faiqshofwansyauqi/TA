@@ -16,9 +16,11 @@ class CreatePemantauanBayiTable extends Migration
         Schema::create('pemantauan_bayi', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('id_ibu');
             $table->string('nama_ibu');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('id_ibu')->references('id_ibu')->on('ibu')->onDelete('cascade');
         });
     }
 
@@ -31,6 +33,7 @@ class CreatePemantauanBayiTable extends Migration
     {
         Schema::table('pemantauan_bayi', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
+            $table->dropForeign(['id_ibu']);
         });
         Schema::dropIfExists('pemantauan_bayi');
     }

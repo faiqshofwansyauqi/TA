@@ -12,13 +12,13 @@ class Show_Sifilis extends Model
     protected $fillable = [
         'id',
         'user_id',
-        'nama_ibu',
+        'id_ibu',
         'sifilis_dirujuk',
         'periksa_sifilis',
         'hasil_sifilis',
     ];
     public function ibu()
     {
-        return $this->belongsTo(Ibu::class, 'nama_ibu', 'nama_ibu');
+        return $this->belongsTo(Ibu::class, 'id_ibu');
     }
 }

@@ -16,7 +16,7 @@ class CreateIbuHepatitisTable extends Migration
         Schema::create('ibu_hepatitis', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('nama_ibu');
+            $table->unsignedBigInteger('id_ibu');
             $table->dateTime('hbo');
             $table->dateTime('hb2');
             $table->dateTime('hbig');
@@ -28,6 +28,7 @@ class CreateIbuHepatitisTable extends Migration
             $table->string('hasil_antihbs');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('id_ibu')->references('id_ibu')->on('ibu')->onDelete('cascade');
         });
     }
 
@@ -40,6 +41,7 @@ class CreateIbuHepatitisTable extends Migration
     {
         Schema::table('ibu_hepatitis', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
+            $table->dropForeign(['id_ibu']);
         });
         Schema::dropIfExists('ibu_hepatitis');
     }

@@ -7,7 +7,7 @@
             <button type="button" class="btn btn-success btn-custom1" id="btn-plus">
                 <i class="bi bi-plus-circle"></i> Tambah
             </button>
-            @foreach ($sifilis as $item)
+            @foreach ($sifiliss as $item)
                 <button type="button" class="btn btn-primary btn-edit btn-custom1" data-id="{{ $item->id }}">
                     <i class="ri-edit-2-fill"></i> Edit
                 </button>
@@ -22,7 +22,7 @@
                     <div class="card-body">
                         <br>
                         <div class="table-responsive">
-                            @if (count($sifilis) > 0)
+                            @if (count($sifiliss) > 0)
                                 <table class="table table-bordered table-anc">
                                     <thead>
                                         <tr>
@@ -30,16 +30,16 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($sifilis as $item)
+                                        @foreach ($sifiliss as $item)
                                             <tr>
                                                 <td>Bayi dari ibu Sifilis dirujuk</td>
-                                                <td>Ya / Tidak</td>
+                                                <td>{{ $item->sifilis_dirujuk }}</td>
                                                 <td></td>
                                             </tr>
                                             <tr>
                                                 <td>Bayi &lt;2 tahun diperiksa Sifilis</td>
-                                                <td>Ya / Tidak</td>
-                                                <td>Hasil: Reaktif/Non Reaktif</td>
+                                                <td>{{ $item->periksa_sifilis }}</td>
+                                                <td>Hasil: {{ $item->hasil_sifilis }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -56,69 +56,6 @@
         </div>
     </section>
 
-    <div class="modal fade" id="modalInput" tabindex="-1" aria-labelledby="ModalInput" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title fs-4 fw-bold" id="ModalInput">Input Pemantauan Bayi Ibu Sifilis</h3>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ route('postnatal_care.store_showsifilis') }}" method="post" autocomplete="off">
-                        @csrf
-                        <div class="col-12">
-                            <div class="row d-flex align-items-stretch">
-                                <div class="card-body col-md-4 d-flex flex-column" style="padding: 30px;">
-                                    <input type="hidden" name="nama_ibu" value="{{ $pb->nama_ibu }}">
-                                    <h5 class="card-title" hidden></h5>
-                                    <div class="col-md-12 mb-3">
-                                        <label class="form-label">Bayi dari ibu sifilis dirujuk</label>
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label class="form-label">Bayi <2 tahun diperiksa sifilis</label>
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label class="form-label">Hasil</label>
-                                    </div>
-                                    <div class="col-12 mt-auto">
-                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                    </div>
-                                </div>
-                                <div class="card-body col-md-4 d-flex flex-column" style="padding: 30px;">
-                                    <h5 class="card-title" hidden></h5>
-                                    <div class="col-md-12 mb-2">
-                                        <label for="sifilis_dirujuk" class="form-label" hidden></label>
-                                        <select class="form-select" id="sifilis_dirujuk" name="sifilis_dirujuk">
-                                            <option value="">Pilih Tiba</option>
-                                            <option value="Ya">Ya</option>
-                                            <option value="Tidak">Tidak</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-12 mb-2">
-                                        <label for="periksa_sifilis" class="form-label" hidden></label>
-                                        <select class="form-select" id="periksa_sifilis" name="periksa_sifilis">
-                                            <option value="">Pilih Tiba</option>
-                                            <option value="Ya">Ya</option>
-                                            <option value="Tidak">Tidak</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-12 mb-2">
-                                        <label for="hasil_sifilis" class="form-label" hidden></label>
-                                        <select class="form-select" id="hasil_sifilis" name="hasil_sifilis">
-                                            <option value="">Pilih Tiba</option>
-                                            <option value="Reaktif">Reaktif</option>
-                                            <option value="Non Reaktif">Non Reaktif</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="ModalEdit" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-xl">
             <div class="modal-content">
@@ -133,7 +70,7 @@
                         <div class="col-12">
                             <div class="row d-flex align-items-stretch">
                                 <div class="card-body col-md-4 d-flex flex-column" style="padding: 30px;">
-                                    <input type="hidden" name="nama_ibu" value="{{ $pb->nama_ibu }}">
+                                    <input type="hidden" name="id_ibu" value="{{ $sifilis->id_ibu }}">
                                     <h5 class="card-title" hidden></h5>
                                     <div class="col-md-12 mb-3">
                                         <label class="form-label">Bayi dari ibu sifilis dirujuk</label>
