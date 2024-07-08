@@ -50,11 +50,11 @@
                             <div class="card-body">
                                 <h5 class="card-title"></h5>
                                 <div class="col-md-12 mb-3">
-                                    <label for="nama_anak" class="form-label">Nama Anak</label>
-                                    <select class="form-control" id="nama_anak" name="nama_anak" required>
+                                    <label for="id_anak" class="form-label">Nama Anak</label>
+                                    <select class="form-control" id="id_anak" name="id_anak" required>
                                         <option value="">Pilih Nama Anak</option>
                                         @foreach ($anaks as $anak)
-                                            <option value="{{ $anak->nama_anak }}">{{ $anak->nama_anak }}</option>
+                                            <option value="{{ $anak->id_anak }}">{{ $anak->nama_anak }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -67,8 +67,13 @@
                                     </select>
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                    <label for="nama_ibu" class="form-label">Nama Ibu</label>
-                                    <input type="text" class="form-control" id="nama_ibu" name="nama_ibu">
+                                    <label for="id_ibu" class="form-label">Ibu</label>
+                                    <select class="form-control" id="id_ibu" name="id_ibu" required>
+                                        <option value="">Pilih Ibu</option>
+                                        @foreach ($anaks as $anak)
+                                            <option value="{{ $anak->ibu->id_ibu }}">{{ $anak->ibu->nama_ibu }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -150,14 +155,14 @@
                 });
             });
 
-            $('#nama_anak').change(function() {
-                var namaAnak = $(this).val();
+            $('#id_anak').change(function() {
+                var id_anak = $(this).val();
                 $.ajax({
-                    url: '{{ route('kms.info_anak', ':nama_anak') }}'.replace(':nama_anak',
-                        namaAnak),
+                    url: '{{ route('kms.info_anak', ':id_anak') }}'.replace(':id_anak',
+                        id_anak),
                     type: 'GET',
                     success: function(response) {
-                        $('#nama_ibu').val(response.nama_ibu);
+                        $('#id_ibu').val(response.id_ibu);
                         $('#jenis_kelamin').val(response.jenis_kelamin);
                     },
                     error: function(xhr, status, error) {

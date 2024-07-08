@@ -9,7 +9,9 @@ use App\Models\Anc;
 use App\Models\Nifas;
 use App\Models\Ppia;
 use App\Models\Show_Anc;
+use App\Models\KMS;
 use App\Models\Show_Nifas;
+use App\Models\Show_Kms;
 use App\Models\Show_Hepatitis;
 use App\Models\Show_Hiv;
 use App\Models\Show_Sifilis;
@@ -51,9 +53,17 @@ class Ibu extends Model
     {
         return $this->hasMany(Anak::class, 'id_ibu');
     }
+    public function kms()
+    {
+        return $this->hasMany(KMS::class, 'id_ibu');
+    }
     public function show_anc()
     {
         return $this->hasMany(Show_Anc::class, 'id_ibu');
+    }
+    public function show_kms()
+    {
+        return $this->hasMany(Show_Kms::class, 'id_ibu');
     }
     public function show_hapatitis()
     {

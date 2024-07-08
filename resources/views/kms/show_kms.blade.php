@@ -104,7 +104,8 @@
                         <div class="col-12">
                             <div class="card-body">
                                 <h5 class="card-title"></h5>
-                                <input type="hidden" name="nama_anak" value="{{ $kms->nama_anak }}">
+                                <input type="hidden" name="id_anak" value="{{ $kms->id_anak }}">
+                                <input type="hidden" name="id_ibu" value="{{ $kms->id_ibu }}">
                                 <div class="mb-3">
                                     <label for="bulan_penimbangan">Bulan penimbangan</label>
                                     <input type="date" class="form-control" id="bulan_penimbangan"
@@ -205,7 +206,7 @@
                     }]
                 },
                 options: {
-                    responsive: false, // Disable responsiveness
+                    responsive: false,
                     plugins: {
                         zoom: {
                             pan: {

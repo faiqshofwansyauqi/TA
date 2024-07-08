@@ -16,11 +16,13 @@ class CreateKmsTable extends Migration
         Schema::create('kms', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('nama_anak');
-            $table->string('nama_ibu');
+            $table->unsignedBigInteger('id_anak');
+            $table->unsignedBigInteger('id_ibu');
             $table->string('jenis_kelamin');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('id_ibu')->references('id_ibu')->on('ibu')->onDelete('cascade');
+            $table->foreign('id_anak')->references('id_anak')->on('anak')->onDelete('cascade');
         });
     }
 
@@ -33,6 +35,8 @@ class CreateKmsTable extends Migration
     {
         Schema::table('kms', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
+            $table->dropForeign(['id_ibu']);
+            $table->dropForeign(['id_anak']);
         });
         Schema::dropIfExists('kms');
     }

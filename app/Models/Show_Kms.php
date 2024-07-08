@@ -11,10 +11,19 @@ class Show_Kms extends Model
     protected $fillable = [
         'id',
         'user_id',
-        'nama_anak',
+        'id_anak',
+        'id_ibu',
         'bulan_penimbangan',
         'berat_badan',
         'nt',
         'asi_eksklusif',
     ];
+    public function ibu()
+    {
+        return $this->belongsTo(Ibu::class, 'id_ibu');
+    }
+    public function anak()
+    {
+        return $this->belongsTo(Anak::class, 'id_anak');
+    }
 }
