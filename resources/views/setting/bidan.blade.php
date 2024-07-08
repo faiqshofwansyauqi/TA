@@ -3,7 +3,7 @@
 @section('content')
     <div class="d-flex justify-content-between align-items-center">
         <div class="pagetitle">
-            <h1 style="margin-bottom: 5px">Master Admin</h1>
+            <h1 style="margin-bottom: 5px">Master Bidan</h1>
             <button type="button" class="btn btn-success btn-custom1" id="btn-plus">
                 <i class="bi bi-plus-circle"></i> Tambah
             </button>

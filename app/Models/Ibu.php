@@ -47,6 +47,10 @@ class Ibu extends Model
         'gol_darah',
         'telp',
     ];
+    public function anak()
+    {
+        return $this->hasMany(Anak::class, 'id_ibu');
+    }
     public function show_anc()
     {
         return $this->hasMany(Show_Anc::class, 'id_ibu');

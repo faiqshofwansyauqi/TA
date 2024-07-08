@@ -168,18 +168,18 @@ class PasienController extends Controller
         $user = Auth::user();
         if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Anak::class);
-            $ibus = Ibu::where('user_id', $user->id)->get();
+            $ibus = Persalinan::with('ibu')->where('user_id', $user->id)->get();
             return view('pasien.anak', compact('ibus'));
         } else {
             return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
         }
     }
-    public function getInfo_ibu($nama_ibu)
+    public function getInfo_ibu($id_ibu)
     {
-        $ibu = Ibu::where('nama_ibu', $nama_ibu)->first();
+        $ibu = Ibu::where('id_ibu', $id_ibu)->first();
         if ($ibu) {
-            $persalinan = Persalinan::where('nama_ibu', $ibu->nama_ibu)->first();
-            $show_anc = Show_Anc::where('nama_ibu', $ibu->nama_ibu)->first();
+            $persalinan = Persalinan::where('id_ibu', $ibu->id_ibu)->first();
+            $show_anc = Show_Anc::where('id_ibu', $ibu->id_ibu)->first();
             return response()->json([
                 'ibu' => $ibu,
                 'persalinan' => $persalinan,
@@ -195,7 +195,7 @@ class PasienController extends Controller
         // dd($request);
         $request->validate([
             'nama_anak' => 'required',
-            'nama_ibu' => 'required',
+            'id_ibu' => 'required',
             'nama_suami' => 'required',
             'alamat' => 'required',
             'kec' => 'required',
@@ -212,7 +212,7 @@ class PasienController extends Controller
         Anak::create([
             'user_id' => Auth::id(),
             'nama_anak' => $request->nama_anak,
-            'nama_ibu' => $request->nama_ibu,
+            'id_ibu' => $request->id_ibu,
             'nama_suami' => $request->nama_suami,
             'alamat' => $request->alamat,
             'kec' => $request->kec,
@@ -232,7 +232,7 @@ class PasienController extends Controller
     {
         $request->validate([
             'nama_anak' => 'required',
-            'nama_ibu' => 'required',
+            'id_ibu' => 'required',
             'nama_suami' => 'required',
             'alamat' => 'required',
             'kec' => 'required',
@@ -248,7 +248,7 @@ class PasienController extends Controller
         $anak = Anak::findOrFail($id);
         $anak->update([
             'nama_anak' => $request->nama_anak,
-            'nama_ibu' => $request->nama_ibu,
+            'id_ibu' => $request->id_ibu,
             'nama_suami' => $request->nama_suami,
             'alamat' => $request->alamat,
             'kec' => $request->kec,
@@ -282,6 +282,10 @@ class PasienController extends Controller
     {
         $anak = Anak::where('user_id', Auth::id())->select('*');
 
-        return DataTables::of($anak)->make(true);
+        return DataTables::of($anak)
+            ->addColumn('nama_ibu', function ($row) {
+                return $row->ibu ? $row->ibu->nama_ibu : 'N/A';
+            })
+            ->make(true);
     }
 }

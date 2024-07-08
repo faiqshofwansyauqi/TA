@@ -69,11 +69,12 @@
                                         <input type="text" class="form-control" id="nama_anak" name="nama_anak" required>
                                     </div>
                                     <div class="col-md-4 mb-3">
-                                        <label for="nama_ibu" class="form-label">Nama Ibu</label>
-                                        <select class="form-control" id="nama_ibu" name="nama_ibu" required>
+                                        <label for="id_ibu" class="form-label">Nama Ibu</label>
+                                        <select class="form-control" id="id_ibu" name="id_ibu" required>
                                             <option value="">Pilih Ibu</option>
-                                            @foreach ($ibus as $ibu)
-                                                <option value="{{ $ibu->nama_ibu }}">{{ $ibu->nama_ibu }}</option>
+                                            @foreach ($ibus as $persalinan)
+                                                <option value="{{ $persalinan->ibu->id_ibu }}">
+                                                    {{ $persalinan->ibu->nama_ibu }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -131,7 +132,7 @@
                                         <label for="berat_bayi" class="form-label">Berat Bayi</label>
                                         <div class="input-group mb-3">
                                             <input type="text" class="form-control" id="berat_bayi" name="berat_bayi"
-                                                inputmode="numeric" pattern="\,d*" required>
+                                                inputmode="numeric" pattern="\d+(\.\d{1,2})?" required>
                                             <span class="input-group-text">gram</span>
                                         </div>
                                     </div>
@@ -139,10 +140,12 @@
                                         <label for="panjang_bayi" class="form-label">Panjang Bayi</label>
                                         <div class="input-group mb-3">
                                             <input type="text" class="form-control" id="panjang_bayi"
-                                                name="panjang_bayi" inputmode="numeric" pattern="\,d*" required>
+                                                name="panjang_bayi" inputmode="numeric" pattern="\d+(\.\d{1,2})?"
+                                                required>
                                             <span class="input-group-text">cm</span>
                                         </div>
                                     </div>
+
                                     <div class="col-md-3 mb-3">
                                         <label for="bayi_lahir" class="form-label">Tanggal Lahir</label>
                                         <input type="datetime-local" class="form-control" id="bayi_lahir" required
@@ -184,10 +187,15 @@
                                             required>
                                     </div>
                                     <div class="col-md-4 mb-3">
-                                        <label for="edit_nama_ibu" class="form-label">Nama Ibu</label>
-                                        <input type="text" class="form-control" id="edit_nama_ibu" name="nama_ibu"
-                                            value="{{ $ibu }}" readonly>
-                                    </div>
+                                        <label for="edit_id_ibu" class="form-label">Nama Ibu</label>
+                                        <select class="form-control" id="edit_id_ibu" name="id_ibu" required>
+                                            @foreach ($ibus as $persalinan)
+                                                <option value="{{ $persalinan->ibu->id_ibu }}">
+                                                    {{ $persalinan->ibu->nama_ibu }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>                                    
                                     <div class="col-md-4 mb-3">
                                         <label for="edit_nama_suami" class="form-label">Nama Suami</label>
                                         <input type="text" class="form-control" id="edit_nama_suami"
@@ -401,7 +409,7 @@
                     className: 'btn btn-secondary btn-custom2',
                 }],
                 columnDefs: [{
-                    targets: [7,4, 8, 9, 10, 11, 12, 13],
+                    targets: [7, 4, 8, 9, 10, 11, 12, 13],
                     visible: false
                 }]
             });
@@ -417,7 +425,7 @@
                 method: 'GET',
                 success: function(data) {
                     $('#edit_nama_anak').val(data.nama_anak);
-                    $('#edit_nama_ibu').val(data.nama_ibu);
+                    $('#edit_id_ibu').val(data.id_ibu);
                     $('#edit_nama_suami').val(data.nama_suami);
                     $('#edit_alamat').val(data.alamat);
                     $('#edit_kec').val(data.kec);
@@ -436,8 +444,8 @@
             });
         });
         $(document).ready(function() {
-            $('#nama_ibu').change(function() {
-                var nama_ibu = $(this).val();
+            $('#id_ibu').change(function() {
+                var id_ibu = $(this).val();
                 $('#id_ibu').val('');
                 $('#nama_suami').val('');
                 $('#alamat').val('');
@@ -448,15 +456,15 @@
                 $('#berat_bayi').val('');
                 $('#tempat').val('');
                 $('#jenis_kelahiran').val('');
-                if (nama_ibu) {
+                if (id_ibu) {
                     $.ajax({
-                        url: '{{ route('pasien.info_ibu', ':nama_ibu') }}'.replace(':nama_ibu',
-                            nama_ibu),
+                        url: '{{ route('pasien.info_ibu', ':id_ibu') }}'.replace(':id_ibu',
+                            id_ibu),
                         type: 'GET',
                         dataType: 'json',
                         success: function(response) {
                             if (response.ibu) {
-                                $('#id_ibu').val(response.ibu.NIK);
+                                $('#id_ibu').val(response.ibu.id_ibu);
                                 $('#nama_suami').val(response.ibu.nama_suami);
                                 $('#alamat').val(response.ibu.alamat_domisili);
                                 $('#kec').val(response.ibu.kec);

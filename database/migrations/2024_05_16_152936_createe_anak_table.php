@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAnakTable extends Migration
+class CreateeAnakTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,8 +16,8 @@ class CreateAnakTable extends Migration
         Schema::create('anak', function (Blueprint $table) {
             $table->id('id_anak');
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('id_ibu');
             $table->string('nama_anak');
-            $table->string('nama_ibu');
             $table->string('nama_suami');
             $table->string('alamat');
             $table->string('kec');
@@ -31,6 +31,7 @@ class CreateAnakTable extends Migration
             $table->string('tempat');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('id_ibu')->references('id_ibu')->on('ibu')->onDelete('cascade');
         });
     }
 
@@ -43,6 +44,7 @@ class CreateAnakTable extends Migration
     {
         Schema::table('anak', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
+            $table->dropForeign(['id_ibu']);
         });
         Schema::dropIfExists('anak');
     }

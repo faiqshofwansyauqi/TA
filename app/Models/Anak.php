@@ -11,8 +11,8 @@ class Anak extends Model
     protected $primaryKey = 'id_anak';
     protected $fillable = [
         'user_id',
+        'id_ibu',
         'nama_anak',
-        'nama_ibu',
         'nama_suami',
         'alamat',
         'kec',
@@ -27,7 +27,7 @@ class Anak extends Model
     ];
     public function ibu()
     {
-        return $this->belongsTo(Ibu::class, 'id_ibu','nama_ibu');
+        return $this->belongsTo(Ibu::class, 'id_ibu');
     }
     public $timestamps = false;
 }
