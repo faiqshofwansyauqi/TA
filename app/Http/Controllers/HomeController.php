@@ -4,18 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\Ibu;
 use App\Models\Anak;
-use Spatie\Permission\Models\Role;
-use Illuminate\Support\Facades\Hash;
+use App\Models\KMS;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        $jumlahIbu = Ibu::count();
-        $jumlahAnak = Anak::count();
-        return view('dashboard.index', compact('jumlahAnak', 'jumlahIbu'));
+        $user = Auth::user();
+        $jumlahIbu = Ibu::where('user_id', $user->id)->count();
+        $jumlahAnak = Anak::where('user_id', $user->id)->count();
+        $jumlahKms = KMS::where('user_id', $user->id)->count();
+        return view('dashboard.index', compact('jumlahAnak', 'jumlahIbu', 'jumlahKms'));
     }
     public function profile($id)
     {
@@ -30,7 +32,7 @@ class HomeController extends Controller
         ]);
         $user = User::findOrFail($id);
         $data = $request->only(['name', 'email']);
-        
+
         $user->update($data);
         // dd($request);
         return redirect()->back()->with('success', 'Data berhasil diperbarui');

@@ -17,8 +17,8 @@ class CreatePersalinanTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('id_ibu');
-            $table->string('kala1');
-            $table->string('kala2');
+            $table->dateTime('kala1');
+            $table->dateTime('kala2');
             $table->dateTime('bayi_lahir');
             $table->dateTime('piasenta');
             $table->string('pendarahan');

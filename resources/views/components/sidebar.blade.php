@@ -5,7 +5,7 @@
             <li class="nav-item">
                 <a class="nav-link {{ request()->is(['pasien', 'pasien/*']) ? '' : 'collapsed' }}" data-bs-toggle="collapse"
                     href="#collapseExample5" role="button" aria-expanded="false" aria-controls="collapseExample">
-                    <i class="bi bi-people-fill"></i>
+                    <i class="ri-parent-fill"></i>
                     <span>Data Pasien</span>
                     <i class="bi bi-chevron-down ms-auto"></i>
                 </a>
