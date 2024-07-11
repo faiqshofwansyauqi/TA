@@ -17,7 +17,16 @@ class HomeController extends Controller
         $jumlahIbu = Ibu::where('user_id', $user->id)->count();
         $jumlahAnak = Anak::where('user_id', $user->id)->count();
         $jumlahKms = KMS::where('user_id', $user->id)->count();
-        return view('dashboard.index', compact('jumlahAnak', 'jumlahIbu', 'jumlahKms'));
+        $jumlahBidan = User::whereHas('roles', function ($query) {
+            $query->where('name', 'Bidan');
+        })->count();
+        $jumlahAdmin = User::whereHas('roles', function ($query) {
+            $query->where('name', 'Admin');
+        })->count();
+        $jumlahKepala = User::whereHas('roles', function ($query) {
+            $query->where('name', 'IBI / Puskesmas');
+        })->count();
+        return view('dashboard.index', compact('jumlahAnak', 'jumlahIbu', 'jumlahKms', 'jumlahBidan', 'jumlahAdmin', 'jumlahKepala'));
     }
     public function profile($id)
     {

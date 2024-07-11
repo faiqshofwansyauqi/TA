@@ -194,7 +194,7 @@
                 <a class="nav-link {{ request()->is(['setting.ibi_puskesmas', 'setting/ibi_puskesmas']) ? '' : 'collapsed' }}"
                     href="{{ route('setting.ibi_puskesmas') }}">
                     <i class="ri-user-star-line"></i>
-                    <span>Master IBI dan Puskesmas</span>
+                    <span>Master IBI & Puskesmas</span>
                 </a>
             </li>
         @endrole
