@@ -80,7 +80,7 @@
 
         let table = $('#anc-table').DataTable({
             processing: true,
-            serverSide: true,
+            serverSide: false,
             ordering: false,
             ajax: '{{ route('postnatal_care.data_nifas') }}',
             scrollX: false,

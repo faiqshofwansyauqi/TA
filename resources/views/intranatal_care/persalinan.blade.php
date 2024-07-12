@@ -623,7 +623,7 @@
 
             let table = $('#persalinan-table').DataTable({
                 processing: true,
-                serverSide: true,
+                serverSide: false,
                 ordering: false,
                 ajax: '{{ route('intranatal_care.data_persalinan') }}',
                 scrollX: false,

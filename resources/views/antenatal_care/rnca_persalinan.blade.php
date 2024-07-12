@@ -292,8 +292,8 @@
 
             let table = $('#rnca-table').DataTable({
                 processing: true,
+                serverSide: false,
                 ordering: false,
-                serverSide: true,
                 ajax: '{{ route('antenatal_care.data_rnca') }}',
                 scrollX: false,
                 fixedHeader: true,

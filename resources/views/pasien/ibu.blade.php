@@ -348,7 +348,7 @@
 
             let table = $('#ibu-table').DataTable({
                 processing: true,
-                serverSide: true,
+                serverSide: false,
                 ordering: false,
                 ajax: '{{ route('pasien.data_ibu') }}',
                 scrollX: false,

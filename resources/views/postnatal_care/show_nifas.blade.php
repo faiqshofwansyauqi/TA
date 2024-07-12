@@ -541,7 +541,7 @@
         $(document).ready(function() {
             $('#nifas-table').DataTable({
                 processing: true,
-                serverSide: true,
+                serverSide: false,
                 lengthChange: false,
                 searching: false,
                 ordering: false,

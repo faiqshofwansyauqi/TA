@@ -317,7 +317,7 @@
 
             let table = $('#ropb-table').DataTable({
                 processing: true,
-                serverSide: true,
+                serverSide: false,
                 ordering: false,
                 ajax: '{{ route('antenatal_care.data_ropb') }}',
                 scrollX: false,

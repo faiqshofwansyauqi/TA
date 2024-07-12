@@ -87,7 +87,7 @@
 
             let table = $('#ppia-table').DataTable({
                 processing: true,
-                serverSide: true,
+                serverSide: false,
                 ordering: false,
                 ajax: '{{ route('postnatal_care.data_ppia') }}',
                 scrollX: false,

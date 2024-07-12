@@ -154,7 +154,7 @@
         $(document).ready(function() {
             $('#admin-table').DataTable({
                 processing: true,
-                serverSide: true,
+                serverSide: false,
                 ordering: false,
                 ajax: '{{ route('setting.data_ibi_puskesmas') }}',
                 scrollX: false,

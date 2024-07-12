@@ -443,7 +443,7 @@
         $(document).ready(function() {
             $('#tm1-table').DataTable({
                 processing: true,
-                serverSide: true,
+                serverSide: false,
                 ajax: '{{ route('antenatal_care.data_tm1') }}',
                 scrollX: false,
                 fixedHeader: true,

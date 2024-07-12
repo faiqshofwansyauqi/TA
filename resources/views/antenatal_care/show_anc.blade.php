@@ -1066,7 +1066,7 @@
         $(document).ready(function() {
             $('#anc-table').DataTable({
                 processing: true,
-                serverSide: true,
+                serverSide: false,
                 lengthChange: false,
                 searching: false,
                 ordering: false,
@@ -1493,6 +1493,7 @@
                     input.value = value;
                 });
             }
+
             function restrictInputToNumbersAndSlash(input, maxLength) {
                 input.addEventListener('input', function() {
                     var value = input.value;

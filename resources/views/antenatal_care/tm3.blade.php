@@ -553,7 +553,7 @@
         $(document).ready(function() {
             $('#tm3-table').DataTable({
                 processing: true,
-                serverSide: true,
+                serverSide: false,
                 ajax: '{{ route('antenatal_care.data_tm3') }}',
                 scrollX: false,
                 fixedHeader: true,

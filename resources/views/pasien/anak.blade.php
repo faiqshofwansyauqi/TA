@@ -294,7 +294,7 @@
 
             let table = $('#anak-table').DataTable({
                 processing: true,
-                serverSide: true,
+                serverSide: false,
                 ordering: false,
                 ajax: '{{ route('pasien.data_anak') }}',
                 scrollX: false,

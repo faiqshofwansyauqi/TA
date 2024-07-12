@@ -78,7 +78,7 @@
         $(document).ready(function() {
             $('#anc-table').DataTable({
                 processing: true,
-                serverSide: true,
+                serverSide: false,
                 ordering: false,
                 ajax: '{{ route('antenatal_care.data_anc') }}',
                 scrollX: false,

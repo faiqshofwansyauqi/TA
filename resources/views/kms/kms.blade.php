@@ -98,7 +98,7 @@
             $(document).ready(function() {
                 $('#kms-table').DataTable({
                     processing: true,
-                    serverSide: true,
+                    serverSide: false,
                     ordering: false,
                     ajax: '{{ route('kms.data_kms') }}',
                     scrollX: false,
