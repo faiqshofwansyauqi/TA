@@ -40,7 +40,7 @@
                                         <th>Skrining Preeklamasi</th>
                                         <th>KESIMPULAN</th>
                                         <th>REKOMENDASI</th>
-                                        <th style="text-align: center">Action</th>
+                                        <th style="text-align: center">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>

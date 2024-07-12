@@ -38,7 +38,7 @@
                                         <th>Panjang Bayi</th>
                                         <th>Tanggal Lahir</th>
                                         <th>Tempat Lahir</th>
-                                        <th style="text-align: center">Action</th>
+                                        <th style="text-align: center">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>

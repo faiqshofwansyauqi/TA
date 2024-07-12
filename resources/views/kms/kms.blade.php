@@ -24,7 +24,7 @@
                                         <th>Nama Anak</th>
                                         <th>Nama Ibu</th>
                                         <th>Jenis Kelamin</th>
-                                        <th style="text-align: center">Action</th>
+                                        <th style="text-align: center">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>

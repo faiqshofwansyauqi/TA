@@ -49,7 +49,7 @@
                                         <th>Tgl. Register</th>
                                         <th>Telp/HP</th>
                                         <th>Gol Darah</th>
-                                        <th style="text-align: center">Action</th>
+                                        <th style="text-align: center">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>

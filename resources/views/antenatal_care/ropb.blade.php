@@ -39,7 +39,7 @@
                                         <th>Berat Badan</th>
                                         <th>Tinggi Badan</th>
                                         <th>Buku KIA</th>
-                                        <th style="text-align: center">Action</th>
+                                        <th style="text-align: center">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>

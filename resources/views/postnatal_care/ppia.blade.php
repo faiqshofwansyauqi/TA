@@ -25,7 +25,7 @@
                                     <tr>
                                         <th style="text-align: center">No</th>
                                         <th>Nama Ibu</th>
-                                        <th style="text-align: center">Action</th>
+                                        <th style="text-align: center">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>

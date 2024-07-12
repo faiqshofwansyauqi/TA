@@ -44,7 +44,7 @@
                                         <th>Rekomendasi</th>
                                         <th>Rencana Persalinan</th>
                                         <th>Pilihan Rencana Kontrasepsi</th>
-                                        <th style="text-align: center">Action</th>
+                                        <th style="text-align: center">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
