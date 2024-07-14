@@ -121,32 +121,32 @@ h6 {
     border: 1px solid #999999; /* Atur warna dan ketebalan garis sesuai kebutuhan */
 }
 
-/* CSS untuk tabel yang rapi */
 .table-anc {
     width: 100%;
     border-collapse: collapse;
 }
 
 .table-anc th {
-    border: px solid rgb(144, 142, 142);
-    padding: 8px;
-}
-
-.table-anc th {
+    border: 1px solid rgb(213, 211, 211);
+    padding: 3px;
     background-color: #f2f2f2;
 }
-
-.align-middle {
-    vertical-align: middle;
+.table-anc td {
+    border: 1px solid rgb(213, 211, 211);
+    padding: 3px;
 }
 
-.text-center {
-    text-align: center;
-}
-
-.normal-header {
+.vertical-header {
     font-weight: normal;
     font-size: 11pt;
+    writing-mode: vertical-rl;
+    vertical-align: middle;
+    transform: rotate(180deg);
+}
+.normal-header {
+    font-weight: normal;
+    font-size: 11pt;    
+    vertical-align: middle;
 }
 
 .header-right {
@@ -169,7 +169,6 @@ h6 {
     width: 2446.88px !important;
     height: 800.11px !important;
 }
-
 
 /* .vertical-header {
     writing-mode: vertical-rl;
