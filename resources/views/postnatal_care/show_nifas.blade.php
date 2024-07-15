@@ -22,7 +22,7 @@
                     <div class="card-body">
                         <br>
                         <div class="table-responsive">
-                            <table class="table table-bordered table-anc" id="nifas-table">
+                            <table class="table table-borderless table-anc" id="nifas-table" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th rowspan="2" class="align-middle text-center">No</th>
@@ -41,29 +41,27 @@
                                         <th colspan="2" class="align-middle text-center">KEADAAN</th>
                                     </tr>
                                     <tr>
-                                        <th class="align-middle text-center normal-header">TD <sup>mmHg</sup></th>
-                                        <th class="align-middle text-center normal-header">Suhu
-                                            <sup>°C</sup>
+                                        <th class="text-center vertical-header">TD <small>(mmHg)</small></th>
+                                        <th class="text-center vertical-header">Suhu <small>°C</small></th>
+                                        <th class="text-center vertical-header">Catatan di Buku KIA <small>*</small>
                                         </th>
-                                        <th class="align-middle text-center normal-header">Catatan di Buku KIA <sup>*</sup>
-                                        </th>
-                                        <th class="align-middle text-center normal-header">Fe<sup>(botol/tab)</sup></th>
-                                        <th class="align-middle text-center normal-header">Vit. A<sup>*</sup></th>
-                                        <th class="align-middle text-center normal-header">CD4 <sup>(kopi/ml)</sup></th>
-                                        <th class="align-middle text-center normal-header">Anti Malaria <sup>***</sup></th>
-                                        <th class="align-middle text-center normal-header">Anti TB <sup>***</sup></th>
-                                        <th class="align-middle text-center normal-header">ARV</th>
-                                        <th class="align-middle text-center normal-header">PPP</th>
-                                        <th class="align-middle text-center normal-header">Infeksi</th>
-                                        <th class="align-middle text-center normal-header">HDK</th>
-                                        <th class="align-middle text-center normal-header">Lainnya</th>
-                                        <th class="align-middle text-center normal-header">Puskesmas</th>
-                                        <th class="align-middle text-center normal-header">Klinik</th>
-                                        <th class="align-middle text-center normal-header">RSIA/RSB</th>
-                                        <th class="align-middle text-center normal-header">RS</th>
-                                        <th class="align-middle text-center normal-header">Lainnnya</th>
-                                        <th class="align-middle text-center normal-header">Tiba<sup>(H/M)</sup></th>
-                                        <th class="align-middle text-center normal-header">Pulang<sup>(H/M)</sup></th>
+                                        <th class="text-center vertical-header">Fe <small>(botol/tab)</small></th>
+                                        <th class="text-center vertical-header">Vit. A<small>*</small></th>
+                                        <th class="text-center vertical-header">CD4 <small>(kopi/ml)</small></th>
+                                        <th class="text-center vertical-header">Anti Malaria <small>***</small></th>
+                                        <th class="text-center vertical-header">Anti TB <small>***</small></th>
+                                        <th class="text-center vertical-header">ARV</th>
+                                        <th class="text-center vertical-header">PPP</th>
+                                        <th class="text-center vertical-header">Infeksi</th>
+                                        <th class="text-center vertical-header">HDK</th>
+                                        <th class="text-center vertical-header">Lainnya</th>
+                                        <th class="text-center vertical-header">Puskesmas</th>
+                                        <th class="text-center vertical-header">Klinik</th>
+                                        <th class="text-center vertical-header">RSIA/RSB</th>
+                                        <th class="text-center vertical-header">RS</th>
+                                        <th class="text-center vertical-header">Lainnnya</th>
+                                        <th class="text-center vertical-header">Tiba <small>(H/M)</small></th>
+                                        <th class="text-center vertical-header">Pulang <small>(H/M)</small></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -96,16 +94,19 @@
                                             <label for="tanggal" class="form-label">Tanggal</label>
                                             <input type="date" class="form-control" id="tanggal" name="tanggal">
                                         </div>
-                                        <div class="col-md-8 mb-3">
-                                            <label class="form-label">Hari KE/KF</label>
-                                            <div class="input-group">
-                                                <span class="input-group-text">Hr ke</span>
-                                                <input for="hari"type="number" class="form-control" id="hari"
-                                                    name="hari">
-                                                <span for="kf" class="input-group-text">KF ke</span>
-                                                <input type="number" class="form-control" id="kf"
-                                                    name="kf">
-                                            </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="hari" class="form-label">Hari Ke</label>
+                                            <input type="number" class="form-control" id="hari" name="hari">
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="kf" class="form-label">KF*</label>
+                                            <select class="form-select" id="kf" name="kf">
+                                                <option value="">Pilih KF</option>
+                                                <option value="1">KF 1</option>
+                                                <option value="2">KF 2</option>
+                                                <option value="3">KF 3</option>
+                                                <option value="4">KF 4</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <h5 class="card-title">Tanda Vital</h5>
@@ -113,16 +114,16 @@
                                         <div class="col-md-6 mb-3">
                                             <label for="td_mmhg" class="form-label">TD <sup>(mmhg)</sup></label>
                                             <div class="input-group">
-                                                <input type="text" class="form-control" id="td_mmhg" name="td_mmhg"
-                                                    required>
+                                                <input type="text" class="form-control" id="td_mmhg"
+                                                    name="td_mmhg">
                                                 <span class="input-group-text">mmhg</span>
                                             </div>
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="suhu" class="form-label">Suhu</label>
                                             <div class="input-group">
-                                                <input type="number" class="form-control" id="suhu" name="suhu"
-                                                    required>
+                                                <input type="number" class="form-control" id="suhu"
+                                                    name="suhu">
                                                 <span class="input-group-text">°C</span>
                                             </div>
                                         </div>
@@ -133,47 +134,45 @@
                                             <label for="buku_kia" class="form-label">Catatan buku KIA*</label>
                                             <select class="form-select" id="buku_kia" name="buku_kia">
                                                 <option value="">Pilih Catatan buku KIA*</option>
-                                                <option value="jika iya">&#10003; <!-- Ceklis --></option>
-                                                <option value="jika tidak">&#10007; <!-- Uncek --></option>
+                                                <option value="jika iya">&#10003;</option>
+                                                <option value="jika tidak">&#10007;</option>
                                             </select>
                                         </div>
                                         <div class="col-md-4 mb-3">
                                             <label for="fe" class="form-label">Fe <sup>(tab/botol)</sup></label>
                                             <input type="number" class="form-control" id="fe" name="fe"
-                                                required pattern="[0-9,\.]*">
+                                                pattern="[0-9,\.]*">
                                         </div>
                                         <div class="col-md-4 mb-3">
                                             <label for="vit" class="form-label">Vit.A*</label>
                                             <select class="form-select" id="vit" name="vit">
                                                 <option value="">Pilih Vit.A*</option>
-                                                <option value="jika iya">&#10003; <!-- Ceklis --></option>
-                                                <option value="jika tidak">&#10007; <!-- Uncek --></option>
+                                                <option value="jika iya">&#10003;</option>
+                                                <option value="jika tidak">&#10007;</option>
                                             </select>
                                         </div>
                                     </div>
                                     <h5 class="card-title">Integrasi Program</h5>
                                     <div class="row">
                                         <div class="col-md-3 mb-3">
-                                            <label for="cd_4" class="form-label">CD4 <sup>(tab/botol)</sup></label>
+                                            <label for="cd_4" class="form-label">CD4 <sup>(kopi/ml)</sup></label>
                                             <input type="text" class="form-control" id="cd_4" name="cd_4"
-                                                required pattern="[0-9,\.]*">
+                                                pattern="[0-9,\.]*">
                                         </div>
                                         <div class="col-md-3 mb-3">
                                             <label for="anti_malaria" class="form-label">Anti
                                                 Malaria</label>
-                                            <input type="text" class="form-control" id="anti_malaria" required
+                                            <input type="text" class="form-control" id="anti_malaria"
                                                 name="anti_malaria">
                                         </div>
                                         <div class="col-md-3 mb-3">
                                             <label for="anti_tb" class="form-label">Anti
                                                 TB</label>
-                                            <input type="text" class="form-control" id="anti_tb" name="anti_tb"
-                                                required>
+                                            <input type="text" class="form-control" id="anti_tb" name="anti_tb">
                                         </div>
                                         <div class="col-md-3 mb-3">
                                             <label for="arv" class="form-label">Arv</label>
-                                            <input type="text" class="form-control" id="arv" name="arv"
-                                                required>
+                                            <input type="text" class="form-control" id="arv" name="arv">
                                         </div>
                                     </div>
                                 </div>
@@ -184,33 +183,34 @@
                                     <div class="row">
                                         <div class="col-md-3 mb-3">
                                             <label for="ppp" class="form-label">ppp</label>
-                                            <select class="form-select" id="ppp" name="ppp">
-                                                <option value="">Pilih ppp*</option>
+                                            <select class="form-select" id="ppp" name="ppp"
+                                                onchange="Komplikasi('ppp')">
+                                                <option value="">Pilih ppp</option>
                                                 <option value="-" hidden>-</option>
-                                                <option value="jika iya">&#10003; <!-- Ceklis --></option>
-                                                <option value="jika tidak">&#10007; <!-- Uncek --></option>
+                                                <option value="jika iya">&#10003;</option>
                                             </select>
                                         </div>
                                         <div class="col-md-3 mb-3">
                                             <label for="infeksi" class="form-label">Infeksi</label>
-                                            <select class="form-select" id="infeksi" name="infeksi">
-                                                <option value="">Pilih Infeksi*</option>
+                                            <select class="form-select" id="infeksi" name="infeksi"
+                                                onchange="Komplikasi('infeksi')">
+                                                <option value="">Pilih Infeksi</option>
                                                 <option value="-" hidden>-</option>
-                                                <option value="jika iya">&#10003; <!-- Ceklis --></option>
-                                                <option value="jika tidak">&#10007; <!-- Uncek --></option>
+                                                <option value="jika iya">&#10003;</option>
                                             </select>
                                         </div>
                                         <div class="col-md-3 mb-3">
                                             <label for="hdk" class="form-label">HDK</label>
-                                            <select class="form-select" id="hdk" name="hdk">
+                                            <select class="form-select" id="hdk" name="hdk"
+                                                onchange="Komplikasi('hdk')">
                                                 <option value="">Pilih HDK</option>
                                                 <option value="-" hidden>-</option>
-                                                <option value="jika iya">&#10003; <!-- Ceklis --></option>
-                                                <option value="jika tidak">&#10007; <!-- Uncek --></option>
+                                                <option value="jika iya">&#10003;</option>
                                             </select>
                                         </div>
                                         <div class="col-md-3 mb-3">
-                                            <label for="lainnya_komplikasi" class="form-label">Lain - lain</label>
+                                            <label for="lainnya_komplikasi" class="form-label"
+                                                id="lainnya_komplikasi_label">Lain - lain</label>
                                             <input type="text" class="form-control" id="lainnya_komplikasi"
                                                 name="lainnya_komplikasi">
                                         </div>
@@ -219,13 +219,13 @@
                                         <div class="col-md-6">
                                             <h5 class="card-title">Klasifikasi</h5>
                                             <label for="klasifikasi" class="form-label">Klasifikasi</label>
-                                            <input type="text" class="form-control" id="klasifikasi" required
+                                            <input type="text" class="form-control" id="klasifikasi"
                                                 name="klasifikasi">
                                         </div>
                                         <div class="col-md-6">
                                             <h5 class="card-title">Tata Laksana</h5>
                                             <label for="tata_laksana" class="form-label">Tata Laksana</label>
-                                            <input type="text" class="form-control" id="tata_laksana" required
+                                            <input type="text" class="form-control" id="tata_laksana"
                                                 name="tata_laksana">
                                         </div>
                                     </div>
@@ -233,42 +233,43 @@
                                     <div class="row">
                                         <div class="col-md-3 mb-3">
                                             <label for="puskesmas" class="form-label">Puskesmas</label>
-                                            <select class="form-select" id="puskesmas" name="puskesmas">
+                                            <select class="form-select" id="puskesmas" name="puskesmas"
+                                                onchange="Dirujuk('puskesmas')">
                                                 <option value="">Pilih Puskesmas</option>
                                                 <option value="-" hidden>-</option>
-                                                <option value="jika iya">&#10003; <!-- Ceklis --></option>
-                                                <option value="jika tidak">&#10007; <!-- Uncek --></option>
+                                                <option value="jika iya">&#10003;</option>
                                             </select>
                                         </div>
                                         <div class="col-md-3 mb-3">
                                             <label for="klinik" class="form-label">Klinik</label>
-                                            <select class="form-select" id="klinik" name="klinik">
+                                            <select class="form-select" id="klinik" name="klinik"
+                                                onchange="Dirujuk('klinik')">
                                                 <option value="">Pilih Klinik</option>
                                                 <option value="-" hidden>-</option>
-                                                <option value="jika iya">&#10003; <!-- Ceklis --></option>
-                                                <option value="jika tidak">&#10007; <!-- Uncek --></option>
+                                                <option value="jika iya">&#10003;</option>
                                             </select>
                                         </div>
                                         <div class="col-md-3 mb-3">
                                             <label for="rsia_rsb" class="form-label">RSIA/RSB</label>
-                                            <select class="form-select" id="rsia_rsb" name="rsia_rsb">
+                                            <select class="form-select" id="rsia_rsb" name="rsia_rsb"
+                                                onchange="Dirujuk('rsia_rsb')">
                                                 <option value="">Pilih RSIA/RSB</option>
                                                 <option value="-" hidden>-</option>
-                                                <option value="jika iya">&#10003; <!-- Ceklis --></option>
-                                                <option value="jika tidak">&#10007; <!-- Uncek --></option>
+                                                <option value="jika iya">&#10003;</option>
                                             </select>
                                         </div>
                                         <div class="col-md-3 mb-3">
                                             <label for="rs" class="form-label">RS</label>
-                                            <select class="form-select" id="rs" name="rs">
+                                            <select class="form-select" id="rs" name="rs"
+                                                onchange="Dirujuk('rs')">
                                                 <option value="">Pilih RS</option>
                                                 <option value="-" hidden>-</option>
-                                                <option value="jika iya">&#10003; <!-- Ceklis --></option>
-                                                <option value="jika tidak">&#10007; <!-- Uncek --></option>
+                                                <option value="jika iya">&#10003;</option>
                                             </select>
                                         </div>
                                         <div class="col-md-12 mb-3">
-                                            <label for="lain_lain_dirujuk" class="form-label">Lain - lain</label>
+                                            <label for="lain_lain_dirujuk" class="form-label"
+                                                id="lain_lain_dirujuk_label">Lain - lain</label>
                                             <input type="text" class="form-control" id="lain_lain_dirujuk"
                                                 name="lain_lain_dirujuk">
                                         </div>
@@ -277,7 +278,7 @@
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
                                             <label for="tiba" class="form-label">Tiba</label>
-                                            <select class="form-select" id="tiba" name="tiba" required>
+                                            <select class="form-select" id="tiba" name="tiba">
                                                 <option value="">Pilih Tiba</option>
                                                 <option value="H">Hidup</option>
                                                 <option value="M">Mati</option>
@@ -285,7 +286,7 @@
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="pulang" class="form-label">Pulang</label>
-                                            <select class="form-select" id="pulang" name="pulang" required>
+                                            <select class="form-select" id="pulang" name="pulang">
                                                 <option value="">Pilih Pulang</option>
                                                 <option value="H">Hidup</option>
                                                 <option value="M">Mati</option>
@@ -323,16 +324,19 @@
                                             <label for="edit_tanggal" class="form-label">Tanggal</label>
                                             <input type="date" class="form-control" id="edit_tanggal" name="tanggal">
                                         </div>
-                                        <div class="col-md-8 mb-3">
-                                            <label class="form-label">Hari KE/KF</label>
-                                            <div class="input-group">
-                                                <span class="input-group-text">Hr ke</span>
-                                                <input for="edit_hari"type="number" class="form-control" id="edit_hari"
-                                                    name="hari">
-                                                <span for="edit_kf" class="input-group-text">KF ke</span>
-                                                <input type="number" class="form-control" id="edit_kf"
-                                                    name="kf">
-                                            </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="edit_hari" class="form-label">Hari Ke</label>
+                                            <input type="number" class="form-control" id="edit_hari" name="hari">
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="edit_kf" class="form-label">KF*</label>
+                                            <select class="form-select" id="edit_kf" name="kf">
+                                                <option value="">Pilih KF</option>
+                                                <option value="1">KF 1</option>
+                                                <option value="2">KF 2</option>
+                                                <option value="3">KF 3</option>
+                                                <option value="4">KF 4</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <h5 class="card-title">Tanda Vital</h5>
@@ -360,8 +364,8 @@
                                             <label for="edit_buku_kia" class="form-label">Catatan buku KIA*</label>
                                             <select class="form-select" id="edit_buku_kia" name="buku_kia">
                                                 <option value="">Pilih Catatan buku KIA*</option>
-                                                <option value="jika iya">&#10003; <!-- Ceklis --></option>
-                                                <option value="jika tidak">&#10007; <!-- Uncek --></option>
+                                                <option value="jika iya">&#10003;</option>
+                                                <option value="jika tidak">&#10007;</option>
                                             </select>
                                         </div>
                                         <div class="col-md-4 mb-3">
@@ -373,8 +377,8 @@
                                             <label for="edit_vit" class="form-label">Vit.A*</label>
                                             <select class="form-select" id="edit_vit" name="vit">
                                                 <option value="">Pilih Vit.A*</option>
-                                                <option value="jika iya">&#10003; <!-- Ceklis --></option>
-                                                <option value="jika tidak">&#10007; <!-- Uncek --></option>
+                                                <option value="jika iya">&#10003;</option>
+                                                <option value="jika tidak">&#10007;</option>
                                             </select>
                                         </div>
                                     </div>
@@ -413,27 +417,24 @@
                                             <label for="edit_ppp" class="form-label">ppp</label>
                                             <select class="form-select" id="edit_ppp" name="ppp">
                                                 <option value="">Pilih ppp*</option>
-                                                <option value="-" hidden>-</option>
-                                                <option value="jika iya">&#10003; <!-- Ceklis --></option>
-                                                <option value="jika tidak">&#10007; <!-- Uncek --></option>
+                                                <option value="-">-</option>
+                                                <option value="jika iya">&#10003;</option>
                                             </select>
                                         </div>
                                         <div class="col-md-3 mb-3">
                                             <label for="edit_infeksi" class="form-label">Infeksi</label>
                                             <select class="form-select" id="edit_infeksi" name="infeksi">
                                                 <option value="">Pilih Infeksi*</option>
-                                                <option value="-" hidden>-</option>
-                                                <option value="jika iya">&#10003; <!-- Ceklis --></option>
-                                                <option value="jika tidak">&#10007; <!-- Uncek --></option>
+                                                <option value="-">-</option>
+                                                <option value="jika iya">&#10003;</option>
                                             </select>
                                         </div>
                                         <div class="col-md-3 mb-3">
                                             <label for="edit_hdk" class="form-label">HDK</label>
                                             <select class="form-select" id="edit_hdk" name="hdk">
                                                 <option value="">Pilih HDK</option>
-                                                <option value="-" hidden>-</option>
-                                                <option value="jika iya">&#10003; <!-- Ceklis --></option>
-                                                <option value="jika tidak">&#10007; <!-- Uncek --></option>
+                                                <option value="-">-</option>
+                                                <option value="jika iya">&#10003;</option>
                                             </select>
                                         </div>
                                         <div class="col-md-3 mb-3">
@@ -462,36 +463,32 @@
                                             <label for="edit_puskesmas" class="form-label">Puskesmas</label>
                                             <select class="form-select" id="edit_puskesmas" name="puskesmas">
                                                 <option value="">Pilih Puskesmas</option>
-                                                <option value="-" hidden>-</option>
-                                                <option value="jika iya">&#10003; <!-- Ceklis --></option>
-                                                <option value="jika tidak">&#10007; <!-- Uncek --></option>
+                                                <option value="-">-</option>
+                                                <option value="jika iya">&#10003;</option>
                                             </select>
                                         </div>
                                         <div class="col-md-3 mb-3">
                                             <label for="edit_klinik" class="form-label">Klinik</label>
                                             <select class="form-select" id="edit_klinik" name="klinik">
                                                 <option value="">Pilih Klinik</option>
-                                                <option value="-" hidden>-</option>
-                                                <option value="jika iya">&#10003; <!-- Ceklis --></option>
-                                                <option value="jika tidak">&#10007; <!-- Uncek --></option>
+                                                <option value="-">-</option>
+                                                <option value="jika iya">&#10003;</option>
                                             </select>
                                         </div>
                                         <div class="col-md-3 mb-3">
                                             <label for="edit_rsia_rsb" class="form-label">RSIA/RSB</label>
                                             <select class="form-select" id="edit_rsia_rsb" name="rsia_rsb">
                                                 <option value="">Pilih RSIA/RSB</option>
-                                                <option value="-" hidden>-</option>
-                                                <option value="jika iya">&#10003; <!-- Ceklis --></option>
-                                                <option value="jika tidak">&#10007; <!-- Uncek --></option>
+                                                <option value="-">-</option>
+                                                <option value="jika iya">&#10003;</option>
                                             </select>
                                         </div>
                                         <div class="col-md-3 mb-3">
                                             <label for="edit_rs" class="form-label">RS</label>
                                             <select class="form-select" id="edit_rs" name="rs">
                                                 <option value="">Pilih RS</option>
-                                                <option value="-" hidden>-</option>
-                                                <option value="jika iya">&#10003; <!-- Ceklis --></option>
-                                                <option value="jika tidak">&#10007; <!-- Uncek --></option>
+                                                <option value="-">-</option>
+                                                <option value="jika iya">&#10003;</option>
                                             </select>
                                         </div>
                                         <div class="col-md-12 mb-3">
@@ -755,6 +752,54 @@
         });
 
         document.addEventListener('DOMContentLoaded', function() {
+            function inputKF() {
+                const hariInput = document.getElementById('hari');
+                const kfSelect = document.getElementById('kf');
+
+                
+                hariInput.addEventListener('input', function() {
+                    const hariValue = parseInt(hariInput.value, 10);
+                    if (isNaN(hariValue)) {
+                        kfSelect.value = '';
+                    } else if (hariValue < 3) {
+                        kfSelect.value = '1';
+                    } else if (hariValue >= 3 && hariValue <= 7) {
+                        kfSelect.value = '2';
+                    } else if (hariValue >= 7 && hariValue <= 28) {
+                        kfSelect.value = '3';
+                    } else if (hariValue > 28 && hariValue <= 42) {
+                        kfSelect.value = '4';
+                    } else {
+                        kfSelect.value = '';
+                    }
+                });
+            }
+            inputKF();
+
+            function editInputKF() {
+                const editHariInput = document.getElementById('edit_hari');
+                const editKfSelect = document.getElementById('edit_kf');
+                editHariInput.addEventListener('input', function() {
+                    const editHariValue = parseInt(editHariInput.value, 10);
+                    if (isNaN(editHariValue)) {
+                        editKfSelect.value = '';
+                    } else if (editHariValue < 3) {
+                        editKfSelect.value = '1';
+                    } else if (editHariValue >= 3 && editHariValue <= 7) {
+                        editKfSelect.value = '2';
+                    } else if (editHariValue >= 7 && editHariValue <= 28) {
+                        editKfSelect.value = '3';
+                    } else if (editHariValue > 28 && editHariValue <= 42) {
+                        editKfSelect.value = '4';
+                    } else {
+                        editKfSelect.value = '';
+                    }
+                });
+            }
+            editInputKF();
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
             if (window.location.pathname.includes('/postnatal_care/nifas/show_nifas')) {
                 var body = document.querySelector('body');
                 if (window.innerWidth >= 768) {
@@ -789,117 +834,73 @@
             }
             var td_mmhgInput = document.getElementById('td_mmhg');
             var td_mmhgEdit = document.getElementById('edit_td_mmhg');
-            restrictInputToNumbersAndSlash(td_mmhgInput, 10);
-            restrictInputToNumbersAndSlash(td_mmhgEdit, 10);
+            restrictInputToNumbersAndSlash(td_mmhgInput, 7);
+            restrictInputToNumbersAndSlash(td_mmhgEdit, 7);
         });
 
-        {
-            var puskesmas = document.getElementById("puskesmas");
-            var klinik = document.getElementById("klinik");
-            var rsia_rsb = document.getElementById("rsia_rsb");
-            var rs = document.getElementById("rs");
-            var lain_lain_dirujuk = document.getElementById("lain_lain_dirujuk");
-            var label_lain_lain_dirujuk = document.querySelector('label[for="lain_lain_dirujuk"]');
-            var ppp = document.getElementById("ppp");
-            var infeksi = document.getElementById("infeksi");
-            var hdk = document.getElementById("hdk");
-            var lainnya_komplikasi = document.getElementById("lainnya_komplikasi");
-            var label_lainnya_komplikasi = document.querySelector('label[for="lainnya_komplikasi"]');
-            puskesmas.addEventListener("change", function() {
-                if (puskesmas.value !== "") {
-                    klinik.value = "-";
-                    rsia_rsb.value = "-";
-                    rs.value = "-";
-                    lain_lain_dirujuk.style.display = "none";
-                    lain_lain_dirujuk.value = "-";
-                    label_lain_lain_dirujuk.style.display = "none";
-                } else {
-                    label_lain_lain_dirujuk.style.display = "block";
-                }
+        function Komplikasi(changedId) {
+            const selectIds = ['ppp', 'infeksi', 'hdk'];
+            const selectedValue = document.getElementById(changedId).value;
+            if (selectedValue === '') {
+                selectIds.forEach(id => {
+                    if (id !== changedId) {
+                        document.getElementById(id).value = '';
+                    }
+                });
+                document.getElementById('lainnya_komplikasi').value = '';
+                document.getElementById('lainnya_komplikasi').style.display = 'block';
+                document.getElementById('lainnya_komplikasi_label').style.display = 'block';
+            } else {
+                selectIds.forEach(id => {
+                    if (id !== changedId) {
+                        document.getElementById(id).value = '-';
+                    }
+                });
+                document.getElementById('lainnya_komplikasi').value = '-';
+                document.getElementById('lainnya_komplikasi').style.display = 'none';
+                document.getElementById('lainnya_komplikasi_label').style.display = 'none';
+            }
+            document.getElementById('lainnya_komplikasi').addEventListener('input', function() {
+                const value = this.value;
+                const selectIds = ['ppp', 'infeksi', 'hdk'];
+                selectIds.forEach(id => {
+                    document.getElementById(id).value = value ? '-' : '';
+                });
             });
-            klinik.addEventListener("change", function() {
-                if (klinik.value !== "") {
-                    puskesmas.value = "-";
-                    rsia_rsb.value = "-";
-                    rs.value = "-";
-                    lain_lain_dirujuk.style.display = "none";
-                    lain_lain_dirujuk.value = "-";
-                    label_lain_lain_dirujuk.style.display = "none";
-                } else {
-                    label_lain_lain_dirujuk.style.display = "block";
-                }
-            });
-            rsia_rsb.addEventListener("change", function() {
-                if (rsia_rsb.value !== "") {
-                    puskesmas.value = "-";
-                    klinik.value = "-";
-                    rs.value = "-";
-                    lain_lain_dirujuk.style.display = "none";
-                    lain_lain_dirujuk.value = "-";
-                    label_lain_lain_dirujuk.style.display = "none";
-                } else {
-                    label_lain_lain_dirujuk.style.display = "block";
-                }
-            });
-            rs.addEventListener("change", function() {
-                if (rs.value !== "") {
-                    puskesmas.value = "-";
-                    klinik.value = "-";
-                    rsia_rsb.value = "-";
-                    lain_lain_dirujuk.style.display = "none";
-                    lain_lain_dirujuk.value = "-";
-                    label_lain_lain_dirujuk.style.display = "none";
-                } else {
-                    label_lain_lain_dirujuk.style.display = "block";
-                }
-            });
-            lain_lain_dirujuk.addEventListener("change", function() {
-                if (lain_lain_dirujuk.value !== "") {
-                    puskesmas.value = "-";
-                    klinik.value = "-";
-                    rsia_rsb.value = "-";
-                    rs.value = "-";
-                }
-            });
-            ppp.addEventListener("change", function() {
-                if (ppp.value !== "") {
-                    infeksi.value = "-";
-                    hdk.value = "-";
-                    lainnya_komplikasi.style.display = "none";
-                    lainnya_komplikasi.value = "-";
-                    label_lainnya_komplikasi.style.display = "none";
-                } else {
-                    label_lainnya_komplikasi.style.display = "block";
-                }
-            });
-            infeksi.addEventListener("change", function() {
-                if (infeksi.value !== "") {
-                    ppp.value = "-";
-                    hdk.value = "-";
-                    lainnya_komplikasi.style.display = "none";
-                    lainnya_komplikasi.value = "-";
-                    label_lainnya_komplikasi.style.display = "none";
-                } else {
-                    label_lainnya_komplikasi.style.display = "block";
-                }
-            });
-            hdk.addEventListener("change", function() {
-                if (hdk.value !== "") {
-                    ppp.value = "-";
-                    infeksi.value = "-";
-                    lainnya_komplikasi.style.display = "none";
-                    lainnya_komplikasi.value = "-";
-                    label_lainnya_komplikasi.style.display = "none";
-                } else {
-                    label_lainnya_komplikasi.style.display = "block";
-                }
-            });
-            lainnya_komplikasi.addEventListener("change", function() {
-                if (lainnya_komplikasi.value !== "") {
-                    ppp.value = "-";
-                    infeksi.value = "-";
-                    hdk.value = "-";
-                }
+        }
+
+        function Dirujuk(changedId) {
+            const selectIds = ['puskesmas', 'klinik', 'rsia_rsb', 'rs'];
+            const selectedValue = document.getElementById(changedId).value;
+            if (selectedValue === '') {
+                selectIds.forEach(id => {
+                    if (id !== changedId) {
+                        document.getElementById(id).value = '';
+                    }
+                });
+                const lainLainInput = document.getElementById('lain_lain_dirujuk');
+                const lainLainLabel = document.getElementById('lain_lain_dirujuk_label');
+                lainLainInput.value = '';
+                lainLainInput.style.display = 'block';
+                lainLainLabel.style.display = 'block';
+            } else {
+                selectIds.forEach(id => {
+                    if (id !== changedId) {
+                        document.getElementById(id).value = '-';
+                    }
+                });
+                const lainLainInput = document.getElementById('lain_lain_dirujuk');
+                const lainLainLabel = document.getElementById('lain_lain_dirujuk_label');
+                lainLainInput.value = '-';
+                lainLainInput.style.display = 'none';
+                lainLainLabel.style.display = 'none';
+            }
+            document.getElementById('lain_lain_dirujuk').addEventListener('input', function() {
+                const value = this.value;
+                const selectIds = ['puskesmas', 'klinik', 'rsia_rsb', 'rs'];
+                selectIds.forEach(id => {
+                    document.getElementById(id).value = value ? '-' : '';
+                });
             });
         }
     </script>

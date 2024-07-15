@@ -21,7 +21,7 @@
                     <div class="card-body">
                         <br>
                         <div class="table-responsive">
-                            <table class="table table-bordered table-anc" id="persalinan-table" style="width:100%">
+                            <table class="table table-borderless table-anc" id="persalinan-table" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th style="text-align: center">No</th>
@@ -638,7 +638,7 @@
                     },
                     {
                         data: 'nama_ibu',
-                        name: 'nama_ibu'
+                        name: 'nama_ibu',
                     },
                     {
                         data: 'kala1',
@@ -654,7 +654,6 @@
                             return dateTimeString;
                         }
                     },
-
                     {
                         data: 'kala2',
                         name: 'kala2',

@@ -22,7 +22,7 @@
                     <div class="card-body">
                         <br>
                         <div class="table-responsive">
-                            <table class="table table-bordered table-anc" id="ibu-table" style="width:100%">
+                            <table class="table table-borderless table-anc" id="ibu-table" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th style="text-align: center">No</th>
@@ -499,8 +499,8 @@
                     className: 'btn btn-secondary btn-custom2',
                 }],
                 columnDefs: [{
-                    // targets: [],
                     targets: [5, 6, 7, 8, 9, 10, 11, 14, 15, 16, 17, 18, 19, 20, 21, 22],
+                    // targets: [],
                     visible: false
                 }]
             });

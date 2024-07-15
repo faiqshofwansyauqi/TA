@@ -1636,30 +1636,68 @@
 
         function Komplikasi(changedId) {
             const selectIds = ['hdk', 'abortus', 'pendarahan', 'infeksi', 'kpd'];
-            selectIds.forEach(id => {
-                if (id !== changedId) {
-                    document.getElementById(id).value = '-';
-                }
+            const selectedValue = document.getElementById(changedId).value;
+            if (selectedValue === '') {
+                selectIds.forEach(id => {
+                    if (id !== changedId) {
+                        document.getElementById(id).value = '';
+                    }
+                });
+                document.getElementById('lain_lain_komplikasi').value = '';
+                document.getElementById('lain_lain_komplikasi').style.display = 'block';
+                document.getElementById('lain_lain_komplikasi_label').style.display = 'block';
+            } else {
+                selectIds.forEach(id => {
+                    if (id !== changedId) {
+                        document.getElementById(id).value = '-';
+                    }
+                });
+                document.getElementById('lain_lain_komplikasi').value = '-';
+                document.getElementById('lain_lain_komplikasi').style.display = 'none';
+                document.getElementById('lain_lain_komplikasi_label').style.display = 'none';
+            }
+            document.getElementById('lain_lain_komplikasi').addEventListener('input', function() {
+                const value = this.value;
+                const selectIds = ['hdk', 'abortus', 'pendarahan', 'infeksi', 'kpd'];
+                selectIds.forEach(id => {
+                    document.getElementById(id).value = value ? '-' : '';
+                });
             });
-            const lainLainInput = document.getElementById('lain_lain_komplikasi');
-            const lainLainLabel = document.getElementById('lain_lain_komplikasi_label');
-            lainLainInput.value = '-';
-            lainLainInput.style.display = 'none';
-            lainLainLabel.style.display = 'none';
         }
 
         function Dirujuk(changedId) {
             const selectIds = ['puskesmas', 'klinik', 'rsia_rsb', 'rs'];
-            selectIds.forEach(id => {
-                if (id !== changedId) {
-                    document.getElementById(id).value = '-';
-                }
+            const selectedValue = document.getElementById(changedId).value;
+            if (selectedValue === '') {
+                selectIds.forEach(id => {
+                    if (id !== changedId) {
+                        document.getElementById(id).value = '';
+                    }
+                });
+                const lainLainInput = document.getElementById('lain_lain_dirujuk');
+                const lainLainLabel = document.getElementById('lain_lain_dirujuk_label');
+                lainLainInput.value = '';
+                lainLainInput.style.display = 'block';
+                lainLainLabel.style.display = 'block';
+            } else {
+                selectIds.forEach(id => {
+                    if (id !== changedId) {
+                        document.getElementById(id).value = '-';
+                    }
+                });
+                const lainLainInput = document.getElementById('lain_lain_dirujuk');
+                const lainLainLabel = document.getElementById('lain_lain_dirujuk_label');
+                lainLainInput.value = '-';
+                lainLainInput.style.display = 'none';
+                lainLainLabel.style.display = 'none';
+            }
+            document.getElementById('lain_lain_dirujuk').addEventListener('input', function() {
+                const value = this.value;
+                const selectIds = ['puskesmas', 'klinik', 'rsia_rsb', 'rs'];
+                selectIds.forEach(id => {
+                    document.getElementById(id).value = value ? '-' : '';
+                });
             });
-            const lainLainInput = document.getElementById('lain_lain_dirujuk');
-            const lainLainLabel = document.getElementById('lain_lain_dirujuk_label');
-            lainLainInput.value = '-';
-            lainLainInput.style.display = 'none';
-            lainLainLabel.style.display = 'none';
         }
     </script>
 @endsection

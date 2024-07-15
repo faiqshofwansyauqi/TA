@@ -21,7 +21,7 @@
                     <div class="card-body">
                         <br>
                         <div class="table-responsive">
-                            <table class="table table-bordered table-anc" id="anak-table" style="width:100%">
+                            <table class="table table-borderless table-anc" id="anak-table" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th style="text-align: center">No</th>
@@ -309,18 +309,15 @@
                     },
                     {
                         data: 'nama_anak',
-                        name: 'nama_anak',
-                        width: '100px',
+                        name: 'nama_anak'
                     },
                     {
                         data: 'nama_ibu',
-                        name: 'nama_ibu',
-                        width: '100px',
+                        name: 'nama_ibu'
                     },
                     {
                         data: 'nama_suami',
-                        name: 'nama_suami',
-                        width: '100px',
+                        name: 'nama_suami'
                     },
                     {
                         data: 'alamat',
@@ -336,8 +333,7 @@
                     },
                     {
                         data: 'jenis_kelamin',
-                        name: 'jenis_kelamin',
-                        width: '100px',
+                        name: 'jenis_kelamin'
                     },
                     {
                         data: 'jenis_kelahiran',
@@ -409,7 +405,7 @@
                     className: 'btn btn-secondary btn-custom2',
                 }],
                 columnDefs: [{
-                    targets: [7, 4, 8, 9, 10, 11, 12, 13],
+                    targets: [4, 8, 9, 10, 11, 12, 13],
                     visible: false
                 }]
             });
