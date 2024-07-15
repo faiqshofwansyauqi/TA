@@ -20,7 +20,7 @@
                         <br>
                         <div class="table-responsive">
                             @if (count($hepatitiss) > 0)
-                                <table class="table table-bordered table-anc">
+                                <table class="table table-borderless table-anc">
                                     <thead>
                                         <tr>
                                             <th colspan="3">Tanggal / Jam Pemberian:</th>

@@ -20,7 +20,7 @@
                     <br>
                     <div class="table-responsive">
                         @if (count($ppias) > 0)
-                        <table class="table table-bordered table-anc">
+                        <table class="table table-borderless table-anc">
                             <thead>
                                 <tr>
                                     <th colspan="4">HASIL DETEKSI DINI</th>
@@ -71,18 +71,13 @@
                                     <td colspan="3"></td>
                                 </tr>
                                 <tr>
-                                    <td>3. Pasangan mengetahui status HIV:</td>
-                                    <td>{{ $item->status_hiv }}</td>
-                                    <td colspan="3"></td>
+                                    <td colspan="4">3. Pasangan mengetahui status HIV: {{ $item->status_hiv }}</td>
                                 </tr>
                                 <tr>
-                                    <td>4. Pasangan diperiksa Sifilis:</td>
-                                    <td>{{ $item->periksa_sifilis }}</td>
-                                    <td colspan="3"></td>
+                                    <td colspan="4">4. Pasangan diperiksa Sifilis: {{ $item->periksa_sifilis }}</td>
                                 </tr>
                                 <tr>
-                                    <td>5. Faskes Rujukan:</td>
-                                    <td colspan="4">{{ $item->faskes_rujukan }}</td>
+                                    <td colspan="4">5. Faskes Rujukan: {{ $item->faskes_rujukan }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

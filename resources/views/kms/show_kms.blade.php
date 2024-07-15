@@ -17,12 +17,12 @@
                     <div class="card-body">
                         <div class="table-responsive">
                             <canvas id="kmsChart" width="2446.88" height="800.11" style="margin-bottom: 20px;"></canvas>
-                            <table class="table table-bordered table-anc" id="kms-table" style="width:100%">
+                            <table class="table table-borderless table-anc" id="kms-table" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>Umur (Bulan)</th>
                                         @for ($i = 0; $i <= 60; $i++)
-                                            <th style="width: 130px; text-align: center;">{{ $i }}</th>
+                                            <th style="text-align: center;">{{ $i }}</th>
                                         @endfor
                                     </tr>
                                 </thead>
@@ -103,7 +103,6 @@
                         @csrf
                         <div class="col-12">
                             <div class="card-body">
-                                <h5 class="card-title"></h5>
                                 <input type="hidden" name="id_anak" value="{{ $kms->id_anak }}">
                                 <input type="hidden" name="id_ibu" value="{{ $kms->id_ibu }}">
                                 <div class="mb-3">

@@ -24,41 +24,41 @@
                                     <thead>
                                         <tr>
                                             <th>JENIS PEMANTAUAN</th>
-                                            <th style="width: 150px">TANGGAL</th>
-                                            <th style="width: 150px">HASIL</th>
+                                            <th style="text-align: center"">TANGGAL</th>
+                                            <th style="text-align: center"">HASIL</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($hivs as $item)
                                             <tr>
                                                 <td>Pemberian ARV</td>
-                                                <td> {{ $item->tgl_pemberian_arv }}</td>
+                                                <td style="text-align: center"> {{ $item->tgl_pemberian_arv }}</td>
                                                 <td> {{ $item->hasil_pemberian_arv }}</td>
                                             </tr>
                                             <tr>
                                                 <td>DBS EID pada usia 6-8 Minggu</td>
-                                                <td> {{ $item->tgl_bds }}</td>
+                                                <td style="text-align: center"> {{ $item->tgl_bds }}</td>
                                                 <td> {{ $item->hasil_bds }}</td>
                                             </tr>
                                             <tr>
                                                 <td>Konfirmasi EID dalam 12 bulan</td>
-                                                <td> {{ $item->tgl_konfirmasi_bds }}</td>
+                                                <td style="text-align: center"> {{ $item->tgl_konfirmasi_bds }}</td>
                                                 <td> {{ $item->hasil_konfirmasi_bds }}</td>
                                             </tr>
                                             <tr>
                                                 <td>Pemeriksaan balita terdeteksi HIV (serologis) (Bayi usia >=9 bulan atau
                                                     anak balita)</td>
-                                                <td> {{ $item->tgl_pemeriksaan_balita }}</td>
+                                                <td style="text-align: center"> {{ $item->tgl_pemeriksaan_balita }}</td>
                                                 <td> {{ $item->hasil_pemeriksaan_balita }}</td>
                                             </tr>
                                             <tr>
                                                 <td>Balita HIV masuk perawatan PDP</td>
-                                                <td> {{ $item->tgl_perawatan_pdp }}</td>
+                                                <td style="text-align: center"> {{ $item->tgl_perawatan_pdp }}</td>
                                                 <td> {{ $item->hasil_perawatan_pdp }}</td>
                                             </tr>
                                             <tr>
                                                 <td>Balita HIV mendapat pengobatan ARV</td>
-                                                <td> {{ $item->tgl_pengobatan_arv }}</td>
+                                                <td style="text-align: center"> {{ $item->tgl_pengobatan_arv }}</td>
                                                 <td> {{ $item->hasil_pengobatan_arv }}</td>
                                             </tr>
                                         @endforeach
