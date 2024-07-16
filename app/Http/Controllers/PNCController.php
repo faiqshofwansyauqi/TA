@@ -66,8 +66,11 @@ class PNCController extends Controller
     {
         $user = Auth::user();
         if ($user->hasRole(['Bidan'])) {
-            $this->authorize('akses_page', Show_Nifas::class);
             $nifas = Nifas::findOrFail($id);
+            if ($nifas->user_id !== $user->id) {
+                return redirect()->route('postnatal_care.nifas')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
+            }
+            $this->authorize('akses_page', Show_Nifas::class);
             return view('postnatal_care.show_nifas', compact('nifas'));
         } else {
             return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
@@ -249,8 +252,8 @@ class PNCController extends Controller
     {
         $user = Auth::user();
         if ($user->hasRole(['Bidan'])) {
-            $this->authorize('akses_page', Show_Ppia::class);
             $ppia = Show_Ppia::findOrFail($id);
+            $this->authorize('akses_page', Show_Ppia::class);
             $id_ibu = $ppia->id_ibu;
             $ppias = Show_Ppia::with('ibu')->where('user_id', $user->id)->get();
             return view('postnatal_care.show_ppia', compact('ppias', 'ppia'));

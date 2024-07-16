@@ -74,7 +74,9 @@ class KMSContronller extends Controller
         if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Show_Kms::class);
             $kms = KMS::findOrFail($id);
-            // dd($kms);
+            if ($kms->user_id !== $user->id) {
+                return redirect()->route('kms.kms')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
+            }
             $kmss = Show_Kms::with('ibu')->where('user_id', $user->id)->get();
             return view('kms.show_kms', compact('kms','kmss'));
         } else {

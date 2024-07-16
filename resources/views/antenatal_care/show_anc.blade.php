@@ -420,8 +420,8 @@
                                             <label for="tbc" class="form-label">TBC<sup>(-/+)</sup></label>
                                             <select class="form-select" id="tbc" name="tbc" required>
                                                 <option value="">Pilih Tbc</option>
-                                                <option value="-">Negatif</option>
-                                                <option value="+">Positif</option>
+                                                <option value="P">Positif</option>
+                                                <option value="N">Negatif</option>
                                             </select>
                                         </div>
                                         <div class="col-md-3 mb-3">
@@ -429,6 +429,7 @@
                                             <label for="obat_TB" class="form-label">Obat<sup>***</sup></label>
                                             <select class="form-select" id="obat_TB" name="obat_TB" required>
                                                 <option value="">Pilih Tbc</option>
+                                                <option value="-" hidden>-</option>
                                                 <option value="R">Rifampisin</option>
                                                 <option value="H">INH</option>
                                                 <option value="Z">Pyrazinamid</option>
@@ -441,7 +442,7 @@
                                         <div class="col-md-3 mb-3">
                                             <label for="sehat" class="form-label">Sehat</label>
                                             <select class="form-select" id="sehat" name="sehat">
-                                                <option value="-">Pilih Skrining Covid-19*</option>
+                                                <option value="">Pilih Skrining Covid-19*</option>
                                                 <option value="jika iya">&#10003;</option>
                                                 <option value="jika tidak">&#10007;</option>
                                             </select>
@@ -918,8 +919,8 @@
                                             <label for="edit_tbc" class="form-label">TBC<sup>(-/+)</sup></label>
                                             <select class="form-select" id="edit_tbc" name="tbc" required>
                                                 <option value="">Pilih Tbc</option>
-                                                <option value="-">Negatif</option>
-                                                <option value="+">Positif</option>
+                                                <option value="P">Positif</option>
+                                                <option value="N">Negatif</option>
                                             </select>
                                         </div>
                                         <div class="col-md-3 mb-3">
@@ -927,6 +928,7 @@
                                             <label for="edit_obat_TB" class="form-label">Obat<sup>***</sup></label>
                                             <select class="form-select" id="edit_obat_TB" name="obat_TB" required>
                                                 <option value="">Pilih Tbc</option>
+                                                <option value="-" hidden>-</option>
                                                 <option value="R">Rifampisin</option>
                                                 <option value="H">INH</option>
                                                 <option value="Z">Pyrazinamid</option>
@@ -1619,9 +1621,9 @@
                     var obatTBSelect = document.getElementById(obatTbElementId);
                     var label_ObatTb = document.querySelector(labelObatTbSelector);
 
-                    if (tbcValue === '-') {
+                    if (tbcValue === 'N') {
                         obatTBSelect.style.display = 'none';
-                        obatTBSelect.value = '';
+                        obatTBSelect.value = '-';
                         label_ObatTb.style.display = 'none';
                     } else {
                         obatTBSelect.style.display = 'block';

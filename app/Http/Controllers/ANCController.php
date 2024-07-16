@@ -184,10 +184,10 @@ class ANCController extends Controller
     {
         $anc = Anc::where('user_id', Auth::id())->select('*');
         return DataTables::of($anc)
-        ->addColumn('nama_ibu', function ($row) {
-            return $row->ibu ? $row->ibu->nama_ibu : 'N/A';
-        })
-        ->make(true);
+            ->addColumn('nama_ibu', function ($row) {
+                return $row->ibu ? $row->ibu->nama_ibu : 'N/A';
+            })
+            ->make(true);
     }
 
     //////////////// SHOW ANC ////////////////
@@ -196,17 +196,19 @@ class ANCController extends Controller
     {
         $user = Auth::user();
         if ($user->hasRole(['Bidan'])) {
-            $this->authorize('akses_page', Show_Anc::class);
             $anc = Anc::findOrFail($id);
-            $ancs = Show_Anc::where('id_ibu', $user->id)->get();
-            return view('antenatal_care.show_anc', compact('anc', 'ancs'));
+            if ($anc->user_id !== $user->id) {
+                return redirect()->route('antenatal_care.anc')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
+            }
+            $this->authorize('akses_page', Show_Anc::class);
+            return view('antenatal_care.show_anc', compact('anc'));
         } else {
             return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
         }
     }
     public function store_showanc(Request $request)
     {
-        // dd($request);
+        dd($request);
         $request->validate([
             'id_ibu',
             'tanggal',
