@@ -50,7 +50,6 @@ class PasienController extends Controller
             'tanggal_reg' => 'required',
             'posyandu' => 'required',
             'nama_kader' => 'required',
-            'nama_dukum' => 'required',
             'jamkesmas' => 'required',
             'gol_darah' => 'required',
             'telp' => 'required',
@@ -77,7 +76,6 @@ class PasienController extends Controller
             'tanggal_reg' => $request->tanggal_reg,
             'posyandu' => $request->posyandu,
             'nama_kader' => $request->nama_kader,
-            'nama_dukum' => $request->nama_dukum,
             'jamkesmas' => $request->jamkesmas,
             'gol_darah' => $request->gol_darah,
             'telp' => $request->telp,
@@ -111,7 +109,6 @@ class PasienController extends Controller
             'tanggal_reg' => 'required',
             'posyandu' => 'required',
             'nama_kader' => 'required',
-            'nama_dukum' => 'required',
             'jamkesmas' => 'required',
             'gol_darah' => 'required',
             'telp' => 'required',
@@ -138,7 +135,6 @@ class PasienController extends Controller
             'tanggal_reg' => $request->tanggal_reg,
             'posyandu' => $request->posyandu,
             'nama_kader' => $request->nama_kader,
-            'nama_dukum' => $request->nama_dukum,
             'jamkesmas' => $request->jamkesmas,
             'gol_darah' => $request->gol_darah,
             'telp' => $request->telp,
@@ -150,16 +146,6 @@ class PasienController extends Controller
     {
         $ibu = Ibu::findOrFail($id);
         return response()->json($ibu);
-    }
-    public function destroy_ibu($id)
-    {
-        try {
-            $ibu = Ibu::where('id', $id)->where('user_id', Auth::id())->firstOrFail();
-            $ibu->delete();
-            return response()->json(['success' => true, 'message' => 'Data berhasil dihapus']);
-        } catch (\Exception $e) {
-            return response()->json(['success' => false, 'message' => 'Data gagal dihapus']);
-        }
     }
 
     //////////// ANAK ////////////

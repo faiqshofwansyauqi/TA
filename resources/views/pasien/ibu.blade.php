@@ -42,10 +42,9 @@
                                         <th>Kecamatan</th>
                                         <th>Provinsi</th>
                                         <th>Agama</th>
-                                        <th>Jamkesmas</th>
+                                        <th>BPJS</th>
                                         <th>Posyandu</th>
                                         <th>Nama Kader</th>
-                                        <th>Nama Dukun</th>
                                         <th>Tgl. Register</th>
                                         <th>Telp/HP</th>
                                         <th>Gol Darah</th>
@@ -85,7 +84,8 @@
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
-                                        <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir">
+                                        <input type="text" class="form-control" id="tanggal_lahir" name="tanggal_lahir"
+                                            placeholder="hh-bb-tttt">
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="alamat_domisili" class="form-label">Alamat Domisili</label>
@@ -116,8 +116,7 @@
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="noregis" class="form-label">Nomer Registrasi Ibu</label>
-                                        <input type="text" class="form-control" id="noregis" name="noregis" 
-                                            maxlength="4" pattern="\d{1,13}">
+                                        <input type="text" class="form-control" id="noregis" name="noregis">
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="umur" class="form-label">Umur</label>
@@ -144,9 +143,9 @@
                                         <input type="text" class="form-control" id="agama" name="agama" >
                                     </div>
                                     <div class="col-md-4 mb-2">
-                                        <label for="jamkesmas" class="form-label">Jamkesmas</label>
+                                        <label for="jamkesmas" class="form-label">BPJS</label>
                                         <select class="form-select" id="jamkesmas" name="jamkesmas" >
-                                            <option value="-">Pilih Jamkesmas</option>
+                                            <option value="-">Pilih BPJS</option>
                                             <option value="Ya">Ya</option>
                                             <option value="Tidak">Tidak</option>
                                         </select>
@@ -160,13 +159,10 @@
                                         <input type="text" class="form-control" id="nama_kader" name="nama_kader" >
                                     </div>
                                     <div class="col-md-4 mb-2">
-                                        <label for="nama_dukum" class="form-label">Nama Dukun</label>
-                                        <input type="text" class="form-control" id="nama_dukum" name="nama_dukum" >
-                                    </div>
-                                    <div class="col-md-4 mb-2">
                                         <label for="tanggal_reg" class="form-label">Tanggal Register</label>
-                                        <input type="date" class="form-control" id="tanggal_reg" name="tanggal_reg" >
-                                    </div>
+                                        <input type="date" class="form-control" id="tanggal_reg" 
+                                        name="tanggal_reg" value="{{ \Carbon\Carbon::now()->format('Y-m-d') }}" readonly>
+                                    </div>                                    
                                     <div class="col-md-4 mb-2">
                                         <label for="gol_darah" class="form-label">Gol Darah</label>
                                         <select class="form-select" id="gol_darah" name="gol_darah" >
@@ -247,12 +243,12 @@
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_nik" class="form-label">NIK</label>
-                                        <input type="text" class="form-control" id="edit_nik" name="nik" maxlength="16" readonly>
-                                    </div>                                    
+                                        <input type="text" class="form-control" id="edit_nik" name="nik"
+                                            maxlength="16" readonly>
+                                    </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_noregis" class="form-label">Nomer Registrasi Ibu</label>
-                                        <input type="text" class="form-control" id="edit_noregis" name="noregis"
-                                            maxlength="4" pattern="\d{1,13}">
+                                        <input type="text" class="form-control" id="edit_noregis" name="noregis" readonly>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_umur" class="form-label">Umur</label>
@@ -285,9 +281,9 @@
                                             required>
                                     </div>
                                     <div class="col-md-4 mb-2">
-                                        <label for="edit_jamkesmas" class="form-label">Jamkesmas</label>
+                                        <label for="edit_jamkesmas" class="form-label">BPJS</label>
                                         <select class="form-select" id="edit_jamkesmas" name="jamkesmas" required>
-                                            <option value="">Pilih Jamkesmas</option>
+                                            <option value="">Pilih BPJS</option>
                                             <option value="Ya">Ya</option>
                                             <option value="Tidak">Tidak</option>
                                         </select>
@@ -303,14 +299,9 @@
                                             name="nama_kader" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
-                                        <label for="edit_nama_dukum" class="form-label">Nama Dukun</label>
-                                        <input type="text" class="form-control" id="edit_nama_dukum"
-                                            name="nama_dukum" required>
-                                    </div>
-                                    <div class="col-md-4 mb-2">
                                         <label for="edit_tanggal_reg" class="form-label">Tanggal Register</label>
                                         <input type="date" class="form-control" id="edit_tanggal_reg"
-                                            name="tanggal_reg" required>
+                                            name="tanggal_reg" readonly>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_gol_darah" class="form-label">Gol Darah</label>
@@ -454,10 +445,6 @@
                         name: 'nama_kader'
                     },
                     {
-                        data: 'nama_dukum',
-                        name: 'nama_dukum'
-                    },
-                    {
                         data: 'tanggal_reg',
                         name: 'tanggal_reg'
                     },
@@ -477,16 +464,10 @@
                         render: function(data, type, row) {
                             let editUrl = '{{ route('pasien.edit_ibu', ':id') }}'.replace(':id',
                                 row.id_ibu);
-                            let deleteUrl = '{{ route('pasien.destroy_ibu', ':id') }}'.replace(
-                                ':id', row
-                                .id_ibu);
                             return `
                                 <div style="display: flex; justify-content: center;">
                                     <button class="btn btn-sm btn-primary edit-btn" data-id="${row.id_ibu}" data-bs-toggle="modal" data-bs-target="#modalEdit" style="margin-right: 5px;">
                                         <i class="ri-edit-2-fill"></i>
-                                    </button>
-                                    <button class="btn btn-sm btn-danger btn-delete" data-id="${row.NIK}" data-url="${deleteUrl}" hidden>
-                                        <i class="bi bi-trash3-fill"></i>
                                     </button>
                                 </div>
                             `;
@@ -533,7 +514,6 @@
                     $('#edit_tanggal_reg').val(data.tanggal_reg);
                     $('#edit_posyandu').val(data.posyandu);
                     $('#edit_nama_kader').val(data.nama_kader);
-                    $('#edit_nama_dukum').val(data.nama_dukum);
                     $('#edit_jamkesmas').val(data.jamkesmas);
                     $('#edit_gol_darah').val(data.gol_darah);
                     $('#edit_telp').val(data.telp);
@@ -545,57 +525,43 @@
             });
         });
 
-        $('#ibu-table').on('click', '.btn-delete', function() {
-            const id = $(this).data('id');
-            const url = $(this).data('url');
-
-            Swal.fire({
-                title: 'Apakah Anda yakin?',
-                text: "Anda tidak akan bisa mengembalikan ini!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Ya, hapus!',
-                cancelButtonText: 'Batal',
-                showLoaderOnConfirm: true,
-                preConfirm: () => {
-                    return $.ajax({
-                        url: url,
-                        type: 'POST',
-                        data: {
-                            _method: 'DELETE',
-                            _token: '{{ csrf_token() }}'
-                        },
-                        error: function(xhr) {
-                            Swal.fire(
-                                'Gagal!',
-                                'Data gagal dihapus.',
-                                'error'
-                            );
-                        }
-                    }).then(response => {
-                        if (response.success) {
-                            Swal.fire(
-                                'Terhapus!',
-                                'Data telah berhasil dihapus.',
-                                'success'
-                            );
-                            setTimeout(function() {
-                                location.reload();
-                            }, 1000);
-                        } else {
-                            Swal.fire(
-                                'Gagal!',
-                                'Data gagal dihapus.',
-                                'error'
-                            );
-                        }
-                    });
+        $(function() {
+            $('#tanggal_lahir').daterangepicker({
+                singleDatePicker: true,
+                showDropdowns: true,
+                autoUpdateInput: false,
+                locale: {
+                    format: 'YYYY-MM-DD'
                 }
+            });
+
+            $('#tanggal_lahir').on('apply.daterangepicker', function(ev, picker) {
+                $(this).val(picker.startDate.format('YYYY-MM-DD'));
+            });
+
+            $('#tanggal_lahir').on('cancel.daterangepicker', function(ev, picker) {
+                $(this).val('');
             });
         });
 
+        const bulanNames = [
+            'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+            'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+        ];
+
+        function updateInputValue() {
+            const input = document.getElementById('noregis');
+            const now = new Date();
+            const monthIndex = now.getMonth();
+            const year = now.getFullYear();
+            const currentValue = input.value.trim();
+            const currentMonth = bulanNames[monthIndex];
+            if (!currentValue.match(/^\d{3}\/[A-Za-z]+\/\d{4}$/)) { 
+                input.value = (currentValue ? currentValue.split('/')[0] : '00') + '/' + currentMonth + '/' + year;
+            }
+        }
+        window.onload = updateInputValue;
+        document.getElementById('noregis').addEventListener('blur', updateInputValue);
         document.addEventListener('DOMContentLoaded', function() {
             function restrictInputToNumbers(input, maxLength) {
                 input.addEventListener('input', function() {
@@ -622,16 +588,12 @@
             var telpInput = document.getElementById('telp');
             var telpEdit = document.getElementById('edit_telp');
             var nikInput = document.getElementById('nik');
-            var noregisInput = document.getElementById('noregis');
-            var noregisEdit = document.getElementById('edit_noregis');
             var rtrwInput = document.getElementById('rtrw');
             var rtrwEdit = document.getElementById('edit_rtrw');
 
             restrictInputToNumbers(telpInput, 13);
             restrictInputToNumbers(telpEdit, 13);
             restrictInputToNumbers(nikInput, 16);
-            restrictInputToNumbers(noregisInput, 4);
-            restrictInputToNumbers(noregisEdit, 4);
             restrictInputToNumbersAndSlash(rtrwInput, 5);
             restrictInputToNumbersAndSlash(rtrwEdit, 5);
         });

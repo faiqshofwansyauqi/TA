@@ -35,7 +35,6 @@ class CreateIbuTable extends Migration
             $table->date('tanggal_reg');
             $table->string('posyandu');
             $table->string('nama_kader');
-            $table->string('nama_dukum');
             $table->string('jamkesmas');
             $table->string('gol_darah');
             $table->string('telp');

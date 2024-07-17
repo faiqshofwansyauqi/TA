@@ -46,7 +46,6 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('pasien/destroy_anak/{id}', [PasienController::class, 'destroy_anak'])->name('pasien.destroy_anak');
         Route::get('pasien/edit_ibu/{id}', [PasienController::class, 'edit_ibu'])->name('pasien.edit_ibu');
         Route::put('pasien/update_ibu/{id}', [PasienController::class, 'update_ibu'])->name('pasien.update_ibu');
-        Route::delete('pasien/destroy_ibu/{id}', [PasienController::class, 'destroy_ibu'])->name('pasien.destroy_ibu');
     });
     Route::prefix('antenatal_care')->group(function () {
         ///////////// PEMERIKSAAN DOKTER TM1 /////////////

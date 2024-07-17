@@ -227,6 +227,7 @@
                                                 PAP<sup>3)</sup></label>
                                             <select class="form-select" id="kpl_thd" name="kpl_thd" required>
                                                 <option value="">Pilih Kepala thd PAP</option>
+                                                <option value="-">-</option>
                                                 <option value="M">Masuk</option>
                                                 <option value="MB">Belum Masuk</option>
                                             </select>
@@ -723,6 +724,7 @@
                                                 PAP<sup>3)</sup></label>
                                             <select class="form-select" id="edit_kpl_thd" name="kpl_thd" required>
                                                 <option value="">Pilih Kepala thd PAP</option>
+                                                <option value="-">-</option>
                                                 <option value="M">Masuk</option>
                                                 <option value="MB">Belum Masuk</option>
                                             </select>

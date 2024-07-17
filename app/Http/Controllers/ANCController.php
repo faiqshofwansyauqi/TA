@@ -208,7 +208,7 @@ class ANCController extends Controller
     }
     public function store_showanc(Request $request)
     {
-        dd($request);
+        // dd($request);
         $request->validate([
             'id_ibu',
             'tanggal',
