@@ -118,22 +118,22 @@
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
                                             <label for="tgl_periksa" class="form-label">Tanggal Periksa</label>
-                                            <input type="date" class="form-control" id="tgl_periksa"
+                                            <input type="text" class="form-control datepicker" id="tgl_periksa"
                                                 name="tgl_periksa" required>
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="tgl_hpht" class="form-label">Tanggal HPHT</label>
-                                            <input type="date" class="form-control" id="tgl_hpht" name="tgl_hpht"
-                                                required>
+                                            <input type="text" class="form-control datepicker" id="tgl_hpht"
+                                                name="tgl_hpht" required>
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="tksrn_persalinan" class="form-label">Taksiran Persalinan</label>
-                                            <input type="date" class="form-control" id="tksrn_persalinan"
+                                            <input type="text" class="form-control datepicker" id="tksrn_persalinan"
                                                 name="tksrn_persalinan" required>
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="prlnan_sebelum" class="form-label">Persalinan Sebelumnya</label>
-                                            <input type="date" class="form-control" id="prlnan_sebelum"
+                                            <input type="text" class="form-control datepicker" id="prlnan_sebelum"
                                                 name="prlnan_sebelum">
                                         </div>
                                     </div>
@@ -221,7 +221,8 @@
                                         <input type="text" class="form-control" id="edit_pnykt_kronis_alergi"
                                             name="pnykt_kronis_alergi" required>
                                     </div>
-                                    <button type="submit" class="btn btn-primary" style="margin-top: 50px">Submit</button>
+                                    <button type="submit" class="btn btn-primary"
+                                        style="margin-top: 50px">Submit</button>
                                 </div>
                             </div>
                             <div class=" col-6">
@@ -241,14 +242,14 @@
                                         <div class="col-md-6 mb-3">
                                             <label for="edit_tksrn_persalinan" class="form-label">Taksiran
                                                 Persalinan</label>
-                                            <input type="date" class="form-control" id="edit_tksrn_persalinan"
-                                                name="tksrn_persalinan" required>
+                                            <input type="date" class="form-control"
+                                                id="edit_tksrn_persalinan" name="tksrn_persalinan" required>
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="edit_prlnan_sebelum" class="form-label">Persalinan
                                                 Sebelumnya</label>
-                                            <input type="date" class="form-control" id="edit_prlnan_sebelum"
-                                                name="prlnan_sebelum">
+                                            <input type="date" class="form-control"
+                                                id="edit_prlnan_sebelum" name="prlnan_sebelum">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -630,6 +631,29 @@
                             ':id', id));
                     $('#modalEdit').modal('show');
                 }
+            });
+        });
+
+        $(function() {
+            $('.datepicker').daterangepicker({
+                singleDatePicker: true,
+                showDropdowns: true,
+                autoUpdateInput: false,
+                locale: {
+                    format: 'DD/MM/YYYY'
+                }
+            }, function(start, end, label) {
+                $(this.element).val(start.format('DD/MM/YYYY'));
+                $(this.element).data('original-format', start.format('YYYY-MM-DD'));
+            });
+            $('.datepicker').on('apply.daterangepicker', function(ev, picker) {
+                $(this).val(picker.startDate.format('DD/MM/YYYY'));
+                $(this).data('original-format', picker.startDate.format('YYYY-MM-DD'));
+            });
+            $('form').on('submit', function() {
+                $('.datepicker').each(function() {
+                    $(this).val($(this).data('original-format'));
+                });
             });
         });
     </script>

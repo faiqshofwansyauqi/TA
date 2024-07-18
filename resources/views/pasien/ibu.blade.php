@@ -84,8 +84,7 @@
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
-                                        <input type="text" class="form-control" id="tanggal_lahir" name="tanggal_lahir"
-                                            placeholder="hh-bb-tttt">
+                                        <input type="text" class="form-control datepicker" id="tanggal_lahir" name="tanggal_lahir">
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="alamat_domisili" class="form-label">Alamat Domisili</label>
@@ -248,7 +247,8 @@
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_noregis" class="form-label">Nomer Registrasi Ibu</label>
-                                        <input type="text" class="form-control" id="edit_noregis" name="noregis" readonly>
+                                        <input type="text" class="form-control" id="edit_noregis" name="noregis"
+                                            readonly>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_umur" class="form-label">Umur</label>
@@ -526,21 +526,28 @@
         });
 
         $(function() {
-            $('#tanggal_lahir').daterangepicker({
+            $('.datepicker').daterangepicker({
                 singleDatePicker: true,
                 showDropdowns: true,
                 autoUpdateInput: false,
                 locale: {
-                    format: 'YYYY-MM-DD'
+                    format: 'DD-MM-YYYY'
                 }
+            }, function(start, end, label) {
+                $(this.element).val(start.format('DD-MM-YYYY'));
+                $(this.element).data('original-format', start.format('YYYY-MM-DD'));
             });
-
-            $('#tanggal_lahir').on('apply.daterangepicker', function(ev, picker) {
-                $(this).val(picker.startDate.format('YYYY-MM-DD'));
+            $('.datepicker').on('apply.daterangepicker', function(ev, picker) {
+                $(this).val(picker.startDate.format('DD-MM-YYYY'));
+                $(this).data('original-format', picker.startDate.format('YYYY-MM-DD'));
             });
-
-            $('#tanggal_lahir').on('cancel.daterangepicker', function(ev, picker) {
+            $('.datepicker').on('cancel.daterangepicker', function(ev, picker) {
                 $(this).val('');
+            });
+            $('form').on('submit', function() {
+                $('.datepicker').each(function() {
+                    $(this).val($(this).data('original-format'));
+                });
             });
         });
 
@@ -556,7 +563,7 @@
             const year = now.getFullYear();
             const currentValue = input.value.trim();
             const currentMonth = bulanNames[monthIndex];
-            if (!currentValue.match(/^\d{3}\/[A-Za-z]+\/\d{4}$/)) { 
+            if (!currentValue.match(/^\d{3}\/[A-Za-z]+\/\d{4}$/)) {
                 input.value = (currentValue ? currentValue.split('/')[0] : '00') + '/' + currentMonth + '/' + year;
             }
         }
