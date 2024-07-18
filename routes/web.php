@@ -77,6 +77,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('rnca', [ANCController::class, 'rnca'])->name('antenatal_care.rnca_persalinan');
         Route::post('store-rnca', [ANCController::class, 'store_rnca'])->name('antenatal_care.store_rnca');
         Route::get('data-rnca', [ANCController::class, 'getData_rnca'])->name('antenatal_care.data_rnca');
+        Route::get('antenatal_care/rnca/{nama_ibu}', [ANCController::class, 'getInfo_Ropb'])->name('antenatal_care.info_ropb');
         Route::get('antenatal_care/show_rnca/{id}', [ANCController::class, 'show_rnca'])->name('antenatal_care.show_rnca');
         Route::get('antenatal_care/edit_rnca/{id}', [ANCController::class, 'edit_rnca'])->name('antenatal_care.edit_rnca');
         Route::put('antenatal_care/update_rnca/{id}', [ANCController::class, 'update_rnca'])->name('antenatal_care.update_rnca');

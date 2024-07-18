@@ -413,7 +413,6 @@
                 '#colvis-button');
         });
 
-
         $('#anak-table').on('click', '.edit-btn', function() {
             let id = $(this).data('id');
             $.ajax({
@@ -439,6 +438,7 @@
                 }
             });
         });
+
         $(document).ready(function() {
             $('#id_ibu').change(function() {
                 var id_ibu = $(this).val();
@@ -484,6 +484,7 @@
                 }
             });
         });
+        
         $('#anak-table').on('click', '.btn-delete', function() {
             const id = $(this).data('id');
             const url = $(this).data('url');

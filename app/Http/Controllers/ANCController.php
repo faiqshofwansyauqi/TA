@@ -648,6 +648,20 @@ class ANCController extends Controller
         ])->find($id);
         return response()->json($rnca);
     }
+    public function getInfo_Ropb($id_ibu)
+    {
+        $ibu = Ibu::where('id_ibu', $id_ibu)->first();
+        if ($ibu) {
+            $ropb = Ropb::where('id_ibu', $ibu->id_ibu)->first();
+            return response()->json([
+                'ibu' => $ibu,
+                'ropb' => $ropb,
+            ]);
+        } else {
+            return response()->json(['message' => 'Data not found'], 404);
+        }
+    }
+
 
     //////// PEMERIKSAAN DOKTER TM3 ////////
     public function Tm3()

@@ -70,7 +70,7 @@
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label for="tgl_persalinan" class="form-label">Tanggal Persalinan</label>
-                                        <input type="date" class="form-control" id="tgl_persalinan" name="tgl_persalinan"
+                                        <input type="date" class="form-control" name="tgl_persalinan" id="tgl_persalinan"
                                             required>
                                     </div>
                                 </div>
@@ -79,26 +79,20 @@
                                         <label for="penolong" class="form-label">Penolong</label>
                                         <select class="form-select" id="penolong" name="penolong" required>
                                             <option value="">Pilih Penolong</option>
-                                            <option value="Keluarga">Keluarga</option>
-                                            <option value="Dukun">Dukun</option>
-                                            <option value="Dr. Umum">Dr. Umum</option>
+                                            <option value="Bidan">Bidan</option>
                                             <option value="Dr. Spesialis">Dr. Spesialis</option>
-                                            <option value="Lain-lain">Lain-lain</option>
-                                            <option value="Tidak ad">Tidak ad</option>
                                         </select>
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="tempat" class="form-label">Tempat</label>
                                         <select class="form-select" id="tempat" name="tempat" required>
                                             <option value="">Pilih Tempat</option>
-                                            <option value="Rumah">Rumah</option>
-                                            <option value="Poskesdas">Poskesdas</option>
-                                            <option value="Pustu">Pustu</option>
                                             <option value="Puskesmas">Puskesmas</option>
-                                            <option value="RB">RB</option>
+                                            <option value="Pustu">Pustu</option>
+                                            <option value="PMB">PMB</option>
                                             <option value="RSIA">RSIA</option>
                                             <option value="RS">RS</option>
-                                            <option value="RS ODHA">RS ODHA</option>
+                                            <option value="Klinik">Klinik</option>
                                         </select>
                                     </div>
                                     <div class="col-md-4 mb-3">
@@ -109,8 +103,6 @@
                                             <option value="Keluarga">Keluarga</option>
                                             <option value="Teman">Teman</option>
                                             <option value="Tetangga">Tetangga</option>
-                                            <option value="Lain-lain">Lain-lain</option>
-                                            <option value="Tidak ada">Tidak ada</option>
                                         </select>
                                     </div>
                                 </div>
@@ -123,7 +115,6 @@
                                             <option value="Mobil">Mobil</option>
                                             <option value="Ambulans">Ambulans</option>
                                             <option value="Umum">Umum</option>
-                                            <option value="Lain-lain">Lain-lain</option>
                                         </select>
                                     </div>
                                     <div class="col-md-4 mb-3">
@@ -133,8 +124,6 @@
                                             <option value="Suami">Suami</option>
                                             <option value="Keluarga">Keluarga</option>
                                             <option value="Teman">Teman</option>
-                                            <option value="Lain-lain">Lain-lain</option>
-                                            <option value="Tidak ada">Tidak ada</option>
                                         </select>
                                     </div>
                                     <div class="col-md-4 mb-3">
@@ -181,26 +170,20 @@
                                         <label for="edit_penolong" class="form-label">Penolong</label>
                                         <select class="form-select" id="edit_penolong" name="penolong" required>
                                             <option value="">Pilih Penolong</option>
-                                            <option value="Keluarga">Keluarga</option>
-                                            <option value="Dukun">Dukun</option>
-                                            <option value="Dr. Umum">Dr. Umum</option>
+                                            <option value="Bidan">Bidan</option>
                                             <option value="Dr. Spesialis">Dr. Spesialis</option>
-                                            <option value="Lain-lain">Lain-lain</option>
-                                            <option value="Tidak ad">Tidak ad</option>
                                         </select>
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="edit_tempat" class="form-label">Tempat</label>
                                         <select class="form-select" id="edit_tempat" name="tempat" required>
                                             <option value="">Pilih Tempat</option>
-                                            <option value="Rumah">Rumah</option>
-                                            <option value="Poskesdas">Poskesdas</option>
-                                            <option value="Pustu">Pustu</option>
                                             <option value="Puskesmas">Puskesmas</option>
-                                            <option value="RB">RB</option>
+                                            <option value="Pustu">Pustu</option>
+                                            <option value="PMB">PMB</option>
                                             <option value="RSIA">RSIA</option>
                                             <option value="RS">RS</option>
-                                            <option value="RS ODHA">RS ODHA</option>
+                                            <option value="Klinik">Klinik</option>
                                         </select>
                                     </div>
                                     <div class="col-md-4 mb-3">
@@ -211,8 +194,6 @@
                                             <option value="Keluarga">Keluarga</option>
                                             <option value="Teman">Teman</option>
                                             <option value="Tetangga">Tetangga</option>
-                                            <option value="Lain-lain">Lain-lain</option>
-                                            <option value="Tidak ada">Tidak ada</option>
                                         </select>
                                     </div>
                                 </div>
@@ -225,7 +206,6 @@
                                             <option value="Mobil">Mobil</option>
                                             <option value="Ambulans">Ambulans</option>
                                             <option value="Umum">Umum</option>
-                                            <option value="Lain-lain">Lain-lain</option>
                                         </select>
                                     </div>
                                     <div class="col-md-4 mb-3">
@@ -235,14 +215,11 @@
                                             <option value="Suami">Suami</option>
                                             <option value="Keluarga">Keluarga</option>
                                             <option value="Teman">Teman</option>
-                                            <option value="Lain-lain">Lain-lain</option>
-                                            <option value="Tidak ada">Tidak ada</option>
                                         </select>
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="edit_pendonor_darah" class="form-label">Gol Darah Pendonor</label>
-                                        <select class="form-select" id="edit_pendonor_darah" name="pendonor_darah"
-                                            required>
+                                        <select class="form-select" id="edit_pendonor_darah" name="pendonor_darah" required>
                                             <option value="">Pilih Gol Darah</option>
                                             <option value="A">A</option>
                                             <option value="B">B</option>
@@ -384,6 +361,33 @@
             });
             table.buttons().container().appendTo(
                 '#colvis-button');
+        });
+
+        $(document).ready(function() {
+            $('#id_ibu').change(function() {
+                var id_ibu = $(this).val();
+                $('#id_ibu').val('');
+                $('#tgl_persalinan').val('');
+                if (id_ibu) {
+                    $.ajax({
+                        url: '{{ route('antenatal_care.info_ropb', ':id_ibu') }}'.replace(':id_ibu',
+                            id_ibu),
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(response) {
+                            if (response.ibu) {
+                                $('#id_ibu').val(response.ibu.id_ibu);
+                            }
+                            if (response.ropb) {
+                                $('#tgl_persalinan').val(response.ropb.tksrn_persalinan);
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Error: ', error);
+                        }
+                    });
+                }
+            });
         });
 
         $('#rnca-table').on('click', '.view-btn', function() {
