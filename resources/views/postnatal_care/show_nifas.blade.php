@@ -30,12 +30,9 @@
                                         <th rowspan="2" class="align-middle text-center">HARI KE/IF
                                         </th>
                                         <th colspan="2" class="align-middle text-center">TANDA VITAL</th>
-                                        <th colspan="3" class="align-middle text-center">PELAYANAN</th>
-                                        <th colspan="4" class="align-middle text-center">INTEGRASI PROGRAM
-                                        </th>
+                                        <th colspan="2" class="align-middle text-center">PELAYANAN</th>
                                         <th colspan="4" class="align-middle text-center">KOMPLIKASI***
                                         </th>
-                                        <th rowspan="2" class="text-center align-middle">KLASIFIKASI</th>
                                         <th rowspan="2" class="text-center align-middle">TATA LAKSANA</th>
                                         <th colspan="5" class="align-middle text-center">DIRUJUK KE***
                                         <th colspan="2" class="align-middle text-center">KEADAAN</th>
@@ -43,14 +40,8 @@
                                     <tr>
                                         <th class="text-center vertical-header">TD <small>(mmHg)</small></th>
                                         <th class="text-center vertical-header">Suhu <small>°C</small></th>
-                                        <th class="text-center vertical-header">Catatan di Buku KIA <small>*</small>
-                                        </th>
                                         <th class="text-center vertical-header">Fe <small>(botol/tab)</small></th>
                                         <th class="text-center vertical-header">Vit. A<small>*</small></th>
-                                        <th class="text-center vertical-header">CD4 <small>(kopi/ml)</small></th>
-                                        <th class="text-center vertical-header">Anti Malaria <small>***</small></th>
-                                        <th class="text-center vertical-header">Anti TB <small>***</small></th>
-                                        <th class="text-center vertical-header">ARV</th>
                                         <th class="text-center vertical-header">PPP</th>
                                         <th class="text-center vertical-header">Infeksi</th>
                                         <th class="text-center vertical-header">HDK</th>
@@ -131,14 +122,6 @@
                                     <h5 class="card-title">Pelayanan</h5>
                                     <div class="row">
                                         <div class="col-md-4 mb-3">
-                                            <label for="buku_kia" class="form-label">Catatan buku KIA*</label>
-                                            <select class="form-select" id="buku_kia" name="buku_kia">
-                                                <option value="">Pilih Catatan buku KIA*</option>
-                                                <option value="jika iya">&#10003;</option>
-                                                <option value="jika tidak">&#10007;</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-4 mb-3">
                                             <label for="fe" class="form-label">Fe <sup>(tab/botol)</sup></label>
                                             <input type="number" class="form-control" id="fe" name="fe"
                                                 pattern="[0-9,\.]*">
@@ -150,29 +133,6 @@
                                                 <option value="jika iya">&#10003;</option>
                                                 <option value="jika tidak">&#10007;</option>
                                             </select>
-                                        </div>
-                                    </div>
-                                    <h5 class="card-title">Integrasi Program</h5>
-                                    <div class="row">
-                                        <div class="col-md-3 mb-3">
-                                            <label for="cd_4" class="form-label">CD4 <sup>(kopi/ml)</sup></label>
-                                            <input type="text" class="form-control" id="cd_4" name="cd_4"
-                                                pattern="[0-9,\.]*">
-                                        </div>
-                                        <div class="col-md-3 mb-3">
-                                            <label for="anti_malaria" class="form-label">Anti
-                                                Malaria</label>
-                                            <input type="text" class="form-control" id="anti_malaria"
-                                                name="anti_malaria">
-                                        </div>
-                                        <div class="col-md-3 mb-3">
-                                            <label for="anti_tb" class="form-label">Anti
-                                                TB</label>
-                                            <input type="text" class="form-control" id="anti_tb" name="anti_tb">
-                                        </div>
-                                        <div class="col-md-3 mb-3">
-                                            <label for="arv" class="form-label">Arv</label>
-                                            <input type="text" class="form-control" id="arv" name="arv">
                                         </div>
                                     </div>
                                 </div>
@@ -216,12 +176,6 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6">
-                                            <h5 class="card-title">Klasifikasi</h5>
-                                            <label for="klasifikasi" class="form-label">Klasifikasi</label>
-                                            <input type="text" class="form-control" id="klasifikasi"
-                                                name="klasifikasi">
-                                        </div>
                                         <div class="col-md-6">
                                             <h5 class="card-title">Tata Laksana</h5>
                                             <label for="tata_laksana" class="form-label">Tata Laksana</label>
@@ -361,14 +315,6 @@
                                     <h5 class="card-title">Pelayanan</h5>
                                     <div class="row">
                                         <div class="col-md-4 mb-3">
-                                            <label for="edit_buku_kia" class="form-label">Catatan buku KIA*</label>
-                                            <select class="form-select" id="edit_buku_kia" name="buku_kia">
-                                                <option value="">Pilih Catatan buku KIA*</option>
-                                                <option value="jika iya">&#10003;</option>
-                                                <option value="jika tidak">&#10007;</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-4 mb-3">
                                             <label for="edit_fe" class="form-label">Fe <sup>(tab/botol)</sup></label>
                                             <input type="number" class="form-control" id="edit_fe" name="fe"
                                                 required pattern="[0-9,\.]*">
@@ -380,31 +326,6 @@
                                                 <option value="jika iya">&#10003;</option>
                                                 <option value="jika tidak">&#10007;</option>
                                             </select>
-                                        </div>
-                                    </div>
-                                    <h5 class="card-title">Integrasi Program</h5>
-                                    <div class="row">
-                                        <div class="col-md-3 mb-3">
-                                            <label for="edit_cd_4" class="form-label">CD4 <sup>(tab/botol)</sup></label>
-                                            <input type="text" class="form-control" id="edit_cd_4" name="cd_4"
-                                                required pattern="[0-9,\.]*">
-                                        </div>
-                                        <div class="col-md-3 mb-3">
-                                            <label for="edit_anti_malaria" class="form-label">Anti
-                                                Malaria</label>
-                                            <input type="text" class="form-control" id="edit_anti_malaria" required
-                                                name="anti_malaria">
-                                        </div>
-                                        <div class="col-md-3 mb-3">
-                                            <label for="edit_anti_tb" class="form-label">Anti
-                                                TB</label>
-                                            <input type="text" class="form-control" id="edit_anti_tb" name="anti_tb"
-                                                required>
-                                        </div>
-                                        <div class="col-md-3 mb-3">
-                                            <label for="edit_arv" class="form-label">Arv</label>
-                                            <input type="text" class="form-control" id="edit_arv" name="arv"
-                                                required>
                                         </div>
                                     </div>
                                 </div>
@@ -444,12 +365,6 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6">
-                                            <h5 class="card-title">Klasifikasi</h5>
-                                            <label for="edit_klasifikasi" class="form-label">Klasifikasi</label>
-                                            <input type="text" class="form-control" id="edit_klasifikasi" required
-                                                name="klasifikasi">
-                                        </div>
                                         <div class="col-md-6">
                                             <h5 class="card-title">Tata Laksana</h5>
                                             <label for="edit_tata_laksana" class="form-label">Tata Laksana</label>
@@ -586,13 +501,6 @@
                         }
                     },
                     {
-                        data: 'buku_kia',
-                        name: 'buku_kia',
-                        render: function(data, type, row, meta) {
-                            return data.toLowerCase() === 'jika iya' ? '&#10003;' : '&#10007;';
-                        }
-                    },
-                    {
                         data: 'fe',
                         name: 'fe'
                     },
@@ -600,56 +508,57 @@
                         data: 'vit',
                         name: 'vit',
                         render: function(data, type, row, meta) {
-                            return data.toLowerCase() === 'jika iya' ? '&#10003;' : '&#10007;';
+                            return data.toLowerCase() === 'jika iya' ? '<i class="ri-check-line"></i>' : '<i class="ri-close-line"></i>;';
                         }
-                    },
-                    {
-                        data: 'cd_4',
-                        name: 'cd_4'
-                    },
-                    {
-                        data: 'anti_malaria',
-                        name: 'anti_malaria'
-                    },
-                    {
-                        data: 'anti_tb',
-                        name: 'anti_tb'
-                    },
-                    {
-                        data: 'arv',
-                        name: 'arv'
                     },
                     {
                         data: 'ppp',
                         name: 'ppp',
                         render: function(data, type, row, meta) {
-                            return data === '-' ? '-' : (data.toLowerCase() === 'jika iya' ?
-                                '&#10003;' : '&#10007;');
+                            if (data === null) {
+                                return '';
+                            } else if (data === '-') {
+                                return '-';
+                            } else {
+                                return data.toLowerCase() === 'jika iya' ?
+                                    '<i class="ri-check-line"></i>' :
+                                    '<i class="ri-close-line"></i>';
+                            }
                         }
                     },
                     {
                         data: 'infeksi',
                         name: 'infeksi',
                         render: function(data, type, row, meta) {
-                            return data === '-' ? '-' : (data.toLowerCase() === 'jika iya' ?
-                                '&#10003;' : '&#10007;');
+                            if (data === null) {
+                                return '';
+                            } else if (data === '-') {
+                                return '-';
+                            } else {
+                                return data.toLowerCase() === 'jika iya' ?
+                                    '<i class="ri-check-line"></i>' :
+                                    '<i class="ri-close-line"></i>';
+                            }
                         }
                     },
                     {
                         data: 'hdk',
                         name: 'hdk',
                         render: function(data, type, row, meta) {
-                            return data === '-' ? '-' : (data.toLowerCase() === 'jika iya' ?
-                                '&#10003;' : '&#10007;');
+                            if (data === null) {
+                                return '';
+                            } else if (data === '-') {
+                                return '-';
+                            } else {
+                                return data.toLowerCase() === 'jika iya' ?
+                                    '<i class="ri-check-line"></i>' :
+                                    '<i class="ri-close-line"></i>';
+                            }
                         }
                     },
                     {
                         data: 'lainnya_komplikasi',
                         name: 'lainnya_komplikasi'
-                    },
-                    {
-                        data: 'klasifikasi',
-                        name: 'klasifikasi'
                     },
                     {
                         data: 'tata_laksana',
@@ -659,32 +568,60 @@
                         data: 'puskesmas',
                         name: 'puskesmas',
                         render: function(data, type, row, meta) {
-                            return data === '-' ? '-' : (data.toLowerCase() === 'jika iya' ?
-                                '&#10003;' : '&#10007;');
+                            if (data === null) {
+                                return '';
+                            } else if (data === '-') {
+                                return '-';
+                            } else {
+                                return data.toLowerCase() === 'jika iya' ?
+                                    '<i class="ri-check-line"></i>' :
+                                    '<i class="ri-close-line"></i>';
+                            }
                         }
                     },
                     {
                         data: 'klinik',
                         name: 'klinik',
                         render: function(data, type, row, meta) {
-                            return data === '-' ? '-' : (data.toLowerCase() === 'jika iya' ?
-                                '&#10003;' : '&#10007;');
+                            if (data === null) {
+                                return '';
+                            } else if (data === '-') {
+                                return '-';
+                            } else {
+                                return data.toLowerCase() === 'jika iya' ?
+                                    '<i class="ri-check-line"></i>' :
+                                    '<i class="ri-close-line"></i>';
+                            }
                         }
                     },
                     {
                         data: 'rsia_rsb',
                         name: 'rsia_rsb',
                         render: function(data, type, row, meta) {
-                            return data === '-' ? '-' : (data.toLowerCase() === 'jika iya' ?
-                                '&#10003;' : '&#10007;');
+                            if (data === null) {
+                                return '';
+                            } else if (data === '-') {
+                                return '-';
+                            } else {
+                                return data.toLowerCase() === 'jika iya' ?
+                                    '<i class="ri-check-line"></i>' :
+                                    '<i class="ri-close-line"></i>';
+                            }
                         }
                     },
                     {
                         data: 'rs',
                         name: 'rs',
                         render: function(data, type, row, meta) {
-                            return data === '-' ? '-' : (data.toLowerCase() === 'jika iya' ?
-                                '&#10003;' : '&#10007;');
+                            if (data === null) {
+                                return '';
+                            } else if (data === '-') {
+                                return '-';
+                            } else {
+                                return data.toLowerCase() === 'jika iya' ?
+                                    '<i class="ri-check-line"></i>' :
+                                    '<i class="ri-close-line"></i>';
+                            }
                         }
                     },
                     {
@@ -722,18 +659,12 @@
                     $('#edit_kf').val(data.kf);
                     $('#edit_td_mmhg').val(data.td_mmhg);
                     $('#edit_suhu').val(data.suhu);
-                    $('#edit_buku_kia').val(data.buku_kia);
                     $('#edit_fe').val(data.fe);
                     $('#edit_vit').val(data.vit);
-                    $('#edit_cd_4').val(data.cd_4);
-                    $('#edit_anti_malaria').val(data.anti_malaria);
-                    $('#edit_anti_tb').val(data.anti_tb);
-                    $('#edit_arv').val(data.arv);
                     $('#edit_ppp').val(data.ppp);
                     $('#edit_infeksi').val(data.infeksi);
                     $('#edit_hdk').val(data.hdk);
                     $('#edit_lainnya_komplikasi').val(data.lainnya_komplikasi);
-                    $('#edit_klasifikasi').val(data.klasifikasi);
                     $('#edit_tata_laksana').val(data.tata_laksana);
                     $('#edit_puskesmas').val(data.puskesmas);
                     $('#edit_klinik').val(data.klinik);
@@ -756,7 +687,7 @@
                 const hariInput = document.getElementById('hari');
                 const kfSelect = document.getElementById('kf');
 
-                
+
                 hariInput.addEventListener('input', function() {
                     const hariValue = parseInt(hariInput.value, 10);
                     if (isNaN(hariValue)) {
