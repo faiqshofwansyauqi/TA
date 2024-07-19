@@ -91,15 +91,18 @@
                                     </div>
                                     <div class="col-md-2 mb-3">
                                         <label for="gravida" class="form-label">Gravida</label>
-                                        <input type="text" class="form-control" id="gravida" name="gravida">
+                                        <input type="text" class="form-control" id="gravida" pattern="[0-9,\,]*"
+                                            name="gravida">
                                     </div>
                                     <div class="col-md-2 mb-3">
                                         <label for="partus" class="form-label">Partus</label>
-                                        <input type="text" class="form-control" id="partus" name="partus">
+                                        <input type="text" class="form-control" id="partus" pattern="[0-9,\,]*"
+                                            name="partus">
                                     </div>
                                     <div class="col-md-2 mb-3">
                                         <label for="abortus" class="form-label">Abortus</label>
-                                        <input type="text" class="form-control" id="abortus" name="abortus">
+                                        <input type="text" class="form-control" id="abortus" pattern="[0-9,\,]*"
+                                            name="abortus">
                                     </div>
                                     <div class="col-md-2 mb-3">
                                         <label for="usia_hamil" class="form-label">Usia Hamil</label>
@@ -220,15 +223,18 @@
                                     </div>
                                     <div class="col-md-2 mb-3">
                                         <label for="edit_gravida" class="form-label">Gravida</label>
-                                        <input type="text" class="form-control" id="edit_gravida" name="gravida">
+                                        <input type="text" class="form-control" id="edit_gravida" pattern="[0-9,\,]*"
+                                            name="gravida">
                                     </div>
                                     <div class="col-md-2 mb-3">
                                         <label for="edit_partus" class="form-label">Partus</label>
-                                        <input type="text" class="form-control" id="edit_partus" name="partus">
+                                        <input type="text" class="form-control" id="edit_partus" pattern="[0-9,\,]*"
+                                            name="partus">
                                     </div>
                                     <div class="col-md-2 mb-3">
                                         <label for="edit_abortus" class="form-label">Abortus</label>
-                                        <input type="text" class="form-control" id="edit_abortus" name="abortus">
+                                        <input type="text" class="form-control" id="edit_abortus" pattern="[0-9,\,]*"
+                                            name="abortus">
                                     </div>
                                     <div class="col-md-2 mb-3">
                                         <label for="edit_usia_hamil" class="form-label">Usia Hamil</label>
@@ -547,32 +553,110 @@
                 '#colvis-button');
         });
 
+        $(document).ready(function() {
+            $('#id_ibu').change(function() {
+                var id_ibu = $(this).val();
+                $('#id_ibu').val('');
+                $('#gravida').val('');
+                $('#partus').val('');
+                $('#abortus').val('');
+                $('#usia_ibu').val('');
+                if (id_ibu) {
+                    $.ajax({
+                        url: '{{ route('intranatal_care.info_rnca_persalinan', ':id_ibu') }}'
+                            .replace(':id_ibu',
+                                id_ibu),
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(response) {
+                            if (response.ibu) {
+                                $('#id_ibu').val(response.ibu.id_ibu);
+                                $('#usia_ibu').val(response.ibu.umur);
+                            }
+                            if (response.ropb) {
+                                $('#gravida').val(response.ropb.gravida);
+                                $('#partus').val(response.ropb.partus);
+                                $('#abortus').val(response.ropb.abortus);
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Error: ', error);
+                        }
+                    });
+                }
+            });
+        });
+
         document.addEventListener('DOMContentLoaded', function() {
             function restrictInputToNumbers(input, maxLength) {
-                input.addEventListener('input', function() {
-                    var value = input.value;
-                    value = value.replace(/[^0-9/,]/g, '');
-                    if (value.length > maxLength) {
-                        value = value.substring(0, maxLength);
-                    }
-                    input.value = value;
-                });
+                if (input) {
+                    input.addEventListener('input', function() {
+                        var value = input.value;
+                        value = value.replace(/[^0-9/,]/g, '');
+                        if (value.length > maxLength) {
+                            value = value.substring(0, maxLength);
+                        }
+                        input.value = value;
+                    });
+                }
             }
 
-            var berat_bayiInput = document.getElementById('berat_bayi');
-            var berat_bayiEdit = document.getElementById('edit_berat_bayi');
-            var panjang_bayiInput = document.getElementById('panjang_bayi');
-            var panjang_bayiEdit = document.getElementById('edit_panjang_bayi');
-            var pendarahanInput = document.getElementById('pendarahan');
-            var pendarahanEdit = document.getElementById('edit_pendarahan');
+            var inputs = [{
+                    id: 'brt_bayi',
+                    maxLength: 5
+                },
+                {
+                    id: 'edit_brt_bayi',
+                    maxLength: 5
+                },
+                {
+                    id: 'pnjg_bayi',
+                    maxLength: 10
+                },
+                {
+                    id: 'edit_pnjg_bayi',
+                    maxLength: 10
+                },
+                {
+                    id: 'lngkr_kpl_bayi',
+                    maxLength: 10
+                },
+                {
+                    id: 'edit_lngkr_kpl_bayi',
+                    maxLength: 10
+                },
+                {
+                    id: 'gravida',
+                    maxLength: 10
+                },
+                {
+                    id: 'edit_gravida',
+                    maxLength: 10
+                },
+                {
+                    id: 'partus',
+                    maxLength: 10
+                },
+                {
+                    id: 'edit_partus',
+                    maxLength: 10
+                },
+                {
+                    id: 'abortus',
+                    maxLength: 10
+                },
+                {
+                    id: 'edit_abortus',
+                    maxLength: 10
+                },
+            ];
 
-            restrictInputToNumbers(berat_bayiEdit, 5);
-            restrictInputToNumbers(panjang_bayiEdit, 10);
-            restrictInputToNumbers(pendarahanEdit, 10);
-            restrictInputToNumbers(berat_bayiInput, 5);
-            restrictInputToNumbers(panjang_bayiInput, 10);
-            restrictInputToNumbers(pendarahanInput, 10);
+            inputs.forEach(function(input) {
+                var element = document.getElementById(input.id);
+                restrictInputToNumbers(element, input.maxLength);
+            });
         });
+
 
         $('#persalinan-table').on('click', '.view-btn', function() {
             let id = $(this).data('id');
@@ -676,8 +760,8 @@
                                 <td>${data.keadaan_ibu}</td>
                             </tr>
                             <tr>
-                                <td>Vitamin K = ${vitaminKIcon}</td>
-                                <td>HBO = ${HBOIcon}</td>
+                                <td>Vitamin K : ${vitaminKIcon}</td>
+                                <td>HBO : ${HBOIcon}</td>
                             </tr>
                         </tbody>
                     </table>

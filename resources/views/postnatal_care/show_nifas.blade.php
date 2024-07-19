@@ -14,7 +14,6 @@
         </div>
     </div>
 
-
     <section class="section dashboard">
         <div class="row">
             <div class="col-lg-12">
@@ -728,17 +727,6 @@
                 });
             }
             editInputKF();
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            if (window.location.pathname.includes('/postnatal_care/nifas/show_nifas')) {
-                var body = document.querySelector('body');
-                if (window.innerWidth >= 768) {
-                    body.classList.add('toggle-sidebar');
-                } else {
-                    body.classList.remove('toggle-sidebar');
-                }
-            }
         });
 
         document.addEventListener('DOMContentLoaded', function() {

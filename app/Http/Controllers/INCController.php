@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Persalinan;
 use App\Models\Anc;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Ibu;
+use App\Models\Ropb;
 use Yajra\DataTables\Facades\DataTables;
 
 
@@ -141,5 +143,19 @@ class INCController extends Controller
             }
         ])->find($id);
         return response()->json($persalinan);
+    }
+    
+    public function getInfo_Rnca_persalinan($id_ibu)
+    {
+        $ibu = Ibu::where('id_ibu', $id_ibu)->first();
+        if ($ibu) {
+            $ropb = Ropb::where('id_ibu', $ibu->id_ibu)->first();
+            return response()->json([
+                'ibu' => $ibu,
+                'ropb' => $ropb,
+            ]);
+        } else {
+            return response()->json(['message' => 'Data not found'], 404);
+        }
     }
 }

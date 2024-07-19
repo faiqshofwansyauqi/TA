@@ -95,6 +95,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('persalinan', [INCController::class, 'Persalinan'])->name('intranatal_care.persalinan');
         Route::post('store-persalinan', [INCController::class, 'store_persalinan'])->name('intranatal_care.store_persalinan');
         Route::get('data-persalinan', [INCController::class, 'getData_persalinan'])->name('intranatal_care.data_persalinan');
+        Route::get('intranatal_care/ropb/{nama_ibu}', [INCController::class, 'getInfo_Rnca_persalinan'])->name('intranatal_care.info_rnca_persalinan');
         Route::get('intranatal_care/show_persalinan/{id}', [INCController::class, 'show_persalinan'])->name('intranatal_care.show_persalinan');
         Route::get('intranatal_care/edit_persalinan/{id}', [INCController::class, 'edit_persalinan'])->name('intranatal_care.edit_persalinan');
         Route::put('intranatal_care/update_persalinan/{id}', [INCController::class, 'update_persalinan'])->name('intranatal_care.update_persalinan');
@@ -107,9 +108,9 @@ Route::middleware(['auth'])->group(function () {
         ///////////// SHOW NIFAS /////////////
         Route::post('store-show_nifas', [PNCController::class, 'store_shownifas'])->name('postnatal_care.store_shownifas');
         Route::get('nifas/show_nifas/{id}', [PNCController::class, 'show_nifas'])->name('postnatal_care.show_nifas');
-        Route::get('data-show_nifas/{id_ibu}', [PNCController::class, 'getData_shownifas'])->name('postnatal_care.data_shownifas');
+        Route::get('data-show_nifas/{id_ibu}', [PNCController::class, 'getData_shownifas'])->name('postnatal_care.data_shownifas');    
         Route::get('show_nifas/edit_shownifas/{id}', [PNCController::class, 'edit_shownifas'])->name('postnatal_care.edit_shownifas');
-        Route::put('show_anc/update_shownifas/{id}', [PNCController::class, 'update_shownifas'])->name('postnatal_care.update_shownifas');
+        Route::put('show_nifas/update_shownifas/{id}', [PNCController::class, 'update_shownifas'])->name('postnatal_care.update_shownifas');
         ///////////// PEMANTAUAN PPIA /////////////
         Route::get('ppia', [PNCController::class, 'ppia'])->name('postnatal_care.ppia');
         Route::post('store-ppia', [PNCController::class, 'store_ppia'])->name('postnatal_care.store_ppia');
