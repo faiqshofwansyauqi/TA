@@ -49,13 +49,13 @@ Route::middleware(['auth'])->group(function () {
     });
     Route::prefix('antenatal_care')->group(function () {
         ///////////// PEMERIKSAAN DOKTER TM1 /////////////
-        Route::get('tm1', [ANCController::class, 'tm1'])->name('antenatal_care.tm1');
-        Route::post('store-tm1', [ANCController::class, 'store_tm1'])->name('antenatal_care.store_tm1');
-        Route::get('data-tm1', [ANCController::class, 'getData_tm1'])->name('antenatal_care.data_tm1');
-        Route::get('antenatal_care/show_tm1/{id}', [ANCController::class, 'show_tm1'])->name('antenatal_care.show_tm1');
-        Route::get('antenatal_care/edit_tm1/{id}', [ANCController::class, 'edit_tm1'])->name('antenatal_care.edit_tm1');
-        Route::put('antenatal_care/update_tm1/{id}', [ANCController::class, 'update_tm1'])->name('antenatal_care.update_tm1');
-        Route::delete('antenatal_care/destroy_tm1/{id}', [ANCController::class, 'destroy_tm1'])->name('antenatal_care.destroy_tm1');
+        // Route::get('tm1', [ANCController::class, 'tm1'])->name('antenatal_care.tm1');
+        // Route::post('store-tm1', [ANCController::class, 'store_tm1'])->name('antenatal_care.store_tm1');
+        // Route::get('data-tm1', [ANCController::class, 'getData_tm1'])->name('antenatal_care.data_tm1');
+        // Route::get('antenatal_care/show_tm1/{id}', [ANCController::class, 'show_tm1'])->name('antenatal_care.show_tm1');
+        // Route::get('antenatal_care/edit_tm1/{id}', [ANCController::class, 'edit_tm1'])->name('antenatal_care.edit_tm1');
+        // Route::put('antenatal_care/update_tm1/{id}', [ANCController::class, 'update_tm1'])->name('antenatal_care.update_tm1');
+        // Route::delete('antenatal_care/destroy_tm1/{id}', [ANCController::class, 'destroy_tm1'])->name('antenatal_care.destroy_tm1');
         ///////////// ANC /////////////
         Route::get('anc', [ANCController::class, 'anc'])->name('antenatal_care.anc');
         Route::post('store-anc', [ANCController::class, 'store_anc'])->name('antenatal_care.store_anc');
@@ -66,7 +66,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('data-show_anc/{id_ibu}', [ANCController::class, 'getData_showanc'])->name('antenatal_care.data_showanc');
         Route::get('show_anc/edit_showanc/{id}', [ANCController::class, 'edit_showanc'])->name('antenatal_care.edit_showanc');
         Route::put('show_anc/update_showanc/{id}', [ANCController::class, 'update_showanc'])->name('antenatal_care.update_showanc');
-        ///////////// PEMERIKSAAN BIDAN/DOKTER SAAT K1 /////////////
+        ///////////// PEMERIKSAAN BIDAN SAAT K1 /////////////
         Route::get('ropb', [ANCController::class, 'ropb'])->name('antenatal_care.ropb');
         Route::post('store-ropb', [ANCController::class, 'store_ropb'])->name('antenatal_care.store_ropb');
         Route::get('data-ropb', [ANCController::class, 'getData_ropb'])->name('antenatal_care.data_ropb');
@@ -82,13 +82,13 @@ Route::middleware(['auth'])->group(function () {
         Route::get('antenatal_care/edit_rnca/{id}', [ANCController::class, 'edit_rnca'])->name('antenatal_care.edit_rnca');
         Route::put('antenatal_care/update_rnca/{id}', [ANCController::class, 'update_rnca'])->name('antenatal_care.update_rnca');
         ///////////// PEMERIKSAAN DOKTER TM3 /////////////
-        Route::get('tm3', [ANCController::class, 'tm3'])->name('antenatal_care.tm3');
-        Route::post('store-tm3', [ANCController::class, 'store_tm3'])->name('antenatal_care.store_tm3');
-        Route::get('data-tm3', [ANCController::class, 'getData_tm3'])->name('antenatal_care.data_tm3');
-        Route::put('antenatal_care/update_tm3/{id}', [ANCController::class, 'update_tm3'])->name('antenatal_care.update_tm3');
-        Route::delete('antenatal_care/destroy_tm3/{id}', [ANCController::class, 'destroy_tm3'])->name('antenatal_care.destroy_tm3');
-        Route::get('antenatal_care/edit_tm3/{id}', [ANCController::class, 'edit_tm3'])->name('antenatal_care.edit_tm3');
-        Route::get('antenatal_care/show_tm3/{id}', [ANCController::class, 'show_tm3'])->name('antenatal_care.show_tm3');
+        // Route::get('tm3', [ANCController::class, 'tm3'])->name('antenatal_care.tm3');
+        // Route::post('store-tm3', [ANCController::class, 'store_tm3'])->name('antenatal_care.store_tm3');
+        // Route::get('data-tm3', [ANCController::class, 'getData_tm3'])->name('antenatal_care.data_tm3');
+        // Route::put('antenatal_care/update_tm3/{id}', [ANCController::class, 'update_tm3'])->name('antenatal_care.update_tm3');
+        // Route::delete('antenatal_care/destroy_tm3/{id}', [ANCController::class, 'destroy_tm3'])->name('antenatal_care.destroy_tm3');
+        // Route::get('antenatal_care/edit_tm3/{id}', [ANCController::class, 'edit_tm3'])->name('antenatal_care.edit_tm3');
+        // Route::get('antenatal_care/show_tm3/{id}', [ANCController::class, 'show_tm3'])->name('antenatal_care.show_tm3');
     });
     Route::prefix('intranatal_care')->group(function () {
         ///////////// MASA PERSALINAN /////////////
@@ -108,7 +108,7 @@ Route::middleware(['auth'])->group(function () {
         ///////////// SHOW NIFAS /////////////
         Route::post('store-show_nifas', [PNCController::class, 'store_shownifas'])->name('postnatal_care.store_shownifas');
         Route::get('nifas/show_nifas/{id}', [PNCController::class, 'show_nifas'])->name('postnatal_care.show_nifas');
-        Route::get('data-show_nifas/{id_ibu}', [PNCController::class, 'getData_shownifas'])->name('postnatal_care.data_shownifas');    
+        Route::get('data-show_nifas/{id_ibu}', [PNCController::class, 'getData_shownifas'])->name('postnatal_care.data_shownifas');
         Route::get('show_nifas/edit_shownifas/{id}', [PNCController::class, 'edit_shownifas'])->name('postnatal_care.edit_shownifas');
         Route::put('show_nifas/update_shownifas/{id}', [PNCController::class, 'update_shownifas'])->name('postnatal_care.update_shownifas');
         ///////////// PEMANTAUAN PPIA /////////////
