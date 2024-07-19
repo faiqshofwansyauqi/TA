@@ -25,31 +25,22 @@
                                 <thead>
                                     <tr>
                                         <th style="text-align: center">No</th>
-                                        <th>Nama Ibu</th>
-                                        <th>Kala I Aktif</th>
-                                        <th>Kala II</th>
-                                        <th>Bayi Lahir</th>
-                                        <th>Piasenta Lahir</th>
-                                        <th>Pendarahan Kala IV</th>
-                                        <th>Usia Kehamilan</th>
-                                        <th>Usia HPHT</th>
-                                        <th>Keadaan Ibu</th>
-                                        <th>Keadaan Bayi</th>
-                                        <th>Berat Bayi</th>
-                                        <th>Jenis Kelamin</th>
-                                        <th>Panjang Bayi</th>
-                                        <th>Presentasi</th>
-                                        <th>Penolong</th>
-                                        <th>Tempat</th>
-                                        <th>Cara Persalinan</th>
-                                        <th>Menejemen Aktif Kala III</th>
-                                        <th>Pelayanan</th>
-                                        <th>Integrasi Program</th>
-                                        <th>Komplikasi</th>
-                                        <th>Keadaan Tiba</th>
-                                        <th>Keadaan Pulang</th>
-                                        <th>Dirujuk</th>
-                                        <th>Alamat Bersalin</th>
+                                        <th style="min-width: 100px">Nama Ibu</th>
+                                        <th style="min-width: 140px">Tanggal</th>
+                                        <th style="min-width: 70px">Usia Ibu</th>
+                                        <th style="min-width: 300px">Alamat</th>
+                                        <th style="min-width: 90px">GPA</th>
+                                        <th style="min-width: 97px">Usia Hamil</th>
+                                        <th style="min-width: 108px">Keadaan Ibu</th>
+                                        <th style="min-width: 140px">Kala I</th>
+                                        <th style="min-width: 140px">Kala II</th>
+                                        <th style="min-width: 140px">Kala III</th>
+                                        <th style="min-width: 150px">Tanggal Lahir Bayi</th>
+                                        <th style="min-width: 110px">Panjang Bayi</th>
+                                        <th style="min-width: 90px">Berat Bayi</th>
+                                        <th style="min-width: 160px">Lingkar Kepala Bayi</th>
+                                        <th style="min-width: 100px">Vitamin K</th>
+                                        <th>HBO</th>
                                         <th style="text-align: center">Aksi</th>
                                     </tr>
                                 </thead>
@@ -85,235 +76,106 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4 mb-3">
-                                        <label for="kala1" class="form-label">Kala I Aktif</label>
-                                        <input type="datetime-local" class="form-control" id="kala1" name="kala1"
-                                            required>
+                                        <label for="tgl_datang" class="form-label">Tanggal Datang</label>
+                                        <input type="datetime-local" class="form-control" id="tgl_datang" name="tgl_datang">
                                     </div>
                                     <div class="col-md-4 mb-3">
-                                        <label for="kala2" class="form-label">Kala II</label>
-                                        <input type="datetime-local" class="form-control" id="kala2" name="kala2"
-                                            required>
+                                        <label for="usia_ibu" class="form-label">Usia Ibu</label>
+                                        <input type="number" class="form-control" id="usia_ibu" name="usia_ibu">
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="bayi_lahir" class="form-label">Bayi Lahir</label>
-                                        <input type="datetime-local" class="form-control" id="bayi_lahir" name="bayi_lahir"
-                                            required>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="alamat" class="form-label">Alamat</label>
+                                        <textarea class="form-control" id="alamat" rows="2" name="alamat"></textarea>
                                     </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="piasenta" class="form-label">Piasenta Lahir</label>
-                                        <input type="datetime-local" class="form-control" id="piasenta" name="piasenta"
-                                            required>
+                                    <div class="col-md-2 mb-3">
+                                        <label for="gravida" class="form-label">Gravida</label>
+                                        <input type="text" class="form-control" id="gravida" name="gravida">
+                                    </div>
+                                    <div class="col-md-2 mb-3">
+                                        <label for="partus" class="form-label">Partus</label>
+                                        <input type="text" class="form-control" id="partus" name="partus">
+                                    </div>
+                                    <div class="col-md-2 mb-3">
+                                        <label for="abortus" class="form-label">Abortus</label>
+                                        <input type="text" class="form-control" id="abortus" name="abortus">
+                                    </div>
+                                    <div class="col-md-2 mb-3">
+                                        <label for="usia_hamil" class="form-label">Usia Hamil</label>
+                                        <input type="number" class="form-control" id="usia_hamil" name="usia_hamil">
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-3 mb-3">
-                                        <label for="pendarahan" class="form-label">Pendarahan Kala IV</label>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" id="pendarahan" name="pendarahan"
-                                                placeholder="Input Pendarahan Kala IV" pattern="[0-9,\,]*" required>
-                                            <span class="input-group-text">cc</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 mb-3">
-                                        <label for="usia_kehamilan" class="form-label">Usia Kehamilan</label>
-                                        <div class="input-group">
-                                            <input type="number" class="form-control" id="usia_kehamilan"
-                                                name="usia_kehamilan" placeholder="input Usia Kehamilan" required>
-                                            <span class="input-group-text">mgg</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 mb-3">
-                                        <label for="usia_hpht" class="form-label">Usia HP HT</label>
-                                        <div class="input-group">
-                                            <input type="number" class="form-control" id="usia_hpht" name="usia_hpht"
-                                                placeholder="input Usia HP HT" required>
-                                            <span class="input-group-text">mgg</span>
-                                        </div>
-                                    </div>
                                     <div class="col-md-3 mb-3">
                                         <label for="keadaan_ibu" class="form-label">Keadaan Ibu</label>
-                                        <select class="form-select" id="keadaan_ibu" name="keadaan_ibu" required>
+                                        <select class="form-select" id="keadaan_ibu" name="keadaan_ibu">
                                             <option value="">Pilih Keadaan Ibu</option>
                                             <option value="Mati">Mati</option>
                                             <option value="Hidup">Hidup</option>
                                         </select>
                                     </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="kala1" class="form-label">Kala I</label>
+                                        <input type="datetime-local" class="form-control" id="kala1" name="kala1">
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="kala2" class="form-label">Kala II</label>
+                                        <input type="datetime-local" class="form-control" id="kala2" name="kala2">
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="kala3" class="form-label">Kala III</label>
+                                        <input type="datetime-local" class="form-control" id="kala3" name="kala3">
+                                    </div>
                                 </div>
                                 <div class='row'>
                                     <div class="col-md-3 mb-3">
-                                        <label for="keadaan_bayi" class="form-label">Keadaan Bayi</label>
-                                        <select class="form-select" id="keadaan_bayi" name="keadaan_bayi" required>
-                                            <option value="">Pilih Keadaan Bayi</option>
-                                            <option value="Mati">Mati</option>
-                                            <option value="Hidup">Hidup</option>
-                                        </select>
+                                        <label for="tgl_lahir_bayi" class="form-label">Tanggal Lahir Bayi</label>
+                                        <input type="datetime-local" class="form-control" id="tgl_lahir_bayi"
+                                            name="tgl_lahir_bayi">
                                     </div>
                                     <div class="col-md-3 mb-3">
-                                        <label for="berat_bayi" class="form-label">Berat Bayi</label>
+                                        <label for="brt_bayi" class="form-label">Berat Bayi</label>
                                         <div class="input-group">
-                                            <input type="text" class="form-control" id="berat_bayi" name="berat_bayi"
-                                                placeholder="input Berat Bayi" pattern="[0-9,\,]*" required>
-                                            <span class="input-group-text">gr</span>
+                                            <input type="text" class="form-control" id="brt_bayi" name="brt_bayi"
+                                                placeholder="input Berat Bayi" pattern="[0-9,\,]*">
+                                            <span class="input-group-text">gram</span>
                                         </div>
                                     </div>
                                     <div class="col-md-3 mb-3">
-                                        <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
-                                        <select class="form-select" id="jenis_kelamin" name="jenis_kelamin" required>
-                                            <option value="">Pilih Jenis Kelamin</option>
-                                            <option value="Laki-laki">Laki-laki</option>
-                                            <option value="Perempuan">Perempuan</option>
-                                        </select>
+                                        <label for="pnjg_bayi" class="form-label">Panjang Bayi</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="pnjg_bayi" name="pnjg_bayi"
+                                                placeholder="input Panjang Bayi" pattern="[0-9,\,]*">
+                                            <span class="input-group-text">cm</span>
+                                        </div>
                                     </div>
                                     <div class="col-md-3 mb-3">
-                                        <label for="panjang_bayi" class="form-label">Panjang Bayi</label>
+                                        <label for="lngkr_kpl_bayi" class="form-label">Lingkar Kepala Bayi</label>
                                         <div class="input-group">
-                                            <input type="text" class="form-control" id="panjang_bayi"
-                                                name="panjang_bayi" placeholder="input Berat Bayi" pattern="[0-9,\,]*"
-                                                required>
+                                            <input type="text" class="form-control" id="lngkr_kpl_bayi"
+                                                name="lngkr_kpl_bayi" placeholder="input Lingkar Kepala Bayi"
+                                                pattern="[0-9,\,]*">
                                             <span class="input-group-text">cm</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4 mb-3">
-                                        <label for="pesentasi" class="form-label">Presentasi</label>
-                                        <select class="form-select" id="pesentasi" name="pesentasi" required>
-                                            <option value="">Pilih Jenis Presentasi</option>
-                                            <option value="Puncak Kepala">Puncak Kepala</option>
-                                            <option value="Belakang Kepala">Belakang Kepala</option>
-                                            <option value="Lintang/Oblique">Lintang/Oblique</option>
-                                            <option value="Menumbung">Menumbung</option>
-                                            <option value="Bokong">Bokong</option>
-                                            <option value="Dahi">Dahi</option>
-                                            <option value="Muka">Muka</option>
-                                            <option value="Kaki">Kaki</option>
+                                        <label for="vit_k" class="form-label">Vitamin K</label>
+                                        <select class="form-select" id="vit_k" name="vit_k">
+                                            <option value="">Pilih Vitamin K</option>
+                                            <option value="jika iya">&#10003;</option>
+                                            <option value="jika tidak">&#10007;</option>
                                         </select>
                                     </div>
                                     <div class="col-md-4 mb-3">
-                                        <label for="tempat" class="form-label">Tempat</label>
-                                        <select class="form-select" id="tempat" name="tempat" required>
-                                            <option value="">Pilih Tempat</option>
-                                            <option value="Rumah">Rumah</option>
-                                            <option value="Polindes">Polindes</option>
-                                            <option value="Pustu">Pustu</option>
-                                            <option value="Puskesmas">Puskesmas</option>
-                                            <option value="RB">RB</option>
-                                            <option value="RSIA">RSIA</option>
-                                            <option value="RS">RS</option>
-                                            <option value="RS ODHA">RB</option>
+                                        <label for="hbo" class="form-label">HBO</label>
+                                        <select class="form-select" id="hbo" name="hbo">
+                                            <option value="">Pilih HBO</option>
+                                            <option value="jika iya">&#10003;</option>
+                                            <option value="jika tidak">&#10007;</option>
                                         </select>
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <label for="penolong" class="form-label">Penolong</label>
-                                        <select class="form-select" id="penolong" name="penolong" required>
-                                            <option value="">Pilih Penolong</option>
-                                            <option value="Keluarga">Keluarga</option>
-                                            <option value="Dukun">Dukun</option>
-                                            <option value="Bidan">Bidan</option>
-                                            <option value="Dr. Spesialis">Dr. Spesialis</option>
-                                            <option value="Dokter">Dokter</option>
-                                            <option value="Lainnya">Lainnya</option>
-                                            <option value="Tidak Ada">Tidak Ada</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4 mb-3">
-                                        <label for="cara_persalinan" class="form-label">Cara Persalinan</label>
-                                        <select class="form-select" id="cara_persalinan" name="cara_persalinan" required>
-                                            <option value="">Pilih Cara Persalinan</option>
-                                            <option value="Normal">Normal</option>
-                                            <option value="Vakum">Vakum</option>
-                                            <option value="Forseps">Forseps</option>
-                                            <option value="Seksio Sesarea">Seksio Sesarea</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <label for="menejemen" class="form-label">Menejemen Aktif Kala III</label>
-                                        <select class="form-select" id="menejemen" name="menejemen" required>
-                                            <option value="">Pilih Jenis Menejemen Aktif Kala III</option>
-                                            <option value="Injeksi Oksitosin">Injeksi Oksitosin</option>
-                                            <option value="Penegangan Tali Pusat Terkendali">Penegangan Tali Pusat
-                                                Terkendali
-                                            </option>
-                                            <option value="Lintang/Oblique">Lintang/Oblique</option>
-                                            <option value="Masase Fundus Uteri">Masase Fundus Uteri</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <label for="pelayanan" class="form-label">Pelayanan</label>
-                                        <select class="form-select" id="pelayanan" name="pelayanan" required>
-                                            <option value="">Pilih Pelayanan</option>
-                                            <option value="IMD: < 1jam/>jam">IMD:
-                                                < 1jam />jam
-                                            </option>
-                                            <option value="Menggunakan Partograf">Menggunakan Partograf</option>
-                                            <option value="Pustu">Pustu</option>
-                                            <option value="Catatan di Buku KIA">Catatan di Buku KIA</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3 mb-3 pe-0">
-                                        <label for="integrasi" class="form-label">Integrasi Program</label>
-                                        <select class="form-select" id="integrasi" name="integrasi" required>
-                                            <option value="">Pilih Jenis Integrasi Program</option>
-                                            <option value="ARV Profilaksis">ARV Profilaksis :</option>
-                                            <option value="Obat Anti Malaria">Obat Anti Malaria :</option>
-                                            <option value="Obat Anti TB">Obat Anti TB :</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-1 mb-3 ps-0">
-                                        <label for="detail_integrasi" class="form-label"
-                                            style="color: white">Detail</label>
-                                        <input type="text" class="form-control" id="detail_integrasi"
-                                            name="detail_integrasi">
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <label for="komplikasi" class="form-label">Komplikasi</label>
-                                        <select class="form-select" id="komplikasi" name="komplikasi" required>
-                                            <option value="">Pilih Komplikasi</option>
-                                            <option value="HDK">HDK</option>
-                                            <option value="PPP">PPP</option>
-                                            <option value="Inteksi">Inteksi</option>
-                                            <option value="Lainnya">Lainnya</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <label for="keadaan_tiba" class="form-label">Keadaan Tiba</label>
-                                        <select class="form-select" id="keadaan_tiba" name="keadaan_tiba" required>
-                                            <option value="">Pilih Keadaan Tiba</option>
-                                            <option value="Hidup">Hidup</option>
-                                            <option value="Mati">Mati</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3 mb-3">
-                                        <label for="keadaan_pulang" class="form-label">Keadaan Pulang</label>
-                                        <select class="form-select" id="keadaan_pulang" name="keadaan_pulang" required>
-                                            <option value="">Pilih Keadaan Pulang</option>
-                                            <option value="Hidup">Hidup</option>
-                                            <option value="Mati">Mati</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <label for="rujuk" class="form-label">Dirujuk Ke</label>
-                                        <select class="form-select" id="rujuk" name="rujuk" required>
-                                            <option value="">Pilih Dirujuk Ke</option>
-                                            <option value="Puskesmas">Puskesmas</option>
-                                            <option value="RB">RB</option>
-                                            <option value="RSIA">RSIA</option>
-                                            <option value="RS">RS</option>
-                                            <option value="Lainnya">Lainnya</option>
-                                            <option value="Tidak Dirujuk">Tidak Dirujuk</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-5 mb-3">
-                                        <label for="alamat_bersalin" class="form-label">Alamat Bersalin</label>
-                                        <textarea class="form-control" id="alamat_bersalin" rows="2" name="alamat_bersalin" required></textarea>
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -341,244 +203,112 @@
                         <div class="col-12">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-6 mb-2">
-                                        <label for="edit_kala1" class="form-label">Kala I Aktif</label>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="edit_tgl_datang" class="form-label">Tanggal Datang</label>
+                                        <input type="datetime-local" class="form-control" id="edit_tgl_datang"
+                                            name="tgl_datang">
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="edit_usia_ibu" class="form-label">Usia Ibu</label>
+                                        <input type="number" class="form-control" id="edit_usia_ibu" name="usia_ibu">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="edit_alamat" class="form-label">Alamat</label>
+                                        <textarea class="form-control" id="edit_alamat" rows="2" name="alamat"></textarea>
+                                    </div>
+                                    <div class="col-md-2 mb-3">
+                                        <label for="edit_gravida" class="form-label">Gravida</label>
+                                        <input type="text" class="form-control" id="edit_gravida" name="gravida">
+                                    </div>
+                                    <div class="col-md-2 mb-3">
+                                        <label for="edit_partus" class="form-label">Partus</label>
+                                        <input type="text" class="form-control" id="edit_partus" name="partus">
+                                    </div>
+                                    <div class="col-md-2 mb-3">
+                                        <label for="edit_abortus" class="form-label">Abortus</label>
+                                        <input type="text" class="form-control" id="edit_abortus" name="abortus">
+                                    </div>
+                                    <div class="col-md-2 mb-3">
+                                        <label for="edit_usia_hamil" class="form-label">Usia Hamil</label>
+                                        <input type="number" class="form-control" id="edit_usia_hamil"
+                                            name="usia_hamil">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3 mb-3">
+                                        <label for="edit_keadaan_ibu" class="form-label">Keadaan Ibu</label>
+                                        <select class="form-select" id="edit_keadaan_ibu" name="keadaan_ibu">
+                                            <option value="">Pilih Keadaan Ibu</option>
+                                            <option value="Mati">Mati</option>
+                                            <option value="Hidup">Hidup</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="edit_kala1" class="form-label">Kala I</label>
                                         <input type="datetime-local" class="form-control" id="edit_kala1"
                                             name="kala1">
                                     </div>
-                                    <div class="col-md-6 mb-2">
+                                    <div class="col-md-3 mb-3">
                                         <label for="edit_kala2" class="form-label">Kala II</label>
                                         <input type="datetime-local" class="form-control" id="edit_kala2"
                                             name="kala2">
                                     </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="edit_kala3" class="form-label">Kala III</label>
+                                        <input type="datetime-local" class="form-control" id="edit_kala3"
+                                            name="kala3">
+                                    </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-6 mb-2">
-                                        <label for="edit_bayi_lahir" class="form-label">Bayi Lahir</label>
-                                        <input type="datetime-local" class="form-control" id="edit_bayi_lahir"
-                                            name="bayi_lahir">
+                                <div class='row'>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="edit_tgl_lahir_bayi" class="form-label">Tanggal Lahir Bayi</label>
+                                        <input type="datetime-local" class="form-control" id="edit_tgl_lahir_bayi"
+                                            name="tgl_lahir_bayi">
                                     </div>
-                                    <div class="col-md-6 mb-2">
-                                        <label for="edit_piasenta" class="form-label">Piasenta Lahir</label>
-                                        <input type="datetime-local" class="form-control" id="edit_piasenta"
-                                            name="piasenta">
-                                    </div>
-                                    <div class='row'>
-                                        <div class="col-md-3 mb-3">
-                                            <label for="edit_pendarahan" class="form-label">Pendarahan Kala IV</label>
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" id="edit_pendarahan"
-                                                    name="pendarahan" placeholder="Input Pendarahan Kala IV"
-                                                    pattern="[0-9,\,]*">
-                                                <span class="input-group-text">cc</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 mb-2">
-                                            <label for="edit_usia_kehamilan" class="form-label">Usia Kehamilan</label>
-                                            <div class="input-group mb-2">
-                                                <input type="number" class="form-control" id="edit_usia_kehamilan"
-                                                    name="usia_kehamilan" placeholder="input Usia Kehamilan">
-                                                <span class="input-group-text">minggu</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 mb-2">
-                                            <label for="edit_usia_hpht" class="form-label">Usia HP HT</label>
-                                            <div class="input-group mb-2">
-                                                <input type="number" class="form-control" id="edit_usia_hpht"
-                                                    name="usia_hpht" placeholder="input Usia HP HT">
-                                                <span class="input-group-text">minggu</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 mb-2">
-                                            <label for="edit_keadaan_ibu" class="form-label">Keadaan Ibu</label>
-                                            <select class="form-select" id="edit_keadaan_ibu" name="keadaan_ibu"
-                                                required>
-                                                <option value="">Pilih Keadaan Ibu</option>
-                                                <option value="Mati">Mati</option>
-                                                <option value="Hidup">Hidup</option>
-                                            </select>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="edit_brt_bayi" class="form-label">Berat Bayi</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="edit_brt_bayi"
+                                                name="brt_bayi" placeholder="input Berat Bayi" pattern="[0-9,\,]*">
+                                            <span class="input-group-text">gram</span>
                                         </div>
                                     </div>
-                                    <div class='row'>
-                                        <div class="col-md-3 mb-2">
-                                            <label for="edit_keadaan_bayi" class="form-label">Keadaan Bayi</label>
-                                            <select class="form-select" id="edit_keadaan_bayi" name="keadaan_bayi"
-                                                required>
-                                                <option value="">Pilih Keadaan Bayi</option>
-                                                <option value="Mati">Mati</option>
-                                                <option value="Hidup">Hidup</option>
-                                            </select>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="edit_pnjg_bayi" class="form-label">Panjang Bayi</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="edit_pnjg_bayi"
+                                                name="pnjg_bayi" placeholder="input Panjang Bayi" pattern="[0-9,\,]*">
+                                            <span class="input-group-text">cm</span>
                                         </div>
-                                        <div class="col-md-3 mb-2">
-                                            <label for="edit_berat_bayi" class="form-label">Berat Bayi</label>
-                                            <div class="input-group mb-2">
-                                                <input type="text" class="form-control" id="edit_berat_bayi"
-                                                    name="berat_bayi" placeholder="input Berat Bayi" pattern="[0-9,\,]*">
-                                                <span class="input-group-text">gram</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 mb-2">
-                                            <label for="edit_jenis_kelamin" class="form-label">Jenis Kelamin</label>
-                                            <select class="form-select" id="edit_jenis_kelamin" name="jenis_kelamin"
-                                                required>
-                                                <option value="">Pilih Jenis Kelamin</option>
-                                                <option value="Laki-laki">Laki-laki</option>
-                                                <option value="Perempuan">Perempuan</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-3 mb-2">
-                                            <label for="edit_panjang_bayi" class="form-label">Panjang Bayi</label>
-                                            <div class="input-group mb-2">
-                                                <input type="text" class="form-control" id="edit_panjang_bayi"
-                                                    name="panjang_bayi" placeholder="input Berat Bayi"
-                                                    pattern="[0-9,\,]*">
-                                                <span class="input-group-text">cm</span>
-                                            </div>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="edit_lngkr_kpl_bayi" class="form-label">Lingkar Kepala Bayi</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="edit_lngkr_kpl_bayi"
+                                                name="lngkr_kpl_bayi" placeholder="input Lingkar Kepala Bayi"
+                                                pattern="[0-9,\,]*">
+                                            <span class="input-group-text">cm</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6 mb-2">
-                                        <label for="edit_pesentasi" class="form-label">Presentasi</label>
-                                        <select class="form-select" id="edit_pesentasi" name="pesentasi" required>
-                                            <option value="">Pilih Jenis Presentasi</option>
-                                            <option value="Puncak Kepala">Puncak Kepala</option>
-                                            <option value="Belakang Kepala">Belakang Kepala</option>
-                                            <option value="Lintang/Oblique">Lintang/Oblique</option>
-                                            <option value="Menumbung">Menumbung</option>
-                                            <option value="Bokong">Bokong</option>
-                                            <option value="Dahi">Dahi</option>
-                                            <option value="Muka">Muka</option>
-                                            <option value="Kaki">Kaki</option>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="edit_vit_k" class="form-label">Vitamin K</label>
+                                        <select class="form-select" id="edit_vit_k" name="vit_k">
+                                            <option value="">Pilih Vitamin K</option>
+                                            <option value="jika iya">&#10003;</option>
+                                            <option value="jika tidak">&#10007;</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-6 mb-2">
-                                        <label for="edit_tempat" class="form-label">Tempat</label>
-                                        <select class="form-select" id="edit_tempat" name="tempat" required>
-                                            <option value="">Pilih Tempat</option>
-                                            <option value="Rumah">Rumah</option>
-                                            <option value="Polindes">Polindes</option>
-                                            <option value="Pustu">Pustu</option>
-                                            <option value="Puskesmas">Puskesmas</option>
-                                            <option value="RB">RB</option>
-                                            <option value="RSIA">RSIA</option>
-                                            <option value="RS">RS</option>
-                                            <option value="RS ODHA">RB</option>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="edit_hbo" class="form-label">HBO</label>
+                                        <select class="form-select" id="edit_hbo" name="hbo">
+                                            <option value="">Pilih HBO</option>
+                                            <option value="jika iya">&#10003;</option>
+                                            <option value="jika tidak">&#10007;</option>
                                         </select>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6 mb-2">
-                                        <label for="edit_penolong" class="form-label">Penolong</label>
-                                        <select class="form-select" id="edit_penolong" name="penolong" required>
-                                            <option value="">Pilih Penolong</option>
-                                            <option value="Keluarga">Keluarga</option>
-                                            <option value="Dukun">Dukun</option>
-                                            <option value="Bidan">Bidan</option>
-                                            <option value="Dr. Spesialis">Dr. Spesialis</option>
-                                            <option value="Dokter">Dokter</option>
-                                            <option value="Lainnya">Lainnya</option>
-                                            <option value="Tidak Ada">Tidak Ada</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6 mb-2">
-                                        <label for="edit_cara_persalinan" class="form-label">Cara Persalinan</label>
-                                        <select class="form-select" id="edit_cara_persalinan" name="cara_persalinan"
-                                            required>
-                                            <option value="">Pilih Cara Persalinan</option>
-                                            <option value="Normal">Normal</option>
-                                            <option value="Vakum">Vakum</option>
-                                            <option value="Forseps">Forseps</option>
-                                            <option value="Seksio Sesarea">Seksio Sesarea</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6 mb-2">
-                                        <label for="edit_menejemen" class="form-label">Menejemen Aktif Kala III</label>
-                                        <select class="form-select" id="edit_menejemen" name="menejemen" required>
-                                            <option value="">Pilih Jenis Menejemen Aktif Kala III</option>
-                                            <option value="Injeksi Oksitosin">Injeksi Oksitosin</option>
-                                            <option value="Penegangan Tali Pusat Terkendali">Penegangan Tali Pusat
-                                                Terkendali
-                                            </option>
-                                            <option value="Lintang/Oblique">Lintang/Oblique</option>
-                                            <option value="Masase Fundus Uteri">Masase Fundus Uteri</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6 mb-2">
-                                        <label for="edit_pelayanan" class="form-label">Pelayanan</label>
-                                        <select class="form-select" id="edit_pelayanan" name="pelayanan" required>
-                                            <option value="">Pilih Pelayanan</option>
-                                            <option value="IMD: < 1jam/>jam">IMD:
-                                                < 1jam />jam
-                                            </option>
-                                            <option value="Menggunakan Partograf">Menggunakan Partograf</option>
-                                            <option value="Pustu">Pustu</option>
-                                            <option value="Catatan di Buku KIA">Catatan di Buku KIA</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4 mb-2 pe-0">
-                                        <label for="edit_integrasi" class="form-label">Integrasi Program</label>
-                                        <select class="form-select" id="edit_integrasi" name="integrasi" required>
-                                            <option value="">Pilih Jenis Integrasi Program</option>
-                                            <option value="ARV Profilaksis">ARV Profilaksis :</option>
-                                            <option value="Obat Anti Malaria">Obat Anti Malaria :</option>
-                                            <option value="Obat Anti TB">Obat Anti TB :</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-2 mb-2 ps-0">
-                                        <label for="edit_detail_integrasi" class="form-label"
-                                            style="color: white">Detail</label>
-                                        <input type="text" class="form-control" id="edit_detail_integrasi"
-                                            name="detail_integrasi">
-                                    </div>
-                                    <div class="col-md-3 mb-2">
-                                        <label for="edit_komplikasi" class="form-label">Komplikasi</label>
-                                        <select class="form-select" id="edit_komplikasi" name="komplikasi" required>
-                                            <option value="">Pilih Komplikasi</option>
-                                            <option value="HDK">HDK</option>
-                                            <option value="PPP">PPP</option>
-                                            <option value="Inteksi">Inteksi</option>
-                                            <option value="Lainnya">Lainnya</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <label for="edit_keadaan_tiba" class="form-label">Keadaan Tiba</label>
-                                        <select class="form-select" id="edit_keadaan_tiba" name="keadaan_tiba" required>
-                                            <option value="">Pilih Keadaan Tiba</option>
-                                            <option value="Hidup">Hidup</option>
-                                            <option value="Mati">Mati</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <label for="edit_keadaan_pulang" class="form-label">Keadaan Pulang</label>
-                                        <select class="form-select" id="edit_keadaan_pulang" name="keadaan_pulang"
-                                            required>
-                                            <option value="">Pilih Keadaan Pulang</option>
-                                            <option value="Hidup">Hidup</option>
-                                            <option value="Mati">Mati</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label for="edit_rujuk" class="form-label">Dirujuk Ke</label>
-                                        <select class="form-select" id="edit_rujuk" name="rujuk" required>
-                                            <option value="">Pilih Dirujuk Ke</option>
-                                            <option value="Puskesmas">Puskesmas</option>
-                                            <option value="RB">RB</option>
-                                            <option value="RSIA">RSIA</option>
-                                            <option value="RS">RS</option>
-                                            <option value="Lainnya">Lainnya</option>
-                                            <option value="Tidak Dirujuk">Tidak Dirujuk</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <label for="edit_alamat_bersalin" class="form-label">Alamat Bersalin</label>
-                                        <textarea class="form-control" id="edit_alamat_bersalin" rows="2" name="alamat_bersalin"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -638,7 +368,44 @@
                     },
                     {
                         data: 'nama_ibu',
-                        name: 'nama_ibu',
+                        name: 'nama_ibu'
+                    },
+                    {
+                        data: 'tgl_datang',
+                        name: 'tgl_datang',
+                        render: function(data) {
+                            var date = new Date(data);
+                            var formattedDate = ('0' + date.getDate()).slice(-2) + '/' +
+                                ('0' + (date.getMonth() + 1)).slice(-2) + '/' +
+                                date.getFullYear();
+                            var formattedTime = ('0' + date.getHours()).slice(-2) + ':' +
+                                ('0' + date.getMinutes()).slice(-2);
+                            var dateTimeString = formattedDate + ' ' + formattedTime;
+                            return dateTimeString;
+                        }
+                    },
+                    {
+                        data: 'usia_ibu',
+                        name: 'usia_ibu'
+                    },
+                    {
+                        data: 'alamat',
+                        name: 'alamat'
+                    },
+                    {
+                        data: 'gravida',
+                        name: 'gravida',
+                        render: function(data, type, row) {
+                            return "G" + data + "P" + row.partus + "A" + row.abortus;
+                        }
+                    },
+                    {
+                        data: 'usia_hamil',
+                        name: 'usia_hamil'
+                    },
+                    {
+                        data: 'keadaan_ibu',
+                        name: 'keadaan_ibu'
                     },
                     {
                         data: 'kala1',
@@ -669,8 +436,8 @@
                         }
                     },
                     {
-                        data: 'bayi_lahir',
-                        name: 'bayi_lahir',
+                        data: 'kala3',
+                        name: 'kala3',
                         render: function(data) {
                             var date = new Date(data);
                             var formattedDate = ('0' + date.getDate()).slice(-2) + '/' +
@@ -683,8 +450,8 @@
                         }
                     },
                     {
-                        data: 'piasenta',
-                        name: 'piasenta',
+                        data: 'tgl_lahir_bayi',
+                        name: 'tgl_lahir_bayi',
                         render: function(data) {
                             var date = new Date(data);
                             var formattedDate = ('0' + date.getDate()).slice(-2) + '/' +
@@ -697,102 +464,51 @@
                         }
                     },
                     {
-                        data: 'pendarahan',
-                        name: 'pendarahan',
+                        data: 'brt_bayi',
+                        name: 'brt_bayi',
                         render: function(data, type, row) {
-                            return data + ' cc';
+                            return data + ' gram';
                         }
                     },
                     {
-                        data: 'usia_kehamilan',
-                        name: 'usia_kehamilan',
+                        data: 'pnjg_bayi',
+                        name: 'pnjg_bayi',
                         render: function(data, type, row) {
-                            return data + ' Minggu';
+                            return data + ' cm';
                         }
                     },
                     {
-                        data: 'usia_hpht',
-                        name: 'usia_hpht',
+                        data: 'lngkr_kpl_bayi',
+                        name: 'lngkr_kpl_bayi',
                         render: function(data, type, row) {
-                            return data + ' Menggu';
+                            return data + ' cm';
                         }
                     },
                     {
-                        data: 'keadaan_ibu',
-                        name: 'keadaan_ibu'
-                    },
-                    {
-                        data: 'keadaan_bayi',
-                        name: 'keadaan_bayi'
-                    },
-                    {
-                        data: 'berat_bayi',
-                        name: 'berat_bayi',
-                        render: function(data, type, row) {
-                            return data + ' Gram';
+                        data: 'vit_k',
+                        name: 'vit_k',
+                        render: function(data, type, row, meta) {
+                            if (data === null) {
+                                return '';
+                            } else {
+                                return data.toLowerCase() === 'jika iya' ?
+                                    '<i class="ri-check-line"></i>' :
+                                    '<i class="ri-close-line"></i>';
+                            }
                         }
                     },
                     {
-                        data: 'jenis_kelamin',
-                        name: 'jenis_kelamin'
-                    },
-                    {
-                        data: 'panjang_bayi',
-                        name: 'panjang_bayi',
-                        render: function(data, type, row) {
-                            return data + ' Gram';
+                        data: 'hbo',
+                        name: 'hbo',
+                        render: function(data, type, row, meta) {
+                            if (data === null) {
+                                return '';
+                            } else {
+                                return data.toLowerCase() === 'jika iya' ?
+                                    '<i class="ri-check-line"></i>' :
+                                    '<i class="ri-close-line"></i>';
+                            }
                         }
-                    },
-                    {
-                        data: 'pesentasi',
-                        name: 'pesentasi'
-                    },
-                    {
-                        data: 'tempat',
-                        name: 'tempat'
-                    },
-                    {
-                        data: 'penolong',
-                        name: 'penolong'
-                    },
-                    {
-                        data: 'cara_persalinan',
-                        name: 'cara_persalinan'
-                    },
-                    {
-                        data: 'menejemen',
-                        name: 'menejemen'
-                    },
-                    {
-                        data: 'pelayanan',
-                        name: 'pelayanan'
-                    },
-                    {
-                        data: null,
-                        name: 'integrasi_detail_integrasi',
-                        render: function(data) {
-                            return data.integrasi + ' : ' + data.detail_integrasi;
-                        }
-                    },
-                    {
-                        data: 'komplikasi',
-                        name: 'komplikasi'
-                    },
-                    {
-                        data: 'keadaan_tiba',
-                        name: 'keadaan_tiba'
-                    },
-                    {
-                        data: 'keadaan_pulang',
-                        name: 'keadaan_pulang'
-                    },
-                    {
-                        data: 'rujuk',
-                        name: 'rujuk'
-                    },
-                    {
-                        data: 'alamat_bersalin',
-                        name: 'alamat_bersalin'
                     },
                     {
                         data: 'action',
@@ -805,14 +521,14 @@
                             let editUrl = '{{ route('intranatal_care.edit_persalinan', ':id') }}'
                                 .replace(':id', row.id);
                             return `
-                            <div style="display: flex; justify-content: center;">
-                                <button class="btn btn-sm btn-dark view-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalView" style="margin-right: 5px;">
-                                    <i class="bi bi-eye-fill"></i>
+                        <div style="display: flex; justify-content: center;">
+                            <button class="btn btn-sm btn-dark view-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalView" style="margin-right: 5px;">
+                                <i class="bi bi-eye-fill"></i>
+                            </button>
+                                <button class="btn btn-sm btn-primary edit-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalEdit">
+                                    <i class="ri-edit-2-fill"></i>
                                 </button>
-                                    <button class="btn btn-sm btn-primary edit-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalEdit">
-                                        <i class="ri-edit-2-fill"></i>
-                                    </button>
-                            </div>`;
+                        </div>`;
                         }
                     }
                 ],
@@ -822,7 +538,8 @@
                     className: 'btn btn-secondary btn-custom2',
                 }],
                 columnDefs: [{
-                    targets: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22],
+                    // targets: [4, 5, 6, 7, 8, 9,],
+                    targets: [4, 8, 9, 10, 11, 12, 13, 14],
                     visible: false
                 }]
             });
@@ -856,58 +573,6 @@
             restrictInputToNumbers(panjang_bayiInput, 10);
             restrictInputToNumbers(pendarahanInput, 10);
         });
-
-        // $('#persalinan-table').on('click', '.btn-delete', function() {
-        //     const id = $(this).data('id');
-        //     const url = $(this).data('url');
-
-        //     Swal.fire({
-        //         title: 'Apakah Anda yakin?',
-        //         text: "Anda tidak akan bisa mengembalikan ini!",
-        //         icon: 'warning',
-        //         showCancelButton: true,
-        //         confirmButtonColor: '#3085d6',
-        //         cancelButtonColor: '#d33',
-        //         confirmButtonText: 'Ya, hapus!',
-        //         cancelButtonText: 'Batal',
-        //         showLoaderOnConfirm: true,
-        //         preConfirm: () => {
-        //             return $.ajax({
-        //                 url: url,
-        //                 type: 'POST',
-        //                 data: {
-        //                     _method: 'DELETE',
-        //                     _token: '{{ csrf_token() }}'
-        //                 },
-        //                 error: function(xhr) {
-        //                     Swal.fire(
-        //                         'Gagal!',
-        //                         'Data gagal dihapus.',
-        //                         'error'
-        //                     );
-        //                 }
-        //             }).then(response => {
-        //                 if (response.success) {
-        //                     Swal.fire(
-        //                         'Terhapus!',
-        //                         'Data telah berhasil dihapus.',
-        //                         'success'
-        //                     );
-        //                     $('.swal2-confirm').remove();
-        //                     setTimeout(function() {
-        //                         location.reload();
-        //                     }, 1000);
-        //                 } else {
-        //                     Swal.fire(
-        //                         'Gagal!',
-        //                         'Data gagal dihapus.',
-        //                         'error'
-        //                     );
-        //                 }
-        //             });
-        //         }
-        //     });
-        // });
 
         $('#persalinan-table').on('click', '.view-btn', function() {
             let id = $(this).data('id');
@@ -945,7 +610,12 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Kala I Aktif</td>
+                                <td>Tanggal Datang</td>
+                                <td class="text-center">${formatDateOnly(data.tgl_datang)}</td>
+                                <td class="text-center">${formatTimeOnly(data.tgl_datang)}</td>
+                            </tr>
+                            <tr>
+                                <td>Kala I</td>
                                 <td class="text-center">${formatDateOnly(data.kala1)}</td>
                                 <td class="text-center">${formatTimeOnly(data.kala1)}</td>
                             </tr>
@@ -955,112 +625,59 @@
                                 <td class="text-center">${formatTimeOnly(data.kala2)}</td>
                             </tr>
                             <tr>
-                                <td>Bayi Lahir</td>
-                                <td class="text-center">${formatDateOnly(data.bayi_lahir)}</td>
-                                <td class="text-center">${formatTimeOnly(data.bayi_lahir)}</td>
+                                <td>Kala III</td>
+                                <td class="text-center">${formatDateOnly(data.kala3)}</td>
+                                <td class="text-center">${formatTimeOnly(data.kala3)}</td>
                             </tr>
                             <tr>
-                                <td>Piasenta Lahir</td>
-                                <td class="text-center">${formatDateOnly(data.piasenta)}</td>
-                                <td class="text-center">${formatTimeOnly(data.piasenta)}</td>
+                                <td>Tanggal Bayi Lahir</td>
+                                <td class="text-center">${formatDateOnly(data.tgl_lahir_bayi)}</td>
+                                <td class="text-center">${formatTimeOnly(data.tgl_lahir_bayi)}</td>
                             </tr>
                             <tr>
-                                <td>Pendarahan Kala IV</td>
-                                <td class="text-center" colspan="2">${data.pendarahan} cc</td>
+                                <td>G P A</td>
+                                <td class="text-center" colspan="2">G${data.gravida}P${data.partus}A${data.abortus}</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             `;
+                    let vitaminKIcon = data.vit_k === 'jika iya' ? '<i class="ri-check-line"></i>' :
+                        '<i class="ri-close-line"></i>';
+                    let HBOIcon = data.hbo === 'jika iya' ? '<i class="ri-check-line"></i>' :
+                        '<i class="ri-close-line"></i>';
+
                     let additionalInfoTableHtml = `
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <tbody>
                             <tr>
                                 <td>Usia Kehamilan</td>
-                                <td>${data.usia_kehamilan} Minggu</td>
+                                <td>${data.usia_hamil} Minggu</td>
                             </tr>
                             <tr>
-                                <td>Usia HPHT</td>
-                                <td>${data.usia_hpht} Minggu</td>
+                                <td>Usia Ibu</td>
+                                <td>${data.usia_ibu} Tahun</td>
+                            </tr>
+                            <tr>
+                                <td>Berat Bayi</td>
+                                <td>${data.brt_bayi} gram</td>
+                            </tr>
+                            <tr>
+                                <td>Panjang Bayi</td>
+                                <td>${data.pnjg_bayi} cm</td>
+                            </tr>
+                            <tr>
+                                <td>Lingkar Kepala Bayi</td>
+                                <td>${data.lngkr_kpl_bayi} cm</td>
                             </tr>
                             <tr>
                                 <td>Keadaan Ibu</td>
                                 <td>${data.keadaan_ibu}</td>
                             </tr>
                             <tr>
-                                <td>Keadaan Anak</td>
-                                <td>${data.keadaan_bayi}</td>
-                            </tr>
-                            <tr>
-                                <td>Berat Bayi</td>
-                                <td>${data.berat_bayi} Gram</td>
-                            </tr>
-                            <tr>
-                                <td>Jenis Kelamin</td>
-                                <td>${data.jenis_kelamin}</td>
-                            </tr>
-                            <tr>
-                                <td>Panjang Bayi</td>
-                                <td>${data.panjang_bayi} Cm</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            `;
-                    let newInfoTableHtml = `
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td width="270">Pesentasi</td>
-                                <td>${data.pesentasi}</td>
-                            </tr>
-                            <tr>
-                                <td width="270">Tempat</td>
-                                <td>${data.tempat}</td>
-                            </tr>
-                            <tr>
-                                <td width="270">Penolong</td>
-                                <td>${data.penolong}</td>
-                            </tr>
-                            <tr>
-                                <td width="270">Cara Persalinan</td>
-                                <td>${data.cara_persalinan}</td>
-                            </tr>
-                            <tr>
-                                <td width="270">Manajemen Aktif Kala III</td>
-                                <td>${data.menejemen}</td>
-                            </tr>
-                            <tr>
-                                <td width="270">Pelayanan</td>
-                                <td>${data.pelayanan}</td>
-                            </tr>
-                            <tr>
-                                <td width="270">Integrasi Program</td>
-                                <td>${data.integrasi} : ${data.detail_integrasi}</td>
-                            </tr>
-                            <tr>
-                                <td width="270">Komplikasi</td>
-                                <td>${data.komplikasi}</td>
-                            </tr>
-                            <tr>
-                                <td width="270">Keadaan Tiba</td>
-                                <td>${data.keadaan_tiba}</td>
-                            </tr>
-                            <tr>
-                                <td width="270">Keadaan Pulang</td>
-                                <td>${data.keadaan_pulang}</td>
-                            </tr>
-                            <tr>
-                                <td width="270">Dirujuk ke</td>
-                                <td>${data.rujuk}</td>
-                            </tr>
-                            <tr>
-                                <td width="270">Alamat Bersalin</td>
-                                <td>${data.alamat_bersalin}</td>
+                                <td>Vitamin K = ${vitaminKIcon}</td>
+                                <td>HBO = ${HBOIcon}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -1073,11 +690,6 @@
                     </div>
                     <div class="col-md-6">
                         ${additionalInfoTableHtml}
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-md-12">
-                        ${newInfoTableHtml}
                     </div>
                 </div>
             `;
@@ -1095,31 +707,23 @@
                 success: function(data) {
                     console.log("Pesan diterima:", data);
                     $('#edit_nama_ibu').val(data.nama_ibu);
+                    $('#edit_tgl_datang').val(data.tgl_datang);
+                    $('#edit_usia_ibu').val(data.usia_ibu);
+                    $('#edit_alamat').val(data.alamat);
+                    $('#edit_gravida').val(data.gravida);
+                    $('#edit_partus').val(data.partus);
+                    $('#edit_abortus').val(data.abortus);
+                    $('#edit_usia_hamil').val(data.usia_hamil);
+                    $('#edit_keadaan_ibu').val(data.keadaan_ibu);
                     $('#edit_kala1').val(data.kala1);
                     $('#edit_kala2').val(data.kala2);
-                    $('#edit_bayi_lahir').val(data.bayi_lahir);
-                    $('#edit_piasenta').val(data.piasenta);
-                    $('#edit_pendarahan').val(data.pendarahan);
-                    $('#edit_usia_kehamilan').val(data.usia_kehamilan);
-                    $('#edit_usia_hpht').val(data.usia_hpht);
-                    $('#edit_keadaan_ibu').val(data.keadaan_ibu);
-                    $('#edit_keadaan_bayi').val(data.keadaan_bayi);
-                    $('#edit_berat_bayi').val(data.berat_bayi);
-                    $('#edit_jenis_kelamin').val(data.jenis_kelamin);
-                    $('#edit_panjang_bayi').val(data.panjang_bayi);
-                    $('#edit_pesentasi').val(data.pesentasi);
-                    $('#edit_tempat').val(data.tempat);
-                    $('#edit_penolong').val(data.penolong);
-                    $('#edit_cara_persalinan').val(data.cara_persalinan);
-                    $('#edit_menejemen').val(data.menejemen);
-                    $('#edit_pelayanan').val(data.pelayanan);
-                    $('#edit_integrasi').val(data.integrasi);
-                    $('#edit_detail_integrasi').val(data.detail_integrasi);
-                    $('#edit_komplikasi').val(data.komplikasi);
-                    $('#edit_keadaan_tiba').val(data.keadaan_tiba);
-                    $('#edit_keadaan_pulang').val(data.keadaan_pulang);
-                    $('#edit_rujuk').val(data.rujuk);
-                    $('#edit_alamat_bersalin').val(data.alamat_bersalin);
+                    $('#edit_kala3').val(data.kala3);
+                    $('#edit_tgl_lahir_bayi').val(data.tgl_lahir_bayi);
+                    $('#edit_brt_bayi').val(data.brt_bayi);
+                    $('#edit_pnjg_bayi').val(data.pnjg_bayi);
+                    $('#edit_lngkr_kpl_bayi').val(data.lngkr_kpl_bayi);
+                    $('#edit_vit_k').val(data.vit_k);
+                    $('#edit_hbo').val(data.hbo);
                     $('#editForm').attr('action',
                         '{{ route('intranatal_care.update_persalinan', ':id') }}'
                         .replace(
