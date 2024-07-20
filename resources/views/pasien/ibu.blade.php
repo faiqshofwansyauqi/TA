@@ -5,11 +5,10 @@
         <div class="pagetitle">
             <h1 style="margin-bottom: 5px">Data Ibu</h1>
             <div class="header-right">
-                <button type="button" class="btn btn-success btn-custom1" id="btn-plus">
-                    <i class="bi bi-plus-circle"></i> Tambah
+                <button type="button" class="btn btn-success btn-sm" id="btn-plus" style="margin-right: 10px">
+                    Tambah
                 </button>
                 <div id="colvis-button">
-                    <!-- Konten tambahan di sini -->
                 </div>
             </div>
         </div>
@@ -466,8 +465,8 @@
                                 row.id_ibu);
                             return `
                                 <div style="display: flex; justify-content: center;">
-                                    <button class="btn btn-sm btn-primary edit-btn" data-id="${row.id_ibu}" data-bs-toggle="modal" data-bs-target="#modalEdit" style="margin-right: 5px;">
-                                        <i class="ri-edit-2-fill"></i>
+                                    <button class="btn btn-table btn-sm btn-primary edit-btn" data-id="${row.id_ibu}" data-bs-toggle="modal" data-bs-target="#modalEdit" style="margin-right: 5px;">
+                                        Edit
                                     </button>
                                 </div>
                             `;
@@ -477,7 +476,7 @@
                 dom: '<"d-flex justify-content-between align-items-center"<"#dt-buttons"B>f>rtip',
                 buttons: [{
                     extend: 'colvis',
-                    className: 'btn btn-secondary btn-custom2',
+                    className: 'btn btn-secondary btn-sm',
                 }],
                 columnDefs: [{
                     targets: [5, 6, 7, 8, 9, 10, 11, 14, 15, 16, 17, 18, 19, 20, 21, 22],

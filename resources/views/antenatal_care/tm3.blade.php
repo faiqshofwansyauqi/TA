@@ -6,7 +6,7 @@
             <h1>Pemeriksaan Fisik</h1>
             <br>
             <button type="button" class="btn btn-success" id="btn-plus">
-                <i class="bi bi-plus-circle"></i> Tambah
+                Tambah
             </button>
         </div>
     </div>
@@ -698,14 +698,14 @@
                                 .replace(':id', row.id);
                             return `
                             <div style="display: flex; justify-content: center;">
-                                <button class="btn btn-sm btn-dark view-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalView" style="margin-right: 5px;">
-                                    <i class="bi bi-eye-fill"></i>
+                                <button class="btn btn-table btn-sm btn-dark" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalView" style="margin-right: 5px;">
+                                    Detail
                                 </button>
-                                    <button class="btn btn-sm btn-primary edit-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalEdit">
-                                        <i class="ri-edit-2-fill"></i>
+                                    <button class="btn btn-table btn-sm btn-primary edit-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalEdit">
+                                        Edit
                                     </button>
                                     <button type="button" class="btn btn-sm btn-danger btn-delete" data-id="${row.id}" data-url="${deleteUrl}" hidden>
-                                        <i class="bi bi-trash3-fill"></i>
+                                        Hapus
                                     </button>
                             </div>`;
                         }

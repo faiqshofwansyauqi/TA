@@ -6,7 +6,7 @@
             <h1 style="margin-bottom: 5px">Detail Pemantauan Bayi Ibu Hepatitis B</h1>
             @foreach ($hepatitiss as $item)
                 <button type="button" class="btn btn-primary btn-edit btn-custom1" data-id="{{ $item->id }}">
-                    <i class="ri-edit-2-fill"></i> Edit
+                    Edit Edit
                 </button>
             @endforeach
         </div>

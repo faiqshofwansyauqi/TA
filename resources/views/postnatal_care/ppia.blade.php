@@ -5,8 +5,8 @@
         <div class="pagetitle">
             <h1 style="margin-bottom: 5px">Pemantauan PPIA</h1>
             <div class="header-right">
-                <button type="button" class="btn btn-success btn-custom1" id="btn-plus">
-                    <i class="bi bi-plus-circle"></i> Tambah
+                <button type="button" class="btn btn-success btn-sm" id="btn-plus" style="margin-right: 10px">
+                    Tambah
                 </button>
                 <div id="colvis-button"></div>
             </div>
@@ -117,10 +117,10 @@
                             return `
                                 <div style="display: flex; justify-content: center;">
                                     <a href="${viewUrl}" class="btn btn-sm btn-dark">
-                                        <i class="bi bi-eye-fill"></i>
+                                        Detail
                                     </a>
                                     <button type="button" class="btn btn-sm btn-danger btn-delete" data-id="${row.id}" data-url="${deleteUrl}" hidden>
-                                        <i class="bi bi-trash3-fill"></i>
+                                        Hapus
                                     </button>
                                 </div>
                             `;

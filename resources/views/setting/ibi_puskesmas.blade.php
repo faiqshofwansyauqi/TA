@@ -4,8 +4,8 @@
     <div class="d-flex justify-content-between align-items-center">
         <div class="pagetitle">
             <h1 style="margin-bottom: 5px">Master Kepala IBI & Puskesmas</h1>
-            <button type="button" class="btn btn-success btn-custom1" id="btn-plus">
-                <i class="bi bi-plus-circle"></i> Tambah
+            <button type="button" class="btn btn-success btn-sm" id="btn-plus" style="margin-right: 10px">
+                Tambah
             </button>
         </div>
     </div>
@@ -191,11 +191,11 @@
                                 ':id', row.id);
                             return `
                             <div style="display: flex; justify-content: center;">
-                                <button class="btn btn-sm btn-primary edit-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalEdit" style="margin-right: 5px;">
-                                    <i class="ri-edit-2-fill"></i>
+                                <button class="btn btn-table btn-sm btn-primary edit-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalEdit" style="margin-right: 5px;">
+                                    Edit
                                 </button>
-                                <button class="btn btn-sm btn-danger btn-delete" data-id="${row.id}" data-url="${deleteUrl}">
-                            <i class="bi bi-trash3-fill"></i>
+                                <button class="btn btn-sm btn-table btn-danger btn-delete" data-id="${row.id}" data-url="${deleteUrl}">
+                            Hapus
                         </button>
                             </div>
                         `;

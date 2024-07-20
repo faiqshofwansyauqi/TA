@@ -4,8 +4,8 @@
     <div class="d-flex justify-content-between align-items-center">
         <div class="pagetitle">
             <h1 style="margin-bottom: 5px">Detail Kartu Menuju Sehat</h1>
-            <button type="button" class="btn btn-success btn-custom1" id="btn-plus">
-                <i class="bi bi-plus-circle"></i> Tambah
+            <button type="button" class="btn btn-success btn-sm" id="btn-plus" style="margin-right: 10px">
+                Tambah
             </button>
         </div>
     </div>

@@ -5,8 +5,8 @@
         <div class="pagetitle">
             <h1 style="margin-bottom: 5px">Pemeriksaan Bidan Saat K1</h1>
             <div class="header-right">
-                <button type="button" class="btn btn-success btn-custom1" id="btn-plus">
-                    <i class="bi bi-plus-circle"></i> Tambah
+                <button type="button" class="btn btn-success btn-sm" id="btn-plus" style="margin-right: 10px">
+                    Tambah
                 </button>
                 <div id="colvis-button">
                 </div>
@@ -448,11 +448,11 @@
                                 ':id', row.id);
                             return `
                             <div style="display: flex; justify-content: center;">
-                                <button class="btn btn-sm btn-dark view-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalView" style="margin-right: 5px;">
-                                    <i class="bi bi-eye-fill"></i>
+                                <button class="btn btn-table btn-sm btn-dark" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalView" style="margin-right: 5px;">
+                                    Detail
                                 </button>
-                                    <button class="btn btn-sm btn-primary edit-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalEdit">
-                                        <i class="ri-edit-2-fill"></i>
+                                    <button class="btn btn-table btn-sm btn-primary edit-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalEdit">
+                                        Edit
                                     </button>
                             </div>`;
                         }
@@ -461,7 +461,7 @@
                 dom: '<"d-flex justify-content-between align-items-center"<"#dt-buttons"B>f>rtip',
                 buttons: [{
                     extend: 'colvis',
-                    className: 'btn btn-secondary btn-custom2',
+                    className: 'btn btn-secondary btn-sm',
                 }],
                 columnDefs: [{
                     targets: [5, 6, 10, 11, 12, 13, ],

@@ -154,16 +154,9 @@ h6 {
     align-items: left;
 }
 
-.btn-custom1 {
-    width: 89px; /* Lebar tombol */
-    height: 30px; /* Tinggi tombol */
-    font-size: 12px;
-    margin-right: 10px; /* Ukuran teks di dalam tombol */
-}
-.btn-custom2 {
-    width: 130px; /* Lebar tombol */
-    height: 30px; /* Tinggi tombol */
-    font-size: 12px; /* Ukuran teks di dalam tombol */
+.btn-table {
+    height: 26px; /* Tinggi tombol */
+    font-size: 11px;
 }
 #kmsChart {
     width: 2446.88px !important;

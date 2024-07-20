@@ -4,8 +4,8 @@
     <div class="d-flex justify-content-between align-items-center">
         <div class="pagetitle">
             <h1 style="margin-bottom: 5px">Pemantauan Bayi</h1>
-            <button type="button" class="btn btn-success btn-custom1" id="btn-plus">
-                <i class="bi bi-plus-circle"></i> Tambah
+            <button type="button" class="btn btn-success btn-sm" id="btn-plus" style="margin-right: 10px">
+                Tambah
             </button>
         </div>
     </div>
@@ -110,7 +110,7 @@
                                 .replace(':id', row.id);
                             return `<div style="text-align: center;">
                             <a href="${viewUrl}" class="btn btn-sm btn-dark">
-                                <i class="bi bi-eye-fill"></i>
+                                Detail
                             </a>
                         </div>`;
                         }
@@ -123,7 +123,7 @@
                                 .replace(':id', row.id);
                             return `<div style="text-align: center;">
                             <a href="${viewUrl}" class="btn btn-sm btn-dark">
-                                <i class="bi bi-eye-fill"></i>
+                                Detail
                             </a>
                         </div>`;
                         }
@@ -136,7 +136,7 @@
                                 .replace(':id', row.id);
                             return `<div style="text-align: center;">
                             <a href="${viewUrl}" class="btn btn-sm btn-dark">
-                                <i class="bi bi-eye-fill"></i>
+                                Detail
                             </a>
                         </div>`;
                         }

@@ -4,8 +4,8 @@
     <div class="d-flex justify-content-between align-items-center">
         <div class="pagetitle">
             <h1 style="margin-bottom: 5px">Kartu Menuju Sehat</h1>
-            <button type="button" class="btn btn-success btn-custom1" id="btn-plus">
-                <i class="bi bi-plus-circle"></i> Tambah
+            <button type="button" class="btn btn-success btn-sm" id="btn-plus" style="margin-right: 10px">
+                Tambah
             </button>
         </div>
     </div>
@@ -133,18 +133,11 @@
                                 let viewUrl =
                                     '{{ route('kms.show_kms', ':id') }}'.replace(
                                         ':id', row.id);
-                                let deleteUrl =
-                                    '{{ route('kms.destroy_kms', ':id') }}'
-                                    .replace(
-                                        ':id', row.id);
                                 return `
                             <div style="display: flex; justify-content: center;">
-                            <a href="${viewUrl}" class="btn btn-sm btn-dark">
-                            <i class="bi bi-eye-fill"></i>
+                            <a href="${viewUrl}" class="btn btn-table btn-sm btn-dark">
+                            Detail
                             </a>
-                            <button type="button" class="btn btn-sm btn-danger btn-delete" data-id="${row.id}" data-url="${deleteUrl}" hidden>
-                                        <i class="bi bi-trash3-fill"></i>
-                                    </button>
                             </div>
                             `;
                             }
