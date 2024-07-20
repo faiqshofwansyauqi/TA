@@ -131,7 +131,7 @@
                             <span>Masa Nifas</span>
                         </a>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a href="{{ route('postnatal_care.ppia') }}"
                             class="{{ request()->is([
                                 'postnatal_care.ppia',
@@ -162,7 +162,7 @@
                             <i class="bi bi-circle"></i>
                             <span>Pemantauan Bayi</span>
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
             </li>
 
