@@ -177,7 +177,7 @@
                                     </div>
                                 </div>
                                 <br>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
                             </div>
                         </div>
                     </form>
@@ -319,7 +319,7 @@
                                     </div>
                                 </div>
                                 <br>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
                             </div>
                         </div>
                     </form>

@@ -44,8 +44,7 @@ class HomeController extends Controller
         $user = User::findOrFail($id);
         $data = $request->only(['name', 'email']);
 
-        $user->update($data);
-        // dd($request);
+        $user->update($data);        
         return redirect()->back()->with('success', 'Data berhasil diperbarui');
     }
 
@@ -59,25 +58,25 @@ class HomeController extends Controller
             $file = $request->file('profile_photo');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $path = $file->storeAs('profile_photos', $filename, 'public');
-            $img = Image::make(storage_path('app/public/profile_photos/' . $filename));
+
+            $img = Image::make(storage_path('app/public/' . $path));
             $img->resize(300, 300);
             $img->save();
             if ($user->profile_photo) {
                 Storage::disk('public')->delete($user->profile_photo);
             }
-            $user->profile_photo = 'profile_photos/' . $filename;
+            $user->profile_photo = $path;
         }
         $user->save();
+
         return redirect()->back()->with('success', 'Foto profil berhasil diperbarui.');
     }
     public function delete_profile($id)
     {
         $user = User::findOrFail($id);
-
-        // Hapus foto lama jika ada
         if ($user->profile_photo) {
             Storage::disk('public')->delete($user->profile_photo);
-            $user->profile_photo = null; // Reset ke foto default
+            $user->profile_photo = null;
             $user->save();
         }
 

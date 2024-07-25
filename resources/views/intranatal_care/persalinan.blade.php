@@ -25,9 +25,9 @@
                                 <thead>
                                     <tr>
                                         <th style="text-align: center">No</th>
-                                        <th style="min-width: 100px">Nama Ibu</th>
+                                        <th style="min-width: 130px">Nama Ibu</th>
                                         <th style="min-width: 140px">Tanggal</th>
-                                        <th style="min-width: 70px">Usia Ibu</th>
+                                        <th style="min-width: 80px">Usia Ibu</th>
                                         <th style="min-width: 300px">Alamat</th>
                                         <th style="min-width: 90px">GPA</th>
                                         <th style="min-width: 97px">Usia Hamil</th>
@@ -39,8 +39,8 @@
                                         <th style="min-width: 110px">Panjang Bayi</th>
                                         <th style="min-width: 90px">Berat Bayi</th>
                                         <th style="min-width: 160px">Lingkar Kepala Bayi</th>
-                                        <th style="min-width: 100px">Vitamin K</th>
-                                        <th>HBO</th>
+                                        <th style="min-width: 80px">Vitamin K</th>
+                                        <th style="min-width: 50px">HBO</th>
                                         <th style="text-align: center">Aksi</th>
                                     </tr>
                                 </thead>
@@ -182,7 +182,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
                                 </div>
                             </div>
                         </div>
@@ -215,28 +215,28 @@
                                         <label for="edit_usia_ibu" class="form-label">Usia Ibu</label>
                                         <input type="number" class="form-control" id="edit_usia_ibu" name="usia_ibu">
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-md-4 mb-3">
                                         <label for="edit_alamat" class="form-label">Alamat</label>
                                         <textarea class="form-control" id="edit_alamat" rows="2" name="alamat"></textarea>
                                     </div>
-                                    <div class="col-md-2 mb-3">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3 mb-3">
                                         <label for="edit_gravida" class="form-label">Gravida</label>
                                         <input type="text" class="form-control" id="edit_gravida" pattern="[0-9,\,]*"
                                             name="gravida">
                                     </div>
-                                    <div class="col-md-2 mb-3">
+                                    <div class="col-md-3 mb-3">
                                         <label for="edit_partus" class="form-label">Partus</label>
                                         <input type="text" class="form-control" id="edit_partus" pattern="[0-9,\,]*"
                                             name="partus">
                                     </div>
-                                    <div class="col-md-2 mb-3">
+                                    <div class="col-md-3 mb-3">
                                         <label for="edit_abortus" class="form-label">Abortus</label>
                                         <input type="text" class="form-control" id="edit_abortus" pattern="[0-9,\,]*"
                                             name="abortus">
                                     </div>
-                                    <div class="col-md-2 mb-3">
+                                    <div class="col-md-3 mb-3">
                                         <label for="edit_usia_hamil" class="form-label">Usia Hamil</label>
                                         <input type="number" class="form-control" id="edit_usia_hamil"
                                             name="usia_hamil">
@@ -318,7 +318,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
                                 </div>
                             </div>
                         </div>
@@ -392,7 +392,10 @@
                     },
                     {
                         data: 'usia_ibu',
-                        name: 'usia_ibu'
+                        name: 'usia_ibu',
+                        render: function(data, type, row) {
+                            return data + ' Tahun';
+                        }
                     },
                     {
                         data: 'alamat',
@@ -407,7 +410,10 @@
                     },
                     {
                         data: 'usia_hamil',
-                        name: 'usia_hamil'
+                        name: 'usia_hamil',
+                        render: function(data, type, row) {
+                            return data + ' Minggu';
+                        }
                     },
                     {
                         data: 'keadaan_ibu',

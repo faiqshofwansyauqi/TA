@@ -109,7 +109,7 @@
                                         <input type="text" class="form-control" id="pnykt_kronis_alergi"
                                             name="pnykt_kronis_alergi" required>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
                                 </div>
                             </div>
                             <div class=" col-6">
@@ -222,7 +222,7 @@
                                             name="pnykt_kronis_alergi" required>
                                     </div>
                                     <button type="submit" class="btn btn-primary"
-                                        style="margin-top: 50px">Submit</button>
+                                        style="margin-top: 50px">Simpan</button>
                                 </div>
                             </div>
                             <div class=" col-6">

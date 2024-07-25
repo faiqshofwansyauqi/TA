@@ -106,18 +106,14 @@
                         <div class="mb-3">
                             <label for="profilePhoto" class="form-label">Pilih Foto</label>
                             <input name="profile_photo" type="file" class="form-control" id="profilePhoto"
-                                accept=".jpeg, .png, .jpg, .gif" required>
+                                accept=".jpeg, .png, .jpg, .gif">
                         </div>
                         <div class="d-flex justify-content-left">
                             <button type="submit" class="btn btn-sm btn-primary"
                                 style="margin-right: 20px">Simpan</button>
                             @if ($user->profile_photo)
-                                <form action="{{ route('dashboard.delete_profile', $user->id) }}" method="post"
-                                    class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-danger">Hapus Foto Profil</button>
-                                </form>
+                                <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                                    data-bs-target="#deletePhotoModal">Hapus Foto Profil</button>
                             @endif
                         </div>
                     </form>
@@ -125,4 +121,30 @@
             </div>
         </div>
     </div>
+
+    @if ($user->profile_photo)
+        <div class="modal fade" id="deletePhotoModal" tabindex="-1" aria-labelledby="deletePhotoModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deletePhotoModalLabel">Hapus Foto Profil</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Apakah Anda yakin ingin menghapus foto profil ini?</p>
+                        <form action="{{ route('dashboard.delete_profile', $user->id) }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <div class="d-flex justify-content-end">
+                                <button type="button" class="btn btn-secondary me-2"
+                                    data-bs-dismiss="modal">Batal</button>
+                                <button type="submit" class="btn btn-danger">Hapus</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
 @endsection
