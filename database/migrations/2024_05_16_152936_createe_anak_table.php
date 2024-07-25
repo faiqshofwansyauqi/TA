@@ -23,12 +23,11 @@ class CreateeAnakTable extends Migration
             $table->string('kec');
             $table->string('kab');
             $table->string('jenis_kelamin');
-            $table->string('jenis_kelahiran');
+            $table->string('lngkr_kpl_bayi');
             $table->string('anak_ke');
-            $table->string('berat_bayi');
-            $table->string('panjang_bayi');
-            $table->string('bayi_lahir');
-            $table->string('tempat');
+            $table->string('brt_bayi');
+            $table->string('pnjg_bayi');
+            $table->string('tgl_lahir_bayi');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('id_ibu')->references('id_ibu')->on('ibu')->onDelete('cascade');

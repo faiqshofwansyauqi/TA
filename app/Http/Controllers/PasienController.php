@@ -180,19 +180,18 @@ class PasienController extends Controller
     {
         // dd($request);
         $request->validate([
-            'nama_anak' => 'required',
-            'id_ibu' => 'required',
-            'nama_suami' => 'required',
-            'alamat' => 'required',
-            'kec' => 'required',
-            'kab' => 'required',
-            'jenis_kelamin' => 'required',
-            'jenis_kelahiran' => 'required',
-            'anak_ke' => 'required',
-            'berat_bayi' => 'required',
-            'panjang_bayi' => 'required',
-            'bayi_lahir' => 'required',
-            'tempat' => 'required',
+            'nama_anak',
+            'id_ibu',
+            'nama_suami',
+            'alamat',
+            'kec',
+            'kab',
+            'jenis_kelamin',
+            'lngkr_kpl_bayi',
+            'anak_ke',
+            'brt_bayi',
+            'pnjg_bayi',
+            'tgl_lahir_bayi',
         ]);
 
         Anak::create([
@@ -204,12 +203,11 @@ class PasienController extends Controller
             'kec' => $request->kec,
             'kab' => $request->kab,
             'jenis_kelamin' => $request->jenis_kelamin,
-            'jenis_kelahiran' => $request->jenis_kelahiran,
+            'lngkr_kpl_bayi' => $request->lngkr_kpl_bayi,
             'anak_ke' => $request->anak_ke,
-            'berat_bayi' => $request->berat_bayi,
-            'panjang_bayi' => $request->panjang_bayi,
-            'bayi_lahir' => $request->bayi_lahir,
-            'tempat' => $request->tempat,
+            'brt_bayi' => $request->brt_bayi,
+            'pnjg_bayi' => $request->pnjg_bayi,
+            'tgl_lahir_bayi' => $request->tgl_lahir_bayi,
         ]);
 
         return redirect()->back()->with('success', 'Data anak berhasil ditambahkan');
@@ -217,22 +215,21 @@ class PasienController extends Controller
     public function update_anak(Request $request, $id)
     {
         $request->validate([
-            'nama_anak' => 'required',
-            'id_ibu' => 'required',
-            'nama_suami' => 'required',
-            'alamat' => 'required',
-            'kec' => 'required',
-            'kab' => 'required',
-            'jenis_kelamin' => 'required',
-            'jenis_kelahiran' => 'required',
-            'anak_ke' => 'required',
-            'berat_bayi' => 'required',
-            'panjang_bayi' => 'required',
-            'bayi_lahir' => 'required',
-            'tempat' => 'required',
+            'nama_anak',
+            'id_ibu',
+            'nama_suami',
+            'alamat',
+            'kec',
+            'kab',
+            'jenis_kelamin',
+            'lngkr_kpl_bayi',
+            'anak_ke',
+            'brt_bayi',
+            'pnjg_bayi',
+            'tgl_lahir_bayi',
         ]);
         $anak = Anak::findOrFail($id);
-        $anak->update([
+        $anak->update([            
             'nama_anak' => $request->nama_anak,
             'id_ibu' => $request->id_ibu,
             'nama_suami' => $request->nama_suami,
@@ -240,12 +237,11 @@ class PasienController extends Controller
             'kec' => $request->kec,
             'kab' => $request->kab,
             'jenis_kelamin' => $request->jenis_kelamin,
-            'jenis_kelahiran' => $request->jenis_kelahiran,
+            'lngkr_kpl_bayi' => $request->lngkr_kpl_bayi,
             'anak_ke' => $request->anak_ke,
-            'berat_bayi' => $request->berat_bayi,
-            'panjang_bayi' => $request->panjang_bayi,
-            'bayi_lahir' => $request->bayi_lahir,
-            'tempat' => $request->tempat,
+            'brt_bayi' => $request->brt_bayi,
+            'pnjg_bayi' => $request->pnjg_bayi,
+            'tgl_lahir_bayi' => $request->tgl_lahir_bayi,
         ]);
         return redirect()->back()->with('success', 'Data anak berhasil diupdate');
     }

@@ -29,9 +29,9 @@
                                         <th style="min-width: 140px">Tanggal</th>
                                         <th style="min-width: 80px">Usia Ibu</th>
                                         <th style="min-width: 300px">Alamat</th>
-                                        <th style="min-width: 90px">GPA</th>
+                                        <th style="min-width: 70px">GPA</th>
                                         <th style="min-width: 97px">Usia Hamil</th>
-                                        <th style="min-width: 108px">Keadaan Ibu</th>
+                                        <th style="min-width: 108px">Jenis Kelamin</th>
                                         <th style="min-width: 140px">Kala I</th>
                                         <th style="min-width: 140px">Kala II</th>
                                         <th style="min-width: 140px">Kala III</th>
@@ -77,42 +77,42 @@
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="tgl_datang" class="form-label">Tanggal Datang</label>
-                                        <input type="datetime-local" class="form-control" id="tgl_datang" name="tgl_datang">
+                                        <input type="datetime-local" class="form-control" id="tgl_datang" name="tgl_datang" required>
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="usia_ibu" class="form-label">Usia Ibu</label>
-                                        <input type="number" class="form-control" id="usia_ibu" name="usia_ibu">
+                                        <input type="number" class="form-control" id="usia_ibu" name="usia_ibu" required>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4 mb-3">
                                         <label for="alamat" class="form-label">Alamat</label>
-                                        <textarea class="form-control" id="alamat" rows="2" name="alamat"></textarea>
+                                        <textarea class="form-control" id="alamat" rows="2" name="alamat" required></textarea>
                                     </div>
                                     <div class="col-md-2 mb-3">
                                         <label for="gravida" class="form-label">Gravida</label>
                                         <input type="text" class="form-control" id="gravida" pattern="[0-9,\,]*"
-                                            name="gravida">
+                                            name="gravida" required>
                                     </div>
                                     <div class="col-md-2 mb-3">
                                         <label for="partus" class="form-label">Partus</label>
                                         <input type="text" class="form-control" id="partus" pattern="[0-9,\,]*"
-                                            name="partus">
+                                            name="partus" required>
                                     </div>
                                     <div class="col-md-2 mb-3">
                                         <label for="abortus" class="form-label">Abortus</label>
                                         <input type="text" class="form-control" id="abortus" pattern="[0-9,\,]*"
-                                            name="abortus">
+                                            name="abortus" required>
                                     </div>
                                     <div class="col-md-2 mb-3">
                                         <label for="usia_hamil" class="form-label">Usia Hamil</label>
-                                        <input type="number" class="form-control" id="usia_hamil" name="usia_hamil">
+                                        <input type="number" class="form-control" id="usia_hamil" name="usia_hamil" required>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-3 mb-3">
                                         <label for="keadaan_ibu" class="form-label">Keadaan Ibu</label>
-                                        <select class="form-select" id="keadaan_ibu" name="keadaan_ibu">
+                                        <select class="form-select" id="keadaan_ibu" name="keadaan_ibu" required>
                                             <option value="">Pilih Keadaan Ibu</option>
                                             <option value="Mati">Mati</option>
                                             <option value="Hidup">Hidup</option>
@@ -180,6 +180,14 @@
                                             <option value="jika tidak">&#10007;</option>
                                         </select>
                                     </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="jenis_kelamin" class="form-label">jenis Kelamin</label>
+                                        <select class="form-select" id="jenis_kelamin" name="jenis_kelamin" required>
+                                            <option value="">Pilih Jenis Kelamin</option>
+                                            <option value="Laki-laki">Laki-laki</option>
+                                            <option value="Perempuan">Perempuan</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary">Simpan</button>
@@ -209,43 +217,43 @@
                                     <div class="col-md-4 mb-3">
                                         <label for="edit_tgl_datang" class="form-label">Tanggal Datang</label>
                                         <input type="datetime-local" class="form-control" id="edit_tgl_datang"
-                                            name="tgl_datang">
+                                            name="tgl_datang" required>
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="edit_usia_ibu" class="form-label">Usia Ibu</label>
-                                        <input type="number" class="form-control" id="edit_usia_ibu" name="usia_ibu">
+                                        <input type="number" class="form-control" id="edit_usia_ibu" name="usia_ibu" required>
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="edit_alamat" class="form-label">Alamat</label>
-                                        <textarea class="form-control" id="edit_alamat" rows="2" name="alamat"></textarea>
+                                        <textarea class="form-control" id="edit_alamat" rows="2" name="alamat" required></textarea>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-3 mb-3">
                                         <label for="edit_gravida" class="form-label">Gravida</label>
                                         <input type="text" class="form-control" id="edit_gravida" pattern="[0-9,\,]*"
-                                            name="gravida">
+                                            name="gravida" required>
                                     </div>
                                     <div class="col-md-3 mb-3">
                                         <label for="edit_partus" class="form-label">Partus</label>
                                         <input type="text" class="form-control" id="edit_partus" pattern="[0-9,\,]*"
-                                            name="partus">
+                                            name="partus" required>
                                     </div>
                                     <div class="col-md-3 mb-3">
                                         <label for="edit_abortus" class="form-label">Abortus</label>
                                         <input type="text" class="form-control" id="edit_abortus" pattern="[0-9,\,]*"
-                                            name="abortus">
+                                            name="abortus" required>
                                     </div>
                                     <div class="col-md-3 mb-3">
                                         <label for="edit_usia_hamil" class="form-label">Usia Hamil</label>
                                         <input type="number" class="form-control" id="edit_usia_hamil"
-                                            name="usia_hamil">
+                                            name="usia_hamil" required>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-3 mb-3">
                                         <label for="edit_keadaan_ibu" class="form-label">Keadaan Ibu</label>
-                                        <select class="form-select" id="edit_keadaan_ibu" name="keadaan_ibu">
+                                        <select class="form-select" id="edit_keadaan_ibu" name="keadaan_ibu" required>
                                             <option value="">Pilih Keadaan Ibu</option>
                                             <option value="Mati">Mati</option>
                                             <option value="Hidup">Hidup</option>
@@ -314,6 +322,14 @@
                                             <option value="">Pilih HBO</option>
                                             <option value="jika iya">&#10003;</option>
                                             <option value="jika tidak">&#10007;</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="edit_jenis_kelamin" class="form-label">jenis Kelamin</label>
+                                        <select class="form-select" id="edit_jenis_kelamin" name="jenis_kelamin" required>
+                                            <option value="">Pilih Jenis Kelamin</option>
+                                            <option value="Laki-laki">Laki-laki</option>
+                                            <option value="Perempuan">Perempuan</option>
                                         </select>
                                     </div>
                                 </div>
@@ -606,7 +622,6 @@
                     });
                 }
             }
-
             var inputs = [{
                     id: 'brt_bayi',
                     maxLength: 5
@@ -656,7 +671,6 @@
                     maxLength: 10
                 },
             ];
-
             inputs.forEach(function(input) {
                 var element = document.getElementById(input.id);
                 restrictInputToNumbers(element, input.maxLength);
@@ -766,6 +780,10 @@
                                 <td>${data.keadaan_ibu}</td>
                             </tr>
                             <tr>
+                                <td>Jenis Kelamin</td>
+                                <td>${data.jenis_kelamin}</td>
+                            </tr>
+                            <tr>
                                 <td>Vitamin K : ${vitaminKIcon}</td>
                                 <td>HBO : ${HBOIcon}</td>
                             </tr>
@@ -814,6 +832,7 @@
                     $('#edit_lngkr_kpl_bayi').val(data.lngkr_kpl_bayi);
                     $('#edit_vit_k').val(data.vit_k);
                     $('#edit_hbo').val(data.hbo);
+                    $('#edit_jenis_kelamin').val(data.jenis_kelamin);
                     $('#editForm').attr('action',
                         '{{ route('intranatal_care.update_persalinan', ':id') }}'
                         .replace(

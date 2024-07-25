@@ -32,12 +32,11 @@
                                         <th>Kecamatan</th>
                                         <th>Kabupaten</th>
                                         <th>Jenis Kelamin</th>
-                                        <th>Jenis Kelahiran</th>
+                                        <th>Lingkar Kepala Bayi</th>
                                         <th>Anak Ke</th>
                                         <th>Berat Bayi</th>
                                         <th>Panjang Bayi</th>
                                         <th>Tanggal Lahir</th>
-                                        <th>Tempat Lahir</th>
                                         <th style="text-align: center">Aksi</th>
                                     </tr>
                                 </thead>
@@ -108,12 +107,13 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4 mb-3">
-                                        <label for="jenis_kelahiran" class="form-label">Jenis Kelahiran</label>
-                                        <select class="form-select" id="jenis_kelahiran" name="jenis_kelahiran" required>
-                                            <option value="-">Pilih Jenis Kelamin</option>
-                                            <option value="Tunggal">Tunggal</option>
-                                            <option value="Ganda">Ganda</option>
-                                        </select>
+                                        <label for="lngkr_kpl_bayi" class="form-label">Lingkar Kepala Bayi</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="lngkr_kpl_bayi"
+                                                name="lngkr_kpl_bayi" placeholder="input Lingkar Kepala Bayi"
+                                                pattern="[0-9,\,]*">
+                                            <span class="input-group-text">cm</span>
+                                        </div>
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="anak_ke" class="form-label">Anak Ke</label>
@@ -128,33 +128,26 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-3 mb-3">
-                                        <label for="berat_bayi" class="form-label">Berat Bayi</label>
-                                        <div class="input-group mb-3">
-                                            <input type="text" class="form-control" id="berat_bayi" name="berat_bayi"
-                                                inputmode="numeric" pattern="\d+(\.\d{1,2})?" required>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="brt_bayi" class="form-label">Berat Bayi</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="brt_bayi" name="brt_bayi"
+                                                placeholder="input Berat Bayi" pattern="[0-9,\,]*">
                                             <span class="input-group-text">gram</span>
                                         </div>
                                     </div>
-                                    <div class="col-md-2 mb-3">
-                                        <label for="panjang_bayi" class="form-label">Panjang Bayi</label>
-                                        <div class="input-group mb-3">
-                                            <input type="text" class="form-control" id="panjang_bayi"
-                                                name="panjang_bayi" inputmode="numeric" pattern="\d+(\.\d{1,2})?"
-                                                required>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="pnjg_bayi" class="form-label">Panjang Bayi</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="pnjg_bayi" name="pnjg_bayi"
+                                                placeholder="input Panjang Bayi" pattern="[0-9,\,]*">
                                             <span class="input-group-text">cm</span>
                                         </div>
                                     </div>
-
-                                    <div class="col-md-3 mb-3">
-                                        <label for="bayi_lahir" class="form-label">Tanggal Lahir</label>
-                                        <input type="datetime-local" class="form-control" id="bayi_lahir" required
-                                            name="bayi_lahir">
-                                    </div>
-                                    <div class="col-md-3 mb-3">
-                                        <label for="tempat" class="form-label">Tempat Lahir</label>
-                                        <input type="text" class="form-control" id="tempat" name="tempat"
-                                            required>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="tgl_lahir_bayi" class="form-label">Tanggal Lahir Bayi</label>
+                                        <input type="datetime-local" class="form-control" id="tgl_lahir_bayi"
+                                            name="tgl_lahir_bayi">
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Simpan</button>
@@ -195,7 +188,7 @@
                                                 </option>
                                             @endforeach
                                         </select>
-                                    </div>                                    
+                                    </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="edit_nama_suami" class="form-label">Nama Suami</label>
                                         <input type="text" class="form-control" id="edit_nama_suami"
@@ -228,12 +221,13 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4 mb-3">
-                                        <label for="edit_jenis_kelahiran" class="form-label">Jenis Kelahiran</label>
-                                        <select class="form-select" id="edit_jenis_kelahiran" name="jenis_kelahiran">
-                                            <option value="-">Pilih Jenis Kelamin</option>
-                                            <option value="Tunggal">Tunggal</option>
-                                            <option value="Ganda">Ganda</option>
-                                        </select>
+                                        <label for="edit_lngkr_kpl_bayi" class="form-label">Lingkar Kepala Bayi</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="edit_lngkr_kpl_bayi"
+                                                name="lngkr_kpl_bayi" placeholder="input Lingkar Kepala Bayi"
+                                                pattern="[0-9,\,]*">
+                                            <span class="input-group-text">cm</span>
+                                        </div>
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="edit_anak_ke" class="form-label">Anak Ke</label>
@@ -248,31 +242,26 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-3 mb-3">
-                                        <label for="edit_berat_bayi" class="form-label">Berat Bayi</label>
-                                        <div class="input-group mb-3">
-                                            <input type="text" class="form-control" id="edit_berat_bayi"
-                                                name="berat_bayi" inputmode="numeric" pattern="\,d*">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="edit_brt_bayi" class="form-label">Berat Bayi</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="edit_brt_bayi"
+                                                name="brt_bayi" placeholder="input Berat Bayi" pattern="[0-9,\,]*">
                                             <span class="input-group-text">gram</span>
                                         </div>
                                     </div>
-                                    <div class="col-md-3 mb-3">
-                                        <label for="edit_panjang_bayi" class="form-label">Panjang Bayi</label>
-                                        <div class="input-group mb-3">
-                                            <input type="text" class="form-control" id="edit_panjang_bayi"
-                                                name="panjang_bayi" inputmode="numeric" pattern="\,d*">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="edit_pnjg_bayi" class="form-label">Panjang Bayi</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="edit_pnjg_bayi"
+                                                name="pnjg_bayi" placeholder="input Panjang Bayi" pattern="[0-9,\,]*">
                                             <span class="input-group-text">cm</span>
                                         </div>
                                     </div>
-                                    <div class="col-md-3 mb-3">
-                                        <label for="edit_bayi_lahir" class="form-label">Tanggal Lahir</label>
-                                        <input type="datetime-local" class="form-control" id="edit_bayi_lahir"
-                                            name="bayi_lahir">
-                                    </div>
-                                    <div class="col-md-3 mb-3">
-                                        <label for="edit_tempat" class="form-label">Tempat Lahir</label>
-                                        <input type="text" class="form-control" id="edit_tempat" name="tempat"
-                                            required>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="edit_tgl_lahir_bayi" class="form-label">Tanggal Lahir Bayi</label>
+                                        <input type="datetime-local" class="form-control" id="edit_tgl_lahir_bayi"
+                                            name="tgl_lahir_bayi">
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Simpan</button>
@@ -336,45 +325,43 @@
                         name: 'jenis_kelamin'
                     },
                     {
-                        data: 'jenis_kelahiran',
-                        name: 'jenis_kelahiran'
+                        data: 'lngkr_kpl_bayi',
+                        name: 'lngkr_kpl_bayi',
+                        render: function(data, type, row) {
+                            return data + ' cm';
+                        }
                     },
                     {
                         data: 'anak_ke',
                         name: 'anak_ke'
                     },
                     {
-                        data: 'berat_bayi',
-                        name: 'berat_bayi',
+                        data: 'brt_bayi',
+                        name: 'brt_bayi',
                         render: function(data, type, row) {
                             return data + ' gram';
                         }
                     },
                     {
-                        data: 'panjang_bayi',
-                        name: 'panjang_bayi',
+                        data: 'pnjg_bayi',
+                        name: 'pnjg_bayi',
                         render: function(data, type, row) {
                             return data + ' cm';
                         }
                     },
                     {
-                        data: 'bayi_lahir',
-                        name: 'bayi_lahir',
-                        render: function(data, type, full, meta) {
+                        data: 'tgl_lahir_bayi',
+                        name: 'tgl_lahir_bayi',
+                        render: function(data) {
                             var date = new Date(data);
-                            var day = String(date.getDate()).padStart(2, '0');
-                            var month = String(date.getMonth() + 1).padStart(2, '0');
-                            var year = date.getFullYear();
-                            var hours = String(date.getHours()).padStart(2, '0');
-                            var minutes = String(date.getMinutes()).padStart(2, '0');
-                            var formattedDate = day + ' - ' + month + ' - ' + year + ' Pukul ' +
-                                hours + ':' + minutes;
-                            return formattedDate;
+                            var formattedDate = ('0' + date.getDate()).slice(-2) + '/' +
+                                ('0' + (date.getMonth() + 1)).slice(-2) + '/' +
+                                date.getFullYear();
+                            var formattedTime = ('0' + date.getHours()).slice(-2) + ':' +
+                                ('0' + date.getMinutes()).slice(-2);
+                            var dateTimeString = formattedDate + ' ' + formattedTime;
+                            return dateTimeString;
                         }
-                    },
-                    {
-                        data: 'tempat',
-                        name: 'tempat'
                     },
                     {
                         data: 'action',
@@ -405,13 +392,59 @@
                     className: 'btn btn-secondary btn-sm',
                 }],
                 columnDefs: [{
-                    targets: [4, 8, 9, 10, 11, 12, 13],
+                    // targets: [],
+                    targets: [4, 8, 9, 10, 11, 12,],
                     visible: false
                 }]
             });
             table.buttons().container().appendTo(
                 '#colvis-button');
         });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            function restrictInputToNumbers(input, maxLength) {
+                if (input) {
+                    input.addEventListener('input', function() {
+                        var value = input.value;
+                        value = value.replace(/[^0-9/,]/g, '');
+                        if (value.length > maxLength) {
+                            value = value.substring(0, maxLength);
+                        }
+                        input.value = value;
+                    });
+                }
+            }
+            var inputs = [{
+                    id: 'brt_bayi',
+                    maxLength: 5
+                },
+                {
+                    id: 'edit_brt_bayi',
+                    maxLength: 5
+                },
+                {
+                    id: 'pnjg_bayi',
+                    maxLength: 10
+                },
+                {
+                    id: 'edit_pnjg_bayi',
+                    maxLength: 10
+                },
+                {
+                    id: 'lngkr_kpl_bayi',
+                    maxLength: 10
+                },
+                {
+                    id: 'edit_lngkr_kpl_bayi',
+                    maxLength: 10
+                },
+            ];
+            inputs.forEach(function(input) {
+                var element = document.getElementById(input.id);
+                restrictInputToNumbers(element, input.maxLength);
+            });
+        });
+
 
         $('#anak-table').on('click', '.edit-btn', function() {
             let id = $(this).data('id');
@@ -426,12 +459,11 @@
                     $('#edit_kec').val(data.kec);
                     $('#edit_kab').val(data.kab);
                     $('#edit_jenis_kelamin').val(data.jenis_kelamin);
-                    $('#edit_jenis_kelahiran').val(data.jenis_kelahiran);
+                    $('#edit_lngkr_kpl_bayi').val(data.lngkr_kpl_bayi);
                     $('#edit_anak_ke').val(data.anak_ke);
-                    $('#edit_berat_bayi').val(data.berat_bayi);
-                    $('#edit_panjang_bayi').val(data.panjang_bayi);
-                    $('#edit_bayi_lahir').val(data.bayi_lahir);
-                    $('#edit_tempat').val(data.tempat);
+                    $('#edit_brt_bayi').val(data.brt_bayi);
+                    $('#edit_pnjg_bayi').val(data.pnjg_bayi);
+                    $('#edit_tgl_lahir_bayi').val(data.tgl_lahir_bayi);
                     $('#editForm').attr('action', '{{ route('pasien.update_anak', ':id') }}'.replace(
                         ':id', id));
                     $('#modalEdit').modal('show');
@@ -447,11 +479,11 @@
                 $('#alamat').val('');
                 $('#kec').val('');
                 $('#kab').val('');
-                $('#bayi_lahir').val('');
                 $('#jenis_kelamin').val('');
-                $('#berat_bayi').val('');
-                $('#tempat').val('');
-                $('#jenis_kelahiran').val('');
+                $('#lngkr_kpl_bayi').val('');
+                $('#brt_bayi').val('');
+                $('#tgl_lahir_bayi').val('');
+                $('#pnjg_bayi').val('');
                 if (id_ibu) {
                     $.ajax({
                         url: '{{ route('pasien.info_ibu', ':id_ibu') }}'.replace(':id_ibu',
@@ -467,14 +499,11 @@
                                 $('#kab').val(response.ibu.kab);
                             }
                             if (response.persalinan) {
-                                $('#bayi_lahir').val(response.persalinan.bayi_lahir);
                                 $('#jenis_kelamin').val(response.persalinan.jenis_kelamin);
-                                $('#berat_bayi').val(response.persalinan.berat_bayi);
-                                $('#tempat').val(response.persalinan.tempat);
-                                $('#panjang_bayi').val(response.persalinan.panjang_bayi);
-                            }
-                            if (response.show_anc) {
-                                $('#jenis_kelahiran').val(response.show_anc.jmlh_janin);
+                                $('#lngkr_kpl_bayi').val(response.persalinan.lngkr_kpl_bayi);
+                                $('#brt_bayi').val(response.persalinan.brt_bayi);
+                                $('#tgl_lahir_bayi').val(response.persalinan.tgl_lahir_bayi);
+                                $('#pnjg_bayi').val(response.persalinan.pnjg_bayi);
                             }
                         },
                         error: function(xhr, status, error) {
@@ -484,7 +513,7 @@
                 }
             });
         });
-        
+
         $('#anak-table').on('click', '.btn-delete', function() {
             const id = $(this).data('id');
             const url = $(this).data('url');

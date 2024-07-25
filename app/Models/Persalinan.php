@@ -29,6 +29,7 @@ class Persalinan extends Model
         'lngkr_kpl_bayi',
         'vit_k',
         'hbo',        
+        'jenis_kelamin',        
     ];
     public function ibu()
     {

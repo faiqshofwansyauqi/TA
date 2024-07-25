@@ -30,10 +30,10 @@
                                         </th>
                                         <th colspan="2" class="align-middle text-center">TANDA VITAL</th>
                                         <th colspan="2" class="align-middle text-center">PELAYANAN</th>
-                                        <th colspan="4" class="align-middle text-center">KOMPLIKASI***
+                                        <th colspan="4" class="align-middle text-center">KOMPLIKASI
                                         </th>
                                         <th rowspan="2" class="text-center align-middle">TATA LAKSANA</th>
-                                        <th colspan="5" class="align-middle text-center">DIRUJUK KE***
+                                        <th colspan="5" class="align-middle text-center">DIRUJUK KE
                                         <th colspan="2" class="align-middle text-center">KEADAAN</th>
                                     </tr>
                                     <tr>
@@ -89,7 +89,7 @@
                                             <input type="number" class="form-control" id="hari" name="hari">
                                         </div>
                                         <div class="col-md-4 mb-3">
-                                            <label for="kf" class="form-label">KF*</label>
+                                            <label for="kf" class="form-label">KF</label>
                                             <select class="form-select" id="kf" name="kf">
                                                 <option value="">Pilih KF</option>
                                                 <option value="1">KF 1</option>
@@ -126,18 +126,14 @@
                                                 pattern="[0-9,\.]*">
                                         </div>
                                         <div class="col-md-4 mb-3">
-                                            <label for="vit" class="form-label">Vit.A*</label>
+                                            <label for="vit" class="form-label">Vit.A</label>
                                             <select class="form-select" id="vit" name="vit">
-                                                <option value="">Pilih Vit.A*</option>
+                                                <option value="">Pilih Vit.A</option>
                                                 <option value="jika iya">&#10003;</option>
                                                 <option value="jika tidak">&#10007;</option>
                                             </select>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="card-body">
                                     <h5 class="card-title">Komplikasi</h5>
                                     <div class="row">
                                         <div class="col-md-3 mb-3">
@@ -174,8 +170,13 @@
                                                 name="lainnya_komplikasi">
                                         </div>
                                     </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                             <h5 class="card-title">Tata Laksana</h5>
                                             <label for="tata_laksana" class="form-label">Tata Laksana</label>
                                             <input type="text" class="form-control" id="tata_laksana"
@@ -249,7 +250,6 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
             </div>
@@ -282,7 +282,7 @@
                                             <input type="number" class="form-control" id="edit_hari" name="hari">
                                         </div>
                                         <div class="col-md-4 mb-3">
-                                            <label for="edit_kf" class="form-label">KF*</label>
+                                            <label for="edit_kf" class="form-label">KF</label>
                                             <select class="form-select" id="edit_kf" name="kf">
                                                 <option value="">Pilih KF</option>
                                                 <option value="1">KF 1</option>
@@ -319,18 +319,14 @@
                                                 required pattern="[0-9,\.]*">
                                         </div>
                                         <div class="col-md-4 mb-3">
-                                            <label for="edit_vit" class="form-label">Vit.A*</label>
+                                            <label for="edit_vit" class="form-label">Vit.A</label>
                                             <select class="form-select" id="edit_vit" name="vit">
-                                                <option value="">Pilih Vit.A*</option>
+                                                <option value="">Pilih Vit.A</option>
                                                 <option value="jika iya">&#10003;</option>
                                                 <option value="jika tidak">&#10007;</option>
                                             </select>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="card-body">
                                     <h5 class="card-title">Komplikasi</h5>
                                     <div class="row">
                                         <div class="col-md-3 mb-3">
@@ -363,8 +359,13 @@
                                                 name="lainnya_komplikasi">
                                         </div>
                                     </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-12">
                                             <h5 class="card-title">Tata Laksana</h5>
                                             <label for="edit_tata_laksana" class="form-label">Tata Laksana</label>
                                             <input type="text" class="form-control" id="edit_tata_laksana" required
@@ -433,7 +434,6 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
             </div>
@@ -507,7 +507,8 @@
                         data: 'vit',
                         name: 'vit',
                         render: function(data, type, row, meta) {
-                            return data.toLowerCase() === 'jika iya' ? '<i class="ri-check-line"></i>' : '<i class="ri-close-line"></i>';
+                            return data.toLowerCase() === 'jika iya' ?
+                                '<i class="ri-check-line"></i>' : '<i class="ri-close-line"></i>';
                         }
                     },
                     {

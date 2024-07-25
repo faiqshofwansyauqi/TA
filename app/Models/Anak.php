@@ -20,12 +20,11 @@ class Anak extends Model
         'kec',
         'kab',
         'jenis_kelamin',
-        'jenis_kelahiran',
+        'lngkr_kpl_bayi',
         'anak_ke',
-        'berat_bayi',
-        'panjang_bayi',
-        'bayi_lahir',
-        'tempat',
+        'brt_bayi',
+        'pnjg_bayi',
+        'tgl_lahir_bayi',
     ];
     public function ibu()
     {

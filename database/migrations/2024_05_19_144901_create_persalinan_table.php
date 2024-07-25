@@ -34,6 +34,7 @@ class CreatePersalinanTable extends Migration
             $table->string('lngkr_kpl_bayi');
             $table->string('vit_k');
             $table->string('hbo');
+            $table->string('jenis_kelamin');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('id_ibu')->references('id_ibu')->on('ibu')->onDelete('cascade');

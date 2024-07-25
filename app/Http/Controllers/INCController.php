@@ -52,6 +52,7 @@ class INCController extends Controller
             'lngkr_kpl_bayi',
             'vit_k',
             'hbo',
+            'jenis_kelamin',
         ]);
 
         Persalinan::create([
@@ -74,6 +75,7 @@ class INCController extends Controller
             'lngkr_kpl_bayi' => $request->lngkr_kpl_bayi,
             'vit_k' => $request->vit_k,
             'hbo' => $request->hbo,
+            'jenis_kelamin' => $request->jenis_kelamin,
         ]);
         return redirect()->back()->with('success', 'Data persalinan berhasil ditambahkan');
     }
@@ -98,6 +100,7 @@ class INCController extends Controller
             'lngkr_kpl_bayi',
             'vit_k',
             'hbo',
+            'jenis_kelamin',
         ]);
         $persalinan = Persalinan::findOrFail($id);
         $persalinan->update([
@@ -118,6 +121,7 @@ class INCController extends Controller
             'lngkr_kpl_bayi' => $request->lngkr_kpl_bayi,
             'vit_k' => $request->vit_k,
             'hbo' => $request->hbo,
+            'jenis_kelamin' => $request->jenis_kelamin,
         ]);
         return redirect()->back()->with('success', 'Data persalinan berhasil diperbarui');
     }
