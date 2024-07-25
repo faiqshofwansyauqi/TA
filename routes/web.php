@@ -9,6 +9,7 @@ use App\Http\Controllers\LandingController;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\PNCController;
 use App\Http\Controllers\ANCController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +32,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
     Route::get('/profile/{id}', [HomeController::class, 'profile'])->name('dashboard.profile');
     Route::put('/profile/update/{id}', [HomeController::class, 'profile_update'])->name('dashboard.profile_update');
+    Route::put('/profile/{user}', [HomeController::class, 'update_profile'])->name('dashboard.update_profile');
+    Route::delete('/profile/{user}', [HomeController::class, 'delete_profile'])->name('dashboard.delete_profile');
     Route::get('error', [HomeController::class, 'ERROR'])->name('errors.404');
 
     Route::prefix('pasien')->group(function () {
@@ -166,6 +169,10 @@ Route::middleware(['auth'])->group(function () {
         ///////////// SHOW KMS /////////////
         Route::get('kms/show_kms/{id}', [KMSContronller::class, 'show_kms'])->name('kms.show_kms');
         Route::post('store-show_kms', [KMSContronller::class, 'store_show_kms'])->name('kms.store_show_kms');
+    });
+    Route::prefix('laporan')->group(function () {
+        ///////////// LAPORAN PUSKESMAS /////////////
+        Route::get('laporan', [LaporanController::class, 'Lp_puskesmas'])->name('laporan.puskesmas');
     });
 });
 

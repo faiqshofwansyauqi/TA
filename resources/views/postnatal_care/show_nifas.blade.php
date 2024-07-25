@@ -507,7 +507,7 @@
                         data: 'vit',
                         name: 'vit',
                         render: function(data, type, row, meta) {
-                            return data.toLowerCase() === 'jika iya' ? '<i class="ri-check-line"></i>' : '<i class="ri-close-line"></i>;';
+                            return data.toLowerCase() === 'jika iya' ? '<i class="ri-check-line"></i>' : '<i class="ri-close-line"></i>';
                         }
                     },
                     {

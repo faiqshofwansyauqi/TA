@@ -528,7 +528,7 @@
                                 .replace(':id', row.id);
                             return `
                         <div style="display: flex; justify-content: center;">
-                            <button class="btn btn-table btn-sm btn-dark" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalView" style="margin-right: 5px;">
+                            <button class="btn btn-table btn-sm btn-dark view-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalView" style="margin-right: 5px;">
                                 Detail
                             </button>
                                 <button class="btn btn-table btn-sm btn-primary edit-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalEdit">
