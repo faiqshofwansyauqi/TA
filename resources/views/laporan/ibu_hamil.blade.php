@@ -3,7 +3,7 @@
 @section('content')
     <div class="d-flex justify-content-between align-items-center">
         <div class="pagetitle">
-            <h1 style="margin-bottom: 5px">Laporan Puskesmas</h1>
+            <h1 style="margin-bottom: 5px">Laporan Ibu Hamil</h1>
         </div>
     </div>
 
@@ -14,22 +14,24 @@
                     <div class="card-body">
                         <br>
                         <div class="table-responsive">
-                            <table class="table table-borderless table-anc" id="rnca-table" style="width:100%">
+                            <table class="table table-borderless table-anc" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th style="text-align: center">No</th>
+                                        <th>No</th>
+                                        <th>Nama Bidan</th>
                                         <th>Nama Ibu</th>
-                                        <th>Tanggal</th>
-                                        <th>Penolong</th>
-                                        <th>Pendamping</th>
-                                        <th>Tempat</th>
-                                        <th>Transportasi</th>
-                                        <th>Pendonor</th>
-                                        <th>Golongan Darah</th>
-                                        <th style="text-align: center">Aksi</th>
                                     </tr>
                                 </thead>
-                                <tbody></tbody>
+                                <tbody>
+                                    @php $no = 1; @endphp
+                                    @foreach($ibus as $ibu)
+                                        <tr>
+                                            <td>{{ $no++ }}</td>
+                                            <td>{{ $ibu->user_id}}</td>
+                                            <td>{{ $ibu->ibu->nama_ibu }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
                             </table>
                         </div>
                     </div>

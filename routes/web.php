@@ -172,7 +172,7 @@ Route::middleware(['auth'])->group(function () {
     });
     Route::prefix('laporan')->group(function () {
         ///////////// LAPORAN PUSKESMAS /////////////
-        Route::get('laporan', [LaporanController::class, 'Lp_puskesmas'])->name('laporan.puskesmas');
+        Route::get('ibu_hamil', [LaporanController::class, 'Lp_puskesmas'])->name('laporan.ibu_hamil');
     });
 });
 

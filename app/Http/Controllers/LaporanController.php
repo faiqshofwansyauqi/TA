@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ropb;
 use Illuminate\Http\Request;
+use App\Models\Ibu;
+use App\Models\Anc;
+
 
 class LaporanController extends Controller
 {
 public function Lp_puskesmas()
     {
-        return view('laporan.puskesmas');
+        $ibus = Anc::all();
+        // dd($ibus);
+        return view('laporan.ibu_hamil', compact('ibus'));
     }
 }

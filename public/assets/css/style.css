@@ -15,12 +15,12 @@
 
 body {
     font-family: "Open Sans", sans-serif;
-    background: #f6f9ff;
+    /* background: #ecfbec; */
     color: #444444;
 }
 
 a {
-    color: #4154f1;
+    color: #000d84;
     text-decoration: none;
 }
 
@@ -67,7 +67,7 @@ h6 {
     font-size: 24px;
     margin-bottom: 0;
     font-weight: 600;
-    color: #012970;
+    color: #003b46;
 }
 
 /*--------------------------------------------------------------
@@ -310,7 +310,7 @@ h6 {
     padding: 20px 0 15px 0;
     font-size: 18px;
     font-weight: 500;
-    color: #012970;
+    color: #003b46;
     font-family: "Poppins", sans-serif;
 }
 
@@ -322,6 +322,7 @@ h6 {
 
 .card-body {
     padding: 0 20px 20px 20px;
+    
 }
 
 .card-img-overlay {
@@ -356,7 +357,7 @@ h6 {
 }
 
 .accordion-button:not(.collapsed) {
-    color: #012970;
+    color: #003b46;
     background-color: #f6f9ff;
 }
 
@@ -446,7 +447,7 @@ h6 {
 .logo span {
     font-size: 26px;
     font-weight: 700;
-    color: #012970;
+    color: #ffffff;
     font-family: "Nunito", sans-serif;
 }
 
@@ -455,7 +456,7 @@ h6 {
     z-index: 997;
     height: 60px;
     box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
-    background-color: #fff;
+    background-color: #789485;
     padding-left: 20px;
     /* Toggle Sidebar Button */
     /* Search Bar */
@@ -465,7 +466,7 @@ h6 {
     font-size: 32px;
     padding-left: 10px;
     cursor: pointer;
-    color: #012970;
+    color: #ffffff;
 }
 
 .header .search-bar {
@@ -502,7 +503,7 @@ h6 {
 .header .search-form input {
     border: 0;
     font-size: 14px;
-    color: #012970;
+    color: #003b46;
     border: 1px solid rgba(1, 41, 112, 0.2);
     padding: 7px 38px 7px 8px;
     border-radius: 3px;
@@ -525,7 +526,7 @@ h6 {
 }
 
 .header .search-form button i {
-    color: #012970;
+    color: #003b46;
 }
 
 /*--------------------------------------------------------------
@@ -542,13 +543,13 @@ h6 {
 
 .header-nav .nav-icon {
     font-size: 22px;
-    color: #012970;
+    color: #ffffff;
     margin-right: 25px;
     position: relative;
 }
 
 .header-nav .nav-profile {
-    color: #012970;
+    color: #ffffff;
 }
 
 .header-nav .nav-profile img {
@@ -684,7 +685,7 @@ h6 {
     scrollbar-width: thin;
     scrollbar-color: #aab7cf transparent;
     box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
-    background-color: #fff;
+    background-color: #f2f2f4;
 }
 
 @media (max-width: 1199px) {
@@ -756,7 +757,7 @@ h6 {
     align-items: center;
     font-size: 15px;
     font-weight: 600;
-    color: #4154f1;
+    color: #789485;
     transition: 0.3;
     background: #f6f9ff;
     padding: 10px 15px;
@@ -766,25 +767,25 @@ h6 {
 .sidebar-nav .nav-link i {
     font-size: 16px;
     margin-right: 10px;
-    color: #4154f1;
+    color: #789485;
 }
 
 .sidebar-nav .nav-link.collapsed {
-    color: #012970;
-    background: #fff;
+    color: #382828;
+    background: #f2f2f4;
 }
 
 .sidebar-nav .nav-link.collapsed i {
-    color: #899bbd;
+    color: #8b4143;
 }
 
 .sidebar-nav .nav-link:hover {
-    color: #4154f1;
+    color: #789485;
     background: #f6f9ff;
 }
 
 .sidebar-nav .nav-link:hover i {
-    color: #4154f1;
+    color: #789485;
 }
 
 .sidebar-nav .nav-link .bi-chevron-down {
@@ -807,7 +808,7 @@ h6 {
     align-items: center;
     font-size: 14px;
     font-weight: 600;
-    color: #012970;
+    color: #789485;
     transition: 0.3;
     padding: 10px 0 10px 40px;
     transition: 0.3s;
@@ -822,11 +823,11 @@ h6 {
 
 .sidebar-nav .nav-content a:hover,
 .sidebar-nav .nav-content a.active {
-    color: #4154f1;
+    color: #789485;
 }
 
 .sidebar-nav .nav-content a.active i {
-    background-color: #4154f1;
+    background-color: #789485;
 }
 
 /*--------------------------------------------------------------
@@ -877,7 +878,7 @@ h6 {
 
 .dashboard .info-card h6 {
     font-size: 28px;
-    color: #012970;
+    color: #003b46;
     font-weight: 700;
     margin: 0;
     padding: 0;
@@ -893,12 +894,13 @@ h6 {
 }
 
 .dashboard .sales-card .card-icon {
-    color: #4154f1;
+    color: #48ad8a;
     background: #f6f6fe;
+    
 }
 
 .dashboard .revenue-card .card-icon {
-    color: #4154f1;
+    color: #ddc472;
     background: #f6f6fe;
 }
 
@@ -973,7 +975,7 @@ h6 {
 }
 
 .dashboard .news h4 a {
-    color: #012970;
+    color: #003b46;
     transition: 0.3s;
 }
 
@@ -1045,7 +1047,7 @@ h6 {
     background-color: #fff;
     border-radius: 0.25rem;
     text-align: center;
-    color: #012970;
+    color: #003b46;
     padding: 15px 0;
 }
 
@@ -1094,7 +1096,7 @@ h6 {
 }
 
 .profile .profile-card .social-links a:hover {
-    color: #012970;
+    color: #003b46;
 }
 
 .profile .profile-overview .row {
@@ -1103,7 +1105,7 @@ h6 {
 }
 
 .profile .profile-overview .card-title {
-    color: #012970;
+    color: #003b46;
 }
 
 .profile .profile-overview .label {
@@ -1148,7 +1150,7 @@ h6 {
 
 .contact .info-box h3 {
     font-size: 20px;
-    color: #012970;
+    color: #003b46;
     font-weight: 700;
     margin: 20px 0 10px 0;
 }
@@ -1262,7 +1264,7 @@ h6 {
 .error-404 h2 {
     font-size: 24px;
     font-weight: 700;
-    color: #012970;
+    color: #003b46;
     margin-bottom: 30px;
 }
 
@@ -1294,12 +1296,12 @@ h6 {
 
 .footer .copyright {
     text-align: center;
-    color: #012970;
+    color: #003b46;
 }
 
 .footer .credits {
     padding-top: 5px;
     text-align: center;
     font-size: 13px;
-    color: #012970;
+    color: #003b46;
 }
