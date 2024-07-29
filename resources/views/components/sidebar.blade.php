@@ -174,25 +174,11 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ request()->is(['laporan', 'laporan/*']) ? '' : 'collapsed' }}"
-                    data-bs-toggle="collapse" href="#collapseExample7" role="button" aria-expanded="false"
-                    aria-controls="collapseExample">
-                    <i class="bi bi-journal-text"></i>
-                    <span>Laporan Puskesmas</span>
-                    <i class="bi bi-chevron-down ms-auto"></i>
+                <a class="nav-link {{ request()->is(['laporan.puskesmas', 'laporan/puskesmas']) ? '' : 'collapsed' }}"
+                    href="{{ route('laporan.puskesmas') }}">
+                    <i class="bi bi-card-list"></i>
+                    <span>Laporan</span>
                 </a>
-            </li>
-            <li class="nav-item collapse {{ request()->is(['laporan', 'laporan/*']) ? 'show' : '' }}"
-                id="collapseExample7">
-                <ul class="nav-content">
-                    <li>
-                        <a href="{{ route('laporan.ibu_hamil') }}"
-                            class="{{ request()->is(['laporan.ibu_hamil', 'laporan/ibu_hamil']) ? 'active' : '' }}">
-                            <i class="bi bi-circle"></i>
-                            <span>Ibu Hamil</span>
-                        </a>
-                    </li>
-                </ul>
             </li>
         @endrole
 

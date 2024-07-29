@@ -41,7 +41,7 @@
         body {
             background-image: url('{{ asset('assets/img/bg-ibu.png') }}');
             background-size: 45% auto;
-            background-color: #fefeff;
+            background-color: #f2f2f4;
             background-repeat: no-repeat;
             background-position: center;
             
@@ -170,7 +170,7 @@
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
         <div class="copyright">
-            &copy; Copyright <strong><span>REKAM MEDIS IBU DAN ANAK</span></strong>. All Rights Reserved
+            &copy; Copyright <strong><span>SIREKMA BUBA</span></strong>. All Rights Reserved
         </div>
     </footer><!-- End Footer -->
 
