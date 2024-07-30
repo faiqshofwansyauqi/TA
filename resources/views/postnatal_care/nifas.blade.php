@@ -21,7 +21,7 @@
                     <div class="card-body">
                         <br>
                         <div class="table-responsive">
-                            <table class="table table-borderless table-anc" id="anc-table" style="width:100%">
+                            <table class="table" id="anc-table" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th style="text-align: center">No</th>
@@ -115,8 +115,8 @@
                     }
                 }
             ],
-            dom: '<"d-flex justify-content-between align-items-center"<"#dt-buttons"B>f>rtip',
-            buttons: [],
+            // dom: '<"d-flex justify-content-between align-items-center"<"#dt-buttons"B>f>rtip',
+            // buttons: [],
         });
         table.buttons().container().appendTo(
         '#colvis-button');

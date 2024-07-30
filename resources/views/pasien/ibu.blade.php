@@ -21,7 +21,7 @@
                     <div class="card-body">
                         <br>
                         <div class="table-responsive">
-                            <table class="table table-borderless table-anc" id="ibu-table" style="width:100%">
+                            <table class="table" id="ibu-table" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th style="text-align: center">No</th>
@@ -473,11 +473,6 @@
                         }
                     }
                 ],
-                dom: '<"d-flex justify-content-between align-items-center"<"#dt-buttons"B>f>rtip',
-                buttons: [{
-                    extend: 'colvis',
-                    className: 'btn btn-secondary btn-sm',
-                }],
                 columnDefs: [{
                     targets: [5, 6, 7, 8, 9, 10, 11, 14, 15, 16, 17, 18, 19, 20, 21, 22],
                     // targets: [],

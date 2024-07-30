@@ -43,10 +43,10 @@ class CreateShowAncTable extends Migration
             $table->string('hbsag')->nullable();
             $table->string('hiv')->nullable();
             $table->string('arv')->nullable();
-            $table->string('skrining_anam');
-            $table->string('dahak');
-            $table->string('tbc');
-            $table->string('obat_TB');
+            $table->string('skrining_anam')->nullable();
+            $table->string('dahak')->nullable();
+            $table->string('tbc')->nullable();
+            $table->string('obat_TB')->nullable();
             $table->string('hdk')->nullable();
             $table->string('abortus')->nullable();
             $table->string('pendarahan')->nullable();
@@ -59,8 +59,8 @@ class CreateShowAncTable extends Migration
             $table->string('rsia_rsb')->nullable();
             $table->string('rs')->nullable();
             $table->string('lain_lain_dirujuk')->nullable();
-            $table->string('tiba');
-            $table->string('pulang');
+            $table->string('tiba')->nullable();
+            $table->string('pulang')->nullable();
             $table->string('keterangan');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

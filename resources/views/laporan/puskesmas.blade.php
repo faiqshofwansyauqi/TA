@@ -97,7 +97,7 @@
                                             </td>
                                             <td class="text-center">
                                                 @if ($data['anc'] > 0)
-                                                    {{ $data['kn1l_bulan_ini'] + $data['kn1p_bulan_ini'] + $data['kn1l_bulan_lalu'] + $data['kn1p_bulan_lalu']?: '' }}
+                                                    {{ $data['kn1l_bulan_ini'] + $data['kn1p_bulan_ini'] + $data['kn1l_bulan_lalu'] + $data['kn1p_bulan_lalu'] ?: '' }}
                                                 @endif
                                             </td>
                                             <td class="text-center">{{ $data['kn2l_bulan_ini'] ?: '' }}</td>
@@ -114,7 +114,7 @@
                                             </td>
                                             <td class="text-center">
                                                 @if ($data['anc'] > 0)
-                                                    {{ $data['kn2l_bulan_ini'] + $data['kn2p_bulan_ini'] + $data['kn2l_bulan_lalu'] + $data['kn2p_bulan_lalu']?: '' }}
+                                                    {{ $data['kn2l_bulan_ini'] + $data['kn2p_bulan_ini'] + $data['kn2l_bulan_lalu'] + $data['kn2p_bulan_lalu'] ?: '' }}
                                                 @endif
                                             </td>
                                             <!-- Add other columns as needed -->

@@ -34,8 +34,8 @@ class CreateShowNifasTable extends Migration
             $table->string('rsia_rsb')->nullable();
             $table->string('rs')->nullable();
             $table->string('lain_lain_dirujuk')->nullable();
-            $table->string('tiba');
-            $table->string('pulang');
+            $table->string('tiba')->nullable();
+            $table->string('pulang')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('id_ibu')->references('id_ibu')->on('ibu')->onDelete('cascade');
