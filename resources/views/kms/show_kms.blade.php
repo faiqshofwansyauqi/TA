@@ -121,6 +121,7 @@
                                         <option value="-">Pilih N/T</option>
                                         <option value="N">Naik</option>
                                         <option value="T">Turun</option>
+                                        <option value="TT">Tetap</option>
                                     </select>
                                 </div>
                                 <div class="mb-3" id="asi-eks-group">

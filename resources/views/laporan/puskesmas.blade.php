@@ -19,7 +19,7 @@
                                     <tr>
                                         <th rowspan="3" class="align-middle text-center">No</th>
                                         <th rowspan="3" class="align-middle text-center">Bulan</th>
-                                        <th colspan="3" rowspan="2" class="align-middle text-center">SASARAN</th>
+                                        <th colspan="3" rowspan="2" class="align-middle text-center">HASIL</th>
                                         <th colspan="3" rowspan="2" class="align-middle text-center">K1</th>
                                         <th colspan="3" rowspan="2" class="align-middle text-center">K4</th>
                                         <th colspan="5" class="align-middle text-center">KN1</th>

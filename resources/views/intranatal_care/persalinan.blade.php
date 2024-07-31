@@ -26,6 +26,7 @@
                                     <tr>
                                         <th style="text-align: center">No</th>
                                         <th style="min-width: 130px">Nama Ibu</th>
+                                        <th style="min-width: 130px">Nama Suami</th>
                                         <th style="min-width: 140px">Tanggal</th>
                                         <th style="min-width: 80px">Usia Ibu</th>
                                         <th style="min-width: 300px">Alamat</th>
@@ -54,7 +55,7 @@
     </section>
 
     <div class="modal fade" id="modalInput" tabindex="-1" aria-labelledby="ModalInput" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-dialog modal-dialog-scrollable modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
                     <h3 class="modal-title fs-4 fw-bold" id="ModalInput">Input Masa Persalinan</h3>
@@ -66,7 +67,7 @@
                         <div class="col-12">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-4 mb-3">
+                                    <div class="col-md-3 mb-3">
                                         <label for="id_ibu" class="form-label">Ibu</label>
                                         <select class="form-control" id="id_ibu" name="id_ibu" required>
                                             <option value="">Pilih Ibu</option>
@@ -75,11 +76,15 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="col-md-4 mb-3">
+                                    <div class="col-md-3 mb-3">
+                                        <label for="nama_suami" class="form-label">Nama Suami</label>
+                                        <input type="text" class="form-control" id="nama_suami" name="nama_suami" required>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
                                         <label for="tgl_datang" class="form-label">Tanggal Datang</label>
                                         <input type="datetime-local" class="form-control" id="tgl_datang" name="tgl_datang" required>
                                     </div>
-                                    <div class="col-md-4 mb-3">
+                                    <div class="col-md-3 mb-3">
                                         <label for="usia_ibu" class="form-label">Usia Ibu</label>
                                         <input type="number" class="form-control" id="usia_ibu" name="usia_ibu" required>
                                     </div>
@@ -393,6 +398,10 @@
                         name: 'nama_ibu'
                     },
                     {
+                        data: 'nama_suami',
+                        name: 'nama_suami'
+                    },
+                    {
                         data: 'tgl_datang',
                         name: 'tgl_datang',
                         render: function(data) {
@@ -567,7 +576,7 @@
                 // }],
                 columnDefs: [{
                     // targets: [4, 5, 6, 7, 8, 9,],
-                    targets: [4, 8, 9, 10, 11, 12, 13, 14, 15],
+                    targets: [4, 5, 8, 9, 10, 11, 12, 13, 14, 15],
                     visible: false
                 }]
             });
@@ -580,6 +589,7 @@
                 var id_ibu = $(this).val();
                 $('#id_ibu').val('');
                 $('#gravida').val('');
+                $('#nama_suami').val('');
                 $('#partus').val('');
                 $('#abortus').val('');
                 $('#usia_ibu').val('');
@@ -594,6 +604,7 @@
                             if (response.ibu) {
                                 $('#id_ibu').val(response.ibu.id_ibu);
                                 $('#usia_ibu').val(response.ibu.umur);
+                                $('#nama_suami').val(response.ibu.nama_suami);
                             }
                             if (response.ropb) {
                                 $('#gravida').val(response.ropb.gravida);

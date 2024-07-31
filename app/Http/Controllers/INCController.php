@@ -36,6 +36,7 @@ class INCController extends Controller
         $request->validate([
             'id_ibu',
             'tgl_datang',
+            'nama_suami',
             'usia_ibu',
             'alamat',
             'gravida',
@@ -60,6 +61,7 @@ class INCController extends Controller
             'id_ibu' => $request->id_ibu,
             'tgl_datang' => $request->tgl_datang,
             'usia_ibu' => $request->usia_ibu,
+            'nama_suami' => $request->nama_suami,
             'alamat' => $request->alamat,
             'gravida' => $request->gravida,
             'partus' => $request->partus,

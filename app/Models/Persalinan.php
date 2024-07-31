@@ -13,6 +13,7 @@ class Persalinan extends Model
         'user_id',
         'id_ibu',
         'tgl_datang',
+        'nama_suami',
         'usia_ibu',
         'alamat',
         'gravida',
