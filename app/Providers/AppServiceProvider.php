@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Http\Controllers\PNCController;
+use App\Http\Controllers\NotificationController;
 use Illuminate\Support\Facades\Auth;
 
 class AppServiceProvider extends ServiceProvider
@@ -26,8 +26,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         if (Auth::check()) {
-            $pncController = new PNCController();
-            $pncController->checkNotifications();
+            $notifController = new NotificationController();
+            $notifController->checkNotifications();
         }
     }
 }

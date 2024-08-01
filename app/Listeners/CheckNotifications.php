@@ -6,7 +6,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\PNCController;
+use App\Http\Controllers\NotificationController;
 
 class CheckNotifications
 {
@@ -28,7 +28,7 @@ class CheckNotifications
      */
     public function handle(Login $event)
     {
-        $pncController = new PNCController();
-        $pncController->checkNotifications();
+        $notifController = new NotificationController();
+        $notifController->checkNotifications();
     }
 }

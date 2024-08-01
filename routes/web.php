@@ -11,6 +11,7 @@ use App\Http\Controllers\PNCController;
 use App\Http\Controllers\ANCController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\NotificationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -59,7 +60,7 @@ Route::middleware(['auth'])->group(function () {
         // Route::get('antenatal_care/edit_tm1/{id}', [ANCController::class, 'edit_tm1'])->name('antenatal_care.edit_tm1');
         // Route::put('antenatal_care/update_tm1/{id}', [ANCController::class, 'update_tm1'])->name('antenatal_care.update_tm1');
         // Route::delete('antenatal_care/destroy_tm1/{id}', [ANCController::class, 'destroy_tm1'])->name('antenatal_care.destroy_tm1');
-        
+
         /////////// ANC /////////////
         Route::get('anc', [ANCController::class, 'anc'])->name('antenatal_care.anc');
         Route::post('store-anc', [ANCController::class, 'store_anc'])->name('antenatal_care.store_anc');
@@ -115,6 +116,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('data-show_nifas/{id_ibu}', [PNCController::class, 'getData_shownifas'])->name('postnatal_care.data_shownifas');
         Route::get('show_nifas/edit_shownifas/{id}', [PNCController::class, 'edit_shownifas'])->name('postnatal_care.edit_shownifas');
         Route::put('show_nifas/update_shownifas/{id}', [PNCController::class, 'update_shownifas'])->name('postnatal_care.update_shownifas');
+
         ///////////// PEMANTAUAN PPIA /////////////
         // Route::get('ppia', [PNCController::class, 'ppia'])->name('postnatal_care.ppia');
         // Route::post('store-ppia', [PNCController::class, 'store_ppia'])->name('postnatal_care.store_ppia');
@@ -173,6 +175,10 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('laporan')->group(function () {
         ///////////// LAPORAN PUSKESMAS /////////////
         Route::get('puskesmas', [LaporanController::class, 'puskesmas'])->name('laporan.puskesmas');
+    });
+    Route::prefix('notification')->group(function () {
+        Route::post('/notifications/{id}/read', [NotificationController::class, 'markAsRead'])->name('notifications.read');
+        Route::get('/notifications/check', [NotificationController::class, 'checkNotifications'])->name('notifications.check');
     });
 });
 

@@ -77,14 +77,15 @@
                             <hr class="dropdown-divider">
                         </li>
                         @foreach (Auth::user()->unreadNotifications as $notification)
-                        <li class="notification-item">
-                            <i class="bi bi-exclamation-circle text-warning"></i>
-                            <a href="{{ $notification->data['url'] }}">
-                                <div>
-                                    <h4>Notifikasi</h4>
-                                    <p>{{ $notification->data['message'] }}</p>
-                                    <p>Datang Terakhir {{ $notification->data['tanggal'] }}</p>
-                                </div>
+                            <li class="notification-item">
+                                <i class="bi bi-exclamation-circle text-warning"></i>
+                                <a href="{{ $notification->data['url'] }}"
+                                    onclick="markAsRead('{{ $notification->id }}', '{{ $notification->data['url'] }}')">
+                                    <div>
+                                        <h4>Notifikasi</h4>
+                                        <p>{{ $notification->data['message'] }}</p>
+                                        <p>Datang Terakhir {{ $notification->data['tanggal'] }}</p>
+                                    </div>
                             </li>
                             <li>
                                 <hr class="dropdown-divider">
@@ -251,6 +252,25 @@
             Toast.fire({
                 icon: icon,
                 title: message
+            });
+        }
+
+        function markAsRead(notificationId, url) {
+            let routeUrl = '{{ route('notifications.read', ':notificationId') }}'.replace(':notificationId',
+                notificationId);
+
+            $.ajax({
+                url: routeUrl,
+                method: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function() {
+                    window.location.href = url;
+                },
+                error: function() {
+                    alert('Gagal menandai notifikasi sebagai sudah dibaca');
+                }
             });
         }
     </script>

@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\PNCController;
+use App\Http\Controllers\NotificationController;
 
 class CheckNotifications
 {
@@ -19,8 +19,8 @@ class CheckNotifications
     public function handle(Request $request, Closure $next)
     {
         if (Auth::check()) {
-            $pncController = new PNCController();
-            $pncController->checkNotifications();
+            $notifController = new NotificationController();
+            $notifController->checkNotifications();
         }
 
         return $next($request);

@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Http\Controllers\PNCController;
+use App\Http\Controllers\NotificationController;
 
 class CheckNotifications extends Command
 {
@@ -17,8 +17,8 @@ class CheckNotifications extends Command
 
     public function handle()
     {
-        $pncController = new PNCController();
-        $pncController->checkNotifications();
+        $notifController = new NotificationController();
+        $notifController->checkNotifications();
         $this->info('Notifications checked successfully.');
     }
 }
