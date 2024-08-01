@@ -157,8 +157,8 @@
                                         <div class="col-md-4 mb-3">
                                             <label for="td_mmhg" class="form-label">TD <sup>(mmhg)</sup></label>
                                             <div class="input-group">
-                                                <input type="text" class="form-control" id="td_mmhg" name="td_mmhg"
-                                                    required>
+                                                <input type="text" class="form-control" id="td_mmhg"
+                                                    name="td_mmhg">
                                                 <span class="input-group-text">mmhg</span>
                                             </div>
                                         </div>
@@ -166,7 +166,7 @@
                                             <label for="lila" class="form-label">LILA <sup>(cm)</sup></label>
                                             <div class="input-group">
                                                 <input type="text" class="form-control" id="lila" name="lila"
-                                                    pattern="[0-9,\,]*" required>
+                                                    pattern="[0-9,\,]*">
                                                 <span class="input-group-text">cm</span>
                                             </div>
                                         </div>
@@ -250,7 +250,7 @@
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
                                             <label for="buku_kia" class="form-label">Catatan dibuku KIA</label>
-                                            <select class="form-select" id="buku_kia" name="buku_kia" required>
+                                            <select class="form-select" id="buku_kia" name="buku_kia">
                                                 <option value="">Pilih Catatan dibuku KIA</option>
                                                 <option value="jika iya">&#10003;</option>
                                                 <option value="jika tidak">&#10007;</option>
@@ -263,7 +263,7 @@
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="pmt_bumil" class="form-label">PMT Bumil KEK</label>
-                                            <select class="form-select" id="pmt_bumil" name="pmt_bumil" required>
+                                            <select class="form-select" id="pmt_bumil" name="pmt_bumil">
                                                 <option value="">Pilih PMT Bumil KEK</option>
                                                 <option value="jika iya">&#10003;</option>
                                                 <option value="jika tidak">&#10007;</option>
@@ -271,7 +271,7 @@
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="kelas_ibu" class="form-label">Ikut Kelas Ibu</label>
-                                            <select class="form-select" id="kelas_ibu" name="kelas_ibu" required>
+                                            <select class="form-select" id="kelas_ibu" name="kelas_ibu">
                                                 <option value="">Pilih Ikut Kelas Ibu</option>
                                                 <option value="jika iya">&#10003;</option>
                                                 <option value="jika tidak">&#10007;</option>
@@ -282,8 +282,7 @@
                                     <div class="col-md-12 mb-3">
                                         <label for="konseling" class="form-label">
                                             Konseling</label>
-                                        <input type="text" class="form-control" id="konseling" name="konseling"
-                                            required>
+                                        <input type="text" class="form-control" id="konseling" name="konseling">
                                     </div>
                                     <h5 class="card-title">Laboratorium</h5>
                                     <div class="row">
@@ -343,7 +342,7 @@
                                     <div class="row">
                                         <div class="col-md-3 mb-3">
                                             <label for="skrining_anam" class="form-label">Skrining anamnesis</label>
-                                            <select class="form-select" id="skrining_anam" name="skrining_anam" required>
+                                            <select class="form-select" id="skrining_anam" name="skrining_anam">
                                                 <option value="">Pilih Skrining anamnesis </option>
                                                 <option value="jika iya">&#10003;</option>
                                                 <option value="jika tidak">&#10007;</option>
@@ -351,7 +350,7 @@
                                         </div>
                                         <div class="col-md-3 mb-3">
                                             <label for="dahak" class="form-label">Periksa Dahak</label>
-                                            <select class="form-select" id="dahak" name="dahak" required>
+                                            <select class="form-select" id="dahak" name="dahak">
                                                 <option value="">Pilih Periksa Dahak</option>
                                                 <option value="jika iya">&#10003;</option>
                                                 <option value="jika tidak">&#10007;</option>
@@ -360,7 +359,7 @@
                                         <div class="col-md-3 mb-3">
                                             <br>
                                             <label for="tbc" class="form-label">TBC<sup>(-/+)</sup></label>
-                                            <select class="form-select" id="tbc" name="tbc" required>
+                                            <select class="form-select" id="tbc" name="tbc">
                                                 <option value="">Pilih Tbc</option>
                                                 <option value="P">Positif</option>
                                                 <option value="N">Negatif</option>
@@ -369,7 +368,7 @@
                                         <div class="col-md-3 mb-3">
                                             <br>
                                             <label for="obat_TB" class="form-label">Obat</label>
-                                            <select class="form-select" id="obat_TB" name="obat_TB" required>
+                                            <select class="form-select" id="obat_TB" name="obat_TB">
                                                 <option value="">Pilih Tbc</option>
                                                 <option value="-" hidden>-</option>
                                                 <option value="R">Rifampisin</option>
@@ -489,7 +488,7 @@
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
                                             <label for="tiba" class="form-label">Tiba</label>
-                                            <select class="form-select" id="tiba" name="tiba" required>
+                                            <select class="form-select" id="tiba" name="tiba">
                                                 <option value="">Pilih Tiba</option>
                                                 <option value="H">Hidup</option>
                                                 <option value="M">Mati</option>
@@ -497,7 +496,7 @@
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="pulang" class="form-label">Pulang</label>
-                                            <select class="form-select" id="pulang" name="pulang" required>
+                                            <select class="form-select" id="pulang" name="pulang">
                                                 <option value="">Pilih Pulang</option>
                                                 <option value="H">Hidup</option>
                                                 <option value="M">Mati</option>
@@ -508,8 +507,7 @@
                                     <div class="col-md-12 mb-3">
                                         <label for="keterangan" class="form-label">
                                             Keterangan</label>
-                                        <input type="text" class="form-control" id="keterangan" name="keterangan"
-                                            required>
+                                        <input type="text" class="form-control" id="keterangan" name="keterangan">
                                     </div>
                                 </div>
                             </div>
@@ -648,8 +646,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
-                                            <label for="edit_presentasi"
-                                                class="form-label">Presentasi</label>
+                                            <label for="edit_presentasi" class="form-label">Presentasi</label>
                                             <select class="form-select" id="edit_presentasi" name="presentasi">
                                                 <option value="">Pilih Presentasi</option>
                                                 <option value="KP">Kepala</option>
@@ -764,8 +761,7 @@
                                         <div class="col-md-3 mb-3">
                                             <label for="edit_skrining_anam" class="form-label">Skrining
                                                 anamnesis</label>
-                                            <select class="form-select" id="edit_skrining_anam" name="skrining_anam"
-                                                required>
+                                            <select class="form-select" id="edit_skrining_anam" name="skrining_anam">
                                                 <option value="">Pilih Skrining anamnesis</option>
                                                 <option value="jika iya">&#10003;</option>
                                                 <option value="jika tidak">&#10007;</option>
@@ -773,7 +769,7 @@
                                         </div>
                                         <div class="col-md-3 mb-3">
                                             <label for="edit_dahak" class="form-label">Periksa Dahak</label>
-                                            <select class="form-select" id="edit_dahak" name="dahak" required>
+                                            <select class="form-select" id="edit_dahak" name="dahak">
                                                 <option value="">Pilih Periksa Dahak</option>
                                                 <option value="jika iya">&#10003;</option>
                                                 <option value="jika tidak">&#10007;</option>
@@ -782,7 +778,7 @@
                                         <div class="col-md-3 mb-3">
                                             <br>
                                             <label for="edit_tbc" class="form-label">TBC<sup>(-/+)</sup></label>
-                                            <select class="form-select" id="edit_tbc" name="tbc" required>
+                                            <select class="form-select" id="edit_tbc" name="tbc">
                                                 <option value="">Pilih Obat Tbc</option>
                                                 <option value="P">Positif</option>
                                                 <option value="N">Negatif</option>
@@ -791,7 +787,7 @@
                                         <div class="col-md-3 mb-3">
                                             <br>
                                             <label for="edit_obat_TB" class="form-label">Obat</label>
-                                            <select class="form-select" id="edit_obat_TB" name="obat_TB" required>
+                                            <select class="form-select" id="edit_obat_TB" name="obat_TB">
                                                 <option value="">Pilih Obat Tbc</option>
                                                 <option value="-" hidden>-</option>
                                                 <option value="R">Rifampisin</option>
@@ -911,7 +907,7 @@
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
                                             <label for="edit_tiba" class="form-label">Tiba</label>
-                                            <select class="form-select" id="edit_tiba" name="tiba" required>
+                                            <select class="form-select" id="edit_tiba" name="tiba">
                                                 <option value="">Pilih Tiba</option>
                                                 <option value="H">Hidup</option>
                                                 <option value="M">Mati</option>
@@ -919,7 +915,7 @@
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="edit_pulang" class="form-label">Pulang</label>
-                                            <select class="form-select" id="edit_pulang" name="pulang" required>
+                                            <select class="form-select" id="edit_pulang" name="pulang">
                                                 <option value="">Pilih Pulang</option>
                                                 <option value="H">Hidup</option>
                                                 <option value="M">Mati</option>
@@ -931,7 +927,7 @@
                                         <label for="edit_keterangan" class="form-label">
                                             Keterangan</label>
                                         <input type="text" class="form-control" id="edit_keterangan"
-                                            name="keterangan" required>
+                                            name="keterangan">
                                     </div>
                                 </div>
                             </div>

@@ -69,28 +69,34 @@
                         <span
                             class="badge bg-primary badge-number">{{ Auth::user()->unreadNotifications->count() }}</span>
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications" style="width: 300px">
-                        <li class="dropdown-header">
-                            Anda Punya {{ Auth::user()->unreadNotifications->count() }} Notifikasi Baru
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        @foreach (Auth::user()->unreadNotifications as $notification)
-                            <li class="notification-item">
-                                <i class="bi bi-exclamation-circle text-warning"></i>
-                                <a href="{{ $notification->data['url'] }}"
-                                    onclick="markAsRead('{{ $notification->id }}', '{{ $notification->data['url'] }}')">
-                                    <div>
-                                        <h4>Notifikasi</h4>
-                                        <p>{{ $notification->data['message'] }}</p>
-                                        <p>Datang Terakhir {{ $notification->data['tanggal'] }}</p>
-                                    </div>
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications" style="width: 350px; max-height: 500px; overflow-y: auto;">
+                        @if (Auth::user()->unreadNotifications->count() > 0)
+                            <li class="dropdown-header">
+                                <div class="notifications-header">
+                                    <span>Notifikasi</span>
+                                    <span class="badge-notification">{{ Auth::user()->unreadNotifications->count() }} <i class="ri-notification-fill"></i></span>
+                                </div>
                             </li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                        @endforeach
+                            @foreach (Auth::user()->unreadNotifications as $notification)
+                                <li class="notification-item">
+                                    <i class="bi bi-envelope"></i>
+                                    <a href="{{ $notification->data['url'] }}"
+                                        onclick="markAsRead('{{ $notification->id }}', '{{ $notification->data['url'] }}')">
+                                        <div>
+                                            <h4>{{ $notification->data['message'] }}</h4>
+                                            <p>Datang Terakhir {{ $notification->data['tanggal'] }}</p>
+                                        </div>
+                                    </a>
+                                </li>
+                            @endforeach
+                        @else
+                            <li class="dropdown-header">
+                                Tidak ada Notifikasi
+                            </li>
+                        @endif
                     </ul>
                 </li>
                 <li class="nav-item dropdown pe-3">

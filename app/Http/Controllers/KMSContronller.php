@@ -89,17 +89,16 @@ class KMSContronller extends Controller
         $request->validate([
             'id_anak' => 'required',
             'id_ibu' => 'required',
-            'bulan_penimbangan' => 'required',
+            'tanggal' => 'required',
             'berat_badan' => 'required',
             'nt' => 'required',
             'asi_eksklusif',
         ]);
-        $bulan_penimbangan = Carbon::createFromFormat('Y-m-d', $request->bulan_penimbangan)->format('d - m - Y');
         Show_Kms::create([
             'user_id' => Auth::id(),
             'id_anak' => $request->id_anak,
             'id_ibu' => $request->id_ibu,
-            'bulan_penimbangan' => $bulan_penimbangan,
+            'tanggal' => $request->tanggal,
             'berat_badan' => $request->berat_badan,
             'nt' => $request->nt,
             'asi_eksklusif' => $request->asi_eksklusif,

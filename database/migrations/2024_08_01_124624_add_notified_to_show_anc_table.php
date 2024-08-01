@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddNotifiedToShowNifasTable extends Migration
+class AddNotifiedToShowAncTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class AddNotifiedToShowNifasTable extends Migration
      */
     public function up()
     {
-        Schema::table('show_nifas', function (Blueprint $table) {
+        Schema::table('show_anc', function (Blueprint $table) {
             $table->boolean('notified')->default(false);
         });
     }
@@ -25,7 +25,7 @@ class AddNotifiedToShowNifasTable extends Migration
      */
     public function down()
     {
-        Schema::table('show_nifas', function (Blueprint $table) {
+        Schema::table('show_anc', function (Blueprint $table) {
             $table->dropColumn('notified');
         });
     }

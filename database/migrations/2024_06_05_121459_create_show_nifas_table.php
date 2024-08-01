@@ -22,8 +22,8 @@ class CreateShowNifasTable extends Migration
             $table->string('kf');
             $table->string('td_mmhg');
             $table->integer('suhu');
-            $table->string('fe');
-            $table->string('vit');            
+            $table->string('fe')->nullable();
+            $table->string('vit')->nullable();            
             $table->string('ppp')->nullable();
             $table->string('infeksi')->nullable();
             $table->string('hdk')->nullable();

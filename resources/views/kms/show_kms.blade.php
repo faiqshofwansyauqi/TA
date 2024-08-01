@@ -33,7 +33,7 @@
                                             <td>
                                                 <div
                                                     style="text-align: center; transform: rotate(180deg); writing-mode: vertical-rl;">
-                                                    {{ $kms->bulan_penimbangan }}
+                                                    {{ \Carbon\Carbon::parse($kms->tanggal)->format('d/m/Y') }}
                                                 </div>
                                             </td>
                                         @endforeach
@@ -106,9 +106,9 @@
                                 <input type="hidden" name="id_anak" value="{{ $kms->id_anak }}">
                                 <input type="hidden" name="id_ibu" value="{{ $kms->id_ibu }}">
                                 <div class="mb-3">
-                                    <label for="bulan_penimbangan">Bulan penimbangan</label>
-                                    <input type="date" class="form-control" id="bulan_penimbangan"
-                                        name="bulan_penimbangan">
+                                    {{ \Carbon\Carbon::parse($kms->tanggal)->format('d m Y') }}
+                                    {{ \Carbon\Carbon::parse($kms->tanggal)->format('d m Y') }}
+                                    {{ \Carbon\Carbon::parse($kms->tanggal)->format('d m Y') }}
                                 </div>
                                 <div class="mb-3">
                                     <label for="berat_badan">BB (kg)</label>

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Ibu;
+use App\Models\Anc;
 
 class Show_Anc extends Model
 {
@@ -63,4 +64,9 @@ class Show_Anc extends Model
     {
         return $this->belongsTo(Ibu::class, 'id_ibu');
     }
+    public function anc()
+    {
+        return $this->belongsTo(anc::class, 'id_ibu', 'id_ibu');
+    }
+    
 }

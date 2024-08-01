@@ -18,7 +18,7 @@ class CreateShowKmsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('id_anak');
             $table->unsignedBigInteger('id_ibu');
-            $table->string('bulan_penimbangan');
+            $table->date('tanggal');
             $table->string('berat_badan');
             $table->string('nt');
             $table->string('asi_eksklusif')->nullable();

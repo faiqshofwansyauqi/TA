@@ -82,15 +82,17 @@
                                     <div class="row">
                                         <div class="col-md-4 mb-3">
                                             <label for="tanggal" class="form-label">Tanggal</label>
-                                            <input type="date" class="form-control" id="tanggal" name="tanggal">
+                                            <input type="date" class="form-control" id="tanggal" name="tanggal"
+                                                required>
                                         </div>
                                         <div class="col-md-4 mb-3">
                                             <label for="hari" class="form-label">Hari Ke</label>
-                                            <input type="number" class="form-control" id="hari" name="hari">
+                                            <input type="number" class="form-control" id="hari" name="hari"
+                                                required>
                                         </div>
                                         <div class="col-md-4 mb-3">
                                             <label for="kf" class="form-label">KF</label>
-                                            <select class="form-select" id="kf" name="kf">
+                                            <select class="form-select" id="kf" name="kf" required>
                                                 <option value="">Pilih KF</option>
                                                 <option value="1">KF 1</option>
                                                 <option value="2">KF 2</option>
@@ -104,16 +106,16 @@
                                         <div class="col-md-6 mb-3">
                                             <label for="td_mmhg" class="form-label">TD <sup>(mmhg)</sup></label>
                                             <div class="input-group">
-                                                <input type="text" class="form-control" id="td_mmhg"
-                                                    name="td_mmhg">
+                                                <input type="text" class="form-control" id="td_mmhg" name="td_mmhg"
+                                                    required>
                                                 <span class="input-group-text">mmhg</span>
                                             </div>
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="suhu" class="form-label">Suhu</label>
                                             <div class="input-group">
-                                                <input type="number" class="form-control" id="suhu"
-                                                    name="suhu">
+                                                <input type="number" class="form-control" id="suhu" name="suhu"
+                                                    required>
                                                 <span class="input-group-text">°C</span>
                                             </div>
                                         </div>
@@ -275,15 +277,17 @@
                                     <div class="row">
                                         <div class="col-md-4 mb-3">
                                             <label for="edit_tanggal" class="form-label">Tanggal</label>
-                                            <input type="date" class="form-control" id="edit_tanggal" name="tanggal">
+                                            <input type="date" class="form-control" id="edit_tanggal" name="tanggal"
+                                                required>
                                         </div>
                                         <div class="col-md-4 mb-3">
                                             <label for="edit_hari" class="form-label">Hari Ke</label>
-                                            <input type="number" class="form-control" id="edit_hari" name="hari">
+                                            <input type="number" class="form-control" id="edit_hari" name="hari"
+                                                required>
                                         </div>
                                         <div class="col-md-4 mb-3">
                                             <label for="edit_kf" class="form-label">KF</label>
-                                            <select class="form-select" id="edit_kf" name="kf">
+                                            <select class="form-select" id="edit_kf" name="kf" required>
                                                 <option value="">Pilih KF</option>
                                                 <option value="1">KF 1</option>
                                                 <option value="2">KF 2</option>
@@ -316,7 +320,7 @@
                                         <div class="col-md-4 mb-3">
                                             <label for="edit_fe" class="form-label">Fe <sup>(tab/botol)</sup></label>
                                             <input type="number" class="form-control" id="edit_fe" name="fe"
-                                                required pattern="[0-9,\.]*">
+                                                pattern="[0-9,\.]*">
                                         </div>
                                         <div class="col-md-4 mb-3">
                                             <label for="edit_vit" class="form-label">Vit.A</label>
@@ -416,7 +420,7 @@
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
                                             <label for="edit_tiba" class="form-label">Tiba</label>
-                                            <select class="form-select" id="edit_tiba" name="tiba" required>
+                                            <select class="form-select" id="edit_tiba" name="tiba">
                                                 <option value="">Pilih Tiba</option>
                                                 <option value="H">Hidup</option>
                                                 <option value="M">Mati</option>
@@ -424,7 +428,7 @@
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="edit_pulang" class="form-label">Pulang</label>
-                                            <select class="form-select" id="edit_pulang" name="pulang" required>
+                                            <select class="form-select" id="edit_pulang" name="pulang">
                                                 <option value="">Pilih Pulang</option>
                                                 <option value="H">Hidup</option>
                                                 <option value="M">Mati</option>

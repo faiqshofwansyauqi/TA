@@ -22,9 +22,9 @@ class CreateShowAncTable extends Migration
             $table->string('trimester');
             $table->string('keluhan');
             $table->string('berat_badan');
-            $table->string('td_mmhg');
-            $table->string('lila');
-            $table->string('sts_gizi');
+            $table->string('td_mmhg')->nullable();
+            $table->string('lila')->nullable();
+            $table->string('sts_gizi')->nullable();
             $table->string('tfu')->nullable();
             $table->string('sts_imunisasi')->nullable();
             $table->string('djj')->nullable();
@@ -32,11 +32,11 @@ class CreateShowAncTable extends Migration
             $table->string('tbj')->nullable();
             $table->string('presentasi')->nullable();
             $table->string('jmlh_janin')->nullable();
-            $table->string('buku_kia');
+            $table->string('buku_kia')->nullable();
             $table->string('fe')->nullable();
-            $table->string('pmt_bumil');
-            $table->string('kelas_ibu');
-            $table->string('konseling');
+            $table->string('pmt_bumil')->nullable();
+            $table->string('kelas_ibu')->nullable();
+            $table->string('konseling')->nullable();
             $table->string('hemoglobin')->nullable();
             $table->string('glcs_urine')->nullable();
             $table->string('sifilis')->nullable();
