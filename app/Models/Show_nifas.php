@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Ibu;
+use App\Models\Nifas;
 
 class Show_Nifas extends Model
 {
@@ -36,5 +37,9 @@ class Show_Nifas extends Model
     public function ibu()
     {
         return $this->belongsTo(Ibu::class, 'id_ibu');
+    }
+    public function nifas()
+    {
+        return $this->belongsTo(Nifas::class, 'id_ibu', 'id_ibu');
     }
 }
