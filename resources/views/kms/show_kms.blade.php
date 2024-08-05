@@ -106,9 +106,9 @@
                                 <input type="hidden" name="id_anak" value="{{ $kms->id_anak }}">
                                 <input type="hidden" name="id_ibu" value="{{ $kms->id_ibu }}">
                                 <div class="mb-3">
-                                    {{ \Carbon\Carbon::parse($kms->tanggal)->format('d m Y') }}
-                                    {{ \Carbon\Carbon::parse($kms->tanggal)->format('d m Y') }}
-                                    {{ \Carbon\Carbon::parse($kms->tanggal)->format('d m Y') }}
+                                    <label for="tanggal">Bulan penimbangan</label>
+                                    <input type="date" class="form-control" id="tanggal"
+                                        name="tanggal">
                                 </div>
                                 <div class="mb-3">
                                     <label for="berat_badan">BB (kg)</label>

@@ -75,74 +75,74 @@
                                 <div class="row">
                                     <div class="col-md-4 mb-2">
                                         <label for="nama_ibu" class="form-label">Nama Ibu</label>
-                                        <input type="text" class="form-control" id="nama_ibu" name="nama_ibu">
+                                        <input type="text" class="form-control" id="nama_ibu" name="nama_ibu" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="nama_suami" class="form-label">Nama Suami</label>
-                                        <input type="text" class="form-control" id="nama_suami" name="nama_suami">
+                                        <input type="text" class="form-control" id="nama_suami" name="nama_suami" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
-                                        <input type="text" class="form-control datepicker" id="tanggal_lahir" name="tanggal_lahir">
+                                        <input type="text" class="form-control datepicker" id="tanggal_lahir" name="tanggal_lahir" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="alamat_domisili" class="form-label">Alamat Domisili</label>
-                                        <textarea class="form-control" id="alamat_domisili" name="alamat_domisili"></textarea >
+                                        <textarea class="form-control" id="alamat_domisili" name="alamat_domisili" required></textarea >
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="desa" class="form-label">Desa / Kelurahan</label>
-                                        <input type="text" class="form-control" id="desa" name="desa" >
+                                        <input type="text" class="form-control" id="desa" name="desa" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="kab" class="form-label">Kabupaten</label>
-                                        <input type="text" class="form-control" id="kab" name="kab">
+                                        <input type="text" class="form-control" id="kab" name="kab" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="pendidikan_ibu" class="form-label">Pendidikan Ibu</label>
                                         <input type="text" class="form-control" id="pendidikan_ibu"
-                                            name="pendidikan_ibu" >
+                                            name="pendidikan_ibu" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="pekerjaaan_ibu" class="form-label">Pekerjaan Ibu</label>
                                         <input type="text" class="form-control" id="pekerjaaan_ibu"
-                                            name="pekerjaaan_ibu" >
+                                            name="pekerjaaan_ibu" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="nik" class="form-label">NIK</label>
                                         <input type="text" class="form-control" id="nik" name="nik" 
-                                            maxlength="16" >
+                                            maxlength="16"  required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="noregis" class="form-label">Nomer Registrasi Ibu</label>
-                                        <input type="text" class="form-control" id="noregis" name="noregis">
+                                        <input type="text" class="form-control" id="noregis" name="noregis" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="umur" class="form-label">Umur</label>
-                                        <input type="number" class="form-control" id="umur" name="umur" >
+                                        <input type="number" class="form-control" id="umur" name="umur" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="rtrw" class="form-label">RT/RW</label>
-                                        <input type="text" class="form-control" id="rtrw" name="rtrw" >
+                                        <input type="text" class="form-control" id="rtrw" name="rtrw" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="puskesmas" class="form-label">Puskesmas</label>
-                                        <input type="text" class="form-control" id="puskesmas" name="puskesmas" >
+                                        <input type="text" class="form-control" id="puskesmas" name="puskesmas" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="kec" class="form-label">Kecamatan</label>
-                                        <input type="text" class="form-control" id="kec" name="kec" >
+                                        <input type="text" class="form-control" id="kec" name="kec" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="prov" class="form-label">Provinsi</label>
-                                        <input type="text" class="form-control" id="prov" name="prov" >
+                                        <input type="text" class="form-control" id="prov" name="prov" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="agama" class="form-label">Agama</label>
-                                        <input type="text" class="form-control" id="agama" name="agama" >
+                                        <input type="text" class="form-control" id="agama" name="agama" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="jamkesmas" class="form-label">BPJS</label>
-                                        <select class="form-select" id="jamkesmas" name="jamkesmas" >
+                                        <select class="form-select" id="jamkesmas" name="jamkesmas"required >
                                             <option value="-">Pilih BPJS</option>
                                             <option value="Ya">Ya</option>
                                             <option value="Tidak">Tidak</option>
@@ -150,11 +150,11 @@
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="posyandu" class="form-label">Posyandu</label>
-                                        <input type="text" class="form-control" id="posyandu" name="posyandu" >
+                                        <input type="text" class="form-control" id="posyandu" name="posyandu" required >
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="nama_kader" class="form-label">Nama Kader</label>
-                                        <input type="text" class="form-control" id="nama_kader" name="nama_kader" >
+                                        <input type="text" class="form-control" id="nama_kader" name="nama_kader" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="tanggal_reg" class="form-label">Tanggal Register</label>
@@ -163,7 +163,7 @@
                                     </div>                                    
                                     <div class="col-md-4 mb-2">
                                         <label for="gol_darah" class="form-label">Gol Darah</label>
-                                        <select class="form-select" id="gol_darah" name="gol_darah" >
+                                        <select class="form-select" id="gol_darah" name="gol_darah" required>
                                             <option value="-">Pilih Golongan Darah</option>
                                             <option value="A">A</option>
                                             <option value="B">B</option>
@@ -173,7 +173,7 @@
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="telp" class="form-label">Nomer Telp</label>
-                                        <input type="text" class="form-control" id="telp" name="telp" maxlength="13" pattern="\d{1,13}" >
+                                        <input type="text" class="form-control" id="telp" name="telp" maxlength="13" pattern="\d{1,13}" required>
                                     </div>
                                 </div>
                                 <br>

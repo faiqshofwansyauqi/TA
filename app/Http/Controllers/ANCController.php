@@ -306,7 +306,7 @@ class ANCController extends Controller
             'pulang' => $request->pulang,
             'keterangan' => $request->keterangan,
         ]);
-        return redirect()->back()->with('success', 'Data berhasil ditambahkan');
+        return redirect()->back()->with('success', 'Data perawatan selama hamil berhasil ditambahkan');
     }
     public function update_showanc(Request $request, $id)
     {
@@ -407,7 +407,7 @@ class ANCController extends Controller
             'pulang' => $request->pulang,
             'keterangan' => $request->keterangan,
         ]);
-        return redirect()->back()->with('success', 'Data berhasil diperbarui');
+        return redirect()->back()->with('success', 'Data perawatan selam hamilberhasil diperbarui');
     }
     public function getData_showanc($id_ibu)
     {
@@ -469,7 +469,7 @@ class ANCController extends Controller
             'tinggi_badan' => $request->tinggi_badan,
             'buku_kia' => $request->buku_kia,
         ]);
-        return redirect()->back()->with('success', 'Data berhasil ditambahkan');
+        return redirect()->back()->with('success', 'Data Pemeriksan Bidan Saat K1 berhasil ditambahkan');
     }
     public function update_ropb(Request $request, $id)
     {
@@ -571,7 +571,7 @@ class ANCController extends Controller
             'pendonor' => $request->pendonor,
             'pendonor_darah' => $request->pendonor_darah,
         ]);
-        return redirect()->back()->with('success', 'Data berhasil ditambahkan');
+        return redirect()->back()->with('success', 'Data rencana persalinan berhasil ditambahkan');
     }
     public function update_rnca(Request $request, $id)
     {
@@ -594,7 +594,7 @@ class ANCController extends Controller
             'transport' => $request->transport,
             'pendonor' => $request->pendonor,
         ]);
-        return redirect()->back()->with('success', 'Data berhasil diperbaharui');
+        return redirect()->back()->with('success', 'Data rencana persalinan berhasil diperbaharui');
     }
     public function getData_rnca()
     {
