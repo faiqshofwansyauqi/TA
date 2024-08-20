@@ -22,7 +22,7 @@ class CreateeAnakTable extends Migration
             $table->string('alamat');
             $table->string('kec');
             $table->string('kab');
-            $table->string('jenis_kelamin');
+            $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
             $table->string('lngkr_kpl_bayi');
             $table->string('anak_ke');
             $table->string('brt_bayi');

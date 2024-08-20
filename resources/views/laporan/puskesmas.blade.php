@@ -6,13 +6,27 @@
             <h1 style="margin-bottom: 5px">Laporan Ibu Hamil</h1>
         </div>
     </div>
-
+    
     <section class="section dashboard">
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
                         <br>
+                        <form id="year-filter-form" action="{{ route('laporan.puskesmas') }}" method="GET" class="mb-3">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="year" class="form-label">Pilih Tahun</label>
+                                    <select name="year" id="year" class="form-select" onchange="document.getElementById('year-filter-form').submit();">
+                                        @for ($i = 2020; $i <= now()->year; $i++)
+                                            <option value="{{ $i }}" {{ request('year') == $i ? 'selected' : '' }}>
+                                                {{ $i }}
+                                            </option>
+                                        @endfor
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
                         <div class="table-responsive">
                             <table class="table table-borderless table-anc" id="laporan-table" style="width:100%">
                                 <thead>

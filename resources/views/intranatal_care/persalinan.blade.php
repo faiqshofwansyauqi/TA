@@ -85,8 +85,8 @@
                                         <input type="datetime-local" class="form-control" id="tgl_datang" name="tgl_datang" required>
                                     </div>
                                     <div class="col-md-3 mb-3">
-                                        <label for="usia_ibu" class="form-label">Usia Ibu</label>
-                                        <input type="number" class="form-control" id="usia_ibu" name="usia_ibu" required>
+                                        <label for="umur_ibu" class="form-label">Usia Ibu</label>
+                                        <input type="number" class="form-control" id="umur_ibu" name="umur_ibu" required>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -110,8 +110,8 @@
                                             name="abortus" required>
                                     </div>
                                     <div class="col-md-2 mb-3">
-                                        <label for="usia_hamil" class="form-label">Usia Hamil</label>
-                                        <input type="number" class="form-control" id="usia_hamil" name="usia_hamil" required>
+                                        <label for="umur_hamil" class="form-label">Usia Hamil</label>
+                                        <input type="number" class="form-control" id="umur_hamil" name="umur_hamil" required>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -225,8 +225,8 @@
                                             name="tgl_datang" required>
                                     </div>
                                     <div class="col-md-4 mb-3">
-                                        <label for="edit_usia_ibu" class="form-label">Usia Ibu</label>
-                                        <input type="number" class="form-control" id="edit_usia_ibu" name="usia_ibu" required>
+                                        <label for="edit_umur_ibu" class="form-label">Usia Ibu</label>
+                                        <input type="number" class="form-control" id="edit_umur_ibu" name="umur_ibu" required>
                                     </div>
                                     <div class="col-md-4 mb-3">
                                         <label for="edit_alamat" class="form-label">Alamat</label>
@@ -250,9 +250,9 @@
                                             name="abortus" required>
                                     </div>
                                     <div class="col-md-3 mb-3">
-                                        <label for="edit_usia_hamil" class="form-label">Usia Hamil</label>
-                                        <input type="number" class="form-control" id="edit_usia_hamil"
-                                            name="usia_hamil" required>
+                                        <label for="edit_umur_hamil" class="form-label">Usia Hamil</label>
+                                        <input type="number" class="form-control" id="edit_umur_hamil"
+                                            name="umur_hamil" required>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -416,8 +416,8 @@
                         }
                     },
                     {
-                        data: 'usia_ibu',
-                        name: 'usia_ibu',
+                        data: 'umur_ibu',
+                        name: 'umur_ibu',
                         render: function(data, type, row) {
                             return data + ' Tahun';
                         }
@@ -434,8 +434,8 @@
                         }
                     },
                     {
-                        data: 'usia_hamil',
-                        name: 'usia_hamil',
+                        data: 'umur_hamil',
+                        name: 'umur_hamil',
                         render: function(data, type, row) {
                             return data + ' Minggu';
                         }
@@ -592,7 +592,8 @@
                 $('#nama_suami').val('');
                 $('#partus').val('');
                 $('#abortus').val('');
-                $('#usia_ibu').val('');
+                $('#umur_ibu').val('');
+                $('#alamat').val('');
                 if (id_ibu) {
                     $.ajax({
                         url: '{{ route('intranatal_care.info_rnca_persalinan', ':id_ibu') }}'
@@ -603,8 +604,9 @@
                         success: function(response) {
                             if (response.ibu) {
                                 $('#id_ibu').val(response.ibu.id_ibu);
-                                $('#usia_ibu').val(response.ibu.umur);
+                                $('#umur_ibu').val(response.ibu.umur);
                                 $('#nama_suami').val(response.ibu.nama_suami);
+                                $('#alamat').val(response.ibu.alamat_domisili);
                             }
                             if (response.ropb) {
                                 $('#gravida').val(response.ropb.gravida);
@@ -768,11 +770,11 @@
                         <tbody>
                             <tr>
                                 <td>Usia Kehamilan</td>
-                                <td>${data.usia_hamil} Minggu</td>
+                                <td>${data.umur_hamil} Minggu</td>
                             </tr>
                             <tr>
                                 <td>Usia Ibu</td>
-                                <td>${data.usia_ibu} Tahun</td>
+                                <td>${data.umur_ibu} Tahun</td>
                             </tr>
                             <tr>
                                 <td>Berat Bayi</td>
@@ -827,12 +829,12 @@
                     console.log("Pesan diterima:", data);
                     $('#edit_nama_ibu').val(data.nama_ibu);
                     $('#edit_tgl_datang').val(data.tgl_datang);
-                    $('#edit_usia_ibu').val(data.usia_ibu);
+                    $('#edit_umur_ibu').val(data.umur_ibu);
                     $('#edit_alamat').val(data.alamat);
                     $('#edit_gravida').val(data.gravida);
                     $('#edit_partus').val(data.partus);
                     $('#edit_abortus').val(data.abortus);
-                    $('#edit_usia_hamil').val(data.usia_hamil);
+                    $('#edit_umur_hamil').val(data.umur_hamil);
                     $('#edit_keadaan_ibu').val(data.keadaan_ibu);
                     $('#edit_kala1').val(data.kala1);
                     $('#edit_kala2').val(data.kala2);

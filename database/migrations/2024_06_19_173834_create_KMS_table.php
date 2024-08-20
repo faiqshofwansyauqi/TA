@@ -18,7 +18,7 @@ class CreateKmsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('id_anak');
             $table->unsignedBigInteger('id_ibu');
-            $table->string('jenis_kelamin');
+            $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('id_ibu')->references('id_ibu')->on('ibu')->onDelete('cascade');

@@ -44,6 +44,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('store-ibu', [PasienController::class, 'store_ibu'])->name('pasien.store_ibu');
         Route::get('data-anak', [PasienController::class, 'getData_anak'])->name('pasien.data_anak');
         Route::get('data-ibu', [PasienController::class, 'getData_ibu'])->name('pasien.data_ibu');
+        Route::delete('pasien/ibu/{id}', [PasienController::class, 'delete_ibu'])->name('pasien.delete_ibu');
         Route::get('pasien/anak/{nama_ibu}', [PasienController::class, 'getInfo_ibu'])->name('pasien.info_ibu');
         Route::get('pasien/edit_anak/{id}', [PasienController::class, 'edit_anak'])->name('pasien.edit_anak');
         Route::put('pasien/update_anak/{id}', [PasienController::class, 'update_anak'])->name('pasien.update_anak');

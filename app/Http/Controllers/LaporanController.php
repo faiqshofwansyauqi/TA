@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -12,6 +11,7 @@ use App\Models\Persalinan;
 use App\Models\Anak;
 use App\Models\Nifas;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class LaporanController extends Controller
 {
@@ -19,10 +19,12 @@ class LaporanController extends Controller
     {
         $this->middleware('auth');
     }
-    public function puskesmas()
+
+    public function puskesmas(Request $request)
     {
         $user = Auth::user();
         if ($user->hasRole(['IBI / Puskesmas'])) {
+            $year = $request->input('year', now()->year);
             $months = [
                 1 => 'Januari',
                 2 => 'Februari',
@@ -37,116 +39,80 @@ class LaporanController extends Controller
                 11 => 'November',
                 12 => 'Desember'
             ];
+
             $laporan = [];
             foreach ($months as $monthNumber => $monthName) {
-                // Get data for the current month
-                $bulanIniK1 = Ropb::whereMonth('tgl_periksa', $monthNumber)
-                    ->whereYear('tgl_periksa', now()->year)
-                    ->count();
-                $bulanLaluK1 = $monthNumber > 1 ? Ropb::whereMonth('tgl_periksa', $monthNumber - 1)
-                    ->whereYear('tgl_periksa', now()->year)
-                    ->count() : 0;
-                $bulanIniK2 = Show_Anc::whereMonth('tanggal', $monthNumber)
-                    ->where('trimester', 'III')
-                    ->count();
-                $bulanLaluK2 = $monthNumber > 1 ? Show_Anc::whereMonth('tanggal', $monthNumber - 1)
-                    ->where('trimester', 'III')
-                    ->count() : 0;
-                $kn1p_bulan_ini = Show_Nifas::whereMonth('tanggal', $monthNumber)
-                    ->whereYear('tanggal', now()->year)
-                    ->where('kf', '1')
-                    ->whereIn('id_ibu', function ($query) {
-                        $query->select('id_ibu')
-                            ->from('anak')
-                            ->where('jenis_kelamin', 'Perempuan');
-                    })
-                    ->count();
-                $kn1l_bulan_ini = Show_Nifas::whereMonth('tanggal', $monthNumber)
-                    ->whereYear('tanggal', now()->year)
-                    ->where('kf', '1')
-                    ->whereIn('id_ibu', function ($query) {
-                        $query->select('id_ibu')
-                            ->from('anak')
-                            ->where('jenis_kelamin', 'Laki-laki');
-                    })
-                    ->count();
-                $kn1p_bulan_lalu = $monthNumber > 1 ? Show_Nifas::whereMonth('tanggal', $monthNumber - 1)
-                    ->whereYear('tanggal', now()->year)
-                    ->where('kf', '1')
-                    ->whereIn('id_ibu', function ($query) {
-                        $query->select('id_ibu')
-                            ->from('anak')
-                            ->where('jenis_kelamin', 'Perempuan');
-                    })
-                    ->count() : 0;
-                $kn1l_bulan_lalu = $monthNumber > 1 ? Show_Nifas::whereMonth('tanggal', $monthNumber - 1)
-                    ->whereYear('tanggal', now()->year)
-                    ->where('kf', '1')
-                    ->whereIn('id_ibu', function ($query) {
-                        $query->select('id_ibu')
-                            ->from('anak')
-                            ->where('jenis_kelamin', 'Laki-laki');
-                    })
-                    ->count() : 0;
-                $kn2p_bulan_ini = Show_Nifas::whereMonth('tanggal', $monthNumber)
-                    ->whereYear('tanggal', now()->year)
-                    ->where('kf', '2')
-                    ->whereIn('id_ibu', function ($query) {
-                        $query->select('id_ibu')
-                            ->from('anak')
-                            ->where('jenis_kelamin', 'Perempuan');
-                    })
-                    ->count();
-                $kn2l_bulan_ini = Show_Nifas::whereMonth('tanggal', $monthNumber)
-                    ->whereYear('tanggal', now()->year)
-                    ->where('kf', '2')
-                    ->whereIn('id_ibu', function ($query) {
-                        $query->select('id_ibu')
-                            ->from('anak')
-                            ->where('jenis_kelamin', 'Laki-laki');
-                    })
-                    ->count();
-                $kn2p_bulan_lalu = $monthNumber > 1 ? Show_Nifas::whereMonth('tanggal', $monthNumber - 1)
-                    ->whereYear('tanggal', now()->year)
-                    ->where('kf', '2')
-                    ->whereIn('id_ibu', function ($query) {
-                        $query->select('id_ibu')
-                            ->from('anak')
-                            ->where('jenis_kelamin', 'Perempuan');
-                    })
-                    ->count() : 0;
-                $kn2l_bulan_lalu = $monthNumber > 1 ? Show_Nifas::whereMonth('tanggal', $monthNumber - 1)
-                    ->whereYear('tanggal', now()->year)
-                    ->where('kf', '2')
-                    ->whereIn('id_ibu', function ($query) {
-                        $query->select('id_ibu')
-                            ->from('anak')
-                            ->where('jenis_kelamin', 'Laki-laki');
-                    })
-                    ->count() : 0;
-                // Prepare report data
                 $laporan[$monthNumber] = [
                     'bulan' => $monthName,
-                    'anc' => Anc::whereMonth('created_at', $monthNumber)->count(),
-                    'persalinan' => Persalinan::whereMonth('tgl_datang', $monthNumber)->count(),
-                    'anak' => Anak::whereMonth('created_at', $monthNumber)->count(),
-                    'bulan_ini_k1' => $bulanIniK1,
-                    'bulan_lalu_k1' => $bulanLaluK1,
-                    'bulan_ini_k2' => $bulanIniK2,
-                    'bulan_lalu_k2' => $bulanLaluK2,
-                    'kn1l_bulan_ini' => $kn1l_bulan_ini,
-                    'kn1p_bulan_ini' => $kn1p_bulan_ini,
-                    'kn1p_bulan_lalu' => $kn1p_bulan_lalu,
-                    'kn1l_bulan_lalu' => $kn1l_bulan_lalu,
-                    'kn2l_bulan_ini' => $kn2l_bulan_ini,
-                    'kn2p_bulan_ini' => $kn2p_bulan_ini,
-                    'kn2p_bulan_lalu' => $kn2p_bulan_lalu,
-                    'kn2l_bulan_lalu' => $kn2l_bulan_lalu,
+                    'anc' => $this->getMonthlyCount(Anc::class, $monthNumber, $year),
+                    'persalinan' => $this->getMonthlyCount(Persalinan::class, $monthNumber, $year, 'tgl_datang'),
+                    'anak' => $this->getMonthlyCount(Anak::class, $monthNumber, $year),
+                    'bulan_ini_k1' => $this->getMonthlyCount(Ropb::class, $monthNumber, $year, 'tgl_periksa'),
+                    'bulan_lalu_k1' => $monthNumber > 1 ? $this->getMonthlyCount(Ropb::class, $monthNumber - 1, $year, 'tgl_periksa') : 0,
+                    'bulan_ini_k2' => $this->getUniqueMonthlyCount(Show_Anc::class, $year, 'tanggal', ['trimester' => 'III'], 'id_ibu'),
+                    'bulan_lalu_k2' => $monthNumber > 1 ? $this->getUniqueMonthlyCount(Show_Anc::class, $year, 'tanggal', ['trimester' => 'III'], 'id_ibu') : 0,
+                    'kn1l_bulan_ini' => $this->getNifasCount($monthNumber, $year, 1, 'Laki-laki'),
+                    'kn1p_bulan_ini' => $this->getNifasCount($monthNumber, $year, 1, 'Perempuan'),
+                    'kn1p_bulan_lalu' => $monthNumber > 1 ? $this->getNifasCount($monthNumber - 1, $year, 1, 'Perempuan') : 0,
+                    'kn1l_bulan_lalu' => $monthNumber > 1 ? $this->getNifasCount($monthNumber - 1, $year, 1, 'Laki-laki') : 0,
+                    'kn2l_bulan_ini' => $this->getNifasCount($monthNumber, $year, 2, 'Laki-laki'),
+                    'kn2p_bulan_ini' => $this->getNifasCount($monthNumber, $year, 2, 'Perempuan'),
+                    'kn2p_bulan_lalu' => $monthNumber > 1 ? $this->getNifasCount($monthNumber - 1, $year, 2, 'Perempuan') : 0,
+                    'kn2l_bulan_lalu' => $monthNumber > 1 ? $this->getNifasCount($monthNumber - 1, $year, 2, 'Laki-laki') : 0,
                 ];
+
             }
+
             return view('laporan.puskesmas', compact('laporan'));
         } else {
             return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
         }
+    }
+
+    private function getMonthlyCount($model, $month, $year, $dateField = 'created_at', $conditions = [])
+    {
+        $query = $model::whereMonth($dateField, $month)->whereYear($dateField, $year);
+
+        foreach ($conditions as $field => $value) {
+            $query->where($field, $value);
+        }
+
+        return $query->count();
+    }
+
+    private function getUniqueMonthlyCount($model, $year, $dateField = 'created_at', $conditions = [], $distinctField)
+    {
+        // Dapatkan bulan terakhir yang memiliki data sesuai dengan kondisi
+        $lastMonth = $model::whereYear($dateField, $year)
+            ->where($conditions)
+            ->orderBy($dateField, 'desc')
+            ->value(DB::raw('MONTH(' . $dateField . ')'));
+
+        // Jika tidak ada data, kembalikan 0
+        if (!$lastMonth) {
+            return 0;
+        }
+
+        // Hitung jumlah data unik berdasarkan bulan terakhir
+        $query = $model::whereMonth($dateField, $lastMonth)
+            ->whereYear($dateField, $year);
+
+        foreach ($conditions as $field => $value) {
+            $query->where($field, $value);
+        }
+
+        return $query->distinct($distinctField)->count($distinctField);
+    }
+
+
+    private function getNifasCount($month, $year, $kf, $gender)
+    {
+        return Show_Nifas::whereMonth('tanggal', $month)
+            ->whereYear('tanggal', $year)
+            ->where('kf', $kf)
+            ->whereIn('id_ibu', function ($query) use ($gender) {
+                $query->select('id_ibu')->from('anak')->where('jenis_kelamin', $gender);
+            })
+            ->count();
     }
 }

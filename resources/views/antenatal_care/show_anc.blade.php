@@ -124,9 +124,9 @@
                                                 required>
                                         </div>
                                         <div class="col-md-4 mb-3">
-                                            <label for="usia_kehamilan" class="form-label">Usia Kehamilan</label>
-                                            <input type="number" class="form-control" id="usia_kehamilan"
-                                                name="usia_kehamilan" required>
+                                            <label for="umur_kehamilan" class="form-label">Usia Kehamilan</label>
+                                            <input type="number" class="form-control" id="umur_kehamilan"
+                                                name="umur_kehamilan" required>
                                         </div>
                                         <div class="col-md-4 mb-3">
                                             <label for="trimester" class="form-label">Trimester ke</label>
@@ -313,24 +313,24 @@
                                             <label for="sifilis" class="form-label">Sifilis<sup>(-/+)</sup></label>
                                             <select class="form-select" id="sifilis" name="sifilis">
                                                 <option value="">Pilih Sifilis</option>
-                                                <option value="P">Positif</option>
-                                                <option value="N">Negatif</option>
+                                                <option value="P">Reaktif</option>
+                                                <option value="N">Non Reaktif</option>
                                             </select>
                                         </div>
                                         <div class="col-md-3 mb-3">
                                             <label for="hbsag" class="form-label">HBsAg<sup>(-/+)</sup></label>
                                             <select class="form-select" id="hbsag" name="hbsag">
                                                 <option value="">Pilih HBsAg</option>
-                                                <option value="jika iya">&#10003;</option>
-                                                <option value="jika tidak">&#10007;</option>
+                                                <option value="P">Reaktif</option>
+                                                <option value="N">Non Reaktif</option>
                                             </select>
                                         </div>
                                         <div class="col-md-3 mb-3">
                                             <label for="hiv" class="form-label">HIV<sup>(-/+)</sup></label>
                                             <select class="form-select" id="hiv" name="hiv">
                                                 <option value="">Pilih HIV</option>
-                                                <option value="P">Positif</option>
-                                                <option value="N">Negatif</option>
+                                                <option value="P">Reaktif</option>
+                                                <option value="N">Non Reaktif</option>
                                             </select>
                                         </div>
                                         <div class="col-md-3 mb-3">
@@ -541,9 +541,9 @@
                                                 required>
                                         </div>
                                         <div class="col-md-4 mb-3">
-                                            <label for="edit_usia_kehamilan" class="form-label">Usia Kehamilan</label>
-                                            <input type="number" class="form-control" id="edit_usia_kehamilan"
-                                                name="usia_kehamilan" required>
+                                            <label for="edit_umur_kehamilan" class="form-label">Usia Kehamilan</label>
+                                            <input type="number" class="form-control" id="edit_umur_kehamilan"
+                                                name="umur_kehamilan" required>
                                         </div>
                                         <div class="col-md-4 mb-3">
                                             <label for="edit_trimester" class="form-label">Trimester ke</label>
@@ -731,24 +731,24 @@
                                             <label for="edit_sifilis" class="form-label">Sifilis<sup>(-/+)</sup></label>
                                             <select class="form-select" id="edit_sifilis" name="sifilis">
                                                 <option value="">Pilih Sifilis</option>
-                                                <option value="P">Positif</option>
-                                                <option value="N">Negatif</option>
+                                                <option value="P">Reaktif</option>
+                                                <option value="N">Non Reaktif</option>
                                             </select>
                                         </div>
                                         <div class="col-md-3 mb-3">
                                             <label for="edit_hbsag" class="form-label">HBsAg<sup>(-/+)</sup></label>
                                             <select class="form-select" id="edit_hbsag" name="hbsag">
                                                 <option value="">Pilih HBsAg</option>
-                                                <option value="jika iya">&#10003;</option>
-                                                <option value="jika tidak">&#10007;</option>
+                                                <option value="P">Reaktif</option>
+                                                <option value="N">Non Reaktif</option>
                                             </select>
                                         </div>
                                         <div class="col-md-3 mb-3">
                                             <label for="edit_hiv" class="form-label">HIV<sup>(-/+)</sup></label>
                                             <select class="form-select" id="edit_hiv" name="hiv">
                                                 <option value="">Pilih HIV</option>
-                                                <option value="P">Positif</option>
-                                                <option value="N">Negatif</option>
+                                                <option value="P">Reaktif</option>
+                                                <option value="N">Non Reaktif</option>
                                             </select>
                                         </div>
                                         <div class="col-md-3 mb-3">
@@ -980,8 +980,8 @@
                         }
                     },
                     {
-                        data: 'usia_kehamilan',
-                        name: 'usia_kehamilan'
+                        data: 'umur_kehamilan',
+                        name: 'umur_kehamilan'
                     },
                     {
                         data: 'trimester',
@@ -1105,16 +1105,7 @@
                     },
                     {
                         data: 'hbsag',
-                        name: 'hbsag',
-                        render: function(data, type, row, meta) {
-                            if (data === null) {
-                                return '';
-                            } else {
-                                return data.toLowerCase() === 'jika iya' ?
-                                    '<i class="ri-check-line"></i>' :
-                                    '<i class="ri-close-line"></i>';
-                            }
-                        }
+                        name: 'hbsag'
                     },
                     {
                         data: 'hiv',
@@ -1337,7 +1328,7 @@
                 method: 'GET',
                 success: function(data) {
                     $('#edit_tanggal').val(data.tanggal);
-                    $('#edit_usia_kehamilan').val(data.usia_kehamilan);
+                    $('#edit_umur_kehamilan').val(data.umur_kehamilan);
                     $('#edit_trimester').val(data.trimester);
                     $('#edit_keluhan').val(data.keluhan);
                     $('#edit_berat_badan').val(data.berat_badan);
@@ -1549,7 +1540,7 @@
         }
 
         document.getElementById('trimester').value = trimester;
-        document.getElementById('usia_kehamilan').addEventListener('input', function() {
+        document.getElementById('umur_kehamilan').addEventListener('input', function() {
             var usiaKehamilan = this.value;
             var trimester = '';
             if (usiaKehamilan >= 1 && usiaKehamilan <= 13) {

@@ -15,7 +15,7 @@ class Show_Anc extends Model
         'user_id',
         'id_ibu',
         'tanggal',
-        'usia_kehamilan',
+        'umur_kehamilan',
         'trimester',
         'keluhan',
         'berat_badan',

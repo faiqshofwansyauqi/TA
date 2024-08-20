@@ -79,11 +79,13 @@
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="nama_suami" class="form-label">Nama Suami</label>
-                                        <input type="text" class="form-control" id="nama_suami" name="nama_suami" required>
+                                        <input type="text" class="form-control" id="nama_suami" name="nama_suami"
+                                            required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
-                                        <input type="text" class="form-control datepicker" id="tanggal_lahir" name="tanggal_lahir" required>
+                                        <input type="text" class="form-control datepicker" id="tanggal_lahir"
+                                            name="tanggal_lahir" required>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="alamat_domisili" class="form-label">Alamat Domisili</label>
@@ -463,10 +465,16 @@
                         render: function(data, type, row) {
                             let editUrl = '{{ route('pasien.edit_ibu', ':id') }}'.replace(':id',
                                 row.id_ibu);
+                            let deleteUrl = '{{ route('pasien.delete_ibu', ':id') }}'.replace(':id',
+                                row.id_ibu);
+
                             return `
                                 <div style="display: flex; justify-content: center;">
                                     <button class="btn btn-table btn-sm btn-primary edit-btn" data-id="${row.id_ibu}" data-bs-toggle="modal" data-bs-target="#modalEdit" style="margin-right: 5px;">
                                         Edit
+                                    </button>
+                                    <button class="btn btn-table btn-sm btn-danger delete-btn" data-id="${row.id_ibu}" data-url="${deleteUrl}">
+                                        Delete
                                     </button>
                                 </div>
                             `;
@@ -483,6 +491,31 @@
                 '#colvis-button');
         });
 
+        $('#ibu-table').on('click', '.delete-btn', function() {
+            let id = $(this).data('id');
+            let url = $(this).data('url');
+
+            if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
+                $.ajax({
+                    url: url,
+                    type: 'DELETE',
+                    data: {
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            $('#ibu-table').DataTable().ajax.reload();
+                            alert(response.success);
+                        } else {
+                            alert('Gagal menghapus data.');
+                        }
+                    },
+                    error: function(xhr) {
+                        alert('Terjadi kesalahan: ' + xhr.responseText);
+                    }
+                });
+            }
+        });
         $('#ibu-table').on('click', '.edit-btn', function() {
             let id = $(this).data('id');
             $.ajax({

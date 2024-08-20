@@ -147,6 +147,17 @@ class PasienController extends Controller
         $ibu = Ibu::findOrFail($id);
         return response()->json($ibu);
     }
+    public function delete_ibu($id)
+    {
+        try {
+            $ibu = Ibu::findOrFail($id);
+            $ibu->delete();
+            return response()->json(['success' => 'Data ibu berhasil dihapus']);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+    }
+
 
     //////////// ANAK ////////////
     public function Anak()
@@ -229,7 +240,7 @@ class PasienController extends Controller
             'tgl_lahir_bayi',
         ]);
         $anak = Anak::findOrFail($id);
-        $anak->update([            
+        $anak->update([
             'nama_anak' => $request->nama_anak,
             'id_ibu' => $request->id_ibu,
             'nama_suami' => $request->nama_suami,
