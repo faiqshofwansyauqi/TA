@@ -19,8 +19,120 @@ class ANCController extends Controller
     {
         $this->middleware('auth');
     }
-    //////////////// ANC ////////////////
 
+    //////// RIWAYAT OBSTETRIK DAN PEMERIKSAAN BIDAN ////////
+    public function Ropb()
+    {
+        $user = Auth::user();
+        if ($user->hasRole(['Bidan'])) {
+            $this->authorize('akses_page', Ropb::class);
+            $ibus = Ibu::where('user_id', $user->id)->get();
+            return view('antenatal_care.ropb', compact('ibus'));
+        } else {
+            return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
+        }
+    }
+    public function store_ropb(Request $request)
+    {
+        // $request->validate([
+        //     'id_ibu' => 'required',
+        //     'gravida' => 'required',
+        //     'partus' => 'required',
+        //     'abortus' => 'required',
+        //     'hidup' => 'required',
+        //     'rwyt_komplikasi' => 'required',
+        //     'pnykt_kronis_alergi' => 'required',
+        //     'tgl_periksa' => 'required',
+        //     'tgl_hpht' => 'required',
+        //     'tksrn_persalinan' => 'required',
+        //     'prlnan_sebelum',
+        //     'berat_badan' => 'required',
+        //     'tinggi_badan' => 'required',
+        //     'buku_kia' => 'required',
+        // ]);
+
+        Ropb::create([
+            'user_id' => Auth::id(),
+            'id_ibu' => $request->id_ibu,
+            'gravida' => $request->gravida,
+            'partus' => $request->partus,
+            'abortus' => $request->abortus,
+            'hidup' => $request->hidup,
+            'rwyt_komplikasi' => $request->rwyt_komplikasi,
+            'pnykt_kronis_alergi' => $request->pnykt_kronis_alergi,
+            'tgl_periksa' => $request->tgl_periksa,
+            'tgl_hpht' => $request->tgl_hpht,
+            'tksrn_persalinan' => $request->tksrn_persalinan,
+            'prlnan_sebelum' => $request->prlnan_sebelum,
+            'berat_badan' => $request->berat_badan,
+            'tinggi_badan' => $request->tinggi_badan,
+            'buku_kia' => $request->buku_kia,
+        ]);
+        return redirect()->back()->with('success', 'Data Pemeriksan Bidan Saat K1 berhasil ditambahkan');
+    }
+    public function update_ropb(Request $request, $id)
+    {
+        // $request->validate([
+        //     'gravida' => 'required',
+        //     'partus' => 'required',
+        //     'abortus' => 'required',
+        //     'hidup' => 'required',
+        //     'rwyt_komplikasi' => 'required',
+        //     'pnykt_kronis_alergi' => 'required',
+        //     'tgl_periksa' => 'required',
+        //     'tgl_hpht' => 'required',
+        //     'tksrn_persalinan' => 'required',
+        //     'prlnan_sebelum',
+        //     'berat_badan' => 'required',
+        //     'tinggi_badan' => 'required',
+        //     'buku_kia' => 'required',
+        // ]);
+
+        $ropb = Ropb::findOrFail($id);
+        $ropb->update([
+            'gravida' => $request->gravida,
+            'partus' => $request->partus,
+            'abortus' => $request->abortus,
+            'hidup' => $request->hidup,
+            'rwyt_komplikasi' => $request->rwyt_komplikasi,
+            'pnykt_kronis_alergi' => $request->pnykt_kronis_alergi,
+            'tgl_periksa' => $request->tgl_periksa,
+            'tgl_hpht' => $request->tgl_hpht,
+            'tksrn_persalinan' => $request->tksrn_persalinan,
+            'prlnan_sebelum' => $request->prlnan_sebelum,
+            'berat_badan' => $request->berat_badan,
+            'tinggi_badan' => $request->tinggi_badan,
+            'buku_kia' => $request->buku_kia,
+        ]);
+        return redirect()->back()->with('success', 'Data berhasil diperbaharui');
+    }
+    public function getData_ropb()
+    {
+        $ropb = Ropb::with('ibu')->where('user_id', Auth::id())->get();
+
+        return DataTables::of($ropb)
+            ->addColumn('nama_ibu', function ($row) {
+                return $row->ibu ? $row->ibu->nama_ibu : 'N/A';
+            })
+            ->make(true);
+    }
+    public function edit_ropb($id)
+    {
+        $ropb = Ropb::findOrFail($id);
+        return response()->json($ropb);
+    }
+    public function show_ropb($id)
+    {
+        $ropb = Ropb::with([
+            'ibu' => function ($query) {
+                $query->select('id_ibu');
+            }
+        ])->find($id);
+
+        return response()->json($ropb);
+    }
+
+    //////////////// ANC ////////////////
     public function Anc()
     {
         $user = Auth::user();
@@ -72,54 +184,54 @@ class ANCController extends Controller
     public function store_showanc(Request $request)
     {
         // dd($request);
-        $request->validate([
-            'id_ibu',
-            'tanggal',
-            'umur_kehamilan',
-            'trimester',
-            'keluhan',
-            'berat_badan',
-            'td_mmhg',
-            'lila',
-            'sts_gizi',
-            'tfu',
-            'sts_imunisasi',
-            'djj',
-            'kpl_thd',
-            'tbj',
-            'presentasi',
-            'jmlh_janin',
-            'buku_kia',
-            'fe',
-            'pmt_bumil',
-            'kelas_ibu',
-            'konseling',
-            'hemoglobin',
-            'glcs_urine',
-            'sifilis',
-            'hbsag',
-            'hiv',
-            'arv',
-            'skrining_anam',
-            'dahak',
-            'tbc',
-            'obat_TB',
-            'hdk',
-            'abortus',
-            'pendarahan',
-            'infeksi',
-            'kpd',
-            'lain_lain_komplikasi',
-            'tata_laksana',
-            'puskesmas',
-            'klinik',
-            'rsia_rsb',
-            'rs',
-            'lain_lain_dirujuk',
-            'tiba',
-            'pulang',
-            'keterangan',
-        ]);
+        // $request->validate([
+        //     'id_ibu',
+        //     'tanggal',
+        //     'umur_kehamilan',
+        //     'trimester',
+        //     'keluhan',
+        //     'berat_badan',
+        //     'td_mmhg',
+        //     'lila',
+        //     'sts_gizi',
+        //     'tfu',
+        //     'sts_imunisasi',
+        //     'djj',
+        //     'kpl_thd',
+        //     'tbj',
+        //     'presentasi',
+        //     'jmlh_janin',
+        //     'buku_kia',
+        //     'fe',
+        //     'pmt_bumil',
+        //     'kelas_ibu',
+        //     'konseling',
+        //     'hemoglobin',
+        //     'glcs_urine',
+        //     'sifilis',
+        //     'hbsag',
+        //     'hiv',
+        //     'arv',
+        //     'skrining_anam',
+        //     'dahak',
+        //     'tbc',
+        //     'obat_TB',
+        //     'hdk',
+        //     'abortus',
+        //     'pendarahan',
+        //     'infeksi',
+        //     'kpd',
+        //     'lain_lain_komplikasi',
+        //     'tata_laksana',
+        //     'puskesmas',
+        //     'klinik',
+        //     'rsia_rsb',
+        //     'rs',
+        //     'lain_lain_dirujuk',
+        //     'tiba',
+        //     'pulang',
+        //     'keterangan',
+        // ]);
 
         Show_Anc::create([
             'user_id' => Auth::id(),
@@ -175,54 +287,54 @@ class ANCController extends Controller
     public function update_showanc(Request $request, $id)
     {
         // dd($request);
-        $request->validate([
-            'tanggal',
-            'umur_kehamilan',
-            'trimester',
-            'keluhan',
-            'berat_badan',
-            'td_mmhg',
-            'lila',
-            'sts_gizi',
-            'tfu',
-            'sts_imunisasi',
-            'djj',
-            'kpl_thd',
-            'tbj',
-            'presentasi',
-            'jmlh_janin',
-            'buku_kia',
-            'fe',
-            'pmt_bumil',
-            'kelas_ibu',
-            'konseling',
-            'hemoglobin',
-            'glcs_urine',
-            'sifilis',
-            'hbsag',
-            'hiv',
-            'arv',
-            'skrining_anam',
-            'dahak',
-            'tbc',
-            'obat_TB',
-            'hdk',
-            'abortus',
-            'pendarahan',
-            'infeksi',
-            'kpd',
-            'lain_lain_komplikasi',
-            'tata_laksana',
-            'puskesmas',
-            'klinik',
-            'rsia_rsb',
-            'rs',
-            'lain_lain_dirujuk',
-            'tiba',
-            'pulang',
-            'keterangan',
+        // $request->validate([
+        //     'tanggal',
+        //     'umur_kehamilan',
+        //     'trimester',
+        //     'keluhan',
+        //     'berat_badan',
+        //     'td_mmhg',
+        //     'lila',
+        //     'sts_gizi',
+        //     'tfu',
+        //     'sts_imunisasi',
+        //     'djj',
+        //     'kpl_thd',
+        //     'tbj',
+        //     'presentasi',
+        //     'jmlh_janin',
+        //     'buku_kia',
+        //     'fe',
+        //     'pmt_bumil',
+        //     'kelas_ibu',
+        //     'konseling',
+        //     'hemoglobin',
+        //     'glcs_urine',
+        //     'sifilis',
+        //     'hbsag',
+        //     'hiv',
+        //     'arv',
+        //     'skrining_anam',
+        //     'dahak',
+        //     'tbc',
+        //     'obat_TB',
+        //     'hdk',
+        //     'abortus',
+        //     'pendarahan',
+        //     'infeksi',
+        //     'kpd',
+        //     'lain_lain_komplikasi',
+        //     'tata_laksana',
+        //     'puskesmas',
+        //     'klinik',
+        //     'rsia_rsb',
+        //     'rs',
+        //     'lain_lain_dirujuk',
+        //     'tiba',
+        //     'pulang',
+        //     'keterangan',
 
-        ]);
+        // ]);
         $ancs = Show_Anc::findOrFail($id);
         $ancs->update([
             'tanggal' => $request->tanggal,
@@ -284,120 +396,6 @@ class ANCController extends Controller
         return response()->json($ancs);
     }
 
-    //////// RIWAYAT OBSTETRIK DAN PEMERIKSAAN BIDAN ////////
-    public function Ropb()
-    {
-        $user = Auth::user();
-        if ($user->hasRole(['Bidan'])) {
-            $this->authorize('akses_page', Ropb::class);
-            $ibus = Ibu::where('user_id', $user->id)->get();
-            return view('antenatal_care.ropb', compact('ibus'));
-        } else {
-            return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
-        }
-    }
-    public function store_ropb(Request $request)
-    {
-        // dd($request);
-        $request->validate([
-            'id_ibu' => 'required',
-            'gravida' => 'required',
-            'partus' => 'required',
-            'abortus' => 'required',
-            'hidup' => 'required',
-            'rwyt_komplikasi' => 'required',
-            'pnykt_kronis_alergi' => 'required',
-            'tgl_periksa' => 'required',
-            'tgl_hpht' => 'required',
-            'tksrn_persalinan' => 'required',
-            'prlnan_sebelum',
-            'berat_badan' => 'required',
-            'tinggi_badan' => 'required',
-            'buku_kia' => 'required',
-        ]);
-
-        Ropb::create([
-            'user_id' => Auth::id(),
-            'id_ibu' => $request->id_ibu,
-            'gravida' => $request->gravida,
-            'partus' => $request->partus,
-            'abortus' => $request->abortus,
-            'hidup' => $request->hidup,
-            'rwyt_komplikasi' => $request->rwyt_komplikasi,
-            'pnykt_kronis_alergi' => $request->pnykt_kronis_alergi,
-            'tgl_periksa' => $request->tgl_periksa,
-            'tgl_hpht' => $request->tgl_hpht,
-            'tksrn_persalinan' => $request->tksrn_persalinan,
-            'prlnan_sebelum' => $request->prlnan_sebelum,
-            'berat_badan' => $request->berat_badan,
-            'tinggi_badan' => $request->tinggi_badan,
-            'buku_kia' => $request->buku_kia,
-        ]);
-        return redirect()->back()->with('success', 'Data Pemeriksan Bidan Saat K1 berhasil ditambahkan');
-    }
-    public function update_ropb(Request $request, $id)
-    {
-        // dd($request);
-        $request->validate([
-            'gravida' => 'required',
-            'partus' => 'required',
-            'abortus' => 'required',
-            'hidup' => 'required',
-            'rwyt_komplikasi' => 'required',
-            'pnykt_kronis_alergi' => 'required',
-            'tgl_periksa' => 'required',
-            'tgl_hpht' => 'required',
-            'tksrn_persalinan' => 'required',
-            'prlnan_sebelum',
-            'berat_badan' => 'required',
-            'tinggi_badan' => 'required',
-            'buku_kia' => 'required',
-
-        ]);
-        $ropb = Ropb::findOrFail($id);
-        $ropb->update([
-            'gravida' => $request->gravida,
-            'partus' => $request->partus,
-            'abortus' => $request->abortus,
-            'hidup' => $request->hidup,
-            'rwyt_komplikasi' => $request->rwyt_komplikasi,
-            'pnykt_kronis_alergi' => $request->pnykt_kronis_alergi,
-            'tgl_periksa' => $request->tgl_periksa,
-            'tgl_hpht' => $request->tgl_hpht,
-            'tksrn_persalinan' => $request->tksrn_persalinan,
-            'prlnan_sebelum' => $request->prlnan_sebelum,
-            'berat_badan' => $request->berat_badan,
-            'tinggi_badan' => $request->tinggi_badan,
-            'buku_kia' => $request->buku_kia,
-        ]);
-        return redirect()->back()->with('success', 'Data berhasil diperbaharui');
-    }
-    public function getData_ropb()
-    {
-        $ropb = Ropb::with('ibu')->where('user_id', Auth::id())->get();
-
-        return DataTables::of($ropb)
-            ->addColumn('nama_ibu', function ($row) {
-                return $row->ibu ? $row->ibu->nama_ibu : 'N/A';
-            })
-            ->make(true);
-    }
-    public function edit_ropb($id)
-    {
-        $ropb = Ropb::findOrFail($id);
-        return response()->json($ropb);
-    }
-    public function show_ropb($id)
-    {
-        $ropb = Ropb::with([
-            'ibu' => function ($query) {
-                $query->select('id_ibu');
-            }
-        ])->find($id);
-
-        return response()->json($ropb);
-    }
-
     //////// RENCANA PERSALINAN ////////
     public function Rnca()
     {
@@ -412,18 +410,6 @@ class ANCController extends Controller
     }
     public function store_rnca(Request $request)
     {
-        // dd($request);
-        $request->validate([
-            'id_ibu' => 'required',
-            'tgl_persalinan' => 'required',
-            'penolong' => 'required',
-            'tempat' => 'required',
-            'pendamping' => 'required',
-            'transport' => 'required',
-            'pendonor' => 'required',
-            'pendonor_darah' => 'required',
-        ]);
-
         Rencana_Persalinan::create([
             'user_id' => Auth::id(),
             'id_ibu' => $request->id_ibu,
