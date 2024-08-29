@@ -39,6 +39,10 @@ class KB extends Model
     ];
     public function ibu()
     {
-        return $this->belongsTo(Ibu::class, 'id_ibu');
+        return $this->belongsTo(Ibu::class, 'id_ibu', 'id_ibu');
+    }
+    public function kunjungan_ulang()
+    {
+        return $this->hasMany(KB::class, 'id');
     }
 }

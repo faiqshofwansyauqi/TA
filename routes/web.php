@@ -133,10 +133,13 @@ Route::middleware(['auth'])->group(function () {
         Route::get('data-kb', [KBController::class, 'getData_kb'])->name('kb.data_kb');
         Route::get('kb/edit_kb/{id}', [KBController::class, 'edit_kb'])->name('kb.edit_kb');
         Route::put('kb/update_kb/{id}', [KBController::class, 'update_kb'])->name('kb.update_kb');
-        // Route::delete('kms/destroy_kms/{id}', [KMSContronller::class, 'destroy_kms'])->name('kms.destroy_kms');
-        // ///////////// SHOW KMS /////////////
-        // Route::get('kms/show_kms/{id}', [KMSContronller::class, 'show_kms'])->name('kms.show_kms');
-        // Route::post('store-show_kms', [KMSContronller::class, 'store_show_kms'])->name('kms.store_show_kms');
+        Route::get('kb/show_kb/{id}', [KBController::class, 'show_kb'])->name('kb.show_kb');
+        /////////////// KUNJUNGAN ULANG /////////////
+        Route::get('kb/kunjungan_ulang/{id}', [KBController::class, 'kunjungan_ulang'])->name('kb.kunjungan_ulang');
+        Route::post('store-kunjungan_ulang', [KBController::class, 'store_kunjungan_ulang'])->name('kb.store_kunjungan_ulang');
+        Route::get('data-kunjungan_ulang', [KBController::class, 'getData_kunjungan_ulang'])->name('kb.data_kunjungan_ulang');
+        Route::get('kb/edit_kunjungan_ulang/{id}', [KBController::class, 'edit_kunjungan_ulang'])->name('kb.edit_kunjungan_ulang');
+        Route::put('kb/update_kunjugan_ulang/{id}', [KBController::class, 'update_kunjungan_ulang'])->name('kb.update_kunjungan_ulang');
     });
     Route::prefix('laporan')->group(function () {
         ///////////// LAPORAN PUSKESMAS /////////////

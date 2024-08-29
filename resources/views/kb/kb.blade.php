@@ -546,6 +546,27 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="modalView" tabindex="-1" aria-labelledby="modalViewLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-4 fw-bold" id="modalViewLabel">Detail Keluarga Berencana</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table" id="detailTable">
+                        <thead>
+                            <tr>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('script')
@@ -627,11 +648,20 @@
                                 '{{ route('kb.edit_kb', ':id') }}'
                                 .replace(
                                     ':id', row.id);
+                            let viewUrl = '{{ route('kb.kunjungan_ulang', ':id') }}'.replace(
+                                ':id', row.id);
+                            let detailUrl = '{{ route('kb.show_kb', ':id') }}'.replace(
+                                ':id', row.id);
                             return `
-                            <div style="display: flex; justify-content: center;">                                
-                                    <button class="btn btn-table btn-sm btn-primary edit-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalEdit">
-                                        Edit
-                                    </button>
+                            <div style="display: flex; justify-content: center;">       
+                                <a href="${viewUrl}" class="btn btn-table btn-sm btn-dark" style="margin-right: 5px;">
+                                Kunjungan </a>
+                                <button class="btn btn-table btn-sm btn-dark view-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalView" style="margin-right: 5px;">
+                                    Detail
+                                </button>
+                                <button class="btn btn-table btn-sm btn-primary edit-btn" data-id="${row.id}" data-bs-toggle="modal" data-bs-target="#modalEdit">
+                                Edit
+                                </button>
                             </div>`;
                         }
                     }
@@ -648,6 +678,142 @@
             });
             table.buttons().container().appendTo(
                 '#colvis-button');
+        });
+
+        $('#kb-table').on('click', '.view-btn', function() {
+            let id = $(this).data('id');
+            $.ajax({
+                url: '{{ route('kb.show_kb', ':id') }}'.replace(':id', id),
+                method: 'GET',
+                success: function(data) {
+                    let namaIbu = data.nama_ibu;
+
+                    function formatDateOnly(dateString) {
+                        if (!dateString) return '';
+                        const date = new Date(dateString);
+                        const formattedDay = ('0' + date.getDate()).slice(-2);
+                        const formattedMonth = ('0' + (date.getMonth() + 1)).slice(-2);
+                        const formattedYear = date.getFullYear();
+                        return `${formattedDay}/${formattedMonth}/${formattedYear}`;
+                    }
+
+                    function formatTimeOnly(dateString) {
+                        if (!dateString) return '';
+                        const date = new Date(dateString);
+                        const formattedHours = ('0' + date.getHours()).slice(-2);
+                        const formattedMinutes = ('0' + date.getMinutes()).slice(-2);
+                        return `${formattedHours}:${formattedMinutes}`;
+                    }
+                    let fasePersalinanTableHtml = `
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Jumlah Anak hiudp</td>
+                                <td class="text-center">Laki - Laki : ${data.anak_laki}</td>
+                                <td class="text-center">Perempuan : ${data.anak_perempuan}</td>
+                            </tr>
+                            <tr>
+                                <td>Umur Anak Terkecil</td>
+                                <td class="text-center">Tahun : ${data.tahun_anak_kecil}</td>
+                                <td class="text-center">Bulan : ${data.bulan_anak_kecil}</td>
+                            </tr>
+                            <tr>
+                                <td>Status Peserta KB</td>
+                                <td class="text-center" colspan="2">${data.status_peserta}</td>
+                            </tr>
+                            <tr>
+                                <td>Cara KB Terakhir</td>
+                                <td class="text-center" colspan="2">{{ $data->kb_terakhir ?? '-' }}</td>
+                            </tr>
+                            <tr>
+                                <td>Tanggal Haid Terakhir</td>
+                                <td class="text-center" colspan="2">${formatDateOnly(data.haid_terahkhir)}</td>
+                            </tr>
+                            <tr>
+                                <td>Hamil / Diduga Hamil</td>
+                                <td class="text-center" colspan="2">${data.status_hamil}</td>
+                            </tr>
+                            <tr>
+                                <td>G P A</td>
+                                <td class="text-center" colspan="2">G${data.gravida}P${data.partus}A${data.abortus}</td>
+                            </tr>
+                            <tr>
+                                <td>Menyusui</td>
+                                <td class="text-center" colspan="2">${data.menyusui}</td>
+                            </tr>
+                            <tr>
+                                <td>Riwayat Penyakit Sebelumnya</td>
+                                <td class="text-center" colspan="2">{{ $data->rwyt_pengakit ?? '-' }}</td>
+                            </tr>
+                            <tr>
+                                <td>Keadaan Umum</td>
+                                <td class="text-center" colspan="2">${data.keadaan_umum}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            `;
+                    let additionalInfoTableHtml = `
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td>Berat Badan</td>
+                                <td class="text-center">${data.berat_badan} Kg</td>
+                            </tr>
+                            <tr>
+                                <td>Tekanan Darah</td>
+                                <td class="text-center">${data.tkn_darah} mmhg</td>
+                            </tr>
+                            <tr>
+                                <td>Pemasangan IUD / MOW</td>
+                                <td class="text-center">{{ $data->pasang_iud ?? '-' }}</td>
+                            </tr>
+                            <tr>
+                                <td>Posisi Rahim</td>
+                                <td class="text-center">${data.posisi_rahim}</td>
+                            </tr>
+                            <tr>
+                                <td>Alat Kontrasepsi Boleh Dipakai</td>
+                                <td class="text-center">${data.alat_knstps}</td>
+                            </tr>
+                            <tr>
+                                <td>Alat Kontrasepesi Dipilih</td>
+                                <td class="text-center">${data.alat_knstps_dipilih}</td>
+                            </tr>
+                            <tr>
+                                <td>Tanggal Dilayani</td>
+                                <td class="text-center" colspan="2">${formatDateOnly(data.tgl_dilayani)}</td>
+                            </tr>
+                            <tr>
+                                <td>Tanggal Kembali</td>
+                                <td class="text-center" colspan="2">${formatDateOnly(data.tgl_kembali)}</td>
+                            </tr>
+                            <tr>
+                                <td>Tanggal Dicabut</td>
+                                <td class="text-center" colspan="2">${data.tgl_dicabut ? formatDateOnly(data.tgl_dicabut) : '-'}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            `;
+                    let tableHtml = `
+                <div class="row">
+                    <div class="col-md-6">
+                        ${fasePersalinanTableHtml}
+                    </div>
+                    <div class="col-md-6">
+                        ${additionalInfoTableHtml}
+                    </div>
+                </div>
+            `;
+                    $('#modalView .modal-body').html(tableHtml);
+                    $('#modalView').modal('show');
+                }
+            });
         });
 
         $('#kb-table').on('click', '.edit-btn', function() {

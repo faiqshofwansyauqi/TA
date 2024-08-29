@@ -108,7 +108,7 @@ class Ibu extends Model
     }
     public function kb()
     {
-        return $this->hasMany(kb::class, 'id_ibu');
+        return $this->hasMany(KB::class, 'id_ibu');
     }
     public $timestamps = false;
 }

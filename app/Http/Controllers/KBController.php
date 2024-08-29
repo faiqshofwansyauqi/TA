@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kunjungan_Ulang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Ibu;
@@ -119,5 +120,74 @@ class KBController extends Controller
         $kb = KB::findOrFail($id);
         return response()->json($kb);
     }
+
+    //////// KUNJUNGAN ULANG ////////
+
+    public function kunjungan_ulang($id)
+    {
+        $user = Auth::user();
+        if ($user->hasRole(['Bidan'])) {
+            $kb = KB::findOrFail($id);
+            if ($kb->user_id !== $user->id) {
+                return redirect()->route('kb.kb')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
+            }
+            $this->authorize('akses_page', KB::class);
+            session(['id_kb' => $kb->id]);
+            return view('kb.kunjungan_ulang', compact('kb'));
+        } else {
+            return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
+        }
+    }
+    public function store_kunjungan_ulang(Request $request)
+    {
+        // dd($request);
+        $id_kb = session('id_kb');
+        Kunjungan_Ulang::create([
+            'id_kb' => $id_kb,
+            'tgl_dilayani' => $request->tgl_dilayani,
+            'berat_badan' => $request->berat_badan,
+            'tkn_darah' => $request->tkn_darah,
+            'interval' => $request->interval,
+            'tgl_kembali' => $request->tgl_kembali,
+        ]);
+        return redirect()->back()->with('success', 'Data kunjungan ulang berhasil ditambahkan');
+    }
+    public function update_kunjungan_ulang(Request $request, $id)
+    {
+        // dd($request);
+        $kb = Kunjungan_Ulang::findOrFail($id);
+        $kb->update([
+            'berat_badan' => $request->berat_badan,
+            'tkn_darah' => $request->tkn_darah,
+            'interval' => $request->interval,
+            'tgl_dilayani' => $request->tgl_dilayani,
+            'tgl_kembali' => $request->tgl_kembali,
+        ]);
+        return redirect()->back()->with('success', 'Data anak berhasil diupdate');
+    }
+    public function getData_kunjungan_ulang()
+    {
+        $user = Auth::user();
+        $kunjunganUlang = Kunjungan_Ulang::whereHas('KB', function ($query) use ($user) {
+            $query->where('user_id', $user->id);
+        })->select('*');
+        return DataTables::of($kunjunganUlang)
+            ->make(true);
+    }
+    public function edit_kunjungan_ulang($id)
+    {
+        $kb = Kunjungan_Ulang::findOrFail($id);
+        return response()->json($kb);
+    }
+    public function show_kb($id)
+    {
+        $kb = KB::with([
+            'ibu' => function ($query) {
+                $query->select('id_ibu');
+            }
+        ])->find($id);
+        return response()->json($kb);
+    }
+
 
 }
