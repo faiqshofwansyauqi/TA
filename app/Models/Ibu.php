@@ -13,6 +13,7 @@ use App\Models\KMS;
 use App\Models\Show_Nifas;
 use App\Models\Show_Kms;
 use App\Models\Show_Hepatitis;
+use App\Models\KB;
 use App\Models\Show_Hiv;
 use App\Models\Show_Sifilis;
 use App\Models\Rencana_Persalinan;
@@ -104,6 +105,10 @@ class Ibu extends Model
     public function rnca_persalinan()
     {
         return $this->hasMany(Rencana_Persalinan::class, 'id_ibu');
+    }
+    public function kb()
+    {
+        return $this->hasMany(kb::class, 'id_ibu');
     }
     public $timestamps = false;
 }

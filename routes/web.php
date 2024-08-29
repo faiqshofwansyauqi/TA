@@ -11,6 +11,7 @@ use App\Http\Controllers\PNCController;
 use App\Http\Controllers\ANCController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\KBController;
 use App\Http\Controllers\NotificationController;
 use Illuminate\Support\Facades\Route;
 
@@ -123,6 +124,19 @@ Route::middleware(['auth'])->group(function () {
         ///////////// SHOW KMS /////////////
         Route::get('kms/show_kms/{id}', [KMSContronller::class, 'show_kms'])->name('kms.show_kms');
         Route::post('store-show_kms', [KMSContronller::class, 'store_show_kms'])->name('kms.store_show_kms');
+    });
+    Route::prefix('kb')->group(function () {
+        ///////////// KB /////////////
+        Route::get('kb', [KBController::class, 'kb'])->name('kb.kb');
+        Route::post('store-kb', [KBController::class, 'store_kb'])->name('kb.store_kb');
+        Route::get('kb/ropb/{nama_ibu}', [KBController::class, 'getInfo_kb'])->name('kb.getInfo_kb');
+        Route::get('data-kb', [KBController::class, 'getData_kb'])->name('kb.data_kb');
+        Route::get('kb/edit_kb/{id}', [KBController::class, 'edit_kb'])->name('kb.edit_kb');
+        Route::put('kb/update_kb/{id}', [KBController::class, 'update_kb'])->name('kb.update_kb');
+        // Route::delete('kms/destroy_kms/{id}', [KMSContronller::class, 'destroy_kms'])->name('kms.destroy_kms');
+        // ///////////// SHOW KMS /////////////
+        // Route::get('kms/show_kms/{id}', [KMSContronller::class, 'show_kms'])->name('kms.show_kms');
+        // Route::post('store-show_kms', [KMSContronller::class, 'store_show_kms'])->name('kms.store_show_kms');
     });
     Route::prefix('laporan')->group(function () {
         ///////////// LAPORAN PUSKESMAS /////////////

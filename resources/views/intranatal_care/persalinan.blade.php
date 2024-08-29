@@ -690,7 +690,6 @@
             });
         });
 
-
         $('#persalinan-table').on('click', '.view-btn', function() {
             let id = $(this).data('id');
             $.ajax({

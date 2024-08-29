@@ -40,13 +40,6 @@
             <li class="nav-item collapse {{ request()->is(['antenatal_care', 'antenatal_care/*']) ? 'show' : '' }}"
                 id="collapseExample1">
                 <ul class="nav-content">
-                    {{-- <li>
-                    <a href="{{ route('antenatal_care.tm1') }}"
-                        class="{{ request()->is(['antenatal_care.tm1', 'antenatal_care/tm1']) ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i>
-                        <span>Pemeriksaan Dokter TM1</span>
-                    </a>
-                </li> --}}
                     <li>
                         <a href="{{ route('antenatal_care.ropb') }}"
                             class="{{ request()->is(['antenatal_care.ropb', 'antenatal_care/ropb']) ? 'active' : '' }}">
@@ -75,13 +68,6 @@
                             <span>Perawatan Selama Hamil</span>
                         </a>
                     </li>
-                    {{-- <li>
-                    <a href="{{ route('antenatal_care.tm3') }}"
-                        class="{{ request()->is(['antenatal_care.tm3', 'antenatal_care/tm3']) ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i>
-                        <span>Pemeriksaan Dokter TM3</span>
-                    </a>
-                </li> --}}
                 </ul>
             </li>
             <li class="nav-item">
@@ -131,46 +117,20 @@
                             <span>Masa Nifas</span>
                         </a>
                     </li>
-                    {{-- <li>
-                        <a href="{{ route('postnatal_care.ppia') }}"
-                            class="{{ request()->is([
-                                'postnatal_care.ppia',
-                                'postnatal_care/ppia',
-                                'postnatal_care.show_ppia',
-                                'postnatal_care/ppia/show_ppia/*',
-                            ])
-                                ? 'active'
-                                : '' }}">
-                            <i class="bi bi-circle"></i>
-                            <span>Pemantauan PPIA</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('postnatal_care.pemantauan_bayi') }}"
-                            class="{{ request()->is([
-                                'postnatal_care.pemantauan_bayi',
-                                'postnatal_care/pemantauan_bayi',
-                                'postnatal_care.show_hepatitis',
-                                'postnatal_care/pemantauan_bayi/show_hepatitis/*',
-                                'postnatal_care.show_hiv',
-                                'postnatal_care/pemantauan_bayi/show_hiv/*',
-                                'postnatal_care.show_sifilis',
-                                'postnatal_care/pemantauan_bayi/show_sifilis/*',
-                            ])
-                                ? 'active'
-                                : '' }}">
-                            <i class="bi bi-circle"></i>
-                            <span>Pemantauan Bayi</span>
-                        </a>
-                    </li> --}}
                 </ul>
             </li>
-
             <li class="nav-item">
                 <a class="nav-link {{ request()->is(['kms.kms', 'kms/kms']) ? '' : 'collapsed' }}"
                     href="{{ route('kms.kms') }}">
                     <i class="bi bi-card-list"></i>
                     <span>Kartu Menuju Sehat</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ request()->is(['kb.kb', 'kb/kb']) ? '' : 'collapsed' }}"
+                    href="{{ route('kb.kb') }}">
+                    <i class="ri-open-arm-fill"></i>
+                    <span>Keluarga Berencana</span>
                 </a>
             </li>
         @endrole
