@@ -17,11 +17,11 @@ class CreateTableKunjunganUlang extends Migration
             $table->id();
             $table->unsignedBigInteger('id_kb');
             $table->date('tgl_dilayani');
-            $table->integer('berat_badan');
-            $table->integer('tkn_darah');
+            $table->string('berat_badan', 50)->default('');
+            $table->string('tkn_darah', 50)->default('');
             $table->enum('interval', ['90 Hari', '30 Hari', '3 Tahun', '5 Tahun']);
             $table->date('tgl_kembali');
-            $table->foreign('id_kb')->references('kb')->on('kb')->onDelete('cascade');
+            $table->foreign('id_kb')->references('id')->on('kb')->onDelete('cascade');
             $table->timestamps();
         });
     }

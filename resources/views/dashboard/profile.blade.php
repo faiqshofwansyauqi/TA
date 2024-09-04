@@ -38,6 +38,10 @@
                                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit
                                     Profile</button>
                             </li>
+                            <li class="nav-item">
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#password-edit">Edit
+                                    Password</button>
+                            </li>
                         </ul>
                         <div class="tab-content pt-2">
                             <div class="tab-pane fade show active profile-overview" id="profile-overview">
@@ -48,6 +52,19 @@
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Email</div>
                                     <div class="col-lg-9 col-md-8">{{ $user->email }}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Tanggal Lahir</div>
+                                    <div class="col-lg-9 col-md-8">{{ \Carbon\Carbon::parse($user->tgl_lahir)->format('d/m/Y') }}</div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">NIP</div>
+                                    <div class="col-lg-9 col-md-8">{{ $user->nip }}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Alamat</div>
+                                    <div class="col-lg-9 col-md-8">{{ $user->alamat }}</div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Password</div>
@@ -73,16 +90,68 @@
                                         </div>
                                     </div>
                                     <div class="row mb-3">
-                                        <label for="Password" class="col-md-4 col-lg-3 col-form-label">Password</label>
+                                        <label for="Tgl_lahir" class="col-md-4 col-lg-3 col-form-label">Tanggal
+                                            Lahir</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="password" type="password" class="form-control" id="Password"
-                                                placeholder="*********" required>
+                                            <input name="tgl_lahir" type="date" class="form-control" id="Tgl_lahir"
+                                                value="{{ $user->tgl_lahir }}">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="Nip" class="col-md-4 col-lg-3 col-form-label">NIP</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="nip" type="text" class="form-control" id="Nip"
+                                                pattern="[0-9,\,]*" value="{{ $user->nip }}">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="Alamat" class="col-md-4 col-lg-3 col-form-label">Alamat</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <textarea name="alamat" class="form-control" id="Alamat" rows="4">{{ $user->alamat }}</textarea>
                                         </div>
                                     </div>
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-primary">Simpan</button>
                                     </div>
                                 </form>
+                            </div>
+                            <div class="tab-pane fade password-edit pt-3" id="password-edit">
+                                <form id="password-form" action="{{ route('dashboard.update_password') }}"
+                                    method="post">
+                                    @csrf
+                                    <div class="row mb-3">
+                                        <label for="current_password" class="col-md-4 col-lg-3 col-form-label">Password
+                                            Lama</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="current_password" type="password" class="form-control"
+                                                id="current_password">
+                                            <div id="current_password_error" class="text-danger"></div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="new_password" class="col-md-4 col-lg-3 col-form-label">Password
+                                            Baru</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="new_password" type="password" class="form-control"
+                                                id="new_password">
+                                            <div id="new_password_error" class="text-danger"></div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="new_password_confirmation"
+                                            class="col-md-4 col-lg-3 col-form-label">Konfirmasi Password Baru</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="new_password_confirmation" type="password" class="form-control"
+                                                id="new_password_confirmation">
+                                            <div id="new_password_confirmation_error" class="text-danger"></div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="button" id="update-password-btn" class="btn btn-primary">Ubah
+                                            Password</button>
+                                    </div>
+                                </form>
+
                             </div>
                         </div>
                     </div>
@@ -147,4 +216,61 @@
             </div>
         </div>
     @endif
+@endsection
+@section('script')
+    <script>
+        $(document).ready(function() {
+            $('#update-password-btn').click(function() {
+                var form = $('#password-form');
+                var formData = form.serialize();
+
+                $.ajax({
+                    url: form.attr('action'),
+                    type: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        window.location.reload();
+                    },
+                    error: function(xhr) {
+                        $('#current_password_error').text('');
+                        $('#new_password_error').text('');
+                        $('#new_password_confirmation_error').text('');
+                        var errors = xhr.responseJSON.errors;
+                        if (errors.current_password) {
+                            $('#current_password_error').text(errors.current_password[0]);
+                        }
+                        if (errors.new_password) {
+                            $('#new_password_error').text(errors.new_password[0]);
+                        }
+                        if (errors.new_password_confirmation) {
+                            $('#new_password_confirmation_error').text(errors
+                                .new_password_confirmation[0]);
+                        }
+                    }
+                });
+            });
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            function restrictInputToNumbers(input, maxLength) {
+                if (input) {
+                    input.addEventListener('input', function() {
+                        var value = input.value;
+                        value = value.replace(/[^0-9/,]/g, '');
+                        if (value.length > maxLength) {
+                            value = value.substring(0, maxLength);
+                        }
+                        input.value = value;
+                    });
+                }
+            }
+            var inputs = [{
+                id: 'Nip',
+                maxLength: 18
+            }, ];
+            inputs.forEach(function(input) {
+                var element = document.getElementById(input.id);
+                restrictInputToNumbers(element, input.maxLength);
+            });
+        });
+    </script>
 @endsection

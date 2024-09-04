@@ -36,6 +36,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/profile/update/{id}', [HomeController::class, 'profile_update'])->name('dashboard.profile_update');
     Route::put('/profile/{user}', [HomeController::class, 'update_profile'])->name('dashboard.update_profile');
     Route::delete('/profile/{user}', [HomeController::class, 'delete_profile'])->name('dashboard.delete_profile');
+    Route::post('/dashboard/update_password', [HomeController::class, 'update_password'])->name('dashboard.update_password');
     Route::get('error', [HomeController::class, 'ERROR'])->name('errors.404');
 
     Route::prefix('pasien')->group(function () {

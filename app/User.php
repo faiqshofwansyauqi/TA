@@ -22,6 +22,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'tgl_lahir',
+        'nip',
+        'password',
+        'alamat',
         'profile_photo'
     ];
 

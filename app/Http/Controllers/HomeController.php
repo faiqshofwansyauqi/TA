@@ -10,6 +10,9 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+
 
 class HomeController extends Controller
 {
@@ -37,16 +40,20 @@ class HomeController extends Controller
     }
     public function profile_update(Request $request, $id)
     {
+        // dd($request);
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $id,
+            'tgl_lahir' => 'required|date',
+            'nip' => 'nullable|string|max:255|regex:/^[0-9,]+$/',
+            'alamat' => 'nullable|string|max:500',
         ]);
         $user = User::findOrFail($id);
-        $data = $request->only(['name', 'email']);
-
-        $user->update($data);        
+        $data = $request->only(['name', 'email', 'tgl_lahir', 'nip', 'alamat']);
+        $user->update($data);
         return redirect()->back()->with('success', 'Data berhasil diperbarui');
     }
+
 
     public function update_profile(Request $request, $id)
     {
@@ -81,6 +88,27 @@ class HomeController extends Controller
         }
 
         return redirect()->back()->with('success', 'Foto profil berhasil dihapus.');
+    }
+    public function update_password(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'current_password' => 'required|string',
+            'new_password' => 'required|string|min:8|confirmed',
+        ]);
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+        $user = Auth::user();
+        if (!Hash::check($request->input('current_password'), $user->password)) {
+            return response()->json(['errors' => ['current_password' => ['Password lama tidak sesuai.']]], 422);
+        }
+        $user->password = Hash::make($request->input('new_password'));
+        $user->save();
+        Auth::logout();
+        return response()->json([
+            'success' => 'Password berhasil diperbarui. Anda akan diarahkan ke halaman login.',
+            'redirect_url' => route('login')
+        ]);
     }
 
     public function ERROR()
