@@ -172,13 +172,29 @@ h6 {
 }
 
 .btn-table {
-    height: 26px; /* Tinggi tombol */
+    height: 26px;
     font-size: 11px;
 }
 #kmsChart {
     width: 2446.88px !important;
     height: 800.11px !important;
 }
+
+.signature {
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.signature .content {
+    text-align: left;
+}
+
+.signature p {
+    margin: 5px 0;
+    line-height: 1.5;
+}
+
 
 /* .vertical-header {
     writing-mode: vertical-rl;

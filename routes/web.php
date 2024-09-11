@@ -145,7 +145,9 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('laporan')->group(function () {
         ///////////// LAPORAN PUSKESMAS /////////////
         Route::get('puskesmas', [LaporanController::class, 'puskesmas'])->name('laporan.puskesmas');
+        Route::get('laporan/puskesmas/pdf', [LaporanController::class, 'exportPdf'])->name('laporan.puskesmas.pdf');
     });
+
     Route::prefix('notification')->group(function () {
         Route::post('/notifications/{id}/read', [NotificationController::class, 'markAsRead'])->name('notifications.read');
         Route::get('/notifications/check', [NotificationController::class, 'checkNotifications'])->name('notifications.check');

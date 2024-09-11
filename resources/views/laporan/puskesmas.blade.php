@@ -3,10 +3,10 @@
 @section('content')
     <div class="d-flex justify-content-between align-items-center">
         <div class="pagetitle">
-            <h1 style="margin-bottom: 5px">Laporan Ibu Hamil</h1>
+            <h2 style="margin-bottom: 5px">Laporan Ibu Hamil</h2>
         </div>
     </div>
-    
+
     <section class="section dashboard">
         <div class="row">
             <div class="col-lg-12">
@@ -15,15 +15,25 @@
                         <br>
                         <form id="year-filter-form" action="{{ route('laporan.puskesmas') }}" method="GET" class="mb-3">
                             <div class="row">
-                                <div class="col-md-4">
-                                    <label for="year" class="form-label">Pilih Tahun</label>
-                                    <select name="year" id="year" class="form-select" onchange="document.getElementById('year-filter-form').submit();">
-                                        @for ($i = 2020; $i <= now()->year; $i++)
-                                            <option value="{{ $i }}" {{ request('year') == $i ? 'selected' : '' }}>
-                                                {{ $i }}
-                                            </option>
-                                        @endfor
-                                    </select>
+                                <div class="col-md-7 d-flex align-items-end">
+                                    <div class="me-3">
+                                        <label for="year" class="form-label">Pilih Tahun</label>
+                                        <select name="year" id="year" class="form-select"
+                                            onchange="document.getElementById('year-filter-form').submit();">
+                                            @for ($i = 2020; $i <= now()->year; $i++)
+                                                <option value="{{ $i }}"
+                                                    {{ request('year') == $i ? 'selected' : '' }}>
+                                                    {{ $i }}
+                                                </option>
+                                            @endfor
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <a href="{{ route('laporan.puskesmas.pdf', ['year' => request('year')]) }}"
+                                            class="btn btn-primary">
+                                            Download PDF
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </form>
@@ -131,11 +141,21 @@
                                                     {{ $data['kn2l_bulan_ini'] + $data['kn2p_bulan_ini'] + $data['kn2l_bulan_lalu'] + $data['kn2p_bulan_lalu'] ?: '' }}
                                                 @endif
                                             </td>
-                                            <!-- Add other columns as needed -->
                                         </tr>
                                     @endforeach
                                 </tbody>
                             </table>
+                            <div class="signature">
+                                <div class="content">
+                                    <p>Indramayu, {{ \Carbon\Carbon::now()->format('d F Y') }}</p>
+                                    @foreach ($user->roles as $role)
+                                    {{ $role->name }}{{ !$loop->last ? ',' : '' }}
+                                @endforeach
+                                    <br><br><br>
+                                    <p><strong>{{ $user->name }}</strong></p>
+                                    <p>NIP. {{ $user->nip }}</p>
+                                </div>
+                            </div>                            
                         </div>
                     </div>
                 </div>

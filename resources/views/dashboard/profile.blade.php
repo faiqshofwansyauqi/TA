@@ -4,7 +4,7 @@
     <div class="pagetitle">
         <h1>Profile</h1>
         <br>
-    </div><!-- End Page Title -->
+    </div>
 
     <section class="section profile">
         <div class="row">
@@ -55,9 +55,10 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Tanggal Lahir</div>
-                                    <div class="col-lg-9 col-md-8">{{ \Carbon\Carbon::parse($user->tgl_lahir)->format('d/m/Y') }}</div>
+                                    <div class="col-lg-9 col-md-8">
+                                        {{ \Carbon\Carbon::parse($user->tgl_lahir)->format('d/m/Y') }}</div>
                                 </div>
-                                
+
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">NIP</div>
                                     <div class="col-lg-9 col-md-8">{{ $user->nip }}</div>
@@ -151,7 +152,6 @@
                                             Password</button>
                                     </div>
                                 </form>
-
                             </div>
                         </div>
                     </div>
