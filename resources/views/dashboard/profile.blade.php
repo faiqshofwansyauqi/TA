@@ -92,20 +92,20 @@
                                             Lahir</label>
                                         <div class="col-md-8 col-lg-9">
                                             <input name="tgl_lahir" type="date" class="form-control" id="Tgl_lahir"
-                                                value="{{ $user->tgl_lahir }}">
+                                                value="{{ $user->tgl_lahir }}" required>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
                                         <label for="Nip" class="col-md-4 col-lg-3 col-form-label">NIP</label>
                                         <div class="col-md-8 col-lg-9">
                                             <input name="nip" type="text" class="form-control" id="Nip"
-                                                pattern="[0-9,\,]*" value="{{ $user->nip }}">
+                                                pattern="[0-9,\,]*" value="{{ $user->nip }}" required>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
                                         <label for="Alamat" class="col-md-4 col-lg-3 col-form-label">Alamat</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <textarea name="alamat" class="form-control" id="Alamat" rows="4">{{ $user->alamat }}</textarea>
+                                            <textarea name="alamat" class="form-control" id="Alamat" rows="4" required >{{ $user->alamat }}</textarea>
                                         </div>
                                     </div>
                                     <div class="text-right">

@@ -119,7 +119,9 @@
     <div class="signature">
         <div class="content">
             <p>Indramayu, {{ \Carbon\Carbon::now()->format('d F Y') }}</p>
-            <p>Ketua IBI</p>
+            @foreach ($user->roles as $role)
+                {{ $role->name }}{{ !$loop->last ? ',' : '' }}
+            @endforeach
             <br><br><br><br>
             <p><strong>{{ $user->name }}</strong></p>
             <p>NIP. {{ $user->nip }}</p>
@@ -173,7 +175,6 @@
         padding: 2px 0;
         line-height: 1;
     }
-
 </style>
 
 </html>
