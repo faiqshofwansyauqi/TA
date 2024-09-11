@@ -3,9 +3,7 @@
 @section('content')
     <div class="pagetitle">
         <h1>Profile</h1>
-        <br>
     </div>
-
     <section class="section profile">
         <div class="row">
             <div class="col-xl-4">
@@ -45,6 +43,7 @@
                         </ul>
                         <div class="tab-content pt-2">
                             <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                                <br>
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label ">Nama</div>
                                     <div class="col-lg-9 col-md-8">{{ $user->name }}</div>
@@ -58,7 +57,6 @@
                                     <div class="col-lg-9 col-md-8">
                                         {{ \Carbon\Carbon::parse($user->tgl_lahir)->format('d/m/Y') }}</div>
                                 </div>
-
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">NIP</div>
                                     <div class="col-lg-9 col-md-8">{{ $user->nip }}</div>
@@ -86,8 +84,7 @@
                                     <div class="row mb-3">
                                         <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="email" type="email" class="form-control" id="Email"
-                                                placeholder="person123@gmail.com" value="{{ $user->email }}">
+                                            <input name="email" type="email" class="form-control" id="Email" value="{{ $user->email }}">
                                         </div>
                                     </div>
                                     <div class="row mb-3">
@@ -111,18 +108,17 @@
                                             <textarea name="alamat" class="form-control" id="Alamat" rows="4">{{ $user->alamat }}</textarea>
                                         </div>
                                     </div>
-                                    <div class="text-center">
-                                        <button type="submit" class="btn btn-primary">Simpan</button>
+                                    <div class="text-right">
+                                        <button type="submit" class="btn btn-primary">Simpan Profile</button>
                                     </div>
                                 </form>
                             </div>
-                            <div class="tab-pane fade password-edit pt-3" id="password-edit">
+                            <div class="tab-pane fade profile-edit pt-3" id="password-edit">
                                 <form id="password-form" action="{{ route('dashboard.update_password') }}"
                                     method="post">
                                     @csrf
                                     <div class="row mb-3">
-                                        <label for="current_password" class="col-md-4 col-lg-3 col-form-label">Password
-                                            Lama</label>
+                                        <label for="current_password" class="col-md-4 col-lg-3 col-form-label">Password Lama</label>
                                         <div class="col-md-8 col-lg-9">
                                             <input name="current_password" type="password" class="form-control"
                                                 id="current_password">
@@ -147,8 +143,8 @@
                                             <div id="new_password_confirmation_error" class="text-danger"></div>
                                         </div>
                                     </div>
-                                    <div class="text-center">
-                                        <button type="button" id="update-password-btn" class="btn btn-primary">Ubah
+                                    <div class="text-right">
+                                        <button type="button" id="update-password-btn" class="btn btn-primary">Simpan
                                             Password</button>
                                     </div>
                                 </form>
@@ -159,9 +155,10 @@
             </div>
         </div>
     </section>
+    
     <div class="modal fade" id="profilePhotoModal" tabindex="-1" aria-labelledby="profilePhotoModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="profilePhotoModalLabel">Upload Foto Profil</h5>
