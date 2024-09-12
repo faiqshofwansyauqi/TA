@@ -27,10 +27,17 @@ class UserSeeder extends Seeder
         $bidan->assignRole("bidan");
 
         $ibi = User::create([
-            "name" => "Kepala IBI",
+            "name" => "IBI",
             "email" => "ibi@gmail.com",
             "password" => bcrypt("123123"),
         ]);
         $ibi->assignRole("ibi");
+
+        $puskesmas = User::create([
+            "name" => "Puskesmas",
+            "email" => "puskesmas@gmail.com",
+            "password" => bcrypt("123123"),
+        ]);
+        $puskesmas->assignRole("puskesmas");
     }
 }
