@@ -58,9 +58,9 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 ## Cara Install
 
-- **Copy url Github [Github](https://github.com/faiqshofwansyauqi/TA)**
+- **Copy url Github**
 - **Git Clone pada prompt**
-- **Update Composer **
+- **Update Composer**
 - **Migrate Database "php artisan migrate"**
 - **Migrate Storage "php artisan storage:link"**
 - **Migrate User dan Role "php artisan db:seed"**
