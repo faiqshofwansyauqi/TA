@@ -25,7 +25,7 @@ class LaporanController extends Controller
     public function puskesmas(Request $request)
     {
         $user = Auth::user();
-        if ($user->hasRole(['IBI / Puskesmas'])) {
+        if ($user->hasRole(['IBI', 'Puskesmas'])) {
             $year = $request->input('year', now()->year);
             $months = [
                 1 => 'Januari',

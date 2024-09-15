@@ -54,8 +54,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Tanggal Lahir</div>
-                                    <div class="col-lg-9 col-md-8">
-                                        {{ \Carbon\Carbon::parse($user->tgl_lahir)->format('d/m/Y') }}</div>
+                                    <div class="col-lg-9 col-md-8">{{ $user->tgl_lahir }}</div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">NIP</div>
@@ -84,7 +83,8 @@
                                     <div class="row mb-3">
                                         <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="email" type="email" class="form-control" id="Email" value="{{ $user->email }}">
+                                            <input name="email" type="email" class="form-control" id="Email"
+                                                value="{{ $user->email }}">
                                         </div>
                                     </div>
                                     <div class="row mb-3">
@@ -105,7 +105,7 @@
                                     <div class="row mb-3">
                                         <label for="Alamat" class="col-md-4 col-lg-3 col-form-label">Alamat</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <textarea name="alamat" class="form-control" id="Alamat" rows="4" required >{{ $user->alamat }}</textarea>
+                                            <textarea name="alamat" class="form-control" id="Alamat" rows="4" required>{{ $user->alamat }}</textarea>
                                         </div>
                                     </div>
                                     <div class="text-right">
@@ -118,7 +118,8 @@
                                     method="post">
                                     @csrf
                                     <div class="row mb-3">
-                                        <label for="current_password" class="col-md-4 col-lg-3 col-form-label">Password Lama</label>
+                                        <label for="current_password" class="col-md-4 col-lg-3 col-form-label">Password
+                                            Lama</label>
                                         <div class="col-md-8 col-lg-9">
                                             <input name="current_password" type="password" class="form-control"
                                                 id="current_password">
@@ -155,7 +156,7 @@
             </div>
         </div>
     </section>
-    
+
     <div class="modal fade" id="profilePhotoModal" tabindex="-1" aria-labelledby="profilePhotoModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -191,7 +192,7 @@
     @if ($user->profile_photo)
         <div class="modal fade" id="deletePhotoModal" tabindex="-1" aria-labelledby="deletePhotoModalLabel"
             aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="deletePhotoModalLabel">Hapus Foto Profil</h5>

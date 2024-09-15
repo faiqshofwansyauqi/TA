@@ -29,7 +29,7 @@ class HomeController extends Controller
             $query->where('name', 'Admin');
         })->count();
         $jumlahKepala = User::whereHas('roles', function ($query) {
-            $query->where('name', 'IBI / Puskesmas');
+            $query->whereIn('name', ['Puskesmas', 'IBI']);
         })->count();
         return view('dashboard.index', compact('jumlahAnak', 'jumlahIbu', 'jumlahKms', 'jumlahBidan', 'jumlahAdmin', 'jumlahKepala'));
     }

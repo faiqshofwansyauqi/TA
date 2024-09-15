@@ -134,17 +134,17 @@
                 </a>
             </li>
         @endrole
-        
-        @role('IBI / Puskesmas')
-        <li class="nav-item">
-            <a class="nav-link {{ request()->is(['laporan.puskesmas', 'laporan/puskesmas']) ? '' : 'collapsed' }}"
-                href="{{ route('laporan.puskesmas') }}">
-                <i class="bi bi-card-list"></i>
-                <span>Laporan</span>
-            </a>
-        </li>
-        @endrole
 
+        @hasanyrole('IBI|Puskesmas')
+            <li class="nav-item">
+                <a class="nav-link {{ request()->is(['laporan.puskesmas', 'laporan/puskesmas']) ? '' : 'collapsed' }}"
+                    href="{{ route('laporan.puskesmas') }}">
+                    <i class="bi bi-card-list"></i>
+                    <span>Laporan</span>
+                </a>
+            </li>
+        @endhasanyrole
+        
         @role('Admin')
             <li class="nav-item">
                 <a class="nav-link {{ request()->is(['setting.admin', 'setting/admin']) ? '' : 'collapsed' }}"

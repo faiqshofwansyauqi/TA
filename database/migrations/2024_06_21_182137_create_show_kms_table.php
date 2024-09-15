@@ -23,7 +23,6 @@ class CreateShowKmsTable extends Migration
             $table->string('nt');
             $table->string('asi_eksklusif')->nullable();
             $table->timestamps();
-            $table->boolean('notified')->default(false);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('id_ibu')->references('id_ibu')->on('ibu')->onDelete('cascade');
             $table->foreign('id_anak')->references('id_anak')->on('anak')->onDelete('cascade');

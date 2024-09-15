@@ -120,9 +120,15 @@
         <div class="content">
             <p>Indramayu, {{ \Carbon\Carbon::now()->format('d F Y') }}</p>
             @foreach ($user->roles as $role)
-                {{ $role->name }}{{ !$loop->last ? ',' : '' }}
+                Kepala
+                @if ($role->name === 'IBI')
+                    Ikatan Bidan Indramayu
+                @else
+                    {{ $role->name }}
+                @endif
+                {{ !$loop->last ? ',' : '' }}
             @endforeach
-            <br><br><br><br>
+            <br><br><br>
             <p><strong>{{ $user->name }}</strong></p>
             <p>NIP. {{ $user->nip }}</p>
         </div>

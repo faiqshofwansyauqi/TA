@@ -85,17 +85,19 @@ class SettingController extends Controller
     {
         if ($request->ajax()) {
             $data = User::whereHas('roles', function ($query) {
-                $query->where('name', 'IBI / Puskesmas');
+                $query->whereIn('name', ['Puskesmas', 'IBI']);
             })->with('roles')->select('users.*');
 
             return DataTables::of($data)
                 ->addColumn('roles', function ($row) {
+                    // Ambil semua roles dan gabungkan dengan koma
                     $roles = $row->roles->pluck('name')->toArray();
                     return implode(', ', $roles);
                 })
                 ->make(true);
         }
     }
+
     public function store_user(Request $request)
     {
         $request->validate([

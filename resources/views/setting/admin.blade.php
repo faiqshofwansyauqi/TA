@@ -17,7 +17,7 @@
                     <div class="card-body">
                         <br>
                         <div class="table-responsive">
-                            <table class="table table-borderless table-anc" id="admin-table" style="width:100%">
+                            <table class="table" id="admin-table" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th style="text-align: center">No</th>
@@ -74,13 +74,9 @@
                                     <div class="invalid-feedback">Please confirm your password.</div>
                                 </div>
                                 <div class="col-12 mb-3">
-                                    <label for="roles" class="form-label">Roles</label>
-                                    <select class="form-control" id="roles" name="roles[]" required>
-                                        <option value="">Pilih Role</option>
-                                        @foreach ($roles as $role)
-                                            <option value="{{ $role->name }}">{{ $role->name }}</option>
-                                        @endforeach
-                                    </select>
+                                    <label for="roles" class="form-label">Role</label>
+                                    <input type="hidden" id="roles" name="roles[]" value="Admin">
+                                    <input type="text" class="form-control" value="Admin" disabled>
                                 </div>
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -123,13 +119,9 @@
                                     <input type="hidden" name="edit_password" value="password">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="edit_roles" class="form-label">Roles</label>
-                                    <select class="form-control" id="edit_roles" name="roles[]" required>
-                                        <option value="">Pilih Role</option>
-                                        @foreach ($roles as $role)
-                                            <option value="{{ $role->name }}">{{ $role->name }}</option>
-                                        @endforeach
-                                    </select>
+                                    <label for="edit_roles" class="form-label">Role</label>
+                                    <input type="hidden" id="edit_roles" name="roles[]" value="Admin">
+                                    <input type="text" class="form-control" value="Admin" disabled>
                                 </div>
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary">Submit</button>

@@ -77,9 +77,8 @@
                                     <label for="roles" class="form-label">Roles</label>
                                     <select class="form-control" id="roles" name="roles[]" required>
                                         <option value="">Pilih Role</option>
-                                        @foreach ($roles as $role)
-                                            <option value="{{ $role->name }}">{{ $role->name }}</option>
-                                        @endforeach
+                                        <option value="IBI">IBI</option>
+                                        <option value="Puskesmas">Puskesmas</option>
                                     </select>
                                 </div>
                                 <div class="col-12">
@@ -126,9 +125,8 @@
                                     <label for="edit_roles" class="form-label">Roles</label>
                                     <select class="form-control" id="edit_roles" name="roles[]" required>
                                         <option value="">Pilih Role</option>
-                                        @foreach ($roles as $role)
-                                            <option value="{{ $role->name }}">{{ $role->name }}</option>
-                                        @endforeach
+                                        <option value="IBI">IBI</option>
+                                        <option value="Puskesmas">Puskesmas</option>
                                     </select>
                                 </div>
                                 <div class="col-12">

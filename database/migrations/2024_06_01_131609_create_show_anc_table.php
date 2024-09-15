@@ -62,7 +62,6 @@ class CreateShowAncTable extends Migration
             $table->string('tiba')->nullable();
             $table->string('pulang')->nullable();
             $table->string('keterangan');
-            $table->boolean('notified')->default(false);
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('id_ibu')->references('id_ibu')->on('ibu')->onDelete('cascade');
