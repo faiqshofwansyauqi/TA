@@ -51,64 +51,64 @@
         <tbody>
             @foreach ($laporan as $monthNumber => $data)
                 <tr>
-                    <td class="text-center">{{ $monthNumber }}</td>
+                    <td class="text-center">{{ $monthNumber }}</td> 
                     <td class="text-center">{{ $data['bulan'] }}</td>
                     <td class="text-center">{{ $data['anc'] ?: '' }}</td>
                     <td class="text-center">{{ $data['persalinan'] ?: '' }}</td>
                     <td class="text-center">{{ $data['anak'] ?: '' }}</td>
                     <td class="text-center">{{ $data['bulan_ini_k1'] ?: '' }}</td>
                     <td class="text-center">
-                        @if ($data['anc'] > 0)
+                        @if ($data['bulan_ini_k1'] > 0)
                             {{ $data['bulan_lalu_k1'] ?: '' }}
                         @endif
                     </td>
                     <td class="text-center">
-                        @if ($data['anc'] > 0)
+                        @if ($data['bulan_ini_k1'] > 0)
                             {{ $data['bulan_ini_k1'] + $data['bulan_lalu_k1'] ?: '' }}
                         @endif
                     </td>
                     <td class="text-center">{{ $data['bulan_ini_k2'] ?: '' }}</td>
                     <td class="text-center">
-                        @if ($data['anc'] > 0)
+                        @if ($data['bulan_ini_k2'] > 0)
                             {{ $data['bulan_lalu_k2'] ?: '' }}
                         @endif
                     </td>
                     <td class="text-center">
-                        @if ($data['anc'] > 0)
+                        @if ($data['bulan_ini_k2'] > 0)
                             {{ $data['bulan_ini_k2'] + $data['bulan_lalu_k2'] ?: '' }}
                         @endif
                     </td>
                     <td class="text-center">{{ $data['kn1l_bulan_ini'] ?: '' }}</td>
                     <td class="text-center">{{ $data['kn1p_bulan_ini'] ?: '' }}</td>
                     <td class="text-center">
-                        @if ($data['anc'] > 0)
+                        @if ($data['kn1l_bulan_ini'] > 0)
                             {{ $data['kn1l_bulan_lalu'] ?: '' }}
                         @endif
                     </td>
                     <td class="text-center">
-                        @if ($data['anc'] > 0)
+                        @if ($data['kn1p_bulan_ini'] > 0)
                             {{ $data['kn1p_bulan_lalu'] ?: '' }}
                         @endif
                     </td>
                     <td class="text-center">
-                        @if ($data['anc'] > 0)
+                        @if ($data['kn1l_bulan_ini'] > 0)
                             {{ $data['kn1l_bulan_ini'] + $data['kn1p_bulan_ini'] + $data['kn1l_bulan_lalu'] + $data['kn1p_bulan_lalu'] ?: '' }}
                         @endif
                     </td>
                     <td class="text-center">{{ $data['kn2l_bulan_ini'] ?: '' }}</td>
                     <td class="text-center">{{ $data['kn2p_bulan_ini'] ?: '' }}</td>
                     <td class="text-center">
-                        @if ($data['anc'] > 0)
+                        @if ($data['kn2l_bulan_ini'] > 0)
                             {{ $data['kn2l_bulan_lalu'] ?: '' }}
                         @endif
                     </td>
                     <td class="text-center">
-                        @if ($data['anc'] > 0)
+                        @if ($data['kn2p_bulan_ini'] > 0)
                             {{ $data['kn2p_bulan_lalu'] ?: '' }}
                         @endif
                     </td>
                     <td class="text-center">
-                        @if ($data['anc'] > 0)
+                        @if ($data['kn2l_bulan_ini'] > 0)
                             {{ $data['kn2l_bulan_ini'] + $data['kn2p_bulan_ini'] + $data['kn2l_bulan_lalu'] + $data['kn2p_bulan_lalu'] ?: '' }}
                         @endif
                     </td>

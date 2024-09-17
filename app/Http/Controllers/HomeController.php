@@ -40,7 +40,6 @@ class HomeController extends Controller
     }
     public function profile_update(Request $request, $id)
     {
-        // dd($request);
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $id,
@@ -54,7 +53,6 @@ class HomeController extends Controller
         return redirect()->back()->with('success', 'Data berhasil diperbarui');
     }
 
-
     public function update_profile(Request $request, $id)
     {
         $request->validate([
@@ -65,7 +63,6 @@ class HomeController extends Controller
             $file = $request->file('profile_photo');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $path = $file->storeAs('profile_photos', $filename, 'public');
-
             $img = Image::make(storage_path('app/public/' . $path));
             $img->resize(300, 300);
             $img->save();

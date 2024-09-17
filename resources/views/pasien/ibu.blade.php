@@ -71,7 +71,6 @@
                         @csrf
                         <div class="col-12">
                             <div class="card-body">
-                                <br>
                                 <div class="row">
                                     <div class="col-md-4 mb-2">
                                         <label for="nama_ibu" class="form-label">Nama Ibu</label>
@@ -201,7 +200,6 @@
                         @method('PUT')
                         <div class="col-12">
                             <div class="card-body">
-                                <br>
                                 <div class="row">
                                     <div class="col-md-4 mb-2">
                                         <label for="edit_nama_ibu" class="form-label">Nama Ibu</label>

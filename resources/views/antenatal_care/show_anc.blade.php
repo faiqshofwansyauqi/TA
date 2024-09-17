@@ -667,7 +667,7 @@
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
                                             <label for="edit_buku_kia" class="form-label">Catatan dibuku KIA</label>
-                                            <select class="form-select" id="edit_buku_kia" name="buku_kia" required>
+                                            <select class="form-select" id="edit_buku_kia" name="buku_kia">
                                                 <option value="">Pilih Catatan dibuku KIA</option>
                                                 <option value="jika iya">&#10003;</option>
                                                 <option value="jika tidak">&#10007;</option>
@@ -680,7 +680,7 @@
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="edit_pmt_bumil" class="form-label">PMT Bumil KEK</label>
-                                            <select class="form-select" id="edit_pmt_bumil" name="pmt_bumil" required>
+                                            <select class="form-select" id="edit_pmt_bumil" name="pmt_bumil">
                                                 <option value="">Pilih PMT Bumil KEK</option>
                                                 <option value="jika iya">&#10003;</option>
                                                 <option value="jika tidak">&#10007;</option>
@@ -688,7 +688,7 @@
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="edit_kelas_ibu" class="form-label">Ikut Kelas Ibu</label>
-                                            <select class="form-select" id="edit_kelas_ibu" name="kelas_ibu" required>
+                                            <select class="form-select" id="edit_kelas_ibu" name="kelas_ibu">
                                                 <option value="">Pilih Ikut Kelas Ibu</option>
                                                 <option value="jika iya">&#10003;</option>
                                                 <option value="jika tidak">&#10007;</option>
@@ -699,8 +699,7 @@
                                     <div class="col-md-12 mb-3">
                                         <label for="edit_konseling" class="form-label">
                                             Konseling</label>
-                                        <input type="text" class="form-control" id="edit_konseling" name="konseling"
-                                            required>
+                                        <input type="text" class="form-control" id="edit_konseling" name="konseling">
                                     </div>
                                     <h5 class="card-title">Laboratorium</h5>
                                     <div class="row">
@@ -1316,7 +1315,7 @@
                 responsive: false,
                 scrollX: false,
                 language: {
-                    emptyTable: "Data perawatan selam ahamil ibu {{ $anc->ibu->nama_ibu }} tidak ada"
+                    emptyTable: "Data perawatan selama hamil ibu {{ $anc->ibu->nama_ibu }} tidak ada"
                 }
             });
         });
@@ -1473,6 +1472,28 @@
             handleTbcChange('edit_tbc', 'edit_obat_TB', 'label[for="edit_obat_TB"]');
         });
 
+        document.addEventListener('DOMContentLoaded', function() {
+            function handleTbcChange(hivElementId, arvElementId, labelarv) {
+                document.getElementById(hivElementId).addEventListener('change', function() {
+                    var hivValue = this.value;
+                    var arvSelect = document.getElementById(arvElementId);
+                    var label_arv = document.querySelector(labelarv);
+
+                    if (hivValue === 'N') {
+                        arvSelect.style.display = 'none';
+                        arvSelect.value = '-';
+                        label_arv.style.display = 'none';
+                    } else {
+                        arvSelect.style.display = 'block';
+                        arvSelect.value = '';
+                        label_arv.style.display = 'block';
+                    }
+                });
+            }
+            handleTbcChange('hiv', 'arv', 'label[for="arv"]');
+            handleTbcChange('edit_hiv', 'edit_arv', 'label[for="edit_arv"]');
+        });
+
         function Komplikasi(changedId) {
             const selectIds = ['hdk', 'abortus', 'pendarahan', 'infeksi', 'kpd'];
             const selectedValue = document.getElementById(changedId).value;
@@ -1539,16 +1560,18 @@
             });
         }
 
-        document.getElementById('trimester').value = trimester;
         document.getElementById('umur_kehamilan').addEventListener('input', function() {
-            var usiaKehamilan = this.value;
-            var trimester = '';
+            var usiaKehamilan = parseInt(this.value);
+            var trimesterSelect = document.getElementById('trimester');
+
             if (usiaKehamilan >= 1 && usiaKehamilan <= 13) {
-                trimester = 'I';
+                trimesterSelect.value = "I";
             } else if (usiaKehamilan >= 14 && usiaKehamilan <= 27) {
-                trimester = 'II';
+                trimesterSelect.value = "II";
             } else if (usiaKehamilan >= 28 && usiaKehamilan <= 41) {
-                trimester = 'III';
+                trimesterSelect.value = "III";
+            } else {
+                trimesterSelect.value = "";
             }
         });
     </script>

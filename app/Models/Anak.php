@@ -38,5 +38,4 @@ class Anak extends Model
     {
         return $this->hasMany(Show_Kms::class, 'id_anak');
     }
-    public $timestamps = false;
 }

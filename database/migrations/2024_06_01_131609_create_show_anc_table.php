@@ -18,7 +18,7 @@ class CreateShowAncTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('id_ibu');
             $table->date('tanggal');
-            $table->string('usia_kehamilan');
+            $table->string('umur_kehamilan');
             $table->string('trimester');
             $table->string('keluhan');
             $table->string('berat_badan');
@@ -61,7 +61,7 @@ class CreateShowAncTable extends Migration
             $table->string('lain_lain_dirujuk')->nullable();
             $table->string('tiba')->nullable();
             $table->string('pulang')->nullable();
-            $table->string('keterangan');
+            $table->string('keterangan')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('id_ibu')->references('id_ibu')->on('ibu')->onDelete('cascade');

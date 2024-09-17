@@ -48,7 +48,6 @@
                         @csrf
                         <div class="col-12">
                             <div class="card-body">
-                                <h5 class="card-title"></h5>
                                 <div class="col-md-12 mb-3">
                                     <label for="id_anak" class="form-label">Nama Anak</label>
                                     <select class="form-control" id="id_anak" name="id_anak" required>

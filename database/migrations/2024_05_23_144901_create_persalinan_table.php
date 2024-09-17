@@ -19,6 +19,7 @@ class CreatePersalinanTable extends Migration
             $table->dateTime('tgl_datang');
             $table->unsignedBigInteger('id_ibu');
             $table->integer('umur_ibu')->nullable();
+            $table->string('nama_suami')->nullable();
             $table->text('alamat')->nullable();
             $table->string('gravida')->nullable();
             $table->string('partus')->nullable();

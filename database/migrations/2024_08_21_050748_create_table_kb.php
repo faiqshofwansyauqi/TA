@@ -25,12 +25,14 @@ class CreateTableKb extends Migration
             $table->string('kb_terakhir')->nullable();
             $table->date('haid_terahkhir');
             $table->enum('status_hamil', ['Ya', 'Tidak']);
-            $table->string('gpa');
+            $table->string('gravida');
+            $table->string('partus');
+            $table->string('abortus');
             $table->enum('menyusui', ['Ya', 'Tidak']);
             $table->string('rwyt_pengakit')->nullable();
             $table->enum('keadaan_umum', ['Baik', 'Sedang', 'Kurang']);
             $table->integer('berat_badan');
-            $table->integer('tkn_darah');
+            $table->string('tkn_darah');
             $table->string('psng_iud')->nullable();
             $table->enum('posisi_rahim', ['Retrofleksi', 'Antefleksi']);
             $table->string('pmrksn_tambahan')->nullable();

@@ -9,10 +9,7 @@ use App\Models\Anc;
 use App\Models\Show_Anc;
 use App\Models\Persalinan;
 use App\Models\Anak;
-use App\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 use Barryvdh\DomPDF\Facade\Pdf as PDF;
 
 class LaporanController extends Controller
@@ -46,9 +43,9 @@ class LaporanController extends Controller
             foreach ($months as $monthNumber => $monthName) {
                 $laporan[$monthNumber] = [
                     'bulan' => $monthName,
-                    'anc' => $this->getMonthlyCount(Anc::class, $monthNumber, $year),
+                    'anc' => $this->getMonthlyCount(Show_Anc::class, $monthNumber, $year, 'tanggal', ['trimester' => 'I']),
                     'persalinan' => $this->getMonthlyCount(Persalinan::class, $monthNumber, $year, 'tgl_datang'),
-                    'anak' => $this->getMonthlyCount(Anak::class, $monthNumber, $year),
+                    'anak' => $this->getMonthlyCount(Anak::class, $monthNumber, $year, 'tgl_lahir_bayi'),
                     'bulan_ini_k1' => $this->getMonthlyCount(Ropb::class, $monthNumber, $year, 'tgl_periksa'),
                     'bulan_lalu_k1' => $monthNumber > 1 ? $this->getMonthlyCount(Ropb::class, $monthNumber - 1, $year, 'tgl_periksa') : 0,
                     'bulan_ini_k2' => $this->getMonthlyCount(Show_Anc::class, $monthNumber, $year, 'tanggal', ['trimester' => 'III']),
@@ -92,9 +89,9 @@ class LaporanController extends Controller
         foreach ($months as $monthNumber => $monthName) {
             $laporan[$monthNumber] = [
                 'bulan' => $monthName,
-                'anc' => $this->getMonthlyCount(Anc::class, $monthNumber, $year),
+                'anc' => $this->getMonthlyCount(Show_Anc::class, $monthNumber, $year, 'tanggal', ['trimester' => 'I']),
                 'persalinan' => $this->getMonthlyCount(Persalinan::class, $monthNumber, $year, 'tgl_datang'),
-                'anak' => $this->getMonthlyCount(Anak::class, $monthNumber, $year),
+                'anak' => $this->getMonthlyCount(Anak::class, $monthNumber, $year, 'tgl_lahir_bayi'),
                 'bulan_ini_k1' => $this->getMonthlyCount(Ropb::class, $monthNumber, $year, 'tgl_periksa'),
                 'bulan_lalu_k1' => $monthNumber > 1 ? $this->getMonthlyCount(Ropb::class, $monthNumber - 1, $year, 'tgl_periksa') : 0,
                 'bulan_ini_k2' => $this->getMonthlyCount(Show_Anc::class, $monthNumber, $year, 'tanggal', ['trimester' => 'III']),
@@ -113,7 +110,6 @@ class LaporanController extends Controller
             ->setPaper('a4', 'landscape');
         return $pdf->download('laporan-ibu-hamil-' . $year . '.pdf');
     }
-
     private function getMonthlyCount($model, $month, $year, $dateField = 'created_at', $conditions = [])
     {
         $query = $model::whereMonth($dateField, $month)->whereYear($dateField, $year);

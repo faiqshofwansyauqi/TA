@@ -183,55 +183,6 @@ class ANCController extends Controller
     }
     public function store_showanc(Request $request)
     {
-        // dd($request);
-        // $request->validate([
-        //     'id_ibu',
-        //     'tanggal',
-        //     'umur_kehamilan',
-        //     'trimester',
-        //     'keluhan',
-        //     'berat_badan',
-        //     'td_mmhg',
-        //     'lila',
-        //     'sts_gizi',
-        //     'tfu',
-        //     'sts_imunisasi',
-        //     'djj',
-        //     'kpl_thd',
-        //     'tbj',
-        //     'presentasi',
-        //     'jmlh_janin',
-        //     'buku_kia',
-        //     'fe',
-        //     'pmt_bumil',
-        //     'kelas_ibu',
-        //     'konseling',
-        //     'hemoglobin',
-        //     'glcs_urine',
-        //     'sifilis',
-        //     'hbsag',
-        //     'hiv',
-        //     'arv',
-        //     'skrining_anam',
-        //     'dahak',
-        //     'tbc',
-        //     'obat_TB',
-        //     'hdk',
-        //     'abortus',
-        //     'pendarahan',
-        //     'infeksi',
-        //     'kpd',
-        //     'lain_lain_komplikasi',
-        //     'tata_laksana',
-        //     'puskesmas',
-        //     'klinik',
-        //     'rsia_rsb',
-        //     'rs',
-        //     'lain_lain_dirujuk',
-        //     'tiba',
-        //     'pulang',
-        //     'keterangan',
-        // ]);
 
         Show_Anc::create([
             'user_id' => Auth::id(),
@@ -433,6 +384,7 @@ class ANCController extends Controller
             'pendamping' => 'required',
             'transport' => 'required',
             'pendonor' => 'required',
+            'pendonor_darah' => 'required',
 
         ]);
         $rnca = Rencana_Persalinan::findOrFail($id);
@@ -443,6 +395,7 @@ class ANCController extends Controller
             'pendamping' => $request->pendamping,
             'transport' => $request->transport,
             'pendonor' => $request->pendonor,
+            'pendonor_darah' => $request->pendonor_darah,
         ]);
         return redirect()->back()->with('success', 'Data rencana persalinan berhasil diperbaharui');
     }

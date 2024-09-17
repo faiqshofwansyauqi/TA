@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
@@ -34,12 +35,18 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
+            $user = Auth::user(); // Ambil data pengguna yang sedang login
+
+            // Cek peran pengguna dan arahkan ke URL yang sesuai
+            if ($user->hasRole('IBI') || $user->hasRole('Puskesmas')) {
+                return redirect()->to('/laporan/puskesmas');
+            }
+
             return redirect()->intended('/dashboard');
         }
 
         return back()->with('error', 'Email atau password salah.');
     }
-
     public function logout()
     {
         Auth::logout();
