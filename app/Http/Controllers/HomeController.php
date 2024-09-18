@@ -46,9 +46,10 @@ class HomeController extends Controller
             'tgl_lahir' => 'required|date',
             'nip' => 'nullable|string|max:255|regex:/^[0-9,]+$/',
             'alamat' => 'nullable|string|max:500',
+            'puskesmas' => 'nullable|string|max:500',
         ]);
         $user = User::findOrFail($id);
-        $data = $request->only(['name', 'email', 'tgl_lahir', 'nip', 'alamat']);
+        $data = $request->only(['name', 'email', 'tgl_lahir', 'nip', 'alamat','puskesmas']);
         $user->update($data);
         return redirect()->back()->with('success', 'Data berhasil diperbarui');
     }

@@ -26,7 +26,8 @@ class User extends Authenticatable
         'nip',
         'password',
         'alamat',
-        'profile_photo'
+        'profile_photo',
+        'puskesmas'
     ];
 
     public function getProfilePhotoUrlAttribute()

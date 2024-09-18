@@ -16,8 +16,9 @@ class AddProfilePhotoToUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('profile_photo')->nullable()->after('password')->nullable();
             $table->date('tgl_lahir')->nullable()->after('password')->nullable();
-            $table->integer('nip')->nullable()->after('tgl_lahir')->nullable();
-            $table->integer('alamat')->nullable()->after('nip')->nullable();
+            $table->string('nip')->nullable()->after('tgl_lahir')->nullable();
+            $table->text('alamat')->nullable()->after('nip')->nullable();
+            $table->string('puskesmas')->nullable()->after('alamat')->nullable();
         });
     }
 
@@ -33,6 +34,7 @@ class AddProfilePhotoToUsersTable extends Migration
             $table->dropColumn('tgl_lahir');
             $table->dropColumn('nip');
             $table->dropColumn('alamat');
+            $table->dropColumn('puskesmas');
         });
     }
 }

@@ -54,11 +54,15 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Tanggal Lahir</div>
-                                    <div class="col-lg-9 col-md-8">{{ $user->tgl_lahir }}</div>
-                                </div>
+                                    <div class="col-lg-9 col-md-8">{{ \Carbon\Carbon::parse($user->tgl_lahir)->format('d/m/Y') }}</div>
+                                </div>                                
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">NIP</div>
                                     <div class="col-lg-9 col-md-8">{{ $user->nip }}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Puskesmas</div>
+                                    <div class="col-lg-9 col-md-8">{{ $user->puskesmas }}</div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Alamat</div>
@@ -100,6 +104,12 @@
                                         <div class="col-md-8 col-lg-9">
                                             <input name="nip" type="text" class="form-control" id="Nip"
                                                 pattern="[0-9,\,]*" value="{{ $user->nip }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="Puskesmas" class="col-md-4 col-lg-3 col-form-label">Puskesmas</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="puskesmas" type="text" class="form-control" id="Puskesmas" value="{{ $user->puskesmas }}">
                                         </div>
                                     </div>
                                     <div class="row mb-3">
@@ -263,7 +273,7 @@
             }
             var inputs = [{
                 id: 'Nip',
-                maxLength: 18
+                maxLength: 19
             }, ];
             inputs.forEach(function(input) {
                 var element = document.getElementById(input.id);
