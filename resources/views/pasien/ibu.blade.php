@@ -114,8 +114,8 @@
                                             maxlength="16"  required>
                                     </div>
                                     <div class="col-md-4 mb-2">
-                                        <label for="noregis" class="form-label">Nomer Registrasi Ibu</label>
-                                        <input type="text" class="form-control" id="noregis" name="noregis" required>
+                                        <label for="noregis" class="form-label">Nomor Registrasi Ibu</label>
+                                        <input type="text" id="noregis" name="noregis" class="form-control" value="{{ $noregis ?? '' }}" readonly>
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="umur" class="form-label">Umur</label>
@@ -127,8 +127,8 @@
                                     </div>
                                     <div class="col-md-4 mb-2">
                                         <label for="puskesmas" class="form-label">Puskesmas</label>
-                                        <input type="text" class="form-control" id="puskesmas" name="puskesmas" required>
-                                    </div>
+                                        <input type="text" class="form-control" id="puskesmas" name="puskesmas" value="{{ $puskesmas }}" readonly>
+                                    </div>                                    
                                     <div class="col-md-4 mb-2">
                                         <label for="kec" class="form-label">Kecamatan</label>
                                         <input type="text" class="form-control" id="kec" name="kec" required>
@@ -188,7 +188,7 @@
     </div>
 
     <div class="modal fade" id="modalEdit" tabindex="-1" aria-labelledby="ModalEdit" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable modal-lg"">
+        <div class="modal-dialog modal-dialog-scrollable modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-4 fw-bold" id="ModalEdit">Edit Identitas Ibu</h1>
@@ -471,7 +471,7 @@
                                     <button class="btn btn-table btn-sm btn-primary edit-btn" data-id="${row.id_ibu}" data-bs-toggle="modal" data-bs-target="#modalEdit" style="margin-right: 5px;">
                                         Edit
                                     </button>
-                                    <button class="btn btn-table btn-sm btn-danger delete-btn" data-id="${row.id_ibu}" data-url="${deleteUrl}">
+                                    <button class="btn btn-table btn-sm btn-danger delete-btn" data-id="${row.id_ibu}" data-url="${deleteUrl}" hidden>
                                         Delete
                                     </button>
                                 </div>
@@ -514,6 +514,7 @@
                 });
             }
         });
+
         $('#ibu-table').on('click', '.edit-btn', function() {
             let id = $(this).data('id');
             $.ajax({
@@ -583,17 +584,30 @@
 
         function updateInputValue() {
             const input = document.getElementById('noregis');
-            const now = new Date();
-            const monthIndex = now.getMonth();
-            const year = now.getFullYear();
-            const currentValue = input.value.trim();
-            const currentMonth = bulanNames[monthIndex];
-            if (!currentValue.match(/^\d{3}\/[A-Za-z]+\/\d{4}$/)) {
-                input.value = (currentValue ? currentValue.split('/')[0] : '00') + '/' + currentMonth + '/' + year;
+            const table = document.getElementById('ibu-table');
+            if (!input || !table) {
+                return;
             }
+
+            const now = new Date();
+            const year = now.getFullYear();
+            const currentMonth = new Intl.DateTimeFormat('en', {
+                month: 'short'
+            }).format(now);
+            const rowCount = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr').length;
+            let nextNumber = (rowCount + 1).toString().padStart(3, '0');
+            input.value = `${nextNumber}/${currentMonth}/${year}`;
         }
-        window.onload = updateInputValue;
-        document.getElementById('noregis').addEventListener('blur', updateInputValue);
+        document.addEventListener('DOMContentLoaded', () => {
+            updateInputValue();
+
+            const input = document.getElementById('noregis');
+            if (input) {
+                input.addEventListener('blur', updateInputValue);
+            }
+        });
+
+
         document.addEventListener('DOMContentLoaded', function() {
             function restrictInputToNumbers(input, maxLength) {
                 input.addEventListener('input', function() {

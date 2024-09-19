@@ -6,6 +6,7 @@ use App\Models\Anak;
 use App\Models\Ibu;
 use App\Models\Persalinan;
 use App\Models\Show_Anc;
+use App\User;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +23,8 @@ class PasienController extends Controller
         if ($user->hasRole(['Bidan'])) {
             $this->authorize('akses_page', Ibu::class);
             $ibu = Ibu::where('user_id', $user->id)->get();
-            return view('pasien.ibu', compact('ibu'));
+            $puskesmas = $user->puskesmas;
+            return view('pasien.ibu', compact('ibu', 'puskesmas',));
         } else {
             return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses untuk melihat halaman ini.');
         }
@@ -55,11 +57,13 @@ class PasienController extends Controller
             'telp' => 'required',
         ]);
 
+        $total_ibu = Ibu::where('user_id', Auth::id())->count();
+        $noregis = str_pad($total_ibu + 1, 3, '0', STR_PAD_LEFT) . '/' . \Carbon\Carbon::now()->format('M/Y');
         Ibu::create([
             'user_id' => Auth::id(),
             'nik' => $request->nik,
-            'puskesmas' => $request->puskesmas,
-            'noregis' => $request->noregis,
+            'puskesmas' => Auth::user()->puskesmas,
+            'noregis' => $noregis,
             'nama_ibu' => $request->nama_ibu,
             'nama_suami' => $request->nama_suami,
             'tanggal_lahir' => $request->tanggal_lahir,
