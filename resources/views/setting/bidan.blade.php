@@ -75,7 +75,7 @@
                                 </div>
                                 <div class="col-12 mb-3">
                                     <label for="roles" class="form-label">Role</label>
-                                    <input type="hidden" id="roles" name="roles[]" value="Admin">
+                                    <input type="hidden" id="roles" name="roles[]" value="Bidan">
                                     <input type="text" class="form-control" value="Bidan" disabled>
                                 </div>
                                 <div class="col-12">
