@@ -27,9 +27,10 @@ class KBController extends Controller
     }
     public function store_kb(Request $request)
     {
+        // dd($request);
         KB::create([
             'user_id' => Auth::id(),
-            'id_ibu' => $request->id_ibu,
+            'nama_ibu_kb' => $request->nama_ibu_kb,
             'bulan_anak_kecil' => $request->bulan_anak_kecil,
             'tahun_anak_kecil' => $request->tahun_anak_kecil,
             'anak_laki' => $request->anak_laki,
@@ -89,35 +90,23 @@ class KBController extends Controller
         ]);
         return redirect()->back()->with('success', 'Data anak berhasil diupdate');
     }
-    public function getInfo_kb($id_ibu)
-    {
-        $ibu = Ibu::where('id_ibu', $id_ibu)->first();
-        if ($ibu) {
-            $ropb = Ropb::where('id_ibu', $ibu->id_ibu)->first();
-            $anak = Anak::where('id_ibu', $ibu->id_ibu)->select('jenis_kelamin')->get();
-            $kms = Show_Kms::where('id_ibu', $ibu->id_ibu)->get();
-            return response()->json([
-                'ibu' => $ibu,
-                'ropb' => $ropb,
-                'anak' => $anak,
-                'kms' => $kms,
-            ]);
-        } else {
-            return response()->json(['message' => 'Data not found'], 404);
-        }
-    }
     public function getData_kb()
     {
         $kb = KB::where('user_id', Auth::id())->select('*');
-        return DataTables::of($kb)
-            ->addColumn('nama_ibu', function ($row) {
-                return $row->ibu ? $row->ibu->nama_ibu : 'N/A';
-            })
-            ->make(true);
+        return DataTables::of($kb)->make(true);
     }
     public function edit_kb($id)
     {
         $kb = KB::findOrFail($id);
+        return response()->json($kb);
+    }
+    public function show_kb($id)
+    {
+        $kb = KB::with([
+            'ibu' => function ($query) {
+                $query->select('id_ibu');
+            }
+        ])->find($id);
         return response()->json($kb);
     }
 
@@ -168,24 +157,18 @@ class KBController extends Controller
     public function getData_kunjungan_ulang()
     {
         $user = Auth::user();
-        $kunjunganUlang = Kunjungan_Ulang::whereHas('KB', function ($query) use ($user) {
-            $query->where('user_id', $user->id);
+        $id_kb = session('id_kb');
+        $kunjunganUlang = Kunjungan_Ulang::whereHas('KB', function ($query) use ($user, $id_kb) {
+            $query->where('user_id', $user->id)
+                ->where('id', $id_kb);
         })->select('*');
         return DataTables::of($kunjunganUlang)
             ->make(true);
     }
+
     public function edit_kunjungan_ulang($id)
     {
         $kb = Kunjungan_Ulang::findOrFail($id);
-        return response()->json($kb);
-    }
-    public function show_kb($id)
-    {
-        $kb = KB::with([
-            'ibu' => function ($query) {
-                $query->select('id_ibu');
-            }
-        ])->find($id);
         return response()->json($kb);
     }
 

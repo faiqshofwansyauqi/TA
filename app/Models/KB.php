@@ -11,7 +11,7 @@ class KB extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'user_id',
-        'id_ibu',
+        'nama_ibu_kb',
         'anak_laki',
         'anak_perempuan',
         'kb_terakhir',

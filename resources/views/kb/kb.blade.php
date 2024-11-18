@@ -54,13 +54,8 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-4 mb-3">
-                                            <label for="id_ibu" class="form-label">Nama Ibu</label>
-                                            <select class="form-control" id="id_ibu" name="id_ibu" required>
-                                                <option value="">Pilih Ibu</option>
-                                                @foreach ($ibus as $ibu)
-                                                    <option value="{{ $ibu->id_ibu }}">{{ $ibu->nama_ibu }}</option>
-                                                @endforeach
-                                            </select>
+                                            <label for="nama_ibu_kb" class="form-label">Nama Ibu</label>
+                                            <input type="text" class="form-control" id="nama_ibu_kb" name="nama_ibu_kb" required>
                                         </div>
                                         <div class="col-md-4 mb-3">
                                             <label for="jml_anak" class="form-label">Jumlah Anak Hidup</label>
@@ -593,8 +588,8 @@
                         }
                     },
                     {
-                        data: 'nama_ibu',
-                        name: 'nama_ibu'
+                        data: 'nama_ibu_kb',
+                        name: 'nama_ibu_kb'
                     },
                     {
                         data: 'anak_laki',
@@ -711,7 +706,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Jumlah Anak hiudp</td>
+                                <td>Jumlah Anak Hidup</td>
                                 <td class="text-center">Laki - Laki : ${data.anak_laki}</td>
                                 <td class="text-center">Perempuan : ${data.anak_perempuan}</td>
                             </tr>
@@ -905,61 +900,6 @@
             }
             handlePemeriksaanClick('psng_iud', 'modalPeringatan1');
             handlePemeriksaanClick('edit_psng_iud', 'modalPeringatan1');
-        });
-        $(document).ready(function() {
-            $('#id_ibu').change(function() {
-                var id_ibu = $(this).val();
-                $('#id_ibu').val('');
-                $('#gravida').val('');
-                $('#partus').val('');
-                $('#abortus').val('');
-                $('#anak_laki').val('');
-                $('#anak_perempuan').val('');
-                $('#tahun_anak_kecil').val('');
-                $('#bulan_anak_kecil').val('');
-                if (id_ibu) {
-                    $.ajax({
-                        url: '{{ route('kb.getInfo_kb', ':id_ibu') }}'
-                            .replace(':id_ibu',
-                                id_ibu),
-                        type: 'GET',
-                        dataType: 'json',
-                        success: function(response) {
-                            if (response.ibu) {
-                                $('#id_ibu').val(response.ibu.id_ibu);
-                            }
-                            if (response.ropb) {
-                                $('#gravida').val(response.ropb.gravida);
-                                $('#partus').val(response.ropb.partus);
-                                $('#abortus').val(response.ropb.abortus);
-                            }
-                            if (response.anak && response.anak.length > 0) {
-                                var jumlah_laki = 0;
-                                var jumlah_perempuan = 0;
-                                response.anak.forEach(function(anak) {
-                                    if (anak.jenis_kelamin === 'Laki-laki') {
-                                        jumlah_laki++;
-                                    } else if (anak.jenis_kelamin === 'Perempuan') {
-                                        jumlah_perempuan++;
-                                    }
-                                });
-                                $('#anak_laki').val(jumlah_laki);
-                                $('#anak_perempuan').val(jumlah_perempuan);
-                            }
-                            if (response.kms.length > 0) {
-                                var dataCount = response.kms.length;
-                                var tahun = Math.floor(dataCount / 12);
-                                var bulan = dataCount % 12;
-                                $('#tahun_anak_kecil').val(tahun);
-                                $('#bulan_anak_kecil').val(bulan);
-                            }
-                        },
-                        error: function(xhr, status, error) {
-                            console.error('Error: ', error);
-                        }
-                    });
-                }
-            });
         });
         document.addEventListener('DOMContentLoaded', function() {
             function restrictInputToNumbers(input, maxLength) {

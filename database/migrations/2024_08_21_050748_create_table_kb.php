@@ -16,7 +16,7 @@ class CreateTableKb extends Migration
         Schema::create('kb', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('id_ibu');
+            $table->string('nama_ibu_kb');
             $table->integer('bulan_anak_kecil');
             $table->integer('tahun_anak_kecil');
             $table->integer('anak_laki');
@@ -31,8 +31,8 @@ class CreateTableKb extends Migration
             $table->enum('menyusui', ['Ya', 'Tidak']);
             $table->string('rwyt_pengakit')->nullable();
             $table->enum('keadaan_umum', ['Baik', 'Sedang', 'Kurang']);
-            $table->integer('berat_badan');
-            $table->string('tkn_darah');
+            $table->integer('berat_badan')->nullable();
+            $table->string('tkn_darah')->nullable();
             $table->string('psng_iud')->nullable();
             $table->enum('posisi_rahim', ['Retrofleksi', 'Antefleksi']);
             $table->string('pmrksn_tambahan')->nullable();
@@ -42,7 +42,6 @@ class CreateTableKb extends Migration
             $table->date('tgl_kembali');
             $table->date('tgl_dicabut')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('id_ibu')->references('id_ibu')->on('ibu')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -56,7 +55,6 @@ class CreateTableKb extends Migration
     {
         Schema::table('kb', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
-            $table->dropForeign(['id_ibu']);
         });
         Schema::dropIfExists('kb');
     }

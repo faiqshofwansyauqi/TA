@@ -203,14 +203,14 @@
                         data: 'berat_badan',
                         name: 'berat_badan',
                         render: function(data, type, row) {
-                            return data + ' Kg'; // Menambahkan 'KG' di belakang nilai berat badan
+                            return data + ' Kg';
                         }
                     },
                     {
                         data: 'tkn_darah',
                         name: 'tkn_darah',
                         render: function(data, type, row) {
-                            return data + ' mmgh'; // Menambahkan 'KG' di belakang nilai berat badan
+                            return data + ' mmgh';
                         }
                     },
                     {
