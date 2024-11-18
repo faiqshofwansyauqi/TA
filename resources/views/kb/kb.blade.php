@@ -55,19 +55,20 @@
                                     <div class="row">
                                         <div class="col-md-4 mb-3">
                                             <label for="nama_ibu_kb" class="form-label">Nama Ibu</label>
-                                            <input type="text" class="form-control" id="nama_ibu_kb" name="nama_ibu_kb" required>
+                                            <input type="text" class="form-control" id="nama_ibu_kb" name="nama_ibu_kb"
+                                                required>
                                         </div>
                                         <div class="col-md-4 mb-3">
                                             <label for="jml_anak" class="form-label">Jumlah Anak Hidup</label>
                                             <div class="d-flex">
                                                 <div class="me-2">
                                                     <input type="number" class="form-control" id="anak_laki"
-                                                        name="anak_laki" min="0" required style="width: 70px;">
+                                                        name="anak_laki" min="0" style="width: 70px;">
                                                     <small class="form-text text-muted">Laki - Laki</small>
                                                 </div>
                                                 <div>
                                                     <input type="number" class="form-control" id="anak_perempuan"
-                                                        name="anak_perempuan" min="0" required style="width: 70px;">
+                                                        name="anak_perempuan" min="0" style="width: 70px;">
                                                     <small class="form-text text-muted">Perempuan</small>
                                                 </div>
                                             </div>
@@ -87,13 +88,12 @@
                                             <div class="d-flex">
                                                 <div class="me-2">
                                                     <input type="number" class="form-control" id="tahun_anak_kecil"
-                                                        name="tahun_anak_kecil" min="0" required
-                                                        style="width: 70px;">
+                                                        name="tahun_anak_kecil" min="0" style="width: 70px;">
                                                     <small class="form-text text-muted">Tahun</small>
                                                 </div>
                                                 <div>
                                                     <input type="number" class="form-control" id="bulan_anak_kecil"
-                                                        name="bulan_anak_kecil" min="0" max="11" required
+                                                        name="bulan_anak_kecil" min="0" max="11"
                                                         style="width: 70px;">
                                                     <small class="form-text text-muted">Bulan</small>
                                                 </div>
@@ -129,17 +129,17 @@
                                             <div class="col-md-1 mb-3 me-1">
                                                 <label for="gravida" class="form-label">G</label>
                                                 <input type="text" class="form-control" id="gravida"
-                                                    pattern="[0-9,\,]*" name="gravida" required>
+                                                    pattern="[0-9,\,]*" name="gravida">
                                             </div>
                                             <div class="col-md-1 mb-3 me-1">
                                                 <label for="partus" class="form-label">P</label>
                                                 <input type="text" class="form-control" id="partus"
-                                                    pattern="[0-9,\,]*" name="partus" required>
+                                                    pattern="[0-9,\,]*" name="partus">
                                             </div>
                                             <div class="col-md-1 mb-3 me-3">
                                                 <label for="abortus" class="form-label">A</label>
                                                 <input type="text" class="form-control" id="abortus"
-                                                    pattern="[0-9,\,]*" name="abortus" required>
+                                                    pattern="[0-9,\,]*" name="abortus">
                                             </div>
                                             <div id="riwayat_penyakit" class="col-md-4 mb-3">
                                                 <label for="rwyt_pengakit" class="form-label">Riwayat Penyakit</label>
@@ -238,7 +238,7 @@
                                     <div class="row">
                                         <div class="col-md-4 mb-3">
                                             <label for="posisi_rahim" class="form-label">Posisi Rahim</label>
-                                            <select class="form-select" id="posisi_rahim" name="posisi_rahim" required>
+                                            <select class="form-select" id="posisi_rahim" name="posisi_rahim">
                                                 <option value="">Pilih Posisi Rahim</option>
                                                 <option value="Retrofleksi">Retrofleksi</option>
                                                 <option value="Antefleksi">Antefleksi</option>
@@ -289,13 +289,12 @@
                                             <div class="d-flex">
                                                 <div class="me-2">
                                                     <input type="number" class="form-control" id="edit_anak_laki"
-                                                        name="anak_laki" min="0" required style="width: 70px;">
+                                                        name="anak_laki" min="0" style="width: 70px;">
                                                     <small class="form-text text-muted">Laki - Laki</small>
                                                 </div>
                                                 <div>
                                                     <input type="number" class="form-control" id="edit_anak_perempuan"
-                                                        name="anak_perempuan" min="0" required
-                                                        style="width: 70px;">
+                                                        name="anak_perempuan" min="0" style="width: 70px;">
                                                     <small class="form-text text-muted">Perempuan</small>
                                                 </div>
                                             </div>
@@ -316,13 +315,12 @@
                                             <div class="d-flex">
                                                 <div class="me-2">
                                                     <input type="number" class="form-control" id="edit_tahun_anak_kecil"
-                                                        name="tahun_anak_kecil" min="0" required
-                                                        style="width: 70px;">
+                                                        name="tahun_anak_kecil" min="0" style="width: 70px;">
                                                     <small class="form-text text-muted">Tahun</small>
                                                 </div>
                                                 <div>
                                                     <input type="number" class="form-control" id="edit_bulan_anak_kecil"
-                                                        name="bulan_anak_kecil" min="0" max="11" required
+                                                        name="bulan_anak_kecil" min="0" max="11"
                                                         style="width: 70px;">
                                                     <small class="form-text text-muted">Bulan</small>
                                                 </div>
@@ -359,17 +357,17 @@
                                             <div class="col-md-1 mb-3 me-1">
                                                 <label for="edit_gravida" class="form-label">G</label>
                                                 <input type="text" class="form-control" id="edit_gravida"
-                                                    pattern="[0-9,\,]*" name="gravida" required>
+                                                    pattern="[0-9,\,]*" name="gravida">
                                             </div>
                                             <div class="col-md-1 mb-3 me-1">
                                                 <label for="edit_partus" class="form-label">P</label>
                                                 <input type="text" class="form-control" id="edit_partus"
-                                                    pattern="[0-9,\,]*" name="partus" required>
+                                                    pattern="[0-9,\,]*" name="partus">
                                             </div>
                                             <div class="col-md-1 mb-3 me-3">
                                                 <label for="edit_abortus" class="form-label">A</label>
                                                 <input type="text" class="form-control" id="edit_abortus"
-                                                    pattern="[0-9,\,]*" name="abortus" required>
+                                                    pattern="[0-9,\,]*" name="abortus">
                                             </div>
                                             <div id="edit_riwayat_penyakit" class="col-md-4 mb-3">
                                                 <label for="edit_rwyt_pengakit" class="form-label">Riwayat
@@ -472,8 +470,7 @@
                                     <div class="row">
                                         <div class="col-md-4 mb-3">
                                             <label for="edit_posisi_rahim" class="form-label">Posisi Rahim</label>
-                                            <select class="form-select" id="edit_posisi_rahim" name="posisi_rahim"
-                                                required>
+                                            <select class="form-select" id="edit_posisi_rahim" name="posisi_rahim">
                                                 <option value="">Pilih Posisi Rahim</option>
                                                 <option value="Retrofleksi">Retrofleksi</option>
                                                 <option value="Antefleksi">Antefleksi</option>
